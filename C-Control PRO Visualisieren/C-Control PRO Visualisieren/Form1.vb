@@ -43,8 +43,6 @@ Public Class Form1
         Button_Disconnect.Enabled = False
         Button_Connect.Enabled = False
 
-        'Text vorbelegen
-        Label2.Text = "0.000 V"
 
     End Sub
 
@@ -94,11 +92,8 @@ Public Class Form1
 
     'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
     Private Sub SerialPort1_DataReceived() Handles Timer1.Tick 'SerialPort1.DataReceived
-        Dim Serial_Bin As String = ""
-        Dim Serial_Entschluesselt As String = ""
+
         Dim Serial_Read As String = ""
-        Dim Serial_Line As String = ""
-        Dim Bin_Temp As String
 
         'Hier werden die Daten empfangen
         In_Buffer = 0
@@ -111,15 +106,12 @@ Public Class Form1
 
         'MessageBox.Show("")
 
-        For i = 1 To Math.Ceiling(ADC_Anzahl * 1.25)
-            'ListBox1.Items.Add(i)
+        For i = 1 To 29
             Serial_Read = SerialPort1.ReadByte
-            'Serial_Line = Serial_Line + Chr(Serial_Read)
-            Bin_Temp = IntToBin(Serial_Read).PadLeft(8, "0")
-            'MessageBox.Show(IntToBin(Serial_Read).PadLeft(8, "0"))
-            'ListBox1.Items.Add(Bin_Temp)
-            Serial_Bin = Serial_Bin & Bin_Temp
+            ADC(i) = Serial_Read
         Next
+
+        ListBox1.Items.Add(ADC(1) & ", " & ADC(2) & ", " & ADC(3) & ", " & ADC(4) & ", " & ADC(5) & ", " & ADC(6))
 
         'MessageBox.Show("")
 
@@ -135,14 +127,14 @@ Public Class Form1
 
         'MessageBox.Show(Serial_Bin)
         'Empfangene Daten entschlüsseln
-        For i1 = 0 To ADC_Anzahl
-            For i2 = 0 To 3
-                'Serial_Entschluesselt = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
-                'Serial_Entschluesselt = Format(5 / 1023 * Serial_Entschluesselt, "0.000")
-                ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10) + (i2 * 10) + 1, 10))
-                'ListBox1.Items.Add(ADC(i1))
-            Next
-        Next
+        'For i1 = 0 To ADC_Anzahl
+        'For i2 = 0 To 3
+        'Serial_Entschluesselt = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
+        'Serial_Entschluesselt = Format(5 / 1023 * Serial_Entschluesselt, "0.000")
+        'ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10) + (i2 * 10) + 1, 10))
+        'ListBox1.Items.Add(ADC(i1))
+        'Next
+        'Next
 
         'ListBox1.Items.Add(ADC(1))
 
@@ -160,21 +152,9 @@ Public Class Form1
         End If
 
 
-        MTech010VerticalProgessBar2.Value = ADC(0)
-        TextBox2.Text = (ADC(0))
+        MTech010VerticalProgessBar2.Value = ADC(1)
+        TextBox2.Text = (ADC(1))
         'Klavierdiagramm_Refresh()
-
-        'Jetzt werden die Daten ausgewertet
-        Dim Pos As Integer
-        Dim Value As Single
-
-        If Mid(In_Buffer, 1, 5) = "ADC0:" Then              'Auf ADC0 prüfen
-            Pos = InStr(In_Buffer, ":")                     'Doppelpunkt suchen  
-            Value = Val(Mid(In_Buffer, Pos + 1, 5))         'Wert ausschneiden
-            Label2.Text = FormatNumber(Value * (5 / 1023), 3, TriState.True, TriState.False, TriState.True) & " V"  'Formatieren und ausgeben
-        End If
-
-        'MTech010VerticalProgessBar1.Value = Value
 
     End Sub
 
@@ -371,7 +351,7 @@ Public Class Form1
         'MessageBox.Show(Tackt_Achtel)
 
 
-        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "/" & Tackt_Viertel)
+        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Tackt_Viertel)
 
     End Sub
 
