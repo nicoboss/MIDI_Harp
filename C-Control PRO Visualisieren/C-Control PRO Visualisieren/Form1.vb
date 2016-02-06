@@ -23,6 +23,11 @@ Public Class Form1
     Dim Tackt_Viertel As Byte = 1
     Dim Tackt_Viertel_Counter As Byte
 
+    'Annahme: Maaximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
+    Dim ADC_Anzahl As Byte = 28
+    Dim ADC(43) As UShort
+
+
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Chart()
@@ -73,7 +78,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click
+
+    Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         'trennen
         Button_Connect.Enabled = True
@@ -83,31 +89,52 @@ Public Class Form1
 
     End Sub
 
+
     Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
+        Dim Serial_Bin As String = ""
+        Dim Serial_Entschluesselt As String = ""
+
+        'For i = 0 To 572925
+        'TextBox71.AppendText(SerialPort1.ReadByte)
+        'MessageBox.Show(Chr(SerialPort1.ReadChar))
+        'Next
 
         'Hier werden die Daten empfangen
         In_Buffer = 0
         Control.CheckForIllegalCrossThreadCalls = False
-        In_Buffer = SerialPort1.ReadLine
 
+        For i = 1 To Math.Ceiling(ADC_Anzahl * 1.25)
+            Serial_Bin = Serial_Bin + IntToBin(SerialPort1.ReadByte).ToString
+        Next
+
+        If Not SerialPort1.ReadByte = 0 Then
+            MessageBox.Show("Error")
+            Do
+                If SerialPort1.ReadByte = 0 Then Exit Do
+            Loop
+        End If
+
+        ListBox1.Items.Add(Serial_Bin)
+        'ListBox1.Items.Add(SerialPort1.ReadByte)
+
+        'MessageBox.Show(Serial_Bin)
         'Empfangene Daten entschlüsseln
-
-        Dim ds As String
-
-        For i = 0 To 29
-            ds = ds + IntToBin(In_Buffer).PadLeft(8, "0")
+        For i1 = 0 To ADC_Anzahl
+            For i2 = 0 To 3
+                'Serial_Entschluesselt = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
+                'Serial_Entschluesselt = Format(5 / 1023 * Serial_Entschluesselt, "0.000")
+                ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
+                'ListBox1.Items.Add(ADC(i1))
+            Next
         Next
 
-        For i = 0 To 3
-            'DCZ = BinToInt(Microsoft.VisualBasic.Mid(ds, (i * 10) + 1, 10))
-            'DCZ = Format(5 / 1023 * DCZ, "0.000")
-        Next
+        Klavierdiagramm_Refresh()
 
         'Jetzt werden die Daten ausgewertet
         Dim Pos As Integer
         Dim Value As Single
 
-        If Mid(In_Buffer, 1, 5) = "ADC0:" Then               'Auf ADC0 prüfen
+        If Mid(In_Buffer, 1, 5) = "ADC0:" Then              'Auf ADC0 prüfen
             Pos = InStr(In_Buffer, ":")                     'Doppelpunkt suchen  
             Value = Val(Mid(In_Buffer, Pos + 1, 5))         'Wert ausschneiden
             Label2.Text = FormatNumber(Value * (5 / 1023), 3, TriState.True, TriState.False, TriState.True) & " V"  'Formatieren und ausgeben
@@ -143,8 +170,8 @@ Public Class Form1
 
 
     Function IntToBin(ByVal IntegerNumber As Long)
-        Dim BinValue As Object
-        Dim TempValue As Object
+        Dim BinValue As Object = Nothing
+        Dim TempValue As Object = Nothing
         Dim IntNum = IntegerNumber
         Do
             'Use the Mod operator to get the current binary digit from the
@@ -156,12 +183,13 @@ Public Class Form1
             IntNum = IntNum \ 2
         Loop Until IntNum = 0
 
-        IntToBin = BinValue
+        Return BinValue
 
     End Function
 
+
     Function BinToInt(ByVal BinaryNumber As String)
-        Dim TempValue As Object
+        Dim TempValue As Object = Nothing
         Dim Length
 
         'Get the length of the binary string
@@ -175,7 +203,7 @@ Public Class Form1
             TempValue = TempValue + Val(Mid(BinaryNumber, Length - x + 1, 1)) * 2 ^ (x - 1)
         Next
 
-        BinToInt = TempValue
+        Return TempValue
 
     End Function
 
@@ -269,7 +297,7 @@ Public Class Form1
         InitializeNotes()
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Chart1.Click
+    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         Tackt.Enabled = False
 
@@ -360,7 +388,47 @@ Public Class Form1
 
 
 
+    Private Sub Klavierdiagramm_Refresh()
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar2.Value = ADC(1)
+        MTech010VerticalProgessBar3.Value = ADC(2)
+        MTech010VerticalProgessBar4.Value = ADC(3)
+        MTech010VerticalProgessBar5.Value = ADC(4)
+        MTech010VerticalProgessBar6.Value = ADC(5)
+        MTech010VerticalProgessBar7.Value = ADC(6)
 
+        MTech010VerticalProgessBar8.Value = ADC(7)
+        MTech010VerticalProgessBar9.Value = ADC(8)
+        MTech010VerticalProgessBar1.Value = ADC(9)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+        MTech010VerticalProgessBar1.Value = ADC(0)
+    End Sub
 
 
 

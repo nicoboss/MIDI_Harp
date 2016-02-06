@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ComboBox_Comport = New System.Windows.Forms.ComboBox()
         Me.Button_Disconnect = New System.Windows.Forms.Button()
@@ -35,13 +35,6 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Save = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar4 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar5 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar6 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar7 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -57,13 +50,6 @@ Partial Class Form1
         Me.TextBox41 = New System.Windows.Forms.TextBox()
         Me.TextBox42 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MTech010VerticalProgessBar8 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar9 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar10 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar11 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar12 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar13 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar14 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
@@ -79,13 +65,6 @@ Partial Class Form1
         Me.TextBox48 = New System.Windows.Forms.TextBox()
         Me.TextBox49 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MTech010VerticalProgessBar15 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar16 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar17 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar18 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar19 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar20 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar21 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.TextBox16 = New System.Windows.Forms.TextBox()
         Me.TextBox17 = New System.Windows.Forms.TextBox()
@@ -101,13 +80,6 @@ Partial Class Form1
         Me.TextBox55 = New System.Windows.Forms.TextBox()
         Me.TextBox56 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MTech010VerticalProgessBar22 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar23 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar24 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar25 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar26 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar27 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar28 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.TextBox22 = New System.Windows.Forms.TextBox()
         Me.TextBox23 = New System.Windows.Forms.TextBox()
         Me.TextBox24 = New System.Windows.Forms.TextBox()
@@ -123,13 +95,6 @@ Partial Class Form1
         Me.TextBox62 = New System.Windows.Forms.TextBox()
         Me.TextBox63 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.MTech010VerticalProgessBar29 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar30 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar31 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar32 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar33 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar34 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar35 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.TextBox29 = New System.Windows.Forms.TextBox()
         Me.TextBox30 = New System.Windows.Forms.TextBox()
         Me.TextBox31 = New System.Windows.Forms.TextBox()
@@ -167,6 +132,42 @@ Partial Class Form1
         Me.Chart1_3D_PointGrabDepth_Text = New System.Windows.Forms.Label()
         Me.Chart1_3D_PointGrabDepth = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.MTech010VerticalProgessBar29 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar30 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar31 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar32 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar33 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar34 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar35 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar22 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar23 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar24 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar25 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar26 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar27 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar28 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar15 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar16 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar17 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar18 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar19 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar20 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar21 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar8 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar9 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar10 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar11 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar12 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar13 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar14 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar4 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar5 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar6 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.MTech010VerticalProgessBar7 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -226,6 +227,7 @@ Partial Class Form1
         'SerialPort1
         '
         Me.SerialPort1.BaudRate = 115200
+        Me.SerialPort1.DataBits = 6
         '
         'GroupBox2
         '
@@ -249,7 +251,7 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster.Padding = New System.Windows.Forms.Padding(25, 5, 20, 10)
         Me.Tackt_Ausgabefenster.Size = New System.Drawing.Size(288, 123)
         Me.Tackt_Ausgabefenster.TabIndex = 1
-        Me.Tackt_Ausgabefenster.Text = "1 1"
+        Me.Tackt_Ausgabefenster.Text = "1/1"
         Me.Tackt_Ausgabefenster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Button1
@@ -297,56 +299,6 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(228, 158)
         Me.FlowLayoutPanel1.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar1
-        '
-        Me.MTech010VerticalProgessBar1.AccessibleName = ""
-        Me.MTech010VerticalProgessBar1.Location = New System.Drawing.Point(3, 3)
-        Me.MTech010VerticalProgessBar1.Name = "MTech010VerticalProgessBar1"
-        Me.MTech010VerticalProgessBar1.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar1.TabIndex = 3
-        '
-        'MTech010VerticalProgessBar2
-        '
-        Me.MTech010VerticalProgessBar2.Location = New System.Drawing.Point(35, 3)
-        Me.MTech010VerticalProgessBar2.Name = "MTech010VerticalProgessBar2"
-        Me.MTech010VerticalProgessBar2.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar2.TabIndex = 4
-        '
-        'MTech010VerticalProgessBar3
-        '
-        Me.MTech010VerticalProgessBar3.Location = New System.Drawing.Point(67, 3)
-        Me.MTech010VerticalProgessBar3.Name = "MTech010VerticalProgessBar3"
-        Me.MTech010VerticalProgessBar3.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar3.TabIndex = 5
-        '
-        'MTech010VerticalProgessBar4
-        '
-        Me.MTech010VerticalProgessBar4.Location = New System.Drawing.Point(99, 3)
-        Me.MTech010VerticalProgessBar4.Name = "MTech010VerticalProgessBar4"
-        Me.MTech010VerticalProgessBar4.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar4.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar5
-        '
-        Me.MTech010VerticalProgessBar5.Location = New System.Drawing.Point(131, 3)
-        Me.MTech010VerticalProgessBar5.Name = "MTech010VerticalProgessBar5"
-        Me.MTech010VerticalProgessBar5.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar5.TabIndex = 7
-        '
-        'MTech010VerticalProgessBar6
-        '
-        Me.MTech010VerticalProgessBar6.Location = New System.Drawing.Point(163, 3)
-        Me.MTech010VerticalProgessBar6.Name = "MTech010VerticalProgessBar6"
-        Me.MTech010VerticalProgessBar6.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar6.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar7
-        '
-        Me.MTech010VerticalProgessBar7.Location = New System.Drawing.Point(195, 3)
-        Me.MTech010VerticalProgessBar7.Name = "MTech010VerticalProgessBar7"
-        Me.MTech010VerticalProgessBar7.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar7.TabIndex = 9
         '
         'TextBox1
         '
@@ -509,55 +461,6 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Size = New System.Drawing.Size(230, 158)
         Me.FlowLayoutPanel2.TabIndex = 7
         '
-        'MTech010VerticalProgessBar8
-        '
-        Me.MTech010VerticalProgessBar8.Location = New System.Drawing.Point(3, 3)
-        Me.MTech010VerticalProgessBar8.Name = "MTech010VerticalProgessBar8"
-        Me.MTech010VerticalProgessBar8.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar8.TabIndex = 3
-        '
-        'MTech010VerticalProgessBar9
-        '
-        Me.MTech010VerticalProgessBar9.Location = New System.Drawing.Point(35, 3)
-        Me.MTech010VerticalProgessBar9.Name = "MTech010VerticalProgessBar9"
-        Me.MTech010VerticalProgessBar9.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar9.TabIndex = 4
-        '
-        'MTech010VerticalProgessBar10
-        '
-        Me.MTech010VerticalProgessBar10.Location = New System.Drawing.Point(67, 3)
-        Me.MTech010VerticalProgessBar10.Name = "MTech010VerticalProgessBar10"
-        Me.MTech010VerticalProgessBar10.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar10.TabIndex = 5
-        '
-        'MTech010VerticalProgessBar11
-        '
-        Me.MTech010VerticalProgessBar11.Location = New System.Drawing.Point(99, 3)
-        Me.MTech010VerticalProgessBar11.Name = "MTech010VerticalProgessBar11"
-        Me.MTech010VerticalProgessBar11.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar11.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar12
-        '
-        Me.MTech010VerticalProgessBar12.Location = New System.Drawing.Point(131, 3)
-        Me.MTech010VerticalProgessBar12.Name = "MTech010VerticalProgessBar12"
-        Me.MTech010VerticalProgessBar12.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar12.TabIndex = 7
-        '
-        'MTech010VerticalProgessBar13
-        '
-        Me.MTech010VerticalProgessBar13.Location = New System.Drawing.Point(163, 3)
-        Me.MTech010VerticalProgessBar13.Name = "MTech010VerticalProgessBar13"
-        Me.MTech010VerticalProgessBar13.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar13.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar14
-        '
-        Me.MTech010VerticalProgessBar14.Location = New System.Drawing.Point(195, 3)
-        Me.MTech010VerticalProgessBar14.Name = "MTech010VerticalProgessBar14"
-        Me.MTech010VerticalProgessBar14.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar14.TabIndex = 9
-        '
         'TextBox8
         '
         Me.TextBox8.Location = New System.Drawing.Point(3, 106)
@@ -718,55 +621,6 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(232, 158)
         Me.FlowLayoutPanel3.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar15
-        '
-        Me.MTech010VerticalProgessBar15.Location = New System.Drawing.Point(3, 3)
-        Me.MTech010VerticalProgessBar15.Name = "MTech010VerticalProgessBar15"
-        Me.MTech010VerticalProgessBar15.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar15.TabIndex = 3
-        '
-        'MTech010VerticalProgessBar16
-        '
-        Me.MTech010VerticalProgessBar16.Location = New System.Drawing.Point(35, 3)
-        Me.MTech010VerticalProgessBar16.Name = "MTech010VerticalProgessBar16"
-        Me.MTech010VerticalProgessBar16.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar16.TabIndex = 4
-        '
-        'MTech010VerticalProgessBar17
-        '
-        Me.MTech010VerticalProgessBar17.Location = New System.Drawing.Point(67, 3)
-        Me.MTech010VerticalProgessBar17.Name = "MTech010VerticalProgessBar17"
-        Me.MTech010VerticalProgessBar17.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar17.TabIndex = 5
-        '
-        'MTech010VerticalProgessBar18
-        '
-        Me.MTech010VerticalProgessBar18.Location = New System.Drawing.Point(99, 3)
-        Me.MTech010VerticalProgessBar18.Name = "MTech010VerticalProgessBar18"
-        Me.MTech010VerticalProgessBar18.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar18.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar19
-        '
-        Me.MTech010VerticalProgessBar19.Location = New System.Drawing.Point(131, 3)
-        Me.MTech010VerticalProgessBar19.Name = "MTech010VerticalProgessBar19"
-        Me.MTech010VerticalProgessBar19.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar19.TabIndex = 7
-        '
-        'MTech010VerticalProgessBar20
-        '
-        Me.MTech010VerticalProgessBar20.Location = New System.Drawing.Point(163, 3)
-        Me.MTech010VerticalProgessBar20.Name = "MTech010VerticalProgessBar20"
-        Me.MTech010VerticalProgessBar20.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar20.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar21
-        '
-        Me.MTech010VerticalProgessBar21.Location = New System.Drawing.Point(195, 3)
-        Me.MTech010VerticalProgessBar21.Name = "MTech010VerticalProgessBar21"
-        Me.MTech010VerticalProgessBar21.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar21.TabIndex = 9
         '
         'TextBox15
         '
@@ -929,55 +783,6 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(231, 158)
         Me.FlowLayoutPanel4.TabIndex = 9
         '
-        'MTech010VerticalProgessBar22
-        '
-        Me.MTech010VerticalProgessBar22.Location = New System.Drawing.Point(3, 3)
-        Me.MTech010VerticalProgessBar22.Name = "MTech010VerticalProgessBar22"
-        Me.MTech010VerticalProgessBar22.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar22.TabIndex = 3
-        '
-        'MTech010VerticalProgessBar23
-        '
-        Me.MTech010VerticalProgessBar23.Location = New System.Drawing.Point(35, 3)
-        Me.MTech010VerticalProgessBar23.Name = "MTech010VerticalProgessBar23"
-        Me.MTech010VerticalProgessBar23.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar23.TabIndex = 4
-        '
-        'MTech010VerticalProgessBar24
-        '
-        Me.MTech010VerticalProgessBar24.Location = New System.Drawing.Point(67, 3)
-        Me.MTech010VerticalProgessBar24.Name = "MTech010VerticalProgessBar24"
-        Me.MTech010VerticalProgessBar24.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar24.TabIndex = 5
-        '
-        'MTech010VerticalProgessBar25
-        '
-        Me.MTech010VerticalProgessBar25.Location = New System.Drawing.Point(99, 3)
-        Me.MTech010VerticalProgessBar25.Name = "MTech010VerticalProgessBar25"
-        Me.MTech010VerticalProgessBar25.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar25.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar26
-        '
-        Me.MTech010VerticalProgessBar26.Location = New System.Drawing.Point(131, 3)
-        Me.MTech010VerticalProgessBar26.Name = "MTech010VerticalProgessBar26"
-        Me.MTech010VerticalProgessBar26.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar26.TabIndex = 7
-        '
-        'MTech010VerticalProgessBar27
-        '
-        Me.MTech010VerticalProgessBar27.Location = New System.Drawing.Point(163, 3)
-        Me.MTech010VerticalProgessBar27.Name = "MTech010VerticalProgessBar27"
-        Me.MTech010VerticalProgessBar27.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar27.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar28
-        '
-        Me.MTech010VerticalProgessBar28.Location = New System.Drawing.Point(195, 3)
-        Me.MTech010VerticalProgessBar28.Name = "MTech010VerticalProgessBar28"
-        Me.MTech010VerticalProgessBar28.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar28.TabIndex = 9
-        '
         'TextBox22
         '
         Me.TextBox22.Location = New System.Drawing.Point(3, 106)
@@ -1139,55 +944,6 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Size = New System.Drawing.Size(237, 158)
         Me.FlowLayoutPanel5.TabIndex = 10
         '
-        'MTech010VerticalProgessBar29
-        '
-        Me.MTech010VerticalProgessBar29.Location = New System.Drawing.Point(3, 3)
-        Me.MTech010VerticalProgessBar29.Name = "MTech010VerticalProgessBar29"
-        Me.MTech010VerticalProgessBar29.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar29.TabIndex = 3
-        '
-        'MTech010VerticalProgessBar30
-        '
-        Me.MTech010VerticalProgessBar30.Location = New System.Drawing.Point(35, 3)
-        Me.MTech010VerticalProgessBar30.Name = "MTech010VerticalProgessBar30"
-        Me.MTech010VerticalProgessBar30.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar30.TabIndex = 4
-        '
-        'MTech010VerticalProgessBar31
-        '
-        Me.MTech010VerticalProgessBar31.Location = New System.Drawing.Point(67, 3)
-        Me.MTech010VerticalProgessBar31.Name = "MTech010VerticalProgessBar31"
-        Me.MTech010VerticalProgessBar31.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar31.TabIndex = 5
-        '
-        'MTech010VerticalProgessBar32
-        '
-        Me.MTech010VerticalProgessBar32.Location = New System.Drawing.Point(99, 3)
-        Me.MTech010VerticalProgessBar32.Name = "MTech010VerticalProgessBar32"
-        Me.MTech010VerticalProgessBar32.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar32.TabIndex = 6
-        '
-        'MTech010VerticalProgessBar33
-        '
-        Me.MTech010VerticalProgessBar33.Location = New System.Drawing.Point(131, 3)
-        Me.MTech010VerticalProgessBar33.Name = "MTech010VerticalProgessBar33"
-        Me.MTech010VerticalProgessBar33.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar33.TabIndex = 7
-        '
-        'MTech010VerticalProgessBar34
-        '
-        Me.MTech010VerticalProgessBar34.Location = New System.Drawing.Point(163, 3)
-        Me.MTech010VerticalProgessBar34.Name = "MTech010VerticalProgessBar34"
-        Me.MTech010VerticalProgessBar34.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar34.TabIndex = 8
-        '
-        'MTech010VerticalProgessBar35
-        '
-        Me.MTech010VerticalProgessBar35.Location = New System.Drawing.Point(195, 3)
-        Me.MTech010VerticalProgessBar35.Name = "MTech010VerticalProgessBar35"
-        Me.MTech010VerticalProgessBar35.Size = New System.Drawing.Size(26, 97)
-        Me.MTech010VerticalProgessBar35.TabIndex = 9
-        '
         'TextBox29
         '
         Me.TextBox29.Location = New System.Drawing.Point(3, 106)
@@ -1323,6 +1079,7 @@ Partial Class Form1
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.ListBox1)
         Me.GroupBox3.Controls.Add(Me.ComboBox1)
         Me.GroupBox3.Controls.Add(Me.GroupBox5)
         Me.GroupBox3.Location = New System.Drawing.Point(326, 13)
@@ -1408,14 +1165,14 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.Chart1.Location = New System.Drawing.Point(558, 140)
         Me.Chart1.Name = "Chart1"
         Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright
-        Series2.ChartArea = "ChartArea1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(669, 295)
         Me.Chart1.TabIndex = 163
         Me.Chart1.Text = "Chart1"
@@ -1573,6 +1330,296 @@ Partial Class Form1
         Me.Label8.TabIndex = 155
         Me.Label8.Text = ""
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.HorizontalScrollbar = True
+        Me.ListBox1.Location = New System.Drawing.Point(9, 33)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(182, 238)
+        Me.ListBox1.TabIndex = 165
+        '
+        'MTech010VerticalProgessBar29
+        '
+        Me.MTech010VerticalProgessBar29.Location = New System.Drawing.Point(3, 3)
+        Me.MTech010VerticalProgessBar29.Maximum = 1023
+        Me.MTech010VerticalProgessBar29.Name = "MTech010VerticalProgessBar29"
+        Me.MTech010VerticalProgessBar29.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar29.TabIndex = 3
+        '
+        'MTech010VerticalProgessBar30
+        '
+        Me.MTech010VerticalProgessBar30.Location = New System.Drawing.Point(35, 3)
+        Me.MTech010VerticalProgessBar30.Maximum = 1023
+        Me.MTech010VerticalProgessBar30.Name = "MTech010VerticalProgessBar30"
+        Me.MTech010VerticalProgessBar30.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar30.TabIndex = 4
+        '
+        'MTech010VerticalProgessBar31
+        '
+        Me.MTech010VerticalProgessBar31.Location = New System.Drawing.Point(67, 3)
+        Me.MTech010VerticalProgessBar31.Maximum = 1023
+        Me.MTech010VerticalProgessBar31.Name = "MTech010VerticalProgessBar31"
+        Me.MTech010VerticalProgessBar31.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar31.TabIndex = 5
+        '
+        'MTech010VerticalProgessBar32
+        '
+        Me.MTech010VerticalProgessBar32.Location = New System.Drawing.Point(99, 3)
+        Me.MTech010VerticalProgessBar32.Maximum = 1023
+        Me.MTech010VerticalProgessBar32.Name = "MTech010VerticalProgessBar32"
+        Me.MTech010VerticalProgessBar32.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar32.TabIndex = 6
+        '
+        'MTech010VerticalProgessBar33
+        '
+        Me.MTech010VerticalProgessBar33.Location = New System.Drawing.Point(131, 3)
+        Me.MTech010VerticalProgessBar33.Maximum = 1023
+        Me.MTech010VerticalProgessBar33.Name = "MTech010VerticalProgessBar33"
+        Me.MTech010VerticalProgessBar33.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar33.TabIndex = 7
+        '
+        'MTech010VerticalProgessBar34
+        '
+        Me.MTech010VerticalProgessBar34.Location = New System.Drawing.Point(163, 3)
+        Me.MTech010VerticalProgessBar34.Maximum = 1023
+        Me.MTech010VerticalProgessBar34.Name = "MTech010VerticalProgessBar34"
+        Me.MTech010VerticalProgessBar34.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar34.TabIndex = 8
+        '
+        'MTech010VerticalProgessBar35
+        '
+        Me.MTech010VerticalProgessBar35.Location = New System.Drawing.Point(195, 3)
+        Me.MTech010VerticalProgessBar35.Maximum = 1023
+        Me.MTech010VerticalProgessBar35.Name = "MTech010VerticalProgessBar35"
+        Me.MTech010VerticalProgessBar35.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar35.TabIndex = 9
+        '
+        'MTech010VerticalProgessBar22
+        '
+        Me.MTech010VerticalProgessBar22.Location = New System.Drawing.Point(3, 3)
+        Me.MTech010VerticalProgessBar22.Maximum = 1023
+        Me.MTech010VerticalProgessBar22.Name = "MTech010VerticalProgessBar22"
+        Me.MTech010VerticalProgessBar22.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar22.TabIndex = 3
+        '
+        'MTech010VerticalProgessBar23
+        '
+        Me.MTech010VerticalProgessBar23.Location = New System.Drawing.Point(35, 3)
+        Me.MTech010VerticalProgessBar23.Maximum = 1023
+        Me.MTech010VerticalProgessBar23.Name = "MTech010VerticalProgessBar23"
+        Me.MTech010VerticalProgessBar23.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar23.TabIndex = 4
+        '
+        'MTech010VerticalProgessBar24
+        '
+        Me.MTech010VerticalProgessBar24.Location = New System.Drawing.Point(67, 3)
+        Me.MTech010VerticalProgessBar24.Maximum = 1023
+        Me.MTech010VerticalProgessBar24.Name = "MTech010VerticalProgessBar24"
+        Me.MTech010VerticalProgessBar24.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar24.TabIndex = 5
+        '
+        'MTech010VerticalProgessBar25
+        '
+        Me.MTech010VerticalProgessBar25.Location = New System.Drawing.Point(99, 3)
+        Me.MTech010VerticalProgessBar25.Maximum = 1023
+        Me.MTech010VerticalProgessBar25.Name = "MTech010VerticalProgessBar25"
+        Me.MTech010VerticalProgessBar25.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar25.TabIndex = 6
+        '
+        'MTech010VerticalProgessBar26
+        '
+        Me.MTech010VerticalProgessBar26.Location = New System.Drawing.Point(131, 3)
+        Me.MTech010VerticalProgessBar26.Maximum = 1023
+        Me.MTech010VerticalProgessBar26.Name = "MTech010VerticalProgessBar26"
+        Me.MTech010VerticalProgessBar26.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar26.TabIndex = 7
+        '
+        'MTech010VerticalProgessBar27
+        '
+        Me.MTech010VerticalProgessBar27.Location = New System.Drawing.Point(163, 3)
+        Me.MTech010VerticalProgessBar27.Maximum = 1023
+        Me.MTech010VerticalProgessBar27.Name = "MTech010VerticalProgessBar27"
+        Me.MTech010VerticalProgessBar27.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar27.TabIndex = 8
+        '
+        'MTech010VerticalProgessBar28
+        '
+        Me.MTech010VerticalProgessBar28.Location = New System.Drawing.Point(195, 3)
+        Me.MTech010VerticalProgessBar28.Maximum = 1023
+        Me.MTech010VerticalProgessBar28.Name = "MTech010VerticalProgessBar28"
+        Me.MTech010VerticalProgessBar28.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar28.TabIndex = 9
+        '
+        'MTech010VerticalProgessBar15
+        '
+        Me.MTech010VerticalProgessBar15.Location = New System.Drawing.Point(3, 3)
+        Me.MTech010VerticalProgessBar15.Maximum = 1023
+        Me.MTech010VerticalProgessBar15.Name = "MTech010VerticalProgessBar15"
+        Me.MTech010VerticalProgessBar15.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar15.TabIndex = 3
+        '
+        'MTech010VerticalProgessBar16
+        '
+        Me.MTech010VerticalProgessBar16.Location = New System.Drawing.Point(35, 3)
+        Me.MTech010VerticalProgessBar16.Maximum = 1023
+        Me.MTech010VerticalProgessBar16.Name = "MTech010VerticalProgessBar16"
+        Me.MTech010VerticalProgessBar16.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar16.TabIndex = 4
+        '
+        'MTech010VerticalProgessBar17
+        '
+        Me.MTech010VerticalProgessBar17.Location = New System.Drawing.Point(67, 3)
+        Me.MTech010VerticalProgessBar17.Maximum = 1023
+        Me.MTech010VerticalProgessBar17.Name = "MTech010VerticalProgessBar17"
+        Me.MTech010VerticalProgessBar17.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar17.TabIndex = 5
+        '
+        'MTech010VerticalProgessBar18
+        '
+        Me.MTech010VerticalProgessBar18.Location = New System.Drawing.Point(99, 3)
+        Me.MTech010VerticalProgessBar18.Maximum = 1023
+        Me.MTech010VerticalProgessBar18.Name = "MTech010VerticalProgessBar18"
+        Me.MTech010VerticalProgessBar18.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar18.TabIndex = 6
+        '
+        'MTech010VerticalProgessBar19
+        '
+        Me.MTech010VerticalProgessBar19.Location = New System.Drawing.Point(131, 3)
+        Me.MTech010VerticalProgessBar19.Maximum = 1023
+        Me.MTech010VerticalProgessBar19.Name = "MTech010VerticalProgessBar19"
+        Me.MTech010VerticalProgessBar19.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar19.TabIndex = 7
+        '
+        'MTech010VerticalProgessBar20
+        '
+        Me.MTech010VerticalProgessBar20.Location = New System.Drawing.Point(163, 3)
+        Me.MTech010VerticalProgessBar20.Maximum = 1023
+        Me.MTech010VerticalProgessBar20.Name = "MTech010VerticalProgessBar20"
+        Me.MTech010VerticalProgessBar20.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar20.TabIndex = 8
+        '
+        'MTech010VerticalProgessBar21
+        '
+        Me.MTech010VerticalProgessBar21.Location = New System.Drawing.Point(195, 3)
+        Me.MTech010VerticalProgessBar21.Maximum = 1023
+        Me.MTech010VerticalProgessBar21.Name = "MTech010VerticalProgessBar21"
+        Me.MTech010VerticalProgessBar21.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar21.TabIndex = 9
+        '
+        'MTech010VerticalProgessBar8
+        '
+        Me.MTech010VerticalProgessBar8.Location = New System.Drawing.Point(3, 3)
+        Me.MTech010VerticalProgessBar8.Maximum = 1023
+        Me.MTech010VerticalProgessBar8.Name = "MTech010VerticalProgessBar8"
+        Me.MTech010VerticalProgessBar8.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar8.TabIndex = 3
+        '
+        'MTech010VerticalProgessBar9
+        '
+        Me.MTech010VerticalProgessBar9.Location = New System.Drawing.Point(35, 3)
+        Me.MTech010VerticalProgessBar9.Maximum = 1023
+        Me.MTech010VerticalProgessBar9.Name = "MTech010VerticalProgessBar9"
+        Me.MTech010VerticalProgessBar9.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar9.TabIndex = 4
+        '
+        'MTech010VerticalProgessBar10
+        '
+        Me.MTech010VerticalProgessBar10.Location = New System.Drawing.Point(67, 3)
+        Me.MTech010VerticalProgessBar10.Maximum = 1023
+        Me.MTech010VerticalProgessBar10.Name = "MTech010VerticalProgessBar10"
+        Me.MTech010VerticalProgessBar10.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar10.TabIndex = 5
+        '
+        'MTech010VerticalProgessBar11
+        '
+        Me.MTech010VerticalProgessBar11.Location = New System.Drawing.Point(99, 3)
+        Me.MTech010VerticalProgessBar11.Maximum = 1023
+        Me.MTech010VerticalProgessBar11.Name = "MTech010VerticalProgessBar11"
+        Me.MTech010VerticalProgessBar11.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar11.TabIndex = 6
+        '
+        'MTech010VerticalProgessBar12
+        '
+        Me.MTech010VerticalProgessBar12.Location = New System.Drawing.Point(131, 3)
+        Me.MTech010VerticalProgessBar12.Maximum = 1023
+        Me.MTech010VerticalProgessBar12.Name = "MTech010VerticalProgessBar12"
+        Me.MTech010VerticalProgessBar12.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar12.TabIndex = 7
+        '
+        'MTech010VerticalProgessBar13
+        '
+        Me.MTech010VerticalProgessBar13.Location = New System.Drawing.Point(163, 3)
+        Me.MTech010VerticalProgessBar13.Maximum = 1023
+        Me.MTech010VerticalProgessBar13.Name = "MTech010VerticalProgessBar13"
+        Me.MTech010VerticalProgessBar13.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar13.TabIndex = 8
+        '
+        'MTech010VerticalProgessBar14
+        '
+        Me.MTech010VerticalProgessBar14.Location = New System.Drawing.Point(195, 3)
+        Me.MTech010VerticalProgessBar14.Maximum = 1023
+        Me.MTech010VerticalProgessBar14.Name = "MTech010VerticalProgessBar14"
+        Me.MTech010VerticalProgessBar14.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar14.TabIndex = 9
+        '
+        'MTech010VerticalProgessBar1
+        '
+        Me.MTech010VerticalProgessBar1.AccessibleName = ""
+        Me.MTech010VerticalProgessBar1.Location = New System.Drawing.Point(3, 3)
+        Me.MTech010VerticalProgessBar1.Maximum = 1023
+        Me.MTech010VerticalProgessBar1.Name = "MTech010VerticalProgessBar1"
+        Me.MTech010VerticalProgessBar1.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar1.TabIndex = 3
+        '
+        'MTech010VerticalProgessBar2
+        '
+        Me.MTech010VerticalProgessBar2.Location = New System.Drawing.Point(35, 3)
+        Me.MTech010VerticalProgessBar2.Maximum = 1023
+        Me.MTech010VerticalProgessBar2.Name = "MTech010VerticalProgessBar2"
+        Me.MTech010VerticalProgessBar2.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar2.TabIndex = 4
+        '
+        'MTech010VerticalProgessBar3
+        '
+        Me.MTech010VerticalProgessBar3.Location = New System.Drawing.Point(67, 3)
+        Me.MTech010VerticalProgessBar3.Maximum = 1023
+        Me.MTech010VerticalProgessBar3.Name = "MTech010VerticalProgessBar3"
+        Me.MTech010VerticalProgessBar3.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar3.TabIndex = 5
+        '
+        'MTech010VerticalProgessBar4
+        '
+        Me.MTech010VerticalProgessBar4.Location = New System.Drawing.Point(99, 3)
+        Me.MTech010VerticalProgessBar4.Maximum = 1023
+        Me.MTech010VerticalProgessBar4.Name = "MTech010VerticalProgessBar4"
+        Me.MTech010VerticalProgessBar4.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar4.TabIndex = 6
+        '
+        'MTech010VerticalProgessBar5
+        '
+        Me.MTech010VerticalProgessBar5.Location = New System.Drawing.Point(131, 3)
+        Me.MTech010VerticalProgessBar5.Maximum = 1023
+        Me.MTech010VerticalProgessBar5.Name = "MTech010VerticalProgessBar5"
+        Me.MTech010VerticalProgessBar5.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar5.TabIndex = 7
+        '
+        'MTech010VerticalProgessBar6
+        '
+        Me.MTech010VerticalProgessBar6.Location = New System.Drawing.Point(163, 3)
+        Me.MTech010VerticalProgessBar6.Maximum = 1023
+        Me.MTech010VerticalProgessBar6.Name = "MTech010VerticalProgessBar6"
+        Me.MTech010VerticalProgessBar6.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar6.TabIndex = 8
+        '
+        'MTech010VerticalProgessBar7
+        '
+        Me.MTech010VerticalProgessBar7.Location = New System.Drawing.Point(195, 3)
+        Me.MTech010VerticalProgessBar7.Maximum = 1023
+        Me.MTech010VerticalProgessBar7.Name = "MTech010VerticalProgessBar7"
+        Me.MTech010VerticalProgessBar7.Size = New System.Drawing.Size(26, 97)
+        Me.MTech010VerticalProgessBar7.TabIndex = 9
         '
         'Form1
         '
@@ -1763,5 +1810,6 @@ Partial Class Form1
     Friend WithEvents Chart1_3D_PointGrabDepth As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
 
 End Class
