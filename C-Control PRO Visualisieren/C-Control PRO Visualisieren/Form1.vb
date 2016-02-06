@@ -76,6 +76,9 @@ Public Class Form1
 
         End Try
 
+        Timer1.Enabled = True
+        'SerialPort1_DataReceived()
+        'SerialPort1.Write(1)
     End Sub
 
 
@@ -89,30 +92,42 @@ Public Class Form1
 
     End Sub
 
-
-    Private Sub SerialPort1_DataReceived(ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs) Handles SerialPort1.DataReceived
+    'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
+    Private Sub SerialPort1_DataReceived() Handles Timer1.Tick 'SerialPort1.DataReceived
         Dim Serial_Bin As String = ""
         Dim Serial_Entschluesselt As String = ""
-
-        'For i = 0 To 572925
-        'TextBox71.AppendText(SerialPort1.ReadByte)
-        'MessageBox.Show(Chr(SerialPort1.ReadChar))
-        'Next
+        Dim Serial_Read As String = ""
+        Dim Serial_Line As String = ""
+        Dim Bin_Temp As String
 
         'Hier werden die Daten empfangen
         In_Buffer = 0
         Control.CheckForIllegalCrossThreadCalls = False
 
+
+
+        'MessageBox.Show("")
+
+        SerialPort1.Write(1)
+
         For i = 1 To Math.Ceiling(ADC_Anzahl * 1.25)
-            Serial_Bin = Serial_Bin + IntToBin(SerialPort1.ReadByte).ToString
+            'ListBox1.Items.Add(i)
+            Serial_Read = SerialPort1.ReadByte
+            Serial_Line = Serial_Line + Chr(Serial_Read)
+            Bin_Temp = IntToBin(Serial_Read).PadLeft(8, "0")
+            'MessageBox.Show(IntToBin(Serial_Read).PadLeft(8, "0"))
+            ListBox1.Items.Add(Bin_Temp)
+            Serial_Bin = Serial_Bin & Bin_Temp
         Next
 
-        If Not SerialPort1.ReadByte = 0 Then
-            MessageBox.Show("Error")
-            Do
-                If SerialPort1.ReadByte = 0 Then Exit Do
-            Loop
-        End If
+        'MessageBox.Show("")
+
+        'If Not SerialPort1.ReadByte = 0 Then
+        'MessageBox.Show("Error")
+        'Do
+        'If SerialPort1.ReadByte = 0 Then Exit Do
+        'Loop
+        'End If
 
         ListBox1.Items.Add(Serial_Bin)
         'ListBox1.Items.Add(SerialPort1.ReadByte)
@@ -123,11 +138,12 @@ Public Class Form1
             For i2 = 0 To 3
                 'Serial_Entschluesselt = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
                 'Serial_Entschluesselt = Format(5 / 1023 * Serial_Entschluesselt, "0.000")
-                ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
+                ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10) + (i2 * 10) + 1, 10))
                 'ListBox1.Items.Add(ADC(i1))
             Next
         Next
 
+        'MTech010VerticalProgessBar1.Value = ADC(0)
         Klavierdiagramm_Refresh()
 
         'Jetzt werden die Daten ausgewertet
@@ -140,7 +156,7 @@ Public Class Form1
             Label2.Text = FormatNumber(Value * (5 / 1023), 3, TriState.True, TriState.False, TriState.True) & " V"  'Formatieren und ausgeben
         End If
 
-        MTech010VerticalProgessBar1.Value = Value
+        'MTech010VerticalProgessBar1.Value = Value
 
     End Sub
 
@@ -536,6 +552,10 @@ Public Class Form1
     End Sub
 
 
+    'Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+    '    SerialPort1.Write(1)
+    '    ListBox1.Items.Add("Hallo")
+    'End Sub
 End Class
 
 

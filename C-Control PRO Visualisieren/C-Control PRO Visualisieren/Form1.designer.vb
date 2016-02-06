@@ -111,6 +111,7 @@ Partial Class Form1
         Me.TextBox70 = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
@@ -132,7 +133,8 @@ Partial Class Form1
         Me.Chart1_3D_PointGrabDepth_Text = New System.Windows.Forms.Label()
         Me.Chart1_3D_PointGrabDepth = New System.Windows.Forms.NumericUpDown()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.MTech010VerticalProgessBar29 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar30 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar31 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -227,7 +229,7 @@ Partial Class Form1
         'SerialPort1
         '
         Me.SerialPort1.BaudRate = 115200
-        Me.SerialPort1.DataBits = 6
+        Me.SerialPort1.DtrEnable = True
         '
         'GroupBox2
         '
@@ -1089,6 +1091,15 @@ Partial Class Form1
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Einstellungen"
         '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.HorizontalScrollbar = True
+        Me.ListBox1.Location = New System.Drawing.Point(9, 33)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(182, 238)
+        Me.ListBox1.TabIndex = 165
+        '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
@@ -1331,14 +1342,18 @@ Partial Class Form1
         Me.Label8.Text = ""
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         '
-        'ListBox1
+        'Button2
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.HorizontalScrollbar = True
-        Me.ListBox1.Location = New System.Drawing.Point(9, 33)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(182, 238)
-        Me.ListBox1.TabIndex = 165
+        Me.Button2.Location = New System.Drawing.Point(419, 661)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 167
+        Me.Button2.Text = "Button2"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Timer1
+        '
+        Me.Timer1.Interval = 500
         '
         'MTech010VerticalProgessBar29
         '
@@ -1626,6 +1641,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 995)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.MIDI_Start)
         Me.Controls.Add(Me.Chart1)
         Me.Controls.Add(Me.NoteC)
@@ -1811,5 +1827,7 @@ Partial Class Form1
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
 
 End Class
