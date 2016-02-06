@@ -106,9 +106,10 @@ Public Class Form1
 
 
 
-        'MessageBox.Show("")
 
         SerialPort1.Write(1)
+
+        'MessageBox.Show("")
 
         For i = 1 To Math.Ceiling(ADC_Anzahl * 1.25)
             'ListBox1.Items.Add(i)
@@ -129,7 +130,7 @@ Public Class Form1
         'Loop
         'End If
 
-        ListBox1.Items.Add(Serial_Bin)
+        'ListBox1.Items.Add(Serial_Bin)
         'ListBox1.Items.Add(SerialPort1.ReadByte)
 
         'MessageBox.Show(Serial_Bin)
@@ -143,6 +144,7 @@ Public Class Form1
             Next
         Next
 
+        'ListBox1.Items.Add(ADC(1))
         'MTech010VerticalProgessBar1.Value = ADC(0)
         Klavierdiagramm_Refresh()
 
@@ -406,16 +408,26 @@ Public Class Form1
 
     Private Sub Klavierdiagramm_Refresh()
         MTech010VerticalProgessBar1.Value = ADC(0)
+        TextBox1.Text = ADC(0)
         MTech010VerticalProgessBar2.Value = ADC(1)
+        TextBox2.Text = ADC(1)
         MTech010VerticalProgessBar3.Value = ADC(2)
+        TextBox3.Text = ADC(2)
         MTech010VerticalProgessBar4.Value = ADC(3)
+        TextBox4.Text = ADC(3)
         MTech010VerticalProgessBar5.Value = ADC(4)
+        TextBox5.Text = ADC(4)
         MTech010VerticalProgessBar6.Value = ADC(5)
+        TextBox6.Text = ADC(5)
         MTech010VerticalProgessBar7.Value = ADC(6)
+        TextBox7.Text = ADC(6)
 
         MTech010VerticalProgessBar8.Value = ADC(7)
+        TextBox8.Text = ADC(7)
         MTech010VerticalProgessBar9.Value = ADC(8)
+        TextBox9.Text = ADC(8)
         MTech010VerticalProgessBar1.Value = ADC(9)
+        TextBox10.Text = ADC(9)
         MTech010VerticalProgessBar1.Value = ADC(0)
         MTech010VerticalProgessBar1.Value = ADC(0)
         MTech010VerticalProgessBar1.Value = ADC(0)
