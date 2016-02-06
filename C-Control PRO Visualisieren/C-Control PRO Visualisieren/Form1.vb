@@ -30,7 +30,6 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Chart()
 
         'Comports suchen
         For Each Me.port In ports
@@ -311,7 +310,7 @@ Public Class Form1
         InitializeNotes()
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Chart1.Click
+    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
         Tackt.Enabled = False
 
@@ -456,114 +455,6 @@ Public Class Form1
 
 
 
-
-
-
-    Dim Chanched_Unlooked As Boolean 'Chart1_Chanched Fehlerschutz! Wichtig!
-
-    Dim Chart1_Art_Index_2D As Byte() = {10, 11, 12, 7, 8, 9, 14, 15, 16, 3, 4, 5, 13, 28}
-
-    Dim Chart1_Art_Index_3D As Byte() = {10, 11, 12, 7, 8, 9, 13, 14, 15, 16, 28} 'Numärische Reihenfolge: 7, 8, 9, 10, 11, 12, 20, 24, 25, 26, 28
-
-    Dim CHa As Short
-    Dim Chart1_Art_Beschreibung = _
-            {"Punktdiagramm", "FastPoint-Diagramm", "Blasendiagramm", "Liniendiagramm", "Splinediagramm", "StepLine-Diagramm", "FastLine-Diagramm", _
-             "Balkendiagramm", "Stapel Balkendiagramm", "Stapel Balkendiagramm (100 %)", "Säulendiagramm", "Stapel Säulendiagramm", "Stapel Säulendiagramm (100 %)", _
-             "Flächendiagramm", "Splineflächendiagramm", "Stapel Flächendiagramm", "Stapel Flächendiagramm (100 %)", "Kreisdiagramm", "Ringdiagramm", "Kursdiagramm", _
-             "Kerzendiagramm", "Bereichsdiagramm", "Splinebereichsdiagramm", "RangeBar-Diagramm", "Bereichssäulendiagramm", "Netzdiagramm", "Polardiagramm", "Fehlerindikatorendiagramm", _
-             "Boxplotdiagramm", "Renko-Diagramm", "ThreeLineBreak-Diagramm", "Kagi-Diagramm", "PointAndFigure-Diagramm", "Trichterdiagramm", "Pyramidendiagramm"}
-
-
-    'Dim Chart1_Art_Index(40)
-    'Dim Chart1_Art_Beschreibung(40) As String
-
-    Dim ArialDiaT As Font = New Font("Arial", 11, FontStyle.Bold) 'Diagrammtitel
-    Dim Chart1_Titles_BGrondC1 As Color = Color.FromArgb(192, 255, 255)
-
-    Dim Chart_Noten As Byte() = {24, 2, 32, 4}
-    Dim Chart_Max = 4
-    Dim III = 0
-
-
-    Private Sub Chart() Handles Chart1.Click
-
-        Chart1.Series.Clear()
-
-
-        For i1 = 0 To 15
-            Chart1.Series.Add(i1)
-            Chart1.Series(i1).ChartType = DataVisualization.Charting.SeriesChartType.Column
-            For i2 = 0 To 32
-                If 10 * Rnd() > 8 Then Chart1.Series(i1).Points.AddY(60 * Rnd()) Else Chart1.Series(i1).Points.AddY(0)
-            Next
-        Next
-
-
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(1, 1)
-        'Chart1.Series(0).Points.AddXY(2, 6)
-        'Chart1.Series(0).Points.AddXY(3, 3)
-        'Chart1.Series(0).Points.AddXY(4, 4)
-
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(0, 0)
-        'Chart1.Series(0).Points.AddXY(0, 0)
-
-        'Chart1.Series(0).Points.AddXY(0, 60 * Rnd())
-        'Chart1.Series(0).Points.AddXY(0, 60 * Rnd())
-        'Chart1.Series(0).Points.AddXY(0, 60 * Rnd())
-        'Chart1.Series(0).Points.AddXY(0, 60 * Rnd())
-
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.Enable3D = True
-            Chart1.ChartAreas(i).Area3DStyle.PointDepth = Chart1_3D_PointDepth.Value
-            Chart1.ChartAreas(i).Area3DStyle.PointGapDepth = Chart1_3D_PointGrabDepth.Value
-            Chart1.ChartAreas(i).Area3DStyle.Inclination = Chart1_3D_Neigungswinkel.Value
-            Chart1.ChartAreas(i).Area3DStyle.Rotation = Chart1_3D_Rotation.Value
-            'Chart1.ChartAreas(i).Area3DStyle.WallWidth = 5
-            'Chart1.ChartAreas(i).Area3DStyle.LightStyle = LightStyle.Realistic
-        Next
-
-    End Sub
-
-    Private Sub Funk_Chart1_3D_Neigungswinkel() Handles Chart1_3D_Neigungswinkel.ValueChanged
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.Inclination = Chart1_3D_Neigungswinkel.Value
-        Next
-    End Sub
-
-    Private Sub Funk_Chart1_3D_Chart1_3D_Rotation() Handles Chart1_3D_Rotation.ValueChanged
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.Rotation = Chart1_3D_Rotation.Value
-        Next
-    End Sub
-
-    Private Sub Funk_Chart1_3D_Chart1_3D_PountDepth() Handles Chart1_3D_PointDepth.ValueChanged
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.PointDepth = Chart1_3D_PointDepth.Value
-        Next
-    End Sub
-
-    Private Sub Funk_Chart1_3D_Chart1_3D_PountGrabDepth() Handles Chart1_3D_PointGrabDepth.ValueChanged
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.PointGapDepth = Chart1_3D_PointGrabDepth.Value
-        Next
-    End Sub
-
-    Private Sub Funk_Chart1_3D_Chart1_3D_LightStyle() Handles Chart1_3D_LightStyle.CheckStateChanged
-        For i = 0 To Chart1.ChartAreas.Count - 1 Step 1
-            Chart1.ChartAreas(i).Area3DStyle.LightStyle = Chart1_3D_LightStyle.CheckState
-        Next
-    End Sub
-
-
-    'Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
-    '    SerialPort1.Write(1)
-    '    ListBox1.Items.Add("Hallo")
-    'End Sub
 End Class
 
 
