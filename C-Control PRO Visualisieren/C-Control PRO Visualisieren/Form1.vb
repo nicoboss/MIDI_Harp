@@ -114,10 +114,10 @@ Public Class Form1
         For i = 1 To Math.Ceiling(ADC_Anzahl * 1.25)
             'ListBox1.Items.Add(i)
             Serial_Read = SerialPort1.ReadByte
-            Serial_Line = Serial_Line + Chr(Serial_Read)
+            'Serial_Line = Serial_Line + Chr(Serial_Read)
             Bin_Temp = IntToBin(Serial_Read).PadLeft(8, "0")
             'MessageBox.Show(IntToBin(Serial_Read).PadLeft(8, "0"))
-            ListBox1.Items.Add(Bin_Temp)
+            'ListBox1.Items.Add(Bin_Temp)
             Serial_Bin = Serial_Bin & Bin_Temp
         Next
 
@@ -145,8 +145,24 @@ Public Class Form1
         Next
 
         'ListBox1.Items.Add(ADC(1))
-        'MTech010VerticalProgessBar1.Value = ADC(0)
-        Klavierdiagramm_Refresh()
+
+        Dim NoteP As Boolean
+
+        If ADC(0) > 99 Then
+            NoteP = True
+            Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
+        End If
+
+
+        If ADC(0) < 100 And NoteP = True Then
+            NoteP = False
+            Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+        End If
+
+
+        MTech010VerticalProgessBar2.Value = ADC(0)
+        TextBox2.Text = (ADC(0))
+        'Klavierdiagramm_Refresh()
 
         'Jetzt werden die Daten ausgewertet
         Dim Pos As Integer
@@ -315,7 +331,7 @@ Public Class Form1
         InitializeNotes()
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Chart1.Click
 
         Tackt.Enabled = False
 
