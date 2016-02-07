@@ -260,9 +260,13 @@ Public Class Form1
     End Sub
 
     Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+
+        Dim Meta() As Byte = {&H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H8, &H0}
+
         Song.AddTrack()
-        Song.AddTrack()
-        Song.AddTrack()
+        Song.Tracks(0).AddTackt(0, 0)
+
         Song.AddTrack()
 
         InitializeNotes()

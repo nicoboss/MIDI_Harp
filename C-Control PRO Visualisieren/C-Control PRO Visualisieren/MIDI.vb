@@ -32,6 +32,7 @@ Public Class MIDI
                     numTracks += 1
                 End If
             Next
+
             Dim byteTracks(0 To 1) As Byte
             byteTracks(0) = CByte((numTracks >> 8) And &HFF)
             byteTracks(1) = CByte((numTracks And &HFF))
@@ -72,16 +73,13 @@ Public Class MIDI
         Dim TrackMetadata As New List(Of Byte)
         Public Channel As SByte = -1
         Public Function ValidTrack() As Boolean
-            Return Channel >= 0
+            Return True 'Channel >= 0
         End Function
 
-        Public Sub Save(ByVal filepath As String)
-            'TrackMetadata = Tackt
-            Dim Tackt() As Byte = {&H0, &H0, &H0, &H4, &H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H0}
 
+        Public Sub Save(ByVal filepath As String)
             If ValidTrack() Then
                 My.Computer.FileSystem.WriteAllBytes(filepath, TrackHeader, True)
-                My.Computer.FileSystem.WriteAllBytes(filepath, Tackt, True)
 
                 Dim TrackSize As UInt32 = TrackData.Count() + TrackMetadata.Count() + TrackOut.Count()
                 Dim byteTrackSize(0 To 3) As Byte
@@ -90,8 +88,8 @@ Public Class MIDI
                 byteTrackSize(2) = CByte((TrackSize >> 8) And &HFF)
                 byteTrackSize(3) = CByte((TrackSize And &HFF))
                 My.Computer.FileSystem.WriteAllBytes(filepath, byteTrackSize, True)
-                My.Computer.FileSystem.WriteAllBytes(filepath, TrackData.ToArray, True)
                 My.Computer.FileSystem.WriteAllBytes(filepath, TrackMetadata.ToArray, True)
+                My.Computer.FileSystem.WriteAllBytes(filepath, TrackData.ToArray, True)
                 My.Computer.FileSystem.WriteAllBytes(filepath, TrackOut, True)
             End If
         End Sub
@@ -108,6 +106,18 @@ Public Class MIDI
             Else
                 ' Error handling here, or other handling
             End If
+        End Sub
+
+        Public Sub AddTackt(ByVal Tackt_Zaehleer As Byte, ByVal Tackt_Nenner As Byte)
+
+            Dim Meta_Start() As Byte = {&H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H8}
+
+            'If Not ValidTrack() Then Return
+
+            For i = 0 To Meta_Start.Count - 1
+                TrackData.Add(CByte(Meta_Start(i)))
+            Next
+
         End Sub
 
         Private Function TranslateTickTime(ByVal ticks As UInt32) As Byte()
