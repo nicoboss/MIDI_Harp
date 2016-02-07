@@ -110,8 +110,6 @@ Public Class Form1
             ADC(i) = Serial_Read
         Next
 
-        ListBox1.Items.Add(ADC(1) & ", " & ADC(2) & ", " & ADC(3) & ", " & ADC(4) & ", " & ADC(5) & ", " & ADC(6))
-
         'MessageBox.Show("")
 
         'If Not SerialPort1.ReadByte = 0 Then
@@ -151,9 +149,9 @@ Public Class Form1
         End If
 
 
-        MTech010VerticalProgessBar2.Value = ADC(1)
+        'MTech010VerticalProgessBar2.Value = ADC(1)
         TextBox2.Text = (ADC(1))
-        'Klavierdiagramm_Refresh()
+        Klavierdiagramm_Refresh()
 
     End Sub
 
@@ -179,46 +177,6 @@ Public Class Form1
         'LineShape1.
         'LineShape1.Refresh()
     End Sub
-
-
-
-    Function IntToBin(ByVal IntegerNumber As Long)
-        Dim BinValue As Object = Nothing
-        Dim TempValue As Object = Nothing
-        Dim IntNum = IntegerNumber
-        Do
-            'Use the Mod operator to get the current binary digit from the
-
-            TempValue = IntNum Mod 2
-            BinValue = CStr(TempValue) + BinValue
-
-            'Divide the current number by 2 and get the integer result
-            IntNum = IntNum \ 2
-        Loop Until IntNum = 0
-
-        Return BinValue
-
-    End Function
-
-
-    Function BinToInt(ByVal BinaryNumber As String)
-        Dim TempValue As Object = Nothing
-        Dim Length
-
-        'Get the length of the binary string
-        Length = Len(BinaryNumber)
-
-        'Convert each binary digit to its corresponding integer value
-        'and add the value to the previous sum
-        'The string is parsed from the right (LSB - Least Significant Bit)
-        'to the left (MSB - Most Significant Bit)
-        For x = 1 To Length
-            TempValue = TempValue + Val(Mid(BinaryNumber, Length - x + 1, 1)) * 2 ^ (x - 1)
-        Next
-
-        Return TempValue
-
-    End Function
 
 
 
@@ -301,7 +259,7 @@ Public Class Form1
         Notes.Add(NumberOfNotes, "R") ' Pause (z.B. 2.2P)
     End Sub
 
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Song.AddTrack()
         Song.AddTrack()
         Song.AddTrack()
@@ -310,9 +268,12 @@ Public Class Form1
         InitializeNotes()
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Save.Click
 
-        Tackt.Enabled = False
+        MIDI_Pausieren.Enabled = False
+        MIDI_Save.Enabled = False
+        Tackt.Enabled = True
+        Einstellungen_GroupBox.Enabled = True
 
         Me.SaveMIDIDialog.DefaultExt = "MID"
         Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, "Untitled.mid")
@@ -356,6 +317,9 @@ Public Class Form1
 
 
     Private Sub Start_Sound() Handles MIDI_Start.Click
+        MIDI_Pausieren.Enabled = True
+        MIDI_Save.Enabled = True
+        Einstellungen_GroupBox.Enabled = False
         Song.Tracks(1).Channel = 0
 
         If Not Song.Tracks(1).ValidTrack Then
@@ -376,11 +340,11 @@ Public Class Form1
     'Song.Tracks(index).AddNoteOnOffEvent(beats, MIDI.Track.NoteEvent.NoteOff, CByte(note), 0)
 
     Private Sub StartN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseDown
-        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
+        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
     End Sub
 
     Private Sub StopN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseUp
-        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
     End Sub
 
 
@@ -454,7 +418,29 @@ Public Class Form1
     End Sub
 
 
+    Private Sub Tonhoehenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tonhoehenverschiebung.SelectedIndexChanged
+        NumericUpDown1.Value = 12 * (Tonhoehenverschiebung.SelectedIndex - 4)
+    End Sub
 
+    Private Sub NumericUpDown1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NumericUpDown1.ValueChanged
+
+    End Sub
+
+    Private Sub Start_Sound(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Start.Click
+
+    End Sub
+
+    Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
+        If Einstellungen_GroupBox.Enabled = False Then
+            Einstellungen_GroupBox.Enabled = True
+            MIDI_Pausieren.Text = "Aufnahme fortsetzen"
+        Else
+            Einstellungen_GroupBox.Enabled = False
+            MIDI_Pausieren.Text = "Aufnahme pausieren"
+        End If
+
+
+    End Sub
 End Class
 
 
