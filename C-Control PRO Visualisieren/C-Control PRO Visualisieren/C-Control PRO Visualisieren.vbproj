@@ -82,6 +82,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsMIDI.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MIDI.vb" />
     <Compile Include="Form1.designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>

@@ -110,21 +110,51 @@ Partial Class Form1
         Me.TextBox70 = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
+        Me.hsbPan = New System.Windows.Forms.HScrollBar()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.hsbVolume = New System.Windows.Forms.HScrollBar()
         Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Tonhoehenverschiebung = New System.Windows.Forms.ComboBox()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.NoteC = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.cboDuration = New System.Windows.Forms.ComboBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.btnStopNoteAbove = New System.Windows.Forms.Button()
+        Me.btnPlay1Note = New System.Windows.Forms.Button()
+        Me.lblClickMe = New System.Windows.Forms.Label()
         Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -168,11 +198,18 @@ Partial Class Form1
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
+        Me.Tempo_GroupBox.SuspendLayout()
+        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.Transpose_GroupBox.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel1.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -1081,9 +1118,10 @@ Partial Class Form1
         '
         'Einstellungen_GroupBox
         '
+        Me.Einstellungen_GroupBox.Controls.Add(Me.Tempo_GroupBox)
+        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox6)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Transpose_GroupBox)
-        Me.Einstellungen_GroupBox.Controls.Add(Me.ComboBox1)
-        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox5)
+        Me.Einstellungen_GroupBox.Controls.Add(Me.cboInstruments)
         Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(326, 13)
         Me.Einstellungen_GroupBox.Name = "Einstellungen_GroupBox"
         Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 422)
@@ -1091,73 +1129,142 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
-        'Transpose_GroupBox
+        'Tempo_GroupBox
         '
-        Me.Transpose_GroupBox.Controls.Add(Me.Label2)
-        Me.Transpose_GroupBox.Controls.Add(Me.Label1)
-        Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
-        Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 218)
-        Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
-        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 95)
-        Me.Transpose_GroupBox.TabIndex = 166
-        Me.Transpose_GroupBox.TabStop = False
-        Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
+        Me.Tempo_GroupBox.Controls.Add(Me.Label18)
+        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown4)
+        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown3)
+        Me.Tempo_GroupBox.Controls.Add(Me.Label17)
+        Me.Tempo_GroupBox.Controls.Add(Me.Label16)
+        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown2)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 55)
+        Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
+        Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
+        Me.Tempo_GroupBox.TabIndex = 172
+        Me.Tempo_GroupBox.TabStop = False
+        Me.Tempo_GroupBox.Text = "Tempo"
         '
-        'Label2
+        'Label18
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(18, 69)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(103, 13)
-        Me.Label2.TabIndex = 167
-        Me.Label2.Text = "Notenverschiebung:"
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(122, 16)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(12, 13)
+        Me.Label18.TabIndex = 172
+        Me.Label18.Text = "/"
         '
-        'Label1
+        'NumericUpDown4
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(18, 33)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
-        Me.Label1.TabIndex = 166
-        Me.Label1.Text = "Oktavenver.:"
+        Me.NumericUpDown4.Location = New System.Drawing.Point(137, 12)
+        Me.NumericUpDown4.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.NumericUpDown4.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.NumericUpDown4.Name = "NumericUpDown4"
+        Me.NumericUpDown4.Size = New System.Drawing.Size(48, 20)
+        Me.NumericUpDown4.TabIndex = 174
         '
-        'NumericUpDown1
+        'NumericUpDown3
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(127, 62)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(55, 20)
-        Me.NumericUpDown1.TabIndex = 165
+        Me.NumericUpDown3.Location = New System.Drawing.Point(61, 12)
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.NumericUpDown3.Name = "NumericUpDown3"
+        Me.NumericUpDown3.Size = New System.Drawing.Size(55, 20)
+        Me.NumericUpDown3.TabIndex = 172
         '
-        'Tonhoehenverschiebung
+        'Label17
         '
-        Me.Tonhoehenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven", ""})
-        Me.Tonhoehenverschiebung.Location = New System.Drawing.Point(90, 30)
-        Me.Tonhoehenverschiebung.Name = "Tonhoehenverschiebung"
-        Me.Tonhoehenverschiebung.Size = New System.Drawing.Size(92, 21)
-        Me.Tonhoehenverschiebung.TabIndex = 165
-        Me.Tonhoehenverschiebung.Text = "Normahl"
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(13, 19)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(38, 13)
+        Me.Label17.TabIndex = 173
+        Me.Label17.Text = "Tackt:"
         '
-        'ComboBox1
+        'Label16
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"Harfe", "Klavier"})
-        Me.ComboBox1.Location = New System.Drawing.Point(9, 130)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(199, 21)
-        Me.ComboBox1.Sorted = True
-        Me.ComboBox1.TabIndex = 164
-        Me.ComboBox1.Text = "Harfe"
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(15, 42)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(84, 13)
+        Me.Label16.TabIndex = 172
+        Me.Label16.Text = "Aufnahme BPM:"
+        '
+        'NumericUpDown2
+        '
+        Me.NumericUpDown2.Location = New System.Drawing.Point(137, 35)
+        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.Size = New System.Drawing.Size(48, 20)
+        Me.NumericUpDown2.TabIndex = 168
+        '
+        'GroupBox6
+        '
+        Me.GroupBox6.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox6.Controls.Add(Me.Label15)
+        Me.GroupBox6.Controls.Add(Me.Label14)
+        Me.GroupBox6.Controls.Add(Me.hsbModWheel)
+        Me.GroupBox6.Controls.Add(Me.hsbPan)
+        Me.GroupBox6.Controls.Add(Me.Label11)
+        Me.GroupBox6.Controls.Add(Me.GroupBox5)
+        Me.GroupBox6.Controls.Add(Me.hsbVolume)
+        Me.GroupBox6.Location = New System.Drawing.Point(9, 236)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(196, 169)
+        Me.GroupBox6.TabIndex = 167
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Direct Play"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(7, 80)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(41, 13)
+        Me.Label15.TabIndex = 172
+        Me.Label15.Text = "Efeckt:"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(6, 56)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(49, 13)
+        Me.Label14.TabIndex = 173
+        Me.Label14.Text = "Balance:"
+        '
+        'hsbModWheel
+        '
+        Me.hsbModWheel.Location = New System.Drawing.Point(67, 80)
+        Me.hsbModWheel.Maximum = 255
+        Me.hsbModWheel.Name = "hsbModWheel"
+        Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
+        Me.hsbModWheel.TabIndex = 172
+        '
+        'hsbPan
+        '
+        Me.hsbPan.Location = New System.Drawing.Point(67, 52)
+        Me.hsbPan.Name = "hsbPan"
+        Me.hsbPan.Size = New System.Drawing.Size(115, 17)
+        Me.hsbPan.TabIndex = 172
+        Me.hsbPan.Value = 50
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(7, 27)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 13)
+        Me.Label11.TabIndex = 164
+        Me.Label11.Text = "Volume:"
         '
         'GroupBox5
         '
         Me.GroupBox5.Controls.Add(Me.RadioButton2)
         Me.GroupBox5.Controls.Add(Me.RadioButton1)
-        Me.GroupBox5.Location = New System.Drawing.Point(9, 347)
+        Me.GroupBox5.Location = New System.Drawing.Point(6, 109)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(199, 54)
+        Me.GroupBox5.Size = New System.Drawing.Size(184, 54)
         Me.GroupBox5.TabIndex = 163
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Empfangende Noten abspielen"
@@ -1184,13 +1291,80 @@ Partial Class Form1
         Me.RadioButton1.Text = "Ja"
         Me.RadioButton1.UseVisualStyleBackColor = True
         '
+        'hsbVolume
+        '
+        Me.hsbVolume.Location = New System.Drawing.Point(67, 23)
+        Me.hsbVolume.Maximum = 127
+        Me.hsbVolume.Name = "hsbVolume"
+        Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
+        Me.hsbVolume.TabIndex = 6
+        Me.hsbVolume.Value = 127
+        '
+        'Transpose_GroupBox
+        '
+        Me.Transpose_GroupBox.Controls.Add(Me.Label2)
+        Me.Transpose_GroupBox.Controls.Add(Me.Label1)
+        Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
+        Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 132)
+        Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
+        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 88)
+        Me.Transpose_GroupBox.TabIndex = 166
+        Me.Transpose_GroupBox.TabStop = False
+        Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(7, 62)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(103, 13)
+        Me.Label2.TabIndex = 167
+        Me.Label2.Text = "Notenverschiebung:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 28)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.TabIndex = 166
+        Me.Label1.Text = "Oktavenver.:"
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(127, 55)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(55, 20)
+        Me.NumericUpDown1.TabIndex = 165
+        '
+        'Tonhoehenverschiebung
+        '
+        Me.Tonhoehenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven", ""})
+        Me.Tonhoehenverschiebung.Location = New System.Drawing.Point(90, 25)
+        Me.Tonhoehenverschiebung.Name = "Tonhoehenverschiebung"
+        Me.Tonhoehenverschiebung.Size = New System.Drawing.Size(92, 21)
+        Me.Tonhoehenverschiebung.TabIndex = 165
+        Me.Tonhoehenverschiebung.Text = "Normahl"
+        '
+        'cboInstruments
+        '
+        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboInstruments.FormattingEnabled = True
+        Me.cboInstruments.Location = New System.Drawing.Point(9, 19)
+        Me.cboInstruments.Name = "cboInstruments"
+        Me.cboInstruments.Size = New System.Drawing.Size(208, 21)
+        Me.cboInstruments.TabIndex = 2
+        '
         'Tackt
         '
         Me.Tackt.Interval = 250
         '
         'NoteC
         '
-        Me.NoteC.Location = New System.Drawing.Point(558, 46)
+        Me.NoteC.Location = New System.Drawing.Point(699, 101)
         Me.NoteC.Name = "NoteC"
         Me.NoteC.Size = New System.Drawing.Size(378, 78)
         Me.NoteC.TabIndex = 165
@@ -1223,6 +1397,187 @@ Partial Class Form1
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(666, 45)
         Me.TrackBar1.TabIndex = 168
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.Label3)
+        Me.Panel1.Controls.Add(Me.Label4)
+        Me.Panel1.Controls.Add(Me.Label10)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.Label5)
+        Me.Panel1.Controls.Add(Me.Label8)
+        Me.Panel1.Controls.Add(Me.Label6)
+        Me.Panel1.Controls.Add(Me.Label7)
+        Me.Panel1.Location = New System.Drawing.Point(186, 733)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(480, 152)
+        Me.Panel1.TabIndex = 169
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label3.Location = New System.Drawing.Point(8, 48)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(82, 16)
+        Me.Label3.TabIndex = 3
+        Me.Label3.Text = "Instrument:"
+        '
+        'Label4
+        '
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label4.Location = New System.Drawing.Point(8, 8)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(464, 32)
+        Me.Label4.TabIndex = 5
+        Me.Label4.Text = "I added Drums as the last instrument on the list.  For Drums, some areas of the b" & _
+            "ox will not play and some will, just have to play with it a bit."
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label10.Location = New System.Drawing.Point(320, 120)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(140, 16)
+        Me.Label10.TabIndex = 14
+        Me.Label10.Text = "Whammy bar affect"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label9.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label9.Location = New System.Drawing.Point(320, 96)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(153, 16)
+        Me.Label9.TabIndex = 13
+        Me.Label9.Text = "Left to Right Speaker"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label5.Location = New System.Drawing.Point(8, 72)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(64, 16)
+        Me.Label5.TabIndex = 7
+        Me.Label5.Text = "Volume:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label8.Location = New System.Drawing.Point(320, 48)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(114, 16)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "129 Instruments"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label6.Location = New System.Drawing.Point(8, 96)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(39, 16)
+        Me.Label6.TabIndex = 9
+        Me.Label6.Text = "Pan:"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label7.Location = New System.Drawing.Point(8, 120)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(86, 16)
+        Me.Label7.TabIndex = 10
+        Me.Label7.Text = "ModWheel:"
+        '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.cboDuration)
+        Me.GroupBox3.Controls.Add(Me.Label13)
+        Me.GroupBox3.Controls.Add(Me.Label12)
+        Me.GroupBox3.Controls.Add(Me.btnStopNoteAbove)
+        Me.GroupBox3.Controls.Add(Me.btnPlay1Note)
+        Me.GroupBox3.ForeColor = System.Drawing.Color.DarkRed
+        Me.GroupBox3.Location = New System.Drawing.Point(881, 679)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(271, 142)
+        Me.GroupBox3.TabIndex = 171
+        Me.GroupBox3.TabStop = False
+        '
+        'cboDuration
+        '
+        Me.cboDuration.FormattingEnabled = True
+        Me.cboDuration.Items.AddRange(New Object() {"10", "100", "500", "1000", "2000", "5000"})
+        Me.cboDuration.Location = New System.Drawing.Point(175, 112)
+        Me.cboDuration.Name = "cboDuration"
+        Me.cboDuration.Size = New System.Drawing.Size(69, 21)
+        Me.cboDuration.TabIndex = 22
+        Me.cboDuration.Text = "1000"
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label13.Location = New System.Drawing.Point(18, 112)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(137, 16)
+        Me.Label13.TabIndex = 21
+        Me.Label13.Text = "Note Duration (ms)"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.LightBlue
+        Me.Label12.Location = New System.Drawing.Point(28, 16)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(224, 16)
+        Me.Label12.TabIndex = 20
+        Me.Label12.Text = "Play and Stop a Specific NOTE"
+        '
+        'btnStopNoteAbove
+        '
+        Me.btnStopNoteAbove.Location = New System.Drawing.Point(80, 73)
+        Me.btnStopNoteAbove.Name = "btnStopNoteAbove"
+        Me.btnStopNoteAbove.Size = New System.Drawing.Size(116, 23)
+        Me.btnStopNoteAbove.TabIndex = 18
+        Me.btnStopNoteAbove.Text = "Stop Note above"
+        Me.btnStopNoteAbove.UseVisualStyleBackColor = True
+        '
+        'btnPlay1Note
+        '
+        Me.btnPlay1Note.Location = New System.Drawing.Point(80, 44)
+        Me.btnPlay1Note.Name = "btnPlay1Note"
+        Me.btnPlay1Note.Size = New System.Drawing.Size(116, 23)
+        Me.btnPlay1Note.TabIndex = 17
+        Me.btnPlay1Note.Text = "Play 1 Note"
+        Me.btnPlay1Note.UseVisualStyleBackColor = True
+        '
+        'lblClickMe
+        '
+        Me.lblClickMe.BackColor = System.Drawing.Color.PowderBlue
+        Me.lblClickMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lblClickMe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblClickMe.ForeColor = System.Drawing.Color.SteelBlue
+        Me.lblClickMe.Location = New System.Drawing.Point(713, 791)
+        Me.lblClickMe.Name = "lblClickMe"
+        Me.lblClickMe.Size = New System.Drawing.Size(127, 127)
+        Me.lblClickMe.TabIndex = 170
+        Me.lblClickMe.Text = "Click in this box.  The Lower you click down the box, the higher the note."
+        Me.lblClickMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'MTech010VerticalProgessBar1
         '
@@ -1509,7 +1864,10 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1274, 995)
+        Me.ClientSize = New System.Drawing.Size(1274, 673)
+        Me.Controls.Add(Me.GroupBox3)
+        Me.Controls.Add(Me.lblClickMe)
+        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.NoteC)
@@ -1533,13 +1891,24 @@ Partial Class Form1
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
+        Me.Tempo_GroupBox.ResumeLayout(False)
+        Me.Tempo_GroupBox.PerformLayout()
+        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox6.ResumeLayout(False)
+        Me.GroupBox6.PerformLayout()
+        Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox5.ResumeLayout(False)
-        Me.GroupBox5.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1671,7 +2040,6 @@ Partial Class Form1
     Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
     Friend WithEvents NoteC As System.Windows.Forms.Button
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
@@ -1681,5 +2049,36 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents MIDI_Pausieren As System.Windows.Forms.Button
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents cboInstruments As System.Windows.Forms.ComboBox
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
+    Friend WithEvents cboDuration As System.Windows.Forms.ComboBox
+    Friend WithEvents Label13 As System.Windows.Forms.Label
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents btnStopNoteAbove As System.Windows.Forms.Button
+    Friend WithEvents btnPlay1Note As System.Windows.Forms.Button
+    Friend WithEvents lblClickMe As System.Windows.Forms.Label
+    Friend WithEvents Tempo_GroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents NumericUpDown4 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents NumericUpDown2 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents hsbModWheel As System.Windows.Forms.HScrollBar
+    Friend WithEvents hsbPan As System.Windows.Forms.HScrollBar
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class

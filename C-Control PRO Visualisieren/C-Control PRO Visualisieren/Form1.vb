@@ -259,7 +259,7 @@ Public Class Form1
         Notes.Add(NumberOfNotes, "R") ' Pause (z.B. 2.2P)
     End Sub
 
-    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Song.AddTrack()
         Song.AddTrack()
         Song.AddTrack()
@@ -441,6 +441,81 @@ Public Class Form1
 
 
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Dim m As New clsMIDI
+
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        FillInstrumentCombo()
+    End Sub
+    Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lblClickMe.MouseDown
+        If e.Button = Windows.Forms.MouseButtons.Left Then
+            m.PlayMIDINote(e.Y, 127) 'Play MIDI Sounds
+        Else
+            m.STOPAllMIDINotes() 'Stops All MIDI notes
+        End If
+    End Sub
+
+#Region " Instrument Control "
+    Private Sub FillInstrumentCombo()
+        For i = 0 To 128
+            cboInstruments.Items.Add(Instrument.GMInstrumentNames(i))
+        Next
+        cboInstruments.SelectedIndex = 0
+    End Sub
+    Private Sub cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboInstruments.SelectedIndexChanged
+
+    End Sub
+#End Region
+
+#Region " Volume Control "
+    Private Sub hsbVolume_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbVolume.ValueChanged
+
+    End Sub
+#End Region
+
+#Region " Pan Control "
+    Private Sub hsbPan_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbPan.ValueChanged
+
+    End Sub
+#End Region
+
+#Region " ModWheel Control "
+    Private Sub hsbModWheel_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbModWheel.ValueChanged
+
+    End Sub
+#End Region
+
+#Region " Play and Stop Specific Note "
+    'This is an example of how to Play a Specific Note and then stop it
+    Private Sub btnPlay1Note_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPlay1Note.Click
+
+    End Sub
+    Private Sub btnStopNoteAbove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStopNoteAbove.Click
+        m.STOPMIDINote(70) 'Stop Note 70
+    End Sub
+#End Region
+
+
+
 End Class
 
 
