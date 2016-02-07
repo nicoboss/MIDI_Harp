@@ -108,14 +108,16 @@ Public Class MIDI
             End If
         End Sub
 
-        Public Sub AddTackt(ByVal Tackt_Zaehleer As Byte, ByVal Tackt_Nenner As Byte)
+        Public Sub AddTackt(ByVal Tackt_Zaehler As Byte, ByVal Tackt_Nenner As Byte)
 
-            Dim Meta_Start() As Byte = {&H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H8}
+            Dim Tackt_Data() As Byte = {&H0, &HFF, &H58, &H8, &HC, &H2, &H18, &H8}
+            Tackt_Data(4) = Hex(Tackt_Zaehler)
+            Tackt_Data(3) = Hex(Tackt_Nenner)
 
             'If Not ValidTrack() Then Return
 
-            For i = 0 To Meta_Start.Count - 1
-                TrackData.Add(CByte(Meta_Start(i)))
+            For i = 0 To Tackt_Data.Count - 1
+                TrackData.Add(CByte(Tackt_Data(i)))
             Next
 
         End Sub

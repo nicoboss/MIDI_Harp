@@ -265,7 +265,7 @@ Public Class Form1
         Dim Meta() As Byte = {&H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H8, &H0}
 
         Song.AddTrack()
-        Song.Tracks(0).AddTackt(0, 0)
+        Song.Tracks(0).AddTackt(3, 4)
 
         Song.AddTrack()
 
