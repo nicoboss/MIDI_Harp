@@ -259,7 +259,7 @@ Public Class Form1
         Notes.Add(NumberOfNotes, "R") ' Pause (z.B. 2.2P)
     End Sub
 
-    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Song.AddTrack()
         Song.AddTrack()
         Song.AddTrack()
@@ -456,11 +456,6 @@ Public Class Form1
 
 
 
-
-
-
-
-
     Dim m As New clsMIDI
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -482,37 +477,40 @@ Public Class Form1
         cboInstruments.SelectedIndex = 0
     End Sub
     Private Sub cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboInstruments.SelectedIndexChanged
-
+        m.CurrentInstrument = cboInstruments.Text
     End Sub
 #End Region
 
 #Region " Volume Control "
     Private Sub hsbVolume_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbVolume.ValueChanged
-
+        m.Volume = hsbVolume.Value
     End Sub
 #End Region
 
 #Region " Pan Control "
     Private Sub hsbPan_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbPan.ValueChanged
-
+        m.Pan = hsbPan.Value
     End Sub
 #End Region
 
 #Region " ModWheel Control "
     Private Sub hsbModWheel_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbModWheel.ValueChanged
-
+        m.ModWheel = hsbModWheel.Value
     End Sub
 #End Region
 
 #Region " Play and Stop Specific Note "
     'This is an example of how to Play a Specific Note and then stop it
     Private Sub btnPlay1Note_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPlay1Note.Click
-
+        m.PlayMIDINote(70, 127, CInt(cboDuration.Text))
+        'm.NoteDuration = 1
     End Sub
     Private Sub btnStopNoteAbove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStopNoteAbove.Click
         m.STOPMIDINote(70) 'Stop Note 70
     End Sub
 #End Region
+
+
 
 
 

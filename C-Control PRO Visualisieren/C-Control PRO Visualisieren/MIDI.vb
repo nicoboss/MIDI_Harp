@@ -76,8 +76,12 @@ Public Class MIDI
         End Function
 
         Public Sub Save(ByVal filepath As String)
+            'TrackMetadata = Tackt
+            Dim Tackt() As Byte = {&H0, &H0, &H0, &H4, &H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H0}
+
             If ValidTrack() Then
                 My.Computer.FileSystem.WriteAllBytes(filepath, TrackHeader, True)
+                My.Computer.FileSystem.WriteAllBytes(filepath, Tackt, True)
 
                 Dim TrackSize As UInt32 = TrackData.Count() + TrackMetadata.Count() + TrackOut.Count()
                 Dim byteTrackSize(0 To 3) As Byte

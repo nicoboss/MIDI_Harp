@@ -139,15 +139,6 @@ Partial Class Form1
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cboDuration = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -208,7 +199,6 @@ Partial Class Form1
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox4.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1398,110 +1388,6 @@ Partial Class Form1
         Me.TrackBar1.Size = New System.Drawing.Size(666, 45)
         Me.TrackBar1.TabIndex = 168
         '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.Black
-        Me.Panel1.Controls.Add(Me.Label3)
-        Me.Panel1.Controls.Add(Me.Label4)
-        Me.Panel1.Controls.Add(Me.Label10)
-        Me.Panel1.Controls.Add(Me.Label9)
-        Me.Panel1.Controls.Add(Me.Label5)
-        Me.Panel1.Controls.Add(Me.Label8)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Controls.Add(Me.Label7)
-        Me.Panel1.Location = New System.Drawing.Point(186, 733)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(480, 152)
-        Me.Panel1.TabIndex = 169
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label3.Location = New System.Drawing.Point(8, 48)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(82, 16)
-        Me.Label3.TabIndex = 3
-        Me.Label3.Text = "Instrument:"
-        '
-        'Label4
-        '
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label4.Location = New System.Drawing.Point(8, 8)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(464, 32)
-        Me.Label4.TabIndex = 5
-        Me.Label4.Text = "I added Drums as the last instrument on the list.  For Drums, some areas of the b" & _
-            "ox will not play and some will, just have to play with it a bit."
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label10.Location = New System.Drawing.Point(320, 120)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(140, 16)
-        Me.Label10.TabIndex = 14
-        Me.Label10.Text = "Whammy bar affect"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label9.Location = New System.Drawing.Point(320, 96)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(153, 16)
-        Me.Label9.TabIndex = 13
-        Me.Label9.Text = "Left to Right Speaker"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label5.Location = New System.Drawing.Point(8, 72)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(64, 16)
-        Me.Label5.TabIndex = 7
-        Me.Label5.Text = "Volume:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label8.Location = New System.Drawing.Point(320, 48)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(114, 16)
-        Me.Label8.TabIndex = 12
-        Me.Label8.Text = "129 Instruments"
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label6.Location = New System.Drawing.Point(8, 96)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(39, 16)
-        Me.Label6.TabIndex = 9
-        Me.Label6.Text = "Pan:"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label7.Location = New System.Drawing.Point(8, 120)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(86, 16)
-        Me.Label7.TabIndex = 10
-        Me.Label7.Text = "ModWheel:"
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.cboDuration)
@@ -1510,7 +1396,7 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.btnStopNoteAbove)
         Me.GroupBox3.Controls.Add(Me.btnPlay1Note)
         Me.GroupBox3.ForeColor = System.Drawing.Color.DarkRed
-        Me.GroupBox3.Location = New System.Drawing.Point(881, 679)
+        Me.GroupBox3.Location = New System.Drawing.Point(913, 207)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(271, 142)
         Me.GroupBox3.TabIndex = 171
@@ -1542,7 +1428,7 @@ Partial Class Form1
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.Color.LightBlue
-        Me.Label12.Location = New System.Drawing.Point(28, 16)
+        Me.Label12.Location = New System.Drawing.Point(6, 16)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(224, 16)
         Me.Label12.TabIndex = 20
@@ -1572,7 +1458,7 @@ Partial Class Form1
         Me.lblClickMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblClickMe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClickMe.ForeColor = System.Drawing.Color.SteelBlue
-        Me.lblClickMe.Location = New System.Drawing.Point(713, 791)
+        Me.lblClickMe.Location = New System.Drawing.Point(704, 207)
         Me.lblClickMe.Name = "lblClickMe"
         Me.lblClickMe.Size = New System.Drawing.Size(127, 127)
         Me.lblClickMe.TabIndex = 170
@@ -1864,10 +1750,9 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1274, 673)
+        Me.ClientSize = New System.Drawing.Size(1274, 995)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.lblClickMe)
-        Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.NoteC)
@@ -1905,8 +1790,6 @@ Partial Class Form1
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
@@ -2049,17 +1932,8 @@ Partial Class Form1
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents MIDI_Pausieren As System.Windows.Forms.Button
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents cboInstruments As System.Windows.Forms.ComboBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
-    Friend WithEvents Label9 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
     Friend WithEvents cboDuration As System.Windows.Forms.ComboBox
     Friend WithEvents Label13 As System.Windows.Forms.Label
