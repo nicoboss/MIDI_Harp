@@ -34,6 +34,13 @@ Partial Class Form1
         Me.MIDI_Start = New System.Windows.Forms.Button()
         Me.MIDI_Save = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
@@ -49,6 +56,13 @@ Partial Class Form1
         Me.TextBox41 = New System.Windows.Forms.TextBox()
         Me.TextBox42 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Button11 = New System.Windows.Forms.Button()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.Button14 = New System.Windows.Forms.Button()
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.TextBox10 = New System.Windows.Forms.TextBox()
@@ -64,6 +78,13 @@ Partial Class Form1
         Me.TextBox48 = New System.Windows.Forms.TextBox()
         Me.TextBox49 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button15 = New System.Windows.Forms.Button()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.Button17 = New System.Windows.Forms.Button()
+        Me.Button18 = New System.Windows.Forms.Button()
+        Me.Button19 = New System.Windows.Forms.Button()
+        Me.Button20 = New System.Windows.Forms.Button()
+        Me.Button21 = New System.Windows.Forms.Button()
         Me.TextBox15 = New System.Windows.Forms.TextBox()
         Me.TextBox16 = New System.Windows.Forms.TextBox()
         Me.TextBox17 = New System.Windows.Forms.TextBox()
@@ -79,6 +100,13 @@ Partial Class Form1
         Me.TextBox55 = New System.Windows.Forms.TextBox()
         Me.TextBox56 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button22 = New System.Windows.Forms.Button()
+        Me.Button23 = New System.Windows.Forms.Button()
+        Me.Button24 = New System.Windows.Forms.Button()
+        Me.Button25 = New System.Windows.Forms.Button()
+        Me.Button26 = New System.Windows.Forms.Button()
+        Me.Button27 = New System.Windows.Forms.Button()
+        Me.Button28 = New System.Windows.Forms.Button()
         Me.TextBox22 = New System.Windows.Forms.TextBox()
         Me.TextBox23 = New System.Windows.Forms.TextBox()
         Me.TextBox24 = New System.Windows.Forms.TextBox()
@@ -94,6 +122,13 @@ Partial Class Form1
         Me.TextBox62 = New System.Windows.Forms.TextBox()
         Me.TextBox63 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.Button29 = New System.Windows.Forms.Button()
+        Me.Button30 = New System.Windows.Forms.Button()
+        Me.Button31 = New System.Windows.Forms.Button()
+        Me.Button32 = New System.Windows.Forms.Button()
+        Me.Button33 = New System.Windows.Forms.Button()
+        Me.Button34 = New System.Windows.Forms.Button()
+        Me.Button35 = New System.Windows.Forms.Button()
         Me.TextBox29 = New System.Windows.Forms.TextBox()
         Me.TextBox30 = New System.Windows.Forms.TextBox()
         Me.TextBox31 = New System.Windows.Forms.TextBox()
@@ -146,6 +181,7 @@ Partial Class Form1
         Me.btnStopNoteAbove = New System.Windows.Forms.Button()
         Me.btnPlay1Note = New System.Windows.Forms.Button()
         Me.lblClickMe = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -181,6 +217,10 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar33 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar34 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar35 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.TrackBar3 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar4 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar5 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar6 = New System.Windows.Forms.TrackBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -200,6 +240,10 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -310,6 +354,13 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Controls.Add(Me.MTech010VerticalProgessBar5)
         Me.FlowLayoutPanel1.Controls.Add(Me.MTech010VerticalProgessBar6)
         Me.FlowLayoutPanel1.Controls.Add(Me.MTech010VerticalProgessBar7)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button1)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button2)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button3)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button4)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button5)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button6)
+        Me.FlowLayoutPanel1.Controls.Add(Me.Button7)
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox1)
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox2)
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox3)
@@ -324,14 +375,81 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox40)
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox41)
         Me.FlowLayoutPanel1.Controls.Add(Me.TextBox42)
+        Me.FlowLayoutPanel1.Controls.Add(Me.TrackBar4)
+        Me.FlowLayoutPanel1.Controls.Add(Me.TrackBar3)
+        Me.FlowLayoutPanel1.Controls.Add(Me.TrackBar5)
+        Me.FlowLayoutPanel1.Controls.Add(Me.TrackBar6)
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(6, 24)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(228, 158)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(228, 298)
         Me.FlowLayoutPanel1.TabIndex = 6
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(3, 106)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(26, 23)
+        Me.Button1.TabIndex = 172
+        Me.Button1.Text = "C"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(35, 106)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(26, 23)
+        Me.Button2.TabIndex = 173
+        Me.Button2.Text = "D"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(67, 106)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(26, 23)
+        Me.Button3.TabIndex = 174
+        Me.Button3.Text = "E"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(99, 106)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(26, 23)
+        Me.Button4.TabIndex = 175
+        Me.Button4.Text = "F"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(131, 106)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(26, 23)
+        Me.Button5.TabIndex = 176
+        Me.Button5.Text = "G"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(163, 106)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(26, 23)
+        Me.Button6.TabIndex = 177
+        Me.Button6.Text = "A"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(195, 106)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(26, 23)
+        Me.Button7.TabIndex = 178
+        Me.Button7.Text = "H"
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(3, 106)
+        Me.TextBox1.Location = New System.Drawing.Point(3, 135)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(26, 20)
@@ -341,7 +459,7 @@ Partial Class Form1
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(35, 106)
+        Me.TextBox2.Location = New System.Drawing.Point(35, 135)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(26, 20)
@@ -351,7 +469,7 @@ Partial Class Form1
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(67, 106)
+        Me.TextBox3.Location = New System.Drawing.Point(67, 135)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(26, 20)
@@ -361,7 +479,7 @@ Partial Class Form1
         '
         'TextBox4
         '
-        Me.TextBox4.Location = New System.Drawing.Point(99, 106)
+        Me.TextBox4.Location = New System.Drawing.Point(99, 135)
         Me.TextBox4.Name = "TextBox4"
         Me.TextBox4.ReadOnly = True
         Me.TextBox4.Size = New System.Drawing.Size(26, 20)
@@ -371,7 +489,7 @@ Partial Class Form1
         '
         'TextBox5
         '
-        Me.TextBox5.Location = New System.Drawing.Point(131, 106)
+        Me.TextBox5.Location = New System.Drawing.Point(131, 135)
         Me.TextBox5.Name = "TextBox5"
         Me.TextBox5.ReadOnly = True
         Me.TextBox5.Size = New System.Drawing.Size(26, 20)
@@ -381,7 +499,7 @@ Partial Class Form1
         '
         'TextBox6
         '
-        Me.TextBox6.Location = New System.Drawing.Point(163, 106)
+        Me.TextBox6.Location = New System.Drawing.Point(163, 135)
         Me.TextBox6.Name = "TextBox6"
         Me.TextBox6.ReadOnly = True
         Me.TextBox6.Size = New System.Drawing.Size(26, 20)
@@ -391,7 +509,7 @@ Partial Class Form1
         '
         'TextBox7
         '
-        Me.TextBox7.Location = New System.Drawing.Point(195, 106)
+        Me.TextBox7.Location = New System.Drawing.Point(195, 135)
         Me.TextBox7.Name = "TextBox7"
         Me.TextBox7.ReadOnly = True
         Me.TextBox7.Size = New System.Drawing.Size(26, 20)
@@ -401,7 +519,7 @@ Partial Class Form1
         '
         'TextBox36
         '
-        Me.TextBox36.Location = New System.Drawing.Point(3, 132)
+        Me.TextBox36.Location = New System.Drawing.Point(3, 161)
         Me.TextBox36.Name = "TextBox36"
         Me.TextBox36.Size = New System.Drawing.Size(26, 20)
         Me.TextBox36.TabIndex = 18
@@ -410,7 +528,7 @@ Partial Class Form1
         '
         'TextBox37
         '
-        Me.TextBox37.Location = New System.Drawing.Point(35, 132)
+        Me.TextBox37.Location = New System.Drawing.Point(35, 161)
         Me.TextBox37.Name = "TextBox37"
         Me.TextBox37.Size = New System.Drawing.Size(26, 20)
         Me.TextBox37.TabIndex = 19
@@ -419,7 +537,7 @@ Partial Class Form1
         '
         'TextBox38
         '
-        Me.TextBox38.Location = New System.Drawing.Point(67, 132)
+        Me.TextBox38.Location = New System.Drawing.Point(67, 161)
         Me.TextBox38.Name = "TextBox38"
         Me.TextBox38.Size = New System.Drawing.Size(26, 20)
         Me.TextBox38.TabIndex = 20
@@ -428,7 +546,7 @@ Partial Class Form1
         '
         'TextBox39
         '
-        Me.TextBox39.Location = New System.Drawing.Point(99, 132)
+        Me.TextBox39.Location = New System.Drawing.Point(99, 161)
         Me.TextBox39.Name = "TextBox39"
         Me.TextBox39.Size = New System.Drawing.Size(26, 20)
         Me.TextBox39.TabIndex = 21
@@ -437,7 +555,7 @@ Partial Class Form1
         '
         'TextBox40
         '
-        Me.TextBox40.Location = New System.Drawing.Point(131, 132)
+        Me.TextBox40.Location = New System.Drawing.Point(131, 161)
         Me.TextBox40.Name = "TextBox40"
         Me.TextBox40.Size = New System.Drawing.Size(26, 20)
         Me.TextBox40.TabIndex = 22
@@ -446,7 +564,7 @@ Partial Class Form1
         '
         'TextBox41
         '
-        Me.TextBox41.Location = New System.Drawing.Point(163, 132)
+        Me.TextBox41.Location = New System.Drawing.Point(163, 161)
         Me.TextBox41.Name = "TextBox41"
         Me.TextBox41.Size = New System.Drawing.Size(26, 20)
         Me.TextBox41.TabIndex = 23
@@ -455,7 +573,7 @@ Partial Class Form1
         '
         'TextBox42
         '
-        Me.TextBox42.Location = New System.Drawing.Point(195, 132)
+        Me.TextBox42.Location = New System.Drawing.Point(195, 161)
         Me.TextBox42.Name = "TextBox42"
         Me.TextBox42.Size = New System.Drawing.Size(26, 20)
         Me.TextBox42.TabIndex = 24
@@ -471,6 +589,13 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Controls.Add(Me.MTech010VerticalProgessBar12)
         Me.FlowLayoutPanel2.Controls.Add(Me.MTech010VerticalProgessBar13)
         Me.FlowLayoutPanel2.Controls.Add(Me.MTech010VerticalProgessBar14)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button8)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button9)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button10)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button11)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button12)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button13)
+        Me.FlowLayoutPanel2.Controls.Add(Me.Button14)
         Me.FlowLayoutPanel2.Controls.Add(Me.TextBox8)
         Me.FlowLayoutPanel2.Controls.Add(Me.TextBox9)
         Me.FlowLayoutPanel2.Controls.Add(Me.TextBox10)
@@ -487,12 +612,75 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Controls.Add(Me.TextBox49)
         Me.FlowLayoutPanel2.Location = New System.Drawing.Point(249, 24)
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
-        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(230, 158)
+        Me.FlowLayoutPanel2.Size = New System.Drawing.Size(230, 191)
         Me.FlowLayoutPanel2.TabIndex = 7
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(3, 106)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(26, 23)
+        Me.Button8.TabIndex = 179
+        Me.Button8.Text = "c"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(35, 106)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(26, 23)
+        Me.Button9.TabIndex = 180
+        Me.Button9.Text = "d"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Button10
+        '
+        Me.Button10.Location = New System.Drawing.Point(67, 106)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(26, 23)
+        Me.Button10.TabIndex = 181
+        Me.Button10.Text = "e"
+        Me.Button10.UseVisualStyleBackColor = True
+        '
+        'Button11
+        '
+        Me.Button11.Location = New System.Drawing.Point(99, 106)
+        Me.Button11.Name = "Button11"
+        Me.Button11.Size = New System.Drawing.Size(26, 23)
+        Me.Button11.TabIndex = 182
+        Me.Button11.Text = "f"
+        Me.Button11.UseVisualStyleBackColor = True
+        '
+        'Button12
+        '
+        Me.Button12.Location = New System.Drawing.Point(131, 106)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(26, 23)
+        Me.Button12.TabIndex = 183
+        Me.Button12.Text = "g"
+        Me.Button12.UseVisualStyleBackColor = True
+        '
+        'Button13
+        '
+        Me.Button13.Location = New System.Drawing.Point(163, 106)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(26, 23)
+        Me.Button13.TabIndex = 184
+        Me.Button13.Text = "a"
+        Me.Button13.UseVisualStyleBackColor = True
+        '
+        'Button14
+        '
+        Me.Button14.Location = New System.Drawing.Point(195, 106)
+        Me.Button14.Name = "Button14"
+        Me.Button14.Size = New System.Drawing.Size(26, 23)
+        Me.Button14.TabIndex = 185
+        Me.Button14.Text = "h"
+        Me.Button14.UseVisualStyleBackColor = True
         '
         'TextBox8
         '
-        Me.TextBox8.Location = New System.Drawing.Point(3, 106)
+        Me.TextBox8.Location = New System.Drawing.Point(3, 135)
         Me.TextBox8.Name = "TextBox8"
         Me.TextBox8.ReadOnly = True
         Me.TextBox8.Size = New System.Drawing.Size(26, 20)
@@ -502,7 +690,7 @@ Partial Class Form1
         '
         'TextBox9
         '
-        Me.TextBox9.Location = New System.Drawing.Point(35, 106)
+        Me.TextBox9.Location = New System.Drawing.Point(35, 135)
         Me.TextBox9.Name = "TextBox9"
         Me.TextBox9.ReadOnly = True
         Me.TextBox9.Size = New System.Drawing.Size(26, 20)
@@ -512,7 +700,7 @@ Partial Class Form1
         '
         'TextBox10
         '
-        Me.TextBox10.Location = New System.Drawing.Point(67, 106)
+        Me.TextBox10.Location = New System.Drawing.Point(67, 135)
         Me.TextBox10.Name = "TextBox10"
         Me.TextBox10.ReadOnly = True
         Me.TextBox10.Size = New System.Drawing.Size(26, 20)
@@ -522,7 +710,7 @@ Partial Class Form1
         '
         'TextBox11
         '
-        Me.TextBox11.Location = New System.Drawing.Point(99, 106)
+        Me.TextBox11.Location = New System.Drawing.Point(99, 135)
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.ReadOnly = True
         Me.TextBox11.Size = New System.Drawing.Size(26, 20)
@@ -532,7 +720,7 @@ Partial Class Form1
         '
         'TextBox12
         '
-        Me.TextBox12.Location = New System.Drawing.Point(131, 106)
+        Me.TextBox12.Location = New System.Drawing.Point(131, 135)
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.ReadOnly = True
         Me.TextBox12.Size = New System.Drawing.Size(26, 20)
@@ -542,7 +730,7 @@ Partial Class Form1
         '
         'TextBox13
         '
-        Me.TextBox13.Location = New System.Drawing.Point(163, 106)
+        Me.TextBox13.Location = New System.Drawing.Point(163, 135)
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.ReadOnly = True
         Me.TextBox13.Size = New System.Drawing.Size(26, 20)
@@ -552,7 +740,7 @@ Partial Class Form1
         '
         'TextBox14
         '
-        Me.TextBox14.Location = New System.Drawing.Point(195, 106)
+        Me.TextBox14.Location = New System.Drawing.Point(195, 135)
         Me.TextBox14.Name = "TextBox14"
         Me.TextBox14.ReadOnly = True
         Me.TextBox14.Size = New System.Drawing.Size(26, 20)
@@ -562,7 +750,7 @@ Partial Class Form1
         '
         'TextBox43
         '
-        Me.TextBox43.Location = New System.Drawing.Point(3, 132)
+        Me.TextBox43.Location = New System.Drawing.Point(3, 161)
         Me.TextBox43.Name = "TextBox43"
         Me.TextBox43.Size = New System.Drawing.Size(26, 20)
         Me.TextBox43.TabIndex = 25
@@ -571,7 +759,7 @@ Partial Class Form1
         '
         'TextBox44
         '
-        Me.TextBox44.Location = New System.Drawing.Point(35, 132)
+        Me.TextBox44.Location = New System.Drawing.Point(35, 161)
         Me.TextBox44.Name = "TextBox44"
         Me.TextBox44.Size = New System.Drawing.Size(26, 20)
         Me.TextBox44.TabIndex = 26
@@ -580,7 +768,7 @@ Partial Class Form1
         '
         'TextBox45
         '
-        Me.TextBox45.Location = New System.Drawing.Point(67, 132)
+        Me.TextBox45.Location = New System.Drawing.Point(67, 161)
         Me.TextBox45.Name = "TextBox45"
         Me.TextBox45.Size = New System.Drawing.Size(26, 20)
         Me.TextBox45.TabIndex = 27
@@ -589,7 +777,7 @@ Partial Class Form1
         '
         'TextBox46
         '
-        Me.TextBox46.Location = New System.Drawing.Point(99, 132)
+        Me.TextBox46.Location = New System.Drawing.Point(99, 161)
         Me.TextBox46.Name = "TextBox46"
         Me.TextBox46.Size = New System.Drawing.Size(26, 20)
         Me.TextBox46.TabIndex = 28
@@ -598,7 +786,7 @@ Partial Class Form1
         '
         'TextBox47
         '
-        Me.TextBox47.Location = New System.Drawing.Point(131, 132)
+        Me.TextBox47.Location = New System.Drawing.Point(131, 161)
         Me.TextBox47.Name = "TextBox47"
         Me.TextBox47.Size = New System.Drawing.Size(26, 20)
         Me.TextBox47.TabIndex = 29
@@ -607,7 +795,7 @@ Partial Class Form1
         '
         'TextBox48
         '
-        Me.TextBox48.Location = New System.Drawing.Point(163, 132)
+        Me.TextBox48.Location = New System.Drawing.Point(163, 161)
         Me.TextBox48.Name = "TextBox48"
         Me.TextBox48.Size = New System.Drawing.Size(26, 20)
         Me.TextBox48.TabIndex = 30
@@ -616,7 +804,7 @@ Partial Class Form1
         '
         'TextBox49
         '
-        Me.TextBox49.Location = New System.Drawing.Point(195, 132)
+        Me.TextBox49.Location = New System.Drawing.Point(195, 161)
         Me.TextBox49.Name = "TextBox49"
         Me.TextBox49.Size = New System.Drawing.Size(26, 20)
         Me.TextBox49.TabIndex = 31
@@ -632,6 +820,13 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Controls.Add(Me.MTech010VerticalProgessBar19)
         Me.FlowLayoutPanel3.Controls.Add(Me.MTech010VerticalProgessBar20)
         Me.FlowLayoutPanel3.Controls.Add(Me.MTech010VerticalProgessBar21)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button15)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button16)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button17)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button18)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button19)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button20)
+        Me.FlowLayoutPanel3.Controls.Add(Me.Button21)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox15)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox16)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox17)
@@ -648,12 +843,75 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox56)
         Me.FlowLayoutPanel3.Location = New System.Drawing.Point(496, 24)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
-        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(232, 158)
+        Me.FlowLayoutPanel3.Size = New System.Drawing.Size(232, 191)
         Me.FlowLayoutPanel3.TabIndex = 8
+        '
+        'Button15
+        '
+        Me.Button15.Location = New System.Drawing.Point(3, 106)
+        Me.Button15.Name = "Button15"
+        Me.Button15.Size = New System.Drawing.Size(26, 23)
+        Me.Button15.TabIndex = 179
+        Me.Button15.Text = "c'"
+        Me.Button15.UseVisualStyleBackColor = True
+        '
+        'Button16
+        '
+        Me.Button16.Location = New System.Drawing.Point(35, 106)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(26, 23)
+        Me.Button16.TabIndex = 180
+        Me.Button16.Text = "d'"
+        Me.Button16.UseVisualStyleBackColor = True
+        '
+        'Button17
+        '
+        Me.Button17.Location = New System.Drawing.Point(67, 106)
+        Me.Button17.Name = "Button17"
+        Me.Button17.Size = New System.Drawing.Size(26, 23)
+        Me.Button17.TabIndex = 181
+        Me.Button17.Text = "e'"
+        Me.Button17.UseVisualStyleBackColor = True
+        '
+        'Button18
+        '
+        Me.Button18.Location = New System.Drawing.Point(99, 106)
+        Me.Button18.Name = "Button18"
+        Me.Button18.Size = New System.Drawing.Size(26, 23)
+        Me.Button18.TabIndex = 182
+        Me.Button18.Text = "f'"
+        Me.Button18.UseVisualStyleBackColor = True
+        '
+        'Button19
+        '
+        Me.Button19.Location = New System.Drawing.Point(131, 106)
+        Me.Button19.Name = "Button19"
+        Me.Button19.Size = New System.Drawing.Size(26, 23)
+        Me.Button19.TabIndex = 183
+        Me.Button19.Text = "g'"
+        Me.Button19.UseVisualStyleBackColor = True
+        '
+        'Button20
+        '
+        Me.Button20.Location = New System.Drawing.Point(163, 106)
+        Me.Button20.Name = "Button20"
+        Me.Button20.Size = New System.Drawing.Size(26, 23)
+        Me.Button20.TabIndex = 184
+        Me.Button20.Text = "a'"
+        Me.Button20.UseVisualStyleBackColor = True
+        '
+        'Button21
+        '
+        Me.Button21.Location = New System.Drawing.Point(195, 106)
+        Me.Button21.Name = "Button21"
+        Me.Button21.Size = New System.Drawing.Size(26, 23)
+        Me.Button21.TabIndex = 185
+        Me.Button21.Text = "h'"
+        Me.Button21.UseVisualStyleBackColor = True
         '
         'TextBox15
         '
-        Me.TextBox15.Location = New System.Drawing.Point(3, 106)
+        Me.TextBox15.Location = New System.Drawing.Point(3, 135)
         Me.TextBox15.Name = "TextBox15"
         Me.TextBox15.ReadOnly = True
         Me.TextBox15.Size = New System.Drawing.Size(26, 20)
@@ -663,7 +921,7 @@ Partial Class Form1
         '
         'TextBox16
         '
-        Me.TextBox16.Location = New System.Drawing.Point(35, 106)
+        Me.TextBox16.Location = New System.Drawing.Point(35, 135)
         Me.TextBox16.Name = "TextBox16"
         Me.TextBox16.ReadOnly = True
         Me.TextBox16.Size = New System.Drawing.Size(26, 20)
@@ -673,7 +931,7 @@ Partial Class Form1
         '
         'TextBox17
         '
-        Me.TextBox17.Location = New System.Drawing.Point(67, 106)
+        Me.TextBox17.Location = New System.Drawing.Point(67, 135)
         Me.TextBox17.Name = "TextBox17"
         Me.TextBox17.ReadOnly = True
         Me.TextBox17.Size = New System.Drawing.Size(26, 20)
@@ -683,7 +941,7 @@ Partial Class Form1
         '
         'TextBox18
         '
-        Me.TextBox18.Location = New System.Drawing.Point(99, 106)
+        Me.TextBox18.Location = New System.Drawing.Point(99, 135)
         Me.TextBox18.Name = "TextBox18"
         Me.TextBox18.ReadOnly = True
         Me.TextBox18.Size = New System.Drawing.Size(26, 20)
@@ -693,7 +951,7 @@ Partial Class Form1
         '
         'TextBox19
         '
-        Me.TextBox19.Location = New System.Drawing.Point(131, 106)
+        Me.TextBox19.Location = New System.Drawing.Point(131, 135)
         Me.TextBox19.Name = "TextBox19"
         Me.TextBox19.ReadOnly = True
         Me.TextBox19.Size = New System.Drawing.Size(26, 20)
@@ -703,7 +961,7 @@ Partial Class Form1
         '
         'TextBox20
         '
-        Me.TextBox20.Location = New System.Drawing.Point(163, 106)
+        Me.TextBox20.Location = New System.Drawing.Point(163, 135)
         Me.TextBox20.Name = "TextBox20"
         Me.TextBox20.ReadOnly = True
         Me.TextBox20.Size = New System.Drawing.Size(26, 20)
@@ -713,7 +971,7 @@ Partial Class Form1
         '
         'TextBox21
         '
-        Me.TextBox21.Location = New System.Drawing.Point(195, 106)
+        Me.TextBox21.Location = New System.Drawing.Point(195, 135)
         Me.TextBox21.Name = "TextBox21"
         Me.TextBox21.ReadOnly = True
         Me.TextBox21.Size = New System.Drawing.Size(26, 20)
@@ -723,7 +981,7 @@ Partial Class Form1
         '
         'TextBox50
         '
-        Me.TextBox50.Location = New System.Drawing.Point(3, 132)
+        Me.TextBox50.Location = New System.Drawing.Point(3, 161)
         Me.TextBox50.Name = "TextBox50"
         Me.TextBox50.Size = New System.Drawing.Size(26, 20)
         Me.TextBox50.TabIndex = 25
@@ -732,7 +990,7 @@ Partial Class Form1
         '
         'TextBox51
         '
-        Me.TextBox51.Location = New System.Drawing.Point(35, 132)
+        Me.TextBox51.Location = New System.Drawing.Point(35, 161)
         Me.TextBox51.Name = "TextBox51"
         Me.TextBox51.Size = New System.Drawing.Size(26, 20)
         Me.TextBox51.TabIndex = 26
@@ -741,7 +999,7 @@ Partial Class Form1
         '
         'TextBox52
         '
-        Me.TextBox52.Location = New System.Drawing.Point(67, 132)
+        Me.TextBox52.Location = New System.Drawing.Point(67, 161)
         Me.TextBox52.Name = "TextBox52"
         Me.TextBox52.Size = New System.Drawing.Size(26, 20)
         Me.TextBox52.TabIndex = 27
@@ -750,7 +1008,7 @@ Partial Class Form1
         '
         'TextBox53
         '
-        Me.TextBox53.Location = New System.Drawing.Point(99, 132)
+        Me.TextBox53.Location = New System.Drawing.Point(99, 161)
         Me.TextBox53.Name = "TextBox53"
         Me.TextBox53.Size = New System.Drawing.Size(26, 20)
         Me.TextBox53.TabIndex = 28
@@ -759,7 +1017,7 @@ Partial Class Form1
         '
         'TextBox54
         '
-        Me.TextBox54.Location = New System.Drawing.Point(131, 132)
+        Me.TextBox54.Location = New System.Drawing.Point(131, 161)
         Me.TextBox54.Name = "TextBox54"
         Me.TextBox54.Size = New System.Drawing.Size(26, 20)
         Me.TextBox54.TabIndex = 29
@@ -768,7 +1026,7 @@ Partial Class Form1
         '
         'TextBox55
         '
-        Me.TextBox55.Location = New System.Drawing.Point(163, 132)
+        Me.TextBox55.Location = New System.Drawing.Point(163, 161)
         Me.TextBox55.Name = "TextBox55"
         Me.TextBox55.Size = New System.Drawing.Size(26, 20)
         Me.TextBox55.TabIndex = 30
@@ -777,7 +1035,7 @@ Partial Class Form1
         '
         'TextBox56
         '
-        Me.TextBox56.Location = New System.Drawing.Point(195, 132)
+        Me.TextBox56.Location = New System.Drawing.Point(195, 161)
         Me.TextBox56.Name = "TextBox56"
         Me.TextBox56.Size = New System.Drawing.Size(26, 20)
         Me.TextBox56.TabIndex = 31
@@ -793,6 +1051,13 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Controls.Add(Me.MTech010VerticalProgessBar26)
         Me.FlowLayoutPanel4.Controls.Add(Me.MTech010VerticalProgessBar27)
         Me.FlowLayoutPanel4.Controls.Add(Me.MTech010VerticalProgessBar28)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button22)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button23)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button24)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button25)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button26)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button27)
+        Me.FlowLayoutPanel4.Controls.Add(Me.Button28)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox22)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox23)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox24)
@@ -809,12 +1074,75 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox63)
         Me.FlowLayoutPanel4.Location = New System.Drawing.Point(734, 24)
         Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
-        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(231, 158)
+        Me.FlowLayoutPanel4.Size = New System.Drawing.Size(231, 191)
         Me.FlowLayoutPanel4.TabIndex = 9
+        '
+        'Button22
+        '
+        Me.Button22.Location = New System.Drawing.Point(3, 106)
+        Me.Button22.Name = "Button22"
+        Me.Button22.Size = New System.Drawing.Size(26, 23)
+        Me.Button22.TabIndex = 179
+        Me.Button22.Text = "c''"
+        Me.Button22.UseVisualStyleBackColor = True
+        '
+        'Button23
+        '
+        Me.Button23.Location = New System.Drawing.Point(35, 106)
+        Me.Button23.Name = "Button23"
+        Me.Button23.Size = New System.Drawing.Size(26, 23)
+        Me.Button23.TabIndex = 180
+        Me.Button23.Text = "d''"
+        Me.Button23.UseVisualStyleBackColor = True
+        '
+        'Button24
+        '
+        Me.Button24.Location = New System.Drawing.Point(67, 106)
+        Me.Button24.Name = "Button24"
+        Me.Button24.Size = New System.Drawing.Size(26, 23)
+        Me.Button24.TabIndex = 181
+        Me.Button24.Text = "e''"
+        Me.Button24.UseVisualStyleBackColor = True
+        '
+        'Button25
+        '
+        Me.Button25.Location = New System.Drawing.Point(99, 106)
+        Me.Button25.Name = "Button25"
+        Me.Button25.Size = New System.Drawing.Size(26, 23)
+        Me.Button25.TabIndex = 182
+        Me.Button25.Text = "f''"
+        Me.Button25.UseVisualStyleBackColor = True
+        '
+        'Button26
+        '
+        Me.Button26.Location = New System.Drawing.Point(131, 106)
+        Me.Button26.Name = "Button26"
+        Me.Button26.Size = New System.Drawing.Size(26, 23)
+        Me.Button26.TabIndex = 183
+        Me.Button26.Text = "g''"
+        Me.Button26.UseVisualStyleBackColor = True
+        '
+        'Button27
+        '
+        Me.Button27.Location = New System.Drawing.Point(163, 106)
+        Me.Button27.Name = "Button27"
+        Me.Button27.Size = New System.Drawing.Size(26, 23)
+        Me.Button27.TabIndex = 184
+        Me.Button27.Text = "a''"
+        Me.Button27.UseVisualStyleBackColor = True
+        '
+        'Button28
+        '
+        Me.Button28.Location = New System.Drawing.Point(195, 106)
+        Me.Button28.Name = "Button28"
+        Me.Button28.Size = New System.Drawing.Size(26, 23)
+        Me.Button28.TabIndex = 185
+        Me.Button28.Text = "h''"
+        Me.Button28.UseVisualStyleBackColor = True
         '
         'TextBox22
         '
-        Me.TextBox22.Location = New System.Drawing.Point(3, 106)
+        Me.TextBox22.Location = New System.Drawing.Point(3, 135)
         Me.TextBox22.Name = "TextBox22"
         Me.TextBox22.ReadOnly = True
         Me.TextBox22.Size = New System.Drawing.Size(26, 20)
@@ -824,7 +1152,7 @@ Partial Class Form1
         '
         'TextBox23
         '
-        Me.TextBox23.Location = New System.Drawing.Point(35, 106)
+        Me.TextBox23.Location = New System.Drawing.Point(35, 135)
         Me.TextBox23.Name = "TextBox23"
         Me.TextBox23.ReadOnly = True
         Me.TextBox23.Size = New System.Drawing.Size(26, 20)
@@ -834,7 +1162,7 @@ Partial Class Form1
         '
         'TextBox24
         '
-        Me.TextBox24.Location = New System.Drawing.Point(67, 106)
+        Me.TextBox24.Location = New System.Drawing.Point(67, 135)
         Me.TextBox24.Name = "TextBox24"
         Me.TextBox24.ReadOnly = True
         Me.TextBox24.Size = New System.Drawing.Size(26, 20)
@@ -844,7 +1172,7 @@ Partial Class Form1
         '
         'TextBox25
         '
-        Me.TextBox25.Location = New System.Drawing.Point(99, 106)
+        Me.TextBox25.Location = New System.Drawing.Point(99, 135)
         Me.TextBox25.Name = "TextBox25"
         Me.TextBox25.ReadOnly = True
         Me.TextBox25.Size = New System.Drawing.Size(26, 20)
@@ -854,7 +1182,7 @@ Partial Class Form1
         '
         'TextBox26
         '
-        Me.TextBox26.Location = New System.Drawing.Point(131, 106)
+        Me.TextBox26.Location = New System.Drawing.Point(131, 135)
         Me.TextBox26.Name = "TextBox26"
         Me.TextBox26.ReadOnly = True
         Me.TextBox26.Size = New System.Drawing.Size(26, 20)
@@ -864,7 +1192,7 @@ Partial Class Form1
         '
         'TextBox27
         '
-        Me.TextBox27.Location = New System.Drawing.Point(163, 106)
+        Me.TextBox27.Location = New System.Drawing.Point(163, 135)
         Me.TextBox27.Name = "TextBox27"
         Me.TextBox27.ReadOnly = True
         Me.TextBox27.Size = New System.Drawing.Size(26, 20)
@@ -874,7 +1202,7 @@ Partial Class Form1
         '
         'TextBox28
         '
-        Me.TextBox28.Location = New System.Drawing.Point(195, 106)
+        Me.TextBox28.Location = New System.Drawing.Point(195, 135)
         Me.TextBox28.Name = "TextBox28"
         Me.TextBox28.ReadOnly = True
         Me.TextBox28.Size = New System.Drawing.Size(26, 20)
@@ -884,7 +1212,7 @@ Partial Class Form1
         '
         'TextBox57
         '
-        Me.TextBox57.Location = New System.Drawing.Point(3, 132)
+        Me.TextBox57.Location = New System.Drawing.Point(3, 161)
         Me.TextBox57.Name = "TextBox57"
         Me.TextBox57.Size = New System.Drawing.Size(26, 20)
         Me.TextBox57.TabIndex = 25
@@ -893,7 +1221,7 @@ Partial Class Form1
         '
         'TextBox58
         '
-        Me.TextBox58.Location = New System.Drawing.Point(35, 132)
+        Me.TextBox58.Location = New System.Drawing.Point(35, 161)
         Me.TextBox58.Name = "TextBox58"
         Me.TextBox58.Size = New System.Drawing.Size(26, 20)
         Me.TextBox58.TabIndex = 26
@@ -902,7 +1230,7 @@ Partial Class Form1
         '
         'TextBox59
         '
-        Me.TextBox59.Location = New System.Drawing.Point(67, 132)
+        Me.TextBox59.Location = New System.Drawing.Point(67, 161)
         Me.TextBox59.Name = "TextBox59"
         Me.TextBox59.Size = New System.Drawing.Size(26, 20)
         Me.TextBox59.TabIndex = 27
@@ -911,7 +1239,7 @@ Partial Class Form1
         '
         'TextBox60
         '
-        Me.TextBox60.Location = New System.Drawing.Point(99, 132)
+        Me.TextBox60.Location = New System.Drawing.Point(99, 161)
         Me.TextBox60.Name = "TextBox60"
         Me.TextBox60.Size = New System.Drawing.Size(26, 20)
         Me.TextBox60.TabIndex = 28
@@ -920,7 +1248,7 @@ Partial Class Form1
         '
         'TextBox61
         '
-        Me.TextBox61.Location = New System.Drawing.Point(131, 132)
+        Me.TextBox61.Location = New System.Drawing.Point(131, 161)
         Me.TextBox61.Name = "TextBox61"
         Me.TextBox61.Size = New System.Drawing.Size(26, 20)
         Me.TextBox61.TabIndex = 29
@@ -929,7 +1257,7 @@ Partial Class Form1
         '
         'TextBox62
         '
-        Me.TextBox62.Location = New System.Drawing.Point(163, 132)
+        Me.TextBox62.Location = New System.Drawing.Point(163, 161)
         Me.TextBox62.Name = "TextBox62"
         Me.TextBox62.Size = New System.Drawing.Size(26, 20)
         Me.TextBox62.TabIndex = 30
@@ -938,7 +1266,7 @@ Partial Class Form1
         '
         'TextBox63
         '
-        Me.TextBox63.Location = New System.Drawing.Point(195, 132)
+        Me.TextBox63.Location = New System.Drawing.Point(195, 161)
         Me.TextBox63.Name = "TextBox63"
         Me.TextBox63.Size = New System.Drawing.Size(26, 20)
         Me.TextBox63.TabIndex = 31
@@ -954,6 +1282,13 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Controls.Add(Me.MTech010VerticalProgessBar33)
         Me.FlowLayoutPanel5.Controls.Add(Me.MTech010VerticalProgessBar34)
         Me.FlowLayoutPanel5.Controls.Add(Me.MTech010VerticalProgessBar35)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button29)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button30)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button31)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button32)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button33)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button34)
+        Me.FlowLayoutPanel5.Controls.Add(Me.Button35)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox29)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox30)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox31)
@@ -970,12 +1305,75 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox70)
         Me.FlowLayoutPanel5.Location = New System.Drawing.Point(982, 24)
         Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
-        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(237, 158)
+        Me.FlowLayoutPanel5.Size = New System.Drawing.Size(237, 191)
         Me.FlowLayoutPanel5.TabIndex = 10
+        '
+        'Button29
+        '
+        Me.Button29.Location = New System.Drawing.Point(3, 106)
+        Me.Button29.Name = "Button29"
+        Me.Button29.Size = New System.Drawing.Size(26, 23)
+        Me.Button29.TabIndex = 179
+        Me.Button29.Text = "c'''"
+        Me.Button29.UseVisualStyleBackColor = True
+        '
+        'Button30
+        '
+        Me.Button30.Location = New System.Drawing.Point(35, 106)
+        Me.Button30.Name = "Button30"
+        Me.Button30.Size = New System.Drawing.Size(26, 23)
+        Me.Button30.TabIndex = 180
+        Me.Button30.Text = "d'''"
+        Me.Button30.UseVisualStyleBackColor = True
+        '
+        'Button31
+        '
+        Me.Button31.Location = New System.Drawing.Point(67, 106)
+        Me.Button31.Name = "Button31"
+        Me.Button31.Size = New System.Drawing.Size(26, 23)
+        Me.Button31.TabIndex = 181
+        Me.Button31.Text = "e'''"
+        Me.Button31.UseVisualStyleBackColor = True
+        '
+        'Button32
+        '
+        Me.Button32.Location = New System.Drawing.Point(99, 106)
+        Me.Button32.Name = "Button32"
+        Me.Button32.Size = New System.Drawing.Size(26, 23)
+        Me.Button32.TabIndex = 182
+        Me.Button32.Text = "f'''"
+        Me.Button32.UseVisualStyleBackColor = True
+        '
+        'Button33
+        '
+        Me.Button33.Location = New System.Drawing.Point(131, 106)
+        Me.Button33.Name = "Button33"
+        Me.Button33.Size = New System.Drawing.Size(26, 23)
+        Me.Button33.TabIndex = 183
+        Me.Button33.Text = "g'''"
+        Me.Button33.UseVisualStyleBackColor = True
+        '
+        'Button34
+        '
+        Me.Button34.Location = New System.Drawing.Point(163, 106)
+        Me.Button34.Name = "Button34"
+        Me.Button34.Size = New System.Drawing.Size(26, 23)
+        Me.Button34.TabIndex = 184
+        Me.Button34.Text = "a'''"
+        Me.Button34.UseVisualStyleBackColor = True
+        '
+        'Button35
+        '
+        Me.Button35.Location = New System.Drawing.Point(195, 106)
+        Me.Button35.Name = "Button35"
+        Me.Button35.Size = New System.Drawing.Size(26, 23)
+        Me.Button35.TabIndex = 185
+        Me.Button35.Text = "h'''"
+        Me.Button35.UseVisualStyleBackColor = True
         '
         'TextBox29
         '
-        Me.TextBox29.Location = New System.Drawing.Point(3, 106)
+        Me.TextBox29.Location = New System.Drawing.Point(3, 135)
         Me.TextBox29.Name = "TextBox29"
         Me.TextBox29.ReadOnly = True
         Me.TextBox29.Size = New System.Drawing.Size(26, 20)
@@ -985,7 +1383,7 @@ Partial Class Form1
         '
         'TextBox30
         '
-        Me.TextBox30.Location = New System.Drawing.Point(35, 106)
+        Me.TextBox30.Location = New System.Drawing.Point(35, 135)
         Me.TextBox30.Name = "TextBox30"
         Me.TextBox30.ReadOnly = True
         Me.TextBox30.Size = New System.Drawing.Size(26, 20)
@@ -995,7 +1393,7 @@ Partial Class Form1
         '
         'TextBox31
         '
-        Me.TextBox31.Location = New System.Drawing.Point(67, 106)
+        Me.TextBox31.Location = New System.Drawing.Point(67, 135)
         Me.TextBox31.Name = "TextBox31"
         Me.TextBox31.ReadOnly = True
         Me.TextBox31.Size = New System.Drawing.Size(26, 20)
@@ -1005,7 +1403,7 @@ Partial Class Form1
         '
         'TextBox32
         '
-        Me.TextBox32.Location = New System.Drawing.Point(99, 106)
+        Me.TextBox32.Location = New System.Drawing.Point(99, 135)
         Me.TextBox32.Name = "TextBox32"
         Me.TextBox32.ReadOnly = True
         Me.TextBox32.Size = New System.Drawing.Size(26, 20)
@@ -1015,7 +1413,7 @@ Partial Class Form1
         '
         'TextBox33
         '
-        Me.TextBox33.Location = New System.Drawing.Point(131, 106)
+        Me.TextBox33.Location = New System.Drawing.Point(131, 135)
         Me.TextBox33.Name = "TextBox33"
         Me.TextBox33.ReadOnly = True
         Me.TextBox33.Size = New System.Drawing.Size(26, 20)
@@ -1025,7 +1423,7 @@ Partial Class Form1
         '
         'TextBox34
         '
-        Me.TextBox34.Location = New System.Drawing.Point(163, 106)
+        Me.TextBox34.Location = New System.Drawing.Point(163, 135)
         Me.TextBox34.Name = "TextBox34"
         Me.TextBox34.ReadOnly = True
         Me.TextBox34.Size = New System.Drawing.Size(26, 20)
@@ -1035,7 +1433,7 @@ Partial Class Form1
         '
         'TextBox35
         '
-        Me.TextBox35.Location = New System.Drawing.Point(195, 106)
+        Me.TextBox35.Location = New System.Drawing.Point(195, 135)
         Me.TextBox35.Name = "TextBox35"
         Me.TextBox35.ReadOnly = True
         Me.TextBox35.Size = New System.Drawing.Size(26, 20)
@@ -1045,7 +1443,7 @@ Partial Class Form1
         '
         'TextBox64
         '
-        Me.TextBox64.Location = New System.Drawing.Point(3, 132)
+        Me.TextBox64.Location = New System.Drawing.Point(3, 161)
         Me.TextBox64.Name = "TextBox64"
         Me.TextBox64.Size = New System.Drawing.Size(26, 20)
         Me.TextBox64.TabIndex = 25
@@ -1054,7 +1452,7 @@ Partial Class Form1
         '
         'TextBox65
         '
-        Me.TextBox65.Location = New System.Drawing.Point(35, 132)
+        Me.TextBox65.Location = New System.Drawing.Point(35, 161)
         Me.TextBox65.Name = "TextBox65"
         Me.TextBox65.Size = New System.Drawing.Size(26, 20)
         Me.TextBox65.TabIndex = 26
@@ -1063,7 +1461,7 @@ Partial Class Form1
         '
         'TextBox66
         '
-        Me.TextBox66.Location = New System.Drawing.Point(67, 132)
+        Me.TextBox66.Location = New System.Drawing.Point(67, 161)
         Me.TextBox66.Name = "TextBox66"
         Me.TextBox66.Size = New System.Drawing.Size(26, 20)
         Me.TextBox66.TabIndex = 27
@@ -1072,7 +1470,7 @@ Partial Class Form1
         '
         'TextBox67
         '
-        Me.TextBox67.Location = New System.Drawing.Point(99, 132)
+        Me.TextBox67.Location = New System.Drawing.Point(99, 161)
         Me.TextBox67.Name = "TextBox67"
         Me.TextBox67.Size = New System.Drawing.Size(26, 20)
         Me.TextBox67.TabIndex = 28
@@ -1081,7 +1479,7 @@ Partial Class Form1
         '
         'TextBox68
         '
-        Me.TextBox68.Location = New System.Drawing.Point(131, 132)
+        Me.TextBox68.Location = New System.Drawing.Point(131, 161)
         Me.TextBox68.Name = "TextBox68"
         Me.TextBox68.Size = New System.Drawing.Size(26, 20)
         Me.TextBox68.TabIndex = 29
@@ -1090,7 +1488,7 @@ Partial Class Form1
         '
         'TextBox69
         '
-        Me.TextBox69.Location = New System.Drawing.Point(163, 132)
+        Me.TextBox69.Location = New System.Drawing.Point(163, 161)
         Me.TextBox69.Name = "TextBox69"
         Me.TextBox69.Size = New System.Drawing.Size(26, 20)
         Me.TextBox69.TabIndex = 30
@@ -1099,7 +1497,7 @@ Partial Class Form1
         '
         'TextBox70
         '
-        Me.TextBox70.Location = New System.Drawing.Point(195, 132)
+        Me.TextBox70.Location = New System.Drawing.Point(195, 161)
         Me.TextBox70.Name = "TextBox70"
         Me.TextBox70.Size = New System.Drawing.Size(26, 20)
         Me.TextBox70.TabIndex = 31
@@ -1375,7 +1773,7 @@ Partial Class Form1
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.GroupBox4.Location = New System.Drawing.Point(13, 452)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1229, 198)
+        Me.GroupBox4.Size = New System.Drawing.Size(1229, 328)
         Me.GroupBox4.TabIndex = 167
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "MIDI Visualisierung"
@@ -1746,6 +2144,50 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar35.Size = New System.Drawing.Size(26, 97)
         Me.MTech010VerticalProgessBar35.TabIndex = 9
         '
+        'TrackBar3
+        '
+        Me.TrackBar3.Location = New System.Drawing.Point(54, 187)
+        Me.TrackBar3.Maximum = 1
+        Me.TrackBar3.Minimum = -1
+        Me.TrackBar3.Name = "TrackBar3"
+        Me.TrackBar3.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar3.Size = New System.Drawing.Size(45, 69)
+        Me.TrackBar3.TabIndex = 179
+        Me.TrackBar3.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar4
+        '
+        Me.TrackBar4.Location = New System.Drawing.Point(3, 187)
+        Me.TrackBar4.Maximum = 1
+        Me.TrackBar4.Minimum = -1
+        Me.TrackBar4.Name = "TrackBar4"
+        Me.TrackBar4.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar4.Size = New System.Drawing.Size(45, 84)
+        Me.TrackBar4.TabIndex = 180
+        Me.TrackBar4.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar5
+        '
+        Me.TrackBar5.Location = New System.Drawing.Point(105, 187)
+        Me.TrackBar5.Maximum = 1
+        Me.TrackBar5.Minimum = -1
+        Me.TrackBar5.Name = "TrackBar5"
+        Me.TrackBar5.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar5.Size = New System.Drawing.Size(45, 48)
+        Me.TrackBar5.TabIndex = 181
+        Me.TrackBar5.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar6
+        '
+        Me.TrackBar6.Location = New System.Drawing.Point(156, 187)
+        Me.TrackBar6.Maximum = 1
+        Me.TrackBar6.Minimum = -1
+        Me.TrackBar6.Name = "TrackBar6"
+        Me.TrackBar6.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar6.Size = New System.Drawing.Size(45, 48)
+        Me.TrackBar6.TabIndex = 182
+        Me.TrackBar6.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1792,6 +2234,10 @@ Partial Class Form1
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1954,5 +2400,45 @@ Partial Class Form1
     Friend WithEvents hsbModWheel As System.Windows.Forms.HScrollBar
     Friend WithEvents hsbPan As System.Windows.Forms.HScrollBar
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Button5 As System.Windows.Forms.Button
+    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Button8 As System.Windows.Forms.Button
+    Friend WithEvents Button9 As System.Windows.Forms.Button
+    Friend WithEvents Button10 As System.Windows.Forms.Button
+    Friend WithEvents Button11 As System.Windows.Forms.Button
+    Friend WithEvents Button12 As System.Windows.Forms.Button
+    Friend WithEvents Button13 As System.Windows.Forms.Button
+    Friend WithEvents Button14 As System.Windows.Forms.Button
+    Friend WithEvents Button15 As System.Windows.Forms.Button
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Button17 As System.Windows.Forms.Button
+    Friend WithEvents Button18 As System.Windows.Forms.Button
+    Friend WithEvents Button19 As System.Windows.Forms.Button
+    Friend WithEvents Button20 As System.Windows.Forms.Button
+    Friend WithEvents Button21 As System.Windows.Forms.Button
+    Friend WithEvents Button22 As System.Windows.Forms.Button
+    Friend WithEvents Button23 As System.Windows.Forms.Button
+    Friend WithEvents Button24 As System.Windows.Forms.Button
+    Friend WithEvents Button25 As System.Windows.Forms.Button
+    Friend WithEvents Button26 As System.Windows.Forms.Button
+    Friend WithEvents Button27 As System.Windows.Forms.Button
+    Friend WithEvents Button28 As System.Windows.Forms.Button
+    Friend WithEvents Button29 As System.Windows.Forms.Button
+    Friend WithEvents Button30 As System.Windows.Forms.Button
+    Friend WithEvents Button31 As System.Windows.Forms.Button
+    Friend WithEvents Button32 As System.Windows.Forms.Button
+    Friend WithEvents Button33 As System.Windows.Forms.Button
+    Friend WithEvents Button34 As System.Windows.Forms.Button
+    Friend WithEvents Button35 As System.Windows.Forms.Button
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents TrackBar3 As System.Windows.Forms.TrackBar
+    Friend WithEvents TrackBar4 As System.Windows.Forms.TrackBar
+    Friend WithEvents TrackBar5 As System.Windows.Forms.TrackBar
+    Friend WithEvents TrackBar6 As System.Windows.Forms.TrackBar
 
 End Class

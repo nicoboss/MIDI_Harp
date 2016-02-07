@@ -30,6 +30,9 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
+        'ToolTip1.SetToolTip(Button2, "Das ist ein Button")
+        'ToolTip1.SetToolTip(Button3, "Das ist ein Button")
 
         'Comports suchen
         For Each Me.port In ports
@@ -261,13 +264,11 @@ Public Class Form1
 
     Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-
-        Dim Meta() As Byte = {&H0, &HFF, &H58, &H4, &H3, &H2, &H18, &H8, &H0}
-
         Song.AddTrack()
         Song.Tracks(0).AddTackt(3, 4)
 
         Song.AddTrack()
+        Song.Tracks(1).Add_Instrument(10)
 
         InitializeNotes()
     End Sub
@@ -330,7 +331,7 @@ Public Class Form1
             MessageBox.Show("Error")
         End If
 
-        Song.Tracks(1).TrackData.Clear()
+        'Song.Tracks(1).TrackData.Clear()
 
         Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
         Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)

@@ -122,6 +122,20 @@ Public Class MIDI
 
         End Sub
 
+        Public Sub Add_Instrument(ByVal Instrument As Byte)
+
+            Dim Tackt_Data() As Byte = {&H0, &HC1, &H10, &H0}
+            'Tackt_Data(4) = Hex(Tackt_Zaehler)
+            'Tackt_Data(3) = Hex(Tackt_Nenner)
+
+            'If Not ValidTrack() Then Return
+
+            For i = 0 To Tackt_Data.Count - 1
+                TrackData.Add(CByte(Tackt_Data(i)))
+            Next
+
+        End Sub
+
         Private Function TranslateTickTime(ByVal ticks As UInt32) As Byte()
             Dim value As UInt32 = ticks
             Dim buffer As UInt32
