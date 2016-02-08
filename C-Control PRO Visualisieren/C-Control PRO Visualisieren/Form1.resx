@@ -123,6 +123,9 @@
   <metadata name="SaveMIDIDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>213, 17</value>
   </metadata>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>521, 17</value>
+  </metadata>
   <metadata name="Tackt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>352, 17</value>
   </metadata>
@@ -132,7 +135,11 @@
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>432, 17</value>
   </metadata>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>521, 17</value>
-  </metadata>
+  <data name="GroupBox17.ToolTip" xml:space="preserve">
+    <value>Tooltip sichd Hilfefenster wie diese, die ihnen gewisse Funktionen
+durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
+
+Tool Tips werden normahlerweize nur duch den Titel nicht aber durch
+das Eingabefeld aufgeruffen um erfahrene Benutzer nicht zu verärgern.</value>
+  </data>
 </root>

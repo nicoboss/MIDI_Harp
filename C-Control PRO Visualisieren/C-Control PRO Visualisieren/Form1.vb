@@ -244,6 +244,10 @@ Public Class Form1
     Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Song.AddTrack()
+        Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
+        Song.Tracks(0).Text(1, META_Autor_Input.Text)
+        Song.Tracks(0).Text(2, META_Copyright_Input.Text)
+        Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
         Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
 
         Song.AddTrack()
