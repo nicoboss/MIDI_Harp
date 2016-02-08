@@ -262,17 +262,22 @@ Public Class Form1
         Dim Note_gespielt As Boolean = False
 
         If NoteC_Klick = True Then
-            If Notenlaege(50) = 0 Then Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+            If Notenlaege(50) = 0 Then
+                m.PlayMIDINote(70, 100, 0)
+                Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+            End If
+
             Notenlaege(50) += 0.25
             Note_gespielt = True
             'Notenlaege(0) = 0
 
         Else
 
-        If Notenlaege(50) > 0 Then
+            If Notenlaege(50) > 0 Then
+                m.STOPMIDINote(70)
                 Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
-            Notenlaege(50) = 0
-        End If
+                Notenlaege(50) = 0
+            End If
         End If
 
         If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) 'Notenlaege(0) += 0.125
@@ -295,8 +300,9 @@ Public Class Form1
         Tackt_Achtel = Tackt_Achtel + 1
 
         If Tackt_Achtel = 8 Then
-            m.CurrentInstrument = "Woodblock"
-            m.PlayMIDINote(70, 100, 0.1)
+            'm.CurrentInstrument = "Woodblock"
+            'm.PlayMIDINote(70, 90, 0.1)
+            'm.CurrentInstrument = cboInstruments.Text
             TacktNr = TacktNr + 1
             Tackt_Achtel = 0
             Tackt_Viertel = 0
@@ -314,8 +320,9 @@ Public Class Form1
 
 
         If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
-            m.CurrentInstrument = "Woodblock"
-            m.PlayMIDINote(70, 50, 0.1)
+            'm.CurrentInstrument = "Woodblock"
+            'm.PlayMIDINote(70, 50, 0.1)
+            'm.CurrentInstrument = cboInstruments.Text
         End If
 
 
