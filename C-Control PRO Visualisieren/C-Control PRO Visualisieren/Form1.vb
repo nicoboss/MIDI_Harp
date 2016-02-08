@@ -37,6 +37,8 @@ Public Class Form1
         'ToolTip1.SetToolTip(Button2, "Das ist ein Button")
         'ToolTip1.SetToolTip(Button3, "Das ist ein Button")
 
+        Tackt.Interval = (60 / BPM.Value / 4) * 1000
+
         'Comports suchen
         For Each Me.port In ports
             ComboBox_Comport.Items.Add(port)
@@ -305,7 +307,7 @@ Public Class Form1
         'MessageBox.Show(Tackt_Achtel)
 
 
-        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Tackt_Viertel)
+        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
 
     End Sub
 
@@ -371,7 +373,9 @@ Public Class Form1
 
 
 
-
+    Private Sub BPM_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BPM.ValueChanged
+        Tackt.Interval = (60 / BPM.Value / 4) * 1000
+    End Sub
 
 
 
@@ -531,10 +535,6 @@ Public Class Form1
         m.STOPMIDINote(70) 'Stop Note 70
     End Sub
 #End Region
-
-
-
-
 
 End Class
 

@@ -155,7 +155,7 @@ Partial Class Form1
         Me.Tackt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.BPM = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -245,7 +245,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.SuspendLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.Transpose_GroupBox.SuspendLayout()
@@ -1582,7 +1582,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Zaehler_Input)
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.Label16)
-        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown2)
+        Me.Tempo_GroupBox.Controls.Add(Me.BPM)
         Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 55)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
@@ -1602,8 +1602,8 @@ Partial Class Form1
         'Tackt_Naenner_Input
         '
         Me.Tackt_Naenner_Input.Location = New System.Drawing.Point(137, 12)
-        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.Tackt_Naenner_Input.Name = "Tackt_Naenner_Input"
         Me.Tackt_Naenner_Input.Size = New System.Drawing.Size(48, 20)
         Me.Tackt_Naenner_Input.TabIndex = 174
@@ -1612,8 +1612,8 @@ Partial Class Form1
         'Tackt_Zaehler_Input
         '
         Me.Tackt_Zaehler_Input.Location = New System.Drawing.Point(61, 12)
-        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.Tackt_Zaehler_Input.Name = "Tackt_Zaehler_Input"
         Me.Tackt_Zaehler_Input.Size = New System.Drawing.Size(55, 20)
         Me.Tackt_Zaehler_Input.TabIndex = 172
@@ -1637,14 +1637,14 @@ Partial Class Form1
         Me.Label16.TabIndex = 172
         Me.Label16.Text = "Aufnahme BPM:"
         '
-        'NumericUpDown2
+        'BPM
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(137, 35)
-        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(48, 20)
-        Me.NumericUpDown2.TabIndex = 168
+        Me.BPM.Location = New System.Drawing.Point(137, 35)
+        Me.BPM.Maximum = New Decimal(New Integer() {150, 0, 0, 0})
+        Me.BPM.Name = "BPM"
+        Me.BPM.Size = New System.Drawing.Size(48, 20)
+        Me.BPM.TabIndex = 168
+        Me.BPM.Value = New Decimal(New Integer() {60, 0, 0, 0})
         '
         'GroupBox6
         '
@@ -2326,7 +2326,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.PerformLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
@@ -2502,7 +2502,7 @@ Partial Class Form1
     Friend WithEvents Tackt_Zaehler_Input As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
-    Friend WithEvents NumericUpDown2 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents BPM As System.Windows.Forms.NumericUpDown
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
