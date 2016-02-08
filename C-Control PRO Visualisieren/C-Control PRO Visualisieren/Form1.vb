@@ -31,6 +31,10 @@ Public Class Form1
 
     Dim NoteC_Klick
 
+    Dim Metronom As Byte
+    Dim Metronom_alt As Byte
+
+
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
@@ -291,6 +295,8 @@ Public Class Form1
         Tackt_Achtel = Tackt_Achtel + 1
 
         If Tackt_Achtel = 8 Then
+            m.CurrentInstrument = "Woodblock"
+            m.PlayMIDINote(70, 100, 0.1)
             TacktNr = TacktNr + 1
             Tackt_Achtel = 0
             Tackt_Viertel = 0
@@ -307,9 +313,21 @@ Public Class Form1
         'MessageBox.Show(Tackt_Achtel)
 
 
+        If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
+            m.CurrentInstrument = "Woodblock"
+            m.PlayMIDINote(70, 50, 0.1)
+        End If
+
+
+
+        Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8)
+
+
         Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
 
     End Sub
+
+
 
 
     Private Sub Start_Sound() Handles MIDI_Start.Click
@@ -537,7 +555,9 @@ Public Class Form1
 #Region " Play and Stop Specific Note "
     'This is an example of how to Play a Specific Note and then stop it
     Private Sub btnPlay1Note_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPlay1Note.Click
+        m.CurrentInstrument = "Woodblock"
         m.PlayMIDINote(70, 127, CInt(cboDuration.Text))
+        'm.CurrentInstrument = 1
         'm.NoteDuration = 1
     End Sub
     Private Sub btnStopNoteAbove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStopNoteAbove.Click
