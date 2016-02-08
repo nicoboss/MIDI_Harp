@@ -1808,7 +1808,7 @@ Partial Class Form1
         '
         'Tackt
         '
-        Me.Tackt.Interval = 250
+        Me.Tackt.Interval = 125
         '
         'NoteC
         '

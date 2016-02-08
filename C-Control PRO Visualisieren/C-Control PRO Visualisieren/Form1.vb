@@ -256,10 +256,10 @@ Public Class Form1
         Dim Note_gespielt As Boolean = False
 
         If NoteC_Klick = True Then
-            If Notenlaege(50) = 0 Then Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(0), MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
-            Notenlaege(50) += 0.125
+            If Notenlaege(50) = 0 Then Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+            Notenlaege(50) += 0.25
             Note_gespielt = True
-            Notenlaege(0) = 0
+            'Notenlaege(0) = 0
 
         Else
 
@@ -269,7 +269,7 @@ Public Class Form1
         End If
         End If
 
-        If Note_gespielt = False Then Notenlaege(0) += 0.125
+        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) 'Notenlaege(0) += 0.125
 
         'If Notenlaege(50) = 0 Then
         'If NoteC_Klick = True Then
