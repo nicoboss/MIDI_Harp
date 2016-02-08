@@ -300,9 +300,15 @@ Public Class Form1
         Tackt_Achtel = Tackt_Achtel + 1
 
         If Tackt_Achtel = 8 Then
-            'm.CurrentInstrument = "Woodblock"
-            'm.PlayMIDINote(70, 90, 0.1)
-            'm.CurrentInstrument = cboInstruments.Text
+            If Metronom_ON.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 50, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            ElseIf Metronom_Betont.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 100, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            End If
             TacktNr = TacktNr + 1
             Tackt_Achtel = 0
             Tackt_Viertel = 0
@@ -320,9 +326,11 @@ Public Class Form1
 
 
         If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
-            'm.CurrentInstrument = "Woodblock"
-            'm.PlayMIDINote(70, 50, 0.1)
-            'm.CurrentInstrument = cboInstruments.Text
+            If Metronom_ON.Checked Or Metronom_Betont.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 50, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            End If
         End If
 
 
@@ -572,7 +580,26 @@ Public Class Form1
     End Sub
 #End Region
 
+    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
+          System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        If Tackt.Enabled Then
+            Dim result As DialogResult = MessageBox.Show("Wollen Sie das Programm wirklich beenden?" _
+            & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                e.Cancel = False
+            Else
+                e.Cancel = True
+            End If
+        End If
+    End Sub
+
+
 End Class
+
+
+
 
 
 

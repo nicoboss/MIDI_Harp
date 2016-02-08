@@ -145,6 +145,9 @@ Partial Class Form1
         Me.TextBox70 = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
         Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
@@ -152,6 +155,12 @@ Partial Class Form1
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.BPM = New System.Windows.Forms.NumericUpDown()
+        Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
+        Me.Tonhoehenverschiebung = New System.Windows.Forms.ComboBox()
+        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
@@ -162,17 +171,51 @@ Partial Class Form1
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.hsbVolume = New System.Windows.Forms.HScrollBar()
-        Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.Tonhoehenverschiebung = New System.Windows.Forms.ComboBox()
-        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.NoteC = New System.Windows.Forms.Button()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox103 = New System.Windows.Forms.TextBox()
+        Me.TextBox104 = New System.Windows.Forms.TextBox()
+        Me.TextBox105 = New System.Windows.Forms.TextBox()
+        Me.TextBox106 = New System.Windows.Forms.TextBox()
+        Me.TextBox107 = New System.Windows.Forms.TextBox()
+        Me.TextBox108 = New System.Windows.Forms.TextBox()
+        Me.TextBox109 = New System.Windows.Forms.TextBox()
+        Me.FlowLayoutPanel10 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox96 = New System.Windows.Forms.TextBox()
+        Me.TextBox97 = New System.Windows.Forms.TextBox()
+        Me.TextBox98 = New System.Windows.Forms.TextBox()
+        Me.TextBox99 = New System.Windows.Forms.TextBox()
+        Me.TextBox100 = New System.Windows.Forms.TextBox()
+        Me.TextBox101 = New System.Windows.Forms.TextBox()
+        Me.TextBox102 = New System.Windows.Forms.TextBox()
+        Me.FlowLayoutPanel9 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox89 = New System.Windows.Forms.TextBox()
+        Me.TextBox90 = New System.Windows.Forms.TextBox()
+        Me.TextBox91 = New System.Windows.Forms.TextBox()
+        Me.TextBox92 = New System.Windows.Forms.TextBox()
+        Me.TextBox93 = New System.Windows.Forms.TextBox()
+        Me.TextBox94 = New System.Windows.Forms.TextBox()
+        Me.TextBox95 = New System.Windows.Forms.TextBox()
+        Me.FlowLayoutPanel8 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox82 = New System.Windows.Forms.TextBox()
+        Me.TextBox83 = New System.Windows.Forms.TextBox()
+        Me.TextBox84 = New System.Windows.Forms.TextBox()
+        Me.TextBox85 = New System.Windows.Forms.TextBox()
+        Me.TextBox86 = New System.Windows.Forms.TextBox()
+        Me.TextBox87 = New System.Windows.Forms.TextBox()
+        Me.TextBox88 = New System.Windows.Forms.TextBox()
+        Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.TextBox75 = New System.Windows.Forms.TextBox()
+        Me.TextBox76 = New System.Windows.Forms.TextBox()
+        Me.TextBox77 = New System.Windows.Forms.TextBox()
+        Me.TextBox78 = New System.Windows.Forms.TextBox()
+        Me.TextBox79 = New System.Windows.Forms.TextBox()
+        Me.TextBox80 = New System.Windows.Forms.TextBox()
+        Me.TextBox81 = New System.Windows.Forms.TextBox()
         Me.TrackBar1 = New System.Windows.Forms.TrackBar()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.cboDuration = New System.Windows.Forms.ComboBox()
@@ -182,6 +225,10 @@ Partial Class Form1
         Me.btnPlay1Note = New System.Windows.Forms.Button()
         Me.lblClickMe = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.GroupBox13 = New System.Windows.Forms.GroupBox()
+        Me.Metronom_OFF = New System.Windows.Forms.RadioButton()
+        Me.Metronom_ON = New System.Windows.Forms.RadioButton()
+        Me.Metronom_Betont = New System.Windows.Forms.RadioButton()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.TextBox74 = New System.Windows.Forms.TextBox()
@@ -192,10 +239,9 @@ Partial Class Form1
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.TextBox73 = New System.Windows.Forms.TextBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox13 = New System.Windows.Forms.GroupBox()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox17 = New System.Windows.Forms.GroupBox()
+        Me.MIDI_Out_ON = New System.Windows.Forms.RadioButton()
+        Me.MIDI_Out_OFF = New System.Windows.Forms.RadioButton()
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TrackBar2 = New System.Windows.Forms.TrackBar()
@@ -205,47 +251,6 @@ Partial Class Form1
         Me.TrackBar10 = New System.Windows.Forms.TrackBar()
         Me.TrackBar11 = New System.Windows.Forms.TrackBar()
         Me.TrackBar12 = New System.Windows.Forms.TrackBar()
-        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
-        Me.FlowLayoutPanel7 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox75 = New System.Windows.Forms.TextBox()
-        Me.TextBox76 = New System.Windows.Forms.TextBox()
-        Me.TextBox77 = New System.Windows.Forms.TextBox()
-        Me.TextBox78 = New System.Windows.Forms.TextBox()
-        Me.TextBox79 = New System.Windows.Forms.TextBox()
-        Me.TextBox80 = New System.Windows.Forms.TextBox()
-        Me.TextBox81 = New System.Windows.Forms.TextBox()
-        Me.FlowLayoutPanel8 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox82 = New System.Windows.Forms.TextBox()
-        Me.TextBox83 = New System.Windows.Forms.TextBox()
-        Me.TextBox84 = New System.Windows.Forms.TextBox()
-        Me.TextBox85 = New System.Windows.Forms.TextBox()
-        Me.TextBox86 = New System.Windows.Forms.TextBox()
-        Me.TextBox87 = New System.Windows.Forms.TextBox()
-        Me.TextBox88 = New System.Windows.Forms.TextBox()
-        Me.FlowLayoutPanel9 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox89 = New System.Windows.Forms.TextBox()
-        Me.TextBox90 = New System.Windows.Forms.TextBox()
-        Me.TextBox91 = New System.Windows.Forms.TextBox()
-        Me.TextBox92 = New System.Windows.Forms.TextBox()
-        Me.TextBox93 = New System.Windows.Forms.TextBox()
-        Me.TextBox94 = New System.Windows.Forms.TextBox()
-        Me.TextBox95 = New System.Windows.Forms.TextBox()
-        Me.FlowLayoutPanel10 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox96 = New System.Windows.Forms.TextBox()
-        Me.TextBox97 = New System.Windows.Forms.TextBox()
-        Me.TextBox98 = New System.Windows.Forms.TextBox()
-        Me.TextBox99 = New System.Windows.Forms.TextBox()
-        Me.TextBox100 = New System.Windows.Forms.TextBox()
-        Me.TextBox101 = New System.Windows.Forms.TextBox()
-        Me.TextBox102 = New System.Windows.Forms.TextBox()
-        Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox103 = New System.Windows.Forms.TextBox()
-        Me.TextBox104 = New System.Windows.Forms.TextBox()
-        Me.TextBox105 = New System.Windows.Forms.TextBox()
-        Me.TextBox106 = New System.Windows.Forms.TextBox()
-        Me.TextBox107 = New System.Windows.Forms.TextBox()
-        Me.TextBox108 = New System.Windows.Forms.TextBox()
-        Me.TextBox109 = New System.Windows.Forms.TextBox()
         Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -281,6 +286,8 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar33 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar34 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar35 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.GroupBox16 = New System.Windows.Forms.GroupBox()
+        Me.TextBox110 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -289,24 +296,31 @@ Partial Class Form1
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
+        Me.GroupBox15.SuspendLayout()
         Me.Tempo_GroupBox.SuspendLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox6.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
         Me.Transpose_GroupBox.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox6.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
+        Me.FlowLayoutPanel11.SuspendLayout()
+        Me.FlowLayoutPanel10.SuspendLayout()
+        Me.FlowLayoutPanel9.SuspendLayout()
+        Me.FlowLayoutPanel8.SuspendLayout()
+        Me.FlowLayoutPanel7.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
+        Me.GroupBox13.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
-        Me.GroupBox15.SuspendLayout()
+        Me.GroupBox14.SuspendLayout()
         Me.GroupBox18.SuspendLayout()
         Me.FlowLayoutPanel6.SuspendLayout()
         CType(Me.TrackBar2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -316,11 +330,7 @@ Partial Class Form1
         CType(Me.TrackBar10, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBar11, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TrackBar12, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.FlowLayoutPanel7.SuspendLayout()
-        Me.FlowLayoutPanel8.SuspendLayout()
-        Me.FlowLayoutPanel9.SuspendLayout()
-        Me.FlowLayoutPanel10.SuspendLayout()
-        Me.FlowLayoutPanel11.SuspendLayout()
+        Me.GroupBox16.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -1591,6 +1601,35 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
+        'GroupBox17
+        '
+        Me.GroupBox17.Location = New System.Drawing.Point(9, 320)
+        Me.GroupBox17.Name = "GroupBox17"
+        Me.GroupBox17.Size = New System.Drawing.Size(199, 85)
+        Me.GroupBox17.TabIndex = 170
+        Me.GroupBox17.TabStop = False
+        Me.GroupBox17.Text = "Tonart"
+        '
+        'GroupBox15
+        '
+        Me.GroupBox15.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox15.Controls.Add(Me.HScrollBar1)
+        Me.GroupBox15.Location = New System.Drawing.Point(9, 239)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(199, 59)
+        Me.GroupBox15.TabIndex = 169
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "MIDI Lautstärcke"
+        '
+        'HScrollBar1
+        '
+        Me.HScrollBar1.Location = New System.Drawing.Point(9, 26)
+        Me.HScrollBar1.Maximum = 127
+        Me.HScrollBar1.Name = "HScrollBar1"
+        Me.HScrollBar1.Size = New System.Drawing.Size(175, 17)
+        Me.HScrollBar1.TabIndex = 7
+        Me.HScrollBar1.Value = 127
+        '
         'Tempo_GroupBox
         '
         Me.Tempo_GroupBox.Controls.Add(Me.Label18)
@@ -1662,6 +1701,64 @@ Partial Class Form1
         Me.BPM.TabIndex = 168
         Me.BPM.Value = New Decimal(New Integer() {60, 0, 0, 0})
         '
+        'Transpose_GroupBox
+        '
+        Me.Transpose_GroupBox.Controls.Add(Me.Label2)
+        Me.Transpose_GroupBox.Controls.Add(Me.Label1)
+        Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
+        Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 132)
+        Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
+        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 88)
+        Me.Transpose_GroupBox.TabIndex = 166
+        Me.Transpose_GroupBox.TabStop = False
+        Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(7, 62)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(103, 13)
+        Me.Label2.TabIndex = 167
+        Me.Label2.Text = "Notenverschiebung:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 28)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.TabIndex = 166
+        Me.Label1.Text = "Oktavenver.:"
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(127, 55)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(55, 20)
+        Me.NumericUpDown1.TabIndex = 165
+        '
+        'Tonhoehenverschiebung
+        '
+        Me.Tonhoehenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven", ""})
+        Me.Tonhoehenverschiebung.Location = New System.Drawing.Point(90, 25)
+        Me.Tonhoehenverschiebung.Name = "Tonhoehenverschiebung"
+        Me.Tonhoehenverschiebung.Size = New System.Drawing.Size(92, 21)
+        Me.Tonhoehenverschiebung.TabIndex = 165
+        Me.Tonhoehenverschiebung.Text = "Normahl"
+        '
+        'cboInstruments
+        '
+        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboInstruments.FormattingEnabled = True
+        Me.cboInstruments.Location = New System.Drawing.Point(9, 19)
+        Me.cboInstruments.Name = "cboInstruments"
+        Me.cboInstruments.Size = New System.Drawing.Size(199, 21)
+        Me.cboInstruments.TabIndex = 2
+        '
         'GroupBox6
         '
         Me.GroupBox6.BackColor = System.Drawing.SystemColors.ControlLight
@@ -1674,7 +1771,7 @@ Partial Class Form1
         Me.GroupBox6.Controls.Add(Me.hsbVolume)
         Me.GroupBox6.Location = New System.Drawing.Point(12, 20)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(196, 169)
+        Me.GroupBox6.Size = New System.Drawing.Size(196, 187)
         Me.GroupBox6.TabIndex = 167
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Direct Play"
@@ -1764,64 +1861,6 @@ Partial Class Form1
         Me.hsbVolume.TabIndex = 6
         Me.hsbVolume.Value = 127
         '
-        'Transpose_GroupBox
-        '
-        Me.Transpose_GroupBox.Controls.Add(Me.Label2)
-        Me.Transpose_GroupBox.Controls.Add(Me.Label1)
-        Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
-        Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 132)
-        Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
-        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 88)
-        Me.Transpose_GroupBox.TabIndex = 166
-        Me.Transpose_GroupBox.TabStop = False
-        Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 62)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(103, 13)
-        Me.Label2.TabIndex = 167
-        Me.Label2.Text = "Notenverschiebung:"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 28)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
-        Me.Label1.TabIndex = 166
-        Me.Label1.Text = "Oktavenver.:"
-        '
-        'NumericUpDown1
-        '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(127, 55)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(55, 20)
-        Me.NumericUpDown1.TabIndex = 165
-        '
-        'Tonhoehenverschiebung
-        '
-        Me.Tonhoehenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven", ""})
-        Me.Tonhoehenverschiebung.Location = New System.Drawing.Point(90, 25)
-        Me.Tonhoehenverschiebung.Name = "Tonhoehenverschiebung"
-        Me.Tonhoehenverschiebung.Size = New System.Drawing.Size(92, 21)
-        Me.Tonhoehenverschiebung.TabIndex = 165
-        Me.Tonhoehenverschiebung.Text = "Normahl"
-        '
-        'cboInstruments
-        '
-        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.FormattingEnabled = True
-        Me.cboInstruments.Location = New System.Drawing.Point(9, 19)
-        Me.cboInstruments.Name = "cboInstruments"
-        Me.cboInstruments.Size = New System.Drawing.Size(199, 21)
-        Me.cboInstruments.TabIndex = 2
-        '
         'Tackt
         '
         Me.Tackt.Interval = 125
@@ -1858,6 +1897,391 @@ Partial Class Form1
         Me.GroupBox4.TabIndex = 167
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "MIDI Visualisierung"
+        '
+        'FlowLayoutPanel11
+        '
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox103)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox104)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox105)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox106)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox107)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox108)
+        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox109)
+        Me.FlowLayoutPanel11.Location = New System.Drawing.Point(982, 231)
+        Me.FlowLayoutPanel11.Name = "FlowLayoutPanel11"
+        Me.FlowLayoutPanel11.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel11.TabIndex = 173
+        '
+        'TextBox103
+        '
+        Me.TextBox103.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox103.Name = "TextBox103"
+        Me.TextBox103.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox103.TabIndex = 19
+        Me.TextBox103.Text = "0"
+        Me.TextBox103.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox104
+        '
+        Me.TextBox104.Location = New System.Drawing.Point(35, 3)
+        Me.TextBox104.Name = "TextBox104"
+        Me.TextBox104.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox104.TabIndex = 20
+        Me.TextBox104.Text = "0"
+        Me.TextBox104.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox105
+        '
+        Me.TextBox105.Location = New System.Drawing.Point(67, 3)
+        Me.TextBox105.Name = "TextBox105"
+        Me.TextBox105.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox105.TabIndex = 21
+        Me.TextBox105.Text = "0"
+        Me.TextBox105.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox106
+        '
+        Me.TextBox106.Location = New System.Drawing.Point(99, 3)
+        Me.TextBox106.Name = "TextBox106"
+        Me.TextBox106.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox106.TabIndex = 22
+        Me.TextBox106.Text = "0"
+        Me.TextBox106.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox107
+        '
+        Me.TextBox107.Location = New System.Drawing.Point(131, 3)
+        Me.TextBox107.Name = "TextBox107"
+        Me.TextBox107.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox107.TabIndex = 23
+        Me.TextBox107.Text = "0"
+        Me.TextBox107.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox108
+        '
+        Me.TextBox108.Location = New System.Drawing.Point(163, 3)
+        Me.TextBox108.Name = "TextBox108"
+        Me.TextBox108.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox108.TabIndex = 24
+        Me.TextBox108.Text = "0"
+        Me.TextBox108.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox109
+        '
+        Me.TextBox109.Location = New System.Drawing.Point(195, 3)
+        Me.TextBox109.Name = "TextBox109"
+        Me.TextBox109.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox109.TabIndex = 25
+        Me.TextBox109.Text = "0"
+        Me.TextBox109.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'FlowLayoutPanel10
+        '
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox96)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox97)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox98)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox99)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox100)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox101)
+        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox102)
+        Me.FlowLayoutPanel10.Location = New System.Drawing.Point(737, 234)
+        Me.FlowLayoutPanel10.Name = "FlowLayoutPanel10"
+        Me.FlowLayoutPanel10.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel10.TabIndex = 172
+        '
+        'TextBox96
+        '
+        Me.TextBox96.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox96.Name = "TextBox96"
+        Me.TextBox96.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox96.TabIndex = 19
+        Me.TextBox96.Text = "0"
+        Me.TextBox96.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox97
+        '
+        Me.TextBox97.Location = New System.Drawing.Point(35, 3)
+        Me.TextBox97.Name = "TextBox97"
+        Me.TextBox97.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox97.TabIndex = 20
+        Me.TextBox97.Text = "0"
+        Me.TextBox97.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox98
+        '
+        Me.TextBox98.Location = New System.Drawing.Point(67, 3)
+        Me.TextBox98.Name = "TextBox98"
+        Me.TextBox98.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox98.TabIndex = 21
+        Me.TextBox98.Text = "0"
+        Me.TextBox98.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox99
+        '
+        Me.TextBox99.Location = New System.Drawing.Point(99, 3)
+        Me.TextBox99.Name = "TextBox99"
+        Me.TextBox99.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox99.TabIndex = 22
+        Me.TextBox99.Text = "0"
+        Me.TextBox99.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox100
+        '
+        Me.TextBox100.Location = New System.Drawing.Point(131, 3)
+        Me.TextBox100.Name = "TextBox100"
+        Me.TextBox100.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox100.TabIndex = 23
+        Me.TextBox100.Text = "0"
+        Me.TextBox100.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox101
+        '
+        Me.TextBox101.Location = New System.Drawing.Point(163, 3)
+        Me.TextBox101.Name = "TextBox101"
+        Me.TextBox101.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox101.TabIndex = 24
+        Me.TextBox101.Text = "0"
+        Me.TextBox101.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox102
+        '
+        Me.TextBox102.Location = New System.Drawing.Point(195, 3)
+        Me.TextBox102.Name = "TextBox102"
+        Me.TextBox102.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox102.TabIndex = 25
+        Me.TextBox102.Text = "0"
+        Me.TextBox102.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'FlowLayoutPanel9
+        '
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox89)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox90)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox91)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox92)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox93)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox94)
+        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox95)
+        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(496, 234)
+        Me.FlowLayoutPanel9.Name = "FlowLayoutPanel9"
+        Me.FlowLayoutPanel9.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel9.TabIndex = 171
+        '
+        'TextBox89
+        '
+        Me.TextBox89.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox89.Name = "TextBox89"
+        Me.TextBox89.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox89.TabIndex = 19
+        Me.TextBox89.Text = "0"
+        Me.TextBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox90
+        '
+        Me.TextBox90.Location = New System.Drawing.Point(35, 3)
+        Me.TextBox90.Name = "TextBox90"
+        Me.TextBox90.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox90.TabIndex = 20
+        Me.TextBox90.Text = "0"
+        Me.TextBox90.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox91
+        '
+        Me.TextBox91.Location = New System.Drawing.Point(67, 3)
+        Me.TextBox91.Name = "TextBox91"
+        Me.TextBox91.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox91.TabIndex = 21
+        Me.TextBox91.Text = "0"
+        Me.TextBox91.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox92
+        '
+        Me.TextBox92.Location = New System.Drawing.Point(99, 3)
+        Me.TextBox92.Name = "TextBox92"
+        Me.TextBox92.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox92.TabIndex = 22
+        Me.TextBox92.Text = "0"
+        Me.TextBox92.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox93
+        '
+        Me.TextBox93.Location = New System.Drawing.Point(131, 3)
+        Me.TextBox93.Name = "TextBox93"
+        Me.TextBox93.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox93.TabIndex = 23
+        Me.TextBox93.Text = "0"
+        Me.TextBox93.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox94
+        '
+        Me.TextBox94.Location = New System.Drawing.Point(163, 3)
+        Me.TextBox94.Name = "TextBox94"
+        Me.TextBox94.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox94.TabIndex = 24
+        Me.TextBox94.Text = "0"
+        Me.TextBox94.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox95
+        '
+        Me.TextBox95.Location = New System.Drawing.Point(195, 3)
+        Me.TextBox95.Name = "TextBox95"
+        Me.TextBox95.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox95.TabIndex = 25
+        Me.TextBox95.Text = "0"
+        Me.TextBox95.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'FlowLayoutPanel8
+        '
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox82)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox83)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox84)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox85)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox86)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox87)
+        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox88)
+        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(249, 234)
+        Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
+        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel8.TabIndex = 170
+        '
+        'TextBox82
+        '
+        Me.TextBox82.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox82.Name = "TextBox82"
+        Me.TextBox82.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox82.TabIndex = 19
+        Me.TextBox82.Text = "0"
+        Me.TextBox82.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox83
+        '
+        Me.TextBox83.Location = New System.Drawing.Point(35, 3)
+        Me.TextBox83.Name = "TextBox83"
+        Me.TextBox83.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox83.TabIndex = 20
+        Me.TextBox83.Text = "0"
+        Me.TextBox83.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox84
+        '
+        Me.TextBox84.Location = New System.Drawing.Point(67, 3)
+        Me.TextBox84.Name = "TextBox84"
+        Me.TextBox84.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox84.TabIndex = 21
+        Me.TextBox84.Text = "0"
+        Me.TextBox84.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox85
+        '
+        Me.TextBox85.Location = New System.Drawing.Point(99, 3)
+        Me.TextBox85.Name = "TextBox85"
+        Me.TextBox85.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox85.TabIndex = 22
+        Me.TextBox85.Text = "0"
+        Me.TextBox85.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox86
+        '
+        Me.TextBox86.Location = New System.Drawing.Point(131, 3)
+        Me.TextBox86.Name = "TextBox86"
+        Me.TextBox86.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox86.TabIndex = 23
+        Me.TextBox86.Text = "0"
+        Me.TextBox86.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox87
+        '
+        Me.TextBox87.Location = New System.Drawing.Point(163, 3)
+        Me.TextBox87.Name = "TextBox87"
+        Me.TextBox87.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox87.TabIndex = 24
+        Me.TextBox87.Text = "0"
+        Me.TextBox87.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox88
+        '
+        Me.TextBox88.Location = New System.Drawing.Point(195, 3)
+        Me.TextBox88.Name = "TextBox88"
+        Me.TextBox88.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox88.TabIndex = 25
+        Me.TextBox88.Text = "0"
+        Me.TextBox88.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'FlowLayoutPanel7
+        '
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox75)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox76)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox77)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox78)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox79)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox80)
+        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox81)
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(6, 231)
+        Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
+        Me.FlowLayoutPanel7.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel7.TabIndex = 169
+        '
+        'TextBox75
+        '
+        Me.TextBox75.Location = New System.Drawing.Point(3, 3)
+        Me.TextBox75.Name = "TextBox75"
+        Me.TextBox75.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox75.TabIndex = 19
+        Me.TextBox75.Text = "0"
+        Me.TextBox75.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox76
+        '
+        Me.TextBox76.Location = New System.Drawing.Point(35, 3)
+        Me.TextBox76.Name = "TextBox76"
+        Me.TextBox76.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox76.TabIndex = 20
+        Me.TextBox76.Text = "0"
+        Me.TextBox76.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox77
+        '
+        Me.TextBox77.Location = New System.Drawing.Point(67, 3)
+        Me.TextBox77.Name = "TextBox77"
+        Me.TextBox77.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox77.TabIndex = 21
+        Me.TextBox77.Text = "0"
+        Me.TextBox77.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox78
+        '
+        Me.TextBox78.Location = New System.Drawing.Point(99, 3)
+        Me.TextBox78.Name = "TextBox78"
+        Me.TextBox78.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox78.TabIndex = 22
+        Me.TextBox78.Text = "0"
+        Me.TextBox78.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox79
+        '
+        Me.TextBox79.Location = New System.Drawing.Point(131, 3)
+        Me.TextBox79.Name = "TextBox79"
+        Me.TextBox79.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox79.TabIndex = 23
+        Me.TextBox79.Text = "0"
+        Me.TextBox79.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox80
+        '
+        Me.TextBox80.Location = New System.Drawing.Point(163, 3)
+        Me.TextBox80.Name = "TextBox80"
+        Me.TextBox80.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox80.TabIndex = 24
+        Me.TextBox80.Text = "0"
+        Me.TextBox80.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox81
+        '
+        Me.TextBox81.Location = New System.Drawing.Point(195, 3)
+        Me.TextBox81.Name = "TextBox81"
+        Me.TextBox81.Size = New System.Drawing.Size(26, 20)
+        Me.TextBox81.TabIndex = 25
+        Me.TextBox81.Text = "0"
+        Me.TextBox81.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TrackBar1
         '
@@ -1944,8 +2368,54 @@ Partial Class Form1
         Me.lblClickMe.Text = "Click in this box.  The Lower you click down the box, the higher the note."
         Me.lblClickMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'GroupBox13
+        '
+        Me.GroupBox13.Controls.Add(Me.Metronom_OFF)
+        Me.GroupBox13.Controls.Add(Me.Metronom_ON)
+        Me.GroupBox13.Controls.Add(Me.Metronom_Betont)
+        Me.GroupBox13.Location = New System.Drawing.Point(238, 20)
+        Me.GroupBox13.Name = "GroupBox13"
+        Me.GroupBox13.Size = New System.Drawing.Size(196, 53)
+        Me.GroupBox13.TabIndex = 168
+        Me.GroupBox13.TabStop = False
+        Me.GroupBox13.Text = "Metronom"
+        Me.ToolTip1.SetToolTip(Me.GroupBox13, "Das Metronom dient zur Hilfe")
+        '
+        'Metronom_OFF
+        '
+        Me.Metronom_OFF.AutoSize = True
+        Me.Metronom_OFF.Checked = True
+        Me.Metronom_OFF.Location = New System.Drawing.Point(146, 23)
+        Me.Metronom_OFF.Name = "Metronom_OFF"
+        Me.Metronom_OFF.Size = New System.Drawing.Size(43, 17)
+        Me.Metronom_OFF.TabIndex = 1
+        Me.Metronom_OFF.TabStop = True
+        Me.Metronom_OFF.Text = "Aus"
+        Me.Metronom_OFF.UseVisualStyleBackColor = True
+        '
+        'Metronom_ON
+        '
+        Me.Metronom_ON.AutoSize = True
+        Me.Metronom_ON.Location = New System.Drawing.Point(90, 23)
+        Me.Metronom_ON.Name = "Metronom_ON"
+        Me.Metronom_ON.Size = New System.Drawing.Size(40, 17)
+        Me.Metronom_ON.TabIndex = 0
+        Me.Metronom_ON.Text = "Ein"
+        Me.Metronom_ON.UseVisualStyleBackColor = True
+        '
+        'Metronom_Betont
+        '
+        Me.Metronom_Betont.AutoSize = True
+        Me.Metronom_Betont.Location = New System.Drawing.Point(18, 24)
+        Me.Metronom_Betont.Name = "Metronom_Betont"
+        Me.Metronom_Betont.Size = New System.Drawing.Size(56, 17)
+        Me.Metronom_Betont.TabIndex = 0
+        Me.Metronom_Betont.Text = "Betont"
+        Me.Metronom_Betont.UseVisualStyleBackColor = True
+        '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.GroupBox16)
         Me.GroupBox7.Controls.Add(Me.GroupBox11)
         Me.GroupBox7.Controls.Add(Me.GroupBox9)
         Me.GroupBox7.Controls.Add(Me.GroupBox10)
@@ -1960,7 +2430,7 @@ Partial Class Form1
         'GroupBox11
         '
         Me.GroupBox11.Controls.Add(Me.TextBox74)
-        Me.GroupBox11.Location = New System.Drawing.Point(17, 86)
+        Me.GroupBox11.Location = New System.Drawing.Point(17, 80)
         Me.GroupBox11.Name = "GroupBox11"
         Me.GroupBox11.Size = New System.Drawing.Size(165, 46)
         Me.GroupBox11.TabIndex = 4
@@ -1977,19 +2447,19 @@ Partial Class Form1
         'GroupBox9
         '
         Me.GroupBox9.Controls.Add(Me.TextBox72)
-        Me.GroupBox9.Location = New System.Drawing.Point(17, 265)
+        Me.GroupBox9.Location = New System.Drawing.Point(17, 294)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(165, 123)
+        Me.GroupBox9.Size = New System.Drawing.Size(165, 111)
         Me.GroupBox9.TabIndex = 3
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Bemerkung"
         '
         'TextBox72
         '
-        Me.TextBox72.Location = New System.Drawing.Point(11, 19)
+        Me.TextBox72.Location = New System.Drawing.Point(11, 26)
         Me.TextBox72.Multiline = True
         Me.TextBox72.Name = "TextBox72"
-        Me.TextBox72.Size = New System.Drawing.Size(142, 88)
+        Me.TextBox72.Size = New System.Drawing.Size(142, 69)
         Me.TextBox72.TabIndex = 1
         '
         'GroupBox10
@@ -2012,9 +2482,9 @@ Partial Class Form1
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.TextBox73)
-        Me.GroupBox8.Location = New System.Drawing.Point(17, 149)
+        Me.GroupBox8.Location = New System.Drawing.Point(17, 189)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(165, 104)
+        Me.GroupBox8.Size = New System.Drawing.Size(165, 99)
         Me.GroupBox8.TabIndex = 2
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Copyright Eintrag"
@@ -2024,7 +2494,7 @@ Partial Class Form1
         Me.TextBox73.Location = New System.Drawing.Point(11, 19)
         Me.TextBox73.Multiline = True
         Me.TextBox73.Name = "TextBox73"
-        Me.TextBox73.Size = New System.Drawing.Size(142, 75)
+        Me.TextBox73.Size = New System.Drawing.Size(142, 68)
         Me.TextBox73.TabIndex = 2
         '
         'GroupBox12
@@ -2032,55 +2502,51 @@ Partial Class Form1
         Me.GroupBox12.Controls.Add(Me.GroupBox14)
         Me.GroupBox12.Controls.Add(Me.GroupBox6)
         Me.GroupBox12.Controls.Add(Me.GroupBox13)
-        Me.GroupBox12.Location = New System.Drawing.Point(774, 20)
+        Me.GroupBox12.Location = New System.Drawing.Point(774, 13)
         Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(457, 200)
+        Me.GroupBox12.Size = New System.Drawing.Size(457, 220)
         Me.GroupBox12.TabIndex = 173
         Me.GroupBox12.TabStop = False
         Me.GroupBox12.Text = "Direct Play"
         '
-        'GroupBox13
-        '
-        Me.GroupBox13.Location = New System.Drawing.Point(238, 20)
-        Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(196, 49)
-        Me.GroupBox13.TabIndex = 168
-        Me.GroupBox13.TabStop = False
-        Me.GroupBox13.Text = "Metronom"
-        '
         'GroupBox14
         '
+        Me.GroupBox14.Controls.Add(Me.MIDI_Out_ON)
+        Me.GroupBox14.Controls.Add(Me.MIDI_Out_OFF)
+        Me.GroupBox14.Enabled = False
         Me.GroupBox14.Location = New System.Drawing.Point(238, 90)
         Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(196, 48)
+        Me.GroupBox14.Size = New System.Drawing.Size(196, 52)
         Me.GroupBox14.TabIndex = 169
         Me.GroupBox14.TabStop = False
         Me.GroupBox14.Text = "MIDI Out"
         '
-        'GroupBox15
+        'MIDI_Out_ON
         '
-        Me.GroupBox15.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox15.Controls.Add(Me.HScrollBar1)
-        Me.GroupBox15.Location = New System.Drawing.Point(9, 239)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(199, 59)
-        Me.GroupBox15.TabIndex = 169
-        Me.GroupBox15.TabStop = False
-        Me.GroupBox15.Text = "Aufnahmelautstärke"
+        Me.MIDI_Out_ON.AutoSize = True
+        Me.MIDI_Out_ON.Location = New System.Drawing.Point(26, 19)
+        Me.MIDI_Out_ON.Name = "MIDI_Out_ON"
+        Me.MIDI_Out_ON.Size = New System.Drawing.Size(40, 17)
+        Me.MIDI_Out_ON.TabIndex = 2
+        Me.MIDI_Out_ON.Text = "Ein"
+        Me.MIDI_Out_ON.UseVisualStyleBackColor = True
         '
-        'GroupBox17
+        'MIDI_Out_OFF
         '
-        Me.GroupBox17.Location = New System.Drawing.Point(9, 320)
-        Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(199, 85)
-        Me.GroupBox17.TabIndex = 170
-        Me.GroupBox17.TabStop = False
-        Me.GroupBox17.Text = "Tonart"
+        Me.MIDI_Out_OFF.AutoSize = True
+        Me.MIDI_Out_OFF.Checked = True
+        Me.MIDI_Out_OFF.Location = New System.Drawing.Point(128, 19)
+        Me.MIDI_Out_OFF.Name = "MIDI_Out_OFF"
+        Me.MIDI_Out_OFF.Size = New System.Drawing.Size(43, 17)
+        Me.MIDI_Out_OFF.TabIndex = 3
+        Me.MIDI_Out_OFF.TabStop = True
+        Me.MIDI_Out_OFF.Text = "Aus"
+        Me.MIDI_Out_OFF.UseVisualStyleBackColor = True
         '
         'GroupBox18
         '
         Me.GroupBox18.Controls.Add(Me.FlowLayoutPanel6)
-        Me.GroupBox18.Location = New System.Drawing.Point(774, 245)
+        Me.GroupBox18.Location = New System.Drawing.Point(775, 252)
         Me.GroupBox18.Name = "GroupBox18"
         Me.GroupBox18.Size = New System.Drawing.Size(457, 123)
         Me.GroupBox18.TabIndex = 184
@@ -2177,400 +2643,6 @@ Partial Class Form1
         Me.TrackBar12.Size = New System.Drawing.Size(45, 73)
         Me.TrackBar12.TabIndex = 189
         Me.TrackBar12.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'HScrollBar1
-        '
-        Me.HScrollBar1.Location = New System.Drawing.Point(9, 26)
-        Me.HScrollBar1.Maximum = 127
-        Me.HScrollBar1.Name = "HScrollBar1"
-        Me.HScrollBar1.Size = New System.Drawing.Size(175, 17)
-        Me.HScrollBar1.TabIndex = 7
-        Me.HScrollBar1.Value = 127
-        '
-        'FlowLayoutPanel7
-        '
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox75)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox76)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox77)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox78)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox79)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox80)
-        Me.FlowLayoutPanel7.Controls.Add(Me.TextBox81)
-        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(6, 231)
-        Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
-        Me.FlowLayoutPanel7.Size = New System.Drawing.Size(228, 27)
-        Me.FlowLayoutPanel7.TabIndex = 169
-        '
-        'TextBox75
-        '
-        Me.TextBox75.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox75.Name = "TextBox75"
-        Me.TextBox75.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox75.TabIndex = 19
-        Me.TextBox75.Text = "0"
-        Me.TextBox75.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox76
-        '
-        Me.TextBox76.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox76.Name = "TextBox76"
-        Me.TextBox76.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox76.TabIndex = 20
-        Me.TextBox76.Text = "0"
-        Me.TextBox76.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox77
-        '
-        Me.TextBox77.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox77.Name = "TextBox77"
-        Me.TextBox77.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox77.TabIndex = 21
-        Me.TextBox77.Text = "0"
-        Me.TextBox77.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox78
-        '
-        Me.TextBox78.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox78.Name = "TextBox78"
-        Me.TextBox78.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox78.TabIndex = 22
-        Me.TextBox78.Text = "0"
-        Me.TextBox78.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox79
-        '
-        Me.TextBox79.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox79.Name = "TextBox79"
-        Me.TextBox79.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox79.TabIndex = 23
-        Me.TextBox79.Text = "0"
-        Me.TextBox79.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox80
-        '
-        Me.TextBox80.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox80.Name = "TextBox80"
-        Me.TextBox80.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox80.TabIndex = 24
-        Me.TextBox80.Text = "0"
-        Me.TextBox80.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox81
-        '
-        Me.TextBox81.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox81.Name = "TextBox81"
-        Me.TextBox81.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox81.TabIndex = 25
-        Me.TextBox81.Text = "0"
-        Me.TextBox81.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'FlowLayoutPanel8
-        '
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox82)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox83)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox84)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox85)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox86)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox87)
-        Me.FlowLayoutPanel8.Controls.Add(Me.TextBox88)
-        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(249, 234)
-        Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
-        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(228, 27)
-        Me.FlowLayoutPanel8.TabIndex = 170
-        '
-        'TextBox82
-        '
-        Me.TextBox82.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox82.Name = "TextBox82"
-        Me.TextBox82.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox82.TabIndex = 19
-        Me.TextBox82.Text = "0"
-        Me.TextBox82.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox83
-        '
-        Me.TextBox83.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox83.Name = "TextBox83"
-        Me.TextBox83.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox83.TabIndex = 20
-        Me.TextBox83.Text = "0"
-        Me.TextBox83.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox84
-        '
-        Me.TextBox84.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox84.Name = "TextBox84"
-        Me.TextBox84.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox84.TabIndex = 21
-        Me.TextBox84.Text = "0"
-        Me.TextBox84.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox85
-        '
-        Me.TextBox85.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox85.Name = "TextBox85"
-        Me.TextBox85.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox85.TabIndex = 22
-        Me.TextBox85.Text = "0"
-        Me.TextBox85.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox86
-        '
-        Me.TextBox86.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox86.Name = "TextBox86"
-        Me.TextBox86.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox86.TabIndex = 23
-        Me.TextBox86.Text = "0"
-        Me.TextBox86.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox87
-        '
-        Me.TextBox87.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox87.Name = "TextBox87"
-        Me.TextBox87.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox87.TabIndex = 24
-        Me.TextBox87.Text = "0"
-        Me.TextBox87.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox88
-        '
-        Me.TextBox88.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox88.Name = "TextBox88"
-        Me.TextBox88.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox88.TabIndex = 25
-        Me.TextBox88.Text = "0"
-        Me.TextBox88.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'FlowLayoutPanel9
-        '
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox89)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox90)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox91)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox92)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox93)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox94)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox95)
-        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(496, 234)
-        Me.FlowLayoutPanel9.Name = "FlowLayoutPanel9"
-        Me.FlowLayoutPanel9.Size = New System.Drawing.Size(228, 27)
-        Me.FlowLayoutPanel9.TabIndex = 171
-        '
-        'TextBox89
-        '
-        Me.TextBox89.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox89.Name = "TextBox89"
-        Me.TextBox89.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox89.TabIndex = 19
-        Me.TextBox89.Text = "0"
-        Me.TextBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox90
-        '
-        Me.TextBox90.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox90.Name = "TextBox90"
-        Me.TextBox90.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox90.TabIndex = 20
-        Me.TextBox90.Text = "0"
-        Me.TextBox90.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox91
-        '
-        Me.TextBox91.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox91.Name = "TextBox91"
-        Me.TextBox91.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox91.TabIndex = 21
-        Me.TextBox91.Text = "0"
-        Me.TextBox91.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox92
-        '
-        Me.TextBox92.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox92.Name = "TextBox92"
-        Me.TextBox92.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox92.TabIndex = 22
-        Me.TextBox92.Text = "0"
-        Me.TextBox92.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox93
-        '
-        Me.TextBox93.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox93.Name = "TextBox93"
-        Me.TextBox93.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox93.TabIndex = 23
-        Me.TextBox93.Text = "0"
-        Me.TextBox93.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox94
-        '
-        Me.TextBox94.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox94.Name = "TextBox94"
-        Me.TextBox94.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox94.TabIndex = 24
-        Me.TextBox94.Text = "0"
-        Me.TextBox94.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox95
-        '
-        Me.TextBox95.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox95.Name = "TextBox95"
-        Me.TextBox95.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox95.TabIndex = 25
-        Me.TextBox95.Text = "0"
-        Me.TextBox95.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'FlowLayoutPanel10
-        '
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox96)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox97)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox98)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox99)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox100)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox101)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox102)
-        Me.FlowLayoutPanel10.Location = New System.Drawing.Point(737, 234)
-        Me.FlowLayoutPanel10.Name = "FlowLayoutPanel10"
-        Me.FlowLayoutPanel10.Size = New System.Drawing.Size(228, 27)
-        Me.FlowLayoutPanel10.TabIndex = 172
-        '
-        'TextBox96
-        '
-        Me.TextBox96.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox96.Name = "TextBox96"
-        Me.TextBox96.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox96.TabIndex = 19
-        Me.TextBox96.Text = "0"
-        Me.TextBox96.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox97
-        '
-        Me.TextBox97.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox97.Name = "TextBox97"
-        Me.TextBox97.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox97.TabIndex = 20
-        Me.TextBox97.Text = "0"
-        Me.TextBox97.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox98
-        '
-        Me.TextBox98.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox98.Name = "TextBox98"
-        Me.TextBox98.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox98.TabIndex = 21
-        Me.TextBox98.Text = "0"
-        Me.TextBox98.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox99
-        '
-        Me.TextBox99.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox99.Name = "TextBox99"
-        Me.TextBox99.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox99.TabIndex = 22
-        Me.TextBox99.Text = "0"
-        Me.TextBox99.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox100
-        '
-        Me.TextBox100.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox100.Name = "TextBox100"
-        Me.TextBox100.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox100.TabIndex = 23
-        Me.TextBox100.Text = "0"
-        Me.TextBox100.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox101
-        '
-        Me.TextBox101.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox101.Name = "TextBox101"
-        Me.TextBox101.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox101.TabIndex = 24
-        Me.TextBox101.Text = "0"
-        Me.TextBox101.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox102
-        '
-        Me.TextBox102.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox102.Name = "TextBox102"
-        Me.TextBox102.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox102.TabIndex = 25
-        Me.TextBox102.Text = "0"
-        Me.TextBox102.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'FlowLayoutPanel11
-        '
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox103)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox104)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox105)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox106)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox107)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox108)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox109)
-        Me.FlowLayoutPanel11.Location = New System.Drawing.Point(982, 231)
-        Me.FlowLayoutPanel11.Name = "FlowLayoutPanel11"
-        Me.FlowLayoutPanel11.Size = New System.Drawing.Size(228, 27)
-        Me.FlowLayoutPanel11.TabIndex = 173
-        '
-        'TextBox103
-        '
-        Me.TextBox103.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox103.Name = "TextBox103"
-        Me.TextBox103.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox103.TabIndex = 19
-        Me.TextBox103.Text = "0"
-        Me.TextBox103.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox104
-        '
-        Me.TextBox104.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox104.Name = "TextBox104"
-        Me.TextBox104.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox104.TabIndex = 20
-        Me.TextBox104.Text = "0"
-        Me.TextBox104.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox105
-        '
-        Me.TextBox105.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox105.Name = "TextBox105"
-        Me.TextBox105.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox105.TabIndex = 21
-        Me.TextBox105.Text = "0"
-        Me.TextBox105.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox106
-        '
-        Me.TextBox106.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox106.Name = "TextBox106"
-        Me.TextBox106.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox106.TabIndex = 22
-        Me.TextBox106.Text = "0"
-        Me.TextBox106.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox107
-        '
-        Me.TextBox107.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox107.Name = "TextBox107"
-        Me.TextBox107.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox107.TabIndex = 23
-        Me.TextBox107.Text = "0"
-        Me.TextBox107.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox108
-        '
-        Me.TextBox108.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox108.Name = "TextBox108"
-        Me.TextBox108.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox108.TabIndex = 24
-        Me.TextBox108.Text = "0"
-        Me.TextBox108.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox109
-        '
-        Me.TextBox109.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox109.Name = "TextBox109"
-        Me.TextBox109.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox109.TabIndex = 25
-        Me.TextBox109.Text = "0"
-        Me.TextBox109.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'MTech010VerticalProgessBar1
         '
@@ -2853,6 +2925,23 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar35.Size = New System.Drawing.Size(26, 97)
         Me.MTech010VerticalProgessBar35.TabIndex = 9
         '
+        'GroupBox16
+        '
+        Me.GroupBox16.Controls.Add(Me.TextBox110)
+        Me.GroupBox16.Location = New System.Drawing.Point(17, 137)
+        Me.GroupBox16.Name = "GroupBox16"
+        Me.GroupBox16.Size = New System.Drawing.Size(165, 46)
+        Me.GroupBox16.TabIndex = 5
+        Me.GroupBox16.TabStop = False
+        Me.GroupBox16.Text = "Spurnamen"
+        '
+        'TextBox110
+        '
+        Me.TextBox110.Location = New System.Drawing.Point(12, 17)
+        Me.TextBox110.Name = "TextBox110"
+        Me.TextBox110.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox110.TabIndex = 0
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2886,22 +2975,35 @@ Partial Class Form1
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
+        Me.GroupBox15.ResumeLayout(False)
         Me.Tempo_GroupBox.ResumeLayout(False)
         Me.Tempo_GroupBox.PerformLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Transpose_GroupBox.ResumeLayout(False)
+        Me.Transpose_GroupBox.PerformLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
-        Me.Transpose_GroupBox.ResumeLayout(False)
-        Me.Transpose_GroupBox.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
+        Me.FlowLayoutPanel11.ResumeLayout(False)
+        Me.FlowLayoutPanel11.PerformLayout()
+        Me.FlowLayoutPanel10.ResumeLayout(False)
+        Me.FlowLayoutPanel10.PerformLayout()
+        Me.FlowLayoutPanel9.ResumeLayout(False)
+        Me.FlowLayoutPanel9.PerformLayout()
+        Me.FlowLayoutPanel8.ResumeLayout(False)
+        Me.FlowLayoutPanel8.PerformLayout()
+        Me.FlowLayoutPanel7.ResumeLayout(False)
+        Me.FlowLayoutPanel7.PerformLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        Me.GroupBox13.ResumeLayout(False)
+        Me.GroupBox13.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox11.ResumeLayout(False)
         Me.GroupBox11.PerformLayout()
@@ -2912,7 +3014,8 @@ Partial Class Form1
         Me.GroupBox8.ResumeLayout(False)
         Me.GroupBox8.PerformLayout()
         Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox14.ResumeLayout(False)
+        Me.GroupBox14.PerformLayout()
         Me.GroupBox18.ResumeLayout(False)
         Me.FlowLayoutPanel6.ResumeLayout(False)
         Me.FlowLayoutPanel6.PerformLayout()
@@ -2923,16 +3026,8 @@ Partial Class Form1
         CType(Me.TrackBar10, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBar11, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TrackBar12, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.FlowLayoutPanel7.ResumeLayout(False)
-        Me.FlowLayoutPanel7.PerformLayout()
-        Me.FlowLayoutPanel8.ResumeLayout(False)
-        Me.FlowLayoutPanel8.PerformLayout()
-        Me.FlowLayoutPanel9.ResumeLayout(False)
-        Me.FlowLayoutPanel9.PerformLayout()
-        Me.FlowLayoutPanel10.ResumeLayout(False)
-        Me.FlowLayoutPanel10.PerformLayout()
-        Me.FlowLayoutPanel11.ResumeLayout(False)
-        Me.FlowLayoutPanel11.PerformLayout()
+        Me.GroupBox16.ResumeLayout(False)
+        Me.GroupBox16.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3195,5 +3290,12 @@ Partial Class Form1
     Friend WithEvents TextBox79 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox80 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox81 As System.Windows.Forms.TextBox
+    Friend WithEvents Metronom_Betont As System.Windows.Forms.RadioButton
+    Friend WithEvents Metronom_ON As System.Windows.Forms.RadioButton
+    Friend WithEvents Metronom_OFF As System.Windows.Forms.RadioButton
+    Friend WithEvents MIDI_Out_ON As System.Windows.Forms.RadioButton
+    Friend WithEvents MIDI_Out_OFF As System.Windows.Forms.RadioButton
+    Friend WithEvents GroupBox16 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox110 As System.Windows.Forms.TextBox
 
 End Class
