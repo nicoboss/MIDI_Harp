@@ -27,6 +27,9 @@ Public Class Form1
     Dim ADC_Anzahl As Byte = 28
     Dim ADC(43) As UShort
 
+    Dim Notenlaege(255) As Single
+
+    Dim NoteC_Klick
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -101,42 +104,12 @@ Public Class Form1
         In_Buffer = 0
         Control.CheckForIllegalCrossThreadCalls = False
 
-
-
-
         SerialPort1.Write(1)
-
-        'MessageBox.Show("")
 
         For i = 1 To 29
             Serial_Read = SerialPort1.ReadByte
             ADC(i) = Serial_Read
         Next
-
-        'MessageBox.Show("")
-
-        'If Not SerialPort1.ReadByte = 0 Then
-        'MessageBox.Show("Error")
-        'Do
-        'If SerialPort1.ReadByte = 0 Then Exit Do
-        'Loop
-        'End If
-
-        'ListBox1.Items.Add(Serial_Bin)
-        'ListBox1.Items.Add(SerialPort1.ReadByte)
-
-        'MessageBox.Show(Serial_Bin)
-        'Empfangene Daten entschlüsseln
-        'For i1 = 0 To ADC_Anzahl
-        'For i2 = 0 To 3
-        'Serial_Entschluesselt = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10 + i2 * 10) + 1, 10))
-        'Serial_Entschluesselt = Format(5 / 1023 * Serial_Entschluesselt, "0.000")
-        'ADC(i1) = BinToInt(Microsoft.VisualBasic.Mid(Serial_Bin, (i1 * 10) + (i2 * 10) + 1, 10))
-        'ListBox1.Items.Add(ADC(i1))
-        'Next
-        'Next
-
-        'ListBox1.Items.Add(ADC(1))
 
         Dim NoteP As Boolean
 
@@ -169,17 +142,17 @@ Public Class Form1
     End Sub
 
 
-    Private Sub MTech010VerticalProgessBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MTech010VerticalProgessBar1.Click
-        'MessageBox.Show(MousePosition.X)
-        'LineShape1.X1 = MousePosition.X
-        'LineShape1.Y1 = MousePosition.Y
+    'Private Sub MTech010VerticalProgessBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MTech010VerticalProgessBar1.Click
+    'MessageBox.Show(MousePosition.X)
+    'LineShape1.X1 = MousePosition.X
+    'LineShape1.Y1 = MousePosition.Y
 
-        'LineShape1.X2 = MousePosition.X + 1000
-        'LineShape1.Y2 = MousePosition.Y + 1000
-        'LineShape1.BringToFront()
-        'LineShape1.
-        'LineShape1.Refresh()
-    End Sub
+    'LineShape1.X2 = MousePosition.X + 1000
+    'LineShape1.Y2 = MousePosition.Y + 1000
+    'LineShape1.BringToFront()
+    'LineShape1.
+    'LineShape1.Refresh()
+    'End Sub
 
 
 
@@ -265,37 +238,53 @@ Public Class Form1
     Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Song.AddTrack()
-        Song.Tracks(0).AddTackt(3, 4)
+        Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
 
         Song.AddTrack()
+        Song.Tracks(1).Zuordnung(1)
+        Song.Tracks(1).Text(1, "Organ")
+        Song.Tracks(1).Text(3, "Organ")
+        Song.Tracks(1).Text(4, "Organ")
         Song.Tracks(1).Add_Instrument(10)
 
         InitializeNotes()
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Save.Click
-
-        MIDI_Pausieren.Enabled = False
-        MIDI_Save.Enabled = False
-        Tackt.Enabled = True
-        Einstellungen_GroupBox.Enabled = True
-
-        Me.SaveMIDIDialog.DefaultExt = "MID"
-        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, "Untitled.mid")
-        Me.SaveMIDIDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
-        Me.SaveMIDIDialog.Filter = "VB MIDI files (*.MID)|*.MID"
-
-        Dim result As DialogResult = Me.SaveMIDIDialog.ShowDialog
-        If result = DialogResult.OK Then
-            Song.Save(SaveMIDIDialog.FileName)
-        End If
-
-    End Sub
 
     Private Sub Tackt_Tick() Handles Tackt.Tick
 
+        Dim Note_gespielt As Boolean = False
+
+        If NoteC_Klick = True Then
+            If Notenlaege(50) = 0 Then Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(0), MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+            Notenlaege(50) += 0.125
+            Note_gespielt = True
+            Notenlaege(0) = 0
+
+        Else
+
+        If Notenlaege(50) > 0 Then
+                Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
+            Notenlaege(50) = 0
+        End If
+        End If
+
+        If Note_gespielt = False Then Notenlaege(0) += 0.125
+
+        'If Notenlaege(50) = 0 Then
+        'If NoteC_Klick = True Then
+        'Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+        'End If
+
+        'Else
+        'If NoteC_Klick = False Then
+        'Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
+        'Notenlaege(50) = 0
+        'End If
+        'End If
+
         'Song.Tracks(1).AddRange(0.125)
-        Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(NumberOfNotes), 0)
+        'Song.Tracks(1).AddNoteOnOffEvent(0.25, MIDI.Track.NoteEvent.NoteOn, CByte(NumberOfNotes), 0)
 
         Tackt_Achtel = Tackt_Achtel + 1
 
@@ -333,23 +322,51 @@ Public Class Form1
 
         'Song.Tracks(1).TrackData.Clear()
 
-        Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
-        Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+        'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
+        'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
 
         Tackt.Enabled = True
     End Sub
 
+    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Save.Click
 
+        MIDI_Pausieren.Enabled = False
+        MIDI_Save.Enabled = False
+        Tackt.Enabled = False
+        Einstellungen_GroupBox.Enabled = True
+
+        TacktNr = 0
+        Tackt_Achtel = 0
+        Tackt_Viertel = 1
+        Tackt_Viertel_Counter = 0
+
+        Tackt_Ausgabefenster.Text = ("1  1")
+
+        Me.SaveMIDIDialog.DefaultExt = "MID"
+        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, "Untitled.mid")
+        Me.SaveMIDIDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
+        Me.SaveMIDIDialog.Filter = "VB MIDI files (*.MID)|*.MID"
+
+        Dim result As DialogResult = Me.SaveMIDIDialog.ShowDialog
+        If result = DialogResult.OK Then
+            Song.Save(SaveMIDIDialog.FileName)
+        End If
+
+    End Sub
 
     'Song.Tracks(index).AddNoteOnOffEvent(restBeats, MIDI.Track.NoteEvent.NoteOn, CByte(note), CByte(volume))
     'Song.Tracks(index).AddNoteOnOffEvent(beats, MIDI.Track.NoteEvent.NoteOff, CByte(note), 0)
 
     Private Sub StartN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseDown
-        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+        NoteC_Klick = True
+        '    Notenlaege(50) = Environment.TickCount()
+        '   'Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
     End Sub
 
     Private Sub StopN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseUp
-        Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
+        NoteC_Klick = False
+        '    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+        '    Song.Tracks(1).AddNoteOnOffEvent((Environment.TickCount() - Notenlaege(50)) / 250, MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
     End Sub
 
 

@@ -122,9 +122,47 @@ Public Class MIDI
 
         End Sub
 
+        Public Sub Zuordnung(ByVal Kanal As Byte)
+
+            Dim Tackt_Data() As Byte = {&H0, &HFF, &H21, &H1, &H0}
+            Tackt_Data(4) = Hex(Kanal)
+            'Tackt_Data(3) = Hex(Tackt_Nenner)
+
+            'If Not ValidTrack() Then Return
+
+            For i = 0 To Tackt_Data.Count - 1
+                TrackData.Add(CByte(Tackt_Data(i)))
+            Next
+
+        End Sub
+
+
+        Public Sub Text(ByVal Textart As String, ByVal Text As String)
+
+            Dim Tackt_Data_List As New List(Of Byte)
+
+            Tackt_Data_List.Add(&H0)
+            Tackt_Data_List.Add(&HFF)
+            Tackt_Data_List.Add(Textart)
+            Tackt_Data_List.Add(&H0)
+
+            For i = 0 To Text.Count - 1
+                Tackt_Data_List.Add(Asc(Text(i)))
+            Next
+
+            Tackt_Data_List(3) = Hex(Text.Count)
+
+            For i = 0 To Tackt_Data_List.Count - 1
+                TrackData.Add(CByte(Tackt_Data_List(i)))
+            Next
+
+        End Sub
+
+
         Public Sub Add_Instrument(ByVal Instrument As Byte)
 
             Dim Tackt_Data() As Byte = {&H0, &HC1, &H10, &H0}
+            'Tackt_Data(2) = Hex(Instrument)
             'Tackt_Data(4) = Hex(Tackt_Zaehler)
             'Tackt_Data(3) = Hex(Tackt_Nenner)
 

@@ -55,6 +55,10 @@ Partial Class Form1
         Me.TextBox40 = New System.Windows.Forms.TextBox()
         Me.TextBox41 = New System.Windows.Forms.TextBox()
         Me.TextBox42 = New System.Windows.Forms.TextBox()
+        Me.TrackBar4 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar3 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar5 = New System.Windows.Forms.TrackBar()
+        Me.TrackBar6 = New System.Windows.Forms.TrackBar()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
@@ -147,8 +151,8 @@ Partial Class Form1
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
-        Me.NumericUpDown4 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
+        Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
+        Me.Tackt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
@@ -182,6 +186,15 @@ Partial Class Form1
         Me.btnPlay1Note = New System.Windows.Forms.Button()
         Me.lblClickMe = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.TextBox74 = New System.Windows.Forms.TextBox()
+        Me.GroupBox9 = New System.Windows.Forms.GroupBox()
+        Me.TextBox72 = New System.Windows.Forms.TextBox()
+        Me.GroupBox10 = New System.Windows.Forms.GroupBox()
+        Me.TextBox71 = New System.Windows.Forms.TextBox()
+        Me.GroupBox8 = New System.Windows.Forms.GroupBox()
+        Me.TextBox73 = New System.Windows.Forms.TextBox()
         Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar2 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar3 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -217,21 +230,21 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar33 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar34 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.MTech010VerticalProgessBar35 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.TrackBar3 = New System.Windows.Forms.TrackBar()
-        Me.TrackBar4 = New System.Windows.Forms.TrackBar()
-        Me.TrackBar5 = New System.Windows.Forms.TrackBar()
-        Me.TrackBar6 = New System.Windows.Forms.TrackBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
+        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.FlowLayoutPanel2.SuspendLayout()
         Me.FlowLayoutPanel3.SuspendLayout()
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
         Me.Tempo_GroupBox.SuspendLayout()
-        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -240,10 +253,11 @@ Partial Class Form1
         Me.GroupBox4.SuspendLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox7.SuspendLayout()
+        Me.GroupBox11.SuspendLayout()
+        Me.GroupBox9.SuspendLayout()
+        Me.GroupBox10.SuspendLayout()
+        Me.GroupBox8.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -579,6 +593,50 @@ Partial Class Form1
         Me.TextBox42.TabIndex = 24
         Me.TextBox42.Text = "200"
         Me.TextBox42.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TrackBar4
+        '
+        Me.TrackBar4.Location = New System.Drawing.Point(3, 187)
+        Me.TrackBar4.Maximum = 1
+        Me.TrackBar4.Minimum = -1
+        Me.TrackBar4.Name = "TrackBar4"
+        Me.TrackBar4.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar4.Size = New System.Drawing.Size(45, 84)
+        Me.TrackBar4.TabIndex = 180
+        Me.TrackBar4.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar3
+        '
+        Me.TrackBar3.Location = New System.Drawing.Point(54, 187)
+        Me.TrackBar3.Maximum = 1
+        Me.TrackBar3.Minimum = -1
+        Me.TrackBar3.Name = "TrackBar3"
+        Me.TrackBar3.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar3.Size = New System.Drawing.Size(45, 69)
+        Me.TrackBar3.TabIndex = 179
+        Me.TrackBar3.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar5
+        '
+        Me.TrackBar5.Location = New System.Drawing.Point(105, 187)
+        Me.TrackBar5.Maximum = 1
+        Me.TrackBar5.Minimum = -1
+        Me.TrackBar5.Name = "TrackBar5"
+        Me.TrackBar5.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar5.Size = New System.Drawing.Size(45, 48)
+        Me.TrackBar5.TabIndex = 181
+        Me.TrackBar5.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TrackBar6
+        '
+        Me.TrackBar6.Location = New System.Drawing.Point(156, 187)
+        Me.TrackBar6.Maximum = 1
+        Me.TrackBar6.Minimum = -1
+        Me.TrackBar6.Name = "TrackBar6"
+        Me.TrackBar6.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.TrackBar6.Size = New System.Drawing.Size(45, 48)
+        Me.TrackBar6.TabIndex = 182
+        Me.TrackBar6.TickStyle = System.Windows.Forms.TickStyle.Both
         '
         'FlowLayoutPanel2
         '
@@ -1520,8 +1578,8 @@ Partial Class Form1
         'Tempo_GroupBox
         '
         Me.Tempo_GroupBox.Controls.Add(Me.Label18)
-        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown4)
-        Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown3)
+        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Naenner_Input)
+        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Zaehler_Input)
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.Label16)
         Me.Tempo_GroupBox.Controls.Add(Me.NumericUpDown2)
@@ -1541,23 +1599,25 @@ Partial Class Form1
         Me.Label18.TabIndex = 172
         Me.Label18.Text = "/"
         '
-        'NumericUpDown4
+        'Tackt_Naenner_Input
         '
-        Me.NumericUpDown4.Location = New System.Drawing.Point(137, 12)
-        Me.NumericUpDown4.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown4.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown4.Name = "NumericUpDown4"
-        Me.NumericUpDown4.Size = New System.Drawing.Size(48, 20)
-        Me.NumericUpDown4.TabIndex = 174
+        Me.Tackt_Naenner_Input.Location = New System.Drawing.Point(137, 12)
+        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Tackt_Naenner_Input.Name = "Tackt_Naenner_Input"
+        Me.Tackt_Naenner_Input.Size = New System.Drawing.Size(48, 20)
+        Me.Tackt_Naenner_Input.TabIndex = 174
+        Me.Tackt_Naenner_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
-        'NumericUpDown3
+        'Tackt_Zaehler_Input
         '
-        Me.NumericUpDown3.Location = New System.Drawing.Point(61, 12)
-        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown3.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown3.Name = "NumericUpDown3"
-        Me.NumericUpDown3.Size = New System.Drawing.Size(55, 20)
-        Me.NumericUpDown3.TabIndex = 172
+        Me.Tackt_Zaehler_Input.Location = New System.Drawing.Point(61, 12)
+        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Tackt_Zaehler_Input.Name = "Tackt_Zaehler_Input"
+        Me.Tackt_Zaehler_Input.Size = New System.Drawing.Size(55, 20)
+        Me.Tackt_Zaehler_Input.TabIndex = 172
+        Me.Tackt_Zaehler_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
         'Label17
         '
@@ -1752,7 +1812,7 @@ Partial Class Form1
         '
         'NoteC
         '
-        Me.NoteC.Location = New System.Drawing.Point(699, 101)
+        Me.NoteC.Location = New System.Drawing.Point(838, 51)
         Me.NoteC.Name = "NoteC"
         Me.NoteC.Size = New System.Drawing.Size(378, 78)
         Me.NoteC.TabIndex = 165
@@ -1768,6 +1828,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel1)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel2)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel3)
+        Me.GroupBox4.Controls.Add(Me.TrackBar1)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel4)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel5)
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
@@ -1780,7 +1841,7 @@ Partial Class Form1
         '
         'TrackBar1
         '
-        Me.TrackBar1.Location = New System.Drawing.Point(576, 390)
+        Me.TrackBar1.Location = New System.Drawing.Point(377, 250)
         Me.TrackBar1.Maximum = 35
         Me.TrackBar1.Name = "TrackBar1"
         Me.TrackBar1.Size = New System.Drawing.Size(666, 45)
@@ -1856,12 +1917,95 @@ Partial Class Form1
         Me.lblClickMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblClickMe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClickMe.ForeColor = System.Drawing.Color.SteelBlue
-        Me.lblClickMe.Location = New System.Drawing.Point(704, 207)
+        Me.lblClickMe.Location = New System.Drawing.Point(786, 150)
         Me.lblClickMe.Name = "lblClickMe"
         Me.lblClickMe.Size = New System.Drawing.Size(127, 127)
         Me.lblClickMe.TabIndex = 170
         Me.lblClickMe.Text = "Click in this box.  The Lower you click down the box, the higher the note."
         Me.lblClickMe.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.GroupBox11)
+        Me.GroupBox7.Controls.Add(Me.GroupBox9)
+        Me.GroupBox7.Controls.Add(Me.GroupBox10)
+        Me.GroupBox7.Controls.Add(Me.GroupBox8)
+        Me.GroupBox7.Location = New System.Drawing.Point(559, 13)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(195, 422)
+        Me.GroupBox7.TabIndex = 172
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Zusatzinformationen (Optional)"
+        '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.TextBox74)
+        Me.GroupBox11.Location = New System.Drawing.Point(17, 86)
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.Size = New System.Drawing.Size(165, 46)
+        Me.GroupBox11.TabIndex = 4
+        Me.GroupBox11.TabStop = False
+        Me.GroupBox11.Text = "Dateiname (im META)"
+        '
+        'TextBox74
+        '
+        Me.TextBox74.Location = New System.Drawing.Point(12, 17)
+        Me.TextBox74.Name = "TextBox74"
+        Me.TextBox74.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox74.TabIndex = 0
+        '
+        'GroupBox9
+        '
+        Me.GroupBox9.Controls.Add(Me.TextBox72)
+        Me.GroupBox9.Location = New System.Drawing.Point(17, 265)
+        Me.GroupBox9.Name = "GroupBox9"
+        Me.GroupBox9.Size = New System.Drawing.Size(165, 123)
+        Me.GroupBox9.TabIndex = 3
+        Me.GroupBox9.TabStop = False
+        Me.GroupBox9.Text = "Bemerkung"
+        '
+        'TextBox72
+        '
+        Me.TextBox72.Location = New System.Drawing.Point(11, 19)
+        Me.TextBox72.Multiline = True
+        Me.TextBox72.Name = "TextBox72"
+        Me.TextBox72.Size = New System.Drawing.Size(142, 88)
+        Me.TextBox72.TabIndex = 1
+        '
+        'GroupBox10
+        '
+        Me.GroupBox10.Controls.Add(Me.TextBox71)
+        Me.GroupBox10.Location = New System.Drawing.Point(17, 27)
+        Me.GroupBox10.Name = "GroupBox10"
+        Me.GroupBox10.Size = New System.Drawing.Size(165, 46)
+        Me.GroupBox10.TabIndex = 3
+        Me.GroupBox10.TabStop = False
+        Me.GroupBox10.Text = "Dateiname (im META)"
+        '
+        'TextBox71
+        '
+        Me.TextBox71.Location = New System.Drawing.Point(12, 17)
+        Me.TextBox71.Name = "TextBox71"
+        Me.TextBox71.Size = New System.Drawing.Size(142, 20)
+        Me.TextBox71.TabIndex = 0
+        '
+        'GroupBox8
+        '
+        Me.GroupBox8.Controls.Add(Me.TextBox73)
+        Me.GroupBox8.Location = New System.Drawing.Point(17, 149)
+        Me.GroupBox8.Name = "GroupBox8"
+        Me.GroupBox8.Size = New System.Drawing.Size(165, 104)
+        Me.GroupBox8.TabIndex = 2
+        Me.GroupBox8.TabStop = False
+        Me.GroupBox8.Text = "Copyright Eintrag"
+        '
+        'TextBox73
+        '
+        Me.TextBox73.Location = New System.Drawing.Point(11, 19)
+        Me.TextBox73.Multiline = True
+        Me.TextBox73.Name = "TextBox73"
+        Me.TextBox73.Size = New System.Drawing.Size(142, 75)
+        Me.TextBox73.TabIndex = 2
         '
         'MTech010VerticalProgessBar1
         '
@@ -2144,58 +2288,14 @@ Partial Class Form1
         Me.MTech010VerticalProgessBar35.Size = New System.Drawing.Size(26, 97)
         Me.MTech010VerticalProgessBar35.TabIndex = 9
         '
-        'TrackBar3
-        '
-        Me.TrackBar3.Location = New System.Drawing.Point(54, 187)
-        Me.TrackBar3.Maximum = 1
-        Me.TrackBar3.Minimum = -1
-        Me.TrackBar3.Name = "TrackBar3"
-        Me.TrackBar3.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar3.Size = New System.Drawing.Size(45, 69)
-        Me.TrackBar3.TabIndex = 179
-        Me.TrackBar3.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'TrackBar4
-        '
-        Me.TrackBar4.Location = New System.Drawing.Point(3, 187)
-        Me.TrackBar4.Maximum = 1
-        Me.TrackBar4.Minimum = -1
-        Me.TrackBar4.Name = "TrackBar4"
-        Me.TrackBar4.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar4.Size = New System.Drawing.Size(45, 84)
-        Me.TrackBar4.TabIndex = 180
-        Me.TrackBar4.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'TrackBar5
-        '
-        Me.TrackBar5.Location = New System.Drawing.Point(105, 187)
-        Me.TrackBar5.Maximum = 1
-        Me.TrackBar5.Minimum = -1
-        Me.TrackBar5.Name = "TrackBar5"
-        Me.TrackBar5.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar5.Size = New System.Drawing.Size(45, 48)
-        Me.TrackBar5.TabIndex = 181
-        Me.TrackBar5.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'TrackBar6
-        '
-        Me.TrackBar6.Location = New System.Drawing.Point(156, 187)
-        Me.TrackBar6.Maximum = 1
-        Me.TrackBar6.Minimum = -1
-        Me.TrackBar6.Name = "TrackBar6"
-        Me.TrackBar6.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.TrackBar6.Size = New System.Drawing.Size(45, 48)
-        Me.TrackBar6.TabIndex = 182
-        Me.TrackBar6.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 995)
+        Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.lblClickMe)
-        Me.Controls.Add(Me.TrackBar1)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.NoteC)
         Me.Controls.Add(Me.Einstellungen_GroupBox)
@@ -2209,6 +2309,10 @@ Partial Class Form1
         Me.GroupBox2.ResumeLayout(False)
         Me.FlowLayoutPanel1.ResumeLayout(False)
         Me.FlowLayoutPanel1.PerformLayout()
+        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).EndInit()
         Me.FlowLayoutPanel2.ResumeLayout(False)
         Me.FlowLayoutPanel2.PerformLayout()
         Me.FlowLayoutPanel3.ResumeLayout(False)
@@ -2220,8 +2324,8 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.ResumeLayout(False)
         Me.Tempo_GroupBox.ResumeLayout(False)
         Me.Tempo_GroupBox.PerformLayout()
-        CType(Me.NumericUpDown4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
@@ -2231,15 +2335,20 @@ Partial Class Form1
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.TrackBar3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar4, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.TrackBar6, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox11.ResumeLayout(False)
+        Me.GroupBox11.PerformLayout()
+        Me.GroupBox9.ResumeLayout(False)
+        Me.GroupBox9.PerformLayout()
+        Me.GroupBox10.ResumeLayout(False)
+        Me.GroupBox10.PerformLayout()
+        Me.GroupBox8.ResumeLayout(False)
+        Me.GroupBox8.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -2389,8 +2498,8 @@ Partial Class Form1
     Friend WithEvents lblClickMe As System.Windows.Forms.Label
     Friend WithEvents Tempo_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents NumericUpDown4 As System.Windows.Forms.NumericUpDown
-    Friend WithEvents NumericUpDown3 As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Tackt_Naenner_Input As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Tackt_Zaehler_Input As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label17 As System.Windows.Forms.Label
     Friend WithEvents Label16 As System.Windows.Forms.Label
     Friend WithEvents NumericUpDown2 As System.Windows.Forms.NumericUpDown
@@ -2440,5 +2549,14 @@ Partial Class Form1
     Friend WithEvents TrackBar4 As System.Windows.Forms.TrackBar
     Friend WithEvents TrackBar5 As System.Windows.Forms.TrackBar
     Friend WithEvents TrackBar6 As System.Windows.Forms.TrackBar
+    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents GroupBox11 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox74 As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox72 As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox71 As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox73 As System.Windows.Forms.TextBox
 
 End Class
