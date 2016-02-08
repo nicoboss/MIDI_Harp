@@ -1855,7 +1855,7 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.btnStopNoteAbove)
         Me.GroupBox3.Controls.Add(Me.btnPlay1Note)
         Me.GroupBox3.ForeColor = System.Drawing.Color.DarkRed
-        Me.GroupBox3.Location = New System.Drawing.Point(913, 207)
+        Me.GroupBox3.Location = New System.Drawing.Point(945, 208)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(271, 142)
         Me.GroupBox3.TabIndex = 171
@@ -1917,7 +1917,7 @@ Partial Class Form1
         Me.lblClickMe.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lblClickMe.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblClickMe.ForeColor = System.Drawing.Color.SteelBlue
-        Me.lblClickMe.Location = New System.Drawing.Point(786, 150)
+        Me.lblClickMe.Location = New System.Drawing.Point(777, 223)
         Me.lblClickMe.Name = "lblClickMe"
         Me.lblClickMe.Size = New System.Drawing.Size(127, 127)
         Me.lblClickMe.TabIndex = 170
@@ -1945,7 +1945,7 @@ Partial Class Form1
         Me.GroupBox11.Size = New System.Drawing.Size(165, 46)
         Me.GroupBox11.TabIndex = 4
         Me.GroupBox11.TabStop = False
-        Me.GroupBox11.Text = "Dateiname (im META)"
+        Me.GroupBox11.Text = "Spurnamen"
         '
         'TextBox74
         '

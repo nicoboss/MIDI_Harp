@@ -313,6 +313,7 @@ Public Class Form1
 
 
     Private Sub Start_Sound() Handles MIDI_Start.Click
+        MIDI_Start.Enabled = False
         MIDI_Pausieren.Enabled = True
         MIDI_Save.Enabled = True
         Einstellungen_GroupBox.Enabled = False
@@ -330,12 +331,23 @@ Public Class Form1
         Tackt.Enabled = True
     End Sub
 
+    Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
+        If Einstellungen_GroupBox.Enabled = False Then
+            Tackt.Enabled = False
+            Einstellungen_GroupBox.Enabled = True
+            MIDI_Pausieren.Text = "Aufnahme fortsetzen"
+        Else
+            Tackt.Enabled = True
+            Einstellungen_GroupBox.Enabled = False
+            MIDI_Pausieren.Text = "Aufnahme pausieren"
+        End If
+    End Sub
+
     Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Save.Click
 
         MIDI_Pausieren.Enabled = False
         MIDI_Save.Enabled = False
         Tackt.Enabled = False
-        Einstellungen_GroupBox.Enabled = True
 
         TacktNr = 0
         Tackt_Achtel = 0
@@ -353,6 +365,9 @@ Public Class Form1
         If result = DialogResult.OK Then
             Song.Save(SaveMIDIDialog.FileName)
         End If
+
+        Einstellungen_GroupBox.Enabled = True
+        MIDI_Start.Enabled = True
 
     End Sub
 
@@ -456,17 +471,11 @@ Public Class Form1
 
     End Sub
 
-    Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
-        If Einstellungen_GroupBox.Enabled = False Then
-            Einstellungen_GroupBox.Enabled = True
-            MIDI_Pausieren.Text = "Aufnahme fortsetzen"
-        Else
-            Einstellungen_GroupBox.Enabled = False
-            MIDI_Pausieren.Text = "Aufnahme pausieren"
-        End If
 
 
-    End Sub
+
+
+
 
 
 
