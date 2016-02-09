@@ -54,6 +54,11 @@ Public Class Form1
         Button_Disconnect.Enabled = False
         Button_Connect.Enabled = False
 
+        Song.AddTrack()
+        Song.AddTrack()
+
+        InitializeNotes()
+
 
     End Sub
 
@@ -241,25 +246,6 @@ Public Class Form1
         Notes.Add(NumberOfNotes, "R") ' Pause (z.B. 2.2P)
     End Sub
 
-    Private Sub MIDI_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
-        Song.AddTrack()
-        Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
-        Song.Tracks(0).Text(1, META_Autor_Input.Text)
-        Song.Tracks(0).Text(2, META_Copyright_Input.Text)
-        Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
-        Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
-
-        Song.AddTrack()
-        Song.Tracks(1).Zuordnung(1)
-        Song.Tracks(1).Text(1, "Organ")
-        Song.Tracks(1).Text(3, "Organ")
-        Song.Tracks(1).Text(4, "Organ")
-        Song.Tracks(1).Add_Instrument(10)
-
-        InitializeNotes()
-    End Sub
-
 
     Private Sub Tackt_Tick() Handles Tackt.Tick
 
@@ -360,7 +346,19 @@ Public Class Form1
             MessageBox.Show("Error")
         End If
 
-        'Song.Tracks(1).TrackData.Clear()
+        Song.Tracks(0).TrackData.Clear()
+        Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
+        Song.Tracks(0).Text(1, META_Autor_Input.Text)
+        Song.Tracks(0).Text(2, META_Copyright_Input.Text)
+        Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
+        Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
+
+        Song.Tracks(1).TrackData.Clear()
+        Song.Tracks(1).Zuordnung(1)
+        Song.Tracks(1).Text(1, "Organ")
+        Song.Tracks(1).Text(3, "Organ")
+        Song.Tracks(1).Text(4, "Organ")
+        Song.Tracks(1).Add_Instrument(77)
 
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)

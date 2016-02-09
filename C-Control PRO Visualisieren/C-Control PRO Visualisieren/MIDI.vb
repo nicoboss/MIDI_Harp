@@ -144,13 +144,17 @@ Public Class MIDI
             Tackt_Data_List.Add(&H0)
             Tackt_Data_List.Add(&HFF)
             Tackt_Data_List.Add(Textart)
-            Tackt_Data_List.Add(&H0)
+            Tackt_Data_List.Add(Text.Length)
 
             For i = 0 To Text.Count - 1
                 Tackt_Data_List.Add(Asc(Text(i)))
             Next
 
-            Tackt_Data_List(3) = Hex(Text.Count)
+
+
+
+            'Tackt_Data_List(3) = CByte((Text.Length >> 8) And &HFF)
+            'Tackt_Data_List(4) = CByte((Text.Length And &HFF))
 
             For i = 0 To Tackt_Data_List.Count - 1
                 TrackData.Add(CByte(Tackt_Data_List(i)))
@@ -162,7 +166,7 @@ Public Class MIDI
         Public Sub Add_Instrument(ByVal Instrument As Byte)
 
             Dim Tackt_Data() As Byte = {&H0, &HC1, &H10, &H0}
-            'Tackt_Data(2) = Hex(Instrument)
+            Tackt_Data(2) = Instrument
             'Tackt_Data(4) = Hex(Tackt_Zaehler)
             'Tackt_Data(3) = Hex(Tackt_Nenner)
 
