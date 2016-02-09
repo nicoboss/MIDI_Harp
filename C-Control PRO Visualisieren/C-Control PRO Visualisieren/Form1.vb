@@ -696,8 +696,15 @@ Public Class Form1
 
 
 
-
-
+    Private Sub C2_Grenzwert_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles C2_Grenzwert.KeyPress
+        Select Case Asc(e.KeyChar)
+            Case 48 To 57, 8, 32, 46
+                ' Zahlen, Backspace und Space zulassen
+            Case Else
+                ' alle anderen Eingaben unterdrücken
+                e.Handled = True
+        End Select
+    End Sub
 
 
 

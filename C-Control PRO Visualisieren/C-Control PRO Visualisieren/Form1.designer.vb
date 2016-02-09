@@ -609,6 +609,7 @@ Partial Class Form1
         'C2_Grenzwert
         '
         Me.C2_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C2_Grenzwert.MaxLength = 3
         Me.C2_Grenzwert.Name = "C2_Grenzwert"
         Me.C2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.C2_Grenzwert.TabIndex = 18
