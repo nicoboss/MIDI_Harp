@@ -46,12 +46,7 @@ Public Class Form1
 
         Tackt.Interval = (60 / BPM.Value / 4) * 1000
 
-        'Comports suchen
-        For Each Me.port In ports
-            ComboBox_Comport.Items.Add(port)
-        Next port
-
-        ComboBox_Comport.Sorted = True
+        COM_Search()
 
         'Buttons sperren
         Button_Disconnect.Enabled = False
@@ -64,6 +59,21 @@ Public Class Form1
 
 
     End Sub
+
+
+    Sub Com_Search() Handles Com_Search_Timer.Tick
+
+        ports = GetPortNames()
+        ComboBox_Comport.Items.Clear()
+
+        'Comports suchen
+        For Each Me.port In ports
+            ComboBox_Comport.Items.Add(port)
+        Next port
+
+        ComboBox_Comport.Sorted = True
+    End Sub
+
 
     Private Sub Button_Connect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Connect.Click
 
@@ -93,15 +103,16 @@ Public Class Form1
 
         End Try
 
-        Timer1.Enabled = True
-        'SerialPort1_DataReceived()
-        'SerialPort1.Write(1)
+        Com_Search_Timer.Enabled = False
+        Tackt.Enabled = True
     End Sub
 
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         'trennen
+        Tackt.Enabled = False
+        Com_Search_Timer.Enabled = True
         Button_Connect.Enabled = True
         Button_Disconnect.Enabled = False
         ComboBox_Comport.Enabled = True
@@ -110,7 +121,7 @@ Public Class Form1
     End Sub
 
     'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
-    Private Sub SerialPort1_DataReceived() Handles Timer1.Tick 'SerialPort1.DataReceived
+    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
 
         Dim Serial_Read As String = ""
 
@@ -137,6 +148,9 @@ Public Class Form1
             NoteP = False
             Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
         End If
+
+
+        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
 
 
         'MTech010VerticalProgessBar2.Value = ADC(1)
@@ -334,7 +348,6 @@ Public Class Form1
 
         Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8)
 
-
         Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
 
     End Sub
@@ -460,9 +473,18 @@ Public Class Form1
             C6_VerticalProgessBar, D6_VerticalProgessBar, E6_VerticalProgessBar, F6_VerticalProgessBar, G6_VerticalProgessBar, A6_VerticalProgessBar, H6_VerticalProgessBar}
 
 
+        Dim Noten_Wert() As TextBox = { _
+            C2_Wert, D2_Wert, E2_Wert, F2_Wert, G2_Wert, A2_Wert, H2_Wert, _
+            C3_Wert, D3_Wert, E3_Wert, F3_Wert, G3_Wert, A3_Wert, H3_Wert, _
+            C4_Wert, D4_Wert, E4_Wert, F4_Wert, G4_Wert, A4_Wert, H4_Wert, _
+            C5_Wert, D5_Wert, E5_Wert, F5_Wert, G5_Wert, A5_Wert, H5_Wert, _
+            C6_Wert, D6_Wert, E6_Wert, F6_Wert, G6_Wert, A6_Wert, H6_Wert}
+
+
+
         For i = 0 To 34 Step 1
-            Noten_VerticalProgessBar(i).Value = rnd.Next(12, 255) 'ADC(i)
-            C2_Wert.Text = ADC(i)
+            Noten_VerticalProgessBar(i).Value = ADC(i) 'rnd.Next(12, 255) 'ADC(i)
+            Noten_Wert(i).Text = ADC(i)
         Next
 
 
@@ -471,22 +493,15 @@ Public Class Form1
 
 
 
+
     Private Sub Tonhoehenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tonhoehenverschiebung.SelectedIndexChanged
         NumericUpDown1.Value = 12 * (Tonhoehenverschiebung.SelectedIndex - 4)
     End Sub
 
-    Private Sub NumericUpDown1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NumericUpDown1.ValueChanged
-
-    End Sub
-
-    Private Sub Start_Sound(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Start.Click
-
-    End Sub
 
 
 
-
-
+#Region " cls MIDI "
 
     Dim m As New clsMIDI
 
@@ -560,41 +575,11 @@ Public Class Form1
     End Sub
 
 
+#End Region
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#Region " Buttons Events "
 
 
     Private Sub C2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.Click
@@ -683,7 +668,7 @@ Public Class Form1
         Button_Note(51)
     End Sub
 
-
+#End Region
 
 
     Private Sub Button_Note(ByVal NoteNr As Byte)
@@ -710,8 +695,24 @@ Public Class Form1
 
 
 
+#Region " Messintervall des Mikrokontrollers "
+
+    ' Obwohl die zwei folgenden Subs sich immer wieder gegenseitig abrufen, gibt es nie eine Endlosschleife, da der Event ValueChanged nur ausgeführt wird, falls wirklich eine Änderung stadtgefunden hat.
+    ' Nicht aber wenn man einfach den gleichen Wert mit dem Gleichem ersetzt. Trotz allem kann es vorkommen, da eine Funktion bei einem Value Wechsel 2mal aufgerufen wird.
+    ' Jedenfalls Wirklich coole Umrechnung. 2mal das Selbe und doch verschieden. Cooler "Zufall", das gerade beide dieselbe Umrechnungsformel haben.
+    ' Ach übrigens: Die NumericUpDowns werden vor allem beim Messintervall, absichtlich stark auf eine Ganzzahl gerundet
+
+    Private Sub Messintervall_NumericUpDown_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall_NumericUpDown.ValueChanged
+        MessungenProS_NumericUpDown.Value = 1000 / Messintervall_NumericUpDown.Value ' Da MessungenProS_NumericUpDown verändert wird, wird automatisch der MessungenProS_NumericUpDown.ValueChanged Event ausgelöst
+        Messintervall.Interval = Messintervall_NumericUpDown.Value
+    End Sub
 
 
+    Private Sub NumericUpDown2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessungenProS_NumericUpDown.ValueChanged
+        Messintervall_NumericUpDown.Value = 1000 / MessungenProS_NumericUpDown.Value ' Da Messintervall_NumericUpDown verändert wird, wird automatisch der Messintervall_NumericUpDown.ValueChanged Event ausgelöst
+    End Sub
+
+#End Region
 
 
 

@@ -86,13 +86,13 @@ Partial Class Form1
         Me.G4_Button = New System.Windows.Forms.Button()
         Me.A4_Button = New System.Windows.Forms.Button()
         Me.H4_Button = New System.Windows.Forms.Button()
-        Me.TextBox15 = New System.Windows.Forms.TextBox()
-        Me.TextBox16 = New System.Windows.Forms.TextBox()
-        Me.TextBox17 = New System.Windows.Forms.TextBox()
-        Me.TextBox18 = New System.Windows.Forms.TextBox()
-        Me.TextBox19 = New System.Windows.Forms.TextBox()
-        Me.TextBox20 = New System.Windows.Forms.TextBox()
-        Me.TextBox21 = New System.Windows.Forms.TextBox()
+        Me.C4_Wert = New System.Windows.Forms.TextBox()
+        Me.D4_Wert = New System.Windows.Forms.TextBox()
+        Me.E4_Wert = New System.Windows.Forms.TextBox()
+        Me.F4_Wert = New System.Windows.Forms.TextBox()
+        Me.G4_Wert = New System.Windows.Forms.TextBox()
+        Me.A4_Wert = New System.Windows.Forms.TextBox()
+        Me.H4_Wert = New System.Windows.Forms.TextBox()
         Me.TextBox50 = New System.Windows.Forms.TextBox()
         Me.TextBox51 = New System.Windows.Forms.TextBox()
         Me.TextBox52 = New System.Windows.Forms.TextBox()
@@ -108,13 +108,13 @@ Partial Class Form1
         Me.Button26 = New System.Windows.Forms.Button()
         Me.Button27 = New System.Windows.Forms.Button()
         Me.Button28 = New System.Windows.Forms.Button()
-        Me.TextBox22 = New System.Windows.Forms.TextBox()
-        Me.TextBox23 = New System.Windows.Forms.TextBox()
-        Me.TextBox24 = New System.Windows.Forms.TextBox()
-        Me.TextBox25 = New System.Windows.Forms.TextBox()
-        Me.TextBox26 = New System.Windows.Forms.TextBox()
-        Me.TextBox27 = New System.Windows.Forms.TextBox()
-        Me.TextBox28 = New System.Windows.Forms.TextBox()
+        Me.C5_Wert = New System.Windows.Forms.TextBox()
+        Me.D5_Wert = New System.Windows.Forms.TextBox()
+        Me.E5_Wert = New System.Windows.Forms.TextBox()
+        Me.F5_Wert = New System.Windows.Forms.TextBox()
+        Me.G5_Wert = New System.Windows.Forms.TextBox()
+        Me.A5_Wert = New System.Windows.Forms.TextBox()
+        Me.H5_Wert = New System.Windows.Forms.TextBox()
         Me.TextBox57 = New System.Windows.Forms.TextBox()
         Me.TextBox58 = New System.Windows.Forms.TextBox()
         Me.TextBox59 = New System.Windows.Forms.TextBox()
@@ -130,13 +130,13 @@ Partial Class Form1
         Me.Button33 = New System.Windows.Forms.Button()
         Me.Button34 = New System.Windows.Forms.Button()
         Me.Button35 = New System.Windows.Forms.Button()
-        Me.TextBox29 = New System.Windows.Forms.TextBox()
-        Me.TextBox30 = New System.Windows.Forms.TextBox()
-        Me.TextBox31 = New System.Windows.Forms.TextBox()
-        Me.TextBox32 = New System.Windows.Forms.TextBox()
-        Me.TextBox33 = New System.Windows.Forms.TextBox()
-        Me.TextBox34 = New System.Windows.Forms.TextBox()
-        Me.TextBox35 = New System.Windows.Forms.TextBox()
+        Me.C6_Wert = New System.Windows.Forms.TextBox()
+        Me.D6_Wert = New System.Windows.Forms.TextBox()
+        Me.E6_Wert = New System.Windows.Forms.TextBox()
+        Me.F6_Wert = New System.Windows.Forms.TextBox()
+        Me.G6_Wert = New System.Windows.Forms.TextBox()
+        Me.A6_Wert = New System.Windows.Forms.TextBox()
+        Me.H6_Wert = New System.Windows.Forms.TextBox()
         Me.TextBox64 = New System.Windows.Forms.TextBox()
         Me.TextBox65 = New System.Windows.Forms.TextBox()
         Me.TextBox66 = New System.Windows.Forms.TextBox()
@@ -146,9 +146,15 @@ Partial Class Form1
         Me.TextBox70 = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.HScrollBar2 = New System.Windows.Forms.HScrollBar()
-        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
+        Me.GroupBox20 = New System.Windows.Forms.GroupBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Messintervall_NumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.MessungenProS_NumericUpDown = New System.Windows.Forms.NumericUpDown()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.GroupBox19 = New System.Windows.Forms.GroupBox()
+        Me.MIDI_SpecialMode = New System.Windows.Forms.RadioButton()
+        Me.MIDI_NormalMode = New System.Windows.Forms.RadioButton()
+        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.GroupBox13 = New System.Windows.Forms.GroupBox()
         Me.Metronom_OFF = New System.Windows.Forms.RadioButton()
         Me.Metronom_ON = New System.Windows.Forms.RadioButton()
@@ -165,11 +171,12 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Tonhoehenverschiebung = New System.Windows.Forms.ComboBox()
-        Me.cboInstruments = New System.Windows.Forms.ComboBox()
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
         Me.Timer3 = New System.Windows.Forms.Timer(Me.components)
         Me.NoteC = New System.Windows.Forms.Button()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Messintervall = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TextBox103 = New System.Windows.Forms.TextBox()
@@ -259,6 +266,7 @@ Partial Class Form1
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
         Me.Button37 = New System.Windows.Forms.Button()
         Me.Button36 = New System.Windows.Forms.Button()
+        Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -302,7 +310,10 @@ Partial Class Form1
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
-        Me.GroupBox15.SuspendLayout()
+        Me.GroupBox20.SuspendLayout()
+        CType(Me.Messintervall_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MessungenProS_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox19.SuspendLayout()
         Me.GroupBox13.SuspendLayout()
         Me.Tempo_GroupBox.SuspendLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -310,6 +321,7 @@ Partial Class Form1
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Transpose_GroupBox.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox15.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.FlowLayoutPanel11.SuspendLayout()
         Me.FlowLayoutPanel10.SuspendLayout()
@@ -917,13 +929,13 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Controls.Add(Me.G4_Button)
         Me.FlowLayoutPanel3.Controls.Add(Me.A4_Button)
         Me.FlowLayoutPanel3.Controls.Add(Me.H4_Button)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox15)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox16)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox17)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox18)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox19)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox20)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox21)
+        Me.FlowLayoutPanel3.Controls.Add(Me.C4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.D4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.E4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.F4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.G4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.A4_Wert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.H4_Wert)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox50)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox51)
         Me.FlowLayoutPanel3.Controls.Add(Me.TextBox52)
@@ -999,75 +1011,75 @@ Partial Class Form1
         Me.H4_Button.Text = "h'"
         Me.H4_Button.UseVisualStyleBackColor = True
         '
-        'TextBox15
+        'C4_Wert
         '
-        Me.TextBox15.Location = New System.Drawing.Point(3, 135)
-        Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.ReadOnly = True
-        Me.TextBox15.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox15.TabIndex = 12
-        Me.TextBox15.Text = "0"
-        Me.TextBox15.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C4_Wert.Location = New System.Drawing.Point(3, 135)
+        Me.C4_Wert.Name = "C4_Wert"
+        Me.C4_Wert.ReadOnly = True
+        Me.C4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.C4_Wert.TabIndex = 12
+        Me.C4_Wert.Text = "0"
+        Me.C4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox16
+        'D4_Wert
         '
-        Me.TextBox16.Location = New System.Drawing.Point(35, 135)
-        Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.ReadOnly = True
-        Me.TextBox16.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox16.TabIndex = 13
-        Me.TextBox16.Text = "0"
-        Me.TextBox16.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D4_Wert.Location = New System.Drawing.Point(35, 135)
+        Me.D4_Wert.Name = "D4_Wert"
+        Me.D4_Wert.ReadOnly = True
+        Me.D4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.D4_Wert.TabIndex = 13
+        Me.D4_Wert.Text = "0"
+        Me.D4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox17
+        'E4_Wert
         '
-        Me.TextBox17.Location = New System.Drawing.Point(67, 135)
-        Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.ReadOnly = True
-        Me.TextBox17.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox17.TabIndex = 14
-        Me.TextBox17.Text = "0"
-        Me.TextBox17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E4_Wert.Location = New System.Drawing.Point(67, 135)
+        Me.E4_Wert.Name = "E4_Wert"
+        Me.E4_Wert.ReadOnly = True
+        Me.E4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.E4_Wert.TabIndex = 14
+        Me.E4_Wert.Text = "0"
+        Me.E4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox18
+        'F4_Wert
         '
-        Me.TextBox18.Location = New System.Drawing.Point(99, 135)
-        Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.ReadOnly = True
-        Me.TextBox18.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox18.TabIndex = 15
-        Me.TextBox18.Text = "0"
-        Me.TextBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F4_Wert.Location = New System.Drawing.Point(99, 135)
+        Me.F4_Wert.Name = "F4_Wert"
+        Me.F4_Wert.ReadOnly = True
+        Me.F4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.F4_Wert.TabIndex = 15
+        Me.F4_Wert.Text = "0"
+        Me.F4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox19
+        'G4_Wert
         '
-        Me.TextBox19.Location = New System.Drawing.Point(131, 135)
-        Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.ReadOnly = True
-        Me.TextBox19.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox19.TabIndex = 16
-        Me.TextBox19.Text = "0"
-        Me.TextBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G4_Wert.Location = New System.Drawing.Point(131, 135)
+        Me.G4_Wert.Name = "G4_Wert"
+        Me.G4_Wert.ReadOnly = True
+        Me.G4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.G4_Wert.TabIndex = 16
+        Me.G4_Wert.Text = "0"
+        Me.G4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox20
+        'A4_Wert
         '
-        Me.TextBox20.Location = New System.Drawing.Point(163, 135)
-        Me.TextBox20.Name = "TextBox20"
-        Me.TextBox20.ReadOnly = True
-        Me.TextBox20.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox20.TabIndex = 17
-        Me.TextBox20.Text = "0"
-        Me.TextBox20.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A4_Wert.Location = New System.Drawing.Point(163, 135)
+        Me.A4_Wert.Name = "A4_Wert"
+        Me.A4_Wert.ReadOnly = True
+        Me.A4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.A4_Wert.TabIndex = 17
+        Me.A4_Wert.Text = "0"
+        Me.A4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox21
+        'H4_Wert
         '
-        Me.TextBox21.Location = New System.Drawing.Point(195, 135)
-        Me.TextBox21.Name = "TextBox21"
-        Me.TextBox21.ReadOnly = True
-        Me.TextBox21.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox21.TabIndex = 18
-        Me.TextBox21.Text = "0"
-        Me.TextBox21.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H4_Wert.Location = New System.Drawing.Point(195, 135)
+        Me.H4_Wert.Name = "H4_Wert"
+        Me.H4_Wert.ReadOnly = True
+        Me.H4_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.H4_Wert.TabIndex = 18
+        Me.H4_Wert.Text = "0"
+        Me.H4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TextBox50
         '
@@ -1148,13 +1160,13 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Controls.Add(Me.Button26)
         Me.FlowLayoutPanel4.Controls.Add(Me.Button27)
         Me.FlowLayoutPanel4.Controls.Add(Me.Button28)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox22)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox23)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox24)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox25)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox26)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox27)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox28)
+        Me.FlowLayoutPanel4.Controls.Add(Me.C5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.D5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.E5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.F5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.G5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.A5_Wert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.H5_Wert)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox57)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox58)
         Me.FlowLayoutPanel4.Controls.Add(Me.TextBox59)
@@ -1230,75 +1242,75 @@ Partial Class Form1
         Me.Button28.Text = "h''"
         Me.Button28.UseVisualStyleBackColor = True
         '
-        'TextBox22
+        'C5_Wert
         '
-        Me.TextBox22.Location = New System.Drawing.Point(3, 135)
-        Me.TextBox22.Name = "TextBox22"
-        Me.TextBox22.ReadOnly = True
-        Me.TextBox22.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox22.TabIndex = 12
-        Me.TextBox22.Text = "0"
-        Me.TextBox22.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C5_Wert.Location = New System.Drawing.Point(3, 135)
+        Me.C5_Wert.Name = "C5_Wert"
+        Me.C5_Wert.ReadOnly = True
+        Me.C5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.C5_Wert.TabIndex = 12
+        Me.C5_Wert.Text = "0"
+        Me.C5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox23
+        'D5_Wert
         '
-        Me.TextBox23.Location = New System.Drawing.Point(35, 135)
-        Me.TextBox23.Name = "TextBox23"
-        Me.TextBox23.ReadOnly = True
-        Me.TextBox23.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox23.TabIndex = 13
-        Me.TextBox23.Text = "0"
-        Me.TextBox23.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D5_Wert.Location = New System.Drawing.Point(35, 135)
+        Me.D5_Wert.Name = "D5_Wert"
+        Me.D5_Wert.ReadOnly = True
+        Me.D5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.D5_Wert.TabIndex = 13
+        Me.D5_Wert.Text = "0"
+        Me.D5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox24
+        'E5_Wert
         '
-        Me.TextBox24.Location = New System.Drawing.Point(67, 135)
-        Me.TextBox24.Name = "TextBox24"
-        Me.TextBox24.ReadOnly = True
-        Me.TextBox24.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox24.TabIndex = 14
-        Me.TextBox24.Text = "0"
-        Me.TextBox24.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E5_Wert.Location = New System.Drawing.Point(67, 135)
+        Me.E5_Wert.Name = "E5_Wert"
+        Me.E5_Wert.ReadOnly = True
+        Me.E5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.E5_Wert.TabIndex = 14
+        Me.E5_Wert.Text = "0"
+        Me.E5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox25
+        'F5_Wert
         '
-        Me.TextBox25.Location = New System.Drawing.Point(99, 135)
-        Me.TextBox25.Name = "TextBox25"
-        Me.TextBox25.ReadOnly = True
-        Me.TextBox25.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox25.TabIndex = 15
-        Me.TextBox25.Text = "0"
-        Me.TextBox25.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F5_Wert.Location = New System.Drawing.Point(99, 135)
+        Me.F5_Wert.Name = "F5_Wert"
+        Me.F5_Wert.ReadOnly = True
+        Me.F5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.F5_Wert.TabIndex = 15
+        Me.F5_Wert.Text = "0"
+        Me.F5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox26
+        'G5_Wert
         '
-        Me.TextBox26.Location = New System.Drawing.Point(131, 135)
-        Me.TextBox26.Name = "TextBox26"
-        Me.TextBox26.ReadOnly = True
-        Me.TextBox26.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox26.TabIndex = 16
-        Me.TextBox26.Text = "0"
-        Me.TextBox26.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G5_Wert.Location = New System.Drawing.Point(131, 135)
+        Me.G5_Wert.Name = "G5_Wert"
+        Me.G5_Wert.ReadOnly = True
+        Me.G5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.G5_Wert.TabIndex = 16
+        Me.G5_Wert.Text = "0"
+        Me.G5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox27
+        'A5_Wert
         '
-        Me.TextBox27.Location = New System.Drawing.Point(163, 135)
-        Me.TextBox27.Name = "TextBox27"
-        Me.TextBox27.ReadOnly = True
-        Me.TextBox27.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox27.TabIndex = 17
-        Me.TextBox27.Text = "0"
-        Me.TextBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A5_Wert.Location = New System.Drawing.Point(163, 135)
+        Me.A5_Wert.Name = "A5_Wert"
+        Me.A5_Wert.ReadOnly = True
+        Me.A5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.A5_Wert.TabIndex = 17
+        Me.A5_Wert.Text = "0"
+        Me.A5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox28
+        'H5_Wert
         '
-        Me.TextBox28.Location = New System.Drawing.Point(195, 135)
-        Me.TextBox28.Name = "TextBox28"
-        Me.TextBox28.ReadOnly = True
-        Me.TextBox28.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox28.TabIndex = 18
-        Me.TextBox28.Text = "0"
-        Me.TextBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H5_Wert.Location = New System.Drawing.Point(195, 135)
+        Me.H5_Wert.Name = "H5_Wert"
+        Me.H5_Wert.ReadOnly = True
+        Me.H5_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.H5_Wert.TabIndex = 18
+        Me.H5_Wert.Text = "0"
+        Me.H5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TextBox57
         '
@@ -1379,13 +1391,13 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Controls.Add(Me.Button33)
         Me.FlowLayoutPanel5.Controls.Add(Me.Button34)
         Me.FlowLayoutPanel5.Controls.Add(Me.Button35)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox29)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox30)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox31)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox32)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox33)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox34)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox35)
+        Me.FlowLayoutPanel5.Controls.Add(Me.C6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.D6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.E6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.F6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.G6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.A6_Wert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.H6_Wert)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox64)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox65)
         Me.FlowLayoutPanel5.Controls.Add(Me.TextBox66)
@@ -1461,75 +1473,75 @@ Partial Class Form1
         Me.Button35.Text = "h'''"
         Me.Button35.UseVisualStyleBackColor = True
         '
-        'TextBox29
+        'C6_Wert
         '
-        Me.TextBox29.Location = New System.Drawing.Point(3, 135)
-        Me.TextBox29.Name = "TextBox29"
-        Me.TextBox29.ReadOnly = True
-        Me.TextBox29.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox29.TabIndex = 12
-        Me.TextBox29.Text = "0"
-        Me.TextBox29.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C6_Wert.Location = New System.Drawing.Point(3, 135)
+        Me.C6_Wert.Name = "C6_Wert"
+        Me.C6_Wert.ReadOnly = True
+        Me.C6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.C6_Wert.TabIndex = 12
+        Me.C6_Wert.Text = "0"
+        Me.C6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox30
+        'D6_Wert
         '
-        Me.TextBox30.Location = New System.Drawing.Point(35, 135)
-        Me.TextBox30.Name = "TextBox30"
-        Me.TextBox30.ReadOnly = True
-        Me.TextBox30.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox30.TabIndex = 13
-        Me.TextBox30.Text = "0"
-        Me.TextBox30.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D6_Wert.Location = New System.Drawing.Point(35, 135)
+        Me.D6_Wert.Name = "D6_Wert"
+        Me.D6_Wert.ReadOnly = True
+        Me.D6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.D6_Wert.TabIndex = 13
+        Me.D6_Wert.Text = "0"
+        Me.D6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox31
+        'E6_Wert
         '
-        Me.TextBox31.Location = New System.Drawing.Point(67, 135)
-        Me.TextBox31.Name = "TextBox31"
-        Me.TextBox31.ReadOnly = True
-        Me.TextBox31.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox31.TabIndex = 14
-        Me.TextBox31.Text = "0"
-        Me.TextBox31.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E6_Wert.Location = New System.Drawing.Point(67, 135)
+        Me.E6_Wert.Name = "E6_Wert"
+        Me.E6_Wert.ReadOnly = True
+        Me.E6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.E6_Wert.TabIndex = 14
+        Me.E6_Wert.Text = "0"
+        Me.E6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox32
+        'F6_Wert
         '
-        Me.TextBox32.Location = New System.Drawing.Point(99, 135)
-        Me.TextBox32.Name = "TextBox32"
-        Me.TextBox32.ReadOnly = True
-        Me.TextBox32.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox32.TabIndex = 15
-        Me.TextBox32.Text = "0"
-        Me.TextBox32.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F6_Wert.Location = New System.Drawing.Point(99, 135)
+        Me.F6_Wert.Name = "F6_Wert"
+        Me.F6_Wert.ReadOnly = True
+        Me.F6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.F6_Wert.TabIndex = 15
+        Me.F6_Wert.Text = "0"
+        Me.F6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox33
+        'G6_Wert
         '
-        Me.TextBox33.Location = New System.Drawing.Point(131, 135)
-        Me.TextBox33.Name = "TextBox33"
-        Me.TextBox33.ReadOnly = True
-        Me.TextBox33.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox33.TabIndex = 16
-        Me.TextBox33.Text = "0"
-        Me.TextBox33.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G6_Wert.Location = New System.Drawing.Point(131, 135)
+        Me.G6_Wert.Name = "G6_Wert"
+        Me.G6_Wert.ReadOnly = True
+        Me.G6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.G6_Wert.TabIndex = 16
+        Me.G6_Wert.Text = "0"
+        Me.G6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox34
+        'A6_Wert
         '
-        Me.TextBox34.Location = New System.Drawing.Point(163, 135)
-        Me.TextBox34.Name = "TextBox34"
-        Me.TextBox34.ReadOnly = True
-        Me.TextBox34.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox34.TabIndex = 17
-        Me.TextBox34.Text = "0"
-        Me.TextBox34.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A6_Wert.Location = New System.Drawing.Point(163, 135)
+        Me.A6_Wert.Name = "A6_Wert"
+        Me.A6_Wert.ReadOnly = True
+        Me.A6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.A6_Wert.TabIndex = 17
+        Me.A6_Wert.Text = "0"
+        Me.A6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox35
+        'H6_Wert
         '
-        Me.TextBox35.Location = New System.Drawing.Point(195, 135)
-        Me.TextBox35.Name = "TextBox35"
-        Me.TextBox35.ReadOnly = True
-        Me.TextBox35.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox35.TabIndex = 18
-        Me.TextBox35.Text = "0"
-        Me.TextBox35.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H6_Wert.Location = New System.Drawing.Point(195, 135)
+        Me.H6_Wert.Name = "H6_Wert"
+        Me.H6_Wert.ReadOnly = True
+        Me.H6_Wert.Size = New System.Drawing.Size(26, 20)
+        Me.H6_Wert.TabIndex = 18
+        Me.H6_Wert.Text = "0"
+        Me.H6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'TextBox64
         '
@@ -1596,11 +1608,11 @@ Partial Class Form1
         '
         'Einstellungen_GroupBox
         '
-        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox15)
+        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox20)
+        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox19)
         Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox13)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Tempo_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Transpose_GroupBox)
-        Me.Einstellungen_GroupBox.Controls.Add(Me.cboInstruments)
         Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(326, 13)
         Me.Einstellungen_GroupBox.Name = "Einstellungen_GroupBox"
         Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 422)
@@ -1608,44 +1620,106 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
-        'GroupBox15
+        'GroupBox20
         '
-        Me.GroupBox15.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox15.Controls.Add(Me.HScrollBar2)
-        Me.GroupBox15.Controls.Add(Me.HScrollBar1)
-        Me.GroupBox15.Location = New System.Drawing.Point(9, 239)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(199, 95)
-        Me.GroupBox15.TabIndex = 169
-        Me.GroupBox15.TabStop = False
-        Me.GroupBox15.Text = "MIDI Lautstärcke"
+        Me.GroupBox20.Controls.Add(Me.Label6)
+        Me.GroupBox20.Controls.Add(Me.Messintervall_NumericUpDown)
+        Me.GroupBox20.Controls.Add(Me.MessungenProS_NumericUpDown)
+        Me.GroupBox20.Controls.Add(Me.Label5)
+        Me.GroupBox20.Location = New System.Drawing.Point(9, 183)
+        Me.GroupBox20.Name = "GroupBox20"
+        Me.GroupBox20.Size = New System.Drawing.Size(199, 70)
+        Me.GroupBox20.TabIndex = 174
+        Me.GroupBox20.TabStop = False
+        Me.GroupBox20.Text = "Messintervall vom Mikrokontroller"
         '
-        'HScrollBar2
+        'Label6
         '
-        Me.HScrollBar2.Location = New System.Drawing.Point(10, 65)
-        Me.HScrollBar2.Maximum = 127
-        Me.HScrollBar2.Name = "HScrollBar2"
-        Me.HScrollBar2.Size = New System.Drawing.Size(175, 17)
-        Me.HScrollBar2.TabIndex = 8
-        Me.HScrollBar2.Value = 127
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(14, 46)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(98, 13)
+        Me.Label6.TabIndex = 182
+        Me.Label6.Text = "Messintervall in ms:"
         '
-        'HScrollBar1
+        'Messintervall_NumericUpDown
         '
-        Me.HScrollBar1.Location = New System.Drawing.Point(9, 26)
-        Me.HScrollBar1.Maximum = 127
-        Me.HScrollBar1.Name = "HScrollBar1"
-        Me.HScrollBar1.Size = New System.Drawing.Size(175, 17)
-        Me.HScrollBar1.TabIndex = 7
-        Me.HScrollBar1.Value = 127
+        Me.Messintervall_NumericUpDown.Location = New System.Drawing.Point(138, 44)
+        Me.Messintervall_NumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
+        Me.Messintervall_NumericUpDown.Name = "Messintervall_NumericUpDown"
+        Me.Messintervall_NumericUpDown.Size = New System.Drawing.Size(48, 20)
+        Me.Messintervall_NumericUpDown.TabIndex = 181
+        Me.Messintervall_NumericUpDown.Value = New Decimal(New Integer() {50, 0, 0, 0})
+        '
+        'MessungenProS_NumericUpDown
+        '
+        Me.MessungenProS_NumericUpDown.Location = New System.Drawing.Point(138, 19)
+        Me.MessungenProS_NumericUpDown.Name = "MessungenProS_NumericUpDown"
+        Me.MessungenProS_NumericUpDown.Size = New System.Drawing.Size(48, 20)
+        Me.MessungenProS_NumericUpDown.TabIndex = 180
+        Me.MessungenProS_NumericUpDown.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(14, 21)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(108, 13)
+        Me.Label5.TabIndex = 179
+        Me.Label5.Text = "Messungen pro Sek.:"
+        '
+        'GroupBox19
+        '
+        Me.GroupBox19.Controls.Add(Me.MIDI_SpecialMode)
+        Me.GroupBox19.Controls.Add(Me.MIDI_NormalMode)
+        Me.GroupBox19.Controls.Add(Me.cboInstruments)
+        Me.GroupBox19.Location = New System.Drawing.Point(9, 21)
+        Me.GroupBox19.Name = "GroupBox19"
+        Me.GroupBox19.Size = New System.Drawing.Size(199, 83)
+        Me.GroupBox19.TabIndex = 173
+        Me.GroupBox19.TabStop = False
+        Me.GroupBox19.Text = "MIDI Aufnahmemodus"
+        '
+        'MIDI_SpecialMode
+        '
+        Me.MIDI_SpecialMode.AutoSize = True
+        Me.MIDI_SpecialMode.Location = New System.Drawing.Point(116, 23)
+        Me.MIDI_SpecialMode.Name = "MIDI_SpecialMode"
+        Me.MIDI_SpecialMode.Size = New System.Drawing.Size(74, 17)
+        Me.MIDI_SpecialMode.TabIndex = 4
+        Me.MIDI_SpecialMode.Text = "nur Töhne"
+        Me.ToolTip1.SetToolTip(Me.MIDI_SpecialMode, resources.GetString("MIDI_SpecialMode.ToolTip"))
+        Me.MIDI_SpecialMode.UseVisualStyleBackColor = True
+        '
+        'MIDI_NormalMode
+        '
+        Me.MIDI_NormalMode.AutoSize = True
+        Me.MIDI_NormalMode.Checked = True
+        Me.MIDI_NormalMode.Location = New System.Drawing.Point(13, 22)
+        Me.MIDI_NormalMode.Name = "MIDI_NormalMode"
+        Me.MIDI_NormalMode.Size = New System.Drawing.Size(97, 17)
+        Me.MIDI_NormalMode.TabIndex = 3
+        Me.MIDI_NormalMode.TabStop = True
+        Me.MIDI_NormalMode.Text = "Standardt MIDI"
+        Me.ToolTip1.SetToolTip(Me.MIDI_NormalMode, resources.GetString("MIDI_NormalMode.ToolTip"))
+        Me.MIDI_NormalMode.UseVisualStyleBackColor = True
+        '
+        'cboInstruments
+        '
+        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboInstruments.Location = New System.Drawing.Point(15, 51)
+        Me.cboInstruments.Name = "cboInstruments"
+        Me.cboInstruments.Size = New System.Drawing.Size(175, 21)
+        Me.cboInstruments.TabIndex = 2
         '
         'GroupBox13
         '
         Me.GroupBox13.Controls.Add(Me.Metronom_OFF)
         Me.GroupBox13.Controls.Add(Me.Metronom_ON)
         Me.GroupBox13.Controls.Add(Me.Metronom_Betont)
-        Me.GroupBox13.Location = New System.Drawing.Point(12, 347)
+        Me.GroupBox13.Location = New System.Drawing.Point(6, 347)
         Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(196, 53)
+        Me.GroupBox13.Size = New System.Drawing.Size(202, 53)
         Me.GroupBox13.TabIndex = 168
         Me.GroupBox13.TabStop = False
         Me.GroupBox13.Text = "Metronom"
@@ -1691,7 +1765,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.Label16)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 55)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 109)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
         Me.Tempo_GroupBox.TabIndex = 172
@@ -1739,7 +1813,7 @@ Partial Class Form1
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(15, 42)
+        Me.Label16.Location = New System.Drawing.Point(12, 42)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(84, 13)
         Me.Label16.TabIndex = 172
@@ -1747,7 +1821,7 @@ Partial Class Form1
         '
         'BPM
         '
-        Me.BPM.Location = New System.Drawing.Point(137, 35)
+        Me.BPM.Location = New System.Drawing.Point(137, 37)
         Me.BPM.Maximum = New Decimal(New Integer() {150, 0, 0, 0})
         Me.BPM.Name = "BPM"
         Me.BPM.Size = New System.Drawing.Size(48, 20)
@@ -1760,9 +1834,9 @@ Partial Class Form1
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
         Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
         Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 132)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 261)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
-        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 88)
+        Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
         Me.Transpose_GroupBox.TabStop = False
         Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
@@ -1770,7 +1844,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(7, 62)
+        Me.Label2.Location = New System.Drawing.Point(6, 57)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(103, 13)
         Me.Label2.TabIndex = 167
@@ -1803,14 +1877,25 @@ Partial Class Form1
         Me.Tonhoehenverschiebung.TabIndex = 165
         Me.Tonhoehenverschiebung.Text = "Normahl"
         '
-        'cboInstruments
+        'GroupBox15
         '
-        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.FormattingEnabled = True
-        Me.cboInstruments.Location = New System.Drawing.Point(9, 19)
-        Me.cboInstruments.Name = "cboInstruments"
-        Me.cboInstruments.Size = New System.Drawing.Size(199, 21)
-        Me.cboInstruments.TabIndex = 2
+        Me.GroupBox15.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox15.Controls.Add(Me.HScrollBar1)
+        Me.GroupBox15.Location = New System.Drawing.Point(860, 391)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(196, 55)
+        Me.GroupBox15.TabIndex = 169
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "MIDI Lautstärcke"
+        '
+        'HScrollBar1
+        '
+        Me.HScrollBar1.Location = New System.Drawing.Point(9, 26)
+        Me.HScrollBar1.Maximum = 127
+        Me.HScrollBar1.Name = "HScrollBar1"
+        Me.HScrollBar1.Size = New System.Drawing.Size(175, 17)
+        Me.HScrollBar1.TabIndex = 7
+        Me.HScrollBar1.Value = 127
         '
         'Tackt
         '
@@ -1825,9 +1910,9 @@ Partial Class Form1
         Me.NoteC.Text = "NoteC"
         Me.NoteC.UseVisualStyleBackColor = True
         '
-        'Timer1
+        'Messintervall
         '
-        Me.Timer1.Interval = 50
+        Me.Messintervall.Interval = 25
         '
         'GroupBox4
         '
@@ -2721,6 +2806,11 @@ Partial Class Form1
         Me.Button36.Text = "Hilfe"
         Me.Button36.UseVisualStyleBackColor = True
         '
+        'Com_Search_Timer
+        '
+        Me.Com_Search_Timer.Enabled = True
+        Me.Com_Search_Timer.Interval = 2000
+        '
         'C2_VerticalProgessBar
         '
         Me.C2_VerticalProgessBar.AccessibleName = ""
@@ -3008,6 +3098,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 995)
+        Me.Controls.Add(Me.GroupBox15)
         Me.Controls.Add(Me.GroupBox14)
         Me.Controls.Add(Me.GroupBox18)
         Me.Controls.Add(Me.GroupBox12)
@@ -3036,7 +3127,12 @@ Partial Class Form1
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
-        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox20.ResumeLayout(False)
+        Me.GroupBox20.PerformLayout()
+        CType(Me.Messintervall_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MessungenProS_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox19.ResumeLayout(False)
+        Me.GroupBox19.PerformLayout()
         Me.GroupBox13.ResumeLayout(False)
         Me.GroupBox13.PerformLayout()
         Me.Tempo_GroupBox.ResumeLayout(False)
@@ -3047,6 +3143,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel11.ResumeLayout(False)
         Me.FlowLayoutPanel11.PerformLayout()
@@ -3143,27 +3240,27 @@ Partial Class Form1
     Friend WithEvents G3_Wert As System.Windows.Forms.TextBox
     Friend WithEvents A3_Wert As System.Windows.Forms.TextBox
     Friend WithEvents H3_Wert As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox15 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox16 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox17 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox18 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox19 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox20 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox21 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox22 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox23 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox24 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox25 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox26 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox27 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox28 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox29 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox30 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox31 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox32 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox33 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox34 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox35 As System.Windows.Forms.TextBox
+    Friend WithEvents C4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents D4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents E4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents F4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents G4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents A4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents H4_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents C5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents D5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents E5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents F5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents G5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents A5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents H5_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents C6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents D6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents E6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents F6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents G6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents A6_Wert As System.Windows.Forms.TextBox
+    Friend WithEvents H6_Wert As System.Windows.Forms.TextBox
     Friend WithEvents FlowLayoutPanel1 As System.Windows.Forms.FlowLayoutPanel
     Private WithEvents C2_VerticalProgessBar As C_Control_PRO_Visualisieren.MTech010VerticalProgessBar
     Friend WithEvents MIDI_Save As System.Windows.Forms.Button
@@ -3209,7 +3306,7 @@ Partial Class Form1
     Friend WithEvents TextBox70 As System.Windows.Forms.TextBox
     Friend WithEvents Timer3 As System.Windows.Forms.Timer
     Friend WithEvents NoteC As System.Windows.Forms.Button
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
     Friend WithEvents Tonhoehenverschiebung As System.Windows.Forms.ComboBox
@@ -3361,6 +3458,14 @@ Partial Class Form1
     Friend WithEvents G3_VerticalProgessBar As C_Control_PRO_Visualisieren.MTech010VerticalProgessBar
     Friend WithEvents A3_VerticalProgessBar As C_Control_PRO_Visualisieren.MTech010VerticalProgessBar
     Friend WithEvents H3_VerticalProgessBar As C_Control_PRO_Visualisieren.MTech010VerticalProgessBar
-    Friend WithEvents HScrollBar2 As System.Windows.Forms.HScrollBar
+    Friend WithEvents GroupBox19 As System.Windows.Forms.GroupBox
+    Friend WithEvents MIDI_SpecialMode As System.Windows.Forms.RadioButton
+    Friend WithEvents MIDI_NormalMode As System.Windows.Forms.RadioButton
+    Friend WithEvents Com_Search_Timer As System.Windows.Forms.Timer
+    Friend WithEvents GroupBox20 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Messintervall_NumericUpDown As System.Windows.Forms.NumericUpDown
+    Friend WithEvents MessungenProS_NumericUpDown As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Label5 As System.Windows.Forms.Label
 
 End Class
