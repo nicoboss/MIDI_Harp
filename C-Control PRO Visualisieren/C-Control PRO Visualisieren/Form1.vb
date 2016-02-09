@@ -37,9 +37,8 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Dim myCoolControls() As Control = {Label1, Label2, Label3}
-
-        MessageBox.Show(myCoolControls(0).Text)
+        Klavierdiagramm_Refresh()
+        'MessageBox.Show(myCoolControls(0).Text)
 
         'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
         'ToolTip1.SetToolTip(Button2, "Das ist ein Button")
@@ -449,46 +448,27 @@ Public Class Form1
 
 
 
-    Private Sub Klavierdiagramm_Refresh()
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_Wert.Text = ADC(0)
-        D2_VerticalProgessBar.Value = ADC(1)
-        D2_Wert.Text = ADC(1)
-        E2_VerticalProgessBar.Value = ADC(2)
-        E2_Wert.Text = ADC(2)
-        F2_VerticalProgessBar.Value = ADC(3)
-        F2_Wert.Text = ADC(3)
-        G2_VerticalProgessBar.Value = ADC(4)
-        G2_Wert.Text = ADC(4)
-        A2_VerticalProgessBar.Value = ADC(5)
-        A2_Wert.Text = ADC(5)
-        H2_VerticalProgessBar.Value = ADC(6)
-        H2_Wert.Text = ADC(6)
+    Private Sub Klavierdiagramm_Refresh() Handles Tackt.Tick
 
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
+        Dim rnd As New Random
 
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
+        Dim Noten_VerticalProgessBar() As MTech010VerticalProgessBar = { _
+            C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar, _
+            C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar, _
+            C4_VerticalProgessBar, D4_VerticalProgessBar, E4_VerticalProgessBar, F4_VerticalProgessBar, G4_VerticalProgessBar, A4_VerticalProgessBar, H4_VerticalProgessBar, _
+            C5_VerticalProgessBar, D5_VerticalProgessBar, E5_VerticalProgessBar, F5_VerticalProgessBar, G5_VerticalProgessBar, A5_VerticalProgessBar, H5_VerticalProgessBar, _
+            C6_VerticalProgessBar, D6_VerticalProgessBar, E6_VerticalProgessBar, F6_VerticalProgessBar, G6_VerticalProgessBar, A6_VerticalProgessBar, H6_VerticalProgessBar}
 
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
-        C2_VerticalProgessBar.Value = ADC(0)
+
+        For i = 0 To 34 Step 1
+            Noten_VerticalProgessBar(i).Value = rnd.Next(12, 255) 'ADC(i)
+            C2_Wert.Text = ADC(i)
+        Next
+
+
     End Sub
+
+
 
 
     Private Sub Tonhoehenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tonhoehenverschiebung.SelectedIndexChanged
