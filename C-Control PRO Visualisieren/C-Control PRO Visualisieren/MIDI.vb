@@ -165,7 +165,7 @@ Public Class MIDI
 
         Public Sub Add_Instrument(ByVal Instrument As Byte)
 
-            Dim Tackt_Data() As Byte = {&H0, &HC1, &H10, &H0}
+            Dim Tackt_Data() As Byte = {&H0, &HC1, &H10}
             Tackt_Data(2) = Instrument
             'Tackt_Data(4) = Hex(Tackt_Zaehler)
             'Tackt_Data(3) = Hex(Tackt_Nenner)

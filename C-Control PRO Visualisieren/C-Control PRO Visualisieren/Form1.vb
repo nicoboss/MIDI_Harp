@@ -56,6 +56,7 @@ Public Class Form1
 
         Song.AddTrack()
         Song.AddTrack()
+        Song.Tracks(1).Add_Instrument(16)
 
         InitializeNotes()
 
@@ -346,19 +347,19 @@ Public Class Form1
             MessageBox.Show("Error")
         End If
 
-        Song.Tracks(0).TrackData.Clear()
-        Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
-        Song.Tracks(0).Text(1, META_Autor_Input.Text)
-        Song.Tracks(0).Text(2, META_Copyright_Input.Text)
-        Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
-        Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
+        'Song.Tracks(0).TrackData.Clear()
+        'Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
+        'Song.Tracks(0).Text(1, META_Autor_Input.Text)
+        'Song.Tracks(0).Text(2, META_Copyright_Input.Text)
+        'Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
+        'Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
 
-        Song.Tracks(1).TrackData.Clear()
-        Song.Tracks(1).Zuordnung(1)
-        Song.Tracks(1).Text(1, "Organ")
-        Song.Tracks(1).Text(3, "Organ")
-        Song.Tracks(1).Text(4, "Organ")
-        Song.Tracks(1).Add_Instrument(77)
+        'Song.Tracks(1).TrackData.Clear()
+        'Song.Tracks(1).Zuordnung(1)
+        'Song.Tracks(1).Text(1, "organ")
+        'Song.Tracks(1).Text(3, "organ")
+        'Song.Tracks(1).Text(4, "organ")
+        Song.Tracks(1).Add_Instrument(16)
 
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
