@@ -355,9 +355,9 @@ Public Class Form1
 
         Song.Tracks(1).TrackData.Clear()
         Song.Tracks(1).Zuordnung(1)
-        Song.Tracks(1).Text(1, "organ")
-        Song.Tracks(1).Text(3, "organ")
-        Song.Tracks(1).Text(4, "organ")
+        Song.Tracks(1).Text(1, cboInstruments.SelectedText)
+        Song.Tracks(1).Text(3, META_SpurnamenRH_Input.Text)
+        Song.Tracks(1).Text(4, cboInstruments.SelectedText)
         Song.Tracks(1).Add_Instrument(cboInstruments.SelectedIndex)
 
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
