@@ -37,6 +37,10 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        Dim myCoolControls() As Control = {Label1, Label2, Label3}
+
+        MessageBox.Show(myCoolControls(0).Text)
+
         'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
         'ToolTip1.SetToolTip(Button2, "Das ist ein Button")
         'ToolTip1.SetToolTip(Button3, "Das ist ein Button")
