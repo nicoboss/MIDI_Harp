@@ -28,8 +28,8 @@ Public Class Form1
     Dim ADC(43) As UShort
 
     Dim Notenlaege(255) As Single
-
-    Dim NoteC_Klick
+    Dim Note_Play(255) As Boolean
+    Dim Verschiebung(255) As Byte
 
     Dim Metronom As Byte
     Dim Metronom_alt As Byte
@@ -137,7 +137,7 @@ Public Class Form1
 
 
         'MTech010VerticalProgessBar2.Value = ADC(1)
-        TextBox2.Text = (ADC(1))
+        D2_Wert.Text = (ADC(1))
         Klavierdiagramm_Refresh()
 
     End Sub
@@ -251,24 +251,28 @@ Public Class Form1
 
         Dim Note_gespielt As Boolean = False
 
-        If NoteC_Klick = True Then
-            If Notenlaege(50) = 0 Then
-                m.PlayMIDINote(70, 100, 0)
-                Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
+        For i = 16 To 77 Step 1
+
+            If Note_Play(i) = True Then
+                If Notenlaege(i) = 0 Then
+                    m.PlayMIDINote(i + NumericUpDown1.Value, 100, 0)
+                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i + NumericUpDown1.Value), CByte(100))
+                End If
+
+                Notenlaege(i) += 0.25
+                Note_gespielt = True
+                'Notenlaege(0) = 0
+
+            Else
+
+                If Notenlaege(i) > 0 Then
+                    m.STOPMIDINote(i + NumericUpDown1.Value)
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(i + NumericUpDown1.Value), 0)
+                    Notenlaege(i) = 0
+                End If
             End If
 
-            Notenlaege(50) += 0.25
-            Note_gespielt = True
-            'Notenlaege(0) = 0
-
-        Else
-
-            If Notenlaege(50) > 0 Then
-                m.STOPMIDINote(70)
-                Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
-                Notenlaege(50) = 0
-            End If
-        End If
+        Next
 
         If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) 'Notenlaege(0) += 0.125
 
@@ -410,13 +414,13 @@ Public Class Form1
     'Song.Tracks(index).AddNoteOnOffEvent(beats, MIDI.Track.NoteEvent.NoteOff, CByte(note), 0)
 
     Private Sub StartN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseDown
-        NoteC_Klick = True
+        Note_Play(40) = True
         '    Notenlaege(50) = Environment.TickCount()
         '   'Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
     End Sub
 
     Private Sub StopN_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles NoteC.MouseUp
-        NoteC_Klick = False
+        Note_Play(40) = False
         '    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
         '    Song.Tracks(1).AddNoteOnOffEvent((Environment.TickCount() - Notenlaege(50)) / 250, MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
     End Sub
@@ -442,55 +446,44 @@ Public Class Form1
 
 
     Private Sub Klavierdiagramm_Refresh()
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        TextBox1.Text = ADC(0)
-        MTech010VerticalProgessBar2.Value = ADC(1)
-        TextBox2.Text = ADC(1)
-        MTech010VerticalProgessBar3.Value = ADC(2)
-        TextBox3.Text = ADC(2)
-        MTech010VerticalProgessBar4.Value = ADC(3)
-        TextBox4.Text = ADC(3)
-        MTech010VerticalProgessBar5.Value = ADC(4)
-        TextBox5.Text = ADC(4)
-        MTech010VerticalProgessBar6.Value = ADC(5)
-        TextBox6.Text = ADC(5)
-        MTech010VerticalProgessBar7.Value = ADC(6)
-        TextBox7.Text = ADC(6)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_Wert.Text = ADC(0)
+        D2_VerticalProgessBar.Value = ADC(1)
+        D2_Wert.Text = ADC(1)
+        E2_VerticalProgessBar.Value = ADC(2)
+        E2_Wert.Text = ADC(2)
+        F2_VerticalProgessBar.Value = ADC(3)
+        F2_Wert.Text = ADC(3)
+        G2_VerticalProgessBar.Value = ADC(4)
+        G2_Wert.Text = ADC(4)
+        A2_VerticalProgessBar.Value = ADC(5)
+        A2_Wert.Text = ADC(5)
+        H2_VerticalProgessBar.Value = ADC(6)
+        H2_Wert.Text = ADC(6)
 
-        MTech010VerticalProgessBar8.Value = ADC(7)
-        TextBox8.Text = ADC(7)
-        MTech010VerticalProgessBar9.Value = ADC(8)
-        TextBox9.Text = ADC(8)
-        MTech010VerticalProgessBar1.Value = ADC(9)
-        TextBox10.Text = ADC(9)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
 
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
 
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
-        MTech010VerticalProgessBar1.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
+        C2_VerticalProgessBar.Value = ADC(0)
     End Sub
 
 
@@ -505,21 +498,6 @@ Public Class Form1
     Private Sub Start_Sound(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Start.Click
 
     End Sub
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -596,6 +574,154 @@ Public Class Form1
             End If
         End If
     End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Private Sub C2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.Click
+        Button_Note(16)
+    End Sub
+
+    Private Sub D2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D2_Button.Click
+        Button_Note(18)
+    End Sub
+
+    Private Sub E2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E2_Button.Click
+        Button_Note(20)
+    End Sub
+
+    Private Sub F2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F2_Button.Click
+        Button_Note(21)
+    End Sub
+
+    Private Sub G2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G2_Button.Click
+        Button_Note(23)
+    End Sub
+
+    Private Sub A2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A2_Button.Click
+        Button_Note(25)
+    End Sub
+
+    Private Sub H2_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H2_Button.Click
+        Button_Note(27)
+    End Sub
+
+
+    Private Sub C3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.Click
+        Button_Note(28)
+    End Sub
+
+    Private Sub D3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D3_Button.Click
+        Button_Note(30)
+    End Sub
+
+    Private Sub E3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E3_Button.Click
+        Button_Note(32)
+    End Sub
+
+    Private Sub F3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F3_Button.Click
+        Button_Note(33)
+    End Sub
+
+    Private Sub G3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G3_Button.Click
+        Button_Note(35)
+    End Sub
+
+    Private Sub A3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A3_Button.Click
+        Button_Note(37)
+    End Sub
+
+    Private Sub H3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.Click
+        Button_Note(39)
+    End Sub
+
+
+    Private Sub C4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.Click
+        Button_Note(40)
+    End Sub
+
+    Private Sub D4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D4_Button.Click
+        Button_Note(42)
+    End Sub
+
+    Private Sub E4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E4_Button.Click
+        Button_Note(44)
+    End Sub
+
+    Private Sub F4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F4_Button.Click
+        Button_Note(45)
+    End Sub
+
+    Private Sub G4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G4_Button.Click
+        Button_Note(47)
+    End Sub
+
+    Private Sub A4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A4_Button.Click
+        Button_Note(49)
+    End Sub
+
+    Private Sub H4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H4_Button.Click
+        Button_Note(51)
+    End Sub
+
+
+
+
+    Private Sub Button_Note(ByVal NoteNr As Byte)
+        m.PlayMIDINote(NoteNr + NumericUpDown1.Value + Verschiebung(NoteNr), 100, 0)
+        Note_Play(NoteNr) = True
+    End Sub
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 End Class
