@@ -777,6 +777,43 @@ Public Class Form1
 #End Region
 
 
+#Region "Spetial MIDI-Mode"
+
+
+    Dim Messintervall_Temp As UShort
+    Dim Tackt_Zaehler_Temp As Byte
+    Dim Tackt_Naenner_Temp As Byte
+
+    Private Sub MIDI_SpecialMode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_SpecialMode.CheckedChanged
+
+        If MIDI_SpecialMode.Checked = True Then
+            Messintervall_Temp = Messintervall_NumericUpDown.Value
+            Tackt_Zaehler_Temp = Tackt_Zaehler_Input.Value
+            Tackt_Naenner_Temp = Tackt_Naenner_Input.Value
+            Messintervall_NumericUpDown.Value = 20
+            Tackt_Zaehler_Input.Value = 4
+            Tackt_Naenner_Input.Value = 4
+            BPM.Visible = False
+            BPM_Label.Text = "Aufnahme BPM:     Möglichst scnell!"
+            cboInstruments.Enabled = False
+            Tempo_GroupBox.Enabled = False
+            Messintervall_GroupBox.Enabled = False
+        Else
+            cboInstruments.Enabled = True
+            Tempo_GroupBox.Enabled = True
+            Messintervall_GroupBox.Enabled = True
+            Messintervall_NumericUpDown.Value = Messintervall_Temp
+            Tackt_Zaehler_Input.Value = Tackt_Zaehler_Temp
+            Tackt_Naenner_Input.Value = Tackt_Naenner_Temp
+            BPM.Visible = True
+            BPM_Label.Text = "Aufnahme BPM:"
+        End If
+
+    End Sub
+
+#End Region
+
+
 End Class
 
 
