@@ -107,54 +107,111 @@ Public Class Form1
         Tackt.Enabled = True
     End Sub
 
-    Private Sub Form1_Load1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        META_Copyright_Input.Text = My.Settings.Save_Settings
+    Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown    'Wichtig: MyBase.Load geht nicht, da zu früh!
+
+        With My.Settings
+            ' Aufnahmemodus
+            MIDI_NormalMode.Checked = .MIDI_NormalMode
+            cboInstruments.SelectedIndex = .cboInstruments
+
+            ' Tempo
+            Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
+            Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
+            BPM.Value = .BPM
+
+            ' Messintervall
+            Messintervall_NumericUpDown.Value = .Messintervall_NumericUpDown
+
+            ' Tonhöhenverschiebung
+            Halbtonverschiebung.Value = .Halbtonverschiebung
+
+            ' META
+            META_Dateinamen_Input.Text = .META_Dateinamen_Input
+            META_Autor_Input.Text = .META_Autor_Input
+            META_Spurnamen_Input.Text = .META_Spurnamen_Input
+            META_Copyright_Input.Text = .META_Copyright_Input
+            META_Bemerkung_Input.Text = .META_Bemerkung_Input
+
+            ' Metronom
+            Metronom_Betont.Checked = .Metronom_Betont
+            Metronom_ON.Checked = .Metronom_ON
+
+            ' Direct Play
+            DirectPlay_ON.Checked = .DirectPlay_ON
+            hsbVolume.Value = .hsbVolume
+            hsbPan.Value = .hsbPan
+            hsbModWheel.Value = .hsbModWheel
+
+            ' ToolTip
+            ToolTip_ON.Checked = .ToolTip_ON
+
+            ' Tonart Klappen
+            .C_Klappe = C_Klappe.Value = .C_Klappe
+            .D_Klappe = D_Klappe.Value = .D_Klappe
+            .E_Klappe = E_Klappe.Value = .E_Klappe
+            .F_Klappe = F_Klappe.Value = .F_Klappe
+            .G_Klappe = G_Klappe.Value = .G_Klappe
+            .A_Klappe = A_Klappe.Value = .A_Klappe
+            .H_Klappe = H_Klappe.Value = .G_Klappe
+        End With
     End Sub
+
+
+
+
+
+
+
+
+
+
 
     Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         With My.Settings
 
             ' Aufnahmemodus
-            .Save_Settings = MIDI_NormalMode.Checked
-            .Save_Settings = cboInstruments.SelectedIndex
+            .MIDI_NormalMode = MIDI_NormalMode.Checked
+            .cboInstruments = cboInstruments.SelectedIndex
 
             ' Tempo
-            .Save_Settings = Tackt_Zaehler_Input.Value
-            .Save_Settings = Tackt_Naenner_Input.Value
-            .Save_Settings = BPM.Value
+            .Tackt_Zaehler_Input = Tackt_Zaehler_Input.Value
+            .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
+            .BPM = BPM.Value
 
             ' Messintervall
-            .Save_Settings = Messintervall_NumericUpDown.Value
+            .Messintervall_NumericUpDown = Messintervall_NumericUpDown.Value
 
             ' Tonhöhenverschiebung
-            .Save_Settings = Halbtohnverschiebung.Value
+            .Halbtonverschiebung = Halbtonverschiebung.Value
 
             ' META
-            .Save_Settings = META_Dateinamen_Input.Text
-            .Save_Settings = META_Autor_Input.Text
-            .Save_Settings = META_Spurnamen_Input.Text
-            .Save_Settings = META_Copyright_Input.Text
-            .Save_Settings = META_Bemerkung_Input.Text
+            .META_Dateinamen_Input = META_Dateinamen_Input.Text
+            .META_Autor_Input = META_Autor_Input.Text
+            .META_Spurnamen_Input = META_Spurnamen_Input.Text
+            .META_Copyright_Input = META_Copyright_Input.Text
+            .META_Bemerkung_Input = META_Bemerkung_Input.Text
 
             ' Metronom
+            .Metronom_Betont = Metronom_Betont.Checked
+            .Metronom_ON = Metronom_ON.Checked
 
             ' Direct Play
-            .Save_Settings =
-            .Save_Settings = hsbVolume.Value
-            .Save_Settings = hsbPan.Value
-            .Save_Settings = hsbModWheel.Value
+            .DirectPlay_ON = DirectPlay_ON.Checked
+            .hsbVolume = hsbVolume.Value
+            .hsbPan = hsbPan.Value
+            .hsbModWheel = hsbModWheel.Value
 
             ' ToolTip
-            .Save_Settings = ToolTip_ON.Checked
+            .ToolTip_ON = ToolTip_ON.Checked
 
             ' Tonart Klappen
-            .Save_Settings = C_Klappe.Value
-            .Save_Settings = D_Klappe.Value
-            .Save_Settings = E_Klappe
-            .Save_Settings = F_Klappe
-            .Save_Settings = G_Klappe
-            .Save_Settings = A_Klappe
-            .Save_Settings = H_Klappe
+            .C_Klappe = C_Klappe.Value
+            .D_Klappe = D_Klappe.Value
+            .E_Klappe = E_Klappe.Value
+            .F_Klappe = F_Klappe.Value
+            .G_Klappe = G_Klappe.Value
+            .A_Klappe = A_Klappe.Value
+            .H_Klappe = H_Klappe.Value
 
 
             ' Einstellungen speichern
@@ -221,13 +278,13 @@ Public Class Form1
 
         For i = 0 To 31
             If ADC(i) >= CInt(Noten_Grenzwert(i).Text) Then
-                Note_Play(MidiNoteNr(i) + Halbtohnverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True
+                Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True
                 Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
             End If
 
 
             If ADC(i) < 100 And Note_Play(255) = True Then
-                Note_Play(MidiNoteNr(i) + Halbtohnverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
+                Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
                 Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
             End If
         Next
@@ -430,7 +487,7 @@ Public Class Form1
 
             If Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    m.PlayMIDINote(i + Halbtohnverschiebung.Value, 100, 0)
+                    m.PlayMIDINote(i + Halbtonverschiebung.Value, 100, 0)
                     Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
                 End If
 
@@ -441,8 +498,8 @@ Public Class Form1
             Else
 
                 If Notenlaege(i) > 0 Then
-                    m.STOPMIDINote(i + Halbtohnverschiebung.Value)
-                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Halbtohnverschiebung.Value), 0)
+                    m.STOPMIDINote(i + Halbtonverschiebung.Value)
+                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Halbtonverschiebung.Value), 0)
                     Notenlaege(i) = 0
                 End If
             End If
@@ -569,7 +626,7 @@ Public Class Form1
 
 
     Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
-        Halbtohnverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
+        Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
     End Sub
 
 
@@ -808,7 +865,7 @@ Public Class Form1
 
 
     Private Sub Button_Note(ByVal NoteNr As Byte)
-        m.PlayMIDINote(NoteNr + Halbtohnverschiebung.Value + Verschiebung(NoteNr), 100, 0)
+        m.PlayMIDINote(NoteNr + Halbtonverschiebung.Value + Verschiebung(NoteNr), 100, 0)
         Note_Play(NoteNr) = True
     End Sub
 

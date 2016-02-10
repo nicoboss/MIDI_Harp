@@ -204,7 +204,7 @@ Partial Class Form1
         Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Halbtohnverschiebung = New System.Windows.Forms.NumericUpDown()
+        Me.Halbtonverschiebung = New System.Windows.Forms.NumericUpDown()
         Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
@@ -290,8 +290,8 @@ Partial Class Form1
         Me.hsbPan = New System.Windows.Forms.HScrollBar()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
+        Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
+        Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.hsbVolume = New System.Windows.Forms.HScrollBar()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
@@ -321,7 +321,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Transpose_GroupBox.SuspendLayout()
-        CType(Me.Halbtohnverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox15.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.FlowLayoutPanel11.SuspendLayout()
@@ -2117,13 +2117,13 @@ Partial Class Form1
         Me.BPM.Name = "BPM"
         Me.BPM.Size = New System.Drawing.Size(48, 20)
         Me.BPM.TabIndex = 168
-        Me.BPM.Value = New Decimal(New Integer() {60, 0, 0, 0})
+        Me.BPM.Value = New Decimal(New Integer() {100, 0, 0, 0})
         '
         'Transpose_GroupBox
         '
         Me.Transpose_GroupBox.Controls.Add(Me.Label2)
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
-        Me.Transpose_GroupBox.Controls.Add(Me.Halbtohnverschiebung)
+        Me.Transpose_GroupBox.Controls.Add(Me.Halbtonverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
         Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 271)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
@@ -2150,14 +2150,14 @@ Partial Class Form1
         Me.Label1.TabIndex = 166
         Me.Label1.Text = "Oktavenver.:"
         '
-        'Halbtohnverschiebung
+        'Halbtonverschiebung
         '
-        Me.Halbtohnverschiebung.Location = New System.Drawing.Point(127, 55)
-        Me.Halbtohnverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.Halbtohnverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.Halbtohnverschiebung.Name = "Halbtohnverschiebung"
-        Me.Halbtohnverschiebung.Size = New System.Drawing.Size(55, 20)
-        Me.Halbtohnverschiebung.TabIndex = 165
+        Me.Halbtonverschiebung.Location = New System.Drawing.Point(127, 55)
+        Me.Halbtonverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.Halbtonverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Halbtonverschiebung.Name = "Halbtonverschiebung"
+        Me.Halbtonverschiebung.Size = New System.Drawing.Size(55, 20)
+        Me.Halbtonverschiebung.TabIndex = 165
         '
         'Oktavenverschiebung
         '
@@ -2989,8 +2989,8 @@ Partial Class Form1
         '
         'GroupBox5
         '
-        Me.GroupBox5.Controls.Add(Me.RadioButton2)
-        Me.GroupBox5.Controls.Add(Me.RadioButton1)
+        Me.GroupBox5.Controls.Add(Me.DirectPlay_OFF)
+        Me.GroupBox5.Controls.Add(Me.DirectPlay_ON)
         Me.GroupBox5.Location = New System.Drawing.Point(8, 27)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(184, 56)
@@ -2998,27 +2998,27 @@ Partial Class Form1
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Empfangende Noten abspielen"
         '
-        'RadioButton2
+        'DirectPlay_OFF
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Checked = True
-        Me.RadioButton2.Location = New System.Drawing.Point(101, 26)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(47, 17)
-        Me.RadioButton2.TabIndex = 1
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "Nein"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.DirectPlay_OFF.AutoSize = True
+        Me.DirectPlay_OFF.Checked = True
+        Me.DirectPlay_OFF.Location = New System.Drawing.Point(101, 26)
+        Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
+        Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
+        Me.DirectPlay_OFF.TabIndex = 1
+        Me.DirectPlay_OFF.TabStop = True
+        Me.DirectPlay_OFF.Text = "Nein"
+        Me.DirectPlay_OFF.UseVisualStyleBackColor = True
         '
-        'RadioButton1
+        'DirectPlay_ON
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(27, 26)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(36, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.Text = "Ja"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.DirectPlay_ON.AutoSize = True
+        Me.DirectPlay_ON.Location = New System.Drawing.Point(27, 26)
+        Me.DirectPlay_ON.Name = "DirectPlay_ON"
+        Me.DirectPlay_ON.Size = New System.Drawing.Size(36, 17)
+        Me.DirectPlay_ON.TabIndex = 0
+        Me.DirectPlay_ON.Text = "Ja"
+        Me.DirectPlay_ON.UseVisualStyleBackColor = True
         '
         'hsbVolume
         '
@@ -3171,7 +3171,7 @@ Partial Class Form1
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
-        CType(Me.Halbtohnverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel11.ResumeLayout(False)
@@ -3337,7 +3337,7 @@ Partial Class Form1
     Friend WithEvents NoteC As System.Windows.Forms.Button
     Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents Halbtohnverschiebung As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Halbtonverschiebung As System.Windows.Forms.NumericUpDown
     Friend WithEvents Oktavenverschiebung As System.Windows.Forms.ComboBox
     Friend WithEvents Transpose_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -3465,8 +3465,8 @@ Partial Class Form1
     Friend WithEvents hsbPan As System.Windows.Forms.HScrollBar
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents RadioButton2 As System.Windows.Forms.RadioButton
-    Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
+    Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
+    Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
     Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
     Friend WithEvents GroupBox12 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox14 As System.Windows.Forms.GroupBox

@@ -55,14 +55,308 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Save_Settings() As String
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property cboInstruments() As Byte
             Get
-                Return CType(Me("Save_Settings"),String)
+                Return CType(Me("cboInstruments"),Byte)
             End Get
             Set
-                Me("Save_Settings") = value
+                Me("cboInstruments") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("4")>  _
+        Public Property Tackt_Zaehler_Input() As Byte
+            Get
+                Return CType(Me("Tackt_Zaehler_Input"),Byte)
+            End Get
+            Set
+                Me("Tackt_Zaehler_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("4")>  _
+        Public Property Tackt_Naenner_Input() As Byte
+            Get
+                Return CType(Me("Tackt_Naenner_Input"),Byte)
+            End Get
+            Set
+                Me("Tackt_Naenner_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("100")>  _
+        Public Property BPM() As UShort
+            Get
+                Return CType(Me("BPM"),UShort)
+            End Get
+            Set
+                Me("BPM") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property MIDI_NormalMode() As Boolean
+            Get
+                Return CType(Me("MIDI_NormalMode"),Boolean)
+            End Get
+            Set
+                Me("MIDI_NormalMode") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("20")>  _
+        Public Property Messintervall_NumericUpDown() As UShort
+            Get
+                Return CType(Me("Messintervall_NumericUpDown"),UShort)
+            End Get
+            Set
+                Me("Messintervall_NumericUpDown") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property Halbtonverschiebung() As SByte
+            Get
+                Return CType(Me("Halbtonverschiebung"),SByte)
+            End Get
+            Set
+                Me("Halbtonverschiebung") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property META_Dateinamen_Input() As String
+            Get
+                Return CType(Me("META_Dateinamen_Input"),String)
+            End Get
+            Set
+                Me("META_Dateinamen_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property META_Autor_Input() As String
+            Get
+                Return CType(Me("META_Autor_Input"),String)
+            End Get
+            Set
+                Me("META_Autor_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property META_Spurnamen_Input() As String
+            Get
+                Return CType(Me("META_Spurnamen_Input"),String)
+            End Get
+            Set
+                Me("META_Spurnamen_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property META_Copyright_Input() As String
+            Get
+                Return CType(Me("META_Copyright_Input"),String)
+            End Get
+            Set
+                Me("META_Copyright_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property META_Bemerkung_Input() As String
+            Get
+                Return CType(Me("META_Bemerkung_Input"),String)
+            End Get
+            Set
+                Me("META_Bemerkung_Input") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Metronom_Betont() As Boolean
+            Get
+                Return CType(Me("Metronom_Betont"),Boolean)
+            End Get
+            Set
+                Me("Metronom_Betont") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property Metronom_ON() As Boolean
+            Get
+                Return CType(Me("Metronom_ON"),Boolean)
+            End Get
+            Set
+                Me("Metronom_ON") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property DirectPlay_ON() As Boolean
+            Get
+                Return CType(Me("DirectPlay_ON"),Boolean)
+            End Get
+            Set
+                Me("DirectPlay_ON") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property hsbVolume() As Byte
+            Get
+                Return CType(Me("hsbVolume"),Byte)
+            End Get
+            Set
+                Me("hsbVolume") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property hsbPan() As Byte
+            Get
+                Return CType(Me("hsbPan"),Byte)
+            End Get
+            Set
+                Me("hsbPan") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property hsbModWheel() As Byte
+            Get
+                Return CType(Me("hsbModWheel"),Byte)
+            End Get
+            Set
+                Me("hsbModWheel") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ToolTip_ON() As Boolean
+            Get
+                Return CType(Me("ToolTip_ON"),Boolean)
+            End Get
+            Set
+                Me("ToolTip_ON") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C_Klappe() As SByte
+            Get
+                Return CType(Me("C_Klappe"),SByte)
+            End Get
+            Set
+                Me("C_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D_Klappe() As SByte
+            Get
+                Return CType(Me("D_Klappe"),SByte)
+            End Get
+            Set
+                Me("D_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property E_Klappe() As SByte
+            Get
+                Return CType(Me("E_Klappe"),SByte)
+            End Get
+            Set
+                Me("E_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F_Klappe() As SByte
+            Get
+                Return CType(Me("F_Klappe"),SByte)
+            End Get
+            Set
+                Me("F_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G_Klappe() As SByte
+            Get
+                Return CType(Me("G_Klappe"),SByte)
+            End Get
+            Set
+                Me("G_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property A_Klappe() As SByte
+            Get
+                Return CType(Me("A_Klappe"),SByte)
+            End Get
+            Set
+                Me("A_Klappe") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property H_Klappe() As SByte
+            Get
+                Return CType(Me("H_Klappe"),SByte)
+            End Get
+            Set
+                Me("H_Klappe") = value
             End Set
         End Property
     End Class
