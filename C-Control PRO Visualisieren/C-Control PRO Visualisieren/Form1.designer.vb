@@ -101,13 +101,13 @@ Partial Class Form1
         Me.TextBox55 = New System.Windows.Forms.TextBox()
         Me.TextBox56 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Button22 = New System.Windows.Forms.Button()
-        Me.Button23 = New System.Windows.Forms.Button()
-        Me.Button24 = New System.Windows.Forms.Button()
-        Me.Button25 = New System.Windows.Forms.Button()
-        Me.Button26 = New System.Windows.Forms.Button()
-        Me.Button27 = New System.Windows.Forms.Button()
-        Me.Button28 = New System.Windows.Forms.Button()
+        Me.C5_Button = New System.Windows.Forms.Button()
+        Me.D5_Button = New System.Windows.Forms.Button()
+        Me.E5_Button = New System.Windows.Forms.Button()
+        Me.F5_Button = New System.Windows.Forms.Button()
+        Me.G5_Button = New System.Windows.Forms.Button()
+        Me.A5_Button = New System.Windows.Forms.Button()
+        Me.H5_Button = New System.Windows.Forms.Button()
         Me.C5_Wert = New System.Windows.Forms.TextBox()
         Me.D5_Wert = New System.Windows.Forms.TextBox()
         Me.E5_Wert = New System.Windows.Forms.TextBox()
@@ -123,13 +123,13 @@ Partial Class Form1
         Me.TextBox62 = New System.Windows.Forms.TextBox()
         Me.TextBox63 = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.Button29 = New System.Windows.Forms.Button()
-        Me.Button30 = New System.Windows.Forms.Button()
-        Me.Button31 = New System.Windows.Forms.Button()
-        Me.Button32 = New System.Windows.Forms.Button()
-        Me.Button33 = New System.Windows.Forms.Button()
-        Me.Button34 = New System.Windows.Forms.Button()
-        Me.Button35 = New System.Windows.Forms.Button()
+        Me.C6_Button = New System.Windows.Forms.Button()
+        Me.D6_Button = New System.Windows.Forms.Button()
+        Me.E6_Button = New System.Windows.Forms.Button()
+        Me.F6_Button = New System.Windows.Forms.Button()
+        Me.G6_Button = New System.Windows.Forms.Button()
+        Me.A6_Button = New System.Windows.Forms.Button()
+        Me.H6_Button = New System.Windows.Forms.Button()
         Me.C6_Wert = New System.Windows.Forms.TextBox()
         Me.D6_Wert = New System.Windows.Forms.TextBox()
         Me.E6_Wert = New System.Windows.Forms.TextBox()
@@ -169,8 +169,8 @@ Partial Class Form1
         Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
-        Me.Tonhoehenverschiebung = New System.Windows.Forms.ComboBox()
+        Me.Notenverschiebung = New System.Windows.Forms.NumericUpDown()
+        Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
@@ -320,7 +320,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Transpose_GroupBox.SuspendLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Notenverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox15.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.FlowLayoutPanel11.SuspendLayout()
@@ -1153,13 +1153,13 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Controls.Add(Me.G5_VerticalProgessBar)
         Me.FlowLayoutPanel4.Controls.Add(Me.A5_VerticalProgessBar)
         Me.FlowLayoutPanel4.Controls.Add(Me.H5_VerticalProgessBar)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button22)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button23)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button24)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button25)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button26)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button27)
-        Me.FlowLayoutPanel4.Controls.Add(Me.Button28)
+        Me.FlowLayoutPanel4.Controls.Add(Me.C5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.D5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.E5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.F5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.G5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.A5_Button)
+        Me.FlowLayoutPanel4.Controls.Add(Me.H5_Button)
         Me.FlowLayoutPanel4.Controls.Add(Me.C5_Wert)
         Me.FlowLayoutPanel4.Controls.Add(Me.D5_Wert)
         Me.FlowLayoutPanel4.Controls.Add(Me.E5_Wert)
@@ -1179,68 +1179,68 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(231, 191)
         Me.FlowLayoutPanel4.TabIndex = 9
         '
-        'Button22
+        'C5_Button
         '
-        Me.Button22.Location = New System.Drawing.Point(3, 106)
-        Me.Button22.Name = "Button22"
-        Me.Button22.Size = New System.Drawing.Size(26, 23)
-        Me.Button22.TabIndex = 179
-        Me.Button22.Text = "c''"
-        Me.Button22.UseVisualStyleBackColor = True
+        Me.C5_Button.Location = New System.Drawing.Point(3, 106)
+        Me.C5_Button.Name = "C5_Button"
+        Me.C5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.C5_Button.TabIndex = 179
+        Me.C5_Button.Text = "c''"
+        Me.C5_Button.UseVisualStyleBackColor = True
         '
-        'Button23
+        'D5_Button
         '
-        Me.Button23.Location = New System.Drawing.Point(35, 106)
-        Me.Button23.Name = "Button23"
-        Me.Button23.Size = New System.Drawing.Size(26, 23)
-        Me.Button23.TabIndex = 180
-        Me.Button23.Text = "d''"
-        Me.Button23.UseVisualStyleBackColor = True
+        Me.D5_Button.Location = New System.Drawing.Point(35, 106)
+        Me.D5_Button.Name = "D5_Button"
+        Me.D5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.D5_Button.TabIndex = 180
+        Me.D5_Button.Text = "d''"
+        Me.D5_Button.UseVisualStyleBackColor = True
         '
-        'Button24
+        'E5_Button
         '
-        Me.Button24.Location = New System.Drawing.Point(67, 106)
-        Me.Button24.Name = "Button24"
-        Me.Button24.Size = New System.Drawing.Size(26, 23)
-        Me.Button24.TabIndex = 181
-        Me.Button24.Text = "e''"
-        Me.Button24.UseVisualStyleBackColor = True
+        Me.E5_Button.Location = New System.Drawing.Point(67, 106)
+        Me.E5_Button.Name = "E5_Button"
+        Me.E5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.E5_Button.TabIndex = 181
+        Me.E5_Button.Text = "e''"
+        Me.E5_Button.UseVisualStyleBackColor = True
         '
-        'Button25
+        'F5_Button
         '
-        Me.Button25.Location = New System.Drawing.Point(99, 106)
-        Me.Button25.Name = "Button25"
-        Me.Button25.Size = New System.Drawing.Size(26, 23)
-        Me.Button25.TabIndex = 182
-        Me.Button25.Text = "f''"
-        Me.Button25.UseVisualStyleBackColor = True
+        Me.F5_Button.Location = New System.Drawing.Point(99, 106)
+        Me.F5_Button.Name = "F5_Button"
+        Me.F5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.F5_Button.TabIndex = 182
+        Me.F5_Button.Text = "f''"
+        Me.F5_Button.UseVisualStyleBackColor = True
         '
-        'Button26
+        'G5_Button
         '
-        Me.Button26.Location = New System.Drawing.Point(131, 106)
-        Me.Button26.Name = "Button26"
-        Me.Button26.Size = New System.Drawing.Size(26, 23)
-        Me.Button26.TabIndex = 183
-        Me.Button26.Text = "g''"
-        Me.Button26.UseVisualStyleBackColor = True
+        Me.G5_Button.Location = New System.Drawing.Point(131, 106)
+        Me.G5_Button.Name = "G5_Button"
+        Me.G5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.G5_Button.TabIndex = 183
+        Me.G5_Button.Text = "g''"
+        Me.G5_Button.UseVisualStyleBackColor = True
         '
-        'Button27
+        'A5_Button
         '
-        Me.Button27.Location = New System.Drawing.Point(163, 106)
-        Me.Button27.Name = "Button27"
-        Me.Button27.Size = New System.Drawing.Size(26, 23)
-        Me.Button27.TabIndex = 184
-        Me.Button27.Text = "a''"
-        Me.Button27.UseVisualStyleBackColor = True
+        Me.A5_Button.Location = New System.Drawing.Point(163, 106)
+        Me.A5_Button.Name = "A5_Button"
+        Me.A5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.A5_Button.TabIndex = 184
+        Me.A5_Button.Text = "a''"
+        Me.A5_Button.UseVisualStyleBackColor = True
         '
-        'Button28
+        'H5_Button
         '
-        Me.Button28.Location = New System.Drawing.Point(195, 106)
-        Me.Button28.Name = "Button28"
-        Me.Button28.Size = New System.Drawing.Size(26, 23)
-        Me.Button28.TabIndex = 185
-        Me.Button28.Text = "h''"
-        Me.Button28.UseVisualStyleBackColor = True
+        Me.H5_Button.Location = New System.Drawing.Point(195, 106)
+        Me.H5_Button.Name = "H5_Button"
+        Me.H5_Button.Size = New System.Drawing.Size(26, 23)
+        Me.H5_Button.TabIndex = 185
+        Me.H5_Button.Text = "h''"
+        Me.H5_Button.UseVisualStyleBackColor = True
         '
         'C5_Wert
         '
@@ -1384,13 +1384,13 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Controls.Add(Me.G6_VerticalProgessBar)
         Me.FlowLayoutPanel5.Controls.Add(Me.A6_VerticalProgessBar)
         Me.FlowLayoutPanel5.Controls.Add(Me.H6_VerticalProgessBar)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button29)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button30)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button31)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button32)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button33)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button34)
-        Me.FlowLayoutPanel5.Controls.Add(Me.Button35)
+        Me.FlowLayoutPanel5.Controls.Add(Me.C6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.D6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.E6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.F6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.G6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.A6_Button)
+        Me.FlowLayoutPanel5.Controls.Add(Me.H6_Button)
         Me.FlowLayoutPanel5.Controls.Add(Me.C6_Wert)
         Me.FlowLayoutPanel5.Controls.Add(Me.D6_Wert)
         Me.FlowLayoutPanel5.Controls.Add(Me.E6_Wert)
@@ -1410,68 +1410,75 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Size = New System.Drawing.Size(237, 191)
         Me.FlowLayoutPanel5.TabIndex = 10
         '
-        'Button29
+        'C6_Button
         '
-        Me.Button29.Location = New System.Drawing.Point(3, 106)
-        Me.Button29.Name = "Button29"
-        Me.Button29.Size = New System.Drawing.Size(26, 23)
-        Me.Button29.TabIndex = 179
-        Me.Button29.Text = "c'''"
-        Me.Button29.UseVisualStyleBackColor = True
+        Me.C6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.C6_Button.Location = New System.Drawing.Point(3, 106)
+        Me.C6_Button.Name = "C6_Button"
+        Me.C6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.C6_Button.TabIndex = 179
+        Me.C6_Button.Text = "c'''"
+        Me.C6_Button.UseVisualStyleBackColor = True
         '
-        'Button30
+        'D6_Button
         '
-        Me.Button30.Location = New System.Drawing.Point(35, 106)
-        Me.Button30.Name = "Button30"
-        Me.Button30.Size = New System.Drawing.Size(26, 23)
-        Me.Button30.TabIndex = 180
-        Me.Button30.Text = "d'''"
-        Me.Button30.UseVisualStyleBackColor = True
+        Me.D6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.D6_Button.Location = New System.Drawing.Point(35, 106)
+        Me.D6_Button.Name = "D6_Button"
+        Me.D6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.D6_Button.TabIndex = 180
+        Me.D6_Button.Text = "d'''"
+        Me.D6_Button.UseVisualStyleBackColor = True
         '
-        'Button31
+        'E6_Button
         '
-        Me.Button31.Location = New System.Drawing.Point(67, 106)
-        Me.Button31.Name = "Button31"
-        Me.Button31.Size = New System.Drawing.Size(26, 23)
-        Me.Button31.TabIndex = 181
-        Me.Button31.Text = "e'''"
-        Me.Button31.UseVisualStyleBackColor = True
+        Me.E6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.E6_Button.Location = New System.Drawing.Point(67, 106)
+        Me.E6_Button.Name = "E6_Button"
+        Me.E6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.E6_Button.TabIndex = 181
+        Me.E6_Button.Text = "e'''"
+        Me.E6_Button.UseVisualStyleBackColor = True
         '
-        'Button32
+        'F6_Button
         '
-        Me.Button32.Location = New System.Drawing.Point(99, 106)
-        Me.Button32.Name = "Button32"
-        Me.Button32.Size = New System.Drawing.Size(26, 23)
-        Me.Button32.TabIndex = 182
-        Me.Button32.Text = "f'''"
-        Me.Button32.UseVisualStyleBackColor = True
+        Me.F6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.F6_Button.Location = New System.Drawing.Point(99, 106)
+        Me.F6_Button.Name = "F6_Button"
+        Me.F6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.F6_Button.TabIndex = 182
+        Me.F6_Button.Text = "f'''"
+        Me.F6_Button.UseVisualStyleBackColor = True
         '
-        'Button33
+        'G6_Button
         '
-        Me.Button33.Location = New System.Drawing.Point(131, 106)
-        Me.Button33.Name = "Button33"
-        Me.Button33.Size = New System.Drawing.Size(26, 23)
-        Me.Button33.TabIndex = 183
-        Me.Button33.Text = "g'''"
-        Me.Button33.UseVisualStyleBackColor = True
+        Me.G6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.G6_Button.Location = New System.Drawing.Point(131, 106)
+        Me.G6_Button.Name = "G6_Button"
+        Me.G6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.G6_Button.TabIndex = 183
+        Me.G6_Button.Text = "g'''"
+        Me.G6_Button.UseVisualStyleBackColor = True
         '
-        'Button34
+        'A6_Button
         '
-        Me.Button34.Location = New System.Drawing.Point(163, 106)
-        Me.Button34.Name = "Button34"
-        Me.Button34.Size = New System.Drawing.Size(26, 23)
-        Me.Button34.TabIndex = 184
-        Me.Button34.Text = "a'''"
-        Me.Button34.UseVisualStyleBackColor = True
+        Me.A6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.A6_Button.Location = New System.Drawing.Point(163, 106)
+        Me.A6_Button.Name = "A6_Button"
+        Me.A6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.A6_Button.TabIndex = 184
+        Me.A6_Button.Text = "a'''"
+        Me.A6_Button.UseVisualStyleBackColor = True
         '
-        'Button35
+        'H6_Button
         '
-        Me.Button35.Location = New System.Drawing.Point(195, 106)
-        Me.Button35.Name = "Button35"
-        Me.Button35.Size = New System.Drawing.Size(26, 23)
-        Me.Button35.TabIndex = 185
-        Me.Button35.Text = "h'''"
-        Me.Button35.UseVisualStyleBackColor = True
+        Me.H6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.H6_Button.Location = New System.Drawing.Point(195, 106)
+        Me.H6_Button.Name = "H6_Button"
+        Me.H6_Button.Size = New System.Drawing.Size(26, 23)
+        Me.H6_Button.TabIndex = 185
+        Me.H6_Button.Text = "h'''"
+        Me.H6_Button.UseVisualStyleBackColor = True
         '
         'C6_Wert
         '
@@ -1832,8 +1839,8 @@ Partial Class Form1
         '
         Me.Transpose_GroupBox.Controls.Add(Me.Label2)
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
-        Me.Transpose_GroupBox.Controls.Add(Me.NumericUpDown1)
-        Me.Transpose_GroupBox.Controls.Add(Me.Tonhoehenverschiebung)
+        Me.Transpose_GroupBox.Controls.Add(Me.Notenverschiebung)
+        Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
         Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 261)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
@@ -1859,23 +1866,23 @@ Partial Class Form1
         Me.Label1.TabIndex = 166
         Me.Label1.Text = "Oktavenver.:"
         '
-        'NumericUpDown1
+        'Notenverschiebung
         '
-        Me.NumericUpDown1.Location = New System.Drawing.Point(127, 55)
-        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(55, 20)
-        Me.NumericUpDown1.TabIndex = 165
+        Me.Notenverschiebung.Location = New System.Drawing.Point(127, 55)
+        Me.Notenverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.Notenverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Notenverschiebung.Name = "Notenverschiebung"
+        Me.Notenverschiebung.Size = New System.Drawing.Size(55, 20)
+        Me.Notenverschiebung.TabIndex = 165
         '
-        'Tonhoehenverschiebung
+        'Oktavenverschiebung
         '
-        Me.Tonhoehenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven", ""})
-        Me.Tonhoehenverschiebung.Location = New System.Drawing.Point(90, 25)
-        Me.Tonhoehenverschiebung.Name = "Tonhoehenverschiebung"
-        Me.Tonhoehenverschiebung.Size = New System.Drawing.Size(92, 21)
-        Me.Tonhoehenverschiebung.TabIndex = 165
-        Me.Tonhoehenverschiebung.Text = "Normahl"
+        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
+        Me.Oktavenverschiebung.Location = New System.Drawing.Point(90, 25)
+        Me.Oktavenverschiebung.Name = "Oktavenverschiebung"
+        Me.Oktavenverschiebung.Size = New System.Drawing.Size(92, 21)
+        Me.Oktavenverschiebung.TabIndex = 165
+        Me.Oktavenverschiebung.Text = "Normahl"
         '
         'GroupBox15
         '
@@ -3142,7 +3149,7 @@ Partial Class Form1
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
-        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Notenverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel11.ResumeLayout(False)
@@ -3308,8 +3315,8 @@ Partial Class Form1
     Friend WithEvents NoteC As System.Windows.Forms.Button
     Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents NumericUpDown1 As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Tonhoehenverschiebung As System.Windows.Forms.ComboBox
+    Friend WithEvents Notenverschiebung As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Oktavenverschiebung As System.Windows.Forms.ComboBox
     Friend WithEvents Transpose_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -3350,20 +3357,20 @@ Partial Class Form1
     Friend WithEvents G4_Button As System.Windows.Forms.Button
     Friend WithEvents A4_Button As System.Windows.Forms.Button
     Friend WithEvents H4_Button As System.Windows.Forms.Button
-    Friend WithEvents Button22 As System.Windows.Forms.Button
-    Friend WithEvents Button23 As System.Windows.Forms.Button
-    Friend WithEvents Button24 As System.Windows.Forms.Button
-    Friend WithEvents Button25 As System.Windows.Forms.Button
-    Friend WithEvents Button26 As System.Windows.Forms.Button
-    Friend WithEvents Button27 As System.Windows.Forms.Button
-    Friend WithEvents Button28 As System.Windows.Forms.Button
-    Friend WithEvents Button29 As System.Windows.Forms.Button
-    Friend WithEvents Button30 As System.Windows.Forms.Button
-    Friend WithEvents Button31 As System.Windows.Forms.Button
-    Friend WithEvents Button32 As System.Windows.Forms.Button
-    Friend WithEvents Button33 As System.Windows.Forms.Button
-    Friend WithEvents Button34 As System.Windows.Forms.Button
-    Friend WithEvents Button35 As System.Windows.Forms.Button
+    Friend WithEvents C5_Button As System.Windows.Forms.Button
+    Friend WithEvents D5_Button As System.Windows.Forms.Button
+    Friend WithEvents E5_Button As System.Windows.Forms.Button
+    Friend WithEvents F5_Button As System.Windows.Forms.Button
+    Friend WithEvents G5_Button As System.Windows.Forms.Button
+    Friend WithEvents A5_Button As System.Windows.Forms.Button
+    Friend WithEvents H5_Button As System.Windows.Forms.Button
+    Friend WithEvents C6_Button As System.Windows.Forms.Button
+    Friend WithEvents D6_Button As System.Windows.Forms.Button
+    Friend WithEvents E6_Button As System.Windows.Forms.Button
+    Friend WithEvents F6_Button As System.Windows.Forms.Button
+    Friend WithEvents G6_Button As System.Windows.Forms.Button
+    Friend WithEvents A6_Button As System.Windows.Forms.Button
+    Friend WithEvents H6_Button As System.Windows.Forms.Button
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox11 As System.Windows.Forms.GroupBox

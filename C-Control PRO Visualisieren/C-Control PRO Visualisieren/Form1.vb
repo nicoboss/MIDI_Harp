@@ -272,8 +272,8 @@ Public Class Form1
 
             If Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    m.PlayMIDINote(i + NumericUpDown1.Value, 100, 0)
-                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i + NumericUpDown1.Value), CByte(100))
+                    m.PlayMIDINote(i + Notenverschiebung.Value, 100, 0)
+                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value), CByte(100))
                 End If
 
                 Notenlaege(i) += 0.25
@@ -283,8 +283,8 @@ Public Class Form1
             Else
 
                 If Notenlaege(i) > 0 Then
-                    m.STOPMIDINote(i + NumericUpDown1.Value)
-                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(i + NumericUpDown1.Value), 0)
+                    m.STOPMIDINote(i + Notenverschiebung.Value)
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(i + Notenverschiebung.Value), 0)
                     Notenlaege(i) = 0
                 End If
             End If
@@ -494,8 +494,8 @@ Public Class Form1
 
 
 
-    Private Sub Tonhoehenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Tonhoehenverschiebung.SelectedIndexChanged
-        NumericUpDown1.Value = 12 * (Tonhoehenverschiebung.SelectedIndex - 4)
+    Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
+        Notenverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
     End Sub
 
 
@@ -611,6 +611,7 @@ Public Class Form1
     End Sub
 
 
+
     Private Sub C3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.Click
         Button_Note(28)
     End Sub
@@ -638,6 +639,7 @@ Public Class Form1
     Private Sub H3_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.Click
         Button_Note(39)
     End Sub
+
 
 
     Private Sub C4_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.Click
@@ -668,11 +670,71 @@ Public Class Form1
         Button_Note(51)
     End Sub
 
+
+
+    Private Sub C5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C5_Button.Click
+        Button_Note(52)
+    End Sub
+
+    Private Sub D5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D5_Button.Click
+        Button_Note(54)
+    End Sub
+
+    Private Sub E5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E5_Button.Click
+        Button_Note(56)
+    End Sub
+
+    Private Sub F5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F5_Button.Click
+        Button_Note(57)
+    End Sub
+
+    Private Sub G5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G5_Button.Click
+        Button_Note(59)
+    End Sub
+
+    Private Sub A5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A5_Button.Click
+        Button_Note(61)
+    End Sub
+
+    Private Sub H5_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H5_Button.Click
+        Button_Note(63)
+    End Sub
+
+
+
+    Private Sub C6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C6_Button.Click
+        Button_Note(64)
+    End Sub
+
+    Private Sub D6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D6_Button.Click
+        Button_Note(66)
+    End Sub
+
+    Private Sub E6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E6_Button.Click
+        Button_Note(68)
+    End Sub
+
+    Private Sub F6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F6_Button.Click
+        Button_Note(69)
+    End Sub
+
+    Private Sub G6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G6_Button.Click
+        Button_Note(71)
+    End Sub
+
+    Private Sub A6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A6_Button.Click
+        Button_Note(73)
+    End Sub
+
+    Private Sub H6_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Button.Click
+        Button_Note(75)
+    End Sub
+
 #End Region
 
 
     Private Sub Button_Note(ByVal NoteNr As Byte)
-        m.PlayMIDINote(NoteNr + NumericUpDown1.Value + Verschiebung(NoteNr), 100, 0)
+        m.PlayMIDINote(NoteNr + Notenverschiebung.Value + Verschiebung(NoteNr), 100, 0)
         Note_Play(NoteNr) = True
     End Sub
 
@@ -713,7 +775,6 @@ Public Class Form1
     End Sub
 
 #End Region
-
 
 
 End Class
