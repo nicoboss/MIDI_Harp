@@ -273,7 +273,7 @@ Public Class Form1
             If Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
                     m.PlayMIDINote(i + Notenverschiebung.Value, 100, 0)
-                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value), CByte(100))
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value), CByte(100))        '''''''''''''''''''''''''Notenlaege(50)
                 End If
 
                 Notenlaege(i) += 0.25
@@ -284,7 +284,7 @@ Public Class Form1
 
                 If Notenlaege(i) > 0 Then
                     m.STOPMIDINote(i + Notenverschiebung.Value)
-                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(i + Notenverschiebung.Value), 0)
+                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Notenverschiebung.Value), 0)
                     Notenlaege(i) = 0
                 End If
             End If
@@ -367,18 +367,18 @@ Public Class Form1
         End If
 
         Song.Tracks(0).TrackData.Clear()
-        Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
-        Song.Tracks(0).Text(1, META_Autor_Input.Text)
-        Song.Tracks(0).Text(2, META_Copyright_Input.Text)
-        Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
-        Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
+        If Not META_Dateiname_Input.Text = "" Then Song.Tracks(0).Text(1, META_Dateiname_Input.Text)
+        If Not META_Autor_Input.Text = "" Then Song.Tracks(0).Text(1, META_Autor_Input.Text)
+        If Not META_Copyright_Input.Text = "" Then Song.Tracks(0).Text(2, META_Copyright_Input.Text)
+        If Not META_Bemerkung_Input.Text = "" Then Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
+        If MIDI_NormalMode.Checked = True Then Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
 
         Song.Tracks(1).TrackData.Clear()
         Song.Tracks(1).Zuordnung(1)
-        Song.Tracks(1).Text(1, cboInstruments.SelectedText)
-        Song.Tracks(1).Text(3, META_SpurnamenRH_Input.Text)
-        Song.Tracks(1).Text(4, cboInstruments.SelectedText)
-        Song.Tracks(1).Add_Instrument(cboInstruments.SelectedIndex)
+        If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Text(1, cboInstruments.SelectedText)
+        If Not META_Spurnamen_Input.Text = "" Then Song.Tracks(1).Text(3, META_Spurnamen_Input.Text)
+        If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Text(4, cboInstruments.SelectedText)
+        If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Add_Instrument(cboInstruments.SelectedIndex)
 
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
@@ -813,6 +813,14 @@ Public Class Form1
 
 #End Region
 
+
+    Private Sub ToolTip_ON_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolTip_ON.CheckedChanged, MyBase.Load
+        If ToolTip_ON.Checked = True Then
+            ToolTip1.Active = True
+        Else
+            ToolTip1.Active = False
+        End If
+    End Sub
 
 End Class
 
