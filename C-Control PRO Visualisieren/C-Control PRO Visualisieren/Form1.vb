@@ -144,6 +144,18 @@ Public Class Form1
             .Save_Settings = hsbPan.Value
             .Save_Settings = hsbModWheel.Value
 
+            ' ToolTip
+            .Save_Settings = ToolTip_ON.Checked
+
+            ' Tonart Klappen
+            .Save_Settings = C_Klappe.Value
+            .Save_Settings = D_Klappe.Value
+            .Save_Settings = E_Klappe
+            .Save_Settings = F_Klappe
+            .Save_Settings = G_Klappe
+            .Save_Settings = A_Klappe
+            .Save_Settings = H_Klappe
+
 
             ' Einstellungen speichern
             .Save()
