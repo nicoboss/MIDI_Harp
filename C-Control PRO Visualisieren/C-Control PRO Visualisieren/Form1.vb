@@ -107,6 +107,15 @@ Public Class Form1
         Tackt.Enabled = True
     End Sub
 
+    Private Sub Form1_Load1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        META_Copyright_Input.Text = My.Settings.Textbox_Settings
+    End Sub
+
+    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        My.Settings.Textbox_Settings = META_Copyright_Input.Text
+        My.Settings.Save()
+    End Sub
+
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
@@ -123,12 +132,30 @@ Public Class Form1
     'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
     Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
 
+        Dim MidiNoteNr = { _
+            16, 18, 20, 21, 23, 25, 27, _
+            28, 30, 32, 33, 35, 37, 39, _
+            40, 42, 44, 45, 47, 49, 51, _
+            52, 54, 56, 57, 59, 61, 63, _
+            64, 66, 68, 69, 71, 73, 75}
+
+
         Dim Noten_Grenzwert() As TextBox = { _
             C2_Grenzwert, D2_Grenzwert, E2_Grenzwert, F2_Grenzwert, G2_Grenzwert, A2_Grenzwert, H2_Grenzwert, _
             C3_Grenzwert, D3_Grenzwert, E3_Grenzwert, F3_Grenzwert, G3_Grenzwert, A3_Grenzwert, H3_Grenzwert, _
             C4_Grenzwert, D4_Grenzwert, E4_Grenzwert, F4_Grenzwert, G4_Grenzwert, A4_Grenzwert, H4_Grenzwert, _
             C5_Grenzwert, D5_Grenzwert, E5_Grenzwert, F5_Grenzwert, G5_Grenzwert, A5_Grenzwert, H5_Grenzwert, _
             C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
+
+
+        Dim Noten_Verschiebung() As TextBox = { _
+            C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung, _
+            C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung, _
+            C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung, _
+            C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
+            C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
+
+
 
         Dim Serial_Read As String = ""
 
@@ -138,21 +165,21 @@ Public Class Form1
 
         SerialPort1.Write(1)
 
-        For i = 1 To 32
+        For i = 0 To 31
             Serial_Read = SerialPort1.ReadByte
             ADC(i) = Serial_Read
         Next
 
 
-        For i = 1 To 32
-            If ADC(i) >= 100 Then
-                Note_Play(MidiNoteNrError) = True
+        For i = 0 To 31
+            If ADC(i) >= CInt(Noten_Grenzwert(i).Text) Then
+                Note_Play(MidiNoteNr(i) + Notenverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True
                 Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
             End If
 
 
             If ADC(i) < 100 And Note_Play(255) = True Then
-                Note_Play(MidiNoteNrError) = False
+                Note_Play(MidiNoteNr(i) + Notenverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
                 Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
             End If
         Next
@@ -356,7 +383,7 @@ Public Class Form1
             If Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
                     m.PlayMIDINote(i + Notenverschiebung.Value, 100, 0)
-                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value + Noten_Verschiebung), CByte(100))        ' Notenlaege(50)
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
                 End If
 
                 Notenlaege(i) += 0.25
