@@ -35,6 +35,13 @@ Partial Class Form1
         Me.MIDI_Start = New System.Windows.Forms.Button()
         Me.MIDI_Save = New System.Windows.Forms.Button()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.F2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.G2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.A2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.H2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C2_Button = New System.Windows.Forms.Button()
         Me.D2_Button = New System.Windows.Forms.Button()
         Me.E2_Button = New System.Windows.Forms.Button()
@@ -57,6 +64,13 @@ Partial Class Form1
         Me.A2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.H2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.D3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.E3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.F3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.G3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.A3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.H3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C3_Button = New System.Windows.Forms.Button()
         Me.D3_Button = New System.Windows.Forms.Button()
         Me.E3_Button = New System.Windows.Forms.Button()
@@ -79,6 +93,13 @@ Partial Class Form1
         Me.A3_Grenzwert = New System.Windows.Forms.TextBox()
         Me.H3_Grenzwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.D4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.E4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.F4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.G4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.A4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.H4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C4_Button = New System.Windows.Forms.Button()
         Me.D4_Button = New System.Windows.Forms.Button()
         Me.E4_Button = New System.Windows.Forms.Button()
@@ -93,14 +114,21 @@ Partial Class Form1
         Me.G4_Wert = New System.Windows.Forms.TextBox()
         Me.A4_Wert = New System.Windows.Forms.TextBox()
         Me.H4_Wert = New System.Windows.Forms.TextBox()
-        Me.TextBox50 = New System.Windows.Forms.TextBox()
-        Me.TextBox51 = New System.Windows.Forms.TextBox()
-        Me.TextBox52 = New System.Windows.Forms.TextBox()
-        Me.TextBox53 = New System.Windows.Forms.TextBox()
-        Me.TextBox54 = New System.Windows.Forms.TextBox()
-        Me.TextBox55 = New System.Windows.Forms.TextBox()
-        Me.TextBox56 = New System.Windows.Forms.TextBox()
+        Me.C4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.D4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.E4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.F4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.G4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.A4_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.H4_Grenzwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.D5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.E5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.F5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.G5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.A5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.H5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C5_Button = New System.Windows.Forms.Button()
         Me.D5_Button = New System.Windows.Forms.Button()
         Me.E5_Button = New System.Windows.Forms.Button()
@@ -115,14 +143,21 @@ Partial Class Form1
         Me.G5_Wert = New System.Windows.Forms.TextBox()
         Me.A5_Wert = New System.Windows.Forms.TextBox()
         Me.H5_Wert = New System.Windows.Forms.TextBox()
-        Me.TextBox57 = New System.Windows.Forms.TextBox()
-        Me.TextBox58 = New System.Windows.Forms.TextBox()
-        Me.TextBox59 = New System.Windows.Forms.TextBox()
-        Me.TextBox60 = New System.Windows.Forms.TextBox()
-        Me.TextBox61 = New System.Windows.Forms.TextBox()
-        Me.TextBox62 = New System.Windows.Forms.TextBox()
-        Me.TextBox63 = New System.Windows.Forms.TextBox()
+        Me.C5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.D5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.E5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.F5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.G5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.A5_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.H5_Grenzwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.D6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.E6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.F6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.G6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.A6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.H6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C6_Button = New System.Windows.Forms.Button()
         Me.D6_Button = New System.Windows.Forms.Button()
         Me.E6_Button = New System.Windows.Forms.Button()
@@ -137,13 +172,13 @@ Partial Class Form1
         Me.G6_Wert = New System.Windows.Forms.TextBox()
         Me.A6_Wert = New System.Windows.Forms.TextBox()
         Me.H6_Wert = New System.Windows.Forms.TextBox()
-        Me.TextBox64 = New System.Windows.Forms.TextBox()
-        Me.TextBox65 = New System.Windows.Forms.TextBox()
-        Me.TextBox66 = New System.Windows.Forms.TextBox()
-        Me.TextBox67 = New System.Windows.Forms.TextBox()
-        Me.TextBox68 = New System.Windows.Forms.TextBox()
-        Me.TextBox69 = New System.Windows.Forms.TextBox()
-        Me.TextBox70 = New System.Windows.Forms.TextBox()
+        Me.C6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.D6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.E6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.F6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.G6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.A6_Grenzwert = New System.Windows.Forms.TextBox()
+        Me.H6_Grenzwert = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Messintervall_GroupBox = New System.Windows.Forms.GroupBox()
@@ -178,29 +213,29 @@ Partial Class Form1
         Me.Messintervall = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox103 = New System.Windows.Forms.TextBox()
-        Me.TextBox104 = New System.Windows.Forms.TextBox()
-        Me.TextBox105 = New System.Windows.Forms.TextBox()
-        Me.TextBox106 = New System.Windows.Forms.TextBox()
-        Me.TextBox107 = New System.Windows.Forms.TextBox()
-        Me.TextBox108 = New System.Windows.Forms.TextBox()
-        Me.TextBox109 = New System.Windows.Forms.TextBox()
+        Me.C6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.D6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.E6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.F6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.G6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.A6_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.H6_Verschiebung = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel10 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox96 = New System.Windows.Forms.TextBox()
-        Me.TextBox97 = New System.Windows.Forms.TextBox()
-        Me.TextBox98 = New System.Windows.Forms.TextBox()
-        Me.TextBox99 = New System.Windows.Forms.TextBox()
-        Me.TextBox100 = New System.Windows.Forms.TextBox()
-        Me.TextBox101 = New System.Windows.Forms.TextBox()
-        Me.TextBox102 = New System.Windows.Forms.TextBox()
+        Me.C5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.D5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.E5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.F5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.G5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.A5_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.H5_Verschiebung = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel9 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.TextBox89 = New System.Windows.Forms.TextBox()
-        Me.TextBox90 = New System.Windows.Forms.TextBox()
-        Me.TextBox91 = New System.Windows.Forms.TextBox()
-        Me.TextBox92 = New System.Windows.Forms.TextBox()
-        Me.TextBox93 = New System.Windows.Forms.TextBox()
-        Me.TextBox94 = New System.Windows.Forms.TextBox()
-        Me.TextBox95 = New System.Windows.Forms.TextBox()
+        Me.C4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.D4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.E4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.F4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.G4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.A4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.H4_Verschiebung = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel8 = New System.Windows.Forms.FlowLayoutPanel()
         Me.C3_Verschiebung = New System.Windows.Forms.TextBox()
         Me.D3_Verschiebung = New System.Windows.Forms.TextBox()
@@ -267,41 +302,6 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.F2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.G2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.A2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.H2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.C3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.D3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.E3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.F3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.G3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.A3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.H3_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.C4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.D4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.E4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.F4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.G4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.A4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.H4_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.C5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.D5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.E5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.F5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.G5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.A5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.H5_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.C6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.D6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.E6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.F6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.G6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.A6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.H6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -485,6 +485,63 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(228, 191)
         Me.FlowLayoutPanel1.TabIndex = 6
+        '
+        'C2_VerticalProgessBar
+        '
+        Me.C2_VerticalProgessBar.AccessibleName = ""
+        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
+        Me.C2_VerticalProgessBar.Maximum = 255
+        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
+        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.C2_VerticalProgessBar.TabIndex = 3
+        '
+        'D2_VerticalProgessBar
+        '
+        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
+        Me.D2_VerticalProgessBar.Maximum = 255
+        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
+        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.D2_VerticalProgessBar.TabIndex = 4
+        '
+        'E2_VerticalProgessBar
+        '
+        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
+        Me.E2_VerticalProgessBar.Maximum = 255
+        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
+        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.E2_VerticalProgessBar.TabIndex = 5
+        '
+        'F2_VerticalProgessBar
+        '
+        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
+        Me.F2_VerticalProgessBar.Maximum = 255
+        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
+        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.F2_VerticalProgessBar.TabIndex = 6
+        '
+        'G2_VerticalProgessBar
+        '
+        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
+        Me.G2_VerticalProgessBar.Maximum = 255
+        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
+        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.G2_VerticalProgessBar.TabIndex = 7
+        '
+        'A2_VerticalProgessBar
+        '
+        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
+        Me.A2_VerticalProgessBar.Maximum = 255
+        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
+        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.A2_VerticalProgessBar.TabIndex = 8
+        '
+        'H2_VerticalProgessBar
+        '
+        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
+        Me.H2_VerticalProgessBar.Maximum = 255
+        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
+        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.H2_VerticalProgessBar.TabIndex = 9
         '
         'C2_Button
         '
@@ -718,6 +775,63 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Size = New System.Drawing.Size(230, 191)
         Me.FlowLayoutPanel2.TabIndex = 7
         '
+        'C3_VerticalProgessBar
+        '
+        Me.C3_VerticalProgessBar.AccessibleName = ""
+        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
+        Me.C3_VerticalProgessBar.Maximum = 255
+        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
+        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.C3_VerticalProgessBar.TabIndex = 186
+        '
+        'D3_VerticalProgessBar
+        '
+        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
+        Me.D3_VerticalProgessBar.Maximum = 255
+        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
+        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.D3_VerticalProgessBar.TabIndex = 187
+        '
+        'E3_VerticalProgessBar
+        '
+        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
+        Me.E3_VerticalProgessBar.Maximum = 255
+        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
+        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.E3_VerticalProgessBar.TabIndex = 188
+        '
+        'F3_VerticalProgessBar
+        '
+        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
+        Me.F3_VerticalProgessBar.Maximum = 255
+        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
+        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.F3_VerticalProgessBar.TabIndex = 189
+        '
+        'G3_VerticalProgessBar
+        '
+        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
+        Me.G3_VerticalProgessBar.Maximum = 255
+        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
+        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.G3_VerticalProgessBar.TabIndex = 190
+        '
+        'A3_VerticalProgessBar
+        '
+        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
+        Me.A3_VerticalProgessBar.Maximum = 255
+        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
+        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.A3_VerticalProgessBar.TabIndex = 191
+        '
+        'H3_VerticalProgessBar
+        '
+        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
+        Me.H3_VerticalProgessBar.Maximum = 255
+        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
+        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.H3_VerticalProgessBar.TabIndex = 192
+        '
         'C3_Button
         '
         Me.C3_Button.Location = New System.Drawing.Point(3, 106)
@@ -937,17 +1051,73 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Controls.Add(Me.G4_Wert)
         Me.FlowLayoutPanel3.Controls.Add(Me.A4_Wert)
         Me.FlowLayoutPanel3.Controls.Add(Me.H4_Wert)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox50)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox51)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox52)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox53)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox54)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox55)
-        Me.FlowLayoutPanel3.Controls.Add(Me.TextBox56)
+        Me.FlowLayoutPanel3.Controls.Add(Me.C4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.D4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.E4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.F4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.G4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.A4_Grenzwert)
+        Me.FlowLayoutPanel3.Controls.Add(Me.H4_Grenzwert)
         Me.FlowLayoutPanel3.Location = New System.Drawing.Point(496, 24)
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(232, 191)
         Me.FlowLayoutPanel3.TabIndex = 8
+        '
+        'C4_VerticalProgessBar
+        '
+        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
+        Me.C4_VerticalProgessBar.Maximum = 255
+        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
+        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.C4_VerticalProgessBar.TabIndex = 3
+        '
+        'D4_VerticalProgessBar
+        '
+        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
+        Me.D4_VerticalProgessBar.Maximum = 255
+        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
+        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.D4_VerticalProgessBar.TabIndex = 4
+        '
+        'E4_VerticalProgessBar
+        '
+        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
+        Me.E4_VerticalProgessBar.Maximum = 255
+        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
+        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.E4_VerticalProgessBar.TabIndex = 5
+        '
+        'F4_VerticalProgessBar
+        '
+        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
+        Me.F4_VerticalProgessBar.Maximum = 255
+        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
+        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.F4_VerticalProgessBar.TabIndex = 6
+        '
+        'G4_VerticalProgessBar
+        '
+        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
+        Me.G4_VerticalProgessBar.Maximum = 255
+        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
+        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.G4_VerticalProgessBar.TabIndex = 7
+        '
+        'A4_VerticalProgessBar
+        '
+        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
+        Me.A4_VerticalProgessBar.Maximum = 255
+        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
+        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.A4_VerticalProgessBar.TabIndex = 8
+        '
+        'H4_VerticalProgessBar
+        '
+        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
+        Me.H4_VerticalProgessBar.Maximum = 255
+        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
+        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.H4_VerticalProgessBar.TabIndex = 9
         '
         'C4_Button
         '
@@ -1082,68 +1252,68 @@ Partial Class Form1
         Me.H4_Wert.Text = "0"
         Me.H4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox50
+        'C4_Grenzwert
         '
-        Me.TextBox50.Location = New System.Drawing.Point(3, 161)
-        Me.TextBox50.Name = "TextBox50"
-        Me.TextBox50.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox50.TabIndex = 25
-        Me.TextBox50.Text = "100"
-        Me.TextBox50.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C4_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C4_Grenzwert.Name = "C4_Grenzwert"
+        Me.C4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.C4_Grenzwert.TabIndex = 25
+        Me.C4_Grenzwert.Text = "100"
+        Me.C4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox51
+        'D4_Grenzwert
         '
-        Me.TextBox51.Location = New System.Drawing.Point(35, 161)
-        Me.TextBox51.Name = "TextBox51"
-        Me.TextBox51.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox51.TabIndex = 26
-        Me.TextBox51.Text = "100"
-        Me.TextBox51.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D4_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D4_Grenzwert.Name = "D4_Grenzwert"
+        Me.D4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.D4_Grenzwert.TabIndex = 26
+        Me.D4_Grenzwert.Text = "100"
+        Me.D4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox52
+        'E4_Grenzwert
         '
-        Me.TextBox52.Location = New System.Drawing.Point(67, 161)
-        Me.TextBox52.Name = "TextBox52"
-        Me.TextBox52.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox52.TabIndex = 27
-        Me.TextBox52.Text = "100"
-        Me.TextBox52.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E4_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E4_Grenzwert.Name = "E4_Grenzwert"
+        Me.E4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.E4_Grenzwert.TabIndex = 27
+        Me.E4_Grenzwert.Text = "100"
+        Me.E4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox53
+        'F4_Grenzwert
         '
-        Me.TextBox53.Location = New System.Drawing.Point(99, 161)
-        Me.TextBox53.Name = "TextBox53"
-        Me.TextBox53.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox53.TabIndex = 28
-        Me.TextBox53.Text = "100"
-        Me.TextBox53.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F4_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F4_Grenzwert.Name = "F4_Grenzwert"
+        Me.F4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.F4_Grenzwert.TabIndex = 28
+        Me.F4_Grenzwert.Text = "100"
+        Me.F4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox54
+        'G4_Grenzwert
         '
-        Me.TextBox54.Location = New System.Drawing.Point(131, 161)
-        Me.TextBox54.Name = "TextBox54"
-        Me.TextBox54.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox54.TabIndex = 29
-        Me.TextBox54.Text = "100"
-        Me.TextBox54.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G4_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G4_Grenzwert.Name = "G4_Grenzwert"
+        Me.G4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.G4_Grenzwert.TabIndex = 29
+        Me.G4_Grenzwert.Text = "100"
+        Me.G4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox55
+        'A4_Grenzwert
         '
-        Me.TextBox55.Location = New System.Drawing.Point(163, 161)
-        Me.TextBox55.Name = "TextBox55"
-        Me.TextBox55.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox55.TabIndex = 30
-        Me.TextBox55.Text = "100"
-        Me.TextBox55.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A4_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A4_Grenzwert.Name = "A4_Grenzwert"
+        Me.A4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.A4_Grenzwert.TabIndex = 30
+        Me.A4_Grenzwert.Text = "100"
+        Me.A4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox56
+        'H4_Grenzwert
         '
-        Me.TextBox56.Location = New System.Drawing.Point(195, 161)
-        Me.TextBox56.Name = "TextBox56"
-        Me.TextBox56.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox56.TabIndex = 31
-        Me.TextBox56.Text = "100"
-        Me.TextBox56.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H4_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H4_Grenzwert.Name = "H4_Grenzwert"
+        Me.H4_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.H4_Grenzwert.TabIndex = 31
+        Me.H4_Grenzwert.Text = "100"
+        Me.H4_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel4
         '
@@ -1168,17 +1338,73 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Controls.Add(Me.G5_Wert)
         Me.FlowLayoutPanel4.Controls.Add(Me.A5_Wert)
         Me.FlowLayoutPanel4.Controls.Add(Me.H5_Wert)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox57)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox58)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox59)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox60)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox61)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox62)
-        Me.FlowLayoutPanel4.Controls.Add(Me.TextBox63)
+        Me.FlowLayoutPanel4.Controls.Add(Me.C5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.D5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.E5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.F5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.G5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.A5_Grenzwert)
+        Me.FlowLayoutPanel4.Controls.Add(Me.H5_Grenzwert)
         Me.FlowLayoutPanel4.Location = New System.Drawing.Point(734, 24)
         Me.FlowLayoutPanel4.Name = "FlowLayoutPanel4"
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(231, 191)
         Me.FlowLayoutPanel4.TabIndex = 9
+        '
+        'C5_VerticalProgessBar
+        '
+        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
+        Me.C5_VerticalProgessBar.Maximum = 255
+        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
+        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.C5_VerticalProgessBar.TabIndex = 3
+        '
+        'D5_VerticalProgessBar
+        '
+        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
+        Me.D5_VerticalProgessBar.Maximum = 255
+        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
+        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.D5_VerticalProgessBar.TabIndex = 4
+        '
+        'E5_VerticalProgessBar
+        '
+        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
+        Me.E5_VerticalProgessBar.Maximum = 255
+        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
+        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.E5_VerticalProgessBar.TabIndex = 5
+        '
+        'F5_VerticalProgessBar
+        '
+        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
+        Me.F5_VerticalProgessBar.Maximum = 255
+        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
+        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.F5_VerticalProgessBar.TabIndex = 6
+        '
+        'G5_VerticalProgessBar
+        '
+        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
+        Me.G5_VerticalProgessBar.Maximum = 255
+        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
+        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.G5_VerticalProgessBar.TabIndex = 7
+        '
+        'A5_VerticalProgessBar
+        '
+        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
+        Me.A5_VerticalProgessBar.Maximum = 255
+        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
+        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.A5_VerticalProgessBar.TabIndex = 8
+        '
+        'H5_VerticalProgessBar
+        '
+        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
+        Me.H5_VerticalProgessBar.Maximum = 255
+        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
+        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.H5_VerticalProgessBar.TabIndex = 9
         '
         'C5_Button
         '
@@ -1313,68 +1539,68 @@ Partial Class Form1
         Me.H5_Wert.Text = "0"
         Me.H5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox57
+        'C5_Grenzwert
         '
-        Me.TextBox57.Location = New System.Drawing.Point(3, 161)
-        Me.TextBox57.Name = "TextBox57"
-        Me.TextBox57.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox57.TabIndex = 25
-        Me.TextBox57.Text = "75"
-        Me.TextBox57.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C5_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C5_Grenzwert.Name = "C5_Grenzwert"
+        Me.C5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.C5_Grenzwert.TabIndex = 25
+        Me.C5_Grenzwert.Text = "75"
+        Me.C5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox58
+        'D5_Grenzwert
         '
-        Me.TextBox58.Location = New System.Drawing.Point(35, 161)
-        Me.TextBox58.Name = "TextBox58"
-        Me.TextBox58.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox58.TabIndex = 26
-        Me.TextBox58.Text = "75"
-        Me.TextBox58.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D5_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D5_Grenzwert.Name = "D5_Grenzwert"
+        Me.D5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.D5_Grenzwert.TabIndex = 26
+        Me.D5_Grenzwert.Text = "75"
+        Me.D5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox59
+        'E5_Grenzwert
         '
-        Me.TextBox59.Location = New System.Drawing.Point(67, 161)
-        Me.TextBox59.Name = "TextBox59"
-        Me.TextBox59.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox59.TabIndex = 27
-        Me.TextBox59.Text = "75"
-        Me.TextBox59.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E5_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E5_Grenzwert.Name = "E5_Grenzwert"
+        Me.E5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.E5_Grenzwert.TabIndex = 27
+        Me.E5_Grenzwert.Text = "75"
+        Me.E5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox60
+        'F5_Grenzwert
         '
-        Me.TextBox60.Location = New System.Drawing.Point(99, 161)
-        Me.TextBox60.Name = "TextBox60"
-        Me.TextBox60.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox60.TabIndex = 28
-        Me.TextBox60.Text = "75"
-        Me.TextBox60.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F5_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F5_Grenzwert.Name = "F5_Grenzwert"
+        Me.F5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.F5_Grenzwert.TabIndex = 28
+        Me.F5_Grenzwert.Text = "75"
+        Me.F5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox61
+        'G5_Grenzwert
         '
-        Me.TextBox61.Location = New System.Drawing.Point(131, 161)
-        Me.TextBox61.Name = "TextBox61"
-        Me.TextBox61.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox61.TabIndex = 29
-        Me.TextBox61.Text = "75"
-        Me.TextBox61.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G5_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G5_Grenzwert.Name = "G5_Grenzwert"
+        Me.G5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.G5_Grenzwert.TabIndex = 29
+        Me.G5_Grenzwert.Text = "75"
+        Me.G5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox62
+        'A5_Grenzwert
         '
-        Me.TextBox62.Location = New System.Drawing.Point(163, 161)
-        Me.TextBox62.Name = "TextBox62"
-        Me.TextBox62.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox62.TabIndex = 30
-        Me.TextBox62.Text = "75"
-        Me.TextBox62.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A5_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A5_Grenzwert.Name = "A5_Grenzwert"
+        Me.A5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.A5_Grenzwert.TabIndex = 30
+        Me.A5_Grenzwert.Text = "75"
+        Me.A5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox63
+        'H5_Grenzwert
         '
-        Me.TextBox63.Location = New System.Drawing.Point(195, 161)
-        Me.TextBox63.Name = "TextBox63"
-        Me.TextBox63.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox63.TabIndex = 31
-        Me.TextBox63.Text = "75"
-        Me.TextBox63.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H5_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H5_Grenzwert.Name = "H5_Grenzwert"
+        Me.H5_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.H5_Grenzwert.TabIndex = 31
+        Me.H5_Grenzwert.Text = "75"
+        Me.H5_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel5
         '
@@ -1399,17 +1625,73 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Controls.Add(Me.G6_Wert)
         Me.FlowLayoutPanel5.Controls.Add(Me.A6_Wert)
         Me.FlowLayoutPanel5.Controls.Add(Me.H6_Wert)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox64)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox65)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox66)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox67)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox68)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox69)
-        Me.FlowLayoutPanel5.Controls.Add(Me.TextBox70)
+        Me.FlowLayoutPanel5.Controls.Add(Me.C6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.D6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.E6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.F6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.G6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.A6_Grenzwert)
+        Me.FlowLayoutPanel5.Controls.Add(Me.H6_Grenzwert)
         Me.FlowLayoutPanel5.Location = New System.Drawing.Point(982, 24)
         Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
         Me.FlowLayoutPanel5.Size = New System.Drawing.Size(237, 191)
         Me.FlowLayoutPanel5.TabIndex = 10
+        '
+        'C6_VerticalProgessBar
+        '
+        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
+        Me.C6_VerticalProgessBar.Maximum = 255
+        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
+        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.C6_VerticalProgessBar.TabIndex = 3
+        '
+        'D6_VerticalProgessBar
+        '
+        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
+        Me.D6_VerticalProgessBar.Maximum = 255
+        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
+        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.D6_VerticalProgessBar.TabIndex = 4
+        '
+        'E6_VerticalProgessBar
+        '
+        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
+        Me.E6_VerticalProgessBar.Maximum = 255
+        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
+        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.E6_VerticalProgessBar.TabIndex = 5
+        '
+        'F6_VerticalProgessBar
+        '
+        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
+        Me.F6_VerticalProgessBar.Maximum = 255
+        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
+        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.F6_VerticalProgessBar.TabIndex = 6
+        '
+        'G6_VerticalProgessBar
+        '
+        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
+        Me.G6_VerticalProgessBar.Maximum = 255
+        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
+        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.G6_VerticalProgessBar.TabIndex = 7
+        '
+        'A6_VerticalProgessBar
+        '
+        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
+        Me.A6_VerticalProgessBar.Maximum = 255
+        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
+        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.A6_VerticalProgessBar.TabIndex = 8
+        '
+        'H6_VerticalProgessBar
+        '
+        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
+        Me.H6_VerticalProgessBar.Maximum = 255
+        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
+        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
+        Me.H6_VerticalProgessBar.TabIndex = 9
         '
         'C6_Button
         '
@@ -1551,68 +1833,68 @@ Partial Class Form1
         Me.H6_Wert.Text = "0"
         Me.H6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox64
+        'C6_Grenzwert
         '
-        Me.TextBox64.Location = New System.Drawing.Point(3, 161)
-        Me.TextBox64.Name = "TextBox64"
-        Me.TextBox64.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox64.TabIndex = 25
-        Me.TextBox64.Text = "50"
-        Me.TextBox64.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C6_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C6_Grenzwert.Name = "C6_Grenzwert"
+        Me.C6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.C6_Grenzwert.TabIndex = 25
+        Me.C6_Grenzwert.Text = "50"
+        Me.C6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox65
+        'D6_Grenzwert
         '
-        Me.TextBox65.Location = New System.Drawing.Point(35, 161)
-        Me.TextBox65.Name = "TextBox65"
-        Me.TextBox65.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox65.TabIndex = 26
-        Me.TextBox65.Text = "50"
-        Me.TextBox65.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D6_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D6_Grenzwert.Name = "D6_Grenzwert"
+        Me.D6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.D6_Grenzwert.TabIndex = 26
+        Me.D6_Grenzwert.Text = "50"
+        Me.D6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox66
+        'E6_Grenzwert
         '
-        Me.TextBox66.Location = New System.Drawing.Point(67, 161)
-        Me.TextBox66.Name = "TextBox66"
-        Me.TextBox66.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox66.TabIndex = 27
-        Me.TextBox66.Text = "50"
-        Me.TextBox66.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E6_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E6_Grenzwert.Name = "E6_Grenzwert"
+        Me.E6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.E6_Grenzwert.TabIndex = 27
+        Me.E6_Grenzwert.Text = "50"
+        Me.E6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox67
+        'F6_Grenzwert
         '
-        Me.TextBox67.Location = New System.Drawing.Point(99, 161)
-        Me.TextBox67.Name = "TextBox67"
-        Me.TextBox67.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox67.TabIndex = 28
-        Me.TextBox67.Text = "50"
-        Me.TextBox67.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F6_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F6_Grenzwert.Name = "F6_Grenzwert"
+        Me.F6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.F6_Grenzwert.TabIndex = 28
+        Me.F6_Grenzwert.Text = "50"
+        Me.F6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox68
+        'G6_Grenzwert
         '
-        Me.TextBox68.Location = New System.Drawing.Point(131, 161)
-        Me.TextBox68.Name = "TextBox68"
-        Me.TextBox68.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox68.TabIndex = 29
-        Me.TextBox68.Text = "50"
-        Me.TextBox68.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G6_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G6_Grenzwert.Name = "G6_Grenzwert"
+        Me.G6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.G6_Grenzwert.TabIndex = 29
+        Me.G6_Grenzwert.Text = "50"
+        Me.G6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox69
+        'A6_Grenzwert
         '
-        Me.TextBox69.Location = New System.Drawing.Point(163, 161)
-        Me.TextBox69.Name = "TextBox69"
-        Me.TextBox69.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox69.TabIndex = 30
-        Me.TextBox69.Text = "50"
-        Me.TextBox69.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A6_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A6_Grenzwert.Name = "A6_Grenzwert"
+        Me.A6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.A6_Grenzwert.TabIndex = 30
+        Me.A6_Grenzwert.Text = "50"
+        Me.A6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox70
+        'H6_Grenzwert
         '
-        Me.TextBox70.Location = New System.Drawing.Point(195, 161)
-        Me.TextBox70.Name = "TextBox70"
-        Me.TextBox70.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox70.TabIndex = 31
-        Me.TextBox70.Text = "50"
-        Me.TextBox70.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H6_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H6_Grenzwert.Name = "H6_Grenzwert"
+        Me.H6_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.H6_Grenzwert.TabIndex = 31
+        Me.H6_Grenzwert.Text = "50"
+        Me.H6_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Einstellungen_GroupBox
         '
@@ -1944,234 +2226,234 @@ Partial Class Form1
         '
         'FlowLayoutPanel11
         '
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox103)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox104)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox105)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox106)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox107)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox108)
-        Me.FlowLayoutPanel11.Controls.Add(Me.TextBox109)
+        Me.FlowLayoutPanel11.Controls.Add(Me.C6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.D6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.E6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.F6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.G6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.A6_Verschiebung)
+        Me.FlowLayoutPanel11.Controls.Add(Me.H6_Verschiebung)
         Me.FlowLayoutPanel11.Location = New System.Drawing.Point(982, 231)
         Me.FlowLayoutPanel11.Name = "FlowLayoutPanel11"
         Me.FlowLayoutPanel11.Size = New System.Drawing.Size(228, 27)
         Me.FlowLayoutPanel11.TabIndex = 173
         '
-        'TextBox103
+        'C6_Verschiebung
         '
-        Me.TextBox103.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox103.Name = "TextBox103"
-        Me.TextBox103.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox103.TabIndex = 19
-        Me.TextBox103.Text = "0"
-        Me.TextBox103.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C6_Verschiebung.Location = New System.Drawing.Point(3, 3)
+        Me.C6_Verschiebung.Name = "C6_Verschiebung"
+        Me.C6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.C6_Verschiebung.TabIndex = 19
+        Me.C6_Verschiebung.Text = "0"
+        Me.C6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox104
+        'D6_Verschiebung
         '
-        Me.TextBox104.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox104.Name = "TextBox104"
-        Me.TextBox104.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox104.TabIndex = 20
-        Me.TextBox104.Text = "0"
-        Me.TextBox104.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D6_Verschiebung.Location = New System.Drawing.Point(35, 3)
+        Me.D6_Verschiebung.Name = "D6_Verschiebung"
+        Me.D6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.D6_Verschiebung.TabIndex = 20
+        Me.D6_Verschiebung.Text = "0"
+        Me.D6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox105
+        'E6_Verschiebung
         '
-        Me.TextBox105.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox105.Name = "TextBox105"
-        Me.TextBox105.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox105.TabIndex = 21
-        Me.TextBox105.Text = "0"
-        Me.TextBox105.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E6_Verschiebung.Location = New System.Drawing.Point(67, 3)
+        Me.E6_Verschiebung.Name = "E6_Verschiebung"
+        Me.E6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.E6_Verschiebung.TabIndex = 21
+        Me.E6_Verschiebung.Text = "0"
+        Me.E6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox106
+        'F6_Verschiebung
         '
-        Me.TextBox106.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox106.Name = "TextBox106"
-        Me.TextBox106.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox106.TabIndex = 22
-        Me.TextBox106.Text = "0"
-        Me.TextBox106.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F6_Verschiebung.Location = New System.Drawing.Point(99, 3)
+        Me.F6_Verschiebung.Name = "F6_Verschiebung"
+        Me.F6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.F6_Verschiebung.TabIndex = 22
+        Me.F6_Verschiebung.Text = "0"
+        Me.F6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox107
+        'G6_Verschiebung
         '
-        Me.TextBox107.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox107.Name = "TextBox107"
-        Me.TextBox107.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox107.TabIndex = 23
-        Me.TextBox107.Text = "0"
-        Me.TextBox107.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G6_Verschiebung.Location = New System.Drawing.Point(131, 3)
+        Me.G6_Verschiebung.Name = "G6_Verschiebung"
+        Me.G6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.G6_Verschiebung.TabIndex = 23
+        Me.G6_Verschiebung.Text = "0"
+        Me.G6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox108
+        'A6_Verschiebung
         '
-        Me.TextBox108.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox108.Name = "TextBox108"
-        Me.TextBox108.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox108.TabIndex = 24
-        Me.TextBox108.Text = "0"
-        Me.TextBox108.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A6_Verschiebung.Location = New System.Drawing.Point(163, 3)
+        Me.A6_Verschiebung.Name = "A6_Verschiebung"
+        Me.A6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.A6_Verschiebung.TabIndex = 24
+        Me.A6_Verschiebung.Text = "0"
+        Me.A6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox109
+        'H6_Verschiebung
         '
-        Me.TextBox109.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox109.Name = "TextBox109"
-        Me.TextBox109.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox109.TabIndex = 25
-        Me.TextBox109.Text = "0"
-        Me.TextBox109.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H6_Verschiebung.Location = New System.Drawing.Point(195, 3)
+        Me.H6_Verschiebung.Name = "H6_Verschiebung"
+        Me.H6_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.H6_Verschiebung.TabIndex = 25
+        Me.H6_Verschiebung.Text = "0"
+        Me.H6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel10
         '
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox96)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox97)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox98)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox99)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox100)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox101)
-        Me.FlowLayoutPanel10.Controls.Add(Me.TextBox102)
+        Me.FlowLayoutPanel10.Controls.Add(Me.C5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.D5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.E5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.F5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.G5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.A5_Verschiebung)
+        Me.FlowLayoutPanel10.Controls.Add(Me.H5_Verschiebung)
         Me.FlowLayoutPanel10.Location = New System.Drawing.Point(737, 231)
         Me.FlowLayoutPanel10.Name = "FlowLayoutPanel10"
         Me.FlowLayoutPanel10.Size = New System.Drawing.Size(228, 27)
         Me.FlowLayoutPanel10.TabIndex = 172
         '
-        'TextBox96
+        'C5_Verschiebung
         '
-        Me.TextBox96.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox96.Name = "TextBox96"
-        Me.TextBox96.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox96.TabIndex = 19
-        Me.TextBox96.Text = "0"
-        Me.TextBox96.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C5_Verschiebung.Location = New System.Drawing.Point(3, 3)
+        Me.C5_Verschiebung.Name = "C5_Verschiebung"
+        Me.C5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.C5_Verschiebung.TabIndex = 19
+        Me.C5_Verschiebung.Text = "0"
+        Me.C5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox97
+        'D5_Verschiebung
         '
-        Me.TextBox97.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox97.Name = "TextBox97"
-        Me.TextBox97.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox97.TabIndex = 20
-        Me.TextBox97.Text = "0"
-        Me.TextBox97.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D5_Verschiebung.Location = New System.Drawing.Point(35, 3)
+        Me.D5_Verschiebung.Name = "D5_Verschiebung"
+        Me.D5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.D5_Verschiebung.TabIndex = 20
+        Me.D5_Verschiebung.Text = "0"
+        Me.D5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox98
+        'E5_Verschiebung
         '
-        Me.TextBox98.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox98.Name = "TextBox98"
-        Me.TextBox98.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox98.TabIndex = 21
-        Me.TextBox98.Text = "0"
-        Me.TextBox98.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E5_Verschiebung.Location = New System.Drawing.Point(67, 3)
+        Me.E5_Verschiebung.Name = "E5_Verschiebung"
+        Me.E5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.E5_Verschiebung.TabIndex = 21
+        Me.E5_Verschiebung.Text = "0"
+        Me.E5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox99
+        'F5_Verschiebung
         '
-        Me.TextBox99.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox99.Name = "TextBox99"
-        Me.TextBox99.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox99.TabIndex = 22
-        Me.TextBox99.Text = "0"
-        Me.TextBox99.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F5_Verschiebung.Location = New System.Drawing.Point(99, 3)
+        Me.F5_Verschiebung.Name = "F5_Verschiebung"
+        Me.F5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.F5_Verschiebung.TabIndex = 22
+        Me.F5_Verschiebung.Text = "0"
+        Me.F5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox100
+        'G5_Verschiebung
         '
-        Me.TextBox100.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox100.Name = "TextBox100"
-        Me.TextBox100.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox100.TabIndex = 23
-        Me.TextBox100.Text = "0"
-        Me.TextBox100.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G5_Verschiebung.Location = New System.Drawing.Point(131, 3)
+        Me.G5_Verschiebung.Name = "G5_Verschiebung"
+        Me.G5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.G5_Verschiebung.TabIndex = 23
+        Me.G5_Verschiebung.Text = "0"
+        Me.G5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox101
+        'A5_Verschiebung
         '
-        Me.TextBox101.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox101.Name = "TextBox101"
-        Me.TextBox101.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox101.TabIndex = 24
-        Me.TextBox101.Text = "0"
-        Me.TextBox101.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A5_Verschiebung.Location = New System.Drawing.Point(163, 3)
+        Me.A5_Verschiebung.Name = "A5_Verschiebung"
+        Me.A5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.A5_Verschiebung.TabIndex = 24
+        Me.A5_Verschiebung.Text = "0"
+        Me.A5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox102
+        'H5_Verschiebung
         '
-        Me.TextBox102.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox102.Name = "TextBox102"
-        Me.TextBox102.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox102.TabIndex = 25
-        Me.TextBox102.Text = "0"
-        Me.TextBox102.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H5_Verschiebung.Location = New System.Drawing.Point(195, 3)
+        Me.H5_Verschiebung.Name = "H5_Verschiebung"
+        Me.H5_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.H5_Verschiebung.TabIndex = 25
+        Me.H5_Verschiebung.Text = "0"
+        Me.H5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel9
         '
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox89)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox90)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox91)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox92)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox93)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox94)
-        Me.FlowLayoutPanel9.Controls.Add(Me.TextBox95)
+        Me.FlowLayoutPanel9.Controls.Add(Me.C4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.D4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.E4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.F4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.G4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.A4_Verschiebung)
+        Me.FlowLayoutPanel9.Controls.Add(Me.H4_Verschiebung)
         Me.FlowLayoutPanel9.Location = New System.Drawing.Point(497, 231)
         Me.FlowLayoutPanel9.Name = "FlowLayoutPanel9"
         Me.FlowLayoutPanel9.Size = New System.Drawing.Size(228, 27)
         Me.FlowLayoutPanel9.TabIndex = 171
         '
-        'TextBox89
+        'C4_Verschiebung
         '
-        Me.TextBox89.Location = New System.Drawing.Point(3, 3)
-        Me.TextBox89.Name = "TextBox89"
-        Me.TextBox89.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox89.TabIndex = 19
-        Me.TextBox89.Text = "0"
-        Me.TextBox89.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.C4_Verschiebung.Location = New System.Drawing.Point(3, 3)
+        Me.C4_Verschiebung.Name = "C4_Verschiebung"
+        Me.C4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.C4_Verschiebung.TabIndex = 19
+        Me.C4_Verschiebung.Text = "0"
+        Me.C4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox90
+        'D4_Verschiebung
         '
-        Me.TextBox90.Location = New System.Drawing.Point(35, 3)
-        Me.TextBox90.Name = "TextBox90"
-        Me.TextBox90.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox90.TabIndex = 20
-        Me.TextBox90.Text = "0"
-        Me.TextBox90.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.D4_Verschiebung.Location = New System.Drawing.Point(35, 3)
+        Me.D4_Verschiebung.Name = "D4_Verschiebung"
+        Me.D4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.D4_Verschiebung.TabIndex = 20
+        Me.D4_Verschiebung.Text = "0"
+        Me.D4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox91
+        'E4_Verschiebung
         '
-        Me.TextBox91.Location = New System.Drawing.Point(67, 3)
-        Me.TextBox91.Name = "TextBox91"
-        Me.TextBox91.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox91.TabIndex = 21
-        Me.TextBox91.Text = "0"
-        Me.TextBox91.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.E4_Verschiebung.Location = New System.Drawing.Point(67, 3)
+        Me.E4_Verschiebung.Name = "E4_Verschiebung"
+        Me.E4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.E4_Verschiebung.TabIndex = 21
+        Me.E4_Verschiebung.Text = "0"
+        Me.E4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox92
+        'F4_Verschiebung
         '
-        Me.TextBox92.Location = New System.Drawing.Point(99, 3)
-        Me.TextBox92.Name = "TextBox92"
-        Me.TextBox92.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox92.TabIndex = 22
-        Me.TextBox92.Text = "0"
-        Me.TextBox92.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.F4_Verschiebung.Location = New System.Drawing.Point(99, 3)
+        Me.F4_Verschiebung.Name = "F4_Verschiebung"
+        Me.F4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.F4_Verschiebung.TabIndex = 22
+        Me.F4_Verschiebung.Text = "0"
+        Me.F4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox93
+        'G4_Verschiebung
         '
-        Me.TextBox93.Location = New System.Drawing.Point(131, 3)
-        Me.TextBox93.Name = "TextBox93"
-        Me.TextBox93.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox93.TabIndex = 23
-        Me.TextBox93.Text = "0"
-        Me.TextBox93.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.G4_Verschiebung.Location = New System.Drawing.Point(131, 3)
+        Me.G4_Verschiebung.Name = "G4_Verschiebung"
+        Me.G4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.G4_Verschiebung.TabIndex = 23
+        Me.G4_Verschiebung.Text = "0"
+        Me.G4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox94
+        'A4_Verschiebung
         '
-        Me.TextBox94.Location = New System.Drawing.Point(163, 3)
-        Me.TextBox94.Name = "TextBox94"
-        Me.TextBox94.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox94.TabIndex = 24
-        Me.TextBox94.Text = "0"
-        Me.TextBox94.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.A4_Verschiebung.Location = New System.Drawing.Point(163, 3)
+        Me.A4_Verschiebung.Name = "A4_Verschiebung"
+        Me.A4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.A4_Verschiebung.TabIndex = 24
+        Me.A4_Verschiebung.Text = "0"
+        Me.A4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'TextBox95
+        'H4_Verschiebung
         '
-        Me.TextBox95.Location = New System.Drawing.Point(195, 3)
-        Me.TextBox95.Name = "TextBox95"
-        Me.TextBox95.Size = New System.Drawing.Size(26, 20)
-        Me.TextBox95.TabIndex = 25
-        Me.TextBox95.Text = "0"
-        Me.TextBox95.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.H4_Verschiebung.Location = New System.Drawing.Point(195, 3)
+        Me.H4_Verschiebung.Name = "H4_Verschiebung"
+        Me.H4_Verschiebung.Size = New System.Drawing.Size(26, 20)
+        Me.H4_Verschiebung.TabIndex = 25
+        Me.H4_Verschiebung.Text = "0"
+        Me.H4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'FlowLayoutPanel8
         '
@@ -2830,288 +3112,6 @@ Partial Class Form1
         Me.Button1.Text = "Einstelllungen speichern"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'C2_VerticalProgessBar
-        '
-        Me.C2_VerticalProgessBar.AccessibleName = ""
-        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
-        Me.C2_VerticalProgessBar.Maximum = 255
-        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
-        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.C2_VerticalProgessBar.TabIndex = 3
-        '
-        'D2_VerticalProgessBar
-        '
-        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
-        Me.D2_VerticalProgessBar.Maximum = 255
-        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
-        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.D2_VerticalProgessBar.TabIndex = 4
-        '
-        'E2_VerticalProgessBar
-        '
-        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
-        Me.E2_VerticalProgessBar.Maximum = 255
-        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
-        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.E2_VerticalProgessBar.TabIndex = 5
-        '
-        'F2_VerticalProgessBar
-        '
-        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
-        Me.F2_VerticalProgessBar.Maximum = 255
-        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
-        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.F2_VerticalProgessBar.TabIndex = 6
-        '
-        'G2_VerticalProgessBar
-        '
-        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
-        Me.G2_VerticalProgessBar.Maximum = 255
-        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
-        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.G2_VerticalProgessBar.TabIndex = 7
-        '
-        'A2_VerticalProgessBar
-        '
-        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
-        Me.A2_VerticalProgessBar.Maximum = 255
-        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
-        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.A2_VerticalProgessBar.TabIndex = 8
-        '
-        'H2_VerticalProgessBar
-        '
-        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
-        Me.H2_VerticalProgessBar.Maximum = 255
-        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
-        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.H2_VerticalProgessBar.TabIndex = 9
-        '
-        'C3_VerticalProgessBar
-        '
-        Me.C3_VerticalProgessBar.AccessibleName = ""
-        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
-        Me.C3_VerticalProgessBar.Maximum = 255
-        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
-        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.C3_VerticalProgessBar.TabIndex = 186
-        '
-        'D3_VerticalProgessBar
-        '
-        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
-        Me.D3_VerticalProgessBar.Maximum = 255
-        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
-        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.D3_VerticalProgessBar.TabIndex = 187
-        '
-        'E3_VerticalProgessBar
-        '
-        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
-        Me.E3_VerticalProgessBar.Maximum = 255
-        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
-        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.E3_VerticalProgessBar.TabIndex = 188
-        '
-        'F3_VerticalProgessBar
-        '
-        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
-        Me.F3_VerticalProgessBar.Maximum = 255
-        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
-        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.F3_VerticalProgessBar.TabIndex = 189
-        '
-        'G3_VerticalProgessBar
-        '
-        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
-        Me.G3_VerticalProgessBar.Maximum = 255
-        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
-        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.G3_VerticalProgessBar.TabIndex = 190
-        '
-        'A3_VerticalProgessBar
-        '
-        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
-        Me.A3_VerticalProgessBar.Maximum = 255
-        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
-        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.A3_VerticalProgessBar.TabIndex = 191
-        '
-        'H3_VerticalProgessBar
-        '
-        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
-        Me.H3_VerticalProgessBar.Maximum = 255
-        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
-        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.H3_VerticalProgessBar.TabIndex = 192
-        '
-        'C4_VerticalProgessBar
-        '
-        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
-        Me.C4_VerticalProgessBar.Maximum = 255
-        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
-        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.C4_VerticalProgessBar.TabIndex = 3
-        '
-        'D4_VerticalProgessBar
-        '
-        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
-        Me.D4_VerticalProgessBar.Maximum = 255
-        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
-        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.D4_VerticalProgessBar.TabIndex = 4
-        '
-        'E4_VerticalProgessBar
-        '
-        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
-        Me.E4_VerticalProgessBar.Maximum = 255
-        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
-        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.E4_VerticalProgessBar.TabIndex = 5
-        '
-        'F4_VerticalProgessBar
-        '
-        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
-        Me.F4_VerticalProgessBar.Maximum = 255
-        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
-        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.F4_VerticalProgessBar.TabIndex = 6
-        '
-        'G4_VerticalProgessBar
-        '
-        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
-        Me.G4_VerticalProgessBar.Maximum = 255
-        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
-        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.G4_VerticalProgessBar.TabIndex = 7
-        '
-        'A4_VerticalProgessBar
-        '
-        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
-        Me.A4_VerticalProgessBar.Maximum = 255
-        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
-        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.A4_VerticalProgessBar.TabIndex = 8
-        '
-        'H4_VerticalProgessBar
-        '
-        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
-        Me.H4_VerticalProgessBar.Maximum = 255
-        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
-        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.H4_VerticalProgessBar.TabIndex = 9
-        '
-        'C5_VerticalProgessBar
-        '
-        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
-        Me.C5_VerticalProgessBar.Maximum = 255
-        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
-        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.C5_VerticalProgessBar.TabIndex = 3
-        '
-        'D5_VerticalProgessBar
-        '
-        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
-        Me.D5_VerticalProgessBar.Maximum = 255
-        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
-        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.D5_VerticalProgessBar.TabIndex = 4
-        '
-        'E5_VerticalProgessBar
-        '
-        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
-        Me.E5_VerticalProgessBar.Maximum = 255
-        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
-        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.E5_VerticalProgessBar.TabIndex = 5
-        '
-        'F5_VerticalProgessBar
-        '
-        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
-        Me.F5_VerticalProgessBar.Maximum = 255
-        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
-        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.F5_VerticalProgessBar.TabIndex = 6
-        '
-        'G5_VerticalProgessBar
-        '
-        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
-        Me.G5_VerticalProgessBar.Maximum = 255
-        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
-        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.G5_VerticalProgessBar.TabIndex = 7
-        '
-        'A5_VerticalProgessBar
-        '
-        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
-        Me.A5_VerticalProgessBar.Maximum = 255
-        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
-        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.A5_VerticalProgessBar.TabIndex = 8
-        '
-        'H5_VerticalProgessBar
-        '
-        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
-        Me.H5_VerticalProgessBar.Maximum = 255
-        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
-        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.H5_VerticalProgessBar.TabIndex = 9
-        '
-        'C6_VerticalProgessBar
-        '
-        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
-        Me.C6_VerticalProgessBar.Maximum = 255
-        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
-        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.C6_VerticalProgessBar.TabIndex = 3
-        '
-        'D6_VerticalProgessBar
-        '
-        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(35, 3)
-        Me.D6_VerticalProgessBar.Maximum = 255
-        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
-        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.D6_VerticalProgessBar.TabIndex = 4
-        '
-        'E6_VerticalProgessBar
-        '
-        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(67, 3)
-        Me.E6_VerticalProgessBar.Maximum = 255
-        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
-        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.E6_VerticalProgessBar.TabIndex = 5
-        '
-        'F6_VerticalProgessBar
-        '
-        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(99, 3)
-        Me.F6_VerticalProgessBar.Maximum = 255
-        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
-        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.F6_VerticalProgessBar.TabIndex = 6
-        '
-        'G6_VerticalProgessBar
-        '
-        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(131, 3)
-        Me.G6_VerticalProgessBar.Maximum = 255
-        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
-        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.G6_VerticalProgessBar.TabIndex = 7
-        '
-        'A6_VerticalProgessBar
-        '
-        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(163, 3)
-        Me.A6_VerticalProgessBar.Maximum = 255
-        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
-        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.A6_VerticalProgessBar.TabIndex = 8
-        '
-        'H6_VerticalProgessBar
-        '
-        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(195, 3)
-        Me.H6_VerticalProgessBar.Maximum = 255
-        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
-        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
-        Me.H6_VerticalProgessBar.TabIndex = 9
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3304,27 +3304,27 @@ Partial Class Form1
     Friend WithEvents G3_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents A3_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents H3_Grenzwert As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox50 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox51 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox52 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox53 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox54 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox55 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox56 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox57 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox58 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox59 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox60 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox61 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox62 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox63 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox64 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox65 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox66 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox67 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox68 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox69 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox70 As System.Windows.Forms.TextBox
+    Friend WithEvents C4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents D4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents E4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents F4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents G4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents A4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents H4_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents C5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents D5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents E5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents F5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents G5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents A5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents H5_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents C6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents D6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents E6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents F6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents G6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents A6_Grenzwert As System.Windows.Forms.TextBox
+    Friend WithEvents H6_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents NoteC As System.Windows.Forms.Button
     Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
@@ -3406,29 +3406,29 @@ Partial Class Form1
     Friend WithEvents TrackBar12 As System.Windows.Forms.TrackBar
     Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
     Friend WithEvents FlowLayoutPanel11 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents TextBox103 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox104 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox105 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox106 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox107 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox108 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox109 As System.Windows.Forms.TextBox
+    Friend WithEvents C6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents D6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents E6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents F6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents G6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents A6_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents H6_Verschiebung As System.Windows.Forms.TextBox
     Friend WithEvents FlowLayoutPanel10 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents TextBox96 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox97 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox98 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox99 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox100 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox101 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox102 As System.Windows.Forms.TextBox
+    Friend WithEvents C5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents D5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents E5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents F5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents G5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents A5_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents H5_Verschiebung As System.Windows.Forms.TextBox
     Friend WithEvents FlowLayoutPanel9 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents TextBox89 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox90 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox91 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox92 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox93 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox94 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox95 As System.Windows.Forms.TextBox
+    Friend WithEvents C4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents D4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents E4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents F4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents G4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents A4_Verschiebung As System.Windows.Forms.TextBox
+    Friend WithEvents H4_Verschiebung As System.Windows.Forms.TextBox
     Friend WithEvents FlowLayoutPanel8 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents C3_Verschiebung As System.Windows.Forms.TextBox
     Friend WithEvents D3_Verschiebung As System.Windows.Forms.TextBox

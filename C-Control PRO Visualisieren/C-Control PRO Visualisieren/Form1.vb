@@ -123,6 +123,13 @@ Public Class Form1
     'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
     Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
 
+        Dim Noten_Grenzwert() As TextBox = { _
+            C2_Grenzwert, D2_Grenzwert, E2_Grenzwert, F2_Grenzwert, G2_Grenzwert, A2_Grenzwert, H2_Grenzwert, _
+            C3_Grenzwert, D3_Grenzwert, E3_Grenzwert, F3_Grenzwert, G3_Grenzwert, A3_Grenzwert, H3_Grenzwert, _
+            C4_Grenzwert, D4_Grenzwert, E4_Grenzwert, F4_Grenzwert, G4_Grenzwert, A4_Grenzwert, H4_Grenzwert, _
+            C5_Grenzwert, D5_Grenzwert, E5_Grenzwert, F5_Grenzwert, G5_Grenzwert, A5_Grenzwert, H5_Grenzwert, _
+            C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
+
         Dim Serial_Read As String = ""
 
         'Hier werden die Daten empfangen
@@ -131,24 +138,24 @@ Public Class Form1
 
         SerialPort1.Write(1)
 
-        For i = 1 To 29
+        For i = 1 To 32
             Serial_Read = SerialPort1.ReadByte
             ADC(i) = Serial_Read
         Next
 
-        Dim NoteP As Boolean
 
-        If ADC(0) > 99 Then
-            NoteP = True
-            Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
-        End If
+        For i = 1 To 32
+            If ADC(i) >= 100 Then
+                Note_Play(MidiNoteNrError) = True
+                Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
+            End If
 
 
-        If ADC(0) < 100 And NoteP = True Then
-            NoteP = False
-            Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
-        End If
-
+            If ADC(i) < 100 And Note_Play(255) = True Then
+                Note_Play(MidiNoteNrError) = False
+                Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+            End If
+        Next
 
         If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
 
@@ -186,11 +193,7 @@ Public Class Form1
 
 
 
-
-
-
-
-
+#Region " MIDI "
 
 
     Private Song As New MIDI
@@ -261,95 +264,6 @@ Public Class Form1
             End Select
         Next
         Notes.Add(NumberOfNotes, "R") ' Pause (z.B. 2.2P)
-    End Sub
-
-
-    Private Sub Tackt_Tick() Handles Tackt.Tick
-
-        Dim Note_gespielt As Boolean = False
-
-        For i = 16 To 77 Step 1
-
-            If Note_Play(i) = True Then
-                If Notenlaege(i) = 0 Then
-                    m.PlayMIDINote(i + Notenverschiebung.Value, 100, 0)
-                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value), CByte(100))        '''''''''''''''''''''''''Notenlaege(50)
-                End If
-
-                Notenlaege(i) += 0.25
-                Note_gespielt = True
-                'Notenlaege(0) = 0
-
-            Else
-
-                If Notenlaege(i) > 0 Then
-                    m.STOPMIDINote(i + Notenverschiebung.Value)
-                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Notenverschiebung.Value), 0)
-                    Notenlaege(i) = 0
-                End If
-            End If
-
-        Next
-
-        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) 'Notenlaege(0) += 0.125
-
-        'If Notenlaege(50) = 0 Then
-        'If NoteC_Klick = True Then
-        'Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(50 + NumericUpDown1.Value), CByte(100))
-        'End If
-
-        'Else
-        'If NoteC_Klick = False Then
-        'Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(50), MIDI.Track.NoteEvent.NoteOff, CByte(50 + NumericUpDown1.Value), 0)
-        'Notenlaege(50) = 0
-        'End If
-        'End If
-
-        'Song.Tracks(1).AddRange(0.125)
-        'Song.Tracks(1).AddNoteOnOffEvent(0.25, MIDI.Track.NoteEvent.NoteOn, CByte(NumberOfNotes), 0)
-
-        Tackt_Achtel = Tackt_Achtel + 1
-
-        If Tackt_Achtel = 8 Then
-            If Metronom_ON.Checked Then
-                m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 75, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
-            ElseIf Metronom_Betont.Checked Then
-                m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 100, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
-            End If
-            TacktNr = TacktNr + 1
-            Tackt_Achtel = 0
-            Tackt_Viertel = 0
-        End If
-
-
-        Tackt_Viertel_Counter = Tackt_Viertel_Counter + 1
-
-        If Tackt_Viertel_Counter = 2 Then
-            Tackt_Viertel = Tackt_Viertel + 1
-            Tackt_Viertel_Counter = 0
-        End If
-
-        'MessageBox.Show(Tackt_Achtel)
-
-
-        If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
-            If Metronom_ON.Checked Or Metronom_Betont.Checked Then
-                m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 50, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
-            End If
-        End If
-
-
-
-        Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8)
-
-        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
-
     End Sub
 
 
@@ -426,6 +340,95 @@ Public Class Form1
 
     End Sub
 
+
+#End Region
+
+
+
+
+    Private Sub Tackt_Tick() Handles Tackt.Tick
+
+
+        Dim Note_gespielt As Boolean = False
+
+        For i = 16 To 77 Step 1
+
+            If Note_Play(i) = True Then
+                If Notenlaege(i) = 0 Then
+                    m.PlayMIDINote(i + Notenverschiebung.Value, 100, 0)
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i + Notenverschiebung.Value + Noten_Verschiebung), CByte(100))        ' Notenlaege(50)
+                End If
+
+                Notenlaege(i) += 0.25
+                Note_gespielt = True
+                'Notenlaege(0) = 0
+
+            Else
+
+                If Notenlaege(i) > 0 Then
+                    m.STOPMIDINote(i + Notenverschiebung.Value)
+                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Notenverschiebung.Value), 0)
+                    Notenlaege(i) = 0
+                End If
+            End If
+
+        Next
+
+        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
+
+        Tackt_Achtel = Tackt_Achtel + 1
+
+        If Tackt_Achtel = 8 Then
+            If Metronom_ON.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 75, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            ElseIf Metronom_Betont.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 100, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            End If
+            TacktNr = TacktNr + 1
+            Tackt_Achtel = 0
+            Tackt_Viertel = 0
+        End If
+
+
+        Tackt_Viertel_Counter = Tackt_Viertel_Counter + 1
+
+        If Tackt_Viertel_Counter = 2 Then
+            Tackt_Viertel = Tackt_Viertel + 1
+            Tackt_Viertel_Counter = 0
+        End If
+
+        'MessageBox.Show(Tackt_Achtel)
+
+
+        If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
+            If Metronom_ON.Checked Or Metronom_Betont.Checked Then
+                m.CurrentInstrument = "Woodblock"
+                m.PlayMIDINote(70, 50, 0.1)
+                m.CurrentInstrument = cboInstruments.Text
+            End If
+        End If
+
+
+
+        Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8)
+
+        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
+
+    End Sub
+
+
+
+
+
+
+
+
+
+
     'Song.Tracks(index).AddNoteOnOffEvent(restBeats, MIDI.Track.NoteEvent.NoteOn, CByte(note), CByte(volume))
     'Song.Tracks(index).AddNoteOnOffEvent(beats, MIDI.Track.NoteEvent.NoteOff, CByte(note), 0)
 
@@ -446,10 +449,6 @@ Public Class Form1
     Private Sub BPM_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BPM.ValueChanged
         Tackt.Interval = (60 / BPM.Value / 4) * 1000
     End Sub
-
-
-
-
 
 
 
@@ -821,6 +820,7 @@ Public Class Form1
             ToolTip1.Active = False
         End If
     End Sub
+
 
 End Class
 
