@@ -169,7 +169,7 @@ Partial Class Form1
         Me.Transpose_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Notenverschiebung = New System.Windows.Forms.NumericUpDown()
+        Me.Halbtohnverschiebung = New System.Windows.Forms.NumericUpDown()
         Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
@@ -238,7 +238,7 @@ Partial Class Form1
         Me.GroupBox9 = New System.Windows.Forms.GroupBox()
         Me.META_Bemerkung_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
-        Me.META_Dateiname_Input = New System.Windows.Forms.TextBox()
+        Me.META_Dateinamen_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
         Me.TrackBar2 = New System.Windows.Forms.TrackBar()
@@ -267,6 +267,7 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -302,7 +303,6 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
-        Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -321,7 +321,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Transpose_GroupBox.SuspendLayout()
-        CType(Me.Notenverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Halbtohnverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox15.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.FlowLayoutPanel11.SuspendLayout()
@@ -1841,14 +1841,14 @@ Partial Class Form1
         '
         Me.Transpose_GroupBox.Controls.Add(Me.Label2)
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
-        Me.Transpose_GroupBox.Controls.Add(Me.Notenverschiebung)
+        Me.Transpose_GroupBox.Controls.Add(Me.Halbtohnverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
         Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 271)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
         Me.Transpose_GroupBox.TabStop = False
-        Me.Transpose_GroupBox.Text = "Tonhöhenverenderung (Transpose)"
+        Me.Transpose_GroupBox.Text = "Tonhöhenveschiebung (Transpose)"
         '
         'Label2
         '
@@ -1868,14 +1868,14 @@ Partial Class Form1
         Me.Label1.TabIndex = 166
         Me.Label1.Text = "Oktavenver.:"
         '
-        'Notenverschiebung
+        'Halbtohnverschiebung
         '
-        Me.Notenverschiebung.Location = New System.Drawing.Point(127, 55)
-        Me.Notenverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.Notenverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
-        Me.Notenverschiebung.Name = "Notenverschiebung"
-        Me.Notenverschiebung.Size = New System.Drawing.Size(55, 20)
-        Me.Notenverschiebung.TabIndex = 165
+        Me.Halbtohnverschiebung.Location = New System.Drawing.Point(127, 55)
+        Me.Halbtohnverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
+        Me.Halbtohnverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Halbtohnverschiebung.Name = "Halbtohnverschiebung"
+        Me.Halbtohnverschiebung.Size = New System.Drawing.Size(55, 20)
+        Me.Halbtohnverschiebung.TabIndex = 165
         '
         'Oktavenverschiebung
         '
@@ -2529,20 +2529,20 @@ Partial Class Form1
         '
         'GroupBox10
         '
-        Me.GroupBox10.Controls.Add(Me.META_Dateiname_Input)
+        Me.GroupBox10.Controls.Add(Me.META_Dateinamen_Input)
         Me.GroupBox10.Location = New System.Drawing.Point(14, 27)
         Me.GroupBox10.Name = "GroupBox10"
         Me.GroupBox10.Size = New System.Drawing.Size(165, 46)
         Me.GroupBox10.TabIndex = 3
         Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "Dateiname (im META)"
+        Me.GroupBox10.Text = "Dateinamen (im META)"
         '
-        'META_Dateiname_Input
+        'META_Dateinamen_Input
         '
-        Me.META_Dateiname_Input.Location = New System.Drawing.Point(12, 17)
-        Me.META_Dateiname_Input.Name = "META_Dateiname_Input"
-        Me.META_Dateiname_Input.Size = New System.Drawing.Size(142, 20)
-        Me.META_Dateiname_Input.TabIndex = 0
+        Me.META_Dateinamen_Input.Location = New System.Drawing.Point(12, 17)
+        Me.META_Dateinamen_Input.Name = "META_Dateinamen_Input"
+        Me.META_Dateinamen_Input.Size = New System.Drawing.Size(142, 20)
+        Me.META_Dateinamen_Input.TabIndex = 0
         '
         'GroupBox18
         '
@@ -2665,7 +2665,7 @@ Partial Class Form1
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(7, 80)
+        Me.Label15.Location = New System.Drawing.Point(9, 154)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(41, 13)
         Me.Label15.TabIndex = 172
@@ -2674,7 +2674,7 @@ Partial Class Form1
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(6, 56)
+        Me.Label14.Location = New System.Drawing.Point(8, 130)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(49, 13)
         Me.Label14.TabIndex = 173
@@ -2682,7 +2682,7 @@ Partial Class Form1
         '
         'hsbModWheel
         '
-        Me.hsbModWheel.Location = New System.Drawing.Point(67, 80)
+        Me.hsbModWheel.Location = New System.Drawing.Point(69, 154)
         Me.hsbModWheel.Maximum = 255
         Me.hsbModWheel.Name = "hsbModWheel"
         Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
@@ -2690,7 +2690,7 @@ Partial Class Form1
         '
         'hsbPan
         '
-        Me.hsbPan.Location = New System.Drawing.Point(67, 52)
+        Me.hsbPan.Location = New System.Drawing.Point(69, 126)
         Me.hsbPan.Name = "hsbPan"
         Me.hsbPan.Size = New System.Drawing.Size(115, 17)
         Me.hsbPan.TabIndex = 172
@@ -2699,7 +2699,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(7, 27)
+        Me.Label11.Location = New System.Drawing.Point(9, 101)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(45, 13)
         Me.Label11.TabIndex = 164
@@ -2709,7 +2709,7 @@ Partial Class Form1
         '
         Me.GroupBox5.Controls.Add(Me.RadioButton2)
         Me.GroupBox5.Controls.Add(Me.RadioButton1)
-        Me.GroupBox5.Location = New System.Drawing.Point(5, 112)
+        Me.GroupBox5.Location = New System.Drawing.Point(8, 27)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(184, 56)
         Me.GroupBox5.TabIndex = 163
@@ -2740,7 +2740,7 @@ Partial Class Form1
         '
         'hsbVolume
         '
-        Me.hsbVolume.Location = New System.Drawing.Point(67, 23)
+        Me.hsbVolume.Location = New System.Drawing.Point(69, 97)
         Me.hsbVolume.Maximum = 127
         Me.hsbVolume.Name = "hsbVolume"
         Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
@@ -2830,6 +2830,13 @@ Partial Class Form1
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Einstelllungen speichern"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'MTech010VerticalProgessBar1
+        '
+        Me.MTech010VerticalProgessBar1.Location = New System.Drawing.Point(909, 807)
+        Me.MTech010VerticalProgessBar1.Name = "MTech010VerticalProgessBar1"
+        Me.MTech010VerticalProgessBar1.Size = New System.Drawing.Size(100, 23)
+        Me.MTech010VerticalProgessBar1.TabIndex = 187
         '
         'C2_VerticalProgessBar
         '
@@ -3113,13 +3120,6 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
         '
-        'MTech010VerticalProgessBar1
-        '
-        Me.MTech010VerticalProgessBar1.Location = New System.Drawing.Point(909, 807)
-        Me.MTech010VerticalProgessBar1.Name = "MTech010VerticalProgessBar1"
-        Me.MTech010VerticalProgessBar1.Size = New System.Drawing.Size(100, 23)
-        Me.MTech010VerticalProgessBar1.TabIndex = 187
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3171,7 +3171,7 @@ Partial Class Form1
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
-        CType(Me.Notenverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Halbtohnverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel11.ResumeLayout(False)
@@ -3337,7 +3337,7 @@ Partial Class Form1
     Friend WithEvents NoteC As System.Windows.Forms.Button
     Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
-    Friend WithEvents Notenverschiebung As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Halbtohnverschiebung As System.Windows.Forms.NumericUpDown
     Friend WithEvents Oktavenverschiebung As System.Windows.Forms.ComboBox
     Friend WithEvents Transpose_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -3400,7 +3400,7 @@ Partial Class Form1
     Friend WithEvents GroupBox9 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Bemerkung_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
-    Friend WithEvents META_Dateiname_Input As System.Windows.Forms.TextBox
+    Friend WithEvents META_Dateinamen_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Copyright_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
