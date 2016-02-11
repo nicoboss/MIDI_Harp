@@ -39,6 +39,11 @@ Public Class Form1
     Dim Anz_ADC As Byte = 29
 
 
+    Dim Notennamen = {{"c", "d", "e", "f", "g", "a", "h", "c"}, _
+                      {"ces", "des", "es", "fes", "ges", "as", "b", "ces"}, _
+                      {"cis", "dis", "eis", "fis", "gis", "ais", "has", "cis"}}
+
+
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         Klavierdiagramm_Refresh()
@@ -106,13 +111,13 @@ Public Class Form1
             ToolTip_ON.Checked = .ToolTip_ON
 
             ' Tonart Klappen
-            .C_Klappe = C_Klappe.Value = .C_Klappe
-            .D_Klappe = D_Klappe.Value = .D_Klappe
-            .E_Klappe = E_Klappe.Value = .E_Klappe
-            .F_Klappe = F_Klappe.Value = .F_Klappe
-            .G_Klappe = G_Klappe.Value = .G_Klappe
-            .A_Klappe = A_Klappe.Value = .A_Klappe
-            .H_Klappe = H_Klappe.Value = .G_Klappe
+            .C_Klappe = C1_Klappe.Value = .C_Klappe
+            .D_Klappe = D1_Klappe.Value = .D_Klappe
+            .E_Klappe = E1_Klappe.Value = .E_Klappe
+            .F_Klappe = F1_Klappe.Value = .F_Klappe
+            .G_Klappe = G1_Klappe.Value = .G_Klappe
+            .A_Klappe = A1_Klappe.Value = .A_Klappe
+            .H_Klappe = H1_Klappe.Value = .G_Klappe
         End With
     End Sub
 
@@ -156,13 +161,13 @@ Public Class Form1
             .ToolTip_ON = ToolTip_ON.Checked
 
             ' Tonart Klappen
-            .C_Klappe = C_Klappe.Value
-            .D_Klappe = D_Klappe.Value
-            .E_Klappe = E_Klappe.Value
-            .F_Klappe = F_Klappe.Value
-            .G_Klappe = G_Klappe.Value
-            .A_Klappe = A_Klappe.Value
-            .H_Klappe = H_Klappe.Value
+            .C_Klappe = C1_Klappe.Value
+            .D_Klappe = D1_Klappe.Value
+            .E_Klappe = E1_Klappe.Value
+            .F_Klappe = F1_Klappe.Value
+            .G_Klappe = G1_Klappe.Value
+            .A_Klappe = A1_Klappe.Value
+            .H_Klappe = H1_Klappe.Value
 
 
             ' Einstellungen speichern
@@ -1077,7 +1082,7 @@ Public Class Form1
 #End Region
 
 
-#Region "Spetial MIDI-Mode"
+#Region " Spetial MIDI-Mode"
 
 
     Dim Messintervall_Temp As UShort
@@ -1122,6 +1127,40 @@ Public Class Form1
         End If
     End Sub
 
+
+
+#Region " Klappen"
+
+#End Region
+
+
+    Private Sub C_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.Scroll, C_Klappe.Scroll
+
+    End Sub
+
+    Private Sub D_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D1_Klappe.Scroll
+
+    End Sub
+
+    Private Sub E_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E1_Klappe.Scroll
+
+    End Sub
+
+    Private Sub F_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F1_Klappe.Scroll
+
+    End Sub
+
+    Private Sub G_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G1_Klappe.Scroll
+
+    End Sub
+
+    Private Sub A_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A1_Klappe.Scroll
+
+    End Sub
+
+    Private Sub H_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H1_Klappe.Scroll
+
+    End Sub
 
 End Class
 

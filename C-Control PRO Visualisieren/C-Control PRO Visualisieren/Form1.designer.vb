@@ -241,24 +241,11 @@ Partial Class Form1
         Me.META_Dateinamen_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox18 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.C_Klappe = New System.Windows.Forms.TrackBar()
-        Me.D_Klappe = New System.Windows.Forms.TrackBar()
-        Me.E_Klappe = New System.Windows.Forms.TrackBar()
-        Me.F_Klappe = New System.Windows.Forms.TrackBar()
-        Me.G_Klappe = New System.Windows.Forms.TrackBar()
-        Me.A_Klappe = New System.Windows.Forms.TrackBar()
-        Me.H_Klappe = New System.Windows.Forms.TrackBar()
-        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
-        Me.hsbPan = New System.Windows.Forms.HScrollBar()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
-        Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
-        Me.hsbVolume = New System.Windows.Forms.HScrollBar()
-        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.E1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.F1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.G1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.A1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.H1_Klappe = New System.Windows.Forms.TrackBar()
         Me.GroupBox14 = New System.Windows.Forms.GroupBox()
         Me.Button37 = New System.Windows.Forms.Button()
         Me.Button36 = New System.Windows.Forms.Button()
@@ -267,7 +254,28 @@ Partial Class Form1
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.MTech010VerticalProgessBar1 = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.GroupBox6 = New System.Windows.Forms.GroupBox()
+        Me.hsbVolume = New System.Windows.Forms.HScrollBar()
+        Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
+        Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.hsbPan = New System.Windows.Forms.HScrollBar()
+        Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.D1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.C1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.C2_Klappe = New System.Windows.Forms.TrackBar()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -303,6 +311,7 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -339,18 +348,20 @@ Partial Class Form1
         Me.GroupBox10.SuspendLayout()
         Me.GroupBox18.SuspendLayout()
         Me.FlowLayoutPanel6.SuspendLayout()
-        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.D_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.E_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.F_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.G_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.A_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.H_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.E1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.F1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.G1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.A1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox14.SuspendLayout()
+        Me.Einstellungsverwaltung_GroupBox.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
-        Me.GroupBox14.SuspendLayout()
-        Me.Einstellungsverwaltung_GroupBox.SuspendLayout()
+        CType(Me.D1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -1693,6 +1704,7 @@ Partial Class Form1
         'MIDI_SpecialMode
         '
         Me.MIDI_SpecialMode.AutoSize = True
+        Me.MIDI_SpecialMode.ForeColor = System.Drawing.Color.Red
         Me.MIDI_SpecialMode.Location = New System.Drawing.Point(116, 23)
         Me.MIDI_SpecialMode.Name = "MIDI_SpecialMode"
         Me.MIDI_SpecialMode.Size = New System.Drawing.Size(74, 17)
@@ -2431,9 +2443,9 @@ Partial Class Form1
         '
         Me.GroupBox17.Controls.Add(Me.ToolTip_OFF)
         Me.GroupBox17.Controls.Add(Me.ToolTip_ON)
-        Me.GroupBox17.Location = New System.Drawing.Point(23, 29)
+        Me.GroupBox17.Location = New System.Drawing.Point(22, 22)
         Me.GroupBox17.Name = "GroupBox17"
-        Me.GroupBox17.Size = New System.Drawing.Size(176, 54)
+        Me.GroupBox17.Size = New System.Drawing.Size(175, 54)
         Me.GroupBox17.TabIndex = 0
         Me.GroupBox17.TabStop = False
         Me.GroupBox17.Text = "ToolTip Hilfe Anzeigen?"
@@ -2548,215 +2560,95 @@ Partial Class Form1
         'GroupBox18
         '
         Me.GroupBox18.Controls.Add(Me.FlowLayoutPanel6)
-        Me.GroupBox18.Location = New System.Drawing.Point(775, 329)
+        Me.GroupBox18.Location = New System.Drawing.Point(775, 315)
         Me.GroupBox18.Name = "GroupBox18"
-        Me.GroupBox18.Size = New System.Drawing.Size(457, 106)
+        Me.GroupBox18.Size = New System.Drawing.Size(457, 120)
         Me.GroupBox18.TabIndex = 184
         Me.GroupBox18.TabStop = False
         Me.GroupBox18.Text = "Tonart (Klappen)"
         '
         'FlowLayoutPanel6
         '
-        Me.FlowLayoutPanel6.Controls.Add(Me.C_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.D_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.E_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.F_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.G_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.A_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.H_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.C1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.D1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.E1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.F1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.G1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox1)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox2)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox3)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox4)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox5)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox6)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox7)
+        Me.FlowLayoutPanel6.Controls.Add(Me.TextBox8)
         Me.FlowLayoutPanel6.Location = New System.Drawing.Point(21, 19)
         Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
-        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(424, 78)
+        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(417, 101)
         Me.FlowLayoutPanel6.TabIndex = 0
         '
-        'C_Klappe
+        'E1_Klappe
         '
-        Me.C_Klappe.Location = New System.Drawing.Point(3, 3)
-        Me.C_Klappe.Maximum = 1
-        Me.C_Klappe.Minimum = -1
-        Me.C_Klappe.Name = "C_Klappe"
-        Me.C_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.C_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.C_Klappe.TabIndex = 183
-        Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.E1_Klappe.Location = New System.Drawing.Point(105, 3)
+        Me.E1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.E1_Klappe.Maximum = 1
+        Me.E1_Klappe.Minimum = -1
+        Me.E1_Klappe.Name = "E1_Klappe"
+        Me.E1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.E1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.E1_Klappe.TabIndex = 185
+        Me.E1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'D_Klappe
+        'F1_Klappe
         '
-        Me.D_Klappe.Location = New System.Drawing.Point(54, 3)
-        Me.D_Klappe.Maximum = 1
-        Me.D_Klappe.Minimum = -1
-        Me.D_Klappe.Name = "D_Klappe"
-        Me.D_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.D_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.D_Klappe.TabIndex = 184
-        Me.D_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.F1_Klappe.Location = New System.Drawing.Point(156, 3)
+        Me.F1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.F1_Klappe.Maximum = 1
+        Me.F1_Klappe.Minimum = -1
+        Me.F1_Klappe.Name = "F1_Klappe"
+        Me.F1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.F1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.F1_Klappe.TabIndex = 186
+        Me.F1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'E_Klappe
+        'G1_Klappe
         '
-        Me.E_Klappe.Location = New System.Drawing.Point(105, 3)
-        Me.E_Klappe.Maximum = 1
-        Me.E_Klappe.Minimum = -1
-        Me.E_Klappe.Name = "E_Klappe"
-        Me.E_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.E_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.E_Klappe.TabIndex = 185
-        Me.E_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.G1_Klappe.Location = New System.Drawing.Point(207, 3)
+        Me.G1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.G1_Klappe.Maximum = 1
+        Me.G1_Klappe.Minimum = -1
+        Me.G1_Klappe.Name = "G1_Klappe"
+        Me.G1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.G1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.G1_Klappe.TabIndex = 187
+        Me.G1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'F_Klappe
+        'A1_Klappe
         '
-        Me.F_Klappe.Location = New System.Drawing.Point(156, 3)
-        Me.F_Klappe.Maximum = 1
-        Me.F_Klappe.Minimum = -1
-        Me.F_Klappe.Name = "F_Klappe"
-        Me.F_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.F_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.F_Klappe.TabIndex = 186
-        Me.F_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.A1_Klappe.Location = New System.Drawing.Point(258, 3)
+        Me.A1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.A1_Klappe.Maximum = 1
+        Me.A1_Klappe.Minimum = -1
+        Me.A1_Klappe.Name = "A1_Klappe"
+        Me.A1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.A1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.A1_Klappe.TabIndex = 188
+        Me.A1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'G_Klappe
+        'H1_Klappe
         '
-        Me.G_Klappe.Location = New System.Drawing.Point(207, 3)
-        Me.G_Klappe.Maximum = 1
-        Me.G_Klappe.Minimum = -1
-        Me.G_Klappe.Name = "G_Klappe"
-        Me.G_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.G_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.G_Klappe.TabIndex = 187
-        Me.G_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'A_Klappe
-        '
-        Me.A_Klappe.Location = New System.Drawing.Point(258, 3)
-        Me.A_Klappe.Maximum = 1
-        Me.A_Klappe.Minimum = -1
-        Me.A_Klappe.Name = "A_Klappe"
-        Me.A_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.A_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.A_Klappe.TabIndex = 188
-        Me.A_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'H_Klappe
-        '
-        Me.H_Klappe.Location = New System.Drawing.Point(309, 3)
-        Me.H_Klappe.Maximum = 1
-        Me.H_Klappe.Minimum = -1
-        Me.H_Klappe.Name = "H_Klappe"
-        Me.H_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.H_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.H_Klappe.TabIndex = 189
-        Me.H_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'GroupBox6
-        '
-        Me.GroupBox6.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox6.Controls.Add(Me.Label15)
-        Me.GroupBox6.Controls.Add(Me.Label14)
-        Me.GroupBox6.Controls.Add(Me.hsbModWheel)
-        Me.GroupBox6.Controls.Add(Me.hsbPan)
-        Me.GroupBox6.Controls.Add(Me.Label11)
-        Me.GroupBox6.Controls.Add(Me.GroupBox5)
-        Me.GroupBox6.Controls.Add(Me.hsbVolume)
-        Me.GroupBox6.Location = New System.Drawing.Point(12, 21)
-        Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(196, 186)
-        Me.GroupBox6.TabIndex = 167
-        Me.GroupBox6.TabStop = False
-        Me.GroupBox6.Text = "Direct Play"
-        '
-        'Label15
-        '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(9, 154)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(41, 13)
-        Me.Label15.TabIndex = 172
-        Me.Label15.Text = "Efeckt:"
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(8, 130)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(49, 13)
-        Me.Label14.TabIndex = 173
-        Me.Label14.Text = "Balance:"
-        '
-        'hsbModWheel
-        '
-        Me.hsbModWheel.Location = New System.Drawing.Point(69, 154)
-        Me.hsbModWheel.Maximum = 255
-        Me.hsbModWheel.Name = "hsbModWheel"
-        Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
-        Me.hsbModWheel.TabIndex = 172
-        '
-        'hsbPan
-        '
-        Me.hsbPan.Location = New System.Drawing.Point(69, 126)
-        Me.hsbPan.Name = "hsbPan"
-        Me.hsbPan.Size = New System.Drawing.Size(115, 17)
-        Me.hsbPan.TabIndex = 172
-        Me.hsbPan.Value = 50
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(9, 101)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(45, 13)
-        Me.Label11.TabIndex = 164
-        Me.Label11.Text = "Volume:"
-        '
-        'GroupBox5
-        '
-        Me.GroupBox5.Controls.Add(Me.DirectPlay_OFF)
-        Me.GroupBox5.Controls.Add(Me.DirectPlay_ON)
-        Me.GroupBox5.Location = New System.Drawing.Point(8, 27)
-        Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(184, 56)
-        Me.GroupBox5.TabIndex = 163
-        Me.GroupBox5.TabStop = False
-        Me.GroupBox5.Text = "Empfangende Noten abspielen"
-        '
-        'DirectPlay_OFF
-        '
-        Me.DirectPlay_OFF.AutoSize = True
-        Me.DirectPlay_OFF.Checked = True
-        Me.DirectPlay_OFF.Location = New System.Drawing.Point(101, 26)
-        Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
-        Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
-        Me.DirectPlay_OFF.TabIndex = 1
-        Me.DirectPlay_OFF.TabStop = True
-        Me.DirectPlay_OFF.Text = "Nein"
-        Me.DirectPlay_OFF.UseVisualStyleBackColor = True
-        '
-        'DirectPlay_ON
-        '
-        Me.DirectPlay_ON.AutoSize = True
-        Me.DirectPlay_ON.Location = New System.Drawing.Point(27, 26)
-        Me.DirectPlay_ON.Name = "DirectPlay_ON"
-        Me.DirectPlay_ON.Size = New System.Drawing.Size(36, 17)
-        Me.DirectPlay_ON.TabIndex = 0
-        Me.DirectPlay_ON.Text = "Ja"
-        Me.DirectPlay_ON.UseVisualStyleBackColor = True
-        '
-        'hsbVolume
-        '
-        Me.hsbVolume.Location = New System.Drawing.Point(69, 97)
-        Me.hsbVolume.Maximum = 127
-        Me.hsbVolume.Name = "hsbVolume"
-        Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
-        Me.hsbVolume.TabIndex = 6
-        Me.hsbVolume.Value = 127
-        '
-        'GroupBox12
-        '
-        Me.GroupBox12.Controls.Add(Me.GroupBox6)
-        Me.GroupBox12.Location = New System.Drawing.Point(774, 13)
-        Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(220, 220)
-        Me.GroupBox12.TabIndex = 173
-        Me.GroupBox12.TabStop = False
-        Me.GroupBox12.Text = "Direct Play"
+        Me.H1_Klappe.Location = New System.Drawing.Point(309, 3)
+        Me.H1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.H1_Klappe.Maximum = 1
+        Me.H1_Klappe.Minimum = -1
+        Me.H1_Klappe.Name = "H1_Klappe"
+        Me.H1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.H1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.H1_Klappe.TabIndex = 189
+        Me.H1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
         'GroupBox14
         '
@@ -2765,14 +2657,14 @@ Partial Class Form1
         Me.GroupBox14.Controls.Add(Me.GroupBox17)
         Me.GroupBox14.Location = New System.Drawing.Point(1016, 18)
         Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(215, 214)
+        Me.GroupBox14.Size = New System.Drawing.Size(215, 202)
         Me.GroupBox14.TabIndex = 185
         Me.GroupBox14.TabStop = False
         Me.GroupBox14.Text = "Programmeinstellungen"
         '
         'Button37
         '
-        Me.Button37.Location = New System.Drawing.Point(23, 159)
+        Me.Button37.Location = New System.Drawing.Point(22, 149)
         Me.Button37.Name = "Button37"
         Me.Button37.Size = New System.Drawing.Size(175, 43)
         Me.Button37.TabIndex = 2
@@ -2781,7 +2673,7 @@ Partial Class Form1
         '
         'Button36
         '
-        Me.Button36.Location = New System.Drawing.Point(23, 102)
+        Me.Button36.Location = New System.Drawing.Point(22, 91)
         Me.Button36.Name = "Button36"
         Me.Button36.Size = New System.Drawing.Size(175, 43)
         Me.Button36.TabIndex = 1
@@ -2798,9 +2690,9 @@ Partial Class Form1
         Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button3)
         Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button2)
         Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button1)
-        Me.Einstellungsverwaltung_GroupBox.Location = New System.Drawing.Point(776, 245)
+        Me.Einstellungsverwaltung_GroupBox.Location = New System.Drawing.Point(775, 228)
         Me.Einstellungsverwaltung_GroupBox.Name = "Einstellungsverwaltung_GroupBox"
-        Me.Einstellungsverwaltung_GroupBox.Size = New System.Drawing.Size(455, 75)
+        Me.Einstellungsverwaltung_GroupBox.Size = New System.Drawing.Size(456, 75)
         Me.Einstellungsverwaltung_GroupBox.TabIndex = 186
         Me.Einstellungsverwaltung_GroupBox.TabStop = False
         Me.Einstellungsverwaltung_GroupBox.Text = "Einstellungsverwaltung"
@@ -2832,12 +2724,242 @@ Partial Class Form1
         Me.Button1.Text = "Einstelllungen speichern"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'MTech010VerticalProgessBar1
+        'GroupBox6
         '
-        Me.MTech010VerticalProgessBar1.Location = New System.Drawing.Point(909, 807)
-        Me.MTech010VerticalProgessBar1.Name = "MTech010VerticalProgessBar1"
-        Me.MTech010VerticalProgessBar1.Size = New System.Drawing.Size(100, 23)
-        Me.MTech010VerticalProgessBar1.TabIndex = 187
+        Me.GroupBox6.BackColor = System.Drawing.SystemColors.Control
+        Me.GroupBox6.Controls.Add(Me.GroupBox12)
+        Me.GroupBox6.Controls.Add(Me.GroupBox5)
+        Me.GroupBox6.Location = New System.Drawing.Point(776, 18)
+        Me.GroupBox6.Name = "GroupBox6"
+        Me.GroupBox6.Size = New System.Drawing.Size(221, 202)
+        Me.GroupBox6.TabIndex = 167
+        Me.GroupBox6.TabStop = False
+        Me.GroupBox6.Text = "Direct Play"
+        '
+        'hsbVolume
+        '
+        Me.hsbVolume.Location = New System.Drawing.Point(72, 22)
+        Me.hsbVolume.Maximum = 127
+        Me.hsbVolume.Name = "hsbVolume"
+        Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
+        Me.hsbVolume.TabIndex = 6
+        Me.hsbVolume.Value = 127
+        '
+        'GroupBox5
+        '
+        Me.GroupBox5.Controls.Add(Me.DirectPlay_OFF)
+        Me.GroupBox5.Controls.Add(Me.DirectPlay_ON)
+        Me.GroupBox5.Location = New System.Drawing.Point(10, 16)
+        Me.GroupBox5.Name = "GroupBox5"
+        Me.GroupBox5.Size = New System.Drawing.Size(199, 56)
+        Me.GroupBox5.TabIndex = 163
+        Me.GroupBox5.TabStop = False
+        Me.GroupBox5.Text = "Empfangende Noten abspielen"
+        '
+        'DirectPlay_ON
+        '
+        Me.DirectPlay_ON.AutoSize = True
+        Me.DirectPlay_ON.Location = New System.Drawing.Point(31, 26)
+        Me.DirectPlay_ON.Name = "DirectPlay_ON"
+        Me.DirectPlay_ON.Size = New System.Drawing.Size(36, 17)
+        Me.DirectPlay_ON.TabIndex = 0
+        Me.DirectPlay_ON.Text = "Ja"
+        Me.DirectPlay_ON.UseVisualStyleBackColor = True
+        '
+        'DirectPlay_OFF
+        '
+        Me.DirectPlay_OFF.AutoSize = True
+        Me.DirectPlay_OFF.Checked = True
+        Me.DirectPlay_OFF.Location = New System.Drawing.Point(115, 26)
+        Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
+        Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
+        Me.DirectPlay_OFF.TabIndex = 1
+        Me.DirectPlay_OFF.TabStop = True
+        Me.DirectPlay_OFF.Text = "Nein"
+        Me.DirectPlay_OFF.UseVisualStyleBackColor = True
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(12, 26)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 13)
+        Me.Label11.TabIndex = 164
+        Me.Label11.Text = "Volume:"
+        '
+        'hsbPan
+        '
+        Me.hsbPan.Location = New System.Drawing.Point(72, 51)
+        Me.hsbPan.Name = "hsbPan"
+        Me.hsbPan.Size = New System.Drawing.Size(115, 17)
+        Me.hsbPan.TabIndex = 172
+        Me.hsbPan.Value = 50
+        '
+        'hsbModWheel
+        '
+        Me.hsbModWheel.Location = New System.Drawing.Point(74, 80)
+        Me.hsbModWheel.Maximum = 255
+        Me.hsbModWheel.Name = "hsbModWheel"
+        Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
+        Me.hsbModWheel.TabIndex = 172
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(11, 55)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(49, 13)
+        Me.Label14.TabIndex = 173
+        Me.Label14.Text = "Balance:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(11, 81)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(41, 13)
+        Me.Label15.TabIndex = 172
+        Me.Label15.Text = "Efeckt:"
+        '
+        'GroupBox12
+        '
+        Me.GroupBox12.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox12.Controls.Add(Me.Label11)
+        Me.GroupBox12.Controls.Add(Me.Label15)
+        Me.GroupBox12.Controls.Add(Me.hsbVolume)
+        Me.GroupBox12.Controls.Add(Me.Label14)
+        Me.GroupBox12.Controls.Add(Me.hsbPan)
+        Me.GroupBox12.Controls.Add(Me.hsbModWheel)
+        Me.GroupBox12.Location = New System.Drawing.Point(10, 83)
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.Size = New System.Drawing.Size(200, 109)
+        Me.GroupBox12.TabIndex = 174
+        Me.GroupBox12.TabStop = False
+        Me.GroupBox12.Text = "Einstellungen"
+        '
+        'D1_Klappe
+        '
+        Me.D1_Klappe.Location = New System.Drawing.Point(54, 3)
+        Me.D1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.D1_Klappe.Maximum = 1
+        Me.D1_Klappe.Minimum = -1
+        Me.D1_Klappe.Name = "D1_Klappe"
+        Me.D1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.D1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.D1_Klappe.TabIndex = 184
+        Me.D1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(3, 77)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox1.TabIndex = 190
+        Me.TextBox1.Text = "C"
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'C1_Klappe
+        '
+        Me.C1_Klappe.Location = New System.Drawing.Point(3, 3)
+        Me.C1_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.C1_Klappe.Maximum = 1
+        Me.C1_Klappe.Minimum = -1
+        Me.C1_Klappe.Name = "C1_Klappe"
+        Me.C1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C1_Klappe.TabIndex = 183
+        Me.C1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'C2_Klappe
+        '
+        Me.C2_Klappe.Location = New System.Drawing.Point(360, 3)
+        Me.C2_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 1)
+        Me.C2_Klappe.Maximum = 1
+        Me.C2_Klappe.Minimum = -1
+        Me.C2_Klappe.Name = "C2_Klappe"
+        Me.C2_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C2_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C2_Klappe.TabIndex = 197
+        Me.C2_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(54, 77)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox2.TabIndex = 198
+        Me.TextBox2.Text = "C"
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(105, 77)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox3.TabIndex = 199
+        Me.TextBox3.Text = "C"
+        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(156, 77)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
+        Me.TextBox4.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox4.TabIndex = 200
+        Me.TextBox4.Text = "C"
+        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(207, 77)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.ReadOnly = True
+        Me.TextBox5.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox5.TabIndex = 201
+        Me.TextBox5.Text = "C"
+        Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(258, 77)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.ReadOnly = True
+        Me.TextBox6.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox6.TabIndex = 202
+        Me.TextBox6.Text = "C"
+        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(309, 77)
+        Me.TextBox7.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.ReadOnly = True
+        Me.TextBox7.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox7.TabIndex = 203
+        Me.TextBox7.Text = "C"
+        Me.TextBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(360, 77)
+        Me.TextBox8.Margin = New System.Windows.Forms.Padding(3, 0, 3, 3)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.ReadOnly = True
+        Me.TextBox8.Size = New System.Drawing.Size(45, 20)
+        Me.TextBox8.TabIndex = 204
+        Me.TextBox8.Text = "C"
+        Me.TextBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'C2_VerticalProgessBar
         '
@@ -3121,17 +3243,28 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
         '
+        'C_Klappe
+        '
+        Me.C_Klappe.Location = New System.Drawing.Point(3, 3)
+        Me.C_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.C_Klappe.Maximum = 1
+        Me.C_Klappe.Minimum = -1
+        Me.C_Klappe.Name = "C_Klappe"
+        Me.C_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C_Klappe.TabIndex = 183
+        Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 995)
-        Me.Controls.Add(Me.MTech010VerticalProgessBar1)
+        Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.Einstellungsverwaltung_GroupBox)
         Me.Controls.Add(Me.GroupBox15)
         Me.Controls.Add(Me.GroupBox14)
         Me.Controls.Add(Me.GroupBox18)
-        Me.Controls.Add(Me.GroupBox12)
         Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.lblClickMe)
@@ -3203,20 +3336,22 @@ Partial Class Form1
         Me.GroupBox18.ResumeLayout(False)
         Me.FlowLayoutPanel6.ResumeLayout(False)
         Me.FlowLayoutPanel6.PerformLayout()
-        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.D_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.F_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.G_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.A_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.H_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.E1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.F1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.G1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.A1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox14.ResumeLayout(False)
+        Me.Einstellungsverwaltung_GroupBox.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
-        Me.GroupBox6.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox14.ResumeLayout(False)
-        Me.Einstellungsverwaltung_GroupBox.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
+        CType(Me.D1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3407,13 +3542,11 @@ Partial Class Form1
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox18 As System.Windows.Forms.GroupBox
     Friend WithEvents FlowLayoutPanel6 As System.Windows.Forms.FlowLayoutPanel
-    Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents D_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents E_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents F_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents G_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents A_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents H_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents E1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents F1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents G1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents A1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents H1_Klappe As System.Windows.Forms.TrackBar
     Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
     Friend WithEvents FlowLayoutPanel11 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents C6_Verschiebung As System.Windows.Forms.TextBox
@@ -3459,17 +3592,6 @@ Partial Class Form1
     Friend WithEvents Metronom_OFF As System.Windows.Forms.RadioButton
     Friend WithEvents Metronom_ON As System.Windows.Forms.RadioButton
     Friend WithEvents Metronom_Betont As System.Windows.Forms.RadioButton
-    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label15 As System.Windows.Forms.Label
-    Friend WithEvents Label14 As System.Windows.Forms.Label
-    Friend WithEvents hsbModWheel As System.Windows.Forms.HScrollBar
-    Friend WithEvents hsbPan As System.Windows.Forms.HScrollBar
-    Friend WithEvents Label11 As System.Windows.Forms.Label
-    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
-    Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
-    Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
-    Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
-    Friend WithEvents GroupBox12 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox14 As System.Windows.Forms.GroupBox
     Friend WithEvents Button37 As System.Windows.Forms.Button
     Friend WithEvents Button36 As System.Windows.Forms.Button
@@ -3498,6 +3620,28 @@ Partial Class Form1
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents MTech010VerticalProgessBar1 As C_Control_PRO_Visualisieren.MTech010VerticalProgessBar
+    Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents hsbModWheel As System.Windows.Forms.HScrollBar
+    Friend WithEvents hsbPan As System.Windows.Forms.HScrollBar
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
+    Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
+    Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
+    Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
+    Friend WithEvents GroupBox12 As System.Windows.Forms.GroupBox
+    Friend WithEvents C1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents D1_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents C2_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
 
 End Class
