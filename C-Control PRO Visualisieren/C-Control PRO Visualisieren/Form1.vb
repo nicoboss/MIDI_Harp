@@ -39,9 +39,18 @@ Public Class Form1
     Dim Anz_ADC As Byte = 29
 
 
-    Dim Notennamen = {{"c", "d", "e", "f", "g", "a", "h", "c"}, _
-                      {"ces", "des", "es", "fes", "ges", "as", "b", "ces"}, _
+    Dim Notennamen = {{"ces", "des", "es", "fes", "ges", "as", "b", "ces"}, _
+                      {"c", "d", "e", "f", "g", "a", "h", "c"}, _
                       {"cis", "dis", "eis", "fis", "gis", "ais", "has", "cis"}}
+
+    Dim C1_Klappe_alt As SByte
+    Dim D1_Klappe_alt As SByte
+    Dim E1_Klappe_alt As SByte
+    Dim F1_Klappe_alt As SByte
+    Dim G1_Klappe_alt As SByte
+    Dim A1_Klappe_alt As SByte
+    Dim H1_Klappe_alt As SByte
+    Dim C2_Klappe_alt As SByte
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -1131,43 +1140,120 @@ Public Class Form1
 
 #Region " Klappen"
 
-#End Region
-
-
     Private Sub C1_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.Scroll
         C2_Klappe.Value = C1_Klappe.Value
-        'Notennamen()
-        'If C_Klappe.Value Then
-        'C1_Klappe_Text
+
+        Dim C1_Klappe_Differenz As SByte = C1_Klappe.Value - C1_Klappe_alt
+        C1_Klappe_Text.Text = Notennamen(C1_Klappe.Value + 1, 1)
+
+        C2_Verschiebung.Text += C1_Klappe_Differenz
+        C3_Verschiebung.Text += C1_Klappe_Differenz
+        C4_Verschiebung.Text += C1_Klappe_Differenz
+        C5_Verschiebung.Text += C1_Klappe_Differenz
+        C6_Verschiebung.Text += C1_Klappe_Differenz
+
+        C1_Klappe_alt = C1_Klappe.Value
     End Sub
 
     Private Sub C2_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Klappe.Scroll
         C1_Klappe.Value = C2_Klappe.Value
+
+        Dim C2_Klappe_Differenz As SByte = C2_Klappe.Value - C2_Klappe_alt
+        C2_Klappe_Text.Text = Notennamen(C2_Klappe.Value + 1, 1)
+
+        C2_Verschiebung.Text += C2_Klappe_Differenz
+        C3_Verschiebung.Text += C2_Klappe_Differenz
+        C4_Verschiebung.Text += C2_Klappe_Differenz
+        C5_Verschiebung.Text += C2_Klappe_Differenz
+        C6_Verschiebung.Text += C2_Klappe_Differenz
+
+        C1_Klappe_alt = C1_Klappe.Value
     End Sub
 
     Private Sub D_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D1_Klappe.Scroll
+        Dim D1_Klappe_Differenz As SByte = D1_Klappe.Value - D1_Klappe_alt
+        D1_Klappe_Text.Text = Notennamen(D1_Klappe.Value + 1, 1)
 
+        D2_Verschiebung.Text += D1_Klappe_Differenz
+        D3_Verschiebung.Text += D1_Klappe_Differenz
+        D4_Verschiebung.Text += D1_Klappe_Differenz
+        D5_Verschiebung.Text += D1_Klappe_Differenz
+        D6_Verschiebung.Text += D1_Klappe_Differenz
+
+        D1_Klappe_alt = D1_Klappe.Value
     End Sub
 
     Private Sub E_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E1_Klappe.Scroll
+        Dim E1_Klappe_Differenz As SByte = E1_Klappe.Value - E1_Klappe_alt
+        E1_Klappe_Text.Text = Notennamen(E1_Klappe.Value + 1, 2)
 
+        E2_Verschiebung.Text += E1_Klappe_Differenz
+        E3_Verschiebung.Text += E1_Klappe_Differenz
+        E4_Verschiebung.Text += E1_Klappe_Differenz
+        E5_Verschiebung.Text += E1_Klappe_Differenz
+        E6_Verschiebung.Text += E1_Klappe_Differenz
+
+        E1_Klappe_alt = E1_Klappe.Value
     End Sub
 
     Private Sub F_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F1_Klappe.Scroll
+        Dim F1_Klappe_Differenz As SByte = F1_Klappe.Value - F1_Klappe_alt
+        F1_Klappe_Text.Text = Notennamen(F1_Klappe.Value + 1, 3)
+
+        F2_Verschiebung.Text += F1_Klappe_Differenz
+        F3_Verschiebung.Text += F1_Klappe_Differenz
+        F4_Verschiebung.Text += F1_Klappe_Differenz
+        F5_Verschiebung.Text += F1_Klappe_Differenz
+        F6_Verschiebung.Text += F1_Klappe_Differenz
+
+        F1_Klappe_alt = F1_Klappe.Value
 
     End Sub
 
     Private Sub G_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G1_Klappe.Scroll
+        Dim G1_Klappe_Differenz As SByte = G1_Klappe.Value - G1_Klappe_alt
+        G1_Klappe_Text.Text = Notennamen(G1_Klappe.Value + 1, 4)
+
+        G2_Verschiebung.Text += G1_Klappe_Differenz
+        G3_Verschiebung.Text += G1_Klappe_Differenz
+        G4_Verschiebung.Text += G1_Klappe_Differenz
+        G5_Verschiebung.Text += G1_Klappe_Differenz
+        G6_Verschiebung.Text += G1_Klappe_Differenz
+
+        G1_Klappe_alt = G1_Klappe.Value
 
     End Sub
 
     Private Sub A_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A1_Klappe.Scroll
+        Dim A1_Klappe_Differenz As SByte = A1_Klappe.Value - A1_Klappe_alt
+        A1_Klappe_Text.Text = Notennamen(A1_Klappe.Value + 1, 5)
+
+        A2_Verschiebung.Text += A1_Klappe_Differenz
+        A3_Verschiebung.Text += A1_Klappe_Differenz
+        A4_Verschiebung.Text += A1_Klappe_Differenz
+        A5_Verschiebung.Text += A1_Klappe_Differenz
+        A6_Verschiebung.Text += A1_Klappe_Differenz
+
+        A1_Klappe_alt = A1_Klappe.Value
 
     End Sub
 
     Private Sub H_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H1_Klappe.Scroll
+        Dim H1_Klappe_Differenz As SByte = H1_Klappe.Value - H1_Klappe_alt
+        H1_Klappe_Text.Text = Notennamen(H1_Klappe.Value + 1, 6)
+
+        H2_Verschiebung.Text += H1_Klappe_Differenz
+        H3_Verschiebung.Text += H1_Klappe_Differenz
+        H4_Verschiebung.Text += H1_Klappe_Differenz
+        H5_Verschiebung.Text += H1_Klappe_Differenz
+        H6_Verschiebung.Text += H1_Klappe_Differenz
+
+        H1_Klappe_alt = H1_Klappe.Value
 
     End Sub
+
+#End Region
+
 
 End Class
 

@@ -2976,7 +2976,7 @@ Partial Class Form1
         Me.C1_Klappe_Text.ReadOnly = True
         Me.C1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.C1_Klappe_Text.TabIndex = 190
-        Me.C1_Klappe_Text.Text = "C"
+        Me.C1_Klappe_Text.Text = "c"
         Me.C1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'D1_Klappe_Text
@@ -2987,7 +2987,7 @@ Partial Class Form1
         Me.D1_Klappe_Text.ReadOnly = True
         Me.D1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.D1_Klappe_Text.TabIndex = 198
-        Me.D1_Klappe_Text.Text = "C"
+        Me.D1_Klappe_Text.Text = "d"
         Me.D1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'E1_Klappe_Text
@@ -2998,7 +2998,7 @@ Partial Class Form1
         Me.E1_Klappe_Text.ReadOnly = True
         Me.E1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.E1_Klappe_Text.TabIndex = 199
-        Me.E1_Klappe_Text.Text = "C"
+        Me.E1_Klappe_Text.Text = "e"
         Me.E1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'F1_Klappe_Text
@@ -3009,7 +3009,7 @@ Partial Class Form1
         Me.F1_Klappe_Text.ReadOnly = True
         Me.F1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.F1_Klappe_Text.TabIndex = 200
-        Me.F1_Klappe_Text.Text = "C"
+        Me.F1_Klappe_Text.Text = "f"
         Me.F1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'G1_Klappe_Text
@@ -3020,7 +3020,7 @@ Partial Class Form1
         Me.G1_Klappe_Text.ReadOnly = True
         Me.G1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.G1_Klappe_Text.TabIndex = 201
-        Me.G1_Klappe_Text.Text = "C"
+        Me.G1_Klappe_Text.Text = "g"
         Me.G1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'A1_Klappe_Text
@@ -3031,7 +3031,7 @@ Partial Class Form1
         Me.A1_Klappe_Text.ReadOnly = True
         Me.A1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.A1_Klappe_Text.TabIndex = 202
-        Me.A1_Klappe_Text.Text = "C"
+        Me.A1_Klappe_Text.Text = "a"
         Me.A1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'H1_Klappe_Text
@@ -3042,7 +3042,7 @@ Partial Class Form1
         Me.H1_Klappe_Text.ReadOnly = True
         Me.H1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.H1_Klappe_Text.TabIndex = 203
-        Me.H1_Klappe_Text.Text = "C"
+        Me.H1_Klappe_Text.Text = "h"
         Me.H1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'C2_Klappe_Text
@@ -3053,7 +3053,7 @@ Partial Class Form1
         Me.C2_Klappe_Text.ReadOnly = True
         Me.C2_Klappe_Text.Size = New System.Drawing.Size(45, 20)
         Me.C2_Klappe_Text.TabIndex = 204
-        Me.C2_Klappe_Text.Text = "C"
+        Me.C2_Klappe_Text.Text = "c"
         Me.C2_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'GroupBox14
