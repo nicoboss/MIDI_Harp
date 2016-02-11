@@ -39,6 +39,22 @@ Public Class Form1
     Dim Anz_ADC As Byte = 29
 
 
+    Dim Noten_Verschiebung() As TextBox = { _
+C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung, _
+C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung, _
+C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung, _
+C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
+C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
+
+
+    Dim MidiNoteNr = { _
+            16, 18, 20, 21, 23, 25, 27, _
+            28, 30, 32, 33, 35, 37, 39, _
+            40, 42, 44, 45, 47, 49, 51, _
+            52, 54, 56, 57, 59, 61, 63, _
+            64, 66, 68, 69, 71, 73, 75}
+
+
     Dim Notennamen = {{"ces", "des", "es", "fes", "ges", "as", "b", "ces"}, _
                       {"c", "d", "e", "f", "g", "a", "h", "c"}, _
                       {"cis", "dis", "eis", "fis", "gis", "ais", "has", "cis"}}
@@ -252,14 +268,6 @@ Public Class Form1
 
     'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
     Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
-
-        Dim MidiNoteNr = { _
-            16, 18, 20, 21, 23, 25, 27, _
-            28, 30, 32, 33, 35, 37, 39, _
-            40, 42, 44, 45, 47, 49, 51, _
-            52, 54, 56, 57, 59, 61, 63, _
-            64, 66, 68, 69, 71, 73, 75}
-
 
         Dim Noten_Grenzwert() As TextBox = { _
             C2_Grenzwert, D2_Grenzwert, E2_Grenzwert, F2_Grenzwert, G2_Grenzwert, A2_Grenzwert, H2_Grenzwert, _
@@ -662,7 +670,7 @@ Public Class Form1
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         FillInstrumentCombo()
     End Sub
-    Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles lblClickMe.MouseDown
+    Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
         If e.Button = Windows.Forms.MouseButtons.Left Then
             m.PlayMIDINote(e.Y, 127) 'Play MIDI Sounds
         Else
@@ -700,18 +708,8 @@ Public Class Form1
     End Sub
 #End Region
 
-#Region " Play and Stop Specific Note "
-    'This is an example of how to Play a Specific Note and then stop it
-    Private Sub btnPlay1Note_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnPlay1Note.Click
-        m.CurrentInstrument = "Woodblock"
-        m.PlayMIDINote(70, 127, CInt(cboDuration.Text))
-        'm.CurrentInstrument = 1
-        'm.NoteDuration = 1
-    End Sub
-    Private Sub btnStopNoteAbove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnStopNoteAbove.Click
-        m.STOPMIDINote(70) 'Stop Note 70
-    End Sub
 #End Region
+
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
@@ -729,310 +727,306 @@ Public Class Form1
     End Sub
 
 
-#End Region
-
-
-
 #Region "   Buttons Events "
 
 #Region "   MouseDown Events"
     Private Sub C2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.MouseDown
-        Button_Note(16)
+        Button_Note(0)
     End Sub
 
     Private Sub D2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D2_Button.MouseDown
-        Button_Note(18)
+        Button_Note(1)
     End Sub
 
     Private Sub E2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E2_Button.MouseDown
-        Button_Note(20)
+        Button_Note(2)
     End Sub
 
     Private Sub F2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F2_Button.MouseDown
-        Button_Note(21)
+        Button_Note(3)
     End Sub
 
     Private Sub G2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G2_Button.MouseDown
-        Button_Note(23)
+        Button_Note(4)
     End Sub
 
     Private Sub A2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A2_Button.MouseDown
-        Button_Note(25)
+        Button_Note(5)
     End Sub
 
     Private Sub H2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H2_Button.MouseDown
-        Button_Note(27)
+        Button_Note(6)
     End Sub
 
 
 
     Private Sub C3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.MouseDown
-        Button_Note(28)
+        Button_Note(7)
     End Sub
 
     Private Sub D3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D3_Button.MouseDown
-        Button_Note(30)
+        Button_Note(8)
     End Sub
 
     Private Sub E3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E3_Button.MouseDown
-        Button_Note(32)
+        Button_Note(9)
     End Sub
 
     Private Sub F3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F3_Button.MouseDown
-        Button_Note(33)
+        Button_Note(10)
     End Sub
 
     Private Sub G3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G3_Button.MouseDown
-        Button_Note(35)
+        Button_Note(11)
     End Sub
 
     Private Sub A3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A3_Button.MouseDown
-        Button_Note(37)
+        Button_Note(12)
     End Sub
 
     Private Sub H3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.MouseDown
-        Button_Note(39)
+        Button_Note(13)
     End Sub
 
 
 
     Private Sub C4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.MouseDown
-        Button_Note(40)
+        Button_Note(14)
     End Sub
 
     Private Sub D4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D4_Button.MouseDown
-        Button_Note(42)
+        Button_Note(15)
     End Sub
 
     Private Sub E4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E4_Button.MouseDown
-        Button_Note(44)
+        Button_Note(16)
     End Sub
 
     Private Sub F4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F4_Button.MouseDown
-        Button_Note(45)
+        Button_Note(17)
     End Sub
 
     Private Sub G4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G4_Button.MouseDown
-        Button_Note(47)
+        Button_Note(18)
     End Sub
 
     Private Sub A4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A4_Button.MouseDown
-        Button_Note(49)
+        Button_Note(19)
     End Sub
 
     Private Sub H4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H4_Button.MouseDown
-        Button_Note(51)
+        Button_Note(20)
     End Sub
 
 
 
     Private Sub C5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C5_Button.MouseDown
-        Button_Note(52)
+        Button_Note(21)
     End Sub
 
     Private Sub D5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D5_Button.MouseDown
-        Button_Note(54)
+        Button_Note(22)
     End Sub
 
     Private Sub E5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E5_Button.MouseDown
-        Button_Note(56)
+        Button_Note(23)
     End Sub
 
     Private Sub F5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F5_Button.MouseDown
-        Button_Note(57)
+        Button_Note(24)
     End Sub
 
     Private Sub G5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G5_Button.MouseDown
-        Button_Note(59)
+        Button_Note(25)
     End Sub
 
     Private Sub A5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A5_Button.MouseDown
-        Button_Note(61)
+        Button_Note(26)
     End Sub
 
     Private Sub H5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H5_Button.MouseDown
-        Button_Note(63)
+        Button_Note(27)
     End Sub
 
 
 
     Private Sub C6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C6_Button.MouseDown
-        Button_Note(64)
+        Button_Note(28)
     End Sub
 
     Private Sub D6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D6_Button.MouseDown
-        Button_Note(66)
+        Button_Note(29)
     End Sub
 
     Private Sub E6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E6_Button.MouseDown
-        Button_Note(68)
+        Button_Note(30)
     End Sub
 
     Private Sub F6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F6_Button.MouseDown
-        Button_Note(69)
+        Button_Note(31)
     End Sub
 
     Private Sub G6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G6_Button.MouseDown
-        Button_Note(71)
+        Button_Note(32)
     End Sub
 
     Private Sub A6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A6_Button.MouseDown
-        Button_Note(73)
+        Button_Note(33)
     End Sub
 
     Private Sub H6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Button.MouseDown
-        Button_Note(75)
+        Button_Note(34)
     End Sub
 #End Region
 
 #Region "   MouseUp Events"
 
     Private Sub C2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.MouseUp
-        Button_Stop_Note(16)
+        Button_Stop_Note(0)
     End Sub
 
     Private Sub D2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D2_Button.MouseUp
-        Button_Stop_Note(18)
+        Button_Stop_Note(1)
     End Sub
 
     Private Sub E2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E2_Button.MouseUp
-        Button_Stop_Note(20)
+        Button_Stop_Note(2)
     End Sub
 
     Private Sub F2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F2_Button.MouseUp
-        Button_Stop_Note(21)
+        Button_Stop_Note(3)
     End Sub
 
     Private Sub G2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G2_Button.MouseUp
-        Button_Stop_Note(23)
+        Button_Stop_Note(4)
     End Sub
 
     Private Sub A2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A2_Button.MouseUp
-        Button_Stop_Note(25)
+        Button_Stop_Note(5)
     End Sub
 
     Private Sub H2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H2_Button.MouseUp
-        Button_Stop_Note(27)
+        Button_Stop_Note(6)
     End Sub
 
 
 
     Private Sub C3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.MouseUp
-        Button_Stop_Note(28)
+        Button_Stop_Note(7)
     End Sub
 
     Private Sub D3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D3_Button.MouseUp
-        Button_Stop_Note(30)
+        Button_Stop_Note(8)
     End Sub
 
     Private Sub E3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E3_Button.MouseUp
-        Button_Stop_Note(32)
+        Button_Stop_Note(9)
     End Sub
 
     Private Sub F3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F3_Button.MouseUp
-        Button_Stop_Note(33)
+        Button_Stop_Note(10)
     End Sub
 
     Private Sub G3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G3_Button.MouseUp
-        Button_Stop_Note(35)
+        Button_Stop_Note(11)
     End Sub
 
     Private Sub A3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A3_Button.MouseUp
-        Button_Stop_Note(37)
+        Button_Stop_Note(12)
     End Sub
 
     Private Sub H3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.MouseUp
-        Button_Stop_Note(39)
+        Button_Stop_Note(13)
     End Sub
 
 
 
     Private Sub C4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.MouseUp
-        Button_Stop_Note(40)
+        Button_Stop_Note(14)
     End Sub
 
     Private Sub D4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D4_Button.MouseUp
-        Button_Stop_Note(42)
+        Button_Stop_Note(15)
     End Sub
 
     Private Sub E4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E4_Button.MouseUp
-        Button_Stop_Note(44)
+        Button_Stop_Note(16)
     End Sub
 
     Private Sub F4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F4_Button.MouseUp
-        Button_Stop_Note(45)
+        Button_Stop_Note(17)
     End Sub
 
     Private Sub G4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G4_Button.MouseUp
-        Button_Stop_Note(47)
+        Button_Stop_Note(18)
     End Sub
 
     Private Sub A4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A4_Button.MouseUp
-        Button_Stop_Note(49)
+        Button_Stop_Note(19)
     End Sub
 
     Private Sub H4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H4_Button.MouseUp
-        Button_Stop_Note(51)
+        Button_Stop_Note(20)
     End Sub
 
 
 
     Private Sub C5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C5_Button.MouseUp
-        Button_Stop_Note(52)
+        Button_Stop_Note(21)
     End Sub
 
     Private Sub D5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D5_Button.MouseUp
-        Button_Stop_Note(54)
+        Button_Stop_Note(22)
     End Sub
 
     Private Sub E5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E5_Button.MouseUp
-        Button_Stop_Note(56)
+        Button_Stop_Note(23)
     End Sub
 
     Private Sub F5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F5_Button.MouseUp
-        Button_Stop_Note(57)
+        Button_Stop_Note(24)
     End Sub
 
     Private Sub G5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G5_Button.MouseUp
-        Button_Stop_Note(59)
+        Button_Stop_Note(25)
     End Sub
 
     Private Sub A5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A5_Button.MouseUp
-        Button_Stop_Note(61)
+        Button_Stop_Note(26)
     End Sub
 
     Private Sub H5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H5_Button.MouseUp
-        Button_Stop_Note(63)
+        Button_Stop_Note(27)
     End Sub
 
 
 
     Private Sub C6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C6_Button.MouseUp
-        Button_Stop_Note(64)
+        Button_Stop_Note(28)
     End Sub
 
     Private Sub D6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D6_Button.MouseUp
-        Button_Stop_Note(66)
+        Button_Stop_Note(29)
     End Sub
 
     Private Sub E6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E6_Button.MouseUp
-        Button_Stop_Note(68)
+        Button_Stop_Note(30)
     End Sub
 
     Private Sub F6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F6_Button.MouseUp
-        Button_Stop_Note(69)
+        Button_Stop_Note(31)
     End Sub
 
     Private Sub G6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G6_Button.MouseUp
-        Button_Stop_Note(71)
+        Button_Stop_Note(32)
     End Sub
 
     Private Sub A6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A6_Button.MouseUp
-        Button_Stop_Note(73)
+        Button_Stop_Note(33)
     End Sub
 
     Private Sub H6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Button.MouseUp
-        Button_Stop_Note(75)
+        Button_Stop_Note(34)
     End Sub
 
 #End Region
@@ -1042,15 +1036,37 @@ Public Class Form1
 
 
 
-    Private Sub Button_Note(ByVal NotenNr As Byte)
-        m.PlayMIDINote(NotenNr + Halbtonverschiebung.Value + Verschiebung(NotenNr), 100, 0)
+    Private Sub Button_Note(ByVal TastenNr As Byte)
+        Dim NotenNr As Byte
+
+        Dim Noten_Verschiebung() As TextBox = { _
+    C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung, _
+    C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung, _
+    C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung, _
+    C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
+    C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
+
+        NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
+        m.PlayMIDINote(NotenNr, 100, 0)
         Button_Note_Play(NotenNr) = True
     End Sub
 
-    Private Sub Button_Stop_Note(ByVal NotenNr As Byte)
-        m.STOPMIDINote(NotenNr + Halbtonverschiebung.Value + Verschiebung(NotenNr))
+
+    Private Sub Button_Stop_Note(ByVal TastenNr As Byte)
+        Dim NotenNr As Byte
+
+        Dim Noten_Verschiebung() As TextBox = { _
+    C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung, _
+    C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung, _
+    C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung, _
+    C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
+    C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
+
+        NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
+        m.STOPMIDINote(NotenNr)
         Button_Note_Play(NotenNr) = False
     End Sub
+
 
 
 
