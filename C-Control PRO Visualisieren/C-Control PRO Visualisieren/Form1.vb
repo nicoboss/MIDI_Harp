@@ -1134,8 +1134,15 @@ Public Class Form1
 #End Region
 
 
-    Private Sub C_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.Scroll, C_Klappe.Scroll
+    Private Sub C1_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.Scroll
+        C2_Klappe.Value = C1_Klappe.Value
+        'Notennamen()
+        'If C_Klappe.Value Then
+        'C1_Klappe_Text
+    End Sub
 
+    Private Sub C2_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Klappe.Scroll
+        C1_Klappe.Value = C2_Klappe.Value
     End Sub
 
     Private Sub D_Klappe_Scroll(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D1_Klappe.Scroll
