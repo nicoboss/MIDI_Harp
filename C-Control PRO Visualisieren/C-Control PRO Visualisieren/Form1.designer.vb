@@ -633,6 +633,7 @@ Partial Class Form1
         'D2_Grenzwert
         '
         Me.D2_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D2_Grenzwert.MaxLength = 3
         Me.D2_Grenzwert.Name = "D2_Grenzwert"
         Me.D2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.D2_Grenzwert.TabIndex = 19
@@ -642,6 +643,7 @@ Partial Class Form1
         'E2_Grenzwert
         '
         Me.E2_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E2_Grenzwert.MaxLength = 3
         Me.E2_Grenzwert.Name = "E2_Grenzwert"
         Me.E2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.E2_Grenzwert.TabIndex = 20
@@ -651,6 +653,7 @@ Partial Class Form1
         'F2_Grenzwert
         '
         Me.F2_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F2_Grenzwert.MaxLength = 3
         Me.F2_Grenzwert.Name = "F2_Grenzwert"
         Me.F2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.F2_Grenzwert.TabIndex = 21
@@ -660,6 +663,7 @@ Partial Class Form1
         'G2_Grenzwert
         '
         Me.G2_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G2_Grenzwert.MaxLength = 3
         Me.G2_Grenzwert.Name = "G2_Grenzwert"
         Me.G2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.G2_Grenzwert.TabIndex = 22
@@ -669,6 +673,7 @@ Partial Class Form1
         'A2_Grenzwert
         '
         Me.A2_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A2_Grenzwert.MaxLength = 3
         Me.A2_Grenzwert.Name = "A2_Grenzwert"
         Me.A2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.A2_Grenzwert.TabIndex = 23
@@ -678,6 +683,7 @@ Partial Class Form1
         'H2_Grenzwert
         '
         Me.H2_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H2_Grenzwert.MaxLength = 3
         Me.H2_Grenzwert.Name = "H2_Grenzwert"
         Me.H2_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.H2_Grenzwert.TabIndex = 24
@@ -855,6 +861,7 @@ Partial Class Form1
         'C3_Grenzwert
         '
         Me.C3_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C3_Grenzwert.MaxLength = 3
         Me.C3_Grenzwert.Name = "C3_Grenzwert"
         Me.C3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.C3_Grenzwert.TabIndex = 25
@@ -864,6 +871,7 @@ Partial Class Form1
         'D3_Grenzwert
         '
         Me.D3_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D3_Grenzwert.MaxLength = 3
         Me.D3_Grenzwert.Name = "D3_Grenzwert"
         Me.D3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.D3_Grenzwert.TabIndex = 26
@@ -873,6 +881,7 @@ Partial Class Form1
         'E3_Grenzwert
         '
         Me.E3_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E3_Grenzwert.MaxLength = 3
         Me.E3_Grenzwert.Name = "E3_Grenzwert"
         Me.E3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.E3_Grenzwert.TabIndex = 27
@@ -882,6 +891,7 @@ Partial Class Form1
         'F3_Grenzwert
         '
         Me.F3_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F3_Grenzwert.MaxLength = 3
         Me.F3_Grenzwert.Name = "F3_Grenzwert"
         Me.F3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.F3_Grenzwert.TabIndex = 28
@@ -891,6 +901,7 @@ Partial Class Form1
         'G3_Grenzwert
         '
         Me.G3_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G3_Grenzwert.MaxLength = 3
         Me.G3_Grenzwert.Name = "G3_Grenzwert"
         Me.G3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.G3_Grenzwert.TabIndex = 29
@@ -900,6 +911,7 @@ Partial Class Form1
         'A3_Grenzwert
         '
         Me.A3_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A3_Grenzwert.MaxLength = 3
         Me.A3_Grenzwert.Name = "A3_Grenzwert"
         Me.A3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.A3_Grenzwert.TabIndex = 30
@@ -909,6 +921,7 @@ Partial Class Form1
         'H3_Grenzwert
         '
         Me.H3_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H3_Grenzwert.MaxLength = 3
         Me.H3_Grenzwert.Name = "H3_Grenzwert"
         Me.H3_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.H3_Grenzwert.TabIndex = 31
@@ -1086,6 +1099,7 @@ Partial Class Form1
         'C4_Grenzwert
         '
         Me.C4_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C4_Grenzwert.MaxLength = 3
         Me.C4_Grenzwert.Name = "C4_Grenzwert"
         Me.C4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.C4_Grenzwert.TabIndex = 25
@@ -1095,6 +1109,7 @@ Partial Class Form1
         'D4_Grenzwert
         '
         Me.D4_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D4_Grenzwert.MaxLength = 3
         Me.D4_Grenzwert.Name = "D4_Grenzwert"
         Me.D4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.D4_Grenzwert.TabIndex = 26
@@ -1104,6 +1119,7 @@ Partial Class Form1
         'E4_Grenzwert
         '
         Me.E4_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E4_Grenzwert.MaxLength = 3
         Me.E4_Grenzwert.Name = "E4_Grenzwert"
         Me.E4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.E4_Grenzwert.TabIndex = 27
@@ -1113,6 +1129,7 @@ Partial Class Form1
         'F4_Grenzwert
         '
         Me.F4_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F4_Grenzwert.MaxLength = 3
         Me.F4_Grenzwert.Name = "F4_Grenzwert"
         Me.F4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.F4_Grenzwert.TabIndex = 28
@@ -1122,6 +1139,7 @@ Partial Class Form1
         'G4_Grenzwert
         '
         Me.G4_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G4_Grenzwert.MaxLength = 3
         Me.G4_Grenzwert.Name = "G4_Grenzwert"
         Me.G4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.G4_Grenzwert.TabIndex = 29
@@ -1131,6 +1149,7 @@ Partial Class Form1
         'A4_Grenzwert
         '
         Me.A4_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A4_Grenzwert.MaxLength = 3
         Me.A4_Grenzwert.Name = "A4_Grenzwert"
         Me.A4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.A4_Grenzwert.TabIndex = 30
@@ -1140,6 +1159,7 @@ Partial Class Form1
         'H4_Grenzwert
         '
         Me.H4_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H4_Grenzwert.MaxLength = 3
         Me.H4_Grenzwert.Name = "H4_Grenzwert"
         Me.H4_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.H4_Grenzwert.TabIndex = 31
@@ -1317,6 +1337,7 @@ Partial Class Form1
         'C5_Grenzwert
         '
         Me.C5_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C5_Grenzwert.MaxLength = 3
         Me.C5_Grenzwert.Name = "C5_Grenzwert"
         Me.C5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.C5_Grenzwert.TabIndex = 25
@@ -1326,6 +1347,7 @@ Partial Class Form1
         'D5_Grenzwert
         '
         Me.D5_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D5_Grenzwert.MaxLength = 3
         Me.D5_Grenzwert.Name = "D5_Grenzwert"
         Me.D5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.D5_Grenzwert.TabIndex = 26
@@ -1335,6 +1357,7 @@ Partial Class Form1
         'E5_Grenzwert
         '
         Me.E5_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E5_Grenzwert.MaxLength = 3
         Me.E5_Grenzwert.Name = "E5_Grenzwert"
         Me.E5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.E5_Grenzwert.TabIndex = 27
@@ -1344,6 +1367,7 @@ Partial Class Form1
         'F5_Grenzwert
         '
         Me.F5_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F5_Grenzwert.MaxLength = 3
         Me.F5_Grenzwert.Name = "F5_Grenzwert"
         Me.F5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.F5_Grenzwert.TabIndex = 28
@@ -1353,6 +1377,7 @@ Partial Class Form1
         'G5_Grenzwert
         '
         Me.G5_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G5_Grenzwert.MaxLength = 3
         Me.G5_Grenzwert.Name = "G5_Grenzwert"
         Me.G5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.G5_Grenzwert.TabIndex = 29
@@ -1362,6 +1387,7 @@ Partial Class Form1
         'A5_Grenzwert
         '
         Me.A5_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A5_Grenzwert.MaxLength = 3
         Me.A5_Grenzwert.Name = "A5_Grenzwert"
         Me.A5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.A5_Grenzwert.TabIndex = 30
@@ -1371,6 +1397,7 @@ Partial Class Form1
         'H5_Grenzwert
         '
         Me.H5_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H5_Grenzwert.MaxLength = 3
         Me.H5_Grenzwert.Name = "H5_Grenzwert"
         Me.H5_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.H5_Grenzwert.TabIndex = 31
@@ -1555,6 +1582,7 @@ Partial Class Form1
         'C6_Grenzwert
         '
         Me.C6_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C6_Grenzwert.MaxLength = 3
         Me.C6_Grenzwert.Name = "C6_Grenzwert"
         Me.C6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.C6_Grenzwert.TabIndex = 25
@@ -1564,6 +1592,7 @@ Partial Class Form1
         'D6_Grenzwert
         '
         Me.D6_Grenzwert.Location = New System.Drawing.Point(35, 161)
+        Me.D6_Grenzwert.MaxLength = 3
         Me.D6_Grenzwert.Name = "D6_Grenzwert"
         Me.D6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.D6_Grenzwert.TabIndex = 26
@@ -1573,6 +1602,7 @@ Partial Class Form1
         'E6_Grenzwert
         '
         Me.E6_Grenzwert.Location = New System.Drawing.Point(67, 161)
+        Me.E6_Grenzwert.MaxLength = 3
         Me.E6_Grenzwert.Name = "E6_Grenzwert"
         Me.E6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.E6_Grenzwert.TabIndex = 27
@@ -1582,6 +1612,7 @@ Partial Class Form1
         'F6_Grenzwert
         '
         Me.F6_Grenzwert.Location = New System.Drawing.Point(99, 161)
+        Me.F6_Grenzwert.MaxLength = 3
         Me.F6_Grenzwert.Name = "F6_Grenzwert"
         Me.F6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.F6_Grenzwert.TabIndex = 28
@@ -1591,6 +1622,7 @@ Partial Class Form1
         'G6_Grenzwert
         '
         Me.G6_Grenzwert.Location = New System.Drawing.Point(131, 161)
+        Me.G6_Grenzwert.MaxLength = 3
         Me.G6_Grenzwert.Name = "G6_Grenzwert"
         Me.G6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.G6_Grenzwert.TabIndex = 29
@@ -1600,6 +1632,7 @@ Partial Class Form1
         'A6_Grenzwert
         '
         Me.A6_Grenzwert.Location = New System.Drawing.Point(163, 161)
+        Me.A6_Grenzwert.MaxLength = 3
         Me.A6_Grenzwert.Name = "A6_Grenzwert"
         Me.A6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.A6_Grenzwert.TabIndex = 30
@@ -1609,6 +1642,7 @@ Partial Class Form1
         'H6_Grenzwert
         '
         Me.H6_Grenzwert.Location = New System.Drawing.Point(195, 161)
+        Me.H6_Grenzwert.MaxLength = 3
         Me.H6_Grenzwert.Name = "H6_Grenzwert"
         Me.H6_Grenzwert.Size = New System.Drawing.Size(26, 20)
         Me.H6_Grenzwert.TabIndex = 31

@@ -8,6 +8,7 @@ Imports System.Text
 
 Public Class Form1
 
+
     Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
 
     Public ports As String() = GetPortNames()
@@ -129,10 +130,6 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-
-
-
-
     Sub Com_Search() Handles Com_Search_Timer.Tick
 
         ports = GetPortNames()
@@ -192,11 +189,8 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-
-
-    'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
     Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
-
+        'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
 
         Dim Serial_Read As String = ""
 
@@ -244,7 +238,6 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-
     Private Sub ComboBox_Comport_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Comport.SelectedIndexChanged
 
         'Comport auswählen
@@ -253,7 +246,6 @@ Dim C2_Klappe_alt As SByte
         End If
 
     End Sub
-
 
     'Private Sub MTech010VerticalProgessBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MTech010VerticalProgessBar1.Click
     'MessageBox.Show(MousePosition.X)
@@ -266,8 +258,6 @@ Dim C2_Klappe_alt As SByte
     'LineShape1.
     'LineShape1.Refresh()
     'End Sub
-
-
 
 #Region " MIDI "
 
@@ -502,6 +492,10 @@ Dim C2_Klappe_alt As SByte
         Tackt.Interval = (60 / BPM.Value / 4) * 1000
     End Sub
 
+    Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
+        Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
+    End Sub
+
 
 
 
@@ -520,10 +514,6 @@ Dim C2_Klappe_alt As SByte
 
 
 
-
-    Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
-        Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
-    End Sub
 
 
 
@@ -921,8 +911,15 @@ Dim C2_Klappe_alt As SByte
 
 #End Region
 
+#Region "Grenzwerte"
 
-    Private Sub C2_Grenzwert_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles C2_Grenzwert.KeyPress
+    Private Sub C2_Grenzwert_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
+        C2_Grenzwert.KeyPress, D2_Grenzwert.KeyPress, E2_Grenzwert.KeyPress, F2_Grenzwert.KeyPress, G2_Grenzwert.KeyPress, A2_Grenzwert.KeyPress, H2_Grenzwert.KeyPress, _
+        C3_Grenzwert.KeyPress, D3_Grenzwert.KeyPress, E3_Grenzwert.KeyPress, F3_Grenzwert.KeyPress, G3_Grenzwert.KeyPress, A3_Grenzwert.KeyPress, H3_Grenzwert.KeyPress, _
+        C4_Grenzwert.KeyPress, D4_Grenzwert.KeyPress, E4_Grenzwert.KeyPress, F4_Grenzwert.KeyPress, G4_Grenzwert.KeyPress, A4_Grenzwert.KeyPress, H4_Grenzwert.KeyPress, _
+        C5_Grenzwert.KeyPress, D5_Grenzwert.KeyPress, E5_Grenzwert.KeyPress, F5_Grenzwert.KeyPress, G5_Grenzwert.KeyPress, A5_Grenzwert.KeyPress, H5_Grenzwert.KeyPress, _
+        C6_Grenzwert.KeyPress, D6_Grenzwert.KeyPress, E6_Grenzwert.KeyPress, F6_Grenzwert.KeyPress, G6_Grenzwert.KeyPress, A6_Grenzwert.KeyPress, H6_Grenzwert.KeyPress
+
         Select Case Asc(e.KeyChar)
             Case 48 To 57, 8, 32, 46
                 ' Zahlen, Backspace und Space zulassen
@@ -930,10 +927,22 @@ Dim C2_Klappe_alt As SByte
                 ' alle anderen Eingaben unterdrücken
                 e.Handled = True
         End Select
+
     End Sub
 
 
+    Private Sub C2_Grenzwert_TextChanged(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
+        C2_Grenzwert.LostFocus, D2_Grenzwert.LostFocus, E2_Grenzwert.LostFocus, F2_Grenzwert.LostFocus, G2_Grenzwert.LostFocus, A2_Grenzwert.LostFocus, H2_Grenzwert.LostFocus, _
+        C3_Grenzwert.LostFocus, D3_Grenzwert.LostFocus, E3_Grenzwert.LostFocus, F3_Grenzwert.LostFocus, G3_Grenzwert.LostFocus, A3_Grenzwert.LostFocus, H3_Grenzwert.LostFocus, _
+        C4_Grenzwert.LostFocus, D4_Grenzwert.LostFocus, E4_Grenzwert.LostFocus, F4_Grenzwert.LostFocus, G4_Grenzwert.LostFocus, A4_Grenzwert.LostFocus, H4_Grenzwert.LostFocus, _
+        C5_Grenzwert.LostFocus, D5_Grenzwert.LostFocus, E5_Grenzwert.LostFocus, F5_Grenzwert.LostFocus, G5_Grenzwert.LostFocus, A5_Grenzwert.LostFocus, H5_Grenzwert.LostFocus, _
+        C6_Grenzwert.LostFocus, D6_Grenzwert.LostFocus, E6_Grenzwert.LostFocus, F6_Grenzwert.LostFocus, G6_Grenzwert.LostFocus, A6_Grenzwert.LostFocus, H6_Grenzwert.LostFocus
 
+        If sender.Text > 255 Then sender.Text = 255
+        'MessageBox.Show(sender.Text)
+    End Sub
+
+#End Region
 
 
 #Region " Messintervall des Mikrokontrollers "
@@ -957,7 +966,6 @@ Dim C2_Klappe_alt As SByte
 
 
 #Region " Special MIDI-Mode"
-
 
     Dim Messintervall_Temp As UShort
     Dim Tackt_Zaehler_Temp As Byte
@@ -1000,7 +1008,6 @@ Dim C2_Klappe_alt As SByte
             ToolTip1.Active = False
         End If
     End Sub
-
 
 
 #Region " Klappen"
@@ -1120,14 +1127,114 @@ Dim C2_Klappe_alt As SByte
 #End Region
 
 
+#Region "Einstellungsspeicherungsfunktion"
+
+    Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown    'Wichtig: MyBase.Load geht nicht, da zu früh!
+
+        With My.Settings
+            ' Aufnahmemodus
+            MIDI_NormalMode.Checked = .MIDI_NormalMode
+            cboInstruments.SelectedIndex = .cboInstruments
+
+            ' Tempo
+            Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
+            Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
+            BPM.Value = .BPM
+
+            ' Messintervall
+            Messintervall_NumericUpDown.Value = .Messintervall_NumericUpDown
+
+            ' Tonhöhenverschiebung
+            Halbtonverschiebung.Value = .Halbtonverschiebung
+
+            ' META
+            META_Dateinamen_Input.Text = .META_Dateinamen_Input
+            META_Autor_Input.Text = .META_Autor_Input
+            META_Spurnamen_Input.Text = .META_Spurnamen_Input
+            META_Copyright_Input.Text = .META_Copyright_Input
+            META_Bemerkung_Input.Text = .META_Bemerkung_Input
+
+            ' Metronom
+            Metronom_Betont.Checked = .Metronom_Betont
+            Metronom_ON.Checked = .Metronom_ON
+
+            ' Direct Play
+            DirectPlay_ON.Checked = .DirectPlay_ON
+            hsbVolume.Value = .hsbVolume
+            hsbPan.Value = .hsbPan
+            hsbModWheel.Value = .hsbModWheel
+
+            ' ToolTip
+            ToolTip_ON.Checked = .ToolTip_ON
+
+            ' Tonart Klappen
+            .C_Klappe = C1_Klappe.Value = .C_Klappe
+            .D_Klappe = D1_Klappe.Value = .D_Klappe
+            .E_Klappe = E1_Klappe.Value = .E_Klappe
+            .F_Klappe = F1_Klappe.Value = .F_Klappe
+            .G_Klappe = G1_Klappe.Value = .G_Klappe
+            .A_Klappe = A1_Klappe.Value = .A_Klappe
+            .H_Klappe = H1_Klappe.Value = .G_Klappe
+        End With
+    End Sub
+
+
+    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        With My.Settings
+
+            ' Aufnahmemodus
+            .MIDI_NormalMode = MIDI_NormalMode.Checked
+            .cboInstruments = cboInstruments.SelectedIndex
+
+            ' Tempo
+            .Tackt_Zaehler_Input = Tackt_Zaehler_Input.Value
+            .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
+            .BPM = BPM.Value
+
+            ' Messintervall
+            .Messintervall_NumericUpDown = Messintervall_NumericUpDown.Value
+
+            ' Tonhöhenverschiebung
+            .Halbtonverschiebung = Halbtonverschiebung.Value
+
+            ' META
+            .META_Dateinamen_Input = META_Dateinamen_Input.Text
+            .META_Autor_Input = META_Autor_Input.Text
+            .META_Spurnamen_Input = META_Spurnamen_Input.Text
+            .META_Copyright_Input = META_Copyright_Input.Text
+            .META_Bemerkung_Input = META_Bemerkung_Input.Text
+
+            ' Metronom
+            .Metronom_Betont = Metronom_Betont.Checked
+            .Metronom_ON = Metronom_ON.Checked
+
+            ' Direct Play
+            .DirectPlay_ON = DirectPlay_ON.Checked
+            .hsbVolume = hsbVolume.Value
+            .hsbPan = hsbPan.Value
+            .hsbModWheel = hsbModWheel.Value
+
+            ' ToolTip
+            .ToolTip_ON = ToolTip_ON.Checked
+
+            ' Tonart Klappen
+            .C_Klappe = C1_Klappe.Value
+            .D_Klappe = D1_Klappe.Value
+            .E_Klappe = E1_Klappe.Value
+            .F_Klappe = F1_Klappe.Value
+            .G_Klappe = G1_Klappe.Value
+            .A_Klappe = A1_Klappe.Value
+            .H_Klappe = H1_Klappe.Value
+
+
+            ' Einstellungen speichern
+            .Save()
+
+        End With
+
+    End Sub
+
+#End Region
+
+
 End Class
-
-
-
-
-
-
-
-
-
-
