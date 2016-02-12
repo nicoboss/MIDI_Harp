@@ -359,6 +359,438 @@ Namespace My
                 Me("H_Klappe") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("C2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("C2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("D2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("D2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property E2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("E2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("E2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("F2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("F2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("G2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("G2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property A2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("A2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("A2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property H2_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("H2_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("H2_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("C3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("C3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("D3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("D3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property E3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("E3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("E3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("F3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("F3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("G3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("G3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property A3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("A3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("A3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property H3_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("H3_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("H3_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("C4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("C4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("D4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("D4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property E4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("E4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("E4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("F4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("F4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("G4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("G4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property A4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("A4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("A4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property H4_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("H4_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("H4_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("C5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("C5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("D5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("D5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property E5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("E5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("E5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("F5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("F5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("G5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("G5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property A5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("A5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("A5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property H5_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("H5_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("H5_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property C6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("C6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("C6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property D6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("D6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("D6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property E6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("E6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("E6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property F6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("F6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("F6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property G6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("G6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("G6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property A6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("A6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("A6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property H6_Grenzwert_Save() As Byte
+            Get
+                Return CType(Me("H6_Grenzwert_Save"),Byte)
+            End Get
+            Set
+                Me("H6_Grenzwert_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Setting() As String
+            Get
+                Return CType(Me("Setting"),String)
+            End Get
+            Set
+                Me("Setting") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

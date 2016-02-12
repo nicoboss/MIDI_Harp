@@ -1168,13 +1168,55 @@ Dim C2_Klappe_alt As SByte
             ToolTip_ON.Checked = .ToolTip_ON
 
             ' Tonart Klappen
-            .C_Klappe = C1_Klappe.Value = .C_Klappe
-            .D_Klappe = D1_Klappe.Value = .D_Klappe
-            .E_Klappe = E1_Klappe.Value = .E_Klappe
-            .F_Klappe = F1_Klappe.Value = .F_Klappe
-            .G_Klappe = G1_Klappe.Value = .G_Klappe
-            .A_Klappe = A1_Klappe.Value = .A_Klappe
-            .H_Klappe = H1_Klappe.Value = .G_Klappe
+            C1_Klappe.Value = .C_Klappe
+            D1_Klappe.Value = .D_Klappe
+            E1_Klappe.Value = .E_Klappe
+            F1_Klappe.Value = .F_Klappe
+            G1_Klappe.Value = .G_Klappe
+            A1_Klappe.Value = .A_Klappe
+            H1_Klappe.Value = .G_Klappe
+
+            ' Halbtonverschiebung
+            C2_Grenzwert.Text = .C2_Grenzwert_Save
+            D2_Grenzwert.Text = .D2_Grenzwert_Save
+            E2_Grenzwert.Text = .E2_Grenzwert_Save
+            F2_Grenzwert.Text = .F2_Grenzwert_Save
+            G2_Grenzwert.Text = .G2_Grenzwert_Save
+            A2_Grenzwert.Text = .A2_Grenzwert_Save
+            H2_Grenzwert.Text = .H2_Grenzwert_Save
+
+            C3_Grenzwert.Text = .C3_Grenzwert_Save
+            D3_Grenzwert.Text = .D3_Grenzwert_Save
+            E3_Grenzwert.Text = .E3_Grenzwert_Save
+            F3_Grenzwert.Text = .F3_Grenzwert_Save
+            G3_Grenzwert.Text = .G3_Grenzwert_Save
+            A3_Grenzwert.Text = .A3_Grenzwert_Save
+            H3_Grenzwert.Text = .H3_Grenzwert_Save
+
+            C4_Grenzwert.Text = .C4_Grenzwert_Save
+            D4_Grenzwert.Text = .D4_Grenzwert_Save
+            E4_Grenzwert.Text = .E4_Grenzwert_Save
+            F4_Grenzwert.Text = .F4_Grenzwert_Save
+            G4_Grenzwert.Text = .G4_Grenzwert_Save
+            A4_Grenzwert.Text = .A4_Grenzwert_Save
+            H4_Grenzwert.Text = .H4_Grenzwert_Save
+
+            C5_Grenzwert.Text = .C5_Grenzwert_Save
+            D5_Grenzwert.Text = .D5_Grenzwert_Save
+            E5_Grenzwert.Text = .E5_Grenzwert_Save
+            F5_Grenzwert.Text = .F5_Grenzwert_Save
+            G5_Grenzwert.Text = .G5_Grenzwert_Save
+            A5_Grenzwert.Text = .A5_Grenzwert_Save
+            H5_Grenzwert.Text = .H5_Grenzwert_Save
+
+            C6_Grenzwert.Text = .C6_Grenzwert_Save
+            D6_Grenzwert.Text = .D6_Grenzwert_Save
+            E6_Grenzwert.Text = .E6_Grenzwert_Save
+            F6_Grenzwert.Text = .F6_Grenzwert_Save
+            G6_Grenzwert.Text = .G6_Grenzwert_Save
+            A6_Grenzwert.Text = .A6_Grenzwert_Save
+            H6_Grenzwert.Text = .H6_Grenzwert_Save
+
         End With
     End Sub
 
@@ -1226,6 +1268,47 @@ Dim C2_Klappe_alt As SByte
             .A_Klappe = A1_Klappe.Value
             .H_Klappe = H1_Klappe.Value
 
+            ' Halbtonverschiebung
+            .C2_Grenzwert_Save = C2_Grenzwert.Text
+            .D2_Grenzwert_Save = D2_Grenzwert.Text
+            .E2_Grenzwert_Save = E2_Grenzwert.Text
+            .F2_Grenzwert_Save = F2_Grenzwert.Text
+            .G2_Grenzwert_Save = G2_Grenzwert.Text
+            .A2_Grenzwert_Save = A2_Grenzwert.Text
+            .H2_Grenzwert_Save = H2_Grenzwert.Text
+
+            .C3_Grenzwert_Save = C3_Grenzwert.Text
+            .D3_Grenzwert_Save = D3_Grenzwert.Text
+            .E3_Grenzwert_Save = E3_Grenzwert.Text
+            .F3_Grenzwert_Save = F3_Grenzwert.Text
+            .G3_Grenzwert_Save = G3_Grenzwert.Text
+            .A3_Grenzwert_Save = A3_Grenzwert.Text
+            .H3_Grenzwert_Save = H3_Grenzwert.Text
+
+            .C4_Grenzwert_Save = C4_Grenzwert.Text
+            .D4_Grenzwert_Save = D4_Grenzwert.Text
+            .E4_Grenzwert_Save = E4_Grenzwert.Text
+            .F4_Grenzwert_Save = F4_Grenzwert.Text
+            .G4_Grenzwert_Save = G4_Grenzwert.Text
+            .A4_Grenzwert_Save = A4_Grenzwert.Text
+            .H4_Grenzwert_Save = H4_Grenzwert.Text
+
+            .C5_Grenzwert_Save = C5_Grenzwert.Text
+            .D5_Grenzwert_Save = D5_Grenzwert.Text
+            .E5_Grenzwert_Save = E5_Grenzwert.Text
+            .F5_Grenzwert_Save = F5_Grenzwert.Text
+            .G5_Grenzwert_Save = G5_Grenzwert.Text
+            .A5_Grenzwert_Save = A5_Grenzwert.Text
+            .H5_Grenzwert_Save = H5_Grenzwert.Text
+
+            .C6_Grenzwert_Save = C6_Grenzwert.Text
+            .D6_Grenzwert_Save = D6_Grenzwert.Text
+            .E6_Grenzwert_Save = E6_Grenzwert.Text
+            .F6_Grenzwert_Save = F6_Grenzwert.Text
+            .G6_Grenzwert_Save = G6_Grenzwert.Text
+            .A6_Grenzwert_Save = A6_Grenzwert.Text
+            .H6_Grenzwert_Save = H6_Grenzwert.Text
+
 
             ' Einstellungen speichern
             .Save()
@@ -1237,4 +1320,10 @@ Dim C2_Klappe_alt As SByte
 #End Region
 
 
+    Private Sub C2_Grenzwert_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Grenzwert.LostFocus, H5_Grenzwert.LostFocus, H4_Grenzwert.LostFocus, H3_Grenzwert.LostFocus, H2_Grenzwert.LostFocus, G6_Grenzwert.LostFocus, G5_Grenzwert.LostFocus, G4_Grenzwert.LostFocus, G3_Grenzwert.LostFocus, G2_Grenzwert.LostFocus, F6_Grenzwert.LostFocus, F5_Grenzwert.LostFocus, F4_Grenzwert.LostFocus, F3_Grenzwert.LostFocus, F2_Grenzwert.LostFocus, E6_Grenzwert.LostFocus, E5_Grenzwert.LostFocus, E4_Grenzwert.LostFocus, E3_Grenzwert.LostFocus, E2_Grenzwert.LostFocus, D6_Grenzwert.LostFocus, D5_Grenzwert.LostFocus, D4_Grenzwert.LostFocus, D3_Grenzwert.LostFocus, D2_Grenzwert.LostFocus, C6_Grenzwert.LostFocus, C5_Grenzwert.LostFocus, C4_Grenzwert.LostFocus, C3_Grenzwert.LostFocus, A6_Grenzwert.LostFocus, A5_Grenzwert.LostFocus, A4_Grenzwert.LostFocus, A3_Grenzwert.LostFocus, A2_Grenzwert.LostFocus
+
+    End Sub
+    Private Sub C2_Grenzwert_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles H6_Grenzwert.KeyPress, H5_Grenzwert.KeyPress, H4_Grenzwert.KeyPress, H3_Grenzwert.KeyPress, H2_Grenzwert.KeyPress, G6_Grenzwert.KeyPress, G5_Grenzwert.KeyPress, G4_Grenzwert.KeyPress, G3_Grenzwert.KeyPress, G2_Grenzwert.KeyPress, F6_Grenzwert.KeyPress, F5_Grenzwert.KeyPress, F4_Grenzwert.KeyPress, F3_Grenzwert.KeyPress, F2_Grenzwert.KeyPress, E6_Grenzwert.KeyPress, E5_Grenzwert.KeyPress, E4_Grenzwert.KeyPress, E3_Grenzwert.KeyPress, E2_Grenzwert.KeyPress, D6_Grenzwert.KeyPress, D5_Grenzwert.KeyPress, D4_Grenzwert.KeyPress, D3_Grenzwert.KeyPress, D2_Grenzwert.KeyPress, C6_Grenzwert.KeyPress, C5_Grenzwert.KeyPress, C4_Grenzwert.KeyPress, C3_Grenzwert.KeyPress, A6_Grenzwert.KeyPress, A5_Grenzwert.KeyPress, A4_Grenzwert.KeyPress, A3_Grenzwert.KeyPress, A2_Grenzwert.KeyPress
+
+    End Sub
 End Class

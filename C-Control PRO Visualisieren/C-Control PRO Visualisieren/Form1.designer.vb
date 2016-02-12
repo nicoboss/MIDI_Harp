@@ -49,7 +49,6 @@ Partial Class Form1
         Me.G2_Wert = New System.Windows.Forms.TextBox()
         Me.A2_Wert = New System.Windows.Forms.TextBox()
         Me.H2_Wert = New System.Windows.Forms.TextBox()
-        Me.C2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.D2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.E2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.F2_Grenzwert = New System.Windows.Forms.TextBox()
@@ -302,6 +301,7 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
+        Me.C2_Grenzwert = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -618,17 +618,6 @@ Partial Class Form1
         Me.H2_Wert.TabIndex = 17
         Me.H2_Wert.Text = "0"
         Me.H2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'C2_Grenzwert
-        '
-        Me.C2_Grenzwert.ForeColor = System.Drawing.Color.Red
-        Me.C2_Grenzwert.Location = New System.Drawing.Point(3, 161)
-        Me.C2_Grenzwert.MaxLength = 3
-        Me.C2_Grenzwert.Name = "C2_Grenzwert"
-        Me.C2_Grenzwert.Size = New System.Drawing.Size(26, 20)
-        Me.C2_Grenzwert.TabIndex = 18
-        Me.C2_Grenzwert.Text = "200"
-        Me.C2_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'D2_Grenzwert
         '
@@ -3175,6 +3164,16 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
         '
+        'C2_Grenzwert
+        '
+        Me.C2_Grenzwert.Location = New System.Drawing.Point(3, 161)
+        Me.C2_Grenzwert.MaxLength = 3
+        Me.C2_Grenzwert.Name = "C2_Grenzwert"
+        Me.C2_Grenzwert.Size = New System.Drawing.Size(26, 20)
+        Me.C2_Grenzwert.TabIndex = 18
+        Me.C2_Grenzwert.Text = "200"
+        Me.C2_Grenzwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3348,7 +3347,6 @@ Partial Class Form1
     Friend WithEvents MIDI_Start As System.Windows.Forms.Button
     Friend WithEvents Tackt As System.Windows.Forms.Timer
     Friend WithEvents Tackt_Ausgabefenster As System.Windows.Forms.Label
-    Friend WithEvents C2_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents D2_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents E2_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents F2_Grenzwert As System.Windows.Forms.TextBox
@@ -3546,5 +3544,6 @@ Partial Class Form1
     Friend WithEvents H1_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C2_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
+    Friend WithEvents C2_Grenzwert As System.Windows.Forms.TextBox
 
 End Class
