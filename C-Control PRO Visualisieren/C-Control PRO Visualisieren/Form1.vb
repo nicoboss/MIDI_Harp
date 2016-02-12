@@ -36,6 +36,8 @@ Public Class Form1
     Dim Metronom As Byte
     Dim Metronom_alt As Byte
 
+    Dim Messung_gestartet As Boolean
+
 
     Dim Anz_ADC As Byte = 29
 
@@ -107,7 +109,7 @@ Dim C2_Klappe_alt As SByte
             C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
 
 
-        Klavierdiagramm_Refresh()
+        Diagramm_Refresh()
         'MessageBox.Show(myCoolControls(0).Text)
 
         'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
@@ -189,9 +191,8 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'SerialPort1.DataReceived
+    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick
         'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
-
         Dim Serial_Read As String = ""
 
         'Hier werden die Daten empfangen
@@ -229,12 +230,12 @@ Dim C2_Klappe_alt As SByte
             'End If
         Next
 
-        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
 
+        If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
+            Tackt_Tick()
+        End If
 
-        'MTech010VerticalProgessBar2.Value = ADC(1)
-        D2_Wert.Text = (ADC(1))
-        Klavierdiagramm_Refresh()
+        Diagramm_Refresh()
 
     End Sub
 
@@ -364,15 +365,18 @@ Dim C2_Klappe_alt As SByte
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
 
         Tackt.Enabled = True
+        Messung_gestartet = True
     End Sub
 
     Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
         If Einstellungen_GroupBox.Enabled = False Then
             Tackt.Enabled = False
+            Messung_gestartet = False
             Einstellungen_GroupBox.Enabled = True
             MIDI_Pausieren.Text = "Aufnahme fortsetzen"
         Else
             Tackt.Enabled = True
+            Messung_gestartet = True
             Einstellungen_GroupBox.Enabled = False
             MIDI_Pausieren.Text = "Aufnahme pausieren"
         End If
@@ -383,6 +387,7 @@ Dim C2_Klappe_alt As SByte
         MIDI_Pausieren.Enabled = False
         MIDI_Save.Enabled = False
         Tackt.Enabled = False
+        Messung_gestartet = False
 
         TacktNr = 0
         Tackt_Achtel = 0
@@ -413,6 +418,7 @@ Dim C2_Klappe_alt As SByte
 
     Private Sub Tackt_Tick() Handles Tackt.Tick
 
+        'MessageBox.Show(Messintervall.Enabled)
 
         Dim Note_gespielt As Boolean = False
 
@@ -486,8 +492,6 @@ Dim C2_Klappe_alt As SByte
     End Sub
 
 
-
-
     Private Sub BPM_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BPM.ValueChanged
         Tackt.Interval = (60 / BPM.Value / 4) * 1000
     End Sub
@@ -498,8 +502,7 @@ Dim C2_Klappe_alt As SByte
 
 
 
-
-    Private Sub Klavierdiagramm_Refresh() Handles Tackt.Tick
+    Private Sub Diagramm_Refresh() ' Handles Tackt.Tick
 
         Dim rnd As New Random
 
@@ -508,12 +511,7 @@ Dim C2_Klappe_alt As SByte
             Noten_Wert(i).Text = ADC(i)
         Next
 
-
     End Sub
-
-
-
-
 
 
 
@@ -1134,6 +1132,9 @@ Dim C2_Klappe_alt As SByte
         With My.Settings
             ' Aufnahmemodus
             MIDI_NormalMode.Checked = .MIDI_NormalMode
+            'Absichtlicher Overflow
+            'Alternative: SpecialMode stadt NormalMode speichern!
+            MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
             cboInstruments.SelectedIndex = .cboInstruments
 
             ' Tempo
@@ -1319,11 +1320,5 @@ Dim C2_Klappe_alt As SByte
 
 #End Region
 
-
-    Private Sub C2_Grenzwert_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Grenzwert.LostFocus, H5_Grenzwert.LostFocus, H4_Grenzwert.LostFocus, H3_Grenzwert.LostFocus, H2_Grenzwert.LostFocus, G6_Grenzwert.LostFocus, G5_Grenzwert.LostFocus, G4_Grenzwert.LostFocus, G3_Grenzwert.LostFocus, G2_Grenzwert.LostFocus, F6_Grenzwert.LostFocus, F5_Grenzwert.LostFocus, F4_Grenzwert.LostFocus, F3_Grenzwert.LostFocus, F2_Grenzwert.LostFocus, E6_Grenzwert.LostFocus, E5_Grenzwert.LostFocus, E4_Grenzwert.LostFocus, E3_Grenzwert.LostFocus, E2_Grenzwert.LostFocus, D6_Grenzwert.LostFocus, D5_Grenzwert.LostFocus, D4_Grenzwert.LostFocus, D3_Grenzwert.LostFocus, D2_Grenzwert.LostFocus, C6_Grenzwert.LostFocus, C5_Grenzwert.LostFocus, C4_Grenzwert.LostFocus, C3_Grenzwert.LostFocus, A6_Grenzwert.LostFocus, A5_Grenzwert.LostFocus, A4_Grenzwert.LostFocus, A3_Grenzwert.LostFocus, A2_Grenzwert.LostFocus
-
-    End Sub
-    Private Sub C2_Grenzwert_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles H6_Grenzwert.KeyPress, H5_Grenzwert.KeyPress, H4_Grenzwert.KeyPress, H3_Grenzwert.KeyPress, H2_Grenzwert.KeyPress, G6_Grenzwert.KeyPress, G5_Grenzwert.KeyPress, G4_Grenzwert.KeyPress, G3_Grenzwert.KeyPress, G2_Grenzwert.KeyPress, F6_Grenzwert.KeyPress, F5_Grenzwert.KeyPress, F4_Grenzwert.KeyPress, F3_Grenzwert.KeyPress, F2_Grenzwert.KeyPress, E6_Grenzwert.KeyPress, E5_Grenzwert.KeyPress, E4_Grenzwert.KeyPress, E3_Grenzwert.KeyPress, E2_Grenzwert.KeyPress, D6_Grenzwert.KeyPress, D5_Grenzwert.KeyPress, D4_Grenzwert.KeyPress, D3_Grenzwert.KeyPress, D2_Grenzwert.KeyPress, C6_Grenzwert.KeyPress, C5_Grenzwert.KeyPress, C4_Grenzwert.KeyPress, C3_Grenzwert.KeyPress, A6_Grenzwert.KeyPress, A5_Grenzwert.KeyPress, A4_Grenzwert.KeyPress, A3_Grenzwert.KeyPress, A2_Grenzwert.KeyPress
-
-    End Sub
+  
 End Class
