@@ -26,7 +26,8 @@ Public Class Form1
 
     'Annahme: Maaximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
     Dim ADC_Anzahl As Byte = 28
-    Dim ADC(43) As UShort
+    Dim ADC_Read As Byte
+    Dim ADC(43) As Byte
 
     Dim Notenlaege(255) As Single
     Dim Note_Play(255) As Boolean
@@ -39,7 +40,7 @@ Public Class Form1
     Dim Messung_gestartet As Boolean
 
 
-    Dim Anz_ADC As Byte = 29
+    Dim Anz_ADC As Byte = 32
 
 
     Dim Noten_Verschiebung(35) As TextBox
@@ -129,7 +130,6 @@ Dim C2_Klappe_alt As SByte
 
         InitializeNotes()
 
-
     End Sub
 
     Sub Com_Search() Handles Com_Search_Timer.Tick
@@ -191,7 +191,15 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick
+    'Private Sub SerialPort1_BW(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall.Tick
+    'BackgroundWorker1.CancelAsync()
+    'BackgroundWorker1.RunWorkerAsync()
+    'End Sub
+
+
+    'Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Messintervall.Tick 'BackgroundWorker1.DoWork
+    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'BackgroundWorker1.DoWork
+
         'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
         Dim Serial_Read As String = ""
 
@@ -199,16 +207,27 @@ Dim C2_Klappe_alt As SByte
         In_Buffer = 0
         Control.CheckForIllegalCrossThreadCalls = False
 
+
         SerialPort1.Write(1)
 
-        For i = 0 To 31 'Anz_ADC - 1
+
+        Serial_Read = SerialPort1.ReadByte
+        ADC(0) = Serial_Read
+
+        Dim ADC_Temp As Integer
+
+        For i = 1 To 31 'Anz_ADC - 1
+            'MessageBox.Show("gh")
             Serial_Read = SerialPort1.ReadByte
-            ADC(i) = Serial_Read
+            ADC_Temp = Serial_Read - (ADC(i - 1) / 4)
+            If ADC_Temp < 0 Then ADC_Temp = 0
+            ADC(i) = ADC_Temp
         Next
+
 
         Dim NotenNr As Byte
 
-        For i = 0 To 31 'Anz_ADC - 27
+        For i = 0 To Anz_ADC - 29
 
             NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
 
@@ -1320,5 +1339,5 @@ Dim C2_Klappe_alt As SByte
 
 #End Region
 
-  
+
 End Class
