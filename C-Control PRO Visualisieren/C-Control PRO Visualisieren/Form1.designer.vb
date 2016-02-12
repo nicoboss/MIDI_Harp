@@ -172,7 +172,6 @@ Partial Class Form1
         Me.Halbtonverschiebung = New System.Windows.Forms.NumericUpDown()
         Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
-        Me.NoteC = New System.Windows.Forms.Button()
         Me.Messintervall = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
@@ -268,8 +267,6 @@ Partial Class Form1
         Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
         Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
-        Me.HScrollBar1 = New System.Windows.Forms.HScrollBar()
-        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
         Me.C2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New C_Control_PRO_Visualisieren.MTech010VerticalProgessBar()
@@ -353,7 +350,6 @@ Partial Class Form1
         Me.GroupBox12.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox15.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -625,6 +621,7 @@ Partial Class Form1
         '
         'C2_Grenzwert
         '
+        Me.C2_Grenzwert.ForeColor = System.Drawing.Color.Red
         Me.C2_Grenzwert.Location = New System.Drawing.Point(3, 161)
         Me.C2_Grenzwert.MaxLength = 3
         Me.C2_Grenzwert.Name = "C2_Grenzwert"
@@ -1895,15 +1892,6 @@ Partial Class Form1
         '
         Me.Tackt.Interval = 125
         '
-        'NoteC
-        '
-        Me.NoteC.Location = New System.Drawing.Point(1003, 288)
-        Me.NoteC.Name = "NoteC"
-        Me.NoteC.Size = New System.Drawing.Size(191, 34)
-        Me.NoteC.TabIndex = 165
-        Me.NoteC.Text = "NoteC"
-        Me.NoteC.UseVisualStyleBackColor = True
-        '
         'Messintervall
         '
         Me.Messintervall.Interval = 1000
@@ -1912,12 +1900,10 @@ Partial Class Form1
         '
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel11)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel10)
-        Me.GroupBox4.Controls.Add(Me.GroupBox15)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel9)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel8)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel7)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel1)
-        Me.GroupBox4.Controls.Add(Me.NoteC)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel2)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel3)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel4)
@@ -1925,7 +1911,7 @@ Partial Class Form1
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
         Me.GroupBox4.Location = New System.Drawing.Point(13, 452)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1229, 328)
+        Me.GroupBox4.Size = New System.Drawing.Size(1229, 260)
         Me.GroupBox4.TabIndex = 167
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "MIDI Visualisierung"
@@ -1939,9 +1925,9 @@ Partial Class Form1
         Me.FlowLayoutPanel11.Controls.Add(Me.G6_Verschiebung)
         Me.FlowLayoutPanel11.Controls.Add(Me.A6_Verschiebung)
         Me.FlowLayoutPanel11.Controls.Add(Me.H6_Verschiebung)
-        Me.FlowLayoutPanel11.Location = New System.Drawing.Point(982, 231)
+        Me.FlowLayoutPanel11.Location = New System.Drawing.Point(982, 217)
         Me.FlowLayoutPanel11.Name = "FlowLayoutPanel11"
-        Me.FlowLayoutPanel11.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel11.Size = New System.Drawing.Size(236, 27)
         Me.FlowLayoutPanel11.TabIndex = 173
         '
         'C6_Verschiebung
@@ -2016,7 +2002,7 @@ Partial Class Form1
         Me.FlowLayoutPanel10.Controls.Add(Me.G5_Verschiebung)
         Me.FlowLayoutPanel10.Controls.Add(Me.A5_Verschiebung)
         Me.FlowLayoutPanel10.Controls.Add(Me.H5_Verschiebung)
-        Me.FlowLayoutPanel10.Location = New System.Drawing.Point(737, 231)
+        Me.FlowLayoutPanel10.Location = New System.Drawing.Point(737, 217)
         Me.FlowLayoutPanel10.Name = "FlowLayoutPanel10"
         Me.FlowLayoutPanel10.Size = New System.Drawing.Size(228, 27)
         Me.FlowLayoutPanel10.TabIndex = 172
@@ -2093,9 +2079,9 @@ Partial Class Form1
         Me.FlowLayoutPanel9.Controls.Add(Me.G4_Verschiebung)
         Me.FlowLayoutPanel9.Controls.Add(Me.A4_Verschiebung)
         Me.FlowLayoutPanel9.Controls.Add(Me.H4_Verschiebung)
-        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(497, 231)
+        Me.FlowLayoutPanel9.Location = New System.Drawing.Point(496, 217)
         Me.FlowLayoutPanel9.Name = "FlowLayoutPanel9"
-        Me.FlowLayoutPanel9.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel9.Size = New System.Drawing.Size(232, 27)
         Me.FlowLayoutPanel9.TabIndex = 171
         '
         'C4_Verschiebung
@@ -2170,9 +2156,9 @@ Partial Class Form1
         Me.FlowLayoutPanel8.Controls.Add(Me.G3_Verschiebung)
         Me.FlowLayoutPanel8.Controls.Add(Me.A3_Verschiebung)
         Me.FlowLayoutPanel8.Controls.Add(Me.H3_Verschiebung)
-        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(249, 231)
+        Me.FlowLayoutPanel8.Location = New System.Drawing.Point(249, 217)
         Me.FlowLayoutPanel8.Name = "FlowLayoutPanel8"
-        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(228, 27)
+        Me.FlowLayoutPanel8.Size = New System.Drawing.Size(230, 27)
         Me.FlowLayoutPanel8.TabIndex = 170
         '
         'C3_Verschiebung
@@ -2247,7 +2233,7 @@ Partial Class Form1
         Me.FlowLayoutPanel7.Controls.Add(Me.G2_Verschiebung)
         Me.FlowLayoutPanel7.Controls.Add(Me.A2_Verschiebung)
         Me.FlowLayoutPanel7.Controls.Add(Me.H2_Verschiebung)
-        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(6, 231)
+        Me.FlowLayoutPanel7.Location = New System.Drawing.Point(6, 217)
         Me.FlowLayoutPanel7.Name = "FlowLayoutPanel7"
         Me.FlowLayoutPanel7.Size = New System.Drawing.Size(228, 27)
         Me.FlowLayoutPanel7.TabIndex = 169
@@ -2522,6 +2508,7 @@ Partial Class Form1
         Me.E1_Klappe.Size = New System.Drawing.Size(45, 73)
         Me.E1_Klappe.TabIndex = 185
         Me.E1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.E1_Klappe.Value = 1
         '
         'F1_Klappe
         '
@@ -2558,6 +2545,7 @@ Partial Class Form1
         Me.A1_Klappe.Size = New System.Drawing.Size(45, 73)
         Me.A1_Klappe.TabIndex = 188
         Me.A1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.A1_Klappe.Value = 1
         '
         'H1_Klappe
         '
@@ -2570,6 +2558,7 @@ Partial Class Form1
         Me.H1_Klappe.Size = New System.Drawing.Size(45, 73)
         Me.H1_Klappe.TabIndex = 189
         Me.H1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        Me.H1_Klappe.Value = 1
         '
         'C2_Klappe
         '
@@ -2870,26 +2859,6 @@ Partial Class Form1
         Me.C_Klappe.TabIndex = 183
         Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'HScrollBar1
-        '
-        Me.HScrollBar1.Location = New System.Drawing.Point(9, 26)
-        Me.HScrollBar1.Maximum = 127
-        Me.HScrollBar1.Name = "HScrollBar1"
-        Me.HScrollBar1.Size = New System.Drawing.Size(175, 17)
-        Me.HScrollBar1.TabIndex = 7
-        Me.HScrollBar1.Value = 127
-        '
-        'GroupBox15
-        '
-        Me.GroupBox15.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox15.Controls.Add(Me.HScrollBar1)
-        Me.GroupBox15.Location = New System.Drawing.Point(223, 267)
-        Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(196, 55)
-        Me.GroupBox15.TabIndex = 169
-        Me.GroupBox15.TabStop = False
-        Me.GroupBox15.Text = "MIDI Lautstärcke"
-        '
         'C2_VerticalProgessBar
         '
         Me.C2_VerticalProgessBar.AccessibleName = ""
@@ -3176,7 +3145,7 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1274, 796)
+        Me.ClientSize = New System.Drawing.Size(1274, 725)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.Einstellungsverwaltung_GroupBox)
         Me.Controls.Add(Me.GroupBox14)
@@ -3262,7 +3231,6 @@ Partial Class Form1
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox15.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -3381,7 +3349,6 @@ Partial Class Form1
     Friend WithEvents G6_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents A6_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents H6_Grenzwert As System.Windows.Forms.TextBox
-    Friend WithEvents NoteC As System.Windows.Forms.Button
     Friend WithEvents Messintervall As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents Halbtonverschiebung As System.Windows.Forms.NumericUpDown
@@ -3545,7 +3512,5 @@ Partial Class Form1
     Friend WithEvents H1_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C2_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
-    Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
-    Friend WithEvents HScrollBar1 As System.Windows.Forms.HScrollBar
 
 End Class
