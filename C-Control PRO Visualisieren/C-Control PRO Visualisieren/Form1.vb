@@ -75,7 +75,9 @@ Dim F1_Klappe_alt As SByte
 Dim G1_Klappe_alt As SByte
 Dim A1_Klappe_alt As SByte
 Dim H1_Klappe_alt As SByte
-Dim C2_Klappe_alt As SByte
+    Dim C2_Klappe_alt As SByte
+
+    Dim TTT
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -192,78 +194,115 @@ Dim C2_Klappe_alt As SByte
 
     End Sub
 
-    'Private Sub SerialPort1_BW(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall.Tick
-    'BackgroundWorker1.CancelAsync()
-    'BackgroundWorker1.RunWorkerAsync()
-    'End Sub
+    Private Sub SerialPort1_BW(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.Click 'Handles Messintervall.Tick
+        BackgroundWorker1.CancelAsync()
+        BackgroundWorker1.RunWorkerAsync()
+    End Sub
 
 
-    'Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Messintervall.Tick 'BackgroundWorker1.DoWork
-    Private Sub SerialPort1_DataReceived() Handles Messintervall.Tick 'BackgroundWorker1.DoWork
-
-        'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
-        Dim Serial_Read As String = ""
-
-        'Hier werden die Daten empfangen
-        In_Buffer = 0
-        Control.CheckForIllegalCrossThreadCalls = False
+    Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
 
 
-        SerialPort1.Write(1)
+        Do While (SerialPort1.ReadByte = 3)
 
-
-
-
-        For i = 0 To 31 Step 1
-            Serial_Read = SerialPort1.ReadByte
-            ADC_Read(i) = Serial_Read
-        Next
-
-        ADC_Counter = 0
-        For i = 0 To 30 Step 2
-            ADC_Counter = ADC_Counter + 1
-            ADC(i) = ADC_Read(i)
-        Next
-
-        For i = 1 To 31 Step 2
-            ADC_Counter = ADC_Counter + 1
-            ADC(i) = ADC_Read(i)
-        Next
+        Loop
 
 
 
 
 
-        Dim NotenNr As Byte
-
-        For i = 0 To Anz_ADC - 29
-
-            NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
-
-            If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
-                Note_Play(NotenNr) = True
-                m.PlayMIDINote(NotenNr, 100, 0)
-            End If
-
-            If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
-                Note_Play(NotenNr) = False
-                m.STOPMIDINote(NotenNr)
-            End If
 
 
-            'If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True Then
-            'If ADC(i) < 100 And Note_Play(255) = True Then
-            'Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
-            'Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+        Do
+
+            'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
+            Dim Serial_Read As String = ""
+
+            'Hier werden die Daten empfangen
+            In_Buffer = 0
+            Control.CheckForIllegalCrossThreadCalls = False
+
+
+            'SerialPort1.Write(1)
+
+
+            For i = 0 To 28 Step 1
+                Serial_Read = SerialPort1.ReadByte
+                ADC_Read(i) = Serial_Read
+            Next
+
+            'If Not SerialPort1.ReadByte = 3 Then
+
             'End If
-        Next
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+            MessageBox.Show(SerialPort1.ReadByte)
+
+            ADC_Counter = 0
+            For i = 0 To 30 Step 2
+                ADC_Counter = ADC_Counter + 1
+                ADC(i) = ADC_Read(i)
+            Next
+
+            For i = 1 To 31 Step 2
+                ADC_Counter = ADC_Counter + 1
+                ADC(i) = ADC_Read(i)
+            Next
+
+            TTT = TTT + 1
+            TextBox1.Text = TTT
 
 
-        If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
-            Tackt_Tick()
-        End If
+            Dim NotenNr As Byte
 
-        Diagramm_Refresh()
+            For i = 0 To 31 'Anz_ADC - 29
+
+                NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
+
+                If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
+                    Note_Play(NotenNr) = True
+                    m.PlayMIDINote(NotenNr, 100, 0)
+                End If
+
+                If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
+                    Note_Play(NotenNr) = False
+                    m.STOPMIDINote(NotenNr)
+                End If
+
+
+                'If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True Then
+                'If ADC(i) < 100 And Note_Play(255) = True Then
+                'Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
+                'Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
+                'End If
+            Next
+
+
+            If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
+                Tackt_Tick()
+            End If
+
+            Diagramm_Refresh()
+
+        Loop
 
     End Sub
 
