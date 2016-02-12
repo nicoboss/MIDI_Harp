@@ -201,14 +201,14 @@ Dim C2_Klappe_alt As SByte
 
         SerialPort1.Write(1)
 
-        For i = 0 To Anz_ADC - 1
+        For i = 0 To 31 'Anz_ADC - 1
             Serial_Read = SerialPort1.ReadByte
             ADC(i) = Serial_Read
         Next
 
         Dim NotenNr As Byte
 
-        For i = 0 To Anz_ADC - 27
+        For i = 0 To 31 'Anz_ADC - 27
 
             NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
 
