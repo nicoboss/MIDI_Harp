@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Die Werte der Assemblyattribute überprüfen
 
-<Assembly: AssemblyTitle("C-Control PRO Visualisieren")> 
-<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyTitle("MIDI Harfe")> 
+<Assembly: AssemblyDescription("Aufnahmeprogramm für MIDI Harfen")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("C-Control PRO Visualisieren")> 
-<Assembly: AssemblyCopyright("Copyright Sommer-Robotics ©  2011")> 
+<Assembly: AssemblyProduct("MIDI Harfe")> 
+<Assembly: AssemblyCopyright("Nico Bosshard")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' übernehmen, indem Sie "*" eingeben:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.0.0.60")> 
+<Assembly: AssemblyFileVersion("1.0.0.60")> 

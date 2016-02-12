@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.C_Control_PRO_Visualisieren.Form1
+            Me.MainForm = Global.MIDI_Harfe.Form1
         End Sub
     End Class
 End Namespace

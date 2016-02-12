@@ -802,9 +802,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.C_Control_PRO_Visualisieren.My.MySettings
+        Friend ReadOnly Property Settings() As Global.MIDI_Harfe.My.MySettings
             Get
-                Return Global.C_Control_PRO_Visualisieren.My.MySettings.Default
+                Return Global.MIDI_Harfe.My.MySettings.Default
             End Get
         End Property
     End Module

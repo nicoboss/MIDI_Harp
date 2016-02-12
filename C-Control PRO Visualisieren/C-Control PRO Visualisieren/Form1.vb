@@ -480,11 +480,11 @@ Dim C2_Klappe_alt As SByte
         If Tackt_Achtel = 8 Then
             If Metronom_ON.Checked Then
                 m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 75, 0.1)
+                m.PlayMIDINote(70, 50, 0.1)
                 m.CurrentInstrument = cboInstruments.Text
             ElseIf Metronom_Betont.Checked Then
                 m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 100, 0.1)
+                m.PlayMIDINote(72, 70, 0.1)
                 m.CurrentInstrument = cboInstruments.Text
             End If
             TacktNr = TacktNr + 1
