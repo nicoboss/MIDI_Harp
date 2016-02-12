@@ -26,8 +26,9 @@ Public Class Form1
 
     'Annahme: Maaximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
     Dim ADC_Anzahl As Byte = 28
-    Dim ADC_Read As Byte
-    Dim ADC(43) As Byte
+    Dim ADC_Counter
+    Dim ADC_Read(40) As Byte
+    Dim ADC(40) As Byte
 
     Dim Notenlaege(255) As Single
     Dim Note_Play(255) As Boolean
@@ -211,18 +212,26 @@ Dim C2_Klappe_alt As SByte
         SerialPort1.Write(1)
 
 
-        Serial_Read = SerialPort1.ReadByte
-        ADC(0) = Serial_Read
 
-        Dim ADC_Temp As Integer
 
-        For i = 1 To 31 'Anz_ADC - 1
-            'MessageBox.Show("gh")
+        For i = 0 To 31 Step 1
             Serial_Read = SerialPort1.ReadByte
-            ADC_Temp = Serial_Read - (ADC(i - 1) / 4)
-            If ADC_Temp < 0 Then ADC_Temp = 0
-            ADC(i) = ADC_Temp
+            ADC_Read(i) = Serial_Read
         Next
+
+        ADC_Counter = 0
+        For i = 0 To 30 Step 2
+            ADC_Counter = ADC_Counter + 1
+            ADC(i) = ADC_Read(i)
+        Next
+
+        For i = 1 To 31 Step 2
+            ADC_Counter = ADC_Counter + 1
+            ADC(i) = ADC_Read(i)
+        Next
+
+
+
 
 
         Dim NotenNr As Byte
