@@ -19,10 +19,8 @@ Public Class Form1
     Dim In_Buffer As Short
 
     Dim TacktNr As Short
-    Dim Tackt_Achtel As Byte
+    Dim Tackt_32stel As Byte
 
-    Dim Tackt_Viertel As Byte = 1
-    Dim Tackt_Viertel_Counter As Byte
 
     'Annahme: Maaximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
     Dim ADC_Anzahl As Byte = 28
@@ -40,9 +38,14 @@ Public Class Form1
 
     Dim Messung_gestartet As Boolean
 
+    Dim AnzMessungen_alt As ULong
+    Dim Messintervall_Zahl As UShort
+
+    Dim SerialPort1_Stop As Boolean = False
+
+    'Dim Diagramm_Aktuallisieren_i As Byte
 
     Dim Anz_ADC As Byte = 32
-
 
     Dim Noten_Verschiebung(35) As TextBox
     Dim Noten_VerticalProgessBar(35) As MTech010VerticalProgessBar
@@ -113,7 +116,7 @@ Dim H1_Klappe_alt As SByte
             C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
 
 
-        Diagramm_Refresh()
+        Diagramm_Aktuallisieren()
         'MessageBox.Show(myCoolControls(0).Text)
 
         'ToolTip1.SetToolTip(Button1, "Das ist ein Button")
@@ -165,30 +168,40 @@ Dim H1_Klappe_alt As SByte
             SerialPort1.Encoding = System.Text.Encoding.Default
             SerialPort1.Open()
 
+            Com_Search_Timer.Enabled = False
+            Mesgeschwindigkeitsberechnung_Timer.Enabled = True
+            Serial_BackgroundWorker.RunWorkerAsync()
+
         Catch ex As Exception
 
-            'Fehlermeldung 
-            MessageBox.Show("Achtung die Schnittstelle konnte nicht geöffnet werden! " + e.ToString _
-                          , "Ausnahmefehler", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            'Fehlermeldung
+            MessageBox.Show("Unter dem gewählten COM Port wurde kein Mikrokontroller erkannt. " _
+            & vbCrLf & "Stellen Sie sicher, das Sie den Richtigen Port gewählt haben und der" _
+            & vbCrLf & "Mikrokontroller korrekt mit dem Computer verbunden, und" _
+            & vbCrLf & "nicht schon von einem anderen Programm besetzt ist." _
+            & vbCrLf & vbCrLf & "Fehler: " & e.ToString _
+            & vbCrLf & "Support E-Mail Adresse: nico@bosshome.ch" _
+            & vbCrLf & "Fehlercode: 1 (Verbindungsfehler), ", _
+            "Verbindungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Button_Connect.Enabled = True
             Button_Disconnect.Enabled = False
             ComboBox_Comport.Enabled = True
-
         End Try
-
-        Com_Search_Timer.Enabled = False
-        Diagramm_Reload.Enabled = True
-        Serial_BackgroundWorker.RunWorkerAsync()
 
     End Sub
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
+        SerialPort1_Stop = True
         Serial_BackgroundWorker.CancelAsync()
 
         'trennen
-        Diagramm_Reload.Enabled = False
+        Mesgeschwindigkeitsberechnung_Timer.Enabled = False
         'Tackt.Enabled = False
+        AnzMessungen.Text = 0
+        AnzMessfehler.Text = 0
+        MessungenProS_TexBox.Text = "0 M/s"
+        Messintervall_TextBox.Text = "0 ms"
         Com_Search_Timer.Enabled = True
         Button_Connect.Enabled = True
         Button_Disconnect.Enabled = False
@@ -200,86 +213,98 @@ Dim H1_Klappe_alt As SByte
 
 
     Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
-        'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
-        Dim Sync_Error
+
+        Dim Sync_Error As Int32
 
         Do While (Not SerialPort1.ReadByte = 250)
             'MessageBox.Show(SerialPort1.ReadByte)
         Loop
 
-
         Do
+            Try
+                'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
+                Dim Serial_Read As String = ""
 
-            'ByVal sender As Object, ByVal e As System.IO.Ports.SerialDataReceivedEventArgs
-            Dim Serial_Read As String = ""
-
-            'Hier werden die Daten empfangen
-            In_Buffer = 0
-            Control.CheckForIllegalCrossThreadCalls = False
-
-
-            'SerialPort1.Write(1)
+                'Hier werden die Daten empfangen
+                In_Buffer = 0
+                Control.CheckForIllegalCrossThreadCalls = False
 
 
-            For i = 0 To 35
-                ADC_Read(i) = SerialPort1.ReadByte
-                'MessageBox.Show(ADC_Read(i))
-            Next
+                'SerialPort1.Write(1)
 
-            'TextBox2.Text = SerialPort1.ReadByte
-            Serial_Read = SerialPort1.ReadByte
-            If Not Serial_Read = 250 Then
-                'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                '& "Die laufende Aufnahme wurde Paussiert" _
-                '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
-                '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
-                'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                Sync_Error = Sync_Error + 1
-                AnzMessfehler.Text = Sync_Error
 
-                Do While (Not SerialPort1.ReadByte = 3)
-                Loop
+                For i = 0 To 35
+                    ADC_Read(i) = SerialPort1.ReadByte
+                    'MessageBox.Show(ADC_Read(i))
+                Next
+
+                'TextBox2.Text = SerialPort1.ReadByte
+                Serial_Read = SerialPort1.ReadByte
+                If Not Serial_Read = 250 Then
+                    'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
+                    '& "Die laufende Aufnahme wurde Paussiert" _
+                    '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
+                    '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
+                    'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                    Sync_Error += 1
+                    AnzMessfehler.Text = Sync_Error
+
+                    Do While (Not SerialPort1.ReadByte = 3)
+                    Loop
+                End If
+
+                ADC_Counter = 0
+                For i = 0 To 30 Step 2
+                    ADC_Counter = ADC_Counter + 1
+                    ADC(i) = ADC_Read(i)
+                Next
+
+                For i = 1 To 31 Step 2
+                    ADC_Counter = ADC_Counter + 1
+                    ADC(i) = ADC_Read(i)
+                Next
+
+                TTT = TTT + 1
+                AnzMessungen.Text = TTT
+
+
+                Dim NotenNr As Byte
+
+                For i = 0 To 31 'Anz_ADC - 29
+
+                    NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
+
+                    If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
+                        Note_Play(NotenNr) = True
+                        m.PlayMIDINote(NotenNr, 100, 0)
+                    End If
+
+                    If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
+                        Note_Play(NotenNr) = False
+                        m.STOPMIDINote(NotenNr)
+                    End If
+
+                Next
+
+
+                'Diagramm_Aktuallisieren_i += 1
+
+                'If Diagramm_Aktuallisieren_i = 2 Then
+                Diagramm_Aktuallisieren()
+                'Diagramm_Aktuallisieren_i = 0
+                'End If
+
+
+                If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
+
+            Catch
+            End Try
+
+            If SerialPort1_Stop = True Then
+                SerialPort1_Stop = False
+                Exit Sub
             End If
 
-            ADC_Counter = 0
-            For i = 0 To 30 Step 2
-                ADC_Counter = ADC_Counter + 1
-                ADC(i) = ADC_Read(i)
-            Next
-
-            For i = 1 To 31 Step 2
-                ADC_Counter = ADC_Counter + 1
-                ADC(i) = ADC_Read(i)
-            Next
-
-            TTT = TTT + 1
-            AnzMessungen.Text = TTT
-
-
-            Dim NotenNr As Byte
-
-            For i = 0 To 31 'Anz_ADC - 29
-
-                NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
-
-                If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
-                    Note_Play(NotenNr) = True
-                    m.PlayMIDINote(NotenNr, 100, 0)
-                End If
-
-                If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
-                    Note_Play(NotenNr) = False
-                    m.STOPMIDINote(NotenNr)
-                End If
-
-            Next
-
-
-            'If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
-            'Tackt_Tick()
-            'End If
-
-            Diagramm_Refresh()
 
         Loop
 
@@ -383,8 +408,6 @@ Dim H1_Klappe_alt As SByte
     End Sub
 
 
-
-
     Private Sub Start_Sound() Handles MIDI_Start.Click
         MIDI_Start.Enabled = False
         MIDI_Pausieren.Enabled = True
@@ -413,9 +436,10 @@ Dim H1_Klappe_alt As SByte
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
         'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
 
-        Tackt.Enabled = True
+        If MIDI_NormalMode.Checked = True Then Tackt.Enabled = True
         Messung_gestartet = True
     End Sub
+
 
     Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
         If Einstellungen_GroupBox.Enabled = False Then
@@ -439,9 +463,7 @@ Dim H1_Klappe_alt As SByte
         Messung_gestartet = False
 
         TacktNr = 0
-        Tackt_Achtel = 0
-        Tackt_Viertel = 1
-        Tackt_Viertel_Counter = 0
+        Tackt_32stel = 0
 
         Tackt_Ausgabefenster.Text = ("1  1")
 
@@ -460,9 +482,7 @@ Dim H1_Klappe_alt As SByte
 
     End Sub
 
-
 #End Region
-
 
 
     Private Sub Tackt_Tick() Handles Tackt.Tick
@@ -475,11 +495,11 @@ Dim H1_Klappe_alt As SByte
 
             If Note_Play(i) = True Or Button_Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    If DirectPlay_ON.Checked = True Then m.PlayMIDINote(i + Halbtonverschiebung.Value, 100, 0)
+                    If DirectPlay_ON.Checked = True Then m.PlayMIDINote(i + Halbtonverschiebung.Value, 100, 0.03)
                     Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
                 End If
 
-                Notenlaege(i) += 0.25
+                Notenlaege(i) += 0.125
                 Note_gespielt = True
                 'Notenlaege(0) = 0
 
@@ -496,9 +516,10 @@ Dim H1_Klappe_alt As SByte
 
         If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
 
-        Tackt_Achtel = Tackt_Achtel + 1
+        Tackt_32stel = Tackt_32stel + 1
 
-        If Tackt_Achtel = 8 Then
+
+        If Tackt_32stel = 32 Then
             If Metronom_ON.Checked Then
                 m.CurrentInstrument = "Woodblock"
                 m.PlayMIDINote(70, 50, 0.1)
@@ -509,22 +530,14 @@ Dim H1_Klappe_alt As SByte
                 m.CurrentInstrument = cboInstruments.Text
             End If
             TacktNr = TacktNr + 1
-            Tackt_Achtel = 0
-            Tackt_Viertel = 0
+            Tackt_32stel = 0
         End If
 
-
-        Tackt_Viertel_Counter = Tackt_Viertel_Counter + 1
-
-        If Tackt_Viertel_Counter = 2 Then
-            Tackt_Viertel = Tackt_Viertel + 1
-            Tackt_Viertel_Counter = 0
-        End If
 
         'MessageBox.Show(Tackt_Achtel)
 
 
-        If Not Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) Then
+        If Not Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
                 m.CurrentInstrument = "Woodblock"
                 m.PlayMIDINote(70, 50, 0.1)
@@ -534,9 +547,9 @@ Dim H1_Klappe_alt As SByte
 
 
 
-        Metronom_alt = Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8)
+        Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32)
 
-        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_Achtel * Tackt_Naenner_Input.Value / 8) + 1) 'Math.Round
+        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) + 1) 'Math.Round
 
     End Sub
 
@@ -551,7 +564,7 @@ Dim H1_Klappe_alt As SByte
 
 
 
-    Private Sub Diagramm_Refresh() ' Handles Tackt.Tick
+    Private Sub Diagramm_Aktuallisieren() ' Handles Tackt.Tick
 
         Dim rnd As New Random
 
@@ -1000,24 +1013,19 @@ Dim H1_Klappe_alt As SByte
     Private Sub MIDI_SpecialMode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_SpecialMode.CheckedChanged
 
         If MIDI_SpecialMode.Checked = True Then
-            Messintervall_Temp = Messintervall_NumericUpDown.Value
-            Tackt_Zaehler_Temp = Tackt_Zaehler_Input.Value
-            Tackt_Naenner_Temp = Tackt_Naenner_Input.Value
-            Messintervall_NumericUpDown.Value = 20
+            'Tackt_Zaehler_Temp = Tackt_Zaehler_Input.Value
+            'Tackt_Naenner_Temp = Tackt_Naenner_Input.Value
             Tackt_Zaehler_Input.Value = 4
             Tackt_Naenner_Input.Value = 4
             BPM.Visible = False
             BPM_Label.Text = "Aufnahme BPM:     Möglichst scnell!"
             cboInstruments.Enabled = False
             Tempo_GroupBox.Enabled = False
-            Messintervall_GroupBox.Enabled = False
         Else
             cboInstruments.Enabled = True
             Tempo_GroupBox.Enabled = True
-            Messintervall_GroupBox.Enabled = True
-            Messintervall_NumericUpDown.Value = Messintervall_Temp
-            Tackt_Zaehler_Input.Value = Tackt_Zaehler_Temp
-            Tackt_Naenner_Input.Value = Tackt_Naenner_Temp
+            'Tackt_Zaehler_Input.Value = Tackt_Zaehler_Temp
+            'Tackt_Naenner_Input.Value = Tackt_Naenner_Temp
             BPM.Visible = True
             BPM_Label.Text = "Aufnahme BPM:"
         End If
@@ -1159,19 +1167,16 @@ Dim H1_Klappe_alt As SByte
 
         With My.Settings
             ' Aufnahmemodus
-            MIDI_NormalMode.Checked = .MIDI_NormalMode
+            'MIDI_NormalMode.Checked = .MIDI_NormalMode
             'Absichtlicher Overflow
             'Alternative: SpecialMode stadt NormalMode speichern!
-            MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
+            'MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
             cboInstruments.SelectedIndex = .cboInstruments
 
             ' Tempo
             Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
             Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
             BPM.Value = .BPM
-
-            ' Messintervall
-            Messintervall_NumericUpDown.Value = .Messintervall_NumericUpDown
 
             ' Tonhöhenverschiebung
             Halbtonverschiebung.Value = .Halbtonverschiebung
@@ -1262,9 +1267,6 @@ Dim H1_Klappe_alt As SByte
             .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
             .BPM = BPM.Value
 
-            ' Messintervall
-            .Messintervall_NumericUpDown = Messintervall_NumericUpDown.Value
-
             ' Tonhöhenverschiebung
             .Halbtonverschiebung = Halbtonverschiebung.Value
 
@@ -1349,33 +1351,21 @@ Dim H1_Klappe_alt As SByte
 #End Region
 
 
-    Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
-        Diagramm_Refresh()
+    'Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
+    'Diagramm_Aktuallisieren()
+    'End Sub
+
+
+
+
+    Private Sub Mesgeschwindigkeitsberechnung_Timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Mesgeschwindigkeitsberechnung_Timer.Tick
+        Messintervall_Zahl = (AnzMessungen.Text - AnzMessungen_alt) * 4
+        MessungenProS_TexBox.Text = Format(Messintervall_Zahl, "000") & " M/s"
+        Messintervall_TextBox.Text = Format(1000 / Messintervall_Zahl, "00.0") & " ms"
+        AnzMessungen_alt = AnzMessungen.Text
     End Sub
+
 
 End Class
 
 
-
-
-
-
-
-'#Region " Messintervall des Mikrokontrollers "
-
-' Obwohl die zwei folgenden Subs sich immer wieder gegenseitig abrufen, gibt es nie eine Endlosschleife, da der Event ValueChanged nur ausgeführt wird, falls wirklich eine Änderung stadtgefunden hat.
-' Nicht aber wenn man einfach den gleichen Wert mit dem Gleichem ersetzt. Trotz allem kann es vorkommen, da eine Funktion bei einem Value Wechsel 2mal aufgerufen wird.
-' Jedenfalls Wirklich coole Umrechnung. 2mal das Selbe und doch verschieden. Cooler "Zufall", das gerade beide dieselbe Umrechnungsformel haben.
-' Ach übrigens: Die NumericUpDowns werden vor allem beim Messintervall, absichtlich stark auf eine Ganzzahl gerundet
-
-'Private Sub Messintervall_NumericUpDown_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall_NumericUpDown.ValueChanged
-'MessungenProS_NumericUpDown.Value = 1000 / Messintervall_NumericUpDown.Value ' Da MessungenProS_NumericUpDown verändert wird, wird automatisch der MessungenProS_NumericUpDown.ValueChanged Event ausgelöst
-'Diagramm_Reload.Interval = Messintervall_NumericUpDown.Value
-'End Sub
-
-
-'Private Sub NumericUpDown2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessungenProS_NumericUpDown.ValueChanged
-'Messintervall_NumericUpDown.Value = 1000 / MessungenProS_NumericUpDown.Value ' Da Messintervall_NumericUpDown verändert wird, wird automatisch der Messintervall_NumericUpDown.ValueChanged Event ausgelöst
-'End Sub
-
-'#End Region
