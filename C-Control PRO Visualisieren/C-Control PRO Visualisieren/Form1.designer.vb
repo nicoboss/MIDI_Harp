@@ -1755,7 +1755,6 @@ Partial Class Form1
         '
         Me.MIDI_SpecialMode.AutoSize = True
         Me.MIDI_SpecialMode.Checked = True
-        Me.MIDI_SpecialMode.Enabled = False
         Me.MIDI_SpecialMode.ForeColor = System.Drawing.SystemColors.ControlText
         Me.MIDI_SpecialMode.Location = New System.Drawing.Point(116, 23)
         Me.MIDI_SpecialMode.Name = "MIDI_SpecialMode"
@@ -1944,7 +1943,7 @@ Partial Class Form1
         '
         'Oktavenverschiebung
         '
-        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 3 Oktaven", "+ 2 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
+        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
         Me.Oktavenverschiebung.Location = New System.Drawing.Point(90, 25)
         Me.Oktavenverschiebung.Name = "Oktavenverschiebung"
         Me.Oktavenverschiebung.Size = New System.Drawing.Size(92, 21)
