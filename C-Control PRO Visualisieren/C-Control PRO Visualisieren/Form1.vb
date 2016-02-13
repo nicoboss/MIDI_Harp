@@ -202,7 +202,7 @@ Dim H1_Klappe_alt As SByte
 
     Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
-
+        Dim Sync_Error
 
         Do While (Not SerialPort1.ReadByte = 3)
 
@@ -227,18 +227,20 @@ Dim H1_Klappe_alt As SByte
             'SerialPort1.Write(1)
 
 
-            For i = 0 To 31 Step 1
-                Serial_Read = SerialPort1.ReadByte
-                ADC_Read(i) = Serial_Read
+            For i = 0 To 35
+                ADC_Read(i) = SerialPort1.ReadByte
             Next
 
             'TextBox2.Text = SerialPort1.ReadByte
-            If Not SerialPort1.ReadByte = 3 Then
-                MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein." _
-                & "Die laufende Aufnahme wurde Paussiert" _
-                & vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
-                & vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7, _ ", "Übertragungsfehler", _
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+            Serial_Read = SerialPort1.ReadByte
+            If Not Serial_Read = 3 Then
+                'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
+                '& "Die laufende Aufnahme wurde Paussiert" _
+                '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
+                '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
+                'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                Sync_Error = Sync_Error + 1
+                TextBox2.Text = Sync_Error
 
                 Do While (Not SerialPort1.ReadByte = 3)
 
@@ -283,7 +285,7 @@ Dim H1_Klappe_alt As SByte
             'Tackt_Tick()
             'End If
 
-            'Diagramm_Refresh()
+            Diagramm_Refresh()
 
         Loop
 
