@@ -160,7 +160,7 @@ Dim H1_Klappe_alt As SByte
 
             'Comport öffnen
             SerialPort1.PortName = ComboBox_Comport.Text
-            SerialPort1.BaudRate = 115200 'Baudrate
+            SerialPort1.BaudRate = 230400 'Baudrate
             SerialPort1.DataBits = 8
             SerialPort1.Encoding = System.Text.Encoding.Default
             SerialPort1.Open()

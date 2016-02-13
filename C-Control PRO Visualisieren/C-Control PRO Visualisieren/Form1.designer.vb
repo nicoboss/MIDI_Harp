@@ -397,7 +397,7 @@ Partial Class Form1
         '
         'SerialPort1
         '
-        Me.SerialPort1.BaudRate = 115200
+        Me.SerialPort1.BaudRate = 230400
         Me.SerialPort1.DtrEnable = True
         '
         'GroupBox2
