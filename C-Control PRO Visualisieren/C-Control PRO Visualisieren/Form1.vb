@@ -227,8 +227,9 @@ Dim H1_Klappe_alt As SByte
             'SerialPort1.Write(1)
 
 
-            For i = 0 To 35
+            For i = 0 To 36
                 ADC_Read(i) = SerialPort1.ReadByte
+                'MessageBox.Show(ADC_Read(i))
             Next
 
             'TextBox2.Text = SerialPort1.ReadByte
@@ -617,7 +618,6 @@ Dim H1_Klappe_alt As SByte
 #End Region
 
 #End Region
-
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
