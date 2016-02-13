@@ -1894,7 +1894,7 @@ Partial Class Form1
         'BPM
         '
         Me.BPM.Location = New System.Drawing.Point(137, 37)
-        Me.BPM.Maximum = New Decimal(New Integer() {150, 0, 0, 0})
+        Me.BPM.Maximum = New Decimal(New Integer() {400, 0, 0, 0})
         Me.BPM.Name = "BPM"
         Me.BPM.Size = New System.Drawing.Size(48, 20)
         Me.BPM.TabIndex = 168

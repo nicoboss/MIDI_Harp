@@ -249,8 +249,9 @@ Dim H1_Klappe_alt As SByte
                     Sync_Error += 1
                     AnzMessfehler.Text = Sync_Error
 
-                    Do While (Not SerialPort1.ReadByte = 3)
+                    Do While (Not SerialPort1.ReadByte = 250)
                     Loop
+
                 End If
 
                 ADC_Counter = 0
@@ -272,14 +273,17 @@ Dim H1_Klappe_alt As SByte
 
                 For i = 0 To 31 'Anz_ADC - 29
 
+                    'NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
                     NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
 
                     If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
+                        'MessageBox.Show(NotenNr & " on")
                         Note_Play(NotenNr) = True
                         m.PlayMIDINote(NotenNr, 100, 0)
                     End If
 
                     If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
+                        'MessageBox.Show(NotenNr & " off")
                         Note_Play(NotenNr) = False
                         m.STOPMIDINote(NotenNr)
                     End If
@@ -295,7 +299,7 @@ Dim H1_Klappe_alt As SByte
                 'End If
 
 
-                If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
+                'If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
 
             Catch
             End Try
@@ -495,8 +499,8 @@ Dim H1_Klappe_alt As SByte
 
             If Note_Play(i) = True Or Button_Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    If DirectPlay_ON.Checked = True Then m.PlayMIDINote(i + Halbtonverschiebung.Value, 100, 0.03)
-                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
+                    'If DirectPlay_ON.Checked = True Then m.PlayMIDINote(i, 100, 0.03)
+                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
                 End If
 
                 Notenlaege(i) += 0.125
@@ -506,8 +510,8 @@ Dim H1_Klappe_alt As SByte
             Else
 
                 If Notenlaege(i) > 0 Then
-                    m.STOPMIDINote(i + Halbtonverschiebung.Value)
-                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(i + Halbtonverschiebung.Value), 0)
+                    'm.STOPMIDINote(i)
+                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOff, CByte(i), 0)
                     Notenlaege(i) = 0
                 End If
             End If
@@ -624,6 +628,7 @@ Dim H1_Klappe_alt As SByte
 #End Region
 
 #End Region
+
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
