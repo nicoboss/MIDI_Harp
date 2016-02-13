@@ -178,10 +178,13 @@ Dim H1_Klappe_alt As SByte
 
         Com_Search_Timer.Enabled = False
         Diagramm_Reload.Enabled = True
-        'Tackt.Enabled = True
+        Serial_BackgroundWorker.RunWorkerAsync()
+
     End Sub
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
+
+        Serial_BackgroundWorker.CancelAsync()
 
         'trennen
         Diagramm_Reload.Enabled = False
@@ -194,24 +197,14 @@ Dim H1_Klappe_alt As SByte
 
     End Sub
 
-    Private Sub SerialPort1_BW(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.Click 'Handles Messintervall.Tick
-        BackgroundWorker1.CancelAsync()
-        BackgroundWorker1.RunWorkerAsync()
-    End Sub
 
 
-    Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+    Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
         'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
         Dim Sync_Error
 
         Do While (Not SerialPort1.ReadByte = 3)
-
         Loop
-
-
-
-
-
 
 
         Do
@@ -241,10 +234,9 @@ Dim H1_Klappe_alt As SByte
                 '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
                 'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                 Sync_Error = Sync_Error + 1
-                TextBox2.Text = Sync_Error
+                AnzMessfehler.Text = Sync_Error
 
                 Do While (Not SerialPort1.ReadByte = 3)
-
                 Loop
             End If
 
@@ -260,7 +252,7 @@ Dim H1_Klappe_alt As SByte
             Next
 
             TTT = TTT + 1
-            TextBox1.Text = TTT
+            AnzMessungen.Text = TTT
 
 
             Dim NotenNr As Byte

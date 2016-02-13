@@ -146,8 +146,10 @@ Partial Class Form1
         Me.H6_Grenzwert = New System.Windows.Forms.TextBox()
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.AnzMessungen = New System.Windows.Forms.TextBox()
+        Me.AnzMessfehler = New System.Windows.Forms.TextBox()
         Me.Messintervall_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.Messintervall_NumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.MessungenProS_NumericUpDown = New System.Windows.Forms.NumericUpDown()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -267,9 +269,7 @@ Partial Class Form1
         Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
         Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -313,6 +313,7 @@ Partial Class Form1
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
+        Me.GroupBox3.SuspendLayout()
         Me.Messintervall_GroupBox.SuspendLayout()
         CType(Me.Messintervall_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MessungenProS_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -1653,6 +1654,7 @@ Partial Class Form1
         '
         'Einstellungen_GroupBox
         '
+        Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox3)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Messintervall_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox19)
         Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox13)
@@ -1665,42 +1667,63 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
+        'GroupBox3
+        '
+        Me.GroupBox3.Controls.Add(Me.AnzMessungen)
+        Me.GroupBox3.Controls.Add(Me.AnzMessfehler)
+        Me.GroupBox3.Location = New System.Drawing.Point(9, 367)
+        Me.GroupBox3.Name = "GroupBox3"
+        Me.GroupBox3.Size = New System.Drawing.Size(199, 49)
+        Me.GroupBox3.TabIndex = 182
+        Me.GroupBox3.TabStop = False
+        Me.GroupBox3.Text = "Anzahl Messungen und Messfehler"
+        '
+        'AnzMessungen
+        '
+        Me.AnzMessungen.Location = New System.Drawing.Point(12, 23)
+        Me.AnzMessungen.Name = "AnzMessungen"
+        Me.AnzMessungen.ReadOnly = True
+        Me.AnzMessungen.Size = New System.Drawing.Size(79, 20)
+        Me.AnzMessungen.TabIndex = 0
+        Me.AnzMessungen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'AnzMessfehler
+        '
+        Me.AnzMessfehler.Location = New System.Drawing.Point(103, 23)
+        Me.AnzMessfehler.Name = "AnzMessfehler"
+        Me.AnzMessfehler.ReadOnly = True
+        Me.AnzMessfehler.Size = New System.Drawing.Size(79, 20)
+        Me.AnzMessfehler.TabIndex = 187
+        Me.AnzMessfehler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
         'Messintervall_GroupBox
         '
-        Me.Messintervall_GroupBox.Controls.Add(Me.Label6)
         Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_NumericUpDown)
         Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_NumericUpDown)
         Me.Messintervall_GroupBox.Controls.Add(Me.Label5)
-        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 335)
+        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 313)
         Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
-        Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 70)
+        Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 48)
         Me.Messintervall_GroupBox.TabIndex = 174
         Me.Messintervall_GroupBox.TabStop = False
         Me.Messintervall_GroupBox.Text = "Messintervall vom Mikrokontroller"
         '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(14, 46)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 13)
-        Me.Label6.TabIndex = 182
-        Me.Label6.Text = "Messintervall in ms:"
-        '
         'Messintervall_NumericUpDown
         '
-        Me.Messintervall_NumericUpDown.Location = New System.Drawing.Point(138, 44)
+        Me.Messintervall_NumericUpDown.Location = New System.Drawing.Point(138, 21)
         Me.Messintervall_NumericUpDown.Maximum = New Decimal(New Integer() {1000, 0, 0, 0})
         Me.Messintervall_NumericUpDown.Minimum = New Decimal(New Integer() {10, 0, 0, 0})
         Me.Messintervall_NumericUpDown.Name = "Messintervall_NumericUpDown"
+        Me.Messintervall_NumericUpDown.ReadOnly = True
         Me.Messintervall_NumericUpDown.Size = New System.Drawing.Size(48, 20)
         Me.Messintervall_NumericUpDown.TabIndex = 181
         Me.Messintervall_NumericUpDown.Value = New Decimal(New Integer() {1000, 0, 0, 0})
         '
         'MessungenProS_NumericUpDown
         '
-        Me.MessungenProS_NumericUpDown.Location = New System.Drawing.Point(138, 19)
+        Me.MessungenProS_NumericUpDown.Location = New System.Drawing.Point(62, 19)
         Me.MessungenProS_NumericUpDown.Name = "MessungenProS_NumericUpDown"
+        Me.MessungenProS_NumericUpDown.ReadOnly = True
         Me.MessungenProS_NumericUpDown.Size = New System.Drawing.Size(48, 20)
         Me.MessungenProS_NumericUpDown.TabIndex = 180
         Me.MessungenProS_NumericUpDown.Value = New Decimal(New Integer() {20, 0, 0, 0})
@@ -1710,18 +1733,18 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.Label5.Location = New System.Drawing.Point(14, 21)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(108, 13)
+        Me.Label5.Size = New System.Drawing.Size(42, 13)
         Me.Label5.TabIndex = 179
-        Me.Label5.Text = "Messungen pro Sek.:"
+        Me.Label5.Text = "Mes/S:"
         '
         'GroupBox19
         '
         Me.GroupBox19.Controls.Add(Me.MIDI_SpecialMode)
         Me.GroupBox19.Controls.Add(Me.MIDI_NormalMode)
         Me.GroupBox19.Controls.Add(Me.cboInstruments)
-        Me.GroupBox19.Location = New System.Drawing.Point(9, 21)
+        Me.GroupBox19.Location = New System.Drawing.Point(6, 19)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(199, 83)
+        Me.GroupBox19.Size = New System.Drawing.Size(199, 79)
         Me.GroupBox19.TabIndex = 173
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "MIDI Aufnahmemodus"
@@ -1754,7 +1777,7 @@ Partial Class Form1
         'cboInstruments
         '
         Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.Location = New System.Drawing.Point(15, 51)
+        Me.cboInstruments.Location = New System.Drawing.Point(15, 46)
         Me.cboInstruments.Name = "cboInstruments"
         Me.cboInstruments.Size = New System.Drawing.Size(175, 21)
         Me.cboInstruments.TabIndex = 2
@@ -1764,9 +1787,9 @@ Partial Class Form1
         Me.GroupBox13.Controls.Add(Me.Metronom_OFF)
         Me.GroupBox13.Controls.Add(Me.Metronom_ON)
         Me.GroupBox13.Controls.Add(Me.Metronom_Betont)
-        Me.GroupBox13.Location = New System.Drawing.Point(9, 272)
+        Me.GroupBox13.Location = New System.Drawing.Point(9, 262)
         Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(199, 53)
+        Me.GroupBox13.Size = New System.Drawing.Size(199, 45)
         Me.GroupBox13.TabIndex = 168
         Me.GroupBox13.TabStop = False
         Me.GroupBox13.Text = "Metronom"
@@ -1776,7 +1799,7 @@ Partial Class Form1
         '
         Me.Metronom_OFF.AutoSize = True
         Me.Metronom_OFF.Checked = True
-        Me.Metronom_OFF.Location = New System.Drawing.Point(146, 23)
+        Me.Metronom_OFF.Location = New System.Drawing.Point(141, 19)
         Me.Metronom_OFF.Name = "Metronom_OFF"
         Me.Metronom_OFF.Size = New System.Drawing.Size(43, 17)
         Me.Metronom_OFF.TabIndex = 1
@@ -1787,7 +1810,7 @@ Partial Class Form1
         'Metronom_ON
         '
         Me.Metronom_ON.AutoSize = True
-        Me.Metronom_ON.Location = New System.Drawing.Point(90, 23)
+        Me.Metronom_ON.Location = New System.Drawing.Point(87, 19)
         Me.Metronom_ON.Name = "Metronom_ON"
         Me.Metronom_ON.Size = New System.Drawing.Size(40, 17)
         Me.Metronom_ON.TabIndex = 0
@@ -1797,7 +1820,7 @@ Partial Class Form1
         'Metronom_Betont
         '
         Me.Metronom_Betont.AutoSize = True
-        Me.Metronom_Betont.Location = New System.Drawing.Point(18, 24)
+        Me.Metronom_Betont.Location = New System.Drawing.Point(16, 19)
         Me.Metronom_Betont.Name = "Metronom_Betont"
         Me.Metronom_Betont.Size = New System.Drawing.Size(56, 17)
         Me.Metronom_Betont.TabIndex = 0
@@ -1812,7 +1835,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(10, 114)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 104)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
         Me.Tempo_GroupBox.TabIndex = 172
@@ -1881,7 +1904,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
         Me.Transpose_GroupBox.Controls.Add(Me.Halbtonverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 183)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 173)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
@@ -1935,7 +1958,6 @@ Partial Class Form1
         '
         'GroupBox4
         '
-        Me.GroupBox4.Controls.Add(Me.TextBox2)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel11)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel10)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel9)
@@ -2897,23 +2919,9 @@ Partial Class Form1
         Me.C_Klappe.TabIndex = 183
         Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
         '
-        'BackgroundWorker1
+        'Serial_BackgroundWorker
         '
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(322, 441)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 0
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(432, 0)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(157, 20)
-        Me.TextBox2.TabIndex = 187
+        Me.Serial_BackgroundWorker.WorkerSupportsCancellation = True
         '
         'C2_VerticalProgessBar
         '
@@ -3202,7 +3210,6 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 725)
-        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.Einstellungsverwaltung_GroupBox)
         Me.Controls.Add(Me.GroupBox14)
@@ -3229,6 +3236,8 @@ Partial Class Form1
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
+        Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.Messintervall_GroupBox.ResumeLayout(False)
         Me.Messintervall_GroupBox.PerformLayout()
         CType(Me.Messintervall_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3246,7 +3255,6 @@ Partial Class Form1
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
-        Me.GroupBox4.PerformLayout()
         Me.FlowLayoutPanel11.ResumeLayout(False)
         Me.FlowLayoutPanel11.PerformLayout()
         Me.FlowLayoutPanel10.ResumeLayout(False)
@@ -3290,7 +3298,6 @@ Partial Class Form1
         Me.GroupBox5.PerformLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
@@ -3539,7 +3546,6 @@ Partial Class Form1
     Friend WithEvents MIDI_NormalMode As System.Windows.Forms.RadioButton
     Friend WithEvents Com_Search_Timer As System.Windows.Forms.Timer
     Friend WithEvents Messintervall_GroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Messintervall_NumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents MessungenProS_NumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents Label5 As System.Windows.Forms.Label
@@ -3571,8 +3577,9 @@ Partial Class Form1
     Friend WithEvents C2_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
     Friend WithEvents C2_Grenzwert As System.Windows.Forms.TextBox
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents Serial_BackgroundWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents AnzMessungen As System.Windows.Forms.TextBox
+    Friend WithEvents AnzMessfehler As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
 
 End Class
