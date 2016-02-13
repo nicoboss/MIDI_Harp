@@ -203,7 +203,8 @@ Dim H1_Klappe_alt As SByte
         'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
         Dim Sync_Error
 
-        Do While (Not SerialPort1.ReadByte = 3)
+        Do While (Not SerialPort1.ReadByte = 250)
+            'MessageBox.Show(SerialPort1.ReadByte)
         Loop
 
 
@@ -220,14 +221,14 @@ Dim H1_Klappe_alt As SByte
             'SerialPort1.Write(1)
 
 
-            For i = 0 To 36
+            For i = 0 To 35
                 ADC_Read(i) = SerialPort1.ReadByte
                 'MessageBox.Show(ADC_Read(i))
             Next
 
             'TextBox2.Text = SerialPort1.ReadByte
             Serial_Read = SerialPort1.ReadByte
-            If Not Serial_Read = 3 Then
+            If Not Serial_Read = 250 Then
                 'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
                 '& "Die laufende Aufnahme wurde Paussiert" _
                 '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
