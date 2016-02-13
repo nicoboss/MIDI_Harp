@@ -172,7 +172,7 @@ Partial Class Form1
         Me.Halbtonverschiebung = New System.Windows.Forms.NumericUpDown()
         Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
-        Me.Messintervall = New System.Windows.Forms.Timer(Me.components)
+        Me.Diagramm_Reload = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel11 = New System.Windows.Forms.FlowLayoutPanel()
         Me.C6_Verschiebung = New System.Windows.Forms.TextBox()
@@ -268,6 +268,8 @@ Partial Class Form1
         Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -303,7 +305,6 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -1670,7 +1671,7 @@ Partial Class Form1
         Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_NumericUpDown)
         Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_NumericUpDown)
         Me.Messintervall_GroupBox.Controls.Add(Me.Label5)
-        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(12, 188)
+        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 335)
         Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
         Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 70)
         Me.Messintervall_GroupBox.TabIndex = 174
@@ -1763,9 +1764,9 @@ Partial Class Form1
         Me.GroupBox13.Controls.Add(Me.Metronom_OFF)
         Me.GroupBox13.Controls.Add(Me.Metronom_ON)
         Me.GroupBox13.Controls.Add(Me.Metronom_Betont)
-        Me.GroupBox13.Location = New System.Drawing.Point(10, 360)
+        Me.GroupBox13.Location = New System.Drawing.Point(9, 272)
         Me.GroupBox13.Name = "GroupBox13"
-        Me.GroupBox13.Size = New System.Drawing.Size(202, 53)
+        Me.GroupBox13.Size = New System.Drawing.Size(199, 53)
         Me.GroupBox13.TabIndex = 168
         Me.GroupBox13.TabStop = False
         Me.GroupBox13.Text = "Metronom"
@@ -1880,7 +1881,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
         Me.Transpose_GroupBox.Controls.Add(Me.Halbtonverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 271)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 183)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
@@ -1928,12 +1929,13 @@ Partial Class Form1
         '
         Me.Tackt.Interval = 125
         '
-        'Messintervall
+        'Diagramm_Reload
         '
-        Me.Messintervall.Interval = 1000
+        Me.Diagramm_Reload.Interval = 1000
         '
         'GroupBox4
         '
+        Me.GroupBox4.Controls.Add(Me.TextBox2)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel11)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel10)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel9)
@@ -2899,6 +2901,20 @@ Partial Class Form1
         '
         Me.BackgroundWorker1.WorkerSupportsCancellation = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(322, 441)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
+        Me.TextBox1.TabIndex = 0
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(432, 0)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(157, 20)
+        Me.TextBox2.TabIndex = 187
+        '
         'C2_VerticalProgessBar
         '
         Me.C2_VerticalProgessBar.AccessibleName = ""
@@ -3181,13 +3197,6 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
         '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(322, 441)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 0
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3237,6 +3246,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox4.ResumeLayout(False)
+        Me.GroupBox4.PerformLayout()
         Me.FlowLayoutPanel11.ResumeLayout(False)
         Me.FlowLayoutPanel11.PerformLayout()
         Me.FlowLayoutPanel10.ResumeLayout(False)
@@ -3397,7 +3407,7 @@ Partial Class Form1
     Friend WithEvents G6_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents A6_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents H6_Grenzwert As System.Windows.Forms.TextBox
-    Friend WithEvents Messintervall As System.Windows.Forms.Timer
+    Friend WithEvents Diagramm_Reload As System.Windows.Forms.Timer
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents Halbtonverschiebung As System.Windows.Forms.NumericUpDown
     Friend WithEvents Oktavenverschiebung As System.Windows.Forms.ComboBox
@@ -3563,5 +3573,6 @@ Partial Class Form1
     Friend WithEvents C2_Grenzwert As System.Windows.Forms.TextBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
 
 End Class

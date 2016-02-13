@@ -177,14 +177,14 @@ Dim H1_Klappe_alt As SByte
         End Try
 
         Com_Search_Timer.Enabled = False
-        Messintervall.Enabled = True
+        Diagramm_Reload.Enabled = True
         'Tackt.Enabled = True
     End Sub
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         'trennen
-        Messintervall.Enabled = False
+        Diagramm_Reload.Enabled = False
         'Tackt.Enabled = False
         Com_Search_Timer.Enabled = True
         Button_Connect.Enabled = True
@@ -204,7 +204,7 @@ Dim H1_Klappe_alt As SByte
         'Private Sub SerialPort1_DataReceived() Handles TextBox1.Click 'Messintervall.Tick 'BackgroundWorker1.DoWork
 
 
-        Do While (SerialPort1.ReadByte = 3)
+        Do While (Not SerialPort1.ReadByte = 3)
 
         Loop
 
@@ -227,34 +227,23 @@ Dim H1_Klappe_alt As SByte
             'SerialPort1.Write(1)
 
 
-            For i = 0 To 28 Step 1
+            For i = 0 To 31 Step 1
                 Serial_Read = SerialPort1.ReadByte
                 ADC_Read(i) = Serial_Read
             Next
 
-            'If Not SerialPort1.ReadByte = 3 Then
+            'TextBox2.Text = SerialPort1.ReadByte
+            If Not SerialPort1.ReadByte = 3 Then
+                MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein." _
+                & "Die laufende Aufnahme wurde Paussiert" _
+                & vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
+                & vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7, _ ", "Übertragungsfehler", _
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-            'End If
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
-            MessageBox.Show(SerialPort1.ReadByte)
+                Do While (Not SerialPort1.ReadByte = 3)
+
+                Loop
+            End If
 
             ADC_Counter = 0
             For i = 0 To 30 Step 2
@@ -287,24 +276,21 @@ Dim H1_Klappe_alt As SByte
                     m.STOPMIDINote(NotenNr)
                 End If
 
-
-                'If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = True Then
-                'If ADC(i) < 100 And Note_Play(255) = True Then
-                'Note_Play(MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)) = False
-                'Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
-                'End If
             Next
 
 
-            If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
-                Tackt_Tick()
-            End If
+            'If Messung_gestartet = True And MIDI_SpecialMode.Checked = True Then
+            'Tackt_Tick()
+            'End If
 
-            Diagramm_Refresh()
+            'Diagramm_Refresh()
 
         Loop
 
     End Sub
+
+
+
 
     Private Sub ComboBox_Comport_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Comport.SelectedIndexChanged
 
@@ -1010,26 +996,6 @@ Dim H1_Klappe_alt As SByte
 #End Region
 
 
-#Region " Messintervall des Mikrokontrollers "
-
-    ' Obwohl die zwei folgenden Subs sich immer wieder gegenseitig abrufen, gibt es nie eine Endlosschleife, da der Event ValueChanged nur ausgeführt wird, falls wirklich eine Änderung stadtgefunden hat.
-    ' Nicht aber wenn man einfach den gleichen Wert mit dem Gleichem ersetzt. Trotz allem kann es vorkommen, da eine Funktion bei einem Value Wechsel 2mal aufgerufen wird.
-    ' Jedenfalls Wirklich coole Umrechnung. 2mal das Selbe und doch verschieden. Cooler "Zufall", das gerade beide dieselbe Umrechnungsformel haben.
-    ' Ach übrigens: Die NumericUpDowns werden vor allem beim Messintervall, absichtlich stark auf eine Ganzzahl gerundet
-
-    Private Sub Messintervall_NumericUpDown_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall_NumericUpDown.ValueChanged
-        MessungenProS_NumericUpDown.Value = 1000 / Messintervall_NumericUpDown.Value ' Da MessungenProS_NumericUpDown verändert wird, wird automatisch der MessungenProS_NumericUpDown.ValueChanged Event ausgelöst
-        Messintervall.Interval = Messintervall_NumericUpDown.Value
-    End Sub
-
-
-    Private Sub NumericUpDown2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessungenProS_NumericUpDown.ValueChanged
-        Messintervall_NumericUpDown.Value = 1000 / MessungenProS_NumericUpDown.Value ' Da Messintervall_NumericUpDown verändert wird, wird automatisch der Messintervall_NumericUpDown.ValueChanged Event ausgelöst
-    End Sub
-
-#End Region
-
-
 #Region " Special MIDI-Mode"
 
     Dim Messintervall_Temp As UShort
@@ -1388,4 +1354,33 @@ Dim H1_Klappe_alt As SByte
 #End Region
 
 
+    Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
+        Diagramm_Refresh()
+    End Sub
+
 End Class
+
+
+
+
+
+
+
+'#Region " Messintervall des Mikrokontrollers "
+
+' Obwohl die zwei folgenden Subs sich immer wieder gegenseitig abrufen, gibt es nie eine Endlosschleife, da der Event ValueChanged nur ausgeführt wird, falls wirklich eine Änderung stadtgefunden hat.
+' Nicht aber wenn man einfach den gleichen Wert mit dem Gleichem ersetzt. Trotz allem kann es vorkommen, da eine Funktion bei einem Value Wechsel 2mal aufgerufen wird.
+' Jedenfalls Wirklich coole Umrechnung. 2mal das Selbe und doch verschieden. Cooler "Zufall", das gerade beide dieselbe Umrechnungsformel haben.
+' Ach übrigens: Die NumericUpDowns werden vor allem beim Messintervall, absichtlich stark auf eine Ganzzahl gerundet
+
+'Private Sub Messintervall_NumericUpDown_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messintervall_NumericUpDown.ValueChanged
+'MessungenProS_NumericUpDown.Value = 1000 / Messintervall_NumericUpDown.Value ' Da MessungenProS_NumericUpDown verändert wird, wird automatisch der MessungenProS_NumericUpDown.ValueChanged Event ausgelöst
+'Diagramm_Reload.Interval = Messintervall_NumericUpDown.Value
+'End Sub
+
+
+'Private Sub NumericUpDown2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MessungenProS_NumericUpDown.ValueChanged
+'Messintervall_NumericUpDown.Value = 1000 / MessungenProS_NumericUpDown.Value ' Da Messintervall_NumericUpDown verändert wird, wird automatisch der Messintervall_NumericUpDown.ValueChanged Event ausgelöst
+'End Sub
+
+'#End Region
