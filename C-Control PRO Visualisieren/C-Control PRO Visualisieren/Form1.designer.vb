@@ -1936,15 +1936,15 @@ Partial Class Form1
         'Halbtonverschiebung
         '
         Me.Halbtonverschiebung.Location = New System.Drawing.Point(127, 55)
-        Me.Halbtonverschiebung.Maximum = New Decimal(New Integer() {32, 0, 0, 0})
-        Me.Halbtonverschiebung.Minimum = New Decimal(New Integer() {32, 0, 0, -2147483648})
+        Me.Halbtonverschiebung.Maximum = New Decimal(New Integer() {36, 0, 0, 0})
+        Me.Halbtonverschiebung.Minimum = New Decimal(New Integer() {36, 0, 0, -2147483648})
         Me.Halbtonverschiebung.Name = "Halbtonverschiebung"
         Me.Halbtonverschiebung.Size = New System.Drawing.Size(55, 20)
         Me.Halbtonverschiebung.TabIndex = 165
         '
         'Oktavenverschiebung
         '
-        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
+        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 3 Oktaven", "+ 2 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
         Me.Oktavenverschiebung.Location = New System.Drawing.Point(90, 25)
         Me.Oktavenverschiebung.Name = "Oktavenverschiebung"
         Me.Oktavenverschiebung.Size = New System.Drawing.Size(92, 21)
