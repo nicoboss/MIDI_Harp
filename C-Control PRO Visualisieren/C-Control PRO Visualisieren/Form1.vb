@@ -83,6 +83,11 @@ Dim H1_Klappe_alt As SByte
     Dim TTT
 
 
+    Dim Key_Alt As Byte
+    Dim Shortcut_Start As Byte = 0
+    Dim Shortcut_Save As Byte = 0
+    Dim Shortcut_Pause As Byte = 0
+
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
 
@@ -394,10 +399,10 @@ Dim H1_Klappe_alt As SByte
     End Sub
 
 
-    Private Sub Start_Sound() Handles MIDI_Start.Click
-        MIDI_Start.Enabled = False
-        MIDI_Pausieren.Enabled = True
-        MIDI_Save.Enabled = True
+    Private Sub MIDI_Start() Handles MIDI_Start_Button.Click
+        MIDI_Start_Button.Enabled = False
+        MIDI_Pause_Button.Enabled = True
+        MIDI_Save_Button.Enabled = True
         Einstellungen_GroupBox.Enabled = False
         Song.Tracks(1).Channel = 0
 
@@ -424,24 +429,24 @@ Dim H1_Klappe_alt As SByte
     End Sub
 
 
-    Private Sub MIDI_Pausieren_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Pausieren.Click
+    Private Sub MIDI_Pause() Handles MIDI_Pause_Button.Click
         If Einstellungen_GroupBox.Enabled = False Then
             Tackt.Enabled = False
             Messung_gestartet = False
             Einstellungen_GroupBox.Enabled = True
-            MIDI_Pausieren.Text = "Aufnahme fortsetzen"
+            MIDI_Pause_Button.Text = "Aufnahme fortsetzen"
         Else
             Tackt.Enabled = True
             Messung_gestartet = True
             Einstellungen_GroupBox.Enabled = False
-            MIDI_Pausieren.Text = "Aufnahme pausieren"
+            MIDI_Pause_Button.Text = "Aufnahme pausieren"
         End If
     End Sub
 
-    Private Sub Midi_Write(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_Save.Click
+    Private Sub Midi_Save() Handles MIDI_Save_Button.Click
 
-        MIDI_Pausieren.Enabled = False
-        MIDI_Save.Enabled = False
+        MIDI_Pause_Button.Enabled = False
+        MIDI_Save_Button.Enabled = False
         Tackt.Enabled = False
         Messung_gestartet = False
 
@@ -468,7 +473,7 @@ Dim H1_Klappe_alt As SByte
         End If
 
         Einstellungen_GroupBox.Enabled = True
-        MIDI_Start.Enabled = True
+        MIDI_Start_Button.Enabled = True
 
     End Sub
 
@@ -1349,6 +1354,44 @@ Dim H1_Klappe_alt As SByte
         Messintervall_TextBox.Text = Format(1000 / Messintervall_Zahl, "00.0") & " ms"
         AnzMessungen_alt = AnzMessungen.Text
     End Sub
+
+
+
+
+    ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
+    Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+        'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
+        If e.KeyCode = Keys.F9 Then MessageBox.Show("")
+
+        If e.KeyData = (Keys.Control Or Keys.F) Then
+            MessageBox.Show("")
+        End If
+
+    End Sub
+
+
+
+
+    Dim key As Integer
+    Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        For i = 1 To 255
+            key = 0
+            key = GetAsyncKeyState(i)
+            If key = -32767 Then
+                META_Bemerkung_Input.Text &= i & ", "
+                If Key_Alt = 162 And i = 49 Then
+                    MessageBox.Show("")
+                End If
+
+                If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start()
+                If i = Shortcut_Save And Messung_gestartet = False Then Midi_Save()
+                If i = Shortcut_Pause And Messung_gestartet = False Then MIDI_Pause()
+                Key_Alt = i
+            End If
+        Next i
+    End Sub
+
 
 
 End Class
