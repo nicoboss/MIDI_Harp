@@ -252,10 +252,7 @@ Partial Class Form1
         Me.Button37 = New System.Windows.Forms.Button()
         Me.Button36 = New System.Windows.Forms.Button()
         Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Einstellungsverwaltung_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -270,6 +267,22 @@ Partial Class Form1
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Save_Label = New System.Windows.Forms.Label()
+        Me.Pause_Label = New System.Windows.Forms.Label()
+        Me.Start_Label = New System.Windows.Forms.Label()
+        Me.GroupBox20 = New System.Windows.Forms.GroupBox()
+        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -347,11 +360,12 @@ Partial Class Form1
         CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox14.SuspendLayout()
-        Me.Einstellungsverwaltung_GroupBox.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox15.SuspendLayout()
+        Me.GroupBox20.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -365,6 +379,7 @@ Partial Class Form1
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Comport - Einstellungen"
+        Me.ToolTip1.SetToolTip(Me.GroupBox1, resources.GetString("GroupBox1.ToolTip"))
         '
         'ComboBox_Comport
         '
@@ -406,7 +421,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.MIDI_Save)
         Me.GroupBox2.Location = New System.Drawing.Point(13, 76)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(300, 359)
+        Me.GroupBox2.Size = New System.Drawing.Size(300, 391)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ausgabe"
@@ -1660,7 +1675,7 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.Controls.Add(Me.Transpose_GroupBox)
         Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(326, 13)
         Me.Einstellungen_GroupBox.Name = "Einstellungen_GroupBox"
-        Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 422)
+        Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 454)
         Me.Einstellungen_GroupBox.TabIndex = 20
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
@@ -1669,7 +1684,7 @@ Partial Class Form1
         '
         Me.GroupBox3.Controls.Add(Me.AnzMessungen)
         Me.GroupBox3.Controls.Add(Me.AnzMessfehler)
-        Me.GroupBox3.Location = New System.Drawing.Point(9, 367)
+        Me.GroupBox3.Location = New System.Drawing.Point(9, 399)
         Me.GroupBox3.Name = "GroupBox3"
         Me.GroupBox3.Size = New System.Drawing.Size(199, 49)
         Me.GroupBox3.TabIndex = 182
@@ -1703,7 +1718,7 @@ Partial Class Form1
         Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_TextBox)
         Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_TexBox)
         Me.Messintervall_GroupBox.Controls.Add(Me.Label5)
-        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 313)
+        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 344)
         Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
         Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 48)
         Me.Messintervall_GroupBox.TabIndex = 174
@@ -1746,7 +1761,7 @@ Partial Class Form1
         Me.GroupBox19.Controls.Add(Me.cboInstruments)
         Me.GroupBox19.Location = New System.Drawing.Point(6, 19)
         Me.GroupBox19.Name = "GroupBox19"
-        Me.GroupBox19.Size = New System.Drawing.Size(199, 79)
+        Me.GroupBox19.Size = New System.Drawing.Size(199, 89)
         Me.GroupBox19.TabIndex = 173
         Me.GroupBox19.TabStop = False
         Me.GroupBox19.Text = "MIDI Aufnahmemodus"
@@ -1779,7 +1794,7 @@ Partial Class Form1
         'cboInstruments
         '
         Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.Location = New System.Drawing.Point(15, 46)
+        Me.cboInstruments.Location = New System.Drawing.Point(12, 46)
         Me.cboInstruments.Name = "cboInstruments"
         Me.cboInstruments.Size = New System.Drawing.Size(175, 21)
         Me.cboInstruments.TabIndex = 2
@@ -1789,7 +1804,7 @@ Partial Class Form1
         Me.GroupBox13.Controls.Add(Me.Metronom_OFF)
         Me.GroupBox13.Controls.Add(Me.Metronom_ON)
         Me.GroupBox13.Controls.Add(Me.Metronom_Betont)
-        Me.GroupBox13.Location = New System.Drawing.Point(9, 262)
+        Me.GroupBox13.Location = New System.Drawing.Point(9, 289)
         Me.GroupBox13.Name = "GroupBox13"
         Me.GroupBox13.Size = New System.Drawing.Size(199, 45)
         Me.GroupBox13.TabIndex = 168
@@ -1837,7 +1852,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 104)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 114)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
         Me.Tempo_GroupBox.TabIndex = 172
@@ -1906,7 +1921,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
         Me.Transpose_GroupBox.Controls.Add(Me.Halbtonverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 173)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 194)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
@@ -1967,7 +1982,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel4)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel5)
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.GroupBox4.Location = New System.Drawing.Point(13, 452)
+        Me.GroupBox4.Location = New System.Drawing.Point(13, 483)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(1229, 260)
         Me.GroupBox4.TabIndex = 167
@@ -2359,12 +2374,19 @@ Partial Class Form1
         Me.H2_Verschiebung.Text = "0"
         Me.H2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutomaticDelay = 800
+        Me.ToolTip1.AutoPopDelay = 30000
+        Me.ToolTip1.InitialDelay = 800
+        Me.ToolTip1.ReshowDelay = 160
+        '
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.META_Copyright_Input)
-        Me.GroupBox8.Location = New System.Drawing.Point(14, 204)
+        Me.GroupBox8.Location = New System.Drawing.Point(13, 194)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(165, 103)
+        Me.GroupBox8.Size = New System.Drawing.Size(166, 114)
         Me.GroupBox8.TabIndex = 2
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Copyright Eintrag"
@@ -2377,7 +2399,7 @@ Partial Class Form1
         Me.META_Copyright_Input.MaxLength = 255
         Me.META_Copyright_Input.Multiline = True
         Me.META_Copyright_Input.Name = "META_Copyright_Input"
-        Me.META_Copyright_Input.Size = New System.Drawing.Size(142, 73)
+        Me.META_Copyright_Input.Size = New System.Drawing.Size(142, 83)
         Me.META_Copyright_Input.TabIndex = 2
         '
         'GroupBox17
@@ -2423,15 +2445,16 @@ Partial Class Form1
         Me.GroupBox7.Controls.Add(Me.GroupBox8)
         Me.GroupBox7.Location = New System.Drawing.Point(559, 13)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(195, 422)
+        Me.GroupBox7.Size = New System.Drawing.Size(195, 454)
         Me.GroupBox7.TabIndex = 172
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Zusatzinformationen (Optional)"
+        Me.ToolTip1.SetToolTip(Me.GroupBox7, resources.GetString("GroupBox7.ToolTip"))
         '
         'GroupBox16
         '
         Me.GroupBox16.Controls.Add(Me.META_Autor_Input)
-        Me.GroupBox16.Location = New System.Drawing.Point(14, 81)
+        Me.GroupBox16.Location = New System.Drawing.Point(15, 73)
         Me.GroupBox16.Name = "GroupBox16"
         Me.GroupBox16.Size = New System.Drawing.Size(164, 46)
         Me.GroupBox16.TabIndex = 5
@@ -2448,7 +2471,7 @@ Partial Class Form1
         'GroupBox11
         '
         Me.GroupBox11.Controls.Add(Me.META_Spurnamen_Input)
-        Me.GroupBox11.Location = New System.Drawing.Point(14, 133)
+        Me.GroupBox11.Location = New System.Drawing.Point(14, 129)
         Me.GroupBox11.Name = "GroupBox11"
         Me.GroupBox11.Size = New System.Drawing.Size(165, 53)
         Me.GroupBox11.TabIndex = 4
@@ -2465,26 +2488,26 @@ Partial Class Form1
         'GroupBox9
         '
         Me.GroupBox9.Controls.Add(Me.META_Bemerkung_Input)
-        Me.GroupBox9.Location = New System.Drawing.Point(13, 313)
+        Me.GroupBox9.Location = New System.Drawing.Point(13, 314)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(165, 100)
+        Me.GroupBox9.Size = New System.Drawing.Size(165, 128)
         Me.GroupBox9.TabIndex = 3
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Bemerkung"
         '
         'META_Bemerkung_Input
         '
-        Me.META_Bemerkung_Input.Location = New System.Drawing.Point(10, 21)
+        Me.META_Bemerkung_Input.Location = New System.Drawing.Point(10, 26)
         Me.META_Bemerkung_Input.MaxLength = 255
         Me.META_Bemerkung_Input.Multiline = True
         Me.META_Bemerkung_Input.Name = "META_Bemerkung_Input"
-        Me.META_Bemerkung_Input.Size = New System.Drawing.Size(142, 73)
+        Me.META_Bemerkung_Input.Size = New System.Drawing.Size(142, 88)
         Me.META_Bemerkung_Input.TabIndex = 1
         '
         'GroupBox10
         '
         Me.GroupBox10.Controls.Add(Me.META_Dateinamen_Input)
-        Me.GroupBox10.Location = New System.Drawing.Point(14, 27)
+        Me.GroupBox10.Location = New System.Drawing.Point(14, 21)
         Me.GroupBox10.Name = "GroupBox10"
         Me.GroupBox10.Size = New System.Drawing.Size(165, 46)
         Me.GroupBox10.TabIndex = 3
@@ -2501,7 +2524,7 @@ Partial Class Form1
         'GroupBox18
         '
         Me.GroupBox18.Controls.Add(Me.FlowLayoutPanel6)
-        Me.GroupBox18.Location = New System.Drawing.Point(775, 315)
+        Me.GroupBox18.Location = New System.Drawing.Point(774, 346)
         Me.GroupBox18.Name = "GroupBox18"
         Me.GroupBox18.Size = New System.Drawing.Size(457, 120)
         Me.GroupBox18.TabIndex = 184
@@ -2753,44 +2776,14 @@ Partial Class Form1
         Me.Com_Search_Timer.Enabled = True
         Me.Com_Search_Timer.Interval = 2000
         '
-        'Einstellungsverwaltung_GroupBox
-        '
-        Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button3)
-        Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button2)
-        Me.Einstellungsverwaltung_GroupBox.Controls.Add(Me.Button1)
-        Me.Einstellungsverwaltung_GroupBox.Location = New System.Drawing.Point(775, 228)
-        Me.Einstellungsverwaltung_GroupBox.Name = "Einstellungsverwaltung_GroupBox"
-        Me.Einstellungsverwaltung_GroupBox.Size = New System.Drawing.Size(456, 75)
-        Me.Einstellungsverwaltung_GroupBox.TabIndex = 186
-        Me.Einstellungsverwaltung_GroupBox.TabStop = False
-        Me.Einstellungsverwaltung_GroupBox.Text = "Einstellungsverwaltung"
-        '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(306, 21)
+        Me.Button3.Location = New System.Drawing.Point(1124, 235)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(134, 41)
+        Me.Button3.Size = New System.Drawing.Size(107, 41)
         Me.Button3.TabIndex = 2
         Me.Button3.Text = "Reset"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Location = New System.Drawing.Point(158, 21)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(134, 41)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Einstellungen Laden"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(10, 21)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(134, 41)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Einstelllungen speichern"
-        Me.Button1.UseVisualStyleBackColor = True
         '
         'GroupBox6
         '
@@ -2924,6 +2917,166 @@ Partial Class Form1
         'Mesgeschwindigkeitsberechnung_Timer
         '
         Me.Mesgeschwindigkeitsberechnung_Timer.Interval = 250
+        '
+        'GroupBox15
+        '
+        Me.GroupBox15.Controls.Add(Me.GroupBox20)
+        Me.GroupBox15.Controls.Add(Me.TextBox4)
+        Me.GroupBox15.Controls.Add(Me.TextBox5)
+        Me.GroupBox15.Controls.Add(Me.TextBox6)
+        Me.GroupBox15.Controls.Add(Me.Label7)
+        Me.GroupBox15.Controls.Add(Me.Label8)
+        Me.GroupBox15.Controls.Add(Me.Label9)
+        Me.GroupBox15.Controls.Add(Me.TextBox3)
+        Me.GroupBox15.Controls.Add(Me.TextBox2)
+        Me.GroupBox15.Controls.Add(Me.TextBox1)
+        Me.GroupBox15.Controls.Add(Me.Save_Label)
+        Me.GroupBox15.Controls.Add(Me.Pause_Label)
+        Me.GroupBox15.Controls.Add(Me.Start_Label)
+        Me.GroupBox15.Location = New System.Drawing.Point(776, 232)
+        Me.GroupBox15.Name = "GroupBox15"
+        Me.GroupBox15.Size = New System.Drawing.Size(332, 106)
+        Me.GroupBox15.TabIndex = 187
+        Me.GroupBox15.TabStop = False
+        Me.GroupBox15.Text = "Hintergrundssteuerung"
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(136, 74)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
+        Me.TextBox4.Size = New System.Drawing.Size(46, 20)
+        Me.TextBox4.TabIndex = 11
+        Me.TextBox4.Text = "Esc"
+        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(136, 47)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(46, 20)
+        Me.TextBox5.TabIndex = 10
+        Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(136, 21)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(46, 20)
+        Me.TextBox6.TabIndex = 9
+        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(96, 77)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(27, 13)
+        Me.Label7.TabIndex = 8
+        Me.Label7.Text = "Exit:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(96, 50)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(32, 13)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "Start:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(96, 24)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(32, 13)
+        Me.Label9.TabIndex = 6
+        Me.Label9.Text = "Start:"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(52, 74)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(38, 20)
+        Me.TextBox3.TabIndex = 5
+        Me.TextBox3.Text = "F9"
+        Me.TextBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(52, 46)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(38, 20)
+        Me.TextBox2.TabIndex = 4
+        Me.TextBox2.Text = "Leert."
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(52, 20)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(38, 20)
+        Me.TextBox1.TabIndex = 3
+        Me.TextBox1.Text = "F9"
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Save_Label
+        '
+        Me.Save_Label.AutoSize = True
+        Me.Save_Label.Location = New System.Drawing.Point(6, 76)
+        Me.Save_Label.Name = "Save_Label"
+        Me.Save_Label.Size = New System.Drawing.Size(35, 13)
+        Me.Save_Label.TabIndex = 2
+        Me.Save_Label.Text = "Save:"
+        '
+        'Pause_Label
+        '
+        Me.Pause_Label.AutoSize = True
+        Me.Pause_Label.Location = New System.Drawing.Point(6, 49)
+        Me.Pause_Label.Name = "Pause_Label"
+        Me.Pause_Label.Size = New System.Drawing.Size(40, 13)
+        Me.Pause_Label.TabIndex = 1
+        Me.Pause_Label.Text = "Pause:"
+        '
+        'Start_Label
+        '
+        Me.Start_Label.AutoSize = True
+        Me.Start_Label.Location = New System.Drawing.Point(6, 23)
+        Me.Start_Label.Name = "Start_Label"
+        Me.Start_Label.Size = New System.Drawing.Size(32, 13)
+        Me.Start_Label.TabIndex = 0
+        Me.Start_Label.Text = "Start:"
+        '
+        'GroupBox20
+        '
+        Me.GroupBox20.Controls.Add(Me.TextBox9)
+        Me.GroupBox20.Controls.Add(Me.TextBox8)
+        Me.GroupBox20.Location = New System.Drawing.Point(198, 18)
+        Me.GroupBox20.Name = "GroupBox20"
+        Me.GroupBox20.Size = New System.Drawing.Size(124, 76)
+        Me.GroupBox20.TabIndex = 12
+        Me.GroupBox20.TabStop = False
+        Me.GroupBox20.Text = "Klappen"
+        '
+        'TextBox8
+        '
+        Me.TextBox8.Location = New System.Drawing.Point(6, 19)
+        Me.TextBox8.Name = "TextBox8"
+        Me.TextBox8.ReadOnly = True
+        Me.TextBox8.Size = New System.Drawing.Size(108, 20)
+        Me.TextBox8.TabIndex = 0
+        Me.TextBox8.Text = "●   1-8 + up / down"
+        Me.TextBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(6, 45)
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.ReadOnly = True
+        Me.TextBox9.Size = New System.Drawing.Size(108, 20)
+        Me.TextBox9.TabIndex = 1
+        Me.TextBox9.Text = "●   a-h + up / down"
+        Me.TextBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'C2_VerticalProgessBar
         '
@@ -3211,9 +3364,10 @@ Partial Class Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1274, 725)
+        Me.ClientSize = New System.Drawing.Size(1274, 771)
+        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.GroupBox15)
         Me.Controls.Add(Me.GroupBox6)
-        Me.Controls.Add(Me.Einstellungsverwaltung_GroupBox)
         Me.Controls.Add(Me.GroupBox14)
         Me.Controls.Add(Me.GroupBox18)
         Me.Controls.Add(Me.GroupBox7)
@@ -3290,13 +3444,16 @@ Partial Class Form1
         CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox14.ResumeLayout(False)
-        Me.Einstellungsverwaltung_GroupBox.ResumeLayout(False)
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GroupBox15.ResumeLayout(False)
+        Me.GroupBox15.PerformLayout()
+        Me.GroupBox20.ResumeLayout(False)
+        Me.GroupBox20.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3546,10 +3703,7 @@ Partial Class Form1
     Friend WithEvents Com_Search_Timer As System.Windows.Forms.Timer
     Friend WithEvents Messintervall_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents Einstellungsverwaltung_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents GroupBox6 As System.Windows.Forms.GroupBox
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
@@ -3581,5 +3735,21 @@ Partial Class Form1
     Friend WithEvents Mesgeschwindigkeitsberechnung_Timer As System.Windows.Forms.Timer
     Friend WithEvents MessungenProS_TexBox As System.Windows.Forms.TextBox
     Friend WithEvents Messintervall_TextBox As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents Save_Label As System.Windows.Forms.Label
+    Friend WithEvents Pause_Label As System.Windows.Forms.Label
+    Friend WithEvents Start_Label As System.Windows.Forms.Label
+    Friend WithEvents GroupBox20 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
 
 End Class

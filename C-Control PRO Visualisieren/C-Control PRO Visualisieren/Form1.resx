@@ -117,14 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>751, 28</value>
+  </metadata>
+  <data name="GroupBox1.ToolTip" xml:space="preserve">
+    <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
+Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
+Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
+Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller korrekt mit dem Computer
+verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
+  </data>
   <metadata name="SerialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="SaveMIDIDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 20</value>
-  </metadata>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>751, 28</value>
   </metadata>
   <data name="MIDI_SpecialMode.ToolTip" xml:space="preserve">
     <value>Es werden Ausschliesslich Noten und META Tag im MIDI File gespeichert. Die fehlende instrument und Zeitangabe führt jedoch dazu, dass das MIDI File zwingend nochmahls mit einem Musikprogramm bearbeitet werden musss!
@@ -145,6 +152,13 @@ durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
 
 Tool Tips werden normahlerweize nur duch den Titel nicht aber durch
 das Eingabefeld aufgeruffen um erfahrene Benutzer nicht zu verärgern.</value>
+  </data>
+  <data name="GroupBox7.ToolTip" xml:space="preserve">
+    <value>META Daten sind Optionale Informationen, die dem MIDI File beigefügt werden.
+Diese Informationen sind in einigen Programmen und für jeden, der das MIDI File
+besitzt anschau- und manipulierbar.
+Die META Daten bleiben beim beenden der Programmes immer erhalten und
+können daher mit einmahliger eingaben mehrmals verwendet werden.</value>
   </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 24</value>

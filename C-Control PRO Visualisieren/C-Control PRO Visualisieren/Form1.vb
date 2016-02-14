@@ -1023,6 +1023,13 @@ Dim H1_Klappe_alt As SByte
 
 #Region " Klappen"
 
+#Region " Key Events"
+    'Private Sub C_Key(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.ValueChanged
+#End Region
+
+
+#Region " Klappen verändert"
+
     Private Sub C1_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.ValueChanged
         C2_Klappe.Value = C1_Klappe.Value
 
@@ -1134,6 +1141,8 @@ Dim H1_Klappe_alt As SByte
         H1_Klappe_alt = H1_Klappe.Value
 
     End Sub
+
+#End Region
 
 #End Region
 
