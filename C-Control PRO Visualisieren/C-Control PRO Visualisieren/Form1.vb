@@ -299,7 +299,7 @@ Dim H1_Klappe_alt As SByte
                 'End If
 
 
-                'If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
+                If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
 
             Catch
             End Try
@@ -437,9 +437,6 @@ Dim H1_Klappe_alt As SByte
         If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Text(4, cboInstruments.SelectedText)
         If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Add_Instrument(cboInstruments.SelectedIndex)
 
-        'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(50), CByte(100))
-        'Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOff, CByte(50), 0)
-
         If MIDI_NormalMode.Checked = True Then Tackt.Enabled = True
         Messung_gestartet = True
     End Sub
@@ -471,8 +468,15 @@ Dim H1_Klappe_alt As SByte
 
         Tackt_Ausgabefenster.Text = ("1  1")
 
+        Dim MIDI_Dateinamen As String
+        If META_Dateinamen_Input.Text = "" Then
+            MIDI_Dateinamen = "Untitled.mid"
+        Else
+            MIDI_Dateinamen = META_Dateinamen_Input.Text & ".mid"
+        End If
+
         Me.SaveMIDIDialog.DefaultExt = "MID"
-        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, "Untitled.mid")
+        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, MIDI_Dateinamen)
         Me.SaveMIDIDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
         Me.SaveMIDIDialog.Filter = "VB MIDI files (*.MID)|*.MID"
 
@@ -491,26 +495,21 @@ Dim H1_Klappe_alt As SByte
 
     Private Sub Tackt_Tick() Handles Tackt.Tick
 
-        'MessageBox.Show(Messintervall.Enabled)
-
         Dim Note_gespielt As Boolean = False
 
         For i = 16 To 77 Step 1
 
             If Note_Play(i) = True Or Button_Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    'If DirectPlay_ON.Checked = True Then m.PlayMIDINote(i, 100, 0.03)
-                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))        ' Notenlaege(50)
+                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))
                 End If
 
                 Notenlaege(i) += 0.125
                 Note_gespielt = True
-                'Notenlaege(0) = 0
 
             Else
 
                 If Notenlaege(i) > 0 Then
-                    'm.STOPMIDINote(i)
                     Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOff, CByte(i), 0)
                     Notenlaege(i) = 0
                 End If
@@ -537,10 +536,6 @@ Dim H1_Klappe_alt As SByte
             Tackt_32stel = 0
         End If
 
-
-        'MessageBox.Show(Tackt_Achtel)
-
-
         If Not Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
                 m.CurrentInstrument = "Woodblock"
@@ -549,10 +544,7 @@ Dim H1_Klappe_alt As SByte
             End If
         End If
 
-
-
         Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32)
-
         Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) + 1) 'Math.Round
 
     End Sub
@@ -570,10 +562,8 @@ Dim H1_Klappe_alt As SByte
 
     Private Sub Diagramm_Aktuallisieren() ' Handles Tackt.Tick
 
-        Dim rnd As New Random
-
         For i = 0 To 34 Step 1
-            Noten_VerticalProgessBar(i).Value = ADC(i) 'rnd.Next(12, 255) 'ADC(i)
+            Noten_VerticalProgessBar(i).Value = ADC(i)
             Noten_Wert(i).Text = ADC(i)
         Next
 
@@ -1359,7 +1349,6 @@ Dim H1_Klappe_alt As SByte
     'Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
     'Diagramm_Aktuallisieren()
     'End Sub
-
 
 
 
