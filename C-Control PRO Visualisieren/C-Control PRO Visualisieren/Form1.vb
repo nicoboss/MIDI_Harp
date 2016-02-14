@@ -36,7 +36,8 @@ Public Class Form1
     Dim Metronom As Byte
     Dim Metronom_alt As Byte
 
-    Dim Messung_gestartet As Boolean
+    Dim Messung_gestartet As Boolean = False
+    Dim Messung_Pause As Boolean = False
 
     Dim AnzMessungen_alt As ULong
     Dim Messintervall_Zahl As UShort
@@ -84,9 +85,10 @@ Dim H1_Klappe_alt As SByte
 
 
     Dim Key_Alt As Byte
-    Dim Shortcut_Start As Byte = 0
-    Dim Shortcut_Save As Byte = 0
-    Dim Shortcut_Pause As Byte = 0
+    Dim Shortcut_Start As Byte = 120
+    Dim Shortcut_Pause As Byte = 121
+    Dim Shortcut_Save As Byte = 120
+
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -433,17 +435,19 @@ Dim H1_Klappe_alt As SByte
         If Einstellungen_GroupBox.Enabled = False Then
             Tackt.Enabled = False
             Messung_gestartet = False
+            Messung_Pause = True
             Einstellungen_GroupBox.Enabled = True
             MIDI_Pause_Button.Text = "Aufnahme fortsetzen"
         Else
             Tackt.Enabled = True
+            Messung_Pause = False
             Messung_gestartet = True
             Einstellungen_GroupBox.Enabled = False
             MIDI_Pause_Button.Text = "Aufnahme pausieren"
         End If
     End Sub
 
-    Private Sub Midi_Save() Handles MIDI_Save_Button.Click
+    Private Sub MIDI_Save() Handles MIDI_Save_Button.Click
 
         MIDI_Pause_Button.Enabled = False
         MIDI_Save_Button.Enabled = False
@@ -1361,7 +1365,7 @@ Dim H1_Klappe_alt As SByte
     ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
     Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
         'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
-        If e.KeyCode = Keys.F9 Then MessageBox.Show("")
+        'If e.KeyCode = Keys.F9 Then MessageBox.Show("")
 
         If e.KeyData = (Keys.Control Or Keys.F) Then
             MessageBox.Show("")
@@ -1381,12 +1385,13 @@ Dim H1_Klappe_alt As SByte
             If key = -32767 Then
                 META_Bemerkung_Input.Text &= i & ", "
                 If Key_Alt = 162 And i = 49 Then
-                    MessageBox.Show("")
+                    MessageBox.Show(Messung_gestartet)
                 End If
 
                 If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start()
-                If i = Shortcut_Save And Messung_gestartet = False Then Midi_Save()
-                If i = Shortcut_Pause And Messung_gestartet = False Then MIDI_Pause()
+                If i = Shortcut_Pause And Messung_gestartet = True Then MIDI_Pause() 'Or Messung_Pause = True
+                If i = Shortcut_Save And Messung_gestartet = True Then MessageBox.Show(Messung_gestartet) : MIDI_Save()
+
                 Key_Alt = i
             End If
         Next i
