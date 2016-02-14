@@ -2397,7 +2397,7 @@ Partial Class Form1
         'META_Copyright_Input
         '
         Me.META_Copyright_Input.Location = New System.Drawing.Point(9, 19)
-        Me.META_Copyright_Input.MaxLength = 255
+        Me.META_Copyright_Input.MaxLength = 127
         Me.META_Copyright_Input.Multiline = True
         Me.META_Copyright_Input.Name = "META_Copyright_Input"
         Me.META_Copyright_Input.Size = New System.Drawing.Size(142, 83)
@@ -2465,6 +2465,7 @@ Partial Class Form1
         'META_Autor_Input
         '
         Me.META_Autor_Input.Location = New System.Drawing.Point(12, 17)
+        Me.META_Autor_Input.MaxLength = 127
         Me.META_Autor_Input.Name = "META_Autor_Input"
         Me.META_Autor_Input.Size = New System.Drawing.Size(142, 20)
         Me.META_Autor_Input.TabIndex = 0
@@ -2482,6 +2483,7 @@ Partial Class Form1
         'META_Spurnamen_Input
         '
         Me.META_Spurnamen_Input.Location = New System.Drawing.Point(12, 24)
+        Me.META_Spurnamen_Input.MaxLength = 127
         Me.META_Spurnamen_Input.Name = "META_Spurnamen_Input"
         Me.META_Spurnamen_Input.Size = New System.Drawing.Size(142, 20)
         Me.META_Spurnamen_Input.TabIndex = 0
@@ -2499,7 +2501,7 @@ Partial Class Form1
         'META_Bemerkung_Input
         '
         Me.META_Bemerkung_Input.Location = New System.Drawing.Point(10, 26)
-        Me.META_Bemerkung_Input.MaxLength = 255
+        Me.META_Bemerkung_Input.MaxLength = 127
         Me.META_Bemerkung_Input.Multiline = True
         Me.META_Bemerkung_Input.Name = "META_Bemerkung_Input"
         Me.META_Bemerkung_Input.Size = New System.Drawing.Size(142, 88)
@@ -2518,6 +2520,7 @@ Partial Class Form1
         'META_Dateinamen_Input
         '
         Me.META_Dateinamen_Input.Location = New System.Drawing.Point(12, 17)
+        Me.META_Dateinamen_Input.MaxLength = 127
         Me.META_Dateinamen_Input.Name = "META_Dateinamen_Input"
         Me.META_Dateinamen_Input.Size = New System.Drawing.Size(142, 20)
         Me.META_Dateinamen_Input.TabIndex = 0

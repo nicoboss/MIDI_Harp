@@ -8,7 +8,6 @@ Imports System.Text
 
 Public Class Form1
 
-
     Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
 
     Public ports As String() = GetPortNames()
@@ -72,13 +71,13 @@ Public Class Form1
                   {"c", "d", "es", "f", "g", "as", "b", "c"}, _
                   {"cis", "dis", "e", "fis", "gis", "a", "h", "cis"}}
 
-Dim C1_Klappe_alt As SByte
-Dim D1_Klappe_alt As SByte
-Dim E1_Klappe_alt As SByte
-Dim F1_Klappe_alt As SByte
-Dim G1_Klappe_alt As SByte
-Dim A1_Klappe_alt As SByte
-Dim H1_Klappe_alt As SByte
+    Dim C1_Klappe_alt As SByte
+    Dim D1_Klappe_alt As SByte
+    Dim E1_Klappe_alt As SByte
+    Dim F1_Klappe_alt As SByte
+    Dim G1_Klappe_alt As SByte
+    Dim A1_Klappe_alt As SByte
+    Dim H1_Klappe_alt As SByte
     Dim C2_Klappe_alt As SByte
 
     Dim TTT
@@ -88,10 +87,10 @@ Dim H1_Klappe_alt As SByte
     Dim Shortcut_Start As Byte = 120
     Dim Shortcut_Pause As Byte = 121
     Dim Shortcut_Save As Byte = 120
+    Dim Taste_gedrueckt As Byte
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
 
         Noten_VerticalProgessBar = { _
             C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar, _
@@ -1363,7 +1362,7 @@ Dim H1_Klappe_alt As SByte
 
 
     ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
-    Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles MyBase.KeyDown
+    Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Button
         'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
         'If e.KeyCode = Keys.F9 Then MessageBox.Show("")
 
@@ -1382,15 +1381,18 @@ Dim H1_Klappe_alt As SByte
         For i = 1 To 255
             key = 0
             key = GetAsyncKeyState(i)
-            If key = -32767 Then
-                META_Bemerkung_Input.Text &= i & ", "
-                If Key_Alt = 162 And i = 49 Then
-                    MessageBox.Show(Messung_gestartet)
-                End If
+            If key = -32767 And Taste_gedrueckt <> i Then
 
-                If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start()
-                If i = Shortcut_Pause And Messung_gestartet = True Then MIDI_Pause() 'Or Messung_Pause = True
-                If i = Shortcut_Save And Messung_gestartet = True Then MessageBox.Show(Messung_gestartet) : MIDI_Save()
+                Taste_gedrueckt = i
+
+                'META_Bemerkung_Input.Text &= i & ", "
+                'If Key_Alt = 162 And i = 49 Then
+                'MessageBox.Show(Messung_gestartet)
+                'End If
+
+                If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start() : Exit Sub
+                If i = Shortcut_Pause And Messung_gestartet = True Then MIDI_Pause() : Exit Sub 'Or Messung_Pause = True
+                If i = Shortcut_Save And Messung_gestartet = True Then MIDI_Save() : Exit Sub
 
                 Key_Alt = i
             End If
