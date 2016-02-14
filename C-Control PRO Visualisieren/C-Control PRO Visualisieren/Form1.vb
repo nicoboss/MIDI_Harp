@@ -89,6 +89,12 @@ Public Class Form1
     Dim Shortcut_Save As Byte = 120
     Dim Taste_gedrueckt As Byte
 
+    Dim Tastenkombination_FirstKey As Boolean
+    Dim Tastenkombination_KeyAlt As Byte
+    Dim Start_Tastenkombination_Key As New List(Of Byte)
+    Dim Pause_Tastenkombination_Key As New List(Of Byte)
+    Dim Save_Tastenkombination_Key As New List(Of Byte)
+
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -1362,15 +1368,15 @@ Public Class Form1
 
 
     ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
-    Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Button
-        'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
-        'If e.KeyCode = Keys.F9 Then MessageBox.Show("")
+    'Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles 
+    'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
+    'If e.KeyCode = Keys.F9 Then MessageBox.Show("")
 
-        If e.KeyData = (Keys.Control Or Keys.F) Then
-            MessageBox.Show("")
-        End If
+    'If e.KeyData = (Keys.Control Or Keys.F) Then
+    'MessageBox.Show("")
+    'End If
 
-    End Sub
+    'End Sub
 
 
 
@@ -1400,6 +1406,86 @@ Public Class Form1
     End Sub
 
 
+
+
+
+    Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, _
+                                                                                                                    Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, _
+                                                                                                                    Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click
+        Tastenkombination_FirstKey = True
+    End Sub
+
+
+    Private Sub Tastenkombination_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyDown, _
+                                                                                                                                Pause_Tastenkombination.KeyDown, _
+                                                                                                                                Save_Tastenkombination.KeyDown
+
+        Dim Tastenkombination_Key As Object = Nothing
+
+        If Start_Tastenkombination.Focused = True Then Tastenkombination_Key = Start_Tastenkombination_Key
+        If Pause_Tastenkombination.Focused = True Then Tastenkombination_Key = Pause_Tastenkombination_Key
+        If Save_Tastenkombination.Focused = True Then Tastenkombination_Key = Save_Tastenkombination_Key
+
+        If e.KeyCode <> Tastenkombination_KeyAlt And Tastenkombination_Key.Count < 3 Or Tastenkombination_FirstKey = True Then
+            If Tastenkombination_FirstKey = True Then
+                Tastenkombination_Key.Clear()
+                sender.Text = ""
+                Tastenkombination_FirstKey = False
+            Else
+                sender.Text += " + "
+            End If
+
+
+            With sender
+                Select Case e.KeyCode
+                    Case 16 : .Text += "Shift"
+                    Case 17 : .Text += "Ctrl"
+                    Case 18 : .Text += "Alt"
+                    Case 112 : .Text += "F1"
+                    Case 113 : .Text += "F2"
+                    Case 114 : .Text += "F3"
+                    Case 115 : .Text += "F4"
+                    Case 116 : .Text += "F5"
+                    Case 117 : .Text += "F6"
+                    Case 118 : .Text += "F7"
+                    Case 119 : .Text += "F8"
+                    Case 120 : .Text += "F9"
+                    Case 120 : .Text += "F10"
+                    Case 120 : .Text += "F11"
+                    Case 120 : .Text += "F12"
+
+                    Case 32 : .Text += "Leer"
+
+                    Case Else : .Text += Chr(e.KeyCode)
+                End Select
+            End With
+
+            'META_Bemerkung_Input.Text = e.KeyCode
+
+        End If
+
+        Tastenkombination_Key.Add(e.KeyCode)
+        Tastenkombination_KeyAlt = e.KeyCode
+    End Sub
+
+
+    Private Sub Tastenkombination_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyUp, _
+                                                                                                                                Pause_Tastenkombination.KeyUp, _
+                                                                                                                                Save_Tastenkombination.KeyUp
+        Tastenkombination_KeyAlt = 0
+    End Sub
+
+
+    Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
+        If Pause_Tastenkombination_Key.Equals(Start_Tastenkombination_Key) Then
+            MessageBox.Show("Error")
+        Else
+            MessageBox.Show(Start_Tastenkombination_Key.ToString(1))
+            MessageBox.Show(Pause_Tastenkombination_Key.ToString(1))
+        End If
+
+
+    End Sub
 
 End Class
 
