@@ -230,15 +230,11 @@ Dim H1_Klappe_alt As SByte
                 Control.CheckForIllegalCrossThreadCalls = False
 
 
-                'SerialPort1.Write(1)
-
-
                 For i = 0 To 35
                     ADC_Read(i) = SerialPort1.ReadByte
                     'MessageBox.Show(ADC_Read(i))
                 Next
 
-                'TextBox2.Text = SerialPort1.ReadByte
                 Serial_Read = SerialPort1.ReadByte
                 If Not Serial_Read = 250 Then
                     'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
@@ -309,12 +305,9 @@ Dim H1_Klappe_alt As SByte
                 Exit Sub
             End If
 
-
         Loop
 
     End Sub
-
-
 
 
     Private Sub ComboBox_Comport_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Comport.SelectedIndexChanged
@@ -326,17 +319,6 @@ Dim H1_Klappe_alt As SByte
 
     End Sub
 
-    'Private Sub MTech010VerticalProgessBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MTech010VerticalProgessBar1.Click
-    'MessageBox.Show(MousePosition.X)
-    'LineShape1.X1 = MousePosition.X
-    'LineShape1.Y1 = MousePosition.Y
-
-    'LineShape1.X2 = MousePosition.X + 1000
-    'LineShape1.Y2 = MousePosition.Y + 1000
-    'LineShape1.BringToFront()
-    'LineShape1.
-    'LineShape1.Refresh()
-    'End Sub
 
 #Region " MIDI "
 
