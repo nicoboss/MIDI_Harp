@@ -100,24 +100,6 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Start_Tastenkombination_Key.Add(200)
-        Pause_Tastenkombination_Key.Add(200)
-        Save_Tastenkombination_Key.Add(200)
-
-        Dim LT1 As New List(Of Byte)
-        LT1.Add(2)
-        LT1.Add(3)
-        LT1.Add(4)
-
-        Dim LT2 As New List(Of Byte)
-        LT2.Add(27)
-        LT2.Add(3)
-        LT2.Add(4)
-
-        MessageBox.Show(List_Comp(LT1, LT2))
-        MessageBox.Show(LT1.SequenceEqual(LT2))
-
-
         Noten_VerticalProgessBar = { _
             C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar, _
             C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar, _
@@ -1405,38 +1387,12 @@ Public Class Form1
     Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
     Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
 
-        Dim KeyState_Press = True
-
-        For i = 1 To 255
-            key = 0
-            key = GetAsyncKeyState(i)
-            If key = -32767 Then
-                If Taste_gedrueckt <> i Then
-
-                    Taste_gedrueckt = i
-
-                    '---META_Bemerkung_Input.Text &= i & ", "
-                    'If Key_Alt = 162 And i = 49 Then
-                    'MessageBox.Show(Messung_gestartet)
-                    'End If
-
-                    If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MIDI_Start()
-                    If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MIDI_Pause()
-                    If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MIDI_Save()
 
 
-                    If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start() : Exit Sub
-                    If i = Shortcut_Pause And Messung_gestartet = True Then MIDI_Pause() : Exit Sub 'Or Messung_Pause = True
-                    If i = Shortcut_Save And Messung_gestartet = True Then MIDI_Save() : Exit Sub
+        If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MIDI_Start()
+        If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MIDI_Pause()
+        If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MIDI_Save()
 
-                    Key_Alt = i
-                Else
-                    KeyState_Press = False
-                End If
-            End If
-        Next
-
-        If KeyState_Press = False Then Taste_gedrueckt = 0
 
     End Sub
 
@@ -1445,13 +1401,15 @@ Public Class Form1
     Function Tastenkonbination_Press(ByVal Tastenkombination As List(Of Byte))
         'MessageBox.Show(Tastenkombination.Count)
         If Tastenkombination.Count = 0 Then Return False
-        For Each KeyNr In Tastenkombination
-            META_Bemerkung_Input.Text &= KeyNr & ", "
-            If Not GetAsyncKeyState(KeyNr) = -32767 Then Return False
-            MessageBox.Show(KeyNr)
+
+        For i = 0 To Tastenkombination.Count - 1
+            'META_Bemerkung_Input.Text &= KeyNr & ", "
+            'MessageBox.Show(KeyNr)
+            If Not GetAsyncKeyState(Tastenkombination(i)) = -32767 Then Return False
         Next
         Return True
     End Function
+
 
 
 
@@ -1503,7 +1461,6 @@ Public Class Form1
             End With
 
             'META_Bemerkung_Input.Text = e.KeyCode
-
             Tastenkombination_Key.Add(e.KeyCode)
 
         End If
@@ -1512,17 +1469,16 @@ Public Class Form1
     End Sub
 
 
-
     Private Sub Tastenkombination_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyUp, _
                                                                                                                                 Pause_Tastenkombination.KeyUp, _
                                                                                                                                 Save_Tastenkombination.KeyUp
-
         Tastenkombination_KeyAlt = 0
     End Sub
 
 
+    'Es wurde hier Absichtlich den Buttontext verwendet, da ich dass andere nicht schafte! So wie es jetzt ist, ist supper und warscheinlich erst noch schneller!
     Private Sub Start_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.LostFocus
-        If List_Comp(Tastenkombination_Key, Pause_Tastenkombination_Key) = True Then
+        If Start_Tastenkombination.Text = Pause_Tastenkombination.Text Then
             MessageBox.Show("Die Startkonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Start_Tastenkombination.Text = Tastenkombination_Alt
         Else
@@ -1531,7 +1487,8 @@ Public Class Form1
     End Sub
 
     Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
-        If List_Comp(Tastenkombination_Key, Start_Tastenkombination_Key) = True Or List_Comp(Tastenkombination_Key, Save_Tastenkombination_Key) = True Then
+        'MessageBox.Show(Start_Tastenkombination_Key.Count)
+        If Pause_Tastenkombination.Text = Start_Tastenkombination.Text Or Pause_Tastenkombination.Text = Save_Tastenkombination.Text Then
             MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Pause_Tastenkombination.Text = Tastenkombination_Alt
         Else
@@ -1540,7 +1497,7 @@ Public Class Form1
     End Sub
 
     Private Sub Save_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Tastenkombination.LostFocus
-        If List_Comp(Tastenkombination_Key, Pause_Tastenkombination_Key) = True Then
+        If Save_Tastenkombination.Text = Pause_Tastenkombination.Text Then
             MessageBox.Show("Die Savekonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Save_Tastenkombination.Text = Tastenkombination_Alt
         Else
@@ -1549,26 +1506,6 @@ Public Class Form1
     End Sub
 
 
-    Function List_Comp(ByVal L1 As List(Of Byte), ByVal L2 As List(Of Byte))
-
-        'If L1.Count = 0 Or L2.Count = 0 Then Return False
-
-        MessageBox.Show(L2.Count)
-
-        Dim Key_Items_Count As Byte
-        If L1.Count < L2.Count Then
-            Key_Items_Count = L1.Count
-        Else
-            Key_Items_Count = L2.Count
-        End If
-
-
-        For i = 0 To Key_Items_Count - 1 Step 1
-            If Not L1(i) = L2(i) Then Return False
-        Next
-
-        Return True
-    End Function
 End Class
 
 
