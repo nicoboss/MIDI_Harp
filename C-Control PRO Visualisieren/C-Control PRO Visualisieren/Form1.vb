@@ -100,6 +100,24 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
+        Start_Tastenkombination_Key.Add(200)
+        Pause_Tastenkombination_Key.Add(200)
+        Save_Tastenkombination_Key.Add(200)
+
+        Dim LT1 As New List(Of Byte)
+        LT1.Add(2)
+        LT1.Add(3)
+        LT1.Add(4)
+
+        Dim LT2 As New List(Of Byte)
+        LT2.Add(27)
+        LT2.Add(3)
+        LT2.Add(4)
+
+        MessageBox.Show(List_Comp(LT1, LT2))
+        MessageBox.Show(LT1.SequenceEqual(LT2))
+
+
         Noten_VerticalProgessBar = { _
             C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar, _
             C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar, _
@@ -1498,6 +1516,7 @@ Public Class Form1
     Private Sub Tastenkombination_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyUp, _
                                                                                                                                 Pause_Tastenkombination.KeyUp, _
                                                                                                                                 Save_Tastenkombination.KeyUp
+
         Tastenkombination_KeyAlt = 0
     End Sub
 
@@ -1532,7 +1551,7 @@ Public Class Form1
 
     Function List_Comp(ByVal L1 As List(Of Byte), ByVal L2 As List(Of Byte))
 
-        If L1.Count = 0 Or L2.Count = 0 Then Return False
+        'If L1.Count = 0 Or L2.Count = 0 Then Return False
 
         MessageBox.Show(L2.Count)
 
@@ -1550,7 +1569,6 @@ Public Class Form1
 
         Return True
     End Function
-
 End Class
 
 
