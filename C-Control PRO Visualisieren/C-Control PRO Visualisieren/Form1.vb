@@ -618,21 +618,6 @@ Public Class Form1
 #End Region
 
 
-    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
-          System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
-        If Tackt.Enabled Then
-            Dim result As DialogResult = MessageBox.Show("Wollen Sie das Programm wirklich beenden?" _
-            & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?", _
-            MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-            If result = DialogResult.Yes Then
-                e.Cancel = False
-            Else
-                e.Cancel = True
-            End If
-        End If
-    End Sub
-
 
 #Region "Button Note"
 
@@ -1253,6 +1238,25 @@ Public Class Form1
             A6_Grenzwert.Text = .A6_Grenzwert_Save
             H6_Grenzwert.Text = .H6_Grenzwert_Save
 
+            ' Tastenkonbinationen
+            'MessageBox.Show(.Start_Tastenkombination_Save)
+            Start_Tastenkombination.Text = .Start_Tastenkombination_Save
+            If Not .Start_Tastenkombination_Key1_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key1_Save)
+            If Not .Start_Tastenkombination_Key2_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key2_Save)
+            If Not .Start_Tastenkombination_Key3_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key3_Save)
+
+            Pause_Tastenkombination.Text = .Pause_Tastenkombination_Save
+            If Not .Pause_Tastenkombination_Key1_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key1_Save)
+            If Not .Pause_Tastenkombination_Key2_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key2_Save)
+            If Not .Pause_Tastenkombination_Key3_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key3_Save)
+
+
+            Save_Tastenkombination.Text = .Save_Tastenkombination_Save
+            If Not .Save_Tastenkombination_Key1_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key1_Save)
+            If Not .Save_Tastenkombination_Key2_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key2_Save)
+            If Not .Save_Tastenkombination_Key3_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key3_Save)
+
+
         End With
     End Sub
 
@@ -1342,6 +1346,22 @@ Public Class Form1
             .A6_Grenzwert_Save = A6_Grenzwert.Text
             .H6_Grenzwert_Save = H6_Grenzwert.Text
 
+            ' Tastenkonbinationen
+            .Start_Tastenkombination_Save = Start_Tastenkombination.Text
+            If Start_Tastenkombination_Key.Count > 0 Then .Start_Tastenkombination_Key1_Save = Start_Tastenkombination_Key(0) Else .Start_Tastenkombination_Key1_Save = 0
+            If Start_Tastenkombination_Key.Count > 1 Then .Start_Tastenkombination_Key2_Save = Start_Tastenkombination_Key(1) Else .Start_Tastenkombination_Key2_Save = 0
+            If Start_Tastenkombination_Key.Count > 2 Then .Start_Tastenkombination_Key3_Save = Start_Tastenkombination_Key(2) Else .Start_Tastenkombination_Key3_Save = 0
+
+            .Pause_Tastenkombination_Save = Pause_Tastenkombination.Text
+            If Pause_Tastenkombination_Key.Count > 0 Then .Pause_Tastenkombination_Key1_Save = Pause_Tastenkombination_Key(0) Else .Pause_Tastenkombination_Key1_Save = 0
+            If Pause_Tastenkombination_Key.Count > 1 Then .Pause_Tastenkombination_Key2_Save = Pause_Tastenkombination_Key(1) Else .Pause_Tastenkombination_Key2_Save = 0
+            If Pause_Tastenkombination_Key.Count > 2 Then .Pause_Tastenkombination_Key3_Save = Pause_Tastenkombination_Key(2) Else .Pause_Tastenkombination_Key3_Save = 0
+
+            .Save_Tastenkombination_Save = Save_Tastenkombination.Text
+            If Save_Tastenkombination_Key.Count > 0 Then .Save_Tastenkombination_Key1_Save = Save_Tastenkombination_Key(0) Else .Save_Tastenkombination_Key1_Save = 0
+            If Save_Tastenkombination_Key.Count > 1 Then .Save_Tastenkombination_Key2_Save = Save_Tastenkombination_Key(1) Else .Save_Tastenkombination_Key2_Save = 0
+            If Save_Tastenkombination_Key.Count > 2 Then .Save_Tastenkombination_Key3_Save = Save_Tastenkombination_Key(2) Else .Save_Tastenkombination_Key3_Save = 0
+
 
             ' Einstellungen speichern
             .Save()
@@ -1367,7 +1387,7 @@ Public Class Form1
     End Sub
 
 
-
+#Region "Tastenkonbinationen"
 
     ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
     'Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles 
@@ -1379,8 +1399,6 @@ Public Class Form1
     'End If
 
     'End Sub
-
-
 
 
     Dim key As Integer
@@ -1509,6 +1527,25 @@ Public Class Form1
                 Save_Tastenkombination.Text = Tastenkombination_Alt
             Else
                 Save_Tastenkombination_Key = Tastenkombination_Key
+            End If
+        End If
+    End Sub
+
+#End Region
+
+
+
+    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
+          System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+        If Tackt.Enabled Then
+            Dim result As DialogResult = MessageBox.Show("Wollen Sie das Programm wirklich beenden?" _
+            & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?", _
+            MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If result = DialogResult.Yes Then
+                e.Cancel = False
+            Else
+                e.Cancel = True
             End If
         End If
     End Sub

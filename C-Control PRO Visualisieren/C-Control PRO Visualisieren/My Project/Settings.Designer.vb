@@ -783,12 +783,144 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
-        Public Property Setting() As String
+        Public Property Start_Tastenkombination_Save() As String
             Get
-                Return CType(Me("Setting"),String)
+                Return CType(Me("Start_Tastenkombination_Save"),String)
             End Get
             Set
-                Me("Setting") = value
+                Me("Start_Tastenkombination_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Start_Tastenkombination_Key1_Save() As Byte
+            Get
+                Return CType(Me("Start_Tastenkombination_Key1_Save"),Byte)
+            End Get
+            Set
+                Me("Start_Tastenkombination_Key1_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Start_Tastenkombination_Key2_Save() As Byte
+            Get
+                Return CType(Me("Start_Tastenkombination_Key2_Save"),Byte)
+            End Get
+            Set
+                Me("Start_Tastenkombination_Key2_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Start_Tastenkombination_Key3_Save() As Byte
+            Get
+                Return CType(Me("Start_Tastenkombination_Key3_Save"),Byte)
+            End Get
+            Set
+                Me("Start_Tastenkombination_Key3_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Pause_Tastenkombination_Save() As String
+            Get
+                Return CType(Me("Pause_Tastenkombination_Save"),String)
+            End Get
+            Set
+                Me("Pause_Tastenkombination_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Pause_Tastenkombination_Key1_Save() As Byte
+            Get
+                Return CType(Me("Pause_Tastenkombination_Key1_Save"),Byte)
+            End Get
+            Set
+                Me("Pause_Tastenkombination_Key1_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Pause_Tastenkombination_Key2_Save() As Byte
+            Get
+                Return CType(Me("Pause_Tastenkombination_Key2_Save"),Byte)
+            End Get
+            Set
+                Me("Pause_Tastenkombination_Key2_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Pause_Tastenkombination_Key3_Save() As Byte
+            Get
+                Return CType(Me("Pause_Tastenkombination_Key3_Save"),Byte)
+            End Get
+            Set
+                Me("Pause_Tastenkombination_Key3_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Save_Tastenkombination_Save() As String
+            Get
+                Return CType(Me("Save_Tastenkombination_Save"),String)
+            End Get
+            Set
+                Me("Save_Tastenkombination_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Save_Tastenkombination_Key1_Save() As Byte
+            Get
+                Return CType(Me("Save_Tastenkombination_Key1_Save"),Byte)
+            End Get
+            Set
+                Me("Save_Tastenkombination_Key1_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Save_Tastenkombination_Key2_Save() As Byte
+            Get
+                Return CType(Me("Save_Tastenkombination_Key2_Save"),Byte)
+            End Get
+            Set
+                Me("Save_Tastenkombination_Key2_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Save_Tastenkombination_Key3_Save() As Byte
+            Get
+                Return CType(Me("Save_Tastenkombination_Key3_Save"),Byte)
+            End Get
+            Set
+                Me("Save_Tastenkombination_Key3_Save") = value
             End Set
         End Property
     End Class

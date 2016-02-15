@@ -169,6 +169,18 @@ können daher mit einmahliger eingaben mehrmals verwendet werden.</value>
   <metadata name="Mesgeschwindigkeitsberechnung_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>485, 26</value>
   </metadata>
+  <data name="GroupBox15.ToolTip" xml:space="preserve">
+    <value>In diesem Bereich sind sind Alle Tastenkonbinationen des Programmes sichtbar und teilweise sogar editierbar.
+Tastenkonbination editieren:
+1. Mit Maus darauf klicken
+2. Zu deffinierende Tastenkonbination drücken
+3. Eingabe einen beliebigen Klick ins Programmfenster bestätigen.
+
+Um eine Zuweisung wieder zu entvernen drücken Sie stadt ihrer Tastenkonbination einfach die Leertaste.
+
+Wichtig: Tastenkonbinationen können auch im Hintergrund verwendet werden und z.B. dazu dienen gleichzeitig eine Audio sowie die MIDI Aufnahme zu starten.
+Aus Sicherheitsgründen von Virtuellen Maschienen ist es nicht möglich Tastenkonbinationen Abzufangen, falls das Virtuelle Betriebssystem nicht im Vordergrund ist.</value>
+  </data>
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1040, 14</value>
   </metadata>

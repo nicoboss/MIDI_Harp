@@ -2946,7 +2946,8 @@ Partial Class Form1
         Me.GroupBox15.Size = New System.Drawing.Size(456, 106)
         Me.GroupBox15.TabIndex = 187
         Me.GroupBox15.TabStop = False
-        Me.GroupBox15.Text = "Hintergrundssteuerung"
+        Me.GroupBox15.Text = "Tastenkonbinationen (Hintergrundssteuerung)"
+        Me.ToolTip1.SetToolTip(Me.GroupBox15, resources.GetString("GroupBox15.ToolTip"))
         '
         'TextBox2
         '
