@@ -1397,11 +1397,14 @@ Public Class Form1
 
                     Taste_gedrueckt = i
 
-                    META_Bemerkung_Input.Text &= i & ", "
+                    '---META_Bemerkung_Input.Text &= i & ", "
                     'If Key_Alt = 162 And i = 49 Then
                     'MessageBox.Show(Messung_gestartet)
                     'End If
 
+                    If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MIDI_Start()
+                    If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MIDI_Pause()
+                    If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MIDI_Save()
 
 
                     If i = Shortcut_Start And Messung_gestartet = False Then MIDI_Start() : Exit Sub
@@ -1419,6 +1422,18 @@ Public Class Form1
 
     End Sub
 
+
+
+    Function Tastenkonbination_Press(ByVal Tastenkombination As List(Of Byte))
+        'MessageBox.Show(Tastenkombination.Count)
+        If Tastenkombination.Count = 0 Then Return False
+        For Each KeyNr In Tastenkombination
+            META_Bemerkung_Input.Text &= KeyNr & ", "
+            If Not GetAsyncKeyState(KeyNr) = -32767 Then Return False
+            MessageBox.Show(KeyNr)
+        Next
+        Return True
+    End Function
 
 
 
@@ -1471,11 +1486,13 @@ Public Class Form1
 
             'META_Bemerkung_Input.Text = e.KeyCode
 
+            Tastenkombination_Key.Add(e.KeyCode)
+
         End If
 
-        Tastenkombination_Key.Add(e.KeyCode)
         Tastenkombination_KeyAlt = e.KeyCode
     End Sub
+
 
 
     Private Sub Tastenkombination_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyUp, _
@@ -1486,16 +1503,16 @@ Public Class Form1
 
 
     Private Sub Start_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.LostFocus
-        If Tastenkombination_Key.SequenceEqual(Pause_Tastenkombination_Key) Then
+        If List_Comp(Tastenkombination_Key, Pause_Tastenkombination_Key) = True Then
             MessageBox.Show("Die Startkonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Pause_Tastenkombination.Text = Tastenkombination_Alt
+            Start_Tastenkombination.Text = Tastenkombination_Alt
         Else
-            Pause_Tastenkombination_Key = Tastenkombination_Key
+            Start_Tastenkombination_Key = Tastenkombination_Key
         End If
     End Sub
 
     Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
-        If Tastenkombination_Key.SequenceEqual(Start_Tastenkombination_Key) Or Tastenkombination_Key.SequenceEqual(Save_Tastenkombination_Key) Then
+        If List_Comp(Tastenkombination_Key, Start_Tastenkombination_Key) = True Or List_Comp(Tastenkombination_Key, Save_Tastenkombination_Key) = True Then
             MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Pause_Tastenkombination.Text = Tastenkombination_Alt
         Else
@@ -1504,14 +1521,35 @@ Public Class Form1
     End Sub
 
     Private Sub Save_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Tastenkombination.LostFocus
-        If Tastenkombination_Key.SequenceEqual(Pause_Tastenkombination_Key) Then
+        If List_Comp(Tastenkombination_Key, Pause_Tastenkombination_Key) = True Then
             MessageBox.Show("Die Savekonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Pause_Tastenkombination.Text = Tastenkombination_Alt
+            Save_Tastenkombination.Text = Tastenkombination_Alt
         Else
-            Pause_Tastenkombination_Key = Tastenkombination_Key
+            Save_Tastenkombination_Key = Tastenkombination_Key
         End If
     End Sub
 
+
+    Function List_Comp(ByVal L1 As List(Of Byte), ByVal L2 As List(Of Byte))
+
+        If L1.Count = 0 Or L2.Count = 0 Then Return False
+
+        MessageBox.Show(L2.Count)
+
+        Dim Key_Items_Count As Byte
+        If L1.Count < L2.Count Then
+            Key_Items_Count = L1.Count
+        Else
+            Key_Items_Count = L2.Count
+        End If
+
+
+        For i = 0 To Key_Items_Count - 1 Step 1
+            If Not L1(i) = L2(i) Then Return False
+        Next
+
+        Return True
+    End Function
 
 End Class
 
