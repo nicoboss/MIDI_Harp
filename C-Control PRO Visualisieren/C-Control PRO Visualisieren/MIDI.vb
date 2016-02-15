@@ -150,9 +150,6 @@ Public Class MIDI
                 Tackt_Data_List.Add(Asc(Text(i)))
             Next
 
-
-
-
             'Tackt_Data_List(3) = CByte((Text.Length >> 8) And &HFF)
             'Tackt_Data_List(4) = CByte((Text.Length And &HFF))
 
@@ -161,7 +158,6 @@ Public Class MIDI
             Next
 
         End Sub
-
 
         Public Sub Add_Instrument(ByVal Instrument As Byte)
 

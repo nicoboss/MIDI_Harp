@@ -1402,11 +1402,14 @@ Public Class Form1
         'MessageBox.Show(Tastenkombination.Count)
         If Tastenkombination.Count = 0 Then Return False
 
-        For i = 0 To Tastenkombination.Count - 1
+        'Kein Plan, wieso die For schleife umgekehrt werden muss!
+        'Ansonsten sind alle Tastenkonbinationen spiegelverkehrt!
+        For i = Tastenkombination.Count - 1 To 0 Step -1
             'META_Bemerkung_Input.Text &= KeyNr & ", "
             'MessageBox.Show(KeyNr)
             If Not GetAsyncKeyState(Tastenkombination(i)) = -32767 Then Return False
         Next
+
         Return True
     End Function
 
@@ -1414,9 +1417,9 @@ Public Class Form1
 
 
 
-    Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, _
-                                                                                                                    Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, _
-                                                                                                                    Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click
+    Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, Start_Tastenkombination.KeyUp, _
+                                                                                                                Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, Pause_Tastenkombination.KeyUp, _
+                                                                                                                Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click, Save_Tastenkombination.KeyUp
         Tastenkombination_FirstKey = True
     End Sub
 
@@ -1430,6 +1433,7 @@ Public Class Form1
                 Tastenkombination_Alt = sender.Text
                 Tastenkombination_Key.Clear()
                 sender.Text = ""
+                Tastenkombination_KeyAlt = 0
                 Tastenkombination_FirstKey = False
             Else
                 sender.Text += " + "
@@ -1454,7 +1458,7 @@ Public Class Form1
                     Case 120 : .Text += "F11"
                     Case 120 : .Text += "F12"
 
-                    Case 32 : .Text += "Leer"
+                    Case 32 : .Text += "- Nicht belegt -"
 
                     Case Else : .Text += Chr(e.KeyCode)
                 End Select
@@ -1469,39 +1473,43 @@ Public Class Form1
     End Sub
 
 
-    Private Sub Tastenkombination_KeyUp(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyUp, _
-                                                                                                                                Pause_Tastenkombination.KeyUp, _
-                                                                                                                                Save_Tastenkombination.KeyUp
-        Tastenkombination_KeyAlt = 0
-    End Sub
-
-
     'Es wurde hier Absichtlich den Buttontext verwendet, da ich dass andere nicht schafte! So wie es jetzt ist, ist supper und warscheinlich erst noch schneller!
     Private Sub Start_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.LostFocus
-        If Start_Tastenkombination.Text = Pause_Tastenkombination.Text Then
-            MessageBox.Show("Die Startkonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Start_Tastenkombination.Text = Tastenkombination_Alt
+        If Start_Tastenkombination.Text = "- Nicht belegt -" Then
+            Start_Tastenkombination_Key.Clear()
         Else
-            Start_Tastenkombination_Key = Tastenkombination_Key
+            If Start_Tastenkombination.Text = Pause_Tastenkombination.Text Then
+                MessageBox.Show("Die Startkonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Start_Tastenkombination.Text = Tastenkombination_Alt
+            Else
+                Start_Tastenkombination_Key = Tastenkombination_Key
+            End If
         End If
     End Sub
 
     Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
-        'MessageBox.Show(Start_Tastenkombination_Key.Count)
-        If Pause_Tastenkombination.Text = Start_Tastenkombination.Text Or Pause_Tastenkombination.Text = Save_Tastenkombination.Text Then
-            MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Pause_Tastenkombination.Text = Tastenkombination_Alt
+        If Pause_Tastenkombination.Text = "- Nicht belegt -" Then
+            Pause_Tastenkombination_Key.Clear()
         Else
-            Pause_Tastenkombination_Key = Tastenkombination_Key
+            If Pause_Tastenkombination.Text = Start_Tastenkombination.Text Or Pause_Tastenkombination.Text = Save_Tastenkombination.Text Then
+                MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Pause_Tastenkombination.Text = Tastenkombination_Alt
+            Else
+                Pause_Tastenkombination_Key = Tastenkombination_Key
+            End If
         End If
     End Sub
 
     Private Sub Save_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Tastenkombination.LostFocus
-        If Save_Tastenkombination.Text = Pause_Tastenkombination.Text Then
-            MessageBox.Show("Die Savekonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Save_Tastenkombination.Text = Tastenkombination_Alt
+        If Save_Tastenkombination.Text = "- Nicht belegt -" Then
+            Save_Tastenkombination_Key.Clear()
         Else
-            Save_Tastenkombination_Key = Tastenkombination_Key
+            If Save_Tastenkombination.Text = Pause_Tastenkombination.Text Then
+                MessageBox.Show("Die Savekonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Save_Tastenkombination.Text = Tastenkombination_Alt
+            Else
+                Save_Tastenkombination_Key = Tastenkombination_Key
+            End If
         End If
     End Sub
 

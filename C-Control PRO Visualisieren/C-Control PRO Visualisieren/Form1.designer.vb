@@ -268,6 +268,8 @@ Partial Class Form1
         Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Save_Tastenkombination = New System.Windows.Forms.Button()
         Me.Pause_Tastenkombination = New System.Windows.Forms.Button()
         Me.Start_Tastenkombination = New System.Windows.Forms.Button()
@@ -276,6 +278,7 @@ Partial Class Form1
         Me.TextBox8 = New System.Windows.Forms.TextBox()
         Me.TextBox4 = New System.Windows.Forms.TextBox()
         Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -283,8 +286,6 @@ Partial Class Form1
         Me.Pause_Label = New System.Windows.Forms.Label()
         Me.Start_Label = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -320,7 +321,6 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -2948,6 +2948,26 @@ Partial Class Form1
         Me.GroupBox15.TabStop = False
         Me.GroupBox15.Text = "Hintergrundssteuerung"
         '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(254, 73)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(58, 20)
+        Me.TextBox2.TabIndex = 192
+        Me.TextBox2.Text = "Alt + F4"
+        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(281, 19)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(31, 20)
+        Me.TextBox1.TabIndex = 191
+        Me.TextBox1.Text = "+"
+        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Save_Tastenkombination
         '
         Me.Save_Tastenkombination.Location = New System.Drawing.Point(52, 72)
@@ -3026,6 +3046,16 @@ Partial Class Form1
         Me.TextBox5.Text = "Ctrl + M"
         Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(240, 19)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.ReadOnly = True
+        Me.TextBox6.Size = New System.Drawing.Size(31, 20)
+        Me.TextBox6.TabIndex = 9
+        Me.TextBox6.Text = "-"
+        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
@@ -3083,27 +3113,7 @@ Partial Class Form1
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 20
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(240, 19)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
-        Me.TextBox6.Size = New System.Drawing.Size(31, 20)
-        Me.TextBox6.TabIndex = 9
-        Me.TextBox6.Text = "-"
-        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(281, 19)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(31, 20)
-        Me.TextBox1.TabIndex = 191
-        Me.TextBox1.Text = "+"
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.Timer1.Interval = 10
         '
         'C2_VerticalProgessBar
         '
@@ -3386,16 +3396,6 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(254, 73)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(58, 20)
-        Me.TextBox2.TabIndex = 192
-        Me.TextBox2.Text = "Alt + F4"
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Form1
         '
