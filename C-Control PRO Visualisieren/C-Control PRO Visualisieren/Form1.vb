@@ -1615,6 +1615,7 @@ Public Class Form1
 
     Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Click
         'Alle selection aufheben.
+        Einstellungen_GroupBox.Focus()
     End Sub
 
 End Class

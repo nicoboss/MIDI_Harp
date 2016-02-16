@@ -320,6 +320,7 @@ Partial Class Form1
         Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.GroupBox21 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
@@ -3387,11 +3388,21 @@ Partial Class Form1
         Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(26, 97)
         Me.H6_VerticalProgessBar.TabIndex = 9
         '
+        'GroupBox21
+        '
+        Me.GroupBox21.Location = New System.Drawing.Point(479, 749)
+        Me.GroupBox21.Name = "GroupBox21"
+        Me.GroupBox21.Size = New System.Drawing.Size(434, 14)
+        Me.GroupBox21.TabIndex = 188
+        Me.GroupBox21.TabStop = False
+        Me.GroupBox21.Text = "GroupBox21"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1274, 771)
+        Me.Controls.Add(Me.GroupBox21)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox15)
         Me.Controls.Add(Me.GroupBox6)
@@ -3781,5 +3792,6 @@ Partial Class Form1
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents GroupBox21 As System.Windows.Forms.GroupBox
 
 End Class
