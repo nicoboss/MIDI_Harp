@@ -141,7 +141,7 @@ Um eine Zuweisung wieder zu entvernen drücken Sie stadt ihrer Tastenkonbination
 Wichtig: Tastenkonbinationen können auch im Hintergrund verwendet werden und z.B. dazu dienen gleichzeitig eine Audio sowie die MIDI Aufnahme zu starten.
 Aus Sicherheitsgründen von Virtuellen Maschienen ist es nicht möglich Tastenkonbinationen Abzufangen, falls das Virtuelle Betriebssystem nicht im Vordergrund ist.</value>
   </data>
-  <data name="GroupBox17.ToolTip" xml:space="preserve">
+  <data name="ToolTip_YesNo_GroupBox.ToolTip" xml:space="preserve">
     <value>Tooltip sichd Hilfefenster wie diese, die ihnen gewisse Funktionen
 durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
 

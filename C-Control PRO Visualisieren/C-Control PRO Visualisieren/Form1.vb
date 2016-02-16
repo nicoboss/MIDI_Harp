@@ -1419,7 +1419,25 @@ Public Class Form1
                 If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
             Case GetAsyncKeyState(109)  'Minus (Nomblock)
                 If hsbVolume.Value - 10 >= 0 Then hsbVolume.Value -= 10
+                'Case GetAsyncKeyState(77) And GetAsyncKeyState(17) 'Ctrl + M
+
         End Select
+
+        If Tastenkonbination_Press(New List(Of Byte) From {17, 65}) = True Then 'Ctrl + A
+            MIDI_Aufnahmemodus_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        End If
+
+        If Tastenkonbination_Press(New List(Of Byte) From {17, 77}) = True Then 'Ctrl + M
+            Metronom_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        End If
+
+        If Tastenkonbination_Press(New List(Of Byte) From {17, 80}) = True Then 'Ctrl + P
+            DirectPlay_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        End If
+
+        If Tastenkonbination_Press(New List(Of Byte) From {17, 84}) = True Then 'Ctrl + T
+            ToolTip_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        End If
 
 
         Select Case -32767
@@ -1453,8 +1471,8 @@ Public Class Form1
                     If G1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And G1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
                 Case GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
                     If A1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And A1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then A1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(67) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
-                    If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(72) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
+                    If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then H1_Klappe.Value += Tastenkonbination_Klappenverschiebung
                 Case GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
                     If C2_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C2_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C2_Klappe.Value += Tastenkonbination_Klappenverschiebung
             End Select
@@ -1477,8 +1495,6 @@ Public Class Form1
 
         Return True
     End Function
-
-
 
 
 
