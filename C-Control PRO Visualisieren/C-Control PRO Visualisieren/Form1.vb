@@ -1086,6 +1086,7 @@ Public Class Form1
         E6_Verschiebung.Text += E1_Klappe_Differenz
 
         E1_Klappe_alt = E1_Klappe.Value
+
     End Sub
 
     Private Sub F_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F1_Klappe.ValueChanged
@@ -1413,7 +1414,7 @@ Public Class Form1
 
         'If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
 
-        Select -32767
+        Select Case -32767
             Case GetAsyncKeyState(107)  'Pluss (Nomblock)
                 If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
             Case GetAsyncKeyState(109)  'Minus (Nomblock)
@@ -1613,7 +1614,7 @@ Public Class Form1
 
 
 
-    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Click
+    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel1.Click
         'Alle selection aufheben.
         Einstellungen_GroupBox.Focus()
     End Sub

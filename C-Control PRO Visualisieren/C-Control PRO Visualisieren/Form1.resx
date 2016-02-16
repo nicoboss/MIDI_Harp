@@ -117,35 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>751, 28</value>
-  </metadata>
-  <data name="GroupBox1.ToolTip" xml:space="preserve">
-    <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
-Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
-Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
-Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller korrekt mit dem Computer
-verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
-  </data>
   <metadata name="SerialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <metadata name="SaveMIDIDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>133, 20</value>
   </metadata>
-  <data name="MIDI_SpecialMode.ToolTip" xml:space="preserve">
-    <value>Es werden Ausschliesslich Noten und META Tag im MIDI File gespeichert. Die fehlende instrument und Zeitangabe führt jedoch dazu, dass das MIDI File zwingend nochmahls mit einem Musikprogramm bearbeitet werden musss!
-Sind Sie sich im gewissen, das diese art von MIDI Files nicht von allen Player und Programmen fehlerfrei unterstützt wird.
-Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige MIDI files erstellt.
-</value>
-  </data>
-  <data name="MIDI_NormalMode.ToolTip" xml:space="preserve">
-    <value>Diese Option erstellt ein ganz gewöhnliches MIDI File mit Zeitstempel, das danach von jedem beliebigen Player abgespielt werden kann.
-Tackt, Instrument und BPM Angaben sind bei dieser Aufnahmeart sehr zu empfehlen.</value>
-  </data>
   <metadata name="Tackt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>270, 21</value>
   </metadata>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>751, 28</value>
+  </metadata>
+  <data name="GroupBox15.ToolTip" xml:space="preserve">
+    <value>In diesem Bereich sind sind Alle Tastenkonbinationen des Programmes sichtbar und teilweise sogar editierbar.
+Tastenkonbination editieren:
+1. Mit Maus darauf klicken
+2. Zu deffinierende Tastenkonbination drücken
+3. Eingabe einen beliebigen Klick ins Programmfenster bestätigen.
+
+Um eine Zuweisung wieder zu entvernen drücken Sie stadt ihrer Tastenkonbination einfach die Leertaste.
+
+Wichtig: Tastenkonbinationen können auch im Hintergrund verwendet werden und z.B. dazu dienen gleichzeitig eine Audio sowie die MIDI Aufnahme zu starten.
+Aus Sicherheitsgründen von Virtuellen Maschienen ist es nicht möglich Tastenkonbinationen Abzufangen, falls das Virtuelle Betriebssystem nicht im Vordergrund ist.</value>
+  </data>
   <data name="GroupBox17.ToolTip" xml:space="preserve">
     <value>Tooltip sichd Hilfefenster wie diese, die ihnen gewisse Funktionen
 durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
@@ -160,17 +155,22 @@ besitzt anschau- und manipulierbar.
 Die META Daten bleiben beim beenden der Programmes immer erhalten und
 können daher mit einmahliger eingaben mehrmals verwendet werden.</value>
   </data>
-  <data name="GroupBox15.ToolTip" xml:space="preserve">
-    <value>In diesem Bereich sind sind Alle Tastenkonbinationen des Programmes sichtbar und teilweise sogar editierbar.
-Tastenkonbination editieren:
-1. Mit Maus darauf klicken
-2. Zu deffinierende Tastenkonbination drücken
-3. Eingabe einen beliebigen Klick ins Programmfenster bestätigen.
-
-Um eine Zuweisung wieder zu entvernen drücken Sie stadt ihrer Tastenkonbination einfach die Leertaste.
-
-Wichtig: Tastenkonbinationen können auch im Hintergrund verwendet werden und z.B. dazu dienen gleichzeitig eine Audio sowie die MIDI Aufnahme zu starten.
-Aus Sicherheitsgründen von Virtuellen Maschienen ist es nicht möglich Tastenkonbinationen Abzufangen, falls das Virtuelle Betriebssystem nicht im Vordergrund ist.</value>
+  <data name="MIDI_SpecialMode.ToolTip" xml:space="preserve">
+    <value>Es werden Ausschliesslich Noten und META Tag im MIDI File gespeichert. Die fehlende instrument und Zeitangabe führt jedoch dazu, dass das MIDI File zwingend nochmahls mit einem Musikprogramm bearbeitet werden musss!
+Sind Sie sich im gewissen, das diese art von MIDI Files nicht von allen Player und Programmen fehlerfrei unterstützt wird.
+Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige MIDI files erstellt.
+</value>
+  </data>
+  <data name="MIDI_NormalMode.ToolTip" xml:space="preserve">
+    <value>Diese Option erstellt ein ganz gewöhnliches MIDI File mit Zeitstempel, das danach von jedem beliebigen Player abgespielt werden kann.
+Tackt, Instrument und BPM Angaben sind bei dieser Aufnahmeart sehr zu empfehlen.</value>
+  </data>
+  <data name="GroupBox1.ToolTip" xml:space="preserve">
+    <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
+Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
+Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
+Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller korrekt mit dem Computer
+verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
   </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 24</value>
