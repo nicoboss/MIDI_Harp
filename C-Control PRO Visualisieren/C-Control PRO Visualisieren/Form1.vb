@@ -1438,6 +1438,7 @@ Public Class Form1
     Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, Start_Tastenkombination.KeyUp, _
                                                                                                                 Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, Pause_Tastenkombination.KeyUp, _
                                                                                                                 Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click, Save_Tastenkombination.KeyUp
+        Timer1.Enabled = False
         Tastenkombination_FirstKey = True
     End Sub
 
@@ -1476,7 +1477,9 @@ Public Class Form1
                     Case 120 : .Text += "F11"
                     Case 120 : .Text += "F12"
 
-                    Case 32 : .Text += "- Nicht belegt -"
+                    Case 32
+                        If .Text = "" Then .Text = "- Nicht belegt -" Else .Text += "Leert."
+
 
                     Case Else : .Text += Chr(e.KeyCode)
                 End Select
@@ -1503,6 +1506,7 @@ Public Class Form1
                 Start_Tastenkombination_Key = Tastenkombination_Key
             End If
         End If
+        Timer1.Enabled = True
     End Sub
 
     Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
@@ -1516,6 +1520,7 @@ Public Class Form1
                 Pause_Tastenkombination_Key = Tastenkombination_Key
             End If
         End If
+        Timer1.Enabled = True
     End Sub
 
     Private Sub Save_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Tastenkombination.LostFocus
@@ -1529,6 +1534,7 @@ Public Class Form1
                 Save_Tastenkombination_Key = Tastenkombination_Key
             End If
         End If
+        Timer1.Enabled = True
     End Sub
 
 #End Region
