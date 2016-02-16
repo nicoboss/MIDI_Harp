@@ -1407,12 +1407,15 @@ Public Class Form1
 
 
 
-        If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MIDI_Start()
-        If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MIDI_Pause()
-        If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MIDI_Save()
+        If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MessageBox.Show("Start") : MIDI_Start()
+        If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MessageBox.Show("Pause") : MIDI_Pause()
+        If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MessageBox.Show("Save") : MIDI_Save()
+
+        If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
 
 
     End Sub
+
 
 
 
@@ -1423,8 +1426,6 @@ Public Class Form1
         'Kein Plan, wieso die For schleife umgekehrt werden muss!
         'Ansonsten sind alle Tastenkonbinationen spiegelverkehrt!
         For i = Tastenkombination.Count - 1 To 0 Step -1
-            'META_Bemerkung_Input.Text &= KeyNr & ", "
-            'MessageBox.Show(KeyNr)
             If Not GetAsyncKeyState(Tastenkombination(i)) = -32767 Then Return False
         Next
 
@@ -1464,24 +1465,13 @@ Public Class Form1
                     Case 16 : .Text += "Shift"
                     Case 17 : .Text += "Ctrl"
                     Case 18 : .Text += "Alt"
-                    Case 112 : .Text += "F1"
-                    Case 113 : .Text += "F2"
-                    Case 114 : .Text += "F3"
-                    Case 115 : .Text += "F4"
-                    Case 116 : .Text += "F5"
-                    Case 117 : .Text += "F6"
-                    Case 118 : .Text += "F7"
-                    Case 119 : .Text += "F8"
-                    Case 120 : .Text += "F9"
-                    Case 120 : .Text += "F10"
-                    Case 120 : .Text += "F11"
-                    Case 120 : .Text += "F12"
+                    Case 27 : .Text += "Esc"
 
                     Case 32
                         If .Text = "" Then .Text = "- Nicht belegt -" Else .Text += "Leert."
 
 
-                    Case Else : .Text += Chr(e.KeyCode)
+                    Case Else : .Text += e.KeyCode.ToString
                 End Select
             End With
 
@@ -1503,7 +1493,10 @@ Public Class Form1
                 MessageBox.Show("Die Startkonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Start_Tastenkombination.Text = Tastenkombination_Alt
             Else
-                Start_Tastenkombination_Key = Tastenkombination_Key
+                Start_Tastenkombination_Key.Clear()
+                For Each item As String In Tastenkombination_Key
+                    Start_Tastenkombination_Key.Add(item)
+                Next
             End If
         End If
         Timer1.Enabled = True
@@ -1517,7 +1510,10 @@ Public Class Form1
                 MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Pause_Tastenkombination.Text = Tastenkombination_Alt
             Else
-                Pause_Tastenkombination_Key = Tastenkombination_Key
+                Pause_Tastenkombination_Key.Clear()
+                For Each item As String In Tastenkombination_Key
+                    Pause_Tastenkombination_Key.Add(item)
+                Next
             End If
         End If
         Timer1.Enabled = True
@@ -1531,7 +1527,10 @@ Public Class Form1
                 MessageBox.Show("Die Savekonbination darf nicht der Pausenkonbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Save_Tastenkombination.Text = Tastenkombination_Alt
             Else
-                Save_Tastenkombination_Key = Tastenkombination_Key
+                Save_Tastenkombination_Key.Clear()
+                For Each item As String In Tastenkombination_Key
+                    Save_Tastenkombination_Key.Add(item)
+                Next
             End If
         End If
         Timer1.Enabled = True
