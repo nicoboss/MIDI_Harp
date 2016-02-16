@@ -96,6 +96,7 @@ Public Class Form1
     Dim Save_Tastenkombination_Key As New List(Of Byte)
     Dim Tastenkombination_Alt As String
     Dim Tastenkombination_Key As New List(Of Byte)
+    Dim Tastenkonbination_Klappenverschiebung As SByte
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -1406,13 +1407,57 @@ Public Class Form1
     Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
 
 
-
         If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MessageBox.Show("Start") : MIDI_Start()
         If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MessageBox.Show("Pause") : MIDI_Pause()
         If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MessageBox.Show("Save") : MIDI_Save()
 
-        If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
+        'If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
 
+        Select -32767
+            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+                If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
+            Case GetAsyncKeyState(109)  'Minus (Nomblock)
+                If hsbVolume.Value - 10 >= 0 Then hsbVolume.Value -= 10
+        End Select
+
+
+        Select Case -32767
+            Case GetAsyncKeyState(38)  'Pfeiltaste hoch
+                Tastenkonbination_Klappenverschiebung = 1
+            Case GetAsyncKeyState(40)  'Pfeiltaste runter
+                Tastenkonbination_Klappenverschiebung = -1
+            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+                Tastenkonbination_Klappenverschiebung = 1
+            Case GetAsyncKeyState(109)  'Minus (Nomblock)
+                Tastenkonbination_Klappenverschiebung = -1
+            Case GetAsyncKeyState(104)  'Pfeiltaste hoch (Numblock 8)
+                Tastenkonbination_Klappenverschiebung = 1
+            Case GetAsyncKeyState(98)   'Pfeiltaste runter (Numblock 2)
+                Tastenkonbination_Klappenverschiebung = -1
+            Case Else
+                Tastenkonbination_Klappenverschiebung = 0
+        End Select
+
+        If Not Tastenkonbination_Klappenverschiebung = 0 Then
+            Select Case -32767
+                Case GetAsyncKeyState(112) Or GetAsyncKeyState(49) Or GetAsyncKeyState(67) 'F1, 1, C
+                    If C1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(113) Or GetAsyncKeyState(50) Or GetAsyncKeyState(68) 'F2, 2, D
+                    If D1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And D1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then D1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(114) Or GetAsyncKeyState(51) Or GetAsyncKeyState(69) 'F3, 3, E
+                    If E1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And E1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then E1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(115) Or GetAsyncKeyState(52) Or GetAsyncKeyState(70) 'F4, 4, F
+                    If F1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And F1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then F1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(116) Or GetAsyncKeyState(53) Or GetAsyncKeyState(71) 'F5, 5, G
+                    If G1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And G1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
+                    If A1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And A1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then A1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(67) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
+                    If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                Case GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
+                    If C2_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C2_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C2_Klappe.Value += Tastenkonbination_Klappenverschiebung
+            End Select
+        End If
 
     End Sub
 
@@ -1467,11 +1512,22 @@ Public Class Form1
                     Case 18 : .Text += "Alt"
                     Case 27 : .Text += "Esc"
 
+                    Case 96 : .Text += "Num0"
+                    Case 97 : .Text += "Num1"
+                    Case 98 : .Text += "Num2"
+                    Case 99 : .Text += "Num3"
+                    Case 100 : .Text += "Num4"
+                    Case 101 : .Text += "Num5"
+                    Case 102 : .Text += "Num6"
+                    Case 103 : .Text += "Num7"
+                    Case 104 : .Text += "Num8"
+                    Case 105 : .Text += "Num9"
+
                     Case 32
                         If .Text = "" Then .Text = "- Nicht belegt -" Else .Text += "Leert."
 
 
-                    Case Else : .Text += e.KeyCode.ToString
+                    Case Else : .Text += e.KeyCode.ToString : MessageBox.Show(e.KeyCode)
                 End Select
             End With
 
@@ -1555,6 +1611,11 @@ Public Class Form1
         End If
     End Sub
 
+
+
+    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Click
+        'Alle selection aufheben.
+    End Sub
 
 End Class
 
