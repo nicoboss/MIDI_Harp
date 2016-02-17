@@ -80,6 +80,7 @@ Partial Class Form1
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
@@ -265,15 +266,16 @@ Partial Class Form1
         Me.A6_Grenzwert = New System.Windows.Forms.TextBox()
         Me.H6_Grenzwert = New System.Windows.Forms.TextBox()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AnzMessungen = New System.Windows.Forms.TextBox()
         Me.AnzMessfehler = New System.Windows.Forms.TextBox()
         Me.Messintervall_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Messintervall_TextBox = New System.Windows.Forms.TextBox()
         Me.MessungenProS_TexBox = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Messintervall_Label = New System.Windows.Forms.Label()
         Me.MIDI_Aufnahmemodus_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
@@ -286,7 +288,7 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
-        Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Aktivierung_Label = New System.Windows.Forms.Label()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -363,6 +365,7 @@ Partial Class Form1
         Me.FlowLayoutPanel4.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
+        Me.Instrumentenauswahl_GroupBox.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.Messintervall_GroupBox.SuspendLayout()
         Me.MIDI_Aufnahmemodus_GroupBox.SuspendLayout()
@@ -371,7 +374,6 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
-        Me.Instrumentenauswahl_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -905,6 +907,8 @@ Partial Class Form1
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Aktivierung_Label)
+        Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.GroupBox15)
         Me.Panel1.Controls.Add(Me.GroupBox6)
@@ -919,6 +923,16 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1274, 771)
         Me.Panel1.TabIndex = 0
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(425, 474)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(54, 13)
+        Me.LinkLabel1.TabIndex = 184
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Aktivieren"
         '
         'Button3
         '
@@ -2907,6 +2921,24 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
+        'Instrumentenauswahl_GroupBox
+        '
+        Me.Instrumentenauswahl_GroupBox.Controls.Add(Me.cboInstruments)
+        Me.Instrumentenauswahl_GroupBox.Location = New System.Drawing.Point(9, 73)
+        Me.Instrumentenauswahl_GroupBox.Name = "Instrumentenauswahl_GroupBox"
+        Me.Instrumentenauswahl_GroupBox.Size = New System.Drawing.Size(199, 54)
+        Me.Instrumentenauswahl_GroupBox.TabIndex = 183
+        Me.Instrumentenauswahl_GroupBox.TabStop = False
+        Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
+        '
+        'cboInstruments
+        '
+        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboInstruments.Location = New System.Drawing.Point(9, 23)
+        Me.cboInstruments.Name = "cboInstruments"
+        Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
+        Me.cboInstruments.TabIndex = 2
+        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.AnzMessungen)
@@ -2944,7 +2976,7 @@ Partial Class Form1
         '
         Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_TextBox)
         Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_TexBox)
-        Me.Messintervall_GroupBox.Controls.Add(Me.Label5)
+        Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_Label)
         Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 345)
         Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
         Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 48)
@@ -2972,14 +3004,14 @@ Partial Class Form1
         Me.MessungenProS_TexBox.TabIndex = 180
         Me.MessungenProS_TexBox.Text = "0 M/s"
         '
-        'Label5
+        'Messintervall_Label
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(14, 21)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(42, 13)
-        Me.Label5.TabIndex = 179
-        Me.Label5.Text = "Mes/S:"
+        Me.Messintervall_Label.AutoSize = True
+        Me.Messintervall_Label.Location = New System.Drawing.Point(14, 21)
+        Me.Messintervall_Label.Name = "Messintervall_Label"
+        Me.Messintervall_Label.Size = New System.Drawing.Size(42, 13)
+        Me.Messintervall_Label.TabIndex = 179
+        Me.Messintervall_Label.Text = "Mes/S:"
         '
         'MIDI_Aufnahmemodus_GroupBox
         '
@@ -2991,14 +3023,6 @@ Partial Class Form1
         Me.MIDI_Aufnahmemodus_GroupBox.TabIndex = 173
         Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
         Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
-        '
-        'cboInstruments
-        '
-        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.Location = New System.Drawing.Point(9, 23)
-        Me.cboInstruments.Name = "cboInstruments"
-        Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
-        Me.cboInstruments.TabIndex = 2
         '
         'Tempo_GroupBox
         '
@@ -3126,15 +3150,14 @@ Partial Class Form1
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
         '
-        'Instrumentenauswahl_GroupBox
+        'Aktivierung_Label
         '
-        Me.Instrumentenauswahl_GroupBox.Controls.Add(Me.cboInstruments)
-        Me.Instrumentenauswahl_GroupBox.Location = New System.Drawing.Point(9, 73)
-        Me.Instrumentenauswahl_GroupBox.Name = "Instrumentenauswahl_GroupBox"
-        Me.Instrumentenauswahl_GroupBox.Size = New System.Drawing.Size(199, 54)
-        Me.Instrumentenauswahl_GroupBox.TabIndex = 183
-        Me.Instrumentenauswahl_GroupBox.TabStop = False
-        Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
+        Me.Aktivierung_Label.AutoSize = True
+        Me.Aktivierung_Label.Location = New System.Drawing.Point(518, 477)
+        Me.Aktivierung_Label.Name = "Aktivierung_Label"
+        Me.Aktivierung_Label.Size = New System.Drawing.Size(131, 13)
+        Me.Aktivierung_Label.TabIndex = 198
+        Me.Aktivierung_Label.Text = "Verbinde mit dem Server..."
         '
         'C2_VerticalProgessBar
         '
@@ -3455,6 +3478,7 @@ Partial Class Form1
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.Panel1.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
@@ -3494,6 +3518,7 @@ Partial Class Form1
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
+        Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.Messintervall_GroupBox.ResumeLayout(False)
@@ -3506,7 +3531,6 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
-        Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -3774,7 +3798,7 @@ Partial Class Form1
     Friend WithEvents Messintervall_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Messintervall_TextBox As System.Windows.Forms.TextBox
     Friend WithEvents MessungenProS_TexBox As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Messintervall_Label As System.Windows.Forms.Label
     Friend WithEvents MIDI_Aufnahmemodus_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents MIDI_SpecialMode As System.Windows.Forms.RadioButton
     Friend WithEvents MIDI_NormalMode As System.Windows.Forms.RadioButton
@@ -3808,5 +3832,7 @@ Partial Class Form1
     Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
     Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
     Friend WithEvents Instrumentenauswahl_GroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
+    Friend WithEvents Aktivierung_Label As System.Windows.Forms.Label
 
 End Class

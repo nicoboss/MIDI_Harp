@@ -1613,6 +1613,170 @@ Public Class Form1
 
 
 
+
+#Region "Onlineaktivierung"
+
+
+    Dim Activated As Boolean
+
+    Public Shared Sub Main()
+        'nAntiCopy.ShowDialog()
+        'If Not Activated Then End
+        Form1.Show()
+        End
+        End Sub
+
+
+    Function Hex(ByVal I As Integer) As String
+        Dim S As String
+        S = Conversion.Hex(I)
+        While S.Length < 8
+            S &= "0"
+        End While
+        Return S
+    End Function
+
+
+    Function GetHash() As String
+        Dim H As String = ""
+        H &= Hex(My.Computer.Info.InstalledUICulture.GetHashCode)
+        H &= Hex(My.Computer.FileSystem.GetDriveInfo(Environ("SYSTEMDRIVE")).TotalSize.GetHashCode)
+        H &= Hex(My.Computer.Info.OSFullName.GetHashCode)
+        H &= Hex(My.Computer.Info.OSPlatform.GetHashCode)
+        H &= Hex(My.Computer.Info.OSVersion.GetHashCode)
+        H &= Hex(My.Computer.Info.TotalPhysicalMemory.GetHashCode)
+        H &= Hex(My.Computer.Mouse.WheelExists.GetHashCode)
+        H &= Hex(My.User.Name.GetHashCode)
+        H &= Hex(My.User.IsAuthenticated.GetHashCode)
+        H &= Hex(My.User.CurrentPrincipal.Identity.Name.GetHashCode)
+        H &= Hex(Environ("PROCESSOR_ARCHITECTURE").GetHashCode)
+        H &= Hex(Environ("SYSTEMROOT").GetHashCode)
+        H &= Hex(Environ("NUMBER_OF_PROCESSORS").GetHashCode)
+        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
+          "HARDWARE\DESCRIPTION\System\CentralProcessor\0\").GetValue("~MHZ").GetHashCode)
+        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
+          "HARDWARE\DESCRIPTION\System\BIOS\").GetValue("SystemManufacturer").GetHashCode)
+        H &= Hex(H.GetHashCode)
+        Return (LCase(H))
+    End Function
+
+    Sub Generate()
+        Dim P() As Byte, C As String, X() As Byte, Z As Integer
+        P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
+        ReDim X(KeyLen() \ 8)
+        C = GetHash()
+        Z = 0
+        For I As Integer = 0 To 127
+            X(Z) = P(I) Xor Asc(C(I))
+            Z += 1
+            Randomize()
+            For J As Integer = Z To Z + P(I + 128)
+                X(J) = CInt(Rnd() * 254)
+            Next
+            Z += P(I + 128)
+        Next
+        My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\nanticop.y", X, False)
+    End Sub
+
+    Function KeyLen() As Integer
+        Dim P() As Byte, Z As Integer
+        P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
+        Z = 0
+        For I As Integer = 0 To 127
+            Z += 1
+            Z += P(I + 128)
+        Next
+        Return (Z * 8)
+    End Function
+
+    Function Check() As Boolean
+        Dim P() As Byte, T As String, C As String, X() As Byte, Z As Integer
+        Try
+            P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
+            X = My.Computer.FileSystem.ReadAllBytes(Application.StartupPath & "\nanticop.y")
+            Z = 0
+        Catch ex As Exception
+        End Try
+        T = ""
+        Try
+            For I As Integer = 0 To 127
+                T = T & Chr(P(I) Xor X(Z))
+                Z += 1
+                Z += P(I + 128)
+            Next
+        Catch ex As Exception
+        End Try
+        C = GetHash()
+        Return (C = T)
+    End Function
+
+    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, _
+  ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+
+        Aktivierung_Label.Show()
+        Application.DoEvents()
+        Try
+            Dim S As String = My.Computer.FileSystem.GetTempFileName()
+            My.Computer.FileSystem.DeleteFile(S)
+            My.Computer.Network.DownloadFile( _
+                "http://www.nicobosshard.ch/nanticopykeys.php?app=[Programm]&key=" & "rfe", S)
+
+            ' "http://www.nicobosshard.ch/nanticopykeys.php?app=[Programm]&key=" & m.Text, S)
+            Dim X As String = My.Computer.FileSystem.ReadAllText(S)
+            If CInt(X.Split(";")(0)) > 0 Then
+                If CInt(X.Split(";")(1)) > 0 Then
+                    Generate()
+                    Activated = True
+                    If Check() Then
+                        MsgBox("Der Schlüssel ist gültig. [Programm] wurde aktiviert. " & _
+                          "Sie dürfen diesen Schlüssel noch " & _
+                          (CInt(X.Split(";")(1)) - 1) & _
+                          " Mal für eine Neuinstallation auf diesem PC verwenden.")
+                    Else
+                        MsgBox("Der Schlüssel ist gültig. [Programm] konnte allerdings " & _
+                          "nicht aktiviert werden. " & _
+                          "Bitte überprüfen Sie, ob der Ordner schreibgeschützt ist.", _
+                          MsgBoxStyle.Exclamation)
+                    End If
+                Else
+                    MsgBox("Der Schlüssel ist gültig, aber die maximale Anzahl der " & _
+                      "Aktivierungen für diesen " & _
+                      "Schlüssel wurde überschritten.", MsgBoxStyle.Exclamation)
+                End If
+            Else
+                MsgBox("Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf " & _
+                  "Tippfehler und wenden " & _
+                  "Sie sich an Ihren Software-Händler.", MsgBoxStyle.Critical)
+                Aktivierung_Label.Hide()
+                Exit Sub
+            End If
+        Catch ex As Exception
+            MsgBox("[Programm] konnte aufgrund eines Fehlers nicht aktiviert werden. " & _
+              "Bitte überprüfen Sie ihre Internetverbindung.", MsgBoxStyle.Critical)
+            Aktivierung_Label.Hide()
+            Exit Sub
+        End Try
+        Aktivierung_Label.Hide()
+        Me.Close()
+    End Sub
+
+    Private Sub AntiCopy_Load(ByVal sender As System.Object, _
+  ByVal e As System.EventArgs) Handles MyBase.Load
+        If Check() Then
+            Activated = True
+            Me.Close()
+        End If
+    End Sub
+
+#End Region
+
+
+
+
+
+
+
+
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         If Tackt.Enabled Then
