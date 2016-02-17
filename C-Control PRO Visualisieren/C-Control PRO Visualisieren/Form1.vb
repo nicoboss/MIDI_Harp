@@ -1423,20 +1423,20 @@ Public Class Form1
 
         End Select
 
-        If Tastenkonbination_Press(New List(Of Byte) From {17, 65}) = True Then 'Ctrl + A
-            MIDI_Aufnahmemodus_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(65) = -32767 Then 'Ctrl + Shift + A
+            MIDI_Aufnahmemodus_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
         End If
 
-        If Tastenkonbination_Press(New List(Of Byte) From {17, 77}) = True Then 'Ctrl + M
-            Metronom_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(77) = -32767 Then 'Ctrl + Shift + M
+            Metronom_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
         End If
 
-        If Tastenkonbination_Press(New List(Of Byte) From {17, 80}) = True Then 'Ctrl + P
-            DirectPlay_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(80) = -32767 Then 'Ctrl + Shift + P
+            DirectPlay_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
         End If
 
-        If Tastenkonbination_Press(New List(Of Byte) From {17, 84}) = True Then 'Ctrl + T
-            ToolTip_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, False, False, True, True)
+        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(84) = -32767 Then 'Ctrl + Shift + T
+            ToolTip_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
         End If
 
 

@@ -286,6 +286,7 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
+        Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -370,6 +371,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        Me.Instrumentenauswahl_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -585,6 +587,7 @@ Partial Class Form1
         Me.ToolTip_OFF.Name = "ToolTip_OFF"
         Me.ToolTip_OFF.Size = New System.Drawing.Size(47, 17)
         Me.ToolTip_OFF.TabIndex = 3
+        Me.ToolTip_OFF.TabStop = True
         Me.ToolTip_OFF.Text = "Nein"
         Me.ToolTip_OFF.UseVisualStyleBackColor = True
         '
@@ -716,6 +719,7 @@ Partial Class Form1
         Me.MIDI_SpecialMode.Name = "MIDI_SpecialMode"
         Me.MIDI_SpecialMode.Size = New System.Drawing.Size(74, 17)
         Me.MIDI_SpecialMode.TabIndex = 4
+        Me.MIDI_SpecialMode.TabStop = True
         Me.MIDI_SpecialMode.Text = "nur Töhne"
         Me.ToolTip1.SetToolTip(Me.MIDI_SpecialMode, resources.GetString("MIDI_SpecialMode.ToolTip"))
         Me.MIDI_SpecialMode.UseVisualStyleBackColor = True
@@ -736,7 +740,7 @@ Partial Class Form1
         Me.Metronom_GroupBox.Controls.Add(Me.Metronom_OFF)
         Me.Metronom_GroupBox.Controls.Add(Me.Metronom_ON)
         Me.Metronom_GroupBox.Controls.Add(Me.Metronom_Betont)
-        Me.Metronom_GroupBox.Location = New System.Drawing.Point(9, 289)
+        Me.Metronom_GroupBox.Location = New System.Drawing.Point(9, 294)
         Me.Metronom_GroupBox.Name = "Metronom_GroupBox"
         Me.Metronom_GroupBox.Size = New System.Drawing.Size(199, 45)
         Me.Metronom_GroupBox.TabIndex = 168
@@ -748,17 +752,18 @@ Partial Class Form1
         '
         Me.Metronom_OFF.AutoSize = True
         Me.Metronom_OFF.Checked = True
-        Me.Metronom_OFF.Location = New System.Drawing.Point(141, 19)
+        Me.Metronom_OFF.Location = New System.Drawing.Point(13, 19)
         Me.Metronom_OFF.Name = "Metronom_OFF"
         Me.Metronom_OFF.Size = New System.Drawing.Size(43, 17)
         Me.Metronom_OFF.TabIndex = 1
+        Me.Metronom_OFF.TabStop = True
         Me.Metronom_OFF.Text = "Aus"
         Me.Metronom_OFF.UseVisualStyleBackColor = True
         '
         'Metronom_ON
         '
         Me.Metronom_ON.AutoSize = True
-        Me.Metronom_ON.Location = New System.Drawing.Point(87, 19)
+        Me.Metronom_ON.Location = New System.Drawing.Point(69, 20)
         Me.Metronom_ON.Name = "Metronom_ON"
         Me.Metronom_ON.Size = New System.Drawing.Size(40, 17)
         Me.Metronom_ON.TabIndex = 0
@@ -768,7 +773,7 @@ Partial Class Form1
         'Metronom_Betont
         '
         Me.Metronom_Betont.AutoSize = True
-        Me.Metronom_Betont.Location = New System.Drawing.Point(16, 19)
+        Me.Metronom_Betont.Location = New System.Drawing.Point(124, 20)
         Me.Metronom_Betont.Name = "Metronom_Betont"
         Me.Metronom_Betont.Size = New System.Drawing.Size(56, 17)
         Me.Metronom_Betont.TabIndex = 0
@@ -781,7 +786,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.Controls.Add(Me.Label1)
         Me.Transpose_GroupBox.Controls.Add(Me.Halbtonverschiebung)
         Me.Transpose_GroupBox.Controls.Add(Me.Oktavenverschiebung)
-        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 194)
+        Me.Transpose_GroupBox.Location = New System.Drawing.Point(9, 205)
         Me.Transpose_GroupBox.Name = "Transpose_GroupBox"
         Me.Transpose_GroupBox.Size = New System.Drawing.Size(199, 83)
         Me.Transpose_GroupBox.TabIndex = 166
@@ -1023,6 +1028,7 @@ Partial Class Form1
         Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
         Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
         Me.DirectPlay_OFF.TabIndex = 1
+        Me.DirectPlay_OFF.TabStop = True
         Me.DirectPlay_OFF.Text = "Nein"
         Me.DirectPlay_OFF.UseVisualStyleBackColor = True
         '
@@ -2887,6 +2893,7 @@ Partial Class Form1
         '
         'Einstellungen_GroupBox
         '
+        Me.Einstellungen_GroupBox.Controls.Add(Me.Instrumentenauswahl_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.GroupBox3)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Messintervall_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.MIDI_Aufnahmemodus_GroupBox)
@@ -2938,7 +2945,7 @@ Partial Class Form1
         Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_TextBox)
         Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_TexBox)
         Me.Messintervall_GroupBox.Controls.Add(Me.Label5)
-        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 344)
+        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 345)
         Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
         Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 48)
         Me.Messintervall_GroupBox.TabIndex = 174
@@ -2978,10 +2985,9 @@ Partial Class Form1
         '
         Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_SpecialMode)
         Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_NormalMode)
-        Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.cboInstruments)
-        Me.MIDI_Aufnahmemodus_GroupBox.Location = New System.Drawing.Point(6, 19)
+        Me.MIDI_Aufnahmemodus_GroupBox.Location = New System.Drawing.Point(9, 19)
         Me.MIDI_Aufnahmemodus_GroupBox.Name = "MIDI_Aufnahmemodus_GroupBox"
-        Me.MIDI_Aufnahmemodus_GroupBox.Size = New System.Drawing.Size(199, 89)
+        Me.MIDI_Aufnahmemodus_GroupBox.Size = New System.Drawing.Size(199, 48)
         Me.MIDI_Aufnahmemodus_GroupBox.TabIndex = 173
         Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
         Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
@@ -2989,9 +2995,9 @@ Partial Class Form1
         'cboInstruments
         '
         Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.Location = New System.Drawing.Point(12, 46)
+        Me.cboInstruments.Location = New System.Drawing.Point(9, 23)
         Me.cboInstruments.Name = "cboInstruments"
-        Me.cboInstruments.Size = New System.Drawing.Size(175, 21)
+        Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
         Me.cboInstruments.TabIndex = 2
         '
         'Tempo_GroupBox
@@ -3002,7 +3008,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Label17)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 114)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 134)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
         Me.Tempo_GroupBox.TabIndex = 172
@@ -3119,6 +3125,16 @@ Partial Class Form1
         Me.MIDI_Save_Button.TabIndex = 11
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
+        '
+        'Instrumentenauswahl_GroupBox
+        '
+        Me.Instrumentenauswahl_GroupBox.Controls.Add(Me.cboInstruments)
+        Me.Instrumentenauswahl_GroupBox.Location = New System.Drawing.Point(9, 73)
+        Me.Instrumentenauswahl_GroupBox.Name = "Instrumentenauswahl_GroupBox"
+        Me.Instrumentenauswahl_GroupBox.Size = New System.Drawing.Size(199, 54)
+        Me.Instrumentenauswahl_GroupBox.TabIndex = 183
+        Me.Instrumentenauswahl_GroupBox.TabStop = False
+        Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
         '
         'C2_VerticalProgessBar
         '
@@ -3490,6 +3506,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -3790,5 +3807,6 @@ Partial Class Form1
     Friend WithEvents DirectPlay_YesNo_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
     Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
+    Friend WithEvents Instrumentenauswahl_GroupBox As System.Windows.Forms.GroupBox
 
 End Class
