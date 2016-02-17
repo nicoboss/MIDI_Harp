@@ -24,24 +24,19 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox15 = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Save_Tastenkombination = New System.Windows.Forms.Button()
         Me.Pause_Tastenkombination = New System.Windows.Forms.Button()
         Me.Start_Tastenkombination = New System.Windows.Forms.Button()
-        Me.GroupBox20 = New System.Windows.Forms.GroupBox()
+        Me.Tastenkonbinationen_Klappen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Save_Label = New System.Windows.Forms.Label()
         Me.Pause_Label = New System.Windows.Forms.Label()
         Me.Start_Label = New System.Windows.Forms.Label()
@@ -74,6 +69,7 @@ Partial Class Form1
         Me.ComboBox_Comport = New System.Windows.Forms.ComboBox()
         Me.Button_Disconnect = New System.Windows.Forms.Button()
         Me.Button_Connect = New System.Windows.Forms.Button()
+        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
@@ -268,7 +264,6 @@ Partial Class Form1
         Me.H6_Grenzwert = New System.Windows.Forms.TextBox()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.cboInstruments = New System.Windows.Forms.ComboBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AnzMessungen = New System.Windows.Forms.TextBox()
         Me.AnzMessfehler = New System.Windows.Forms.TextBox()
@@ -289,6 +284,9 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
+        Me.Tastenkonbinationen_DataGridView = New System.Windows.Forms.DataGridView()
+        Me.Aktion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Konbination = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -325,7 +323,7 @@ Partial Class Form1
         Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.GroupBox15.SuspendLayout()
-        Me.GroupBox20.SuspendLayout()
+        Me.Tastenkonbinationen_Klappen_GroupBox.SuspendLayout()
         Me.ToolTip_YesNo_GroupBox.SuspendLayout()
         Me.GroupBox7.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
@@ -374,6 +372,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -394,63 +393,35 @@ Partial Class Form1
         '
         'GroupBox15
         '
-        Me.GroupBox15.Controls.Add(Me.TextBox2)
-        Me.GroupBox15.Controls.Add(Me.TextBox1)
+        Me.GroupBox15.Controls.Add(Me.Tastenkonbinationen_DataGridView)
         Me.GroupBox15.Controls.Add(Me.Save_Tastenkombination)
         Me.GroupBox15.Controls.Add(Me.Pause_Tastenkombination)
         Me.GroupBox15.Controls.Add(Me.Start_Tastenkombination)
-        Me.GroupBox15.Controls.Add(Me.GroupBox20)
-        Me.GroupBox15.Controls.Add(Me.TextBox4)
-        Me.GroupBox15.Controls.Add(Me.TextBox5)
-        Me.GroupBox15.Controls.Add(Me.TextBox6)
-        Me.GroupBox15.Controls.Add(Me.Label7)
-        Me.GroupBox15.Controls.Add(Me.Label8)
-        Me.GroupBox15.Controls.Add(Me.Label9)
         Me.GroupBox15.Controls.Add(Me.Save_Label)
         Me.GroupBox15.Controls.Add(Me.Pause_Label)
         Me.GroupBox15.Controls.Add(Me.Start_Label)
-        Me.GroupBox15.Location = New System.Drawing.Point(766, 236)
+        Me.GroupBox15.Location = New System.Drawing.Point(766, 230)
         Me.GroupBox15.Name = "GroupBox15"
-        Me.GroupBox15.Size = New System.Drawing.Size(486, 106)
+        Me.GroupBox15.Size = New System.Drawing.Size(486, 114)
         Me.GroupBox15.TabIndex = 197
         Me.GroupBox15.TabStop = False
         Me.GroupBox15.Text = "Tastenkonbinationen (Hintergrundssteuerung)"
         Me.ToolTip1.SetToolTip(Me.GroupBox15, resources.GetString("GroupBox15.ToolTip"))
         '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(278, 73)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(58, 20)
-        Me.TextBox2.TabIndex = 192
-        Me.TextBox2.Text = "Alt + F4"
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox1
-        '
-        Me.TextBox1.Location = New System.Drawing.Point(305, 19)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(31, 20)
-        Me.TextBox1.TabIndex = 191
-        Me.TextBox1.Text = "+"
-        Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'Save_Tastenkombination
         '
-        Me.Save_Tastenkombination.Location = New System.Drawing.Point(52, 72)
+        Me.Save_Tastenkombination.Location = New System.Drawing.Point(52, 81)
         Me.Save_Tastenkombination.Name = "Save_Tastenkombination"
-        Me.Save_Tastenkombination.Size = New System.Drawing.Size(140, 21)
+        Me.Save_Tastenkombination.Size = New System.Drawing.Size(168, 21)
         Me.Save_Tastenkombination.TabIndex = 190
         Me.Save_Tastenkombination.Text = "F9"
         Me.Save_Tastenkombination.UseVisualStyleBackColor = True
         '
         'Pause_Tastenkombination
         '
-        Me.Pause_Tastenkombination.Location = New System.Drawing.Point(52, 45)
+        Me.Pause_Tastenkombination.Location = New System.Drawing.Point(52, 49)
         Me.Pause_Tastenkombination.Name = "Pause_Tastenkombination"
-        Me.Pause_Tastenkombination.Size = New System.Drawing.Size(140, 21)
+        Me.Pause_Tastenkombination.Size = New System.Drawing.Size(168, 21)
         Me.Pause_Tastenkombination.TabIndex = 189
         Me.Pause_Tastenkombination.Text = "Leert."
         Me.Pause_Tastenkombination.UseVisualStyleBackColor = True
@@ -459,93 +430,36 @@ Partial Class Form1
         '
         Me.Start_Tastenkombination.Location = New System.Drawing.Point(52, 19)
         Me.Start_Tastenkombination.Name = "Start_Tastenkombination"
-        Me.Start_Tastenkombination.Size = New System.Drawing.Size(140, 21)
+        Me.Start_Tastenkombination.Size = New System.Drawing.Size(169, 21)
         Me.Start_Tastenkombination.TabIndex = 188
         Me.Start_Tastenkombination.Text = "F9"
         Me.Start_Tastenkombination.UseVisualStyleBackColor = True
         '
-        'GroupBox20
+        'Tastenkonbinationen_Klappen_GroupBox
         '
-        Me.GroupBox20.Controls.Add(Me.TextBox3)
-        Me.GroupBox20.Location = New System.Drawing.Point(350, 17)
-        Me.GroupBox20.Name = "GroupBox20"
-        Me.GroupBox20.Size = New System.Drawing.Size(124, 76)
-        Me.GroupBox20.TabIndex = 12
-        Me.GroupBox20.TabStop = False
-        Me.GroupBox20.Text = "Klappen"
+        Me.Tastenkonbinationen_Klappen_GroupBox.Controls.Add(Me.TextBox3)
+        Me.Tastenkonbinationen_Klappen_GroupBox.Location = New System.Drawing.Point(549, 419)
+        Me.Tastenkonbinationen_Klappen_GroupBox.Name = "Tastenkonbinationen_Klappen_GroupBox"
+        Me.Tastenkonbinationen_Klappen_GroupBox.Size = New System.Drawing.Size(196, 62)
+        Me.Tastenkonbinationen_Klappen_GroupBox.TabIndex = 12
+        Me.Tastenkonbinationen_Klappen_GroupBox.TabStop = False
+        Me.Tastenkonbinationen_Klappen_GroupBox.Text = "Tastenkonbinationen der Klappen"
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(6, 19)
+        Me.TextBox3.Location = New System.Drawing.Point(14, 21)
         Me.TextBox3.MaxLength = 127
         Me.TextBox3.Multiline = True
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(115, 52)
+        Me.TextBox3.Size = New System.Drawing.Size(168, 33)
         Me.TextBox3.TabIndex = 3
-        Me.TextBox3.Text = "●   F1-F8/1-8/c-h +" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "●   up / down | +/- | Num8/Num2"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(236, 73)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(36, 20)
-        Me.TextBox4.TabIndex = 11
-        Me.TextBox4.Text = "Esc"
-        Me.TextBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(264, 46)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(72, 20)
-        Me.TextBox5.TabIndex = 10
-        Me.TextBox5.Text = "Ctrl + M"
-        Me.TextBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(264, 19)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
-        Me.TextBox6.Size = New System.Drawing.Size(31, 20)
-        Me.TextBox6.TabIndex = 9
-        Me.TextBox6.Text = "-"
-        Me.TextBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(203, 75)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(27, 13)
-        Me.Label7.TabIndex = 8
-        Me.Label7.Text = "Exit:"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(203, 48)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(57, 13)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "Metronom:"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(203, 22)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(45, 13)
-        Me.Label9.TabIndex = 6
-        Me.Label9.Text = "Volume:"
+        Me.TextBox3.Text = "●   F1-F8 | 1-8 | c-h +" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "●   up/down | Num8/Num2"
         '
         'Save_Label
         '
         Me.Save_Label.AutoSize = True
-        Me.Save_Label.Location = New System.Drawing.Point(6, 76)
+        Me.Save_Label.Location = New System.Drawing.Point(7, 86)
         Me.Save_Label.Name = "Save_Label"
         Me.Save_Label.Size = New System.Drawing.Size(35, 13)
         Me.Save_Label.TabIndex = 2
@@ -554,7 +468,7 @@ Partial Class Form1
         'Pause_Label
         '
         Me.Pause_Label.AutoSize = True
-        Me.Pause_Label.Location = New System.Drawing.Point(6, 49)
+        Me.Pause_Label.Location = New System.Drawing.Point(7, 53)
         Me.Pause_Label.Name = "Pause_Label"
         Me.Pause_Label.Size = New System.Drawing.Size(40, 13)
         Me.Pause_Label.TabIndex = 1
@@ -612,7 +526,7 @@ Partial Class Form1
         Me.GroupBox7.Controls.Add(Me.GroupBox8)
         Me.GroupBox7.Location = New System.Drawing.Point(549, 17)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(195, 454)
+        Me.GroupBox7.Size = New System.Drawing.Size(195, 393)
         Me.GroupBox7.TabIndex = 194
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Zusatzinformationen (Optional)"
@@ -639,7 +553,7 @@ Partial Class Form1
         'GroupBox11
         '
         Me.GroupBox11.Controls.Add(Me.META_Spurnamen_Input)
-        Me.GroupBox11.Location = New System.Drawing.Point(14, 129)
+        Me.GroupBox11.Location = New System.Drawing.Point(14, 127)
         Me.GroupBox11.Name = "GroupBox11"
         Me.GroupBox11.Size = New System.Drawing.Size(165, 53)
         Me.GroupBox11.TabIndex = 4
@@ -657,20 +571,20 @@ Partial Class Form1
         'GroupBox9
         '
         Me.GroupBox9.Controls.Add(Me.META_Bemerkung_Input)
-        Me.GroupBox9.Location = New System.Drawing.Point(13, 314)
+        Me.GroupBox9.Location = New System.Drawing.Point(15, 289)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(165, 128)
+        Me.GroupBox9.Size = New System.Drawing.Size(165, 94)
         Me.GroupBox9.TabIndex = 3
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "Bemerkung"
         '
         'META_Bemerkung_Input
         '
-        Me.META_Bemerkung_Input.Location = New System.Drawing.Point(10, 26)
+        Me.META_Bemerkung_Input.Location = New System.Drawing.Point(12, 19)
         Me.META_Bemerkung_Input.MaxLength = 127
         Me.META_Bemerkung_Input.Multiline = True
         Me.META_Bemerkung_Input.Name = "META_Bemerkung_Input"
-        Me.META_Bemerkung_Input.Size = New System.Drawing.Size(142, 88)
+        Me.META_Bemerkung_Input.Size = New System.Drawing.Size(142, 62)
         Me.META_Bemerkung_Input.TabIndex = 1
         '
         'GroupBox10
@@ -694,9 +608,9 @@ Partial Class Form1
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.META_Copyright_Input)
-        Me.GroupBox8.Location = New System.Drawing.Point(13, 194)
+        Me.GroupBox8.Location = New System.Drawing.Point(15, 186)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(166, 114)
+        Me.GroupBox8.Size = New System.Drawing.Size(166, 94)
         Me.GroupBox8.TabIndex = 2
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Copyright Eintrag"
@@ -709,7 +623,7 @@ Partial Class Form1
         Me.META_Copyright_Input.MaxLength = 127
         Me.META_Copyright_Input.Multiline = True
         Me.META_Copyright_Input.Name = "META_Copyright_Input"
-        Me.META_Copyright_Input.Size = New System.Drawing.Size(142, 83)
+        Me.META_Copyright_Input.Size = New System.Drawing.Size(142, 62)
         Me.META_Copyright_Input.TabIndex = 2
         '
         'MIDI_SpecialMode
@@ -872,6 +786,15 @@ Partial Class Form1
         Me.Button_Connect.Text = "Verbinden"
         Me.Button_Connect.UseVisualStyleBackColor = True
         '
+        'cboInstruments
+        '
+        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboInstruments.Location = New System.Drawing.Point(9, 23)
+        Me.cboInstruments.Name = "cboInstruments"
+        Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
+        Me.cboInstruments.TabIndex = 2
+        Me.ToolTip1.SetToolTip(Me.cboInstruments, "sdffffffffffffffffff")
+        '
         'Com_Search_Timer
         '
         Me.Com_Search_Timer.Enabled = True
@@ -911,6 +834,7 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Button3)
         Me.Panel1.Controls.Add(Me.GroupBox15)
+        Me.Panel1.Controls.Add(Me.Tastenkonbinationen_Klappen_GroupBox)
         Me.Panel1.Controls.Add(Me.GroupBox6)
         Me.Panel1.Controls.Add(Me.GroupBox14)
         Me.Panel1.Controls.Add(Me.GroupBox18)
@@ -927,7 +851,7 @@ Partial Class Form1
         'Aktivierung_Label
         '
         Me.Aktivierung_Label.AutoSize = True
-        Me.Aktivierung_Label.Location = New System.Drawing.Point(518, 477)
+        Me.Aktivierung_Label.Location = New System.Drawing.Point(546, 756)
         Me.Aktivierung_Label.Name = "Aktivierung_Label"
         Me.Aktivierung_Label.Size = New System.Drawing.Size(131, 13)
         Me.Aktivierung_Label.TabIndex = 198
@@ -936,7 +860,7 @@ Partial Class Form1
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(425, 474)
+        Me.LinkLabel1.Location = New System.Drawing.Point(412, 757)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(54, 13)
         Me.LinkLabel1.TabIndex = 184
@@ -945,7 +869,7 @@ Partial Class Form1
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(1247, 97)
+        Me.Button3.Location = New System.Drawing.Point(1238, 380)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(14, 112)
         Me.Button3.TabIndex = 190
@@ -957,7 +881,7 @@ Partial Class Form1
         Me.GroupBox6.BackColor = System.Drawing.SystemColors.Control
         Me.GroupBox6.Controls.Add(Me.GroupBox12)
         Me.GroupBox6.Controls.Add(Me.DirectPlay_YesNo_GroupBox)
-        Me.GroupBox6.Location = New System.Drawing.Point(766, 22)
+        Me.GroupBox6.Location = New System.Drawing.Point(766, 17)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(221, 202)
         Me.GroupBox6.TabIndex = 193
@@ -1070,9 +994,9 @@ Partial Class Form1
         Me.GroupBox14.Controls.Add(Me.Button37)
         Me.GroupBox14.Controls.Add(Me.Button36)
         Me.GroupBox14.Controls.Add(Me.ToolTip_YesNo_GroupBox)
-        Me.GroupBox14.Location = New System.Drawing.Point(1006, 22)
+        Me.GroupBox14.Location = New System.Drawing.Point(1006, 17)
         Me.GroupBox14.Name = "GroupBox14"
-        Me.GroupBox14.Size = New System.Drawing.Size(226, 202)
+        Me.GroupBox14.Size = New System.Drawing.Size(246, 202)
         Me.GroupBox14.TabIndex = 196
         Me.GroupBox14.TabStop = False
         Me.GroupBox14.Text = "Programmeinstellungen"
@@ -1100,7 +1024,7 @@ Partial Class Form1
         Me.GroupBox18.Controls.Add(Me.FlowLayoutPanel6)
         Me.GroupBox18.Location = New System.Drawing.Point(764, 350)
         Me.GroupBox18.Name = "GroupBox18"
-        Me.GroupBox18.Size = New System.Drawing.Size(468, 120)
+        Me.GroupBox18.Size = New System.Drawing.Size(468, 131)
         Me.GroupBox18.TabIndex = 195
         Me.GroupBox18.TabStop = False
         Me.GroupBox18.Text = "Tonart (Klappen)"
@@ -1325,7 +1249,7 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel4)
         Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel5)
         Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 487)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 493)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(1229, 260)
         Me.GroupBox4.TabIndex = 192
@@ -2925,7 +2849,7 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.Controls.Add(Me.Transpose_GroupBox)
         Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(316, 17)
         Me.Einstellungen_GroupBox.Name = "Einstellungen_GroupBox"
-        Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 454)
+        Me.Einstellungen_GroupBox.Size = New System.Drawing.Size(217, 464)
         Me.Einstellungen_GroupBox.TabIndex = 191
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
@@ -2939,14 +2863,6 @@ Partial Class Form1
         Me.Instrumentenauswahl_GroupBox.TabIndex = 183
         Me.Instrumentenauswahl_GroupBox.TabStop = False
         Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
-        '
-        'cboInstruments
-        '
-        Me.cboInstruments.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboInstruments.Location = New System.Drawing.Point(9, 23)
-        Me.cboInstruments.Name = "cboInstruments"
-        Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
-        Me.cboInstruments.TabIndex = 2
         '
         'GroupBox3
         '
@@ -3112,7 +3028,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.MIDI_Save_Button)
         Me.GroupBox2.Location = New System.Drawing.Point(3, 80)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(300, 391)
+        Me.GroupBox2.Size = New System.Drawing.Size(300, 401)
         Me.GroupBox2.TabIndex = 189
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ausgabe"
@@ -3158,6 +3074,66 @@ Partial Class Form1
         Me.MIDI_Save_Button.TabIndex = 11
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
+        '
+        'Tastenkonbinationen_DataGridView
+        '
+        Me.Tastenkonbinationen_DataGridView.AllowUserToAddRows = False
+        Me.Tastenkonbinationen_DataGridView.AllowUserToDeleteRows = False
+        Me.Tastenkonbinationen_DataGridView.AllowUserToResizeColumns = False
+        Me.Tastenkonbinationen_DataGridView.AllowUserToResizeRows = False
+        Me.Tastenkonbinationen_DataGridView.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.Tastenkonbinationen_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.Tastenkonbinationen_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Tastenkonbinationen_DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Aktion, Me.Konbination})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Tastenkonbinationen_DataGridView.EnableHeadersVisualStyles = False
+        Me.Tastenkonbinationen_DataGridView.GridColor = System.Drawing.SystemColors.Control
+        Me.Tastenkonbinationen_DataGridView.Location = New System.Drawing.Point(240, 17)
+        Me.Tastenkonbinationen_DataGridView.MultiSelect = False
+        Me.Tastenkonbinationen_DataGridView.Name = "Tastenkonbinationen_DataGridView"
+        Me.Tastenkonbinationen_DataGridView.ReadOnly = True
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.Tastenkonbinationen_DataGridView.RowHeadersVisible = False
+        Me.Tastenkonbinationen_DataGridView.Size = New System.Drawing.Size(240, 85)
+        Me.Tastenkonbinationen_DataGridView.TabIndex = 191
+        '
+        'Aktion
+        '
+        Me.Aktion.FillWeight = 110.0!
+        Me.Aktion.HeaderText = "Aktion"
+        Me.Aktion.Name = "Aktion"
+        Me.Aktion.ReadOnly = True
+        Me.Aktion.Width = 110
+        '
+        'Konbination
+        '
+        Me.Konbination.FillWeight = 110.0!
+        Me.Konbination.HeaderText = "Konbination"
+        Me.Konbination.Name = "Konbination"
+        Me.Konbination.ReadOnly = True
+        Me.Konbination.Width = 110
         '
         'C2_VerticalProgessBar
         '
@@ -3455,8 +3431,8 @@ Partial Class Form1
         Me.Text = "8"
         Me.GroupBox15.ResumeLayout(False)
         Me.GroupBox15.PerformLayout()
-        Me.GroupBox20.ResumeLayout(False)
-        Me.GroupBox20.PerformLayout()
+        Me.Tastenkonbinationen_Klappen_GroupBox.ResumeLayout(False)
+        Me.Tastenkonbinationen_Klappen_GroupBox.PerformLayout()
         Me.ToolTip_YesNo_GroupBox.ResumeLayout(False)
         Me.ToolTip_YesNo_GroupBox.PerformLayout()
         Me.GroupBox7.ResumeLayout(False)
@@ -3531,6 +3507,7 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -3546,19 +3523,11 @@ Partial Class Form1
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Save_Tastenkombination As System.Windows.Forms.Button
     Friend WithEvents Pause_Tastenkombination As System.Windows.Forms.Button
     Friend WithEvents Start_Tastenkombination As System.Windows.Forms.Button
-    Friend WithEvents GroupBox20 As System.Windows.Forms.GroupBox
+    Friend WithEvents Tastenkonbinationen_Klappen_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Save_Label As System.Windows.Forms.Label
     Friend WithEvents Pause_Label As System.Windows.Forms.Label
     Friend WithEvents Start_Label As System.Windows.Forms.Label
@@ -3834,5 +3803,8 @@ Partial Class Form1
     Friend WithEvents Instrumentenauswahl_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents LinkLabel1 As System.Windows.Forms.LinkLabel
     Friend WithEvents Aktivierung_Label As System.Windows.Forms.Label
+    Friend WithEvents Tastenkonbinationen_DataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents Aktion As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Konbination As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

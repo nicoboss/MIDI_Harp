@@ -132,6 +132,21 @@ Public Class Form1
             C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
 
 
+
+        Tastenkonbinationen_DataGridView.Rows.Add("Metronom", "Ctrl + Shift + M")
+        Tastenkonbinationen_DataGridView.Rows.Add("Direct Play", "Ctrl + Shift + P")
+        Tastenkonbinationen_DataGridView.Rows.Add("Aufnahmemodus", "Ctrl + Shift + A")
+        Tastenkonbinationen_DataGridView.Rows.Add("ToolTip", "Ctrl + Shift + T")
+        Tastenkonbinationen_DataGridView.Rows.Add("Exit", "Esc oder Alt + F4")
+
+
+
+        For Each col As DataGridViewColumn In Tastenkonbinationen_DataGridView.Columns
+            col.SortMode = DataGridViewColumnSortMode.NotSortable
+            col.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control
+            col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Next
+
         Diagramm_Aktuallisieren()
         'MessageBox.Show(myCoolControls(0).Text)
 
@@ -153,6 +168,7 @@ Public Class Form1
         InitializeNotes()
 
     End Sub
+
 
     Sub Com_Search() Handles Com_Search_Timer.Tick
 
@@ -1415,10 +1431,11 @@ Public Class Form1
                 Costom_Tastenkonbinationen_Counter = 20
                 If Messung_gestartet = True Or Messung_Pause = True And Start_Tastenkombination.Text = Save_Tastenkombination.Text Then
                     MIDI_Save()
+                    Exit Sub
                 Else
                     MIDI_Start()
+                    Exit Sub
                 End If
-                Exit Sub
             End If
 
             If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then
@@ -1435,7 +1452,6 @@ Public Class Form1
                 'MIDI_Start()
                 'End If
             End If
-            Exit Sub
         Else
             Costom_Tastenkonbinationen_Counter -= 1
         End If
@@ -1843,6 +1859,7 @@ Public Class Form1
         'Alle selection aufheben.
         Einstellungen_GroupBox.Focus()
     End Sub
+
 
 End Class
 
