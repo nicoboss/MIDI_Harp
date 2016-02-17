@@ -135,7 +135,7 @@
   <metadata name="Konbination.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="GroupBox15.ToolTip" xml:space="preserve">
+  <data name="Tastenkonbinationen_GroupBox.ToolTip" xml:space="preserve">
     <value>In diesem Bereich sind sind Alle Tastenkonbinationen des Programmes sichtbar und teilweise sogar editierbar.
 Tastenkonbination editieren:
 1. Mit Maus darauf klicken

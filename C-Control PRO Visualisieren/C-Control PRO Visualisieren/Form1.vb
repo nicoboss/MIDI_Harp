@@ -14,12 +14,15 @@ Public Class Form1
     Public port As String = ""
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
+    Dim Version As String = "V1.0"
+    Dim PublishDate As Date = "17.02.2016"
+
+
     'Datenspeicher für eingehende Daten
     Dim In_Buffer As Short
 
     Dim TacktNr As Short
     Dim Tackt_32stel As Byte
-
 
     'Annahme: Maaximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
     Dim ADC_Anzahl As Byte = 28
@@ -132,13 +135,11 @@ Public Class Form1
             C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
 
 
-
         Tastenkonbinationen_DataGridView.Rows.Add("Metronom", "Ctrl + Shift + M")
         Tastenkonbinationen_DataGridView.Rows.Add("Direct Play", "Ctrl + Shift + P")
         Tastenkonbinationen_DataGridView.Rows.Add("Aufnahmemodus", "Ctrl + Shift + A")
         Tastenkonbinationen_DataGridView.Rows.Add("ToolTip", "Ctrl + Shift + T")
         Tastenkonbinationen_DataGridView.Rows.Add("Exit", "Esc oder Alt + F4")
-
 
 
         For Each col As DataGridViewColumn In Tastenkonbinationen_DataGridView.Columns
@@ -1855,11 +1856,26 @@ Public Class Form1
 
 
 
-    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Panel1.Click
+    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         'Alle selection aufheben.
         Einstellungen_GroupBox.Focus()
     End Sub
 
+    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
+        Help_Button.Enabled = False 'Sieht schöner aus
+        MessageBox.Show("Es ist momentan noch keine Hilfe ausser die ToolTip Funktion für mein Programm MIDI Harfe verfügbar." _
+                        & vbCrLf & vbCrLf & "Sollten sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome", _
+                        "Hilfe", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Help_Button.Enabled = True
+    End Sub
+
+    Private Sub About_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles About_Button.Click
+        About_Button.Enabled = False 'Sieht schöner aus
+        MessageBox.Show("MIDI Harfe " & Version & vbCrLf & "Programmiert von Nico Bosshard" & vbCrLf & "Bei Fragen bin ich per E-Mail unter nico@bosshome.ch erreichbar." _
+            & vbCrLf & vbCrLf & "Version " & Version & vbCrLf & "Lizenzstatus: Aktiviert" & vbCrLf & "Veröffentlichung: " & PublishDate.Date & vbCrLf & "OS: Windows, VirtualBox" _
+            & vbCrLf & "Programmiert mit Visual Basic", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        About_Button.Enabled = True
+    End Sub
 
 End Class
 
