@@ -91,6 +91,7 @@ Public Class Form1
 
     Dim Tastenkombination_FirstKey As Boolean
     Dim Tastenkombination_KeyAlt As Byte
+    Dim Costom_Tastenkonbinationen_Counter As UShort
     Dim Start_Tastenkombination_Key As New List(Of Byte)
     Dim Pause_Tastenkombination_Key As New List(Of Byte)
     Dim Save_Tastenkombination_Key As New List(Of Byte)
@@ -1156,7 +1157,7 @@ Public Class Form1
 
         With My.Settings
             ' Aufnahmemodus
-            'MIDI_NormalMode.Checked = .MIDI_NormalMode
+            MIDI_NormalMode.Checked = .MIDI_NormalMode
             'Absichtlicher Overflow
             'Alternative: SpecialMode stadt NormalMode speichern!
             'MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
@@ -1405,12 +1406,40 @@ Public Class Form1
 
     Dim key As Integer
     Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
-    Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+    Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAsyncKeyState_Timer.Tick
 
 
-        If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then MessageBox.Show("Start") : MIDI_Start()
-        If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then MessageBox.Show("Pause") : MIDI_Pause()
-        If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then MessageBox.Show("Save") : MIDI_Save()
+        If Costom_Tastenkonbinationen_Counter = 0 Then
+
+            If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then
+                Costom_Tastenkonbinationen_Counter = 20
+                If Messung_gestartet = True Or Messung_Pause = True And Start_Tastenkombination.Text = Save_Tastenkombination.Text Then
+                    MIDI_Save()
+                Else
+                    MIDI_Start()
+                End If
+                Exit Sub
+            End If
+
+            If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then
+                Costom_Tastenkonbinationen_Counter = 20
+                MIDI_Pause()
+            End If
+
+            If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then
+                Costom_Tastenkonbinationen_Counter = 20
+                'Wird gar nicht gebracht, da es wegen Exit sub bei der Starttastenkonbination eh nie zu einem Erfolg kommen würde.
+                'If Messung_gestartet = False And Messung_Pause = False And Start_Tastenkombination.Text = Save_Tastenkombination.Text Then
+                MIDI_Save()
+                'Else
+                'MIDI_Start()
+                'End If
+            End If
+            Exit Sub
+        Else
+            Costom_Tastenkonbinationen_Counter -= 1
+        End If
+
 
         'If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
 
@@ -1490,8 +1519,13 @@ Public Class Form1
         'Kein Plan, wieso die For schleife umgekehrt werden muss!
         'Ansonsten sind alle Tastenkonbinationen spiegelverkehrt!
         For i = Tastenkombination.Count - 1 To 0 Step -1
-            If Not GetAsyncKeyState(Tastenkombination(i)) = -32767 Then Return False
+            If Not GetAsyncKeyState(Tastenkombination(i)) <= -32767 Then Return False
         Next
+
+        'For Each item In Tastenkombination
+        'If Not GetAsyncKeyState(item) <= -32767 Then Return False
+        'Next
+
 
         Return True
     End Function
@@ -1501,7 +1535,7 @@ Public Class Form1
     Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, Start_Tastenkombination.KeyUp, _
                                                                                                                 Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, Pause_Tastenkombination.KeyUp, _
                                                                                                                 Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click, Save_Tastenkombination.KeyUp
-        Timer1.Enabled = False
+        GetAsyncKeyState_Timer.Enabled = False
         Tastenkombination_FirstKey = True
     End Sub
 
@@ -1529,6 +1563,17 @@ Public Class Form1
                     Case 18 : .Text += "Alt"
                     Case 27 : .Text += "Esc"
 
+                    Case 48 : .Text += "0"
+                    Case 49 : .Text += "1"
+                    Case 50 : .Text += "2"
+                    Case 51 : .Text += "3"
+                    Case 52 : .Text += "4"
+                    Case 53 : .Text += "5"
+                    Case 54 : .Text += "6"
+                    Case 55 : .Text += "7"
+                    Case 56 : .Text += "8"
+                    Case 57 : .Text += "9"
+
                     Case 96 : .Text += "Num0"
                     Case 97 : .Text += "Num1"
                     Case 98 : .Text += "Num2"
@@ -1544,7 +1589,7 @@ Public Class Form1
                         If .Text = "" Then .Text = "- Nicht belegt -" Else .Text += "Leert."
 
 
-                    Case Else : .Text += e.KeyCode.ToString : MessageBox.Show(e.KeyCode)
+                    Case Else : .Text += e.KeyCode.ToString
                 End Select
             End With
 
@@ -1572,7 +1617,7 @@ Public Class Form1
                 Next
             End If
         End If
-        Timer1.Enabled = True
+        GetAsyncKeyState_Timer.Enabled = True
     End Sub
 
     Private Sub Pause_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Pause_Tastenkombination.LostFocus
@@ -1589,7 +1634,7 @@ Public Class Form1
                 Next
             End If
         End If
-        Timer1.Enabled = True
+        GetAsyncKeyState_Timer.Enabled = True
     End Sub
 
     Private Sub Save_Tastenkombination_LostFocus(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Save_Tastenkombination.LostFocus
@@ -1606,7 +1651,7 @@ Public Class Form1
                 Next
             End If
         End If
-        Timer1.Enabled = True
+        GetAsyncKeyState_Timer.Enabled = True
     End Sub
 
 #End Region

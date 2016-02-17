@@ -78,8 +78,9 @@ Partial Class Form1
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Aktivierung_Label = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
@@ -288,7 +289,6 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
-        Me.Aktivierung_Label = New System.Windows.Forms.Label()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -897,10 +897,10 @@ Partial Class Form1
         '
         Me.Mesgeschwindigkeitsberechnung_Timer.Interval = 250
         '
-        'Timer1
+        'GetAsyncKeyState_Timer
         '
-        Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 20
+        Me.GetAsyncKeyState_Timer.Enabled = True
+        Me.GetAsyncKeyState_Timer.Interval = 20
         '
         'Panel1
         '
@@ -923,6 +923,15 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1274, 771)
         Me.Panel1.TabIndex = 0
+        '
+        'Aktivierung_Label
+        '
+        Me.Aktivierung_Label.AutoSize = True
+        Me.Aktivierung_Label.Location = New System.Drawing.Point(518, 477)
+        Me.Aktivierung_Label.Name = "Aktivierung_Label"
+        Me.Aktivierung_Label.Size = New System.Drawing.Size(131, 13)
+        Me.Aktivierung_Label.TabIndex = 198
+        Me.Aktivierung_Label.Text = "Verbinde mit dem Server..."
         '
         'LinkLabel1
         '
@@ -3150,15 +3159,6 @@ Partial Class Form1
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
         '
-        'Aktivierung_Label
-        '
-        Me.Aktivierung_Label.AutoSize = True
-        Me.Aktivierung_Label.Location = New System.Drawing.Point(518, 477)
-        Me.Aktivierung_Label.Name = "Aktivierung_Label"
-        Me.Aktivierung_Label.Size = New System.Drawing.Size(131, 13)
-        Me.Aktivierung_Label.TabIndex = 198
-        Me.Aktivierung_Label.Text = "Verbinde mit dem Server..."
-        '
         'C2_VerticalProgessBar
         '
         Me.C2_VerticalProgessBar.AccessibleName = ""
@@ -3542,7 +3542,7 @@ Partial Class Form1
     Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
     Friend WithEvents Serial_BackgroundWorker As System.ComponentModel.BackgroundWorker
     Friend WithEvents Mesgeschwindigkeitsberechnung_Timer As System.Windows.Forms.Timer
-    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents GetAsyncKeyState_Timer As System.Windows.Forms.Timer
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents GroupBox15 As System.Windows.Forms.GroupBox
