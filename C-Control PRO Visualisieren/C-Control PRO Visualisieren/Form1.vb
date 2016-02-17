@@ -1458,22 +1458,22 @@ Public Class Form1
         End Select
 
         If Not Tastenkonbination_Klappenverschiebung = 0 Then
-            Select Case -32767
-                Case GetAsyncKeyState(112) Or GetAsyncKeyState(49) Or GetAsyncKeyState(67) 'F1, 1, C
+            Select Case 0   '-32767 oder -32768 => Immer falls Taste gedrückt!
+                Case Is > GetAsyncKeyState(112) Or GetAsyncKeyState(49) Or GetAsyncKeyState(67) 'F1, 1, C
                     If C1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(113) Or GetAsyncKeyState(50) Or GetAsyncKeyState(68) 'F2, 2, D
+                Case Is > GetAsyncKeyState(113) Or GetAsyncKeyState(50) Or GetAsyncKeyState(68) 'F2, 2, D
                     If D1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And D1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then D1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(114) Or GetAsyncKeyState(51) Or GetAsyncKeyState(69) 'F3, 3, E
+                Case Is > GetAsyncKeyState(114) Or GetAsyncKeyState(51) Or GetAsyncKeyState(69) 'F3, 3, E
                     If E1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And E1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then E1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(115) Or GetAsyncKeyState(52) Or GetAsyncKeyState(70) 'F4, 4, F
+                Case Is > GetAsyncKeyState(115) Or GetAsyncKeyState(52) Or GetAsyncKeyState(70) 'F4, 4, F
                     If F1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And F1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then F1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(116) Or GetAsyncKeyState(53) Or GetAsyncKeyState(71) 'F5, 5, G
+                Case Is > GetAsyncKeyState(116) Or GetAsyncKeyState(53) Or GetAsyncKeyState(71) 'F5, 5, G
                     If G1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And G1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
+                Case Is > GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
                     If A1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And A1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then A1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(72) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
+                Case Is > GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(72) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
                     If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then H1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
+                Case Is > GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
                     If C2_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C2_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C2_Klappe.Value += Tastenkonbination_Klappenverschiebung
             End Select
         End If
