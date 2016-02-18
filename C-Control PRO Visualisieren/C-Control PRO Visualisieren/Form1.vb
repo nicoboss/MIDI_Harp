@@ -17,6 +17,7 @@ Public Class Form1
     Dim Version As String = "V1.0"
     Dim PublishDate As Date = "18.02.2016"
 
+    Dim Lizenz As String = ""
 
     'Datenspeicher für eingehende Daten
     Dim In_Buffer As Short
@@ -1285,6 +1286,9 @@ Public Class Form1
     Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         With My.Settings
 
+            'Lizenz
+            .Lizenz_Save = Lizenz
+
             ' Aufnahmemodus
             .MIDI_NormalMode = MIDI_NormalMode.Checked
             .cboInstruments = cboInstruments.SelectedIndex
@@ -1680,7 +1684,7 @@ Public Class Form1
 #Region "Onlineaktivierung"
 
 
-    Dim Activated As Boolean
+    Dim Lizenz_Activated As Boolean
 
     Public Shared Sub Main()
         'nAntiCopy.ShowDialog()
@@ -1725,7 +1729,7 @@ Public Class Form1
 
 
     Sub Generate()
-        Dim P() As Byte, C As String, X() As Byte, Z As Integer
+        Dim P() As Byte = Nothing, C As String, X() As Byte = Nothing, Z As Integer
         P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
         ReDim X(KeyLen() \ 8)
         C = GetHash()
@@ -1739,7 +1743,7 @@ Public Class Form1
             Next
             Z += P(I + 112)
         Next
-        My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\nanticop.y", X, False)
+        My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\anticopy.y", X, False)
     End Sub
 
     Function KeyLen() As Integer
@@ -1754,10 +1758,10 @@ Public Class Form1
     End Function
 
     Function Check() As Boolean
-        Dim P() As Byte, T As String, C As String, X() As Byte, Z As Integer
+        Dim P() As Byte = Nothing, T As String, C As String, X() As Byte = Nothing, Z As Integer
         Try
             P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
-            X = My.Computer.FileSystem.ReadAllBytes(Application.StartupPath & "\nanticop.y")
+            X = My.Computer.FileSystem.ReadAllBytes(Application.StartupPath & "\anticopy.y")
             Z = 0
         Catch ex As Exception
         End Try
@@ -1778,61 +1782,99 @@ Public Class Form1
         Return (C = T)
     End Function
 
-    Private Sub LinkLabel1_LinkClicked(ByVal sender As System.Object, _
-  ByVal e As System.Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub Registrierung()
 
-        Aktivierung_Label.Show()
         Application.DoEvents()
         Try
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
             My.Computer.Network.DownloadFile( _
-                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & "PLMMD-YNOJG-EBJET-MEBXU-YLEJX", S)
+                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz, S)
             Dim X As String = My.Computer.FileSystem.ReadAllText(S)
             If CInt(X.Split(";")(0)) > 0 Then
                 If CInt(X.Split(";")(1)) > 0 Then
                     Generate()
-                    Activated = True
+                    Lizenz_Activated = True
                     If Check() Then
-                        MsgBox("Der Schlüssel ist gültig. [Programm] wurde aktiviert. " & _
+                        MsgBox("Der Schlüssel ist gültig. Das Programm wurde erfolgreich aktiviert. " & _
                           "Sie dürfen diesen Schlüssel noch " & _
                           (CInt(X.Split(";")(1)) - 1) & _
-                          " Mal für eine Neuinstallation auf diesem PC verwenden.")
+                          " Mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
+                          "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
+                          "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
+                          "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.")
                     Else
-                        MsgBox("Der Schlüssel ist gültig. [Programm] konnte allerdings " & _
+                        Lizenz = ""
+                        MsgBox("Der Schlüssel ist gültig. Das Programm konnte allerdings " & _
                           "nicht aktiviert werden. " & _
-                          "Bitte überprüfen Sie, ob der Ordner schreibgeschützt ist.", _
+                          "Bitte überprüfen Sie, ob der Installationsordner schreibgeschützt ist. " & _
+                          "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch", _
                           MsgBoxStyle.Exclamation)
+                        Me.Close()
                     End If
                 Else
-                    MsgBox("Der Schlüssel ist gültig, aber die maximale Anzahl der " & _
-                      "Aktivierungen für diesen " & _
-                      "Schlüssel wurde überschritten.", MsgBoxStyle.Exclamation)
+                    MsgBox("Ihr Schlüssel ist gültig, aber die maximale Anzahl der " & _
+                      "Aktivierungen für diesen Schlüssel wurde überschritten. " & _
+                      "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " & _
+                      "plausiebelr Begründung (z.B. 6 Computer, Merfache " & _
+                      "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" & _
+                      "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler " & _
+                      "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten " & _
+                      "oder weitere zu erwerben.", MsgBoxStyle.Exclamation)
+                    Me.Close()
                 End If
             Else
+                Lizenz = ""
                 MsgBox("Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf " & _
-                  "Tippfehler und wenden " & _
-                  "Sie sich an Ihren Software-Händler.", MsgBoxStyle.Critical)
-                Aktivierung_Label.Hide()
-                Exit Sub
+                  "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
+                  "Der Lizenzschlüssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
+                  "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
+                Me.Close()
             End If
         Catch ex As Exception
-            MsgBox("[Programm] konnte aufgrund eines Fehlers nicht aktiviert werden. " & _
-              "Bitte überprüfen Sie ihre Internetverbindung.", MsgBoxStyle.Critical)
-            Aktivierung_Label.Hide()
-            Exit Sub
+            Lizenz = ""
+            MsgBox("Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung " &
+                   "ist nur beim ersten Programmstart und nach jedem Update erforderlich. " & _
+                    "Bitte überprüfen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" & _
+                    "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch", _
+                    MsgBoxStyle.Critical)
+            Me.Close()
         End Try
-        Aktivierung_Label.Hide()
-        Me.Close()
+        'Me.Close()
     End Sub
 
     Private Sub AntiCopy_Load(ByVal sender As System.Object, _
   ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Lizenz = My.Settings.Lizenz_Save
+
         If Check() = True Then
-            Activated = True
-            MessageBox.Show("Activated")
-            'Else
-            'Me.Close()
+            Lizenz_Activated = True
+            'MessageBox.Show("Activated")
+        Else
+            Do Until Lizenz.Length = 29
+                If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspringt nicht der," _
+                                                                & vbCrLf & "für den Schlüssel vorgesehenen Länge." _
+                                                                & vbCrLf & "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen" _
+                                                                & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.", _
+                                                                "Falscher Lizenzschlüssel", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+
+                Lizenz = InputBox("Bitte geben Sie Ihr Lizenzschlüssel ein." _
+                                    & vbCrLf & vbCrLf & "Format: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" _
+                                    & vbCrLf & "- Nur Grossbuchstaben ohne Zahelen, Zeichen" _
+                                    & vbCrLf & "- Trennungsstriche nicht vergessen!", "Aktivierung")
+
+                'PLMMD-YNOJG-EBJET-MEBXU-YLEJX
+
+            Loop
+
+            Registrierung()
+
+            If Check() = True Then
+                Lizenz_Activated = True
+            Else
+                Me.Close()
+            End If
         End If
     End Sub
 
@@ -1880,11 +1922,6 @@ Public Class Form1
             & vbCrLf & "Programmiert mit Visual Basic", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
     End Sub
-
-    Private Sub ToolTip1_Popup(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PopupEventArgs) Handles ToolTip1.Popup
-
-    End Sub
-
 
 
 End Class

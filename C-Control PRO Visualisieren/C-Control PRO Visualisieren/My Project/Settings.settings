@@ -221,5 +221,8 @@
     <Setting Name="Save_Tastenkombination_Key3_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
+    <Setting Name="Lizenz_Save" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
