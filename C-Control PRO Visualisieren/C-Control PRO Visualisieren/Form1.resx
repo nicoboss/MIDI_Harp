@@ -203,6 +203,19 @@ Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 25</value>
   </metadata>
+  <data name="SendKeys_ON.ToolTip" xml:space="preserve">
+    <value>Durch diese Option werden die empfangenen MIDI Noten als
+Livestream ins Betriebssystem gesendet.
+Dort kann der Stream von anderen Programmen abgefangen  werden.
+Wird er von Keinem Programm abgefangen, wird er Live abgespielt.
+Welche Programme kompatibel sind, kann ich leider nicht sagen.
+Falls Sie welche finden, würde es mich freuen, wenn Sie mir Ihren
+Fund per Mail an nico@bosshome.ch mitteilen würden, dammit
+ich ihn anderen Benutzer meines Programmes mitteilen kann.
+
+Die Latenzzeit bäträgt ca. 10ms. Der Aktuelle Wert kann unter
+Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>70</value>
   </metadata>
