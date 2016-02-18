@@ -15,7 +15,7 @@ Public Class Form1
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
     Dim Version As String = "V1.0"
-    Dim PublishDate As Date = "17.02.2016"
+    Dim PublishDate As Date = "18.02.2016"
 
 
     'Datenspeicher für eingehende Daten
@@ -222,6 +222,7 @@ Public Class Form1
         End Try
 
     End Sub
+
 
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
@@ -1715,9 +1716,9 @@ Public Class Form1
         H &= Hex(Environ("SYSTEMROOT").GetHashCode)
         H &= Hex(Environ("NUMBER_OF_PROCESSORS").GetHashCode)
         H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
-          "HARDWARE\DESCRIPTION\System\CentralProcessor\0\").GetValue("~MHZ").GetHashCode)
+            "HARDWARE\DESCRIPTION\System\CentralProcessor\0\").GetValue("~MHZ").GetHashCode)
         H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
-          "HARDWARE\DESCRIPTION\System\BIOS\").GetValue("SystemManufacturer").GetHashCode)
+            "HARDWARE\DESCRIPTION\System\BIOS\").GetValue("SystemManufacturer").GetHashCode)
         H &= Hex(H.GetHashCode)
         Return (LCase(H))
     End Function
@@ -1769,6 +1770,10 @@ Public Class Form1
         Catch ex As Exception
         End Try
         C = GetHash()
+        MessageBox.Show(C)
+        MessageBox.Show(C.Length)
+        MessageBox.Show(T)
+        MessageBox.Show(C = T)
         Return (C = T)
     End Function
 
@@ -1781,7 +1786,7 @@ Public Class Form1
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
             My.Computer.Network.DownloadFile( _
-                "http://www.nicobosshard.ch/nanticopykeys.php?app=[Programm]&key=" & "rfe", S)
+                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & "PLMMD-YNOJG-EBJET-MEBXU-YLEJX", S)
 
             ' "http://www.nicobosshard.ch/nanticopykeys.php?app=[Programm]&key=" & m.Text, S)
             Dim X As String = My.Computer.FileSystem.ReadAllText(S)
@@ -1824,15 +1829,15 @@ Public Class Form1
 
     Private Sub AntiCopy_Load(ByVal sender As System.Object, _
   ByVal e As System.EventArgs) Handles MyBase.Load
-        If Check() Then
+        If Check() = True Then
             Activated = True
-            Me.Close()
+            MessageBox.Show("Activated")
+            'Else
+            'Me.Close()
         End If
     End Sub
 
 #End Region
-
-
 
 
 
