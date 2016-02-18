@@ -10,12 +10,12 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("MIDI Harfe")> 
 <Assembly: AssemblyDescription("Aufnahmeprogramm für MIDI Harfen")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyCompany("Nico Bosshard")> 
 <Assembly: AssemblyProduct("MIDI Harfe")> 
 <Assembly: AssemblyCopyright("Nico Bosshard")> 
 <Assembly: AssemblyTrademark("")> 
 
-<Assembly: ComVisible(False)>
+<Assembly: ComVisible(False)> 
 
 'Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
 <Assembly: Guid("428bff82-6cd9-4843-84d9-b7d50f4d0c88")> 

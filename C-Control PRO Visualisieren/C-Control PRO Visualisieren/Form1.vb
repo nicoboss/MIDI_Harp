@@ -1771,10 +1771,10 @@ Public Class Form1
         Catch ex As Exception
         End Try
         C = GetHash()
-        MessageBox.Show(C)
-        MessageBox.Show(C.Length)
-        MessageBox.Show(T)
-        MessageBox.Show(C = T)
+        'MessageBox.Show(C)
+        'MessageBox.Show(C.Length)
+        'MessageBox.Show(T)
+        'MessageBox.Show(C = T)
         Return (C = T)
     End Function
 
@@ -1884,6 +1884,9 @@ Public Class Form1
     Private Sub ToolTip1_Popup(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PopupEventArgs) Handles ToolTip1.Popup
 
     End Sub
+
+
+
 End Class
 
 

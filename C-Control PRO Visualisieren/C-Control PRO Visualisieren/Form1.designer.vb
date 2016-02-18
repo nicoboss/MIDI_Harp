@@ -24,9 +24,9 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
@@ -71,6 +71,19 @@ Partial Class Form1
         Me.Button_Disconnect = New System.Windows.Forms.Button()
         Me.Button_Connect = New System.Windows.Forms.Button()
         Me.cboInstruments = New System.Windows.Forms.ComboBox()
+        Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
+        Me.Messintervall_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Messintervall_TextBox = New System.Windows.Forms.TextBox()
+        Me.MessungenProS_TexBox = New System.Windows.Forms.TextBox()
+        Me.Messintervall_Label = New System.Windows.Forms.Label()
+        Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
+        Me.Tackt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.BPM_Label = New System.Windows.Forms.Label()
+        Me.BPM = New System.Windows.Forms.NumericUpDown()
+        Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.Tastenkonbinationen_Klappen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
@@ -79,8 +92,6 @@ Partial Class Form1
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Aktivierung_Label = New System.Windows.Forms.Label()
-        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.DirectPlay_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -90,7 +101,6 @@ Partial Class Form1
         Me.hsbPan = New System.Windows.Forms.HScrollBar()
         Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
         Me.DirectPlay_YesNo_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.DirectPlay_OFF = New System.Windows.Forms.RadioButton()
         Me.Programmeinstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.About_Button = New System.Windows.Forms.Button()
         Me.Help_Button = New System.Windows.Forms.Button()
@@ -268,24 +278,14 @@ Partial Class Form1
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AnzMessungen = New System.Windows.Forms.TextBox()
         Me.AnzMessfehler = New System.Windows.Forms.TextBox()
-        Me.Messintervall_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Messintervall_TextBox = New System.Windows.Forms.TextBox()
-        Me.MessungenProS_TexBox = New System.Windows.Forms.TextBox()
-        Me.Messintervall_Label = New System.Windows.Forms.Label()
         Me.MIDI_Aufnahmemodus_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
-        Me.Tackt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
-        Me.Label17 = New System.Windows.Forms.Label()
-        Me.BPM_Label = New System.Windows.Forms.Label()
-        Me.BPM = New System.Windows.Forms.NumericUpDown()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Aktivierung_Label = New System.Windows.Forms.Label()
         Me.MIDI_Pause_Button = New System.Windows.Forms.Button()
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
-        Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
         Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -334,6 +334,11 @@ Partial Class Form1
         Me.Transpose_GroupBox.SuspendLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.Messintervall_GroupBox.SuspendLayout()
+        Me.Tempo_GroupBox.SuspendLayout()
+        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tastenkonbinationen_Klappen_GroupBox.SuspendLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -365,12 +370,7 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.SuspendLayout()
         Me.Instrumentenauswahl_GroupBox.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.Messintervall_GroupBox.SuspendLayout()
         Me.MIDI_Aufnahmemodus_GroupBox.SuspendLayout()
-        Me.Tempo_GroupBox.SuspendLayout()
-        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -416,38 +416,38 @@ Partial Class Form1
         Me.Tastenkonbinationen_DataGridView.AllowUserToResizeRows = False
         Me.Tastenkonbinationen_DataGridView.BackgroundColor = System.Drawing.SystemColors.Control
         Me.Tastenkonbinationen_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.Tastenkonbinationen_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Tastenkonbinationen_DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Aktion, Me.Konbination})
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle2
         Me.Tastenkonbinationen_DataGridView.EnableHeadersVisualStyles = False
         Me.Tastenkonbinationen_DataGridView.GridColor = System.Drawing.SystemColors.ControlLight
         Me.Tastenkonbinationen_DataGridView.Location = New System.Drawing.Point(240, 20)
         Me.Tastenkonbinationen_DataGridView.MultiSelect = False
         Me.Tastenkonbinationen_DataGridView.Name = "Tastenkonbinationen_DataGridView"
         Me.Tastenkonbinationen_DataGridView.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.Tastenkonbinationen_DataGridView.RowHeadersVisible = False
         Me.Tastenkonbinationen_DataGridView.Size = New System.Drawing.Size(240, 83)
         Me.Tastenkonbinationen_DataGridView.TabIndex = 191
@@ -836,6 +836,146 @@ Partial Class Form1
         Me.cboInstruments.TabIndex = 2
         Me.ToolTip1.SetToolTip(Me.cboInstruments, "sdffffffffffffffffff")
         '
+        'DirectPlay_OFF
+        '
+        Me.DirectPlay_OFF.AutoSize = True
+        Me.DirectPlay_OFF.Checked = True
+        Me.DirectPlay_OFF.Location = New System.Drawing.Point(115, 26)
+        Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
+        Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
+        Me.DirectPlay_OFF.TabIndex = 1
+        Me.DirectPlay_OFF.TabStop = True
+        Me.DirectPlay_OFF.Text = "Nein"
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
+        Me.DirectPlay_OFF.UseVisualStyleBackColor = True
+        '
+        'Messintervall_GroupBox
+        '
+        Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_TextBox)
+        Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_TexBox)
+        Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_Label)
+        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 345)
+        Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
+        Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 51)
+        Me.Messintervall_GroupBox.TabIndex = 174
+        Me.Messintervall_GroupBox.TabStop = False
+        Me.Messintervall_GroupBox.Text = "Messintervall vom Mikrokontroller"
+        Me.ToolTip1.SetToolTip(Me.Messintervall_GroupBox, "Anzeige der empfangenen Messungen pro Sekunde," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sowie des Messintervalls in Milli" & _
+                "sekunden (1/1000 S)." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Der Messintervall entspricht übrigens genau der" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Latenzz" & _
+                "eit der DirectPlay Funktion!")
+        '
+        'Messintervall_TextBox
+        '
+        Me.Messintervall_TextBox.Enabled = False
+        Me.Messintervall_TextBox.Location = New System.Drawing.Point(122, 22)
+        Me.Messintervall_TextBox.Name = "Messintervall_TextBox"
+        Me.Messintervall_TextBox.ReadOnly = True
+        Me.Messintervall_TextBox.Size = New System.Drawing.Size(58, 20)
+        Me.Messintervall_TextBox.TabIndex = 181
+        Me.Messintervall_TextBox.Text = "0 ms"
+        '
+        'MessungenProS_TexBox
+        '
+        Me.MessungenProS_TexBox.Enabled = False
+        Me.MessungenProS_TexBox.Location = New System.Drawing.Point(57, 22)
+        Me.MessungenProS_TexBox.Name = "MessungenProS_TexBox"
+        Me.MessungenProS_TexBox.ReadOnly = True
+        Me.MessungenProS_TexBox.Size = New System.Drawing.Size(58, 20)
+        Me.MessungenProS_TexBox.TabIndex = 180
+        Me.MessungenProS_TexBox.Text = "0 M/s"
+        '
+        'Messintervall_Label
+        '
+        Me.Messintervall_Label.AutoSize = True
+        Me.Messintervall_Label.Location = New System.Drawing.Point(9, 25)
+        Me.Messintervall_Label.Name = "Messintervall_Label"
+        Me.Messintervall_Label.Size = New System.Drawing.Size(42, 13)
+        Me.Messintervall_Label.TabIndex = 179
+        Me.Messintervall_Label.Text = "Mes/S:"
+        '
+        'Tempo_GroupBox
+        '
+        Me.Tempo_GroupBox.Controls.Add(Me.Label18)
+        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Naenner_Input)
+        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Zaehler_Input)
+        Me.Tempo_GroupBox.Controls.Add(Me.Label17)
+        Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
+        Me.Tempo_GroupBox.Controls.Add(Me.BPM)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 134)
+        Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
+        Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
+        Me.Tempo_GroupBox.TabIndex = 172
+        Me.Tempo_GroupBox.TabStop = False
+        Me.Tempo_GroupBox.Text = "Tempo"
+        Me.ToolTip1.SetToolTip(Me.Tempo_GroupBox, "Einstellung des Tacktes und der Geschwindigkeit des zu Aufnehmenden MIDI FIles")
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(122, 16)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(12, 13)
+        Me.Label18.TabIndex = 172
+        Me.Label18.Text = "/"
+        '
+        'Tackt_Naenner_Input
+        '
+        Me.Tackt_Naenner_Input.Location = New System.Drawing.Point(137, 12)
+        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Tackt_Naenner_Input.Name = "Tackt_Naenner_Input"
+        Me.Tackt_Naenner_Input.Size = New System.Drawing.Size(48, 20)
+        Me.Tackt_Naenner_Input.TabIndex = 174
+        Me.Tackt_Naenner_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        '
+        'Tackt_Zaehler_Input
+        '
+        Me.Tackt_Zaehler_Input.Location = New System.Drawing.Point(61, 12)
+        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Tackt_Zaehler_Input.Name = "Tackt_Zaehler_Input"
+        Me.Tackt_Zaehler_Input.Size = New System.Drawing.Size(55, 20)
+        Me.Tackt_Zaehler_Input.TabIndex = 172
+        Me.Tackt_Zaehler_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(13, 19)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(38, 13)
+        Me.Label17.TabIndex = 173
+        Me.Label17.Text = "Tackt:"
+        '
+        'BPM_Label
+        '
+        Me.BPM_Label.AutoSize = True
+        Me.BPM_Label.Location = New System.Drawing.Point(12, 42)
+        Me.BPM_Label.Name = "BPM_Label"
+        Me.BPM_Label.Size = New System.Drawing.Size(84, 13)
+        Me.BPM_Label.TabIndex = 172
+        Me.BPM_Label.Text = "Aufnahme BPM:"
+        '
+        'BPM
+        '
+        Me.BPM.Location = New System.Drawing.Point(137, 37)
+        Me.BPM.Maximum = New Decimal(New Integer() {400, 0, 0, 0})
+        Me.BPM.Name = "BPM"
+        Me.BPM.Size = New System.Drawing.Size(48, 20)
+        Me.BPM.TabIndex = 168
+        Me.BPM.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        '
+        'DirectPlay_ON
+        '
+        Me.DirectPlay_ON.AutoSize = True
+        Me.DirectPlay_ON.Location = New System.Drawing.Point(31, 26)
+        Me.DirectPlay_ON.Name = "DirectPlay_ON"
+        Me.DirectPlay_ON.Size = New System.Drawing.Size(36, 17)
+        Me.DirectPlay_ON.TabIndex = 0
+        Me.DirectPlay_ON.Text = "Ja"
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_ON, resources.GetString("DirectPlay_ON.ToolTip"))
+        Me.DirectPlay_ON.UseVisualStyleBackColor = True
+        '
         'Tastenkonbinationen_Klappen_GroupBox
         '
         Me.Tastenkonbinationen_Klappen_GroupBox.Controls.Add(Me.TextBox3)
@@ -892,8 +1032,6 @@ Partial Class Form1
         Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.Aktivierung_Label)
-        Me.Panel1.Controls.Add(Me.LinkLabel1)
         Me.Panel1.Controls.Add(Me.Tastenkonbinationen_GroupBox)
         Me.Panel1.Controls.Add(Me.Tastenkonbinationen_Klappen_GroupBox)
         Me.Panel1.Controls.Add(Me.DirectPlay_GroupBox)
@@ -908,25 +1046,6 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1274, 771)
         Me.Panel1.TabIndex = 0
-        '
-        'Aktivierung_Label
-        '
-        Me.Aktivierung_Label.AutoSize = True
-        Me.Aktivierung_Label.Location = New System.Drawing.Point(546, 756)
-        Me.Aktivierung_Label.Name = "Aktivierung_Label"
-        Me.Aktivierung_Label.Size = New System.Drawing.Size(131, 13)
-        Me.Aktivierung_Label.TabIndex = 198
-        Me.Aktivierung_Label.Text = "Verbinde mit dem Server..."
-        '
-        'LinkLabel1
-        '
-        Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(412, 757)
-        Me.LinkLabel1.Name = "LinkLabel1"
-        Me.LinkLabel1.Size = New System.Drawing.Size(54, 13)
-        Me.LinkLabel1.TabIndex = 184
-        Me.LinkLabel1.TabStop = True
-        Me.LinkLabel1.Text = "Aktivieren"
         '
         'DirectPlay_GroupBox
         '
@@ -1018,19 +1137,6 @@ Partial Class Form1
         Me.DirectPlay_YesNo_GroupBox.TabIndex = 163
         Me.DirectPlay_YesNo_GroupBox.TabStop = False
         Me.DirectPlay_YesNo_GroupBox.Text = "Empfangende Noten abspielen"
-        '
-        'DirectPlay_OFF
-        '
-        Me.DirectPlay_OFF.AutoSize = True
-        Me.DirectPlay_OFF.Checked = True
-        Me.DirectPlay_OFF.Location = New System.Drawing.Point(115, 26)
-        Me.DirectPlay_OFF.Name = "DirectPlay_OFF"
-        Me.DirectPlay_OFF.Size = New System.Drawing.Size(47, 17)
-        Me.DirectPlay_OFF.TabIndex = 1
-        Me.DirectPlay_OFF.TabStop = True
-        Me.DirectPlay_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
-        Me.DirectPlay_OFF.UseVisualStyleBackColor = True
         '
         'Programmeinstellungen_GroupBox
         '
@@ -2940,50 +3046,6 @@ Partial Class Form1
         Me.AnzMessfehler.Text = "0"
         Me.AnzMessfehler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Messintervall_GroupBox
-        '
-        Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_TextBox)
-        Me.Messintervall_GroupBox.Controls.Add(Me.MessungenProS_TexBox)
-        Me.Messintervall_GroupBox.Controls.Add(Me.Messintervall_Label)
-        Me.Messintervall_GroupBox.Location = New System.Drawing.Point(9, 345)
-        Me.Messintervall_GroupBox.Name = "Messintervall_GroupBox"
-        Me.Messintervall_GroupBox.Size = New System.Drawing.Size(199, 51)
-        Me.Messintervall_GroupBox.TabIndex = 174
-        Me.Messintervall_GroupBox.TabStop = False
-        Me.Messintervall_GroupBox.Text = "Messintervall vom Mikrokontroller"
-        Me.ToolTip1.SetToolTip(Me.Messintervall_GroupBox, "Anzeige der empfangenen Messungen pro Sekunde," & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sowie des Messintervalls in Milli" & _
-                "sekunden (1/1000 S)." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Der Messintervall entspricht übrigens genau der" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Latenzz" & _
-                "eit der DirectPlay Funktion!")
-        '
-        'Messintervall_TextBox
-        '
-        Me.Messintervall_TextBox.Enabled = False
-        Me.Messintervall_TextBox.Location = New System.Drawing.Point(122, 22)
-        Me.Messintervall_TextBox.Name = "Messintervall_TextBox"
-        Me.Messintervall_TextBox.ReadOnly = True
-        Me.Messintervall_TextBox.Size = New System.Drawing.Size(58, 20)
-        Me.Messintervall_TextBox.TabIndex = 181
-        Me.Messintervall_TextBox.Text = "0 ms"
-        '
-        'MessungenProS_TexBox
-        '
-        Me.MessungenProS_TexBox.Enabled = False
-        Me.MessungenProS_TexBox.Location = New System.Drawing.Point(57, 22)
-        Me.MessungenProS_TexBox.Name = "MessungenProS_TexBox"
-        Me.MessungenProS_TexBox.ReadOnly = True
-        Me.MessungenProS_TexBox.Size = New System.Drawing.Size(58, 20)
-        Me.MessungenProS_TexBox.TabIndex = 180
-        Me.MessungenProS_TexBox.Text = "0 M/s"
-        '
-        'Messintervall_Label
-        '
-        Me.Messintervall_Label.AutoSize = True
-        Me.Messintervall_Label.Location = New System.Drawing.Point(9, 25)
-        Me.Messintervall_Label.Name = "Messintervall_Label"
-        Me.Messintervall_Label.Size = New System.Drawing.Size(42, 13)
-        Me.Messintervall_Label.TabIndex = 179
-        Me.Messintervall_Label.Text = "Mes/S:"
-        '
         'MIDI_Aufnahmemodus_GroupBox
         '
         Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_SpecialMode)
@@ -2995,80 +3057,10 @@ Partial Class Form1
         Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
         Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
         '
-        'Tempo_GroupBox
-        '
-        Me.Tempo_GroupBox.Controls.Add(Me.Label18)
-        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Naenner_Input)
-        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Zaehler_Input)
-        Me.Tempo_GroupBox.Controls.Add(Me.Label17)
-        Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
-        Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(9, 134)
-        Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
-        Me.Tempo_GroupBox.Size = New System.Drawing.Size(199, 63)
-        Me.Tempo_GroupBox.TabIndex = 172
-        Me.Tempo_GroupBox.TabStop = False
-        Me.Tempo_GroupBox.Text = "Tempo"
-        Me.ToolTip1.SetToolTip(Me.Tempo_GroupBox, "Einstellung des Tacktes und der Geschwindigkeit des zu Aufnehmenden MIDI FIles")
-        '
-        'Label18
-        '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(122, 16)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(12, 13)
-        Me.Label18.TabIndex = 172
-        Me.Label18.Text = "/"
-        '
-        'Tackt_Naenner_Input
-        '
-        Me.Tackt_Naenner_Input.Location = New System.Drawing.Point(137, 12)
-        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.Tackt_Naenner_Input.Name = "Tackt_Naenner_Input"
-        Me.Tackt_Naenner_Input.Size = New System.Drawing.Size(48, 20)
-        Me.Tackt_Naenner_Input.TabIndex = 174
-        Me.Tackt_Naenner_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
-        '
-        'Tackt_Zaehler_Input
-        '
-        Me.Tackt_Zaehler_Input.Location = New System.Drawing.Point(61, 12)
-        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.Tackt_Zaehler_Input.Name = "Tackt_Zaehler_Input"
-        Me.Tackt_Zaehler_Input.Size = New System.Drawing.Size(55, 20)
-        Me.Tackt_Zaehler_Input.TabIndex = 172
-        Me.Tackt_Zaehler_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
-        '
-        'Label17
-        '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(13, 19)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(38, 13)
-        Me.Label17.TabIndex = 173
-        Me.Label17.Text = "Tackt:"
-        '
-        'BPM_Label
-        '
-        Me.BPM_Label.AutoSize = True
-        Me.BPM_Label.Location = New System.Drawing.Point(12, 42)
-        Me.BPM_Label.Name = "BPM_Label"
-        Me.BPM_Label.Size = New System.Drawing.Size(84, 13)
-        Me.BPM_Label.TabIndex = 172
-        Me.BPM_Label.Text = "Aufnahme BPM:"
-        '
-        'BPM
-        '
-        Me.BPM.Location = New System.Drawing.Point(137, 37)
-        Me.BPM.Maximum = New Decimal(New Integer() {400, 0, 0, 0})
-        Me.BPM.Name = "BPM"
-        Me.BPM.Size = New System.Drawing.Size(48, 20)
-        Me.BPM.TabIndex = 168
-        Me.BPM.Value = New Decimal(New Integer() {100, 0, 0, 0})
-        '
         'GroupBox2
         '
+        Me.GroupBox2.Controls.Add(Me.LinkLabel1)
+        Me.GroupBox2.Controls.Add(Me.Aktivierung_Label)
         Me.GroupBox2.Controls.Add(Me.MIDI_Pause_Button)
         Me.GroupBox2.Controls.Add(Me.Tackt_Ausgabefenster)
         Me.GroupBox2.Controls.Add(Me.MIDI_Start_Button)
@@ -3079,6 +3071,28 @@ Partial Class Form1
         Me.GroupBox2.TabIndex = 189
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ausgabe"
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
+        Me.LinkLabel1.Location = New System.Drawing.Point(83, 353)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(82, 20)
+        Me.LinkLabel1.TabIndex = 184
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Aktivieren"
+        '
+        'Aktivierung_Label
+        '
+        Me.Aktivierung_Label.AutoSize = True
+        Me.Aktivierung_Label.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.25!)
+        Me.Aktivierung_Label.Location = New System.Drawing.Point(37, 381)
+        Me.Aktivierung_Label.Name = "Aktivierung_Label"
+        Me.Aktivierung_Label.Size = New System.Drawing.Size(206, 20)
+        Me.Aktivierung_Label.TabIndex = 198
+        Me.Aktivierung_Label.Text = "Verbinde mit dem Server..."
+        Me.Aktivierung_Label.Visible = False
         '
         'MIDI_Pause_Button
         '
@@ -3121,17 +3135,6 @@ Partial Class Form1
         Me.MIDI_Save_Button.TabIndex = 11
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
-        '
-        'DirectPlay_ON
-        '
-        Me.DirectPlay_ON.AutoSize = True
-        Me.DirectPlay_ON.Location = New System.Drawing.Point(31, 26)
-        Me.DirectPlay_ON.Name = "DirectPlay_ON"
-        Me.DirectPlay_ON.Size = New System.Drawing.Size(36, 17)
-        Me.DirectPlay_ON.TabIndex = 0
-        Me.DirectPlay_ON.Text = "Ja"
-        Me.ToolTip1.SetToolTip(Me.DirectPlay_ON, resources.GetString("DirectPlay_ON.ToolTip"))
-        Me.DirectPlay_ON.UseVisualStyleBackColor = True
         '
         'C2_VerticalProgessBar
         '
@@ -3426,7 +3429,7 @@ Partial Class Form1
         Me.KeyPreview = True
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "8"
+        Me.Text = "MIDI Harfe V1.0 Beta"
         Me.Tastenkonbinationen_GroupBox.ResumeLayout(False)
         Me.Tastenkonbinationen_GroupBox.PerformLayout()
         CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3449,11 +3452,17 @@ Partial Class Form1
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
+        Me.Messintervall_GroupBox.ResumeLayout(False)
+        Me.Messintervall_GroupBox.PerformLayout()
+        Me.Tempo_GroupBox.ResumeLayout(False)
+        Me.Tempo_GroupBox.PerformLayout()
+        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tastenkonbinationen_Klappen_GroupBox.ResumeLayout(False)
         Me.Tastenkonbinationen_Klappen_GroupBox.PerformLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
         Me.DirectPlay_GroupBox.ResumeLayout(False)
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
@@ -3496,16 +3505,10 @@ Partial Class Form1
         Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.Messintervall_GroupBox.ResumeLayout(False)
-        Me.Messintervall_GroupBox.PerformLayout()
         Me.MIDI_Aufnahmemodus_GroupBox.ResumeLayout(False)
         Me.MIDI_Aufnahmemodus_GroupBox.PerformLayout()
-        Me.Tempo_GroupBox.ResumeLayout(False)
-        Me.Tempo_GroupBox.PerformLayout()
-        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
