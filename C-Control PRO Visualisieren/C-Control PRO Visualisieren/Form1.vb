@@ -4,7 +4,7 @@ Imports System.IO.Ports.SerialPort
 Imports System.Text.Encoding
 Imports System.IO
 Imports System.Text
-
+Imports System.Net.NetworkInformation
 
 Public Class Form1
 
@@ -1707,8 +1707,8 @@ Public Class Form1
         H &= Hex(My.Computer.Info.OSFullName.GetHashCode)
         H &= Hex(My.Computer.Info.OSPlatform.GetHashCode)
         H &= Hex(My.Computer.Info.OSVersion.GetHashCode)
-        H &= Hex(My.Computer.Info.TotalPhysicalMemory.GetHashCode)
-        H &= Hex(My.Computer.Mouse.WheelExists.GetHashCode)
+        'H &= Hex(My.Computer.Info.TotalPhysicalMemory.GetHashCode)
+        'H &= Hex(My.Computer.Mouse.WheelExists.GetHashCode)
         H &= Hex(My.User.Name.GetHashCode)
         H &= Hex(My.User.IsAuthenticated.GetHashCode)
         H &= Hex(My.User.CurrentPrincipal.Identity.Name.GetHashCode)
@@ -1723,20 +1723,60 @@ Public Class Form1
         Return (LCase(H))
     End Function
 
+
+
+    Private Sub Form_Load() Handles MyBase.Load
+        Dim MACs() As String
+        Dim i As Long
+
+        MACs = MACAddressWMI()
+        For i = 0 To UBound(MACs)
+            If Len(MACs(i)) > 0 Then List1.Items.Add(MACs(i))
+        Next i
+    End Sub
+
+    Public Function MACAddressWMI() As String()
+        Dim WMIobj As Object
+        Dim MACobj As Object
+        Dim s() As String
+        On Error GoTo ErrOut
+
+        ReDim s(0)
+        WMIobj = GetObject("winmgmts:").ExecQuery("SELECT MACAddress FROM Win32_NetworkAdapter " & _
+                  "WHERE ((MACAddress Is Not NULL) AND (Manufacturer <> 'Microsoft'))")
+
+        For Each MACobj In WMIobj
+            ReDim s(UBound(s) + 1)
+            s(UBound(s)) = MACobj.MACAddress
+        Next MACobj
+
+        MACAddressWMI = s
+        Exit Function
+ErrOut:
+        MsgBox("Fehler! WMI ist nicht vorhanden")
+    End Function
+
+
+    Function getMacAddress()
+        Dim nics() As NetworkInterface = _
+              NetworkInterface.GetAllNetworkInterfaces
+        Return nics(0).GetPhysicalAddress.ToString
+    End Function
+
     Sub Generate()
         Dim P() As Byte, C As String, X() As Byte, Z As Integer
         P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
         ReDim X(KeyLen() \ 8)
         C = GetHash()
         Z = 0
-        For I As Integer = 0 To 127
+        For I As Integer = 0 To 111
             X(Z) = P(I) Xor Asc(C(I))
             Z += 1
             Randomize()
-            For J As Integer = Z To Z + P(I + 128)
+            For J As Integer = Z To Z + P(I + 112)
                 X(J) = CInt(Rnd() * 254)
             Next
-            Z += P(I + 128)
+            Z += P(I + 112)
         Next
         My.Computer.FileSystem.WriteAllBytes(Application.StartupPath & "\nanticop.y", X, False)
     End Sub
@@ -1745,9 +1785,9 @@ Public Class Form1
         Dim P() As Byte, Z As Integer
         P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
         Z = 0
-        For I As Integer = 0 To 127
+        For I As Integer = 0 To 111
             Z += 1
-            Z += P(I + 128)
+            Z += P(I + 112)
         Next
         Return (Z * 8)
     End Function
@@ -1762,14 +1802,15 @@ Public Class Form1
         End Try
         T = ""
         Try
-            For I As Integer = 0 To 127
+            For I As Integer = 0 To 111
                 T = T & Chr(P(I) Xor X(Z))
                 Z += 1
-                Z += P(I + 128)
+                Z += P(I + 112)
             Next
         Catch ex As Exception
         End Try
         C = GetHash()
+        MessageBox.Show(getMacAddress)
         MessageBox.Show(C)
         MessageBox.Show(C.Length)
         MessageBox.Show(T)
@@ -1787,8 +1828,6 @@ Public Class Form1
             My.Computer.FileSystem.DeleteFile(S)
             My.Computer.Network.DownloadFile( _
                 "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & "PLMMD-YNOJG-EBJET-MEBXU-YLEJX", S)
-
-            ' "http://www.nicobosshard.ch/nanticopykeys.php?app=[Programm]&key=" & m.Text, S)
             Dim X As String = My.Computer.FileSystem.ReadAllText(S)
             If CInt(X.Split(";")(0)) > 0 Then
                 If CInt(X.Split(";")(1)) > 0 Then
