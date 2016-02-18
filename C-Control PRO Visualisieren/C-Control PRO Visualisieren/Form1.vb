@@ -1435,7 +1435,7 @@ Public Class Form1
 
             If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then
                 Costom_Tastenkonbinationen_Counter = 20
-                If Messung_gestartet = True Or Messung_Pause = True And Start_Tastenkombination.Text = Save_Tastenkombination.Text Then
+                If Messung_gestartet = True Or Messung_Pause = True Then
                     MIDI_Save()
                     Exit Sub
                 Else
@@ -1451,83 +1451,84 @@ Public Class Form1
 
             If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then
                 Costom_Tastenkonbinationen_Counter = 20
-                'Wird gar nicht gebracht, da es wegen Exit sub bei der Starttastenkonbination eh nie zu einem Erfolg kommen würde.
-                'If Messung_gestartet = False And Messung_Pause = False And Start_Tastenkombination.Text = Save_Tastenkombination.Text Then
-                MIDI_Save()
-                'Else
-                'MIDI_Start()
-                'End If
+                If Messung_gestartet = True Or Messung_Pause = True Then
+                    MIDI_Save()
+                    Exit Sub
+                Else
+                    MIDI_Start()
+                    Exit Sub
+                End If
             End If
-        Else
-            Costom_Tastenkonbinationen_Counter -= 1
-        End If
+            Else
+                Costom_Tastenkonbinationen_Counter -= 1
+            End If
 
 
-        'If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
+            'If Tastenkonbination_Press(New List(Of Byte) From {49}) = True Then MessageBox.Show(Chr(Pause_Tastenkombination_Key(0)))
 
-        Select Case -32767
-            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
-                If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
-            Case GetAsyncKeyState(109)  'Minus (Nomblock)
-                If hsbVolume.Value - 10 >= 0 Then hsbVolume.Value -= 10
-                'Case GetAsyncKeyState(77) And GetAsyncKeyState(17) 'Ctrl + M
+            Select Case -32767
+                Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+                    If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
+                Case GetAsyncKeyState(109)  'Minus (Nomblock)
+                    If hsbVolume.Value - 10 >= 0 Then hsbVolume.Value -= 10
+                    'Case GetAsyncKeyState(77) And GetAsyncKeyState(17) 'Ctrl + M
 
-        End Select
-
-        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(65) = -32767 Then 'Ctrl + Shift + A
-            MIDI_Aufnahmemodus_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
-        End If
-
-        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(77) = -32767 Then 'Ctrl + Shift + M
-            Metronom_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
-        End If
-
-        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(80) = -32767 Then 'Ctrl + Shift + P
-            DirectPlay_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
-        End If
-
-        If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(84) = -32767 Then 'Ctrl + Shift + T
-            ToolTip_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
-        End If
-
-
-        Select Case -32767
-            Case GetAsyncKeyState(38)  'Pfeiltaste hoch
-                Tastenkonbination_Klappenverschiebung = 1
-            Case GetAsyncKeyState(40)  'Pfeiltaste runter
-                Tastenkonbination_Klappenverschiebung = -1
-            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
-                Tastenkonbination_Klappenverschiebung = 1
-            Case GetAsyncKeyState(109)  'Minus (Nomblock)
-                Tastenkonbination_Klappenverschiebung = -1
-            Case GetAsyncKeyState(104)  'Pfeiltaste hoch (Numblock 8)
-                Tastenkonbination_Klappenverschiebung = 1
-            Case GetAsyncKeyState(98)   'Pfeiltaste runter (Numblock 2)
-                Tastenkonbination_Klappenverschiebung = -1
-            Case Else
-                Tastenkonbination_Klappenverschiebung = 0
-        End Select
-
-        If Not Tastenkonbination_Klappenverschiebung = 0 Then
-            Select Case 0   '-32767 oder -32768 => Immer falls Taste gedrückt!
-                Case Is > GetAsyncKeyState(112) Or GetAsyncKeyState(49) Or GetAsyncKeyState(67) 'F1, 1, C
-                    If C1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(113) Or GetAsyncKeyState(50) Or GetAsyncKeyState(68) 'F2, 2, D
-                    If D1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And D1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then D1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(114) Or GetAsyncKeyState(51) Or GetAsyncKeyState(69) 'F3, 3, E
-                    If E1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And E1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then E1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(115) Or GetAsyncKeyState(52) Or GetAsyncKeyState(70) 'F4, 4, F
-                    If F1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And F1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then F1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(116) Or GetAsyncKeyState(53) Or GetAsyncKeyState(71) 'F5, 5, G
-                    If G1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And G1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
-                    If A1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And A1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then A1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(72) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
-                    If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then H1_Klappe.Value += Tastenkonbination_Klappenverschiebung
-                Case Is > GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
-                    If C2_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C2_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C2_Klappe.Value += Tastenkonbination_Klappenverschiebung
             End Select
-        End If
+
+            If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(65) = -32767 Then 'Ctrl + Shift + A
+                MIDI_Aufnahmemodus_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
+            End If
+
+            If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(77) = -32767 Then 'Ctrl + Shift + M
+                Metronom_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
+            End If
+
+            If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(80) = -32767 Then 'Ctrl + Shift + P
+                DirectPlay_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
+            End If
+
+            If GetAsyncKeyState(17) <= -32767 And GetAsyncKeyState(16) <= -32767 And GetAsyncKeyState(84) = -32767 Then 'Ctrl + Shift + T
+                ToolTip_YesNo_GroupBox.SelectNextControl(Me.ActiveControl, True, False, True, True)
+            End If
+
+
+            Select Case -32767
+                Case GetAsyncKeyState(38)  'Pfeiltaste hoch
+                    Tastenkonbination_Klappenverschiebung = 1
+                Case GetAsyncKeyState(40)  'Pfeiltaste runter
+                    Tastenkonbination_Klappenverschiebung = -1
+                Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+                    Tastenkonbination_Klappenverschiebung = 1
+                Case GetAsyncKeyState(109)  'Minus (Nomblock)
+                    Tastenkonbination_Klappenverschiebung = -1
+                Case GetAsyncKeyState(104)  'Pfeiltaste hoch (Numblock 8)
+                    Tastenkonbination_Klappenverschiebung = 1
+                Case GetAsyncKeyState(98)   'Pfeiltaste runter (Numblock 2)
+                    Tastenkonbination_Klappenverschiebung = -1
+                Case Else
+                    Tastenkonbination_Klappenverschiebung = 0
+            End Select
+
+            If Not Tastenkonbination_Klappenverschiebung = 0 Then
+                Select Case 0   '-32767 oder -32768 => Immer falls Taste gedrückt!
+                    Case Is > GetAsyncKeyState(112) Or GetAsyncKeyState(49) Or GetAsyncKeyState(67) 'F1, 1, C
+                        If C1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(113) Or GetAsyncKeyState(50) Or GetAsyncKeyState(68) 'F2, 2, D
+                        If D1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And D1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then D1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(114) Or GetAsyncKeyState(51) Or GetAsyncKeyState(69) 'F3, 3, E
+                        If E1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And E1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then E1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(115) Or GetAsyncKeyState(52) Or GetAsyncKeyState(70) 'F4, 4, F
+                        If F1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And F1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then F1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(116) Or GetAsyncKeyState(53) Or GetAsyncKeyState(71) 'F5, 5, G
+                        If G1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And G1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then G1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(117) Or GetAsyncKeyState(54) Or GetAsyncKeyState(65) 'F6, 6, A
+                        If A1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And A1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then A1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(118) Or GetAsyncKeyState(55) Or GetAsyncKeyState(72) Or GetAsyncKeyState(66) 'F7, 7, H, B (Englisches Notensystem)
+                        If H1_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And H1_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then H1_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                    Case Is > GetAsyncKeyState(119) Or GetAsyncKeyState(56) 'F8, 8, C
+                        If C2_Klappe.Value + Tastenkonbination_Klappenverschiebung <= 1 And C2_Klappe.Value + Tastenkonbination_Klappenverschiebung >= -1 Then C2_Klappe.Value += Tastenkonbination_Klappenverschiebung
+                End Select
+            End If
 
     End Sub
 
@@ -1829,7 +1830,6 @@ Public Class Form1
                   "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
                   "Der Lizenzschlüssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
                   "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
-                Me.Close()
             End If
         Catch ex As Exception
             Lizenz = ""
@@ -1838,7 +1838,6 @@ Public Class Form1
                     "Bitte überprüfen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" & _
                     "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch", _
                     MsgBoxStyle.Critical)
-            Me.Close()
         End Try
         'Me.Close()
     End Sub
@@ -1852,32 +1851,39 @@ Public Class Form1
             Lizenz_Activated = True
             'MessageBox.Show("Activated")
         Else
-            Do Until Lizenz.Length = 29
-                If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspringt nicht der," _
-                                                                & vbCrLf & "für den Schlüssel vorgesehenen Länge." _
-                                                                & vbCrLf & "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen" _
-                                                                & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.", _
-                                                                "Falscher Lizenzschlüssel", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Do
+                Do Until Lizenz.Length = 29
+                    If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspringt nicht der," _
+                                                                    & vbCrLf & "für den Schlüssel vorgesehenen Länge." _
+                                                                    & vbCrLf & "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen" _
+                                                                    & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.", _
+                                                                    "Falscher Lizenzschlüssel", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
-                Lizenz = InputBox("Bitte geben Sie Ihr Lizenzschlüssel ein." _
-                                    & vbCrLf & vbCrLf & "Format: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" _
-                                    & vbCrLf & "- Nur Grossbuchstaben ohne Zahelen, Zeichen" _
-                                    & vbCrLf & "- Trennungsstriche nicht vergessen!", "Aktivierung")
+                    Lizenz = InputBox("Bitte geben Sie Ihr Lizenzschlüssel ein." _
+                                        & vbCrLf & vbCrLf & "Format: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" _
+                                        & vbCrLf & "- Nur Grossbuchstaben ohne Zahelen, Zeichen" _
+                                        & vbCrLf & "- Trennungsstriche nicht vergessen!", "Aktivierung")
 
-                'PLMMD-YNOJG-EBJET-MEBXU-YLEJX
+                    'PLMMD-YNOJG-EBJET-MEBXU-YLEJX
 
-            Loop
+                Loop
 
-            Registrierung()
+                MsgBox("Die Aktivierung kann, abhängig von verschiedensten Faktoren von wenigen" & _
+                        "Sekunden bis hin zu einer Minute dauern! Haben sie bitte ein bisschen Geduld." & _
+                        vbCrLf & vbCrLf & "Die Aktivierung wird mit einem Klick auf OK gestartet.")
+                Registrierung()
 
-            If Check() = True Then
-                Lizenz_Activated = True
-            Else
-                Me.Close()
-            End If
+                If Check() = True Then
+                    Lizenz_Activated = True
+                Else
+                    Lizenz = ""
+                End If
+            Loop Until Lizenz_Activated = True
         End If
-    End Sub
 
+
+
+    End Sub
 #End Region
 
 
