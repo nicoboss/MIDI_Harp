@@ -4,7 +4,7 @@ Imports System.IO.Ports.SerialPort
 Imports System.Text.Encoding
 Imports System.IO
 Imports System.Text
-Imports System.Net.NetworkInformation
+'Imports System.Net.NetworkInformation
 
 Public Class Form1
 
@@ -1724,45 +1724,6 @@ Public Class Form1
     End Function
 
 
-
-    Private Sub Form_Load() Handles MyBase.Load
-        Dim MACs() As String
-        Dim i As Long
-
-        MACs = MACAddressWMI()
-        For i = 0 To UBound(MACs)
-            If Len(MACs(i)) > 0 Then List1.Items.Add(MACs(i))
-        Next i
-    End Sub
-
-    Public Function MACAddressWMI() As String()
-        Dim WMIobj As Object
-        Dim MACobj As Object
-        Dim s() As String
-        On Error GoTo ErrOut
-
-        ReDim s(0)
-        WMIobj = GetObject("winmgmts:").ExecQuery("SELECT MACAddress FROM Win32_NetworkAdapter " & _
-                  "WHERE ((MACAddress Is Not NULL) AND (Manufacturer <> 'Microsoft'))")
-
-        For Each MACobj In WMIobj
-            ReDim s(UBound(s) + 1)
-            s(UBound(s)) = MACobj.MACAddress
-        Next MACobj
-
-        MACAddressWMI = s
-        Exit Function
-ErrOut:
-        MsgBox("Fehler! WMI ist nicht vorhanden")
-    End Function
-
-
-    Function getMacAddress()
-        Dim nics() As NetworkInterface = _
-              NetworkInterface.GetAllNetworkInterfaces
-        Return nics(0).GetPhysicalAddress.ToString
-    End Function
-
     Sub Generate()
         Dim P() As Byte, C As String, X() As Byte, Z As Integer
         P = My.Computer.FileSystem.ReadAllBytes(Application.ExecutablePath)
@@ -1810,7 +1771,6 @@ ErrOut:
         Catch ex As Exception
         End Try
         C = GetHash()
-        MessageBox.Show(getMacAddress)
         MessageBox.Show(C)
         MessageBox.Show(C.Length)
         MessageBox.Show(T)
@@ -1921,6 +1881,9 @@ ErrOut:
         About_Button.Enabled = True
     End Sub
 
+    Private Sub ToolTip1_Popup(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PopupEventArgs) Handles ToolTip1.Popup
+
+    End Sub
 End Class
 
 
