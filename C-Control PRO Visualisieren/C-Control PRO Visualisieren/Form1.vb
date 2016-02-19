@@ -267,7 +267,7 @@ Public Class Form1
                             & vbCrLf & "Programm fernzuhalten und sollte bei Ihnen nicht angezeigt werden.")
             Me.Close()
         End If
-        
+
         'verbinden
         Try
 
@@ -1897,7 +1897,7 @@ Public Class Form1
 
     'http://www.vbarchiv.net/workshop/workshop_119-einfacher-kopierschutz-mit-online-aktivierung.html
     Private Sub AntiCopy_Load(ByVal sender As System.Object, _
-  ByVal e As System.EventArgs) 'Handles MyBase.Load
+  ByVal e As System.EventArgs) Handles MyBase.Load
 
         Lizenz = My.Settings.Lizenz_Save
 
