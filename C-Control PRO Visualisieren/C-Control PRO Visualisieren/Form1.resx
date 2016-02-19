@@ -204,6 +204,9 @@ ich ihn anderen Benutzer meines Programmes mitteilen kann.
 Die Latenzzeit bäträgt ca. 10ms. Der Aktuelle Wert kann unter
 Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
   </data>
+  <data name="SendKey_GroupBox.ToolTip" xml:space="preserve">
+    <value>Durch diese Funktion ermöglicht es MIDI Sygnale per Tastaturbefehle einem Externen Programm wie z.B. Cubase (in Cubase mit Ctrl + K Virtuelle Tastatur aktivieren)  auf ein Virtuelles MIDI Piano zu senden. Diese Funktion ist viel einfache als die nicht von allen Programmen unterstüzte Funktion über die winmm.dll api jedoch Sind durch fehlende Tasten öft nicht alle 5 Oktaven benutzbar. Die Latenzzeit ist normalerweise bei beiden Varianten gleich  jedoch kann durch schlechte Virtuelle MIDI Pianos beim empfänger diese drastisch erhöt werden. Die Tastenzuordnung kann durch klicken auf die Buttons und drücken der gewünschten Taste, konfiguriert werden. Die zu konfigurioerende Oktave kann durch Okt. - und Okt. + vberändert werden.</value>
+  </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 24</value>
   </metadata>
@@ -216,6 +219,11 @@ Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 25</value>
   </metadata>
+  <data name="SendKeys_GroupBox.ToolTip" xml:space="preserve">
+    <value>Durch diese Funktion ermöglicht es MIDI Sygnale per Tastaturbefehle einem Externen Programm wie z.B. Cubase (in Cubase mit Ctrl + K Virtuelle Tastatur aktivieren)  auf ein Virtuelles MIDI Piano zu senden.
+Die Tastaturkonfiguration ist weiter links zu finden.
+Soll Diese Funktion aktiviert werden?</value>
+  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>70</value>
   </metadata>

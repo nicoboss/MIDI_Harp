@@ -10,6 +10,8 @@ Imports System.Runtime.InteropServices
 
 Public Class Form1
 
+    Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
+
     Private Declare Sub mouse_event Lib "user32" _
       (ByVal dwFlags As Integer, ByVal dx As Integer, _
       ByVal dy As Integer, ByVal cButtons As Integer, _
@@ -24,11 +26,7 @@ Public Class Form1
     Private Const MOUSEEVENTF_RIGHTUP = &H10
 
 
-    Private Declare Function GetAsyncKeyState _
-Lib "user32" (ByVal vKey As Integer) As Integer
-    Public Const VK_LBUTTON = &H1
-    Public Const VK_RBUTTON = &H2
-    Public Const VK_MBUTTON = &H4
+
 
 
     <DllImport("user32.dll", CallingConvention:=CallingConvention.StdCall, _
@@ -85,10 +83,10 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Dim ADC_Read(40) As Byte
     Dim ADC(40) As Byte
 
-    Dim Notenlaege(255) As Single
-    Dim Note_Play(255) As Boolean
-    Dim Button_Note_Play(255) As Boolean
-    Dim Verschiebung(255) As Byte
+    Dim Notenlaege(127) As Single
+    Dim Note_Play(127) As Boolean
+    Dim Button_Note_Play(127) As Boolean
+    'Dim Verschiebung(255) As Byte
 
     Dim SendKey_key(127) As Byte
     Dim SendKey_Oktave As Byte = 4
@@ -111,7 +109,8 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Dim Noten_Verschiebung(35) As TextBox
     Dim Noten_VerticalProgessBar(35) As MTech010VerticalProgessBar
     Dim Noten_Wert(35) As TextBox
-    Dim Noten_Grenzwert(35) As TextBox
+    Dim Noten_Startwert(35) As TextBox
+    Dim Noten_Stopwert(35) As TextBox
 
     Dim MidiNoteNr = { _
             16, 18, 19, 21, 23, 24, 26, _
@@ -185,23 +184,32 @@ Lib "user32" (ByVal vKey As Integer) As Integer
             C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
             C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
 
-        Noten_Grenzwert = { _
-            C2_Grenzwert, D2_Grenzwert, E2_Grenzwert, F2_Grenzwert, G2_Grenzwert, A2_Grenzwert, H2_Grenzwert, _
-            C3_Grenzwert, D3_Grenzwert, E3_Grenzwert, F3_Grenzwert, G3_Grenzwert, A3_Grenzwert, H3_Grenzwert, _
-            C4_Grenzwert, D4_Grenzwert, E4_Grenzwert, F4_Grenzwert, G4_Grenzwert, A4_Grenzwert, H4_Grenzwert, _
-            C5_Grenzwert, D5_Grenzwert, E5_Grenzwert, F5_Grenzwert, G5_Grenzwert, A5_Grenzwert, H5_Grenzwert, _
-            C6_Grenzwert, D6_Grenzwert, E6_Grenzwert, F6_Grenzwert, G6_Grenzwert, A6_Grenzwert, H6_Grenzwert}
+        Noten_Startwert = { _
+            C2_Startwert, D2_Startwert, E2_Startwert, F2_Startwert, G2_Startwert, A2_Startwert, H2_Startwert, _
+            C3_Startwert, D3_Startwert, E3_Startwert, F3_Startwert, G3_Startwert, A3_Startwert, H3_Startwert, _
+            C4_Startwert, D4_Startwert, E4_Startwert, F4_Startwert, G4_Startwert, A4_Startwert, H4_Startwert, _
+            C5_Startwert, D5_Startwert, E5_Startwert, F5_Startwert, G5_Startwert, A5_Startwert, H5_Startwert, _
+            C6_Startwert, D6_Startwert, E6_Startwert, F6_Startwert, G6_Startwert, A6_Startwert, H6_Startwert}
+
+        Noten_Stopwert = { _
+    C2_Stopwert, D2_Stopwert, E2_Stopwert, F2_Stopwert, G2_Stopwert, A2_Stopwert, H2_Stopwert, _
+    C3_Stopwert, D3_Stopwert, E3_Stopwert, F3_Stopwert, G3_Stopwert, A3_Stopwert, H3_Stopwert, _
+    C4_Stopwert, D4_Stopwert, E4_Stopwert, F4_Stopwert, G4_Stopwert, A4_Stopwert, H4_Stopwert, _
+    C5_Stopwert, D5_Stopwert, E5_Stopwert, F5_Stopwert, G5_Stopwert, A5_Stopwert, H5_Stopwert, _
+    C6_Stopwert, D6_Stopwert, E6_Stopwert, F6_Stopwert, G6_Stopwert, A6_Stopwert, H6_Stopwert}
 
 
-        Tastenkonbinationen_DataGridView.Rows.Add("Metronom", "Ctrl + Shift + M")
-        Tastenkonbinationen_DataGridView.Rows.Add("Direct Play", "Ctrl + Shift + P")
-        Tastenkonbinationen_DataGridView.Rows.Add("Aufnahmemodus", "Ctrl + Shift + A")
-        Tastenkonbinationen_DataGridView.Rows.Add("ToolTip", "Ctrl + Shift + T")
-        Tastenkonbinationen_DataGridView.Rows.Add("Exit", "Esc oder Alt + F4")
-        Tastenkonbinationen_DataGridView.Rows.Add("Klappen", "F1-F8 or 1-8 or c-h")
-        Tastenkonbinationen_DataGridView.Rows.Add("", "und Pfeilt. up/down")
-        Tastenkonbinationen_DataGridView.Rows.Add("", "oder Num8/Num2")
-
+        With Tastenkonbinationen_DataGridView.Rows
+            .Add("Metronom", "Ctrl + Shift + M")
+            .Add("Direct Play", "Ctrl + Shift + P")
+            .Add("Aufnahmemodus", "Ctrl + Shift + A")
+            .Add("ToolTip", "Ctrl + Shift + T")
+            .Add("Exit", "Esc oder Alt + F4")
+            .Add("Klappen", "F1-F8 or 1-8 or c-h")
+            .Add("", "und Pfeilt. up/down")
+            .Add("", "oder Num8/Num2")
+            .Add("", "z.B. C & Pfeil Up")
+        End With
 
         For Each col As DataGridViewColumn In Tastenkonbinationen_DataGridView.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
@@ -256,11 +264,13 @@ Lib "user32" (ByVal vKey As Integer) As Integer
             ComboBox_Comport.Enabled = False
 
             'Comport öffnen
-            SerialPort1.PortName = ComboBox_Comport.Text
-            SerialPort1.BaudRate = 230400 'Baudrate
-            SerialPort1.DataBits = 8
-            SerialPort1.Encoding = System.Text.Encoding.Default
-            SerialPort1.Open()
+            With SerialPort1
+                .PortName = ComboBox_Comport.Text
+                .BaudRate = 230400 'Baudrate
+                .DataBits = 8
+                .Encoding = System.Text.Encoding.Default
+                .Open()
+            End With
 
             Com_Search_Timer.Enabled = False
             Mesgeschwindigkeitsberechnung_Timer.Enabled = True
@@ -367,102 +377,18 @@ Lib "user32" (ByVal vKey As Integer) As Integer
                     'NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
                     NotenNr = MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text)
 
-                    If ADC(i) >= CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = False Then
+                    If ADC(i) >= CInt(Noten_Startwert(i).Text) And Note_Play(NotenNr) = False Then
                         'MessageBox.Show(NotenNr & " on")
                         Note_Play(NotenNr) = True
                         m.PlayMIDINote(NotenNr, 100, 0)
-
-                        META_Bemerkung_Input.Text = NotenNr
-                        'NotenNr = 11
-                        Select Case NotenNr
-                            Case 0 To 11
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr)
-                            Case 12 To 23
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr - 12), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 12)
-                            Case 24 To 35
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr - 24), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 24)
-                            Case 36 To 47
-                                'SendKey_Oktave_set(1)
-                                keybd_event(SendKey_key(NotenNr - 36), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 36)
-                            Case 48 To 59
-                                'SendKey_Oktave_set(2)
-                                keybd_event(SendKey_key(NotenNr - 48), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 48)
-                            Case 60 To 71
-                                'SendKey_Oktave_set(3)
-                                keybd_event(SendKey_key(NotenNr - 60), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 60)
-                            Case 72 To 83
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 72), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 72)
-                            Case 84 To 95
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 84), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 84)
-                            Case 96 To 107
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 96), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 96)
-                            Case 108 To 119
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 108), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 108)
-                            Case 120 To 127
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 120), 0, 0, 0)
-                                META_Bemerkung_Input.Text = (NotenNr - 120)
-                        End Select
+                        keybd_event(SendKey_key(NotenNr), 0, 0, 0)
                     End If
 
-                    If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
+                    If ADC(i) < CInt(Noten_Stopwert(i).Text) And Note_Play(NotenNr) = True Then
                         'MessageBox.Show(NotenNr & " off")
                         Note_Play(NotenNr) = False
                         m.STOPMIDINote(NotenNr)
-
-                        Select Case NotenNr
-                            Case 0 To 11
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr - 11), 0, KEYEVENTF_KEYUP, 0)
-                            Case 12 To 23
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr - 23), 0, KEYEVENTF_KEYUP, 0)
-                            Case 24 To 35
-                                'SendKey_Oktave_set(0)
-                                keybd_event(SendKey_key(NotenNr - 35), 0, KEYEVENTF_KEYUP, 0)
-                            Case 36 To 47
-                                'SendKey_Oktave_set(1)
-                                keybd_event(SendKey_key(NotenNr - 47), 0, KEYEVENTF_KEYUP, 0)
-                            Case 48 To 59
-                                'SendKey_Oktave_set(2)
-                                keybd_event(SendKey_key(NotenNr - 59), 0, KEYEVENTF_KEYUP, 0)
-                            Case 60 To 71
-                                'SendKey_Oktave_set(3)
-                                keybd_event(SendKey_key(NotenNr - 71), 0, KEYEVENTF_KEYUP, 0)
-                            Case 72 To 83
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 83), 0, KEYEVENTF_KEYUP, 0)
-                            Case 84 To 95
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 95), 0, KEYEVENTF_KEYUP, 0)
-                            Case 96 To 107
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 107), 0, KEYEVENTF_KEYUP, 0)
-                            Case 108 To 119
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 119), 0, KEYEVENTF_KEYUP, 0)
-                            Case 120 To 127
-                                'SendKey_Oktave_set(4)
-                                keybd_event(SendKey_key(NotenNr - 127), 0, KEYEVENTF_KEYUP, 0)
-                        End Select
-
+                        keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
                     End If
 
                 Next
@@ -812,7 +738,7 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 
 
 
-#Region "Button Note"
+#Region " Button Note "
 
 #Region "   Buttons Events "
 
@@ -1141,17 +1067,23 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 
 #End Region
 
-#Region "Grenzwerte"
 
-    Private Sub C2_Grenzwert_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
-        C2_Grenzwert.KeyPress, D2_Grenzwert.KeyPress, E2_Grenzwert.KeyPress, F2_Grenzwert.KeyPress, G2_Grenzwert.KeyPress, A2_Grenzwert.KeyPress, H2_Grenzwert.KeyPress, _
-        C3_Grenzwert.KeyPress, D3_Grenzwert.KeyPress, E3_Grenzwert.KeyPress, F3_Grenzwert.KeyPress, G3_Grenzwert.KeyPress, A3_Grenzwert.KeyPress, H3_Grenzwert.KeyPress, _
-        C4_Grenzwert.KeyPress, D4_Grenzwert.KeyPress, E4_Grenzwert.KeyPress, F4_Grenzwert.KeyPress, G4_Grenzwert.KeyPress, A4_Grenzwert.KeyPress, H4_Grenzwert.KeyPress, _
-        C5_Grenzwert.KeyPress, D5_Grenzwert.KeyPress, E5_Grenzwert.KeyPress, F5_Grenzwert.KeyPress, G5_Grenzwert.KeyPress, A5_Grenzwert.KeyPress, H5_Grenzwert.KeyPress, _
-        C6_Grenzwert.KeyPress, D6_Grenzwert.KeyPress, E6_Grenzwert.KeyPress, F6_Grenzwert.KeyPress, G6_Grenzwert.KeyPress, A6_Grenzwert.KeyPress, H6_Grenzwert.KeyPress
+#Region " Grenzwerte "
+
+    Private Sub Grenzwerte_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
+        C2_Startwert.KeyPress, D2_Startwert.KeyPress, E2_Startwert.KeyPress, F2_Startwert.KeyPress, G2_Startwert.KeyPress, A2_Startwert.KeyPress, H2_Startwert.KeyPress, _
+        C3_Startwert.KeyPress, D3_Startwert.KeyPress, E3_Startwert.KeyPress, F3_Startwert.KeyPress, G3_Startwert.KeyPress, A3_Startwert.KeyPress, H3_Startwert.KeyPress, _
+        C4_Startwert.KeyPress, D4_Startwert.KeyPress, E4_Startwert.KeyPress, F4_Startwert.KeyPress, G4_Startwert.KeyPress, A4_Startwert.KeyPress, H4_Startwert.KeyPress, _
+        C5_Startwert.KeyPress, D5_Startwert.KeyPress, E5_Startwert.KeyPress, F5_Startwert.KeyPress, G5_Startwert.KeyPress, A5_Startwert.KeyPress, H5_Startwert.KeyPress, _
+        C6_Startwert.KeyPress, D6_Startwert.KeyPress, E6_Startwert.KeyPress, F6_Startwert.KeyPress, G6_Startwert.KeyPress, A6_Startwert.KeyPress, H6_Startwert.KeyPress, _
+        C2_Stopwert.KeyPress, D2_Stopwert.KeyPress, E2_Stopwert.KeyPress, F2_Stopwert.KeyPress, G2_Stopwert.KeyPress, A2_Stopwert.KeyPress, H2_Stopwert.KeyPress, _
+        C3_Stopwert.KeyPress, D3_Stopwert.KeyPress, E3_Stopwert.KeyPress, F3_Stopwert.KeyPress, G3_Stopwert.KeyPress, A3_Stopwert.KeyPress, H3_Stopwert.KeyPress, _
+        C4_Stopwert.KeyPress, D4_Stopwert.KeyPress, E4_Stopwert.KeyPress, F4_Stopwert.KeyPress, G4_Stopwert.KeyPress, A4_Stopwert.KeyPress, H4_Stopwert.KeyPress, _
+        C5_Stopwert.KeyPress, D5_Stopwert.KeyPress, E5_Stopwert.KeyPress, F5_Stopwert.KeyPress, G5_Stopwert.KeyPress, A5_Stopwert.KeyPress, H5_Stopwert.KeyPress, _
+        C6_Stopwert.KeyPress, D6_Stopwert.KeyPress, E6_Stopwert.KeyPress, F6_Stopwert.KeyPress, G6_Stopwert.KeyPress, A6_Stopwert.KeyPress, H6_Stopwert.KeyPress
 
         Select Case Asc(e.KeyChar)
-            Case 48 To 57, 8, 32, 46
+            Case 48 To 57, 8 ', 45=Minus ', 46=Punkt (Hier als Komma)
                 ' Zahlen, Backspace und Space zulassen
             Case Else
                 ' alle anderen Eingaben unterdrücken
@@ -1161,16 +1093,53 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     End Sub
 
 
-    Private Sub C2_Grenzwert_TextChanged(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
-        C2_Grenzwert.LostFocus, D2_Grenzwert.LostFocus, E2_Grenzwert.LostFocus, F2_Grenzwert.LostFocus, G2_Grenzwert.LostFocus, A2_Grenzwert.LostFocus, H2_Grenzwert.LostFocus, _
-        C3_Grenzwert.LostFocus, D3_Grenzwert.LostFocus, E3_Grenzwert.LostFocus, F3_Grenzwert.LostFocus, G3_Grenzwert.LostFocus, A3_Grenzwert.LostFocus, H3_Grenzwert.LostFocus, _
-        C4_Grenzwert.LostFocus, D4_Grenzwert.LostFocus, E4_Grenzwert.LostFocus, F4_Grenzwert.LostFocus, G4_Grenzwert.LostFocus, A4_Grenzwert.LostFocus, H4_Grenzwert.LostFocus, _
-        C5_Grenzwert.LostFocus, D5_Grenzwert.LostFocus, E5_Grenzwert.LostFocus, F5_Grenzwert.LostFocus, G5_Grenzwert.LostFocus, A5_Grenzwert.LostFocus, H5_Grenzwert.LostFocus, _
-        C6_Grenzwert.LostFocus, D6_Grenzwert.LostFocus, E6_Grenzwert.LostFocus, F6_Grenzwert.LostFocus, G6_Grenzwert.LostFocus, A6_Grenzwert.LostFocus, H6_Grenzwert.LostFocus
+    Private Sub Verschiebung_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
+    C2_Verschiebung.KeyPress, D2_Verschiebung.KeyPress, E2_Verschiebung.KeyPress, F2_Verschiebung.KeyPress, G2_Verschiebung.KeyPress, A2_Verschiebung.KeyPress, H2_Verschiebung.KeyPress, _
+    C3_Verschiebung.KeyPress, D3_Verschiebung.KeyPress, E3_Verschiebung.KeyPress, F3_Verschiebung.KeyPress, G3_Verschiebung.KeyPress, A3_Verschiebung.KeyPress, H3_Verschiebung.KeyPress, _
+    C4_Verschiebung.KeyPress, D4_Verschiebung.KeyPress, E4_Verschiebung.KeyPress, F4_Verschiebung.KeyPress, G4_Verschiebung.KeyPress, A4_Verschiebung.KeyPress, H4_Verschiebung.KeyPress, _
+    C5_Verschiebung.KeyPress, D5_Verschiebung.KeyPress, E5_Verschiebung.KeyPress, F5_Verschiebung.KeyPress, G5_Verschiebung.KeyPress, A5_Verschiebung.KeyPress, H5_Verschiebung.KeyPress, _
+    C6_Verschiebung.KeyPress, D6_Verschiebung.KeyPress, E6_Verschiebung.KeyPress, F6_Verschiebung.KeyPress, G6_Verschiebung.KeyPress, A6_Verschiebung.KeyPress, H6_Verschiebung.KeyPress
+
+        Select Case Asc(e.KeyChar)
+            Case 48 To 57, 8, 45 ', 46=Punkt (Hier als Komma)
+                ' Zahlen, Backspace und Space zulassen
+            Case Else
+                ' alle anderen Eingaben unterdrücken
+                e.Handled = True
+        End Select
+
+    End Sub
+
+
+    Private Sub Grenzwerte_LostFocus(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
+        C2_Startwert.LostFocus, D2_Startwert.LostFocus, E2_Startwert.LostFocus, F2_Startwert.LostFocus, G2_Startwert.LostFocus, A2_Startwert.LostFocus, H2_Startwert.LostFocus, _
+        C3_Startwert.LostFocus, D3_Startwert.LostFocus, E3_Startwert.LostFocus, F3_Startwert.LostFocus, G3_Startwert.LostFocus, A3_Startwert.LostFocus, H3_Startwert.LostFocus, _
+        C4_Startwert.LostFocus, D4_Startwert.LostFocus, E4_Startwert.LostFocus, F4_Startwert.LostFocus, G4_Startwert.LostFocus, A4_Startwert.LostFocus, H4_Startwert.LostFocus, _
+        C5_Startwert.LostFocus, D5_Startwert.LostFocus, E5_Startwert.LostFocus, F5_Startwert.LostFocus, G5_Startwert.LostFocus, A5_Startwert.LostFocus, H5_Startwert.LostFocus, _
+        C6_Startwert.LostFocus, D6_Startwert.LostFocus, E6_Startwert.LostFocus, F6_Startwert.LostFocus, G6_Startwert.LostFocus, A6_Startwert.LostFocus, H6_Startwert.LostFocus, _
+        C2_Stopwert.LostFocus, D2_Stopwert.LostFocus, E2_Stopwert.LostFocus, F2_Stopwert.LostFocus, G2_Stopwert.LostFocus, A2_Stopwert.LostFocus, H2_Stopwert.LostFocus, _
+        C3_Stopwert.LostFocus, D3_Stopwert.LostFocus, E3_Stopwert.LostFocus, F3_Stopwert.LostFocus, G3_Stopwert.LostFocus, A3_Stopwert.LostFocus, H3_Stopwert.LostFocus, _
+        C4_Stopwert.LostFocus, D4_Stopwert.LostFocus, E4_Stopwert.LostFocus, F4_Stopwert.LostFocus, G4_Stopwert.LostFocus, A4_Stopwert.LostFocus, H4_Stopwert.LostFocus, _
+        C5_Stopwert.LostFocus, D5_Stopwert.LostFocus, E5_Stopwert.LostFocus, F5_Stopwert.LostFocus, G5_Stopwert.LostFocus, A5_Stopwert.LostFocus, H5_Stopwert.LostFocus, _
+        C6_Stopwert.LostFocus, D6_Stopwert.LostFocus, E6_Stopwert.LostFocus, F6_Stopwert.LostFocus, G6_Stopwert.LostFocus, A6_Stopwert.LostFocus, H6_Stopwert.LostFocus
 
         If sender.Text > 255 Then sender.Text = 255
         'MessageBox.Show(sender.Text)
     End Sub
+
+
+    Private Sub Verschiebung_LostFocus(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
+    C2_Verschiebung.LostFocus, D2_Verschiebung.LostFocus, E2_Verschiebung.LostFocus, F2_Verschiebung.LostFocus, G2_Verschiebung.LostFocus, A2_Verschiebung.LostFocus, H2_Verschiebung.LostFocus, _
+    C3_Verschiebung.LostFocus, D3_Verschiebung.LostFocus, E3_Verschiebung.LostFocus, F3_Verschiebung.LostFocus, G3_Verschiebung.LostFocus, A3_Verschiebung.LostFocus, H3_Verschiebung.LostFocus, _
+    C4_Verschiebung.LostFocus, D4_Verschiebung.LostFocus, E4_Verschiebung.LostFocus, F4_Verschiebung.LostFocus, G4_Verschiebung.LostFocus, A4_Verschiebung.LostFocus, H4_Verschiebung.LostFocus, _
+    C5_Verschiebung.LostFocus, D5_Verschiebung.LostFocus, E5_Verschiebung.LostFocus, F5_Verschiebung.LostFocus, G5_Verschiebung.LostFocus, A5_Verschiebung.LostFocus, H5_Verschiebung.LostFocus, _
+    C6_Verschiebung.LostFocus, D6_Verschiebung.LostFocus, E6_Verschiebung.LostFocus, F6_Verschiebung.LostFocus, G6_Verschiebung.LostFocus, A6_Verschiebung.LostFocus, H6_Verschiebung.LostFocus
+
+        If sender.Text > 127 Then sender.Text = 127
+        If sender.Text < -127 Then sender.Text = -127
+        'MessageBox.Show(sender.Text)
+    End Sub
+
 
 #End Region
 
@@ -1342,273 +1311,9 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 #End Region
 
 
-#Region "Einstellungsspeicherungsfunktion"
-
-    Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown    'Wichtig: MyBase.Load geht nicht, da zu früh!
-
-        With My.Settings
-            ' Aufnahmemodus
-            MIDI_NormalMode.Checked = .MIDI_NormalMode
-            'Absichtlicher Overflow
-            'Alternative: SpecialMode stadt NormalMode speichern!
-            'MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
-            cboInstruments.SelectedIndex = .cboInstruments
-
-            ' Tempo
-            Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
-            Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
-            BPM.Value = .BPM
-
-            ' Tonhöhenverschiebung
-            Halbtonverschiebung.Value = .Halbtonverschiebung
-
-            ' META
-            META_Dateinamen_Input.Text = .META_Dateinamen_Input
-            META_Autor_Input.Text = .META_Autor_Input
-            META_Spurnamen_Input.Text = .META_Spurnamen_Input
-            META_Copyright_Input.Text = .META_Copyright_Input
-            META_Bemerkung_Input.Text = .META_Bemerkung_Input
-
-            ' Metronom
-            Metronom_Betont.Checked = .Metronom_Betont
-            Metronom_ON.Checked = .Metronom_ON
-
-            ' Direct Play
-            DirectPlay_ON.Checked = .DirectPlay_ON
-            hsbVolume.Value = .hsbVolume
-            hsbPan.Value = .hsbPan
-            hsbModWheel.Value = .hsbModWheel
-
-            ' ToolTip
-            ToolTip_ON.Checked = .ToolTip_ON
-
-            ' Tonart Klappen
-            C1_Klappe.Value = .C_Klappe
-            D1_Klappe.Value = .D_Klappe
-            E1_Klappe.Value = .E_Klappe
-            F1_Klappe.Value = .F_Klappe
-            G1_Klappe.Value = .G_Klappe
-            A1_Klappe.Value = .A_Klappe
-            H1_Klappe.Value = .G_Klappe
-
-            ' Halbtonverschiebung
-            C2_Grenzwert.Text = .C2_Grenzwert_Save
-            D2_Grenzwert.Text = .D2_Grenzwert_Save
-            E2_Grenzwert.Text = .E2_Grenzwert_Save
-            F2_Grenzwert.Text = .F2_Grenzwert_Save
-            G2_Grenzwert.Text = .G2_Grenzwert_Save
-            A2_Grenzwert.Text = .A2_Grenzwert_Save
-            H2_Grenzwert.Text = .H2_Grenzwert_Save
-
-            C3_Grenzwert.Text = .C3_Grenzwert_Save
-            D3_Grenzwert.Text = .D3_Grenzwert_Save
-            E3_Grenzwert.Text = .E3_Grenzwert_Save
-            F3_Grenzwert.Text = .F3_Grenzwert_Save
-            G3_Grenzwert.Text = .G3_Grenzwert_Save
-            A3_Grenzwert.Text = .A3_Grenzwert_Save
-            H3_Grenzwert.Text = .H3_Grenzwert_Save
-
-            C4_Grenzwert.Text = .C4_Grenzwert_Save
-            D4_Grenzwert.Text = .D4_Grenzwert_Save
-            E4_Grenzwert.Text = .E4_Grenzwert_Save
-            F4_Grenzwert.Text = .F4_Grenzwert_Save
-            G4_Grenzwert.Text = .G4_Grenzwert_Save
-            A4_Grenzwert.Text = .A4_Grenzwert_Save
-            H4_Grenzwert.Text = .H4_Grenzwert_Save
-
-            C5_Grenzwert.Text = .C5_Grenzwert_Save
-            D5_Grenzwert.Text = .D5_Grenzwert_Save
-            E5_Grenzwert.Text = .E5_Grenzwert_Save
-            F5_Grenzwert.Text = .F5_Grenzwert_Save
-            G5_Grenzwert.Text = .G5_Grenzwert_Save
-            A5_Grenzwert.Text = .A5_Grenzwert_Save
-            H5_Grenzwert.Text = .H5_Grenzwert_Save
-
-            C6_Grenzwert.Text = .C6_Grenzwert_Save
-            D6_Grenzwert.Text = .D6_Grenzwert_Save
-            E6_Grenzwert.Text = .E6_Grenzwert_Save
-            F6_Grenzwert.Text = .F6_Grenzwert_Save
-            G6_Grenzwert.Text = .G6_Grenzwert_Save
-            A6_Grenzwert.Text = .A6_Grenzwert_Save
-            H6_Grenzwert.Text = .H6_Grenzwert_Save
-
-            ' Tastenkonbinationen
-            'MessageBox.Show(.Start_Tastenkombination_Save)
-            Start_Tastenkombination.Text = .Start_Tastenkombination_Save
-            If Not .Start_Tastenkombination_Key1_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key1_Save)
-            If Not .Start_Tastenkombination_Key2_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key2_Save)
-            If Not .Start_Tastenkombination_Key3_Save = 0 Then Start_Tastenkombination_Key.Add(.Start_Tastenkombination_Key3_Save)
-
-            Pause_Tastenkombination.Text = .Pause_Tastenkombination_Save
-            If Not .Pause_Tastenkombination_Key1_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key1_Save)
-            If Not .Pause_Tastenkombination_Key2_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key2_Save)
-            If Not .Pause_Tastenkombination_Key3_Save = 0 Then Pause_Tastenkombination_Key.Add(.Pause_Tastenkombination_Key3_Save)
-
-
-            Save_Tastenkombination.Text = .Save_Tastenkombination_Save
-            If Not .Save_Tastenkombination_Key1_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key1_Save)
-            If Not .Save_Tastenkombination_Key2_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key2_Save)
-            If Not .Save_Tastenkombination_Key3_Save = 0 Then Save_Tastenkombination_Key.Add(.Save_Tastenkombination_Key3_Save)
-
-            'Ist SendKeys an?
-            SendKeys_ON.Checked = .SendKeys_ON_Save
-
-            'SendKey Einstellungen
-            Try
-                For i = 0 To 127
-                    SendKey_key(i) = .SendKey_Save(i)
-                Next
-            Catch
-            End Try
-
-            For i = 0 To 11
-                SendKey_h.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + i))
-            Next
-
-
-        End With
-    End Sub
 
 
 
-    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As Object) Handles MyBase.FormClosing
-        With My.Settings
-
-            'Lizenz
-            .Lizenz_Save = Lizenz
-
-            ' Aufnahmemodus
-            .MIDI_NormalMode = MIDI_NormalMode.Checked
-            .cboInstruments = cboInstruments.SelectedIndex
-
-            ' Tempo
-            .Tackt_Zaehler_Input = Tackt_Zaehler_Input.Value
-            .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
-            .BPM = BPM.Value
-
-            ' Tonhöhenverschiebung
-            .Halbtonverschiebung = Halbtonverschiebung.Value
-
-            ' META
-            .META_Dateinamen_Input = META_Dateinamen_Input.Text
-            .META_Autor_Input = META_Autor_Input.Text
-            .META_Spurnamen_Input = META_Spurnamen_Input.Text
-            .META_Copyright_Input = META_Copyright_Input.Text
-            .META_Bemerkung_Input = META_Bemerkung_Input.Text
-
-            ' Metronom
-            .Metronom_Betont = Metronom_Betont.Checked
-            .Metronom_ON = Metronom_ON.Checked
-
-            ' Direct Play
-            .DirectPlay_ON = DirectPlay_ON.Checked
-            .hsbVolume = hsbVolume.Value
-            .hsbPan = hsbPan.Value
-            .hsbModWheel = hsbModWheel.Value
-
-            ' ToolTip
-            .ToolTip_ON = ToolTip_ON.Checked
-
-            ' Tonart Klappen
-            .C_Klappe = C1_Klappe.Value
-            .D_Klappe = D1_Klappe.Value
-            .E_Klappe = E1_Klappe.Value
-            .F_Klappe = F1_Klappe.Value
-            .G_Klappe = G1_Klappe.Value
-            .A_Klappe = A1_Klappe.Value
-            .H_Klappe = H1_Klappe.Value
-
-            ' Halbtonverschiebung
-            .C2_Grenzwert_Save = C2_Grenzwert.Text
-            .D2_Grenzwert_Save = D2_Grenzwert.Text
-            .E2_Grenzwert_Save = E2_Grenzwert.Text
-            .F2_Grenzwert_Save = F2_Grenzwert.Text
-            .G2_Grenzwert_Save = G2_Grenzwert.Text
-            .A2_Grenzwert_Save = A2_Grenzwert.Text
-            .H2_Grenzwert_Save = H2_Grenzwert.Text
-
-            .C3_Grenzwert_Save = C3_Grenzwert.Text
-            .D3_Grenzwert_Save = D3_Grenzwert.Text
-            .E3_Grenzwert_Save = E3_Grenzwert.Text
-            .F3_Grenzwert_Save = F3_Grenzwert.Text
-            .G3_Grenzwert_Save = G3_Grenzwert.Text
-            .A3_Grenzwert_Save = A3_Grenzwert.Text
-            .H3_Grenzwert_Save = H3_Grenzwert.Text
-
-            .C4_Grenzwert_Save = C4_Grenzwert.Text
-            .D4_Grenzwert_Save = D4_Grenzwert.Text
-            .E4_Grenzwert_Save = E4_Grenzwert.Text
-            .F4_Grenzwert_Save = F4_Grenzwert.Text
-            .G4_Grenzwert_Save = G4_Grenzwert.Text
-            .A4_Grenzwert_Save = A4_Grenzwert.Text
-            .H4_Grenzwert_Save = H4_Grenzwert.Text
-
-            .C5_Grenzwert_Save = C5_Grenzwert.Text
-            .D5_Grenzwert_Save = D5_Grenzwert.Text
-            .E5_Grenzwert_Save = E5_Grenzwert.Text
-            .F5_Grenzwert_Save = F5_Grenzwert.Text
-            .G5_Grenzwert_Save = G5_Grenzwert.Text
-            .A5_Grenzwert_Save = A5_Grenzwert.Text
-            .H5_Grenzwert_Save = H5_Grenzwert.Text
-
-            .C6_Grenzwert_Save = C6_Grenzwert.Text
-            .D6_Grenzwert_Save = D6_Grenzwert.Text
-            .E6_Grenzwert_Save = E6_Grenzwert.Text
-            .F6_Grenzwert_Save = F6_Grenzwert.Text
-            .G6_Grenzwert_Save = G6_Grenzwert.Text
-            .A6_Grenzwert_Save = A6_Grenzwert.Text
-            .H6_Grenzwert_Save = H6_Grenzwert.Text
-
-            ' Tastenkonbinationen
-            .Start_Tastenkombination_Save = Start_Tastenkombination.Text
-            If Start_Tastenkombination_Key.Count > 0 Then .Start_Tastenkombination_Key1_Save = Start_Tastenkombination_Key(0) Else .Start_Tastenkombination_Key1_Save = 0
-            If Start_Tastenkombination_Key.Count > 1 Then .Start_Tastenkombination_Key2_Save = Start_Tastenkombination_Key(1) Else .Start_Tastenkombination_Key2_Save = 0
-            If Start_Tastenkombination_Key.Count > 2 Then .Start_Tastenkombination_Key3_Save = Start_Tastenkombination_Key(2) Else .Start_Tastenkombination_Key3_Save = 0
-
-            .Pause_Tastenkombination_Save = Pause_Tastenkombination.Text
-            If Pause_Tastenkombination_Key.Count > 0 Then .Pause_Tastenkombination_Key1_Save = Pause_Tastenkombination_Key(0) Else .Pause_Tastenkombination_Key1_Save = 0
-            If Pause_Tastenkombination_Key.Count > 1 Then .Pause_Tastenkombination_Key2_Save = Pause_Tastenkombination_Key(1) Else .Pause_Tastenkombination_Key2_Save = 0
-            If Pause_Tastenkombination_Key.Count > 2 Then .Pause_Tastenkombination_Key3_Save = Pause_Tastenkombination_Key(2) Else .Pause_Tastenkombination_Key3_Save = 0
-
-            .Save_Tastenkombination_Save = Save_Tastenkombination.Text
-            If Save_Tastenkombination_Key.Count > 0 Then .Save_Tastenkombination_Key1_Save = Save_Tastenkombination_Key(0) Else .Save_Tastenkombination_Key1_Save = 0
-            If Save_Tastenkombination_Key.Count > 1 Then .Save_Tastenkombination_Key2_Save = Save_Tastenkombination_Key(1) Else .Save_Tastenkombination_Key2_Save = 0
-            If Save_Tastenkombination_Key.Count > 2 Then .Save_Tastenkombination_Key3_Save = Save_Tastenkombination_Key(2) Else .Save_Tastenkombination_Key3_Save = 0
-
-
-            'Ist SendKeys an?
-            .SendKeys_ON_Save = SendKeys_ON.Checked()
-
-            'SendKey Einstellungen
-            .SendKey_Save.Clear()
-            For i = 0 To 127
-                .SendKey_Save.Add(SendKey_key(i))
-            Next
-
-
-
-            ' Einstellungen speichern
-            .Save()
-
-        End With
-
-    End Sub
-
-#End Region
-
-
-    'Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
-    'Diagramm_Aktuallisieren()
-    'End Sub
-
-
-
-    Private Sub Mesgeschwindigkeitsberechnung_Timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Mesgeschwindigkeitsberechnung_Timer.Tick
-        Messintervall_Zahl = (AnzMessungen.Text - AnzMessungen_alt) * 4
-        MessungenProS_TexBox.Text = Format(Messintervall_Zahl, "000") & " M/s"
-        Messintervall_TextBox.Text = Format(1000 / Messintervall_Zahl, "00.0") & " ms"
-        AnzMessungen_alt = AnzMessungen.Text
-    End Sub
 
 
 #Region "Tastenkonbinationen"
@@ -1626,7 +1331,6 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 
 
     Dim key As Integer
-    Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
     Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAsyncKeyState_Timer.Tick
 
 
@@ -2221,6 +1925,229 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 #End Region
 
 
+
+
+
+#Region "Einstellungsspeicherungsfunktion"
+
+    Private Sub Form1_Shown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Shown    'Wichtig: MyBase.Load geht nicht, da zu früh!
+
+        With My.Settings
+            ' Aufnahmemodus
+            MIDI_NormalMode.Checked = .MIDI_NormalMode
+            'Absichtlicher Overflow
+            'Alternative: SpecialMode stadt NormalMode speichern!
+            'MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
+            cboInstruments.SelectedIndex = .cboInstruments
+
+            ' Tempo
+            Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
+            Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
+            BPM.Value = .BPM
+
+            ' Tonhöhenverschiebung
+            Halbtonverschiebung.Value = .Halbtonverschiebung
+
+            ' META
+            META_Dateinamen_Input.Text = .META_Dateinamen_Input
+            META_Autor_Input.Text = .META_Autor_Input
+            META_Spurnamen_Input.Text = .META_Spurnamen_Input
+            META_Copyright_Input.Text = .META_Copyright_Input
+            META_Bemerkung_Input.Text = .META_Bemerkung_Input
+
+            ' Metronom
+            Metronom_Betont.Checked = .Metronom_Betont
+            Metronom_ON.Checked = .Metronom_ON
+
+            ' Direct Play
+            DirectPlay_ON.Checked = .DirectPlay_ON
+            hsbVolume.Value = .hsbVolume
+            hsbPan.Value = .hsbPan
+            hsbModWheel.Value = .hsbModWheel
+
+            ' ToolTip
+            ToolTip_ON.Checked = .ToolTip_ON
+
+            ' Tonart Klappen
+            C1_Klappe.Value = .C_Klappe
+            D1_Klappe.Value = .D_Klappe
+            E1_Klappe.Value = .E_Klappe
+            F1_Klappe.Value = .F_Klappe
+            G1_Klappe.Value = .G_Klappe
+            A1_Klappe.Value = .A_Klappe
+            H1_Klappe.Value = .G_Klappe
+
+            ' Startwert, Stopwert und Halbtonverschiebung
+            Try
+                For i = 0 To 34
+                    Noten_Startwert(i).Text = .Startwert_Save(i)
+                    Noten_Stopwert(i).Text = .Stopwert_Save(i)
+                    Noten_Verschiebung(i).Text = .Verschiebung_Save(i)
+                Next
+            Catch
+            End Try
+
+
+
+            ' Tastenkonbinationen
+            'Try
+            Start_Tastenkombination.Text = .Start_Tastenkombination_Save
+            For Each item As String In .Start_Tastenkombination_Key_Save
+                Start_Tastenkombination_Key.Add(item)
+                'MessageBox.Show(item)
+            Next
+
+            Pause_Tastenkombination.Text = .Pause_Tastenkombination_Save
+            .Pause_Tastenkombination_Key_Save.Clear()
+            For Each item As String In .Pause_Tastenkombination_Key_Save
+                Pause_Tastenkombination_Key.Add(item)
+            Next
+
+            Save_Tastenkombination.Text = .Save_Tastenkombination_Save
+            .Save_Tastenkombination_Key_Save.Clear()
+            For Each item As String In .Save_Tastenkombination_Key_Save
+                Save_Tastenkombination_Key.Add(item)
+            Next
+            'Catch
+            'End Try
+
+
+            'Ist SendKeys an?
+            SendKeys_ON.Checked = .SendKeys_ON_Save
+
+            'SendKey Einstellungen
+            Try
+                For i = 0 To 127
+                    SendKey_key(i) = .SendKey_Save(i)
+                Next
+            Catch
+            End Try
+
+            For i = 0 To 11
+                SendKey_h.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + i))
+            Next
+
+
+        End With
+    End Sub
+
+
+
+    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As Object) Handles MyBase.FormClosing ', SendKey_OM.Click '(Als Testhandle da keine MsgBox bei Close Event ohne anderes Event)
+        With My.Settings
+
+            'Lizenz
+            .Lizenz_Save = Lizenz
+
+            ' Aufnahmemodus
+            .MIDI_NormalMode = MIDI_NormalMode.Checked
+            .cboInstruments = cboInstruments.SelectedIndex
+
+            ' Tempo
+            .Tackt_Zaehler_Input = Tackt_Zaehler_Input.Value
+            .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
+            .BPM = BPM.Value
+
+            ' Tonhöhenverschiebung
+            .Halbtonverschiebung = Halbtonverschiebung.Value
+
+            ' META
+            .META_Dateinamen_Input = META_Dateinamen_Input.Text
+            .META_Autor_Input = META_Autor_Input.Text
+            .META_Spurnamen_Input = META_Spurnamen_Input.Text
+            .META_Copyright_Input = META_Copyright_Input.Text
+            .META_Bemerkung_Input = META_Bemerkung_Input.Text
+
+            ' Metronom
+            .Metronom_Betont = Metronom_Betont.Checked
+            .Metronom_ON = Metronom_ON.Checked
+
+            ' Direct Play
+            .DirectPlay_ON = DirectPlay_ON.Checked
+            .hsbVolume = hsbVolume.Value
+            .hsbPan = hsbPan.Value
+            .hsbModWheel = hsbModWheel.Value
+
+            ' ToolTip
+            .ToolTip_ON = ToolTip_ON.Checked
+
+            ' Tonart Klappen
+            .C_Klappe = C1_Klappe.Value
+            .D_Klappe = D1_Klappe.Value
+            .E_Klappe = E1_Klappe.Value
+            .F_Klappe = F1_Klappe.Value
+            .G_Klappe = G1_Klappe.Value
+            .A_Klappe = A1_Klappe.Value
+            .H_Klappe = H1_Klappe.Value
+
+            ' Halbtonverschiebung
+
+            ' Startwert, Stopwert und Halbtonverschiebung
+            .Startwert_Save.Clear()
+            .Stopwert_Save.Clear()
+            .Verschiebung_Save.Clear()
+            For i = 0 To 34
+                .Startwert_Save.Add(Noten_Startwert(i).Text)
+                .Stopwert_Save.Add(Noten_Stopwert(i).Text)
+                .Verschiebung_Save.Add(Noten_Verschiebung(i).Text)
+                'MessageBox.Show(Noten_Startwert(i).Text)
+            Next
+
+
+            ' Tastenkonbinationen
+            .Start_Tastenkombination_Save = Start_Tastenkombination.Text
+            .Start_Tastenkombination_Key_Save.Clear()
+            For Each item As Byte In Start_Tastenkombination_Key
+                .Start_Tastenkombination_Key_Save.Add(item)
+                'MessageBox.Show(item)
+            Next
+
+            .Pause_Tastenkombination_Save = Pause_Tastenkombination.Text
+            .Pause_Tastenkombination_Key_Save.Clear()
+            For Each item As Byte In Pause_Tastenkombination_Key
+                .Pause_Tastenkombination_Key_Save.Add(item)
+            Next
+
+            .Save_Tastenkombination_Save = Save_Tastenkombination.Text
+            .Save_Tastenkombination_Key_Save.Clear()
+            For Each item As Byte In Save_Tastenkombination_Key
+                .Save_Tastenkombination_Key_Save.Add(item)
+            Next
+
+
+            'Ist SendKeys an?
+            .SendKeys_ON_Save = SendKeys_ON.Checked()
+
+            'SendKey Einstellungen
+            .SendKey_Save.Clear()
+            For i = 0 To 127
+                .SendKey_Save.Add(SendKey_key(i))
+            Next
+
+
+
+            ' Einstellungen speichern
+            .Save()
+
+        End With
+
+    End Sub
+
+#End Region
+
+
+    'Private Sub Diagramm_Reload_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Diagramm_Reload.Tick
+    'Diagramm_Aktuallisieren()
+    'End Sub
+
+
+
+    Private Sub Mesgeschwindigkeitsberechnung_Timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Mesgeschwindigkeitsberechnung_Timer.Tick
+        Messintervall_Zahl = (AnzMessungen.Text - AnzMessungen_alt) * 4
+        MessungenProS_TexBox.Text = Format(Messintervall_Zahl, "000") & " M/s"
+        Messintervall_TextBox.Text = Format(1000 / Messintervall_Zahl, "00.0") & " ms"
+        AnzMessungen_alt = AnzMessungen.Text
+    End Sub
 
 
 
