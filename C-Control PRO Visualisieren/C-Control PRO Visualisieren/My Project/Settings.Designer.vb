@@ -940,180 +940,23 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_c_Save() As Byte
+        Public Property SendKeys_ON_Save() As Byte
             Get
-                Return CType(Me("SendKey_c_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_c_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_d_Save() As Byte
-            Get
-                Return CType(Me("SendKey_d_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_d_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_e_Save() As Byte
-            Get
-                Return CType(Me("SendKey_e_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_e_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_f_Save() As Byte
-            Get
-                Return CType(Me("SendKey_f_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_f_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_g_Save() As Byte
-            Get
-                Return CType(Me("SendKey_g_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_g_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_a_Save() As Byte
-            Get
-                Return CType(Me("SendKey_a_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_a_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_h_Save() As Byte
-            Get
-                Return CType(Me("SendKey_h_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_h_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_cis_Save() As Byte
-            Get
-                Return CType(Me("SendKey_cis_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_cis_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_dis_Save() As Byte
-            Get
-                Return CType(Me("SendKey_dis_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_dis_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_fis_Save() As Byte
-            Get
-                Return CType(Me("SendKey_fis_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_fis_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_gis_Save() As Byte
-            Get
-                Return CType(Me("SendKey_gis_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_gis_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_ais_Save() As Byte
-            Get
-                Return CType(Me("SendKey_ais_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_ais_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_OM_Save() As Byte
-            Get
-                Return CType(Me("SendKey_OM_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_OM_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
-        Public Property SendKey_OP_Save() As Byte
-            Get
-                Return CType(Me("SendKey_OP_Save"),Byte)
-            End Get
-            Set
-                Me("SendKey_OP_Save") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property SendKeys_ON_Save() As Boolean
-            Get
-                Return CType(Me("SendKeys_ON_Save"),Boolean)
+                Return CType(Me("SendKeys_ON_Save"),Byte)
             End Get
             Set
                 Me("SendKeys_ON_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
+        Public Property SendKey_Save() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("SendKey_Save"),Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("SendKey_Save") = value
             End Set
         End Property
     End Class

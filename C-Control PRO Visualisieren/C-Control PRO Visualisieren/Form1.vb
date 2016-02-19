@@ -90,8 +90,8 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Dim Button_Note_Play(255) As Boolean
     Dim Verschiebung(255) As Byte
 
-    Dim SendKey_key(14) As Byte
-    Dim SendKey_Oktave As SByte = 2
+    Dim SendKey_key(127) As Byte
+    Dim SendKey_Oktave As Byte = 4
 
     Dim Metronom As Byte
     Dim Metronom_alt As Byte
@@ -1454,35 +1454,16 @@ Lib "user32" (ByVal vKey As Integer) As Integer
             SendKeys_ON.Checked = .SendKeys_ON_Save
 
             'SendKey Einstellungen
-            SendKey_key(0) = .SendKey_c_Save
-            SendKey_key(1) = .SendKey_cis_Save
-            SendKey_key(2) = .SendKey_d_Save
-            SendKey_key(3) = .SendKey_dis_Save
-            SendKey_key(4) = .SendKey_e_Save
-            SendKey_key(5) = .SendKey_f_Save
-            SendKey_key(6) = .SendKey_fis_Save
-            SendKey_key(7) = .SendKey_g_Save
-            SendKey_key(8) = .SendKey_gis_Save
-            SendKey_key(9) = .SendKey_a_Save
-            SendKey_key(10) = .SendKey_ais_Save
-            SendKey_key(11) = .SendKey_h_Save
-            SendKey_key(12) = .SendKey_OM_Save
-            SendKey_key(13) = .SendKey_OP_Save
+            Try
+                For i = 0 To 127
+                    SendKey_key(i) = .SendKey_Save(i)
+                Next
+            Catch
+            End Try
 
-            SendKey_c.Text = KeyCode_toName(SendKey_key(0))
-            SendKey_cis.Text = KeyCode_toName(SendKey_key(1))
-            SendKey_d.Text = KeyCode_toName(SendKey_key(2))
-            SendKey_dis.Text = KeyCode_toName(SendKey_key(3))
-            SendKey_e.Text = KeyCode_toName(SendKey_key(4))
-            SendKey_f.Text = KeyCode_toName(SendKey_key(5))
-            SendKey_fis.Text = KeyCode_toName(SendKey_key(6))
-            SendKey_g.Text = KeyCode_toName(SendKey_key(7))
-            SendKey_gis.Text = KeyCode_toName(SendKey_key(8))
-            SendKey_a.Text = KeyCode_toName(SendKey_key(9))
-            SendKey_ais.Text = KeyCode_toName(SendKey_key(10))
-            SendKey_h.Text = KeyCode_toName(SendKey_key(11))
-            SendKey_OM.Text = KeyCode_toName(SendKey_key(12))
-            SendKey_OP.Text = KeyCode_toName(SendKey_key(13))
+            For i = 0 To 11
+                SendKey_h.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + i))
+            Next
 
 
         End With
@@ -1490,7 +1471,7 @@ Lib "user32" (ByVal vKey As Integer) As Integer
 
 
 
-    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
+    Private Sub Form1_FormClosing1(ByVal sender As System.Object, ByVal e As Object) Handles MyBase.FormClosing
         With My.Settings
 
             'Lizenz
@@ -1599,20 +1580,11 @@ Lib "user32" (ByVal vKey As Integer) As Integer
             .SendKeys_ON_Save = SendKeys_ON.Checked()
 
             'SendKey Einstellungen
-            .SendKey_c_Save = SendKey_key(0)
-            .SendKey_cis_Save = SendKey_key(1)
-            .SendKey_d_Save = SendKey_key(2)
-            .SendKey_dis_Save = SendKey_key(3)
-            .SendKey_e_Save = SendKey_key(4)
-            .SendKey_f_Save = SendKey_key(5)
-            .SendKey_fis_Save = SendKey_key(6)
-            .SendKey_g_Save = SendKey_key(7)
-            .SendKey_gis_Save = SendKey_key(8)
-            .SendKey_a_Save = SendKey_key(9)
-            .SendKey_ais_Save = SendKey_key(10)
-            .SendKey_h_Save = SendKey_key(11)
-            .SendKey_OM_Save = SendKey_key(12)
-            .SendKey_OP_Save = SendKey_key(13)
+            .SendKey_Save.Clear()
+            For i = 0 To 127
+                .SendKey_Save.Add(SendKey_key(i))
+            Next
+
 
 
             ' Einstellungen speichern
@@ -1916,30 +1888,61 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Private Sub SendKey_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles SendKey_c.PreviewKeyDown, SendKey_d.PreviewKeyDown, SendKey_e.PreviewKeyDown, _
                                                                                                                 SendKey_f.PreviewKeyDown, SendKey_g.PreviewKeyDown, SendKey_a.PreviewKeyDown, _
                                                                                                                 SendKey_h.PreviewKeyDown, SendKey_cis.PreviewKeyDown, SendKey_dis.PreviewKeyDown, _
-                                                                                                                SendKey_fis.PreviewKeyDown, SendKey_gis.PreviewKeyDown, SendKey_ais.PreviewKeyDown, _
-                                                                                                                SendKey_OM.PreviewKeyDown, SendKey_OP.PreviewKeyDown
+                                                                                                                SendKey_fis.PreviewKeyDown, SendKey_gis.PreviewKeyDown, SendKey_ais.PreviewKeyDown
 
         sender.text = KeyCode_toName(e.KeyCode)
 
         Select Case sender.name
-            Case "SendKey_c" : SendKey_key(0) = e.KeyCode
-            Case "SendKey_cis" : SendKey_key(1) = e.KeyCode
-            Case "SendKey_d" : SendKey_key(2) = e.KeyCode
-            Case "SendKey_dis" : SendKey_key(3) = e.KeyCode
-            Case "SendKey_e" : SendKey_key(4) = e.KeyCode
-            Case "SendKey_f" : SendKey_key(5) = e.KeyCode
-            Case "SendKey_fis" : SendKey_key(6) = e.KeyCode
-            Case "SendKey_g" : SendKey_key(7) = e.KeyCode
-            Case "SendKey_gis" : SendKey_key(8) = e.KeyCode
-            Case "SendKey_a" : SendKey_key(9) = e.KeyCode
-            Case "SendKey_ais" : SendKey_key(10) = e.KeyCode
-            Case "SendKey_h" : SendKey_key(11) = e.KeyCode
-            Case "SendKey_OM" : SendKey_key(12) = e.KeyCode
-            Case "SendKey_OP" : SendKey_key(13) = e.KeyCode
+            Case "SendKey_c" : SendKey_key(SendKey_Oktave * 11) = e.KeyCode
+            Case "SendKey_cis" : SendKey_key((SendKey_Oktave * 11) + 1) = e.KeyCode
+            Case "SendKey_d" : SendKey_key((SendKey_Oktave * 11) + 2) = e.KeyCode
+            Case "SendKey_dis" : SendKey_key((SendKey_Oktave * 11) + 3) = e.KeyCode
+            Case "SendKey_e" : SendKey_key((SendKey_Oktave * 11) + 4) = e.KeyCode
+            Case "SendKey_f" : SendKey_key((SendKey_Oktave * 11) + 5) = e.KeyCode
+            Case "SendKey_fis" : SendKey_key((SendKey_Oktave * 11) + 6) = e.KeyCode
+            Case "SendKey_g" : SendKey_key((SendKey_Oktave * 11) + 7) = e.KeyCode
+            Case "SendKey_gis" : SendKey_key((SendKey_Oktave * 11) + 8) = e.KeyCode
+            Case "SendKey_a" : SendKey_key((SendKey_Oktave * 11) + 9) = e.KeyCode
+            Case "SendKey_ais" : SendKey_key((SendKey_Oktave * 11) + 10) = e.KeyCode
+            Case "SendKey_h" : SendKey_key((SendKey_Oktave * 11) + 11) = e.KeyCode
             Case Else : MessageBox.Show("Error beim setzen des SendKeys")
         End Select
 
     End Sub
+
+
+
+    Private Sub SendKey_OM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendKey_OM.Click
+        If SendKey_Oktave > 0 Then
+            SendKey_Oktave -= 1
+            SendKey_Butons_refresh()
+            SendKey_GroupBox.Text = "SendKey to Virtual MIDI Piano Okt " & SendKey_Oktave - 2
+        End If
+    End Sub
+
+    Private Sub SendKey_OP_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SendKey_OP.Click
+        If SendKey_Oktave < 10 Then
+            SendKey_Oktave += 1
+            SendKey_Butons_refresh()
+            SendKey_GroupBox.Text = "SendKey to Virtual MIDI Piano Okt " & SendKey_Oktave - 2
+        End If
+    End Sub
+
+    Sub SendKey_Butons_refresh()
+        SendKey_c.Text = KeyCode_toName(SendKey_key(SendKey_Oktave * 11))
+        SendKey_cis.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 1))
+        SendKey_d.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 2))
+        SendKey_dis.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 3))
+        SendKey_e.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 4))
+        SendKey_f.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 5))
+        SendKey_fis.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 6))
+        SendKey_g.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 7))
+        SendKey_gis.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 8))
+        SendKey_a.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 9))
+        SendKey_ais.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 10))
+        SendKey_h.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + 11))
+    End Sub
+
 
 
     Function KeyCode_toName(ByVal KeyCode As Integer) As String 'Wichtig: Bei Byte kommen bei ConvertToString Falschresultate!!!
@@ -2259,6 +2262,7 @@ Lib "user32" (ByVal vKey As Integer) As Integer
             & vbCrLf & "Programmiert mit Visual Basic", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
     End Sub
+
 
 
 End Class
