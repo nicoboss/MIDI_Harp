@@ -84,6 +84,8 @@ Partial Class Form1
         Me.BPM_Label = New System.Windows.Forms.Label()
         Me.BPM = New System.Windows.Forms.NumericUpDown()
         Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
+        Me.SendKeys_OFF = New System.Windows.Forms.RadioButton()
+        Me.SendKeys_ON = New System.Windows.Forms.RadioButton()
         Me.SendKey_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.SendKey_gis = New System.Windows.Forms.Button()
@@ -119,6 +121,7 @@ Partial Class Form1
         Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.SendKeys_GroupBox = New System.Windows.Forms.GroupBox()
         Me.DirectPlay_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox12 = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -311,9 +314,6 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
-        Me.SendKeys_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.SendKeys_OFF = New System.Windows.Forms.RadioButton()
-        Me.SendKeys_ON = New System.Windows.Forms.RadioButton()
         Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -370,6 +370,7 @@ Partial Class Form1
         Me.SendKey_GroupBox.SuspendLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        Me.SendKeys_GroupBox.SuspendLayout()
         Me.DirectPlay_GroupBox.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
         Me.DirectPlay_YesNo_GroupBox.SuspendLayout()
@@ -400,7 +401,6 @@ Partial Class Form1
         Me.GroupBox3.SuspendLayout()
         Me.MIDI_Aufnahmemodus_GroupBox.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.SendKeys_GroupBox.SuspendLayout()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -1005,6 +1005,30 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.DirectPlay_ON, resources.GetString("DirectPlay_ON.ToolTip"))
         Me.DirectPlay_ON.UseVisualStyleBackColor = True
         '
+        'SendKeys_OFF
+        '
+        Me.SendKeys_OFF.AutoSize = True
+        Me.SendKeys_OFF.Checked = True
+        Me.SendKeys_OFF.Location = New System.Drawing.Point(167, 24)
+        Me.SendKeys_OFF.Name = "SendKeys_OFF"
+        Me.SendKeys_OFF.Size = New System.Drawing.Size(47, 17)
+        Me.SendKeys_OFF.TabIndex = 3
+        Me.SendKeys_OFF.TabStop = True
+        Me.SendKeys_OFF.Text = "Nein"
+        Me.ToolTip1.SetToolTip(Me.SendKeys_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
+        Me.SendKeys_OFF.UseVisualStyleBackColor = True
+        '
+        'SendKeys_ON
+        '
+        Me.SendKeys_ON.AutoSize = True
+        Me.SendKeys_ON.Location = New System.Drawing.Point(50, 24)
+        Me.SendKeys_ON.Name = "SendKeys_ON"
+        Me.SendKeys_ON.Size = New System.Drawing.Size(36, 17)
+        Me.SendKeys_ON.TabIndex = 2
+        Me.SendKeys_ON.Text = "Ja"
+        Me.ToolTip1.SetToolTip(Me.SendKeys_ON, resources.GetString("SendKeys_ON.ToolTip"))
+        Me.SendKeys_ON.UseVisualStyleBackColor = True
+        '
         'SendKey_GroupBox
         '
         Me.SendKey_GroupBox.Controls.Add(Me.Label20)
@@ -1344,6 +1368,17 @@ Partial Class Form1
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1274, 771)
         Me.Panel1.TabIndex = 0
+        '
+        'SendKeys_GroupBox
+        '
+        Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_OFF)
+        Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_ON)
+        Me.SendKeys_GroupBox.Location = New System.Drawing.Point(9, 432)
+        Me.SendKeys_GroupBox.Name = "SendKeys_GroupBox"
+        Me.SendKeys_GroupBox.Size = New System.Drawing.Size(294, 49)
+        Me.SendKeys_GroupBox.TabIndex = 198
+        Me.SendKeys_GroupBox.TabStop = False
+        Me.SendKeys_GroupBox.Text = "SendKeys to Virtual MIDI Piano aktivieren?"
         '
         'DirectPlay_GroupBox
         '
@@ -3410,41 +3445,6 @@ Partial Class Form1
         Me.MIDI_Save_Button.Text = "Aufnahme speichern"
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
         '
-        'SendKeys_GroupBox
-        '
-        Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_OFF)
-        Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_ON)
-        Me.SendKeys_GroupBox.Location = New System.Drawing.Point(9, 432)
-        Me.SendKeys_GroupBox.Name = "SendKeys_GroupBox"
-        Me.SendKeys_GroupBox.Size = New System.Drawing.Size(294, 49)
-        Me.SendKeys_GroupBox.TabIndex = 198
-        Me.SendKeys_GroupBox.TabStop = False
-        Me.SendKeys_GroupBox.Text = "SendKeys to Virtual MIDI Piano aktivieren?"
-        '
-        'SendKeys_OFF
-        '
-        Me.SendKeys_OFF.AutoSize = True
-        Me.SendKeys_OFF.Checked = True
-        Me.SendKeys_OFF.Location = New System.Drawing.Point(167, 24)
-        Me.SendKeys_OFF.Name = "SendKeys_OFF"
-        Me.SendKeys_OFF.Size = New System.Drawing.Size(47, 17)
-        Me.SendKeys_OFF.TabIndex = 3
-        Me.SendKeys_OFF.TabStop = True
-        Me.SendKeys_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.SendKeys_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
-        Me.SendKeys_OFF.UseVisualStyleBackColor = True
-        '
-        'SendKeys_ON
-        '
-        Me.SendKeys_ON.AutoSize = True
-        Me.SendKeys_ON.Location = New System.Drawing.Point(50, 24)
-        Me.SendKeys_ON.Name = "SendKeys_ON"
-        Me.SendKeys_ON.Size = New System.Drawing.Size(36, 17)
-        Me.SendKeys_ON.TabIndex = 2
-        Me.SendKeys_ON.Text = "Ja"
-        Me.ToolTip1.SetToolTip(Me.SendKeys_ON, resources.GetString("SendKeys_ON.ToolTip"))
-        Me.SendKeys_ON.UseVisualStyleBackColor = True
-        '
         'C6_VerticalProgessBar
         '
         Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(3, 3)
@@ -3738,7 +3738,7 @@ Partial Class Form1
         Me.KeyPreview = True
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "MIDI Harfe V1.0 Beta"
+        Me.Text = "MIDI Harfe V1.1 Beta"
         Me.Tastenkonbinationen_GroupBox.ResumeLayout(False)
         Me.Tastenkonbinationen_GroupBox.PerformLayout()
         CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -3772,6 +3772,8 @@ Partial Class Form1
         Me.SendKey_GroupBox.PerformLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
+        Me.SendKeys_GroupBox.ResumeLayout(False)
+        Me.SendKeys_GroupBox.PerformLayout()
         Me.DirectPlay_GroupBox.ResumeLayout(False)
         Me.GroupBox12.ResumeLayout(False)
         Me.GroupBox12.PerformLayout()
@@ -3817,8 +3819,6 @@ Partial Class Form1
         Me.MIDI_Aufnahmemodus_GroupBox.ResumeLayout(False)
         Me.MIDI_Aufnahmemodus_GroupBox.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
-        Me.SendKeys_GroupBox.ResumeLayout(False)
-        Me.SendKeys_GroupBox.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub

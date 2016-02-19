@@ -69,7 +69,7 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
     Dim Version As String = "V1.0"
-    Dim PublishDate As Date = "18.02.2016"
+    Dim PublishDate As Date = "19.02.2016"
 
     Dim Lizenz As String = ""
 
@@ -91,6 +91,7 @@ Lib "user32" (ByVal vKey As Integer) As Integer
     Dim Verschiebung(255) As Byte
 
     Dim SendKey_key(14) As Byte
+    Dim SendKey_Oktave As SByte = 2
 
     Dim Metronom As Byte
     Dim Metronom_alt As Byte
@@ -370,14 +371,98 @@ Lib "user32" (ByVal vKey As Integer) As Integer
                         'MessageBox.Show(NotenNr & " on")
                         Note_Play(NotenNr) = True
                         m.PlayMIDINote(NotenNr, 100, 0)
-                        keybd_event(SendKey_key(0), 0, 0, 0) 'Key down
+
+                        META_Bemerkung_Input.Text = NotenNr
+                        'NotenNr = 11
+                        Select Case NotenNr
+                            Case 0 To 11
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr)
+                            Case 12 To 23
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr - 12), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 12)
+                            Case 24 To 35
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr - 24), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 24)
+                            Case 36 To 47
+                                'SendKey_Oktave_set(1)
+                                keybd_event(SendKey_key(NotenNr - 36), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 36)
+                            Case 48 To 59
+                                'SendKey_Oktave_set(2)
+                                keybd_event(SendKey_key(NotenNr - 48), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 48)
+                            Case 60 To 71
+                                'SendKey_Oktave_set(3)
+                                keybd_event(SendKey_key(NotenNr - 60), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 60)
+                            Case 72 To 83
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 72), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 72)
+                            Case 84 To 95
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 84), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 84)
+                            Case 96 To 107
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 96), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 96)
+                            Case 108 To 119
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 108), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 108)
+                            Case 120 To 127
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 120), 0, 0, 0)
+                                META_Bemerkung_Input.Text = (NotenNr - 120)
+                        End Select
                     End If
 
                     If ADC(i) < CInt(Noten_Grenzwert(i).Text) And Note_Play(NotenNr) = True Then
                         'MessageBox.Show(NotenNr & " off")
                         Note_Play(NotenNr) = False
                         m.STOPMIDINote(NotenNr)
-                        keybd_event(SendKey_key(0), 0, KEYEVENTF_KEYUP, 0) 'Key up
+
+                        Select Case NotenNr
+                            Case 0 To 11
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr - 11), 0, KEYEVENTF_KEYUP, 0)
+                            Case 12 To 23
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr - 23), 0, KEYEVENTF_KEYUP, 0)
+                            Case 24 To 35
+                                'SendKey_Oktave_set(0)
+                                keybd_event(SendKey_key(NotenNr - 35), 0, KEYEVENTF_KEYUP, 0)
+                            Case 36 To 47
+                                'SendKey_Oktave_set(1)
+                                keybd_event(SendKey_key(NotenNr - 47), 0, KEYEVENTF_KEYUP, 0)
+                            Case 48 To 59
+                                'SendKey_Oktave_set(2)
+                                keybd_event(SendKey_key(NotenNr - 59), 0, KEYEVENTF_KEYUP, 0)
+                            Case 60 To 71
+                                'SendKey_Oktave_set(3)
+                                keybd_event(SendKey_key(NotenNr - 71), 0, KEYEVENTF_KEYUP, 0)
+                            Case 72 To 83
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 83), 0, KEYEVENTF_KEYUP, 0)
+                            Case 84 To 95
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 95), 0, KEYEVENTF_KEYUP, 0)
+                            Case 96 To 107
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 107), 0, KEYEVENTF_KEYUP, 0)
+                            Case 108 To 119
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 119), 0, KEYEVENTF_KEYUP, 0)
+                            Case 120 To 127
+                                'SendKey_Oktave_set(4)
+                                keybd_event(SendKey_key(NotenNr - 127), 0, KEYEVENTF_KEYUP, 0)
+                        End Select
+
                     End If
 
                 Next
@@ -404,6 +489,32 @@ Lib "user32" (ByVal vKey As Integer) As Integer
         Loop
 
     End Sub
+
+
+    Function SendKey_Oktave_set(ByVal Oktave As Integer) As Boolean
+
+
+        If SendKey_Oktave = Oktave Then
+            Return True
+        ElseIf SendKey_Oktave > Oktave Then
+            For i = SendKey_Oktave To Oktave Step -1
+                Debug.WriteLine("Oktave down")
+                keybd_event(SendKey_key(12), 0, 0, 0) 'Key down
+                keybd_event(SendKey_key(13), 0, KEYEVENTF_KEYUP, 0) 'Key up
+            Next
+        Else
+            For i = SendKey_Oktave To Oktave Step 1
+                Debug.WriteLine("Up")
+                keybd_event(SendKey_key(14), 0, 0, 0) 'Key down
+                keybd_event(SendKey_key(14), 0, KEYEVENTF_KEYUP, 0) 'Key up
+            Next
+        End If
+
+        Return True
+
+
+    End Function
+
 
 
     Private Sub ComboBox_Comport_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ComboBox_Comport.SelectedIndexChanged
