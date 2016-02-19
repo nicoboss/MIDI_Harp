@@ -135,18 +135,6 @@
   <metadata name="Konbination.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="Tastenkonbinationen_GroupBox.ToolTip" xml:space="preserve">
-    <value>In diesem Bereich sind sind Alle Tastenkonbinationen des Programmes sichtbar und teilweise sogar editierbar.
-Tastenkonbination editieren:
-1. Mit Maus darauf klicken
-2. Zu deffinierende Tastenkonbination drücken
-3. Eingabe einen beliebigen Klick ins Programmfenster bestätigen.
-
-Um eine Zuweisung wieder zu entvernen drücken Sie stadt ihrer Tastenkonbination einfach die Leertaste.
-
-Wichtig: Tastenkonbinationen können auch im Hintergrund verwendet werden und z.B. dazu dienen gleichzeitig eine Audio sowie die MIDI Aufnahme zu starten.
-Aus Sicherheitsgründen von Virtuellen Maschienen ist es nicht möglich Tastenkonbinationen Abzufangen, falls das Virtuelle Betriebssystem nicht im Vordergrund ist.</value>
-  </data>
   <data name="ToolTip_YesNo_GroupBox.ToolTip" xml:space="preserve">
     <value>Tooltip sichd Hilfefenster wie diese, die ihnen gewisse Funktionen
 durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
@@ -171,6 +159,22 @@ Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige MID
     <value>Diese Option erstellt ein ganz gewöhnliches MIDI File mit Zeitstempel, das danach von jedem beliebigen Player abgespielt werden kann.
 Tackt, Instrument und BPM Angaben sind bei dieser Aufnahmeart sehr zu empfehlen.</value>
   </data>
+  <data name="Metronom_GroupBox.ToolTip" xml:space="preserve">
+    <value>Ein einfaches Metronom, dass über DirectPlay ausgegeben wird.
+Das Metronom dient nur zur Hilfe, hat aber jedoch keinen
+Einfluss auf die MIDI Aufnahmenen mit diesem Programm
+jedoch wird es bei Externen Programmen die winmm.dll api
+bwenutzen mitaufgenommen ujnd sollte in diesem Falle
+ausgeschaltet werden. Auch bei dem Aufnahmemodur "nur
+Töne" macht das Metronom nicht wirklich einen Sinn.</value>
+  </data>
+  <data name="ComboBox_Comport.ToolTip" xml:space="preserve">
+    <value>Wähle den Comport aus aufdwem sich der Mikrokontroller befindet.
+Sollte er hir nicht erscheinen: Prüfen Sie opb der Mikrokontroller wirklich
+verbunden ist und dass alle Treiber installiert sind. Sollte alles stimmen
+aber trozdem nich funktionieren, wenden sich bitte an nicho@bosshome.ch.
+</value>
+  </data>
   <data name="GroupBox1.ToolTip" xml:space="preserve">
     <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
 Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
@@ -179,24 +183,14 @@ Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller k
 verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
   </data>
   <data name="DirectPlay_ON.ToolTip" xml:space="preserve">
-    <value>Durch diese Option werden die empfangenen MIDI Noten als
-Livestream ins Betriebssystem gesendet.
+    <value>Durch diese Option werden die empfangenen MIDI Noten per
+winmm.dll api ins Betriebssystem gesendet.
 Dort kann der Stream von anderen Programmen abgefangen  werden.
 Wird er von Keinem Programm abgefangen, wird er Live abgespielt.
 Welche Programme kompatibel sind, kann ich leider nicht sagen.
-Falls Sie welche finden, würde es mich freuen, wenn Sie mir Ihren
-Fund per Mail an nico@bosshome.ch mitteilen würden, dammit
-ich ihn anderen Benutzer meines Programmes mitteilen kann.
-
-Die Latenzzeit bäträgt ca. 10ms. Der Aktuelle Wert kann unter
-Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
-  </data>
-  <data name="SendKeys_ON.ToolTip" xml:space="preserve">
-    <value>Durch diese Option werden die empfangenen MIDI Noten als
-Livestream ins Betriebssystem gesendet.
-Dort kann der Stream von anderen Programmen abgefangen  werden.
-Wird er von Keinem Programm abgefangen, wird er Live abgespielt.
-Welche Programme kompatibel sind, kann ich leider nicht sagen.
+Fals ihr favouritisiertes Musikprogramm nicht kompatibel sein
+sollte gibt es immer nioch die Option per SendKey to Virtual MIDI
+Piano oder das exportieren eines aufgenommenen MIDI Files.
 Falls Sie welche finden, würde es mich freuen, wenn Sie mir Ihren
 Fund per Mail an nico@bosshome.ch mitteilen würden, dammit
 ich ihn anderen Benutzer meines Programmes mitteilen kann.
@@ -206,6 +200,25 @@ Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
   </data>
   <data name="SendKey_GroupBox.ToolTip" xml:space="preserve">
     <value>Durch diese Funktion ermöglicht es MIDI Sygnale per Tastaturbefehle einem Externen Programm wie z.B. Cubase (in Cubase mit Ctrl + K Virtuelle Tastatur aktivieren)  auf ein Virtuelles MIDI Piano zu senden. Diese Funktion ist viel einfache als die nicht von allen Programmen unterstüzte Funktion über die winmm.dll api jedoch Sind durch fehlende Tasten öft nicht alle 5 Oktaven benutzbar. Die Latenzzeit ist normalerweise bei beiden Varianten gleich  jedoch kann durch schlechte Virtuelle MIDI Pianos beim empfänger diese drastisch erhöt werden. Die Tastenzuordnung kann durch klicken auf die Buttons und drücken der gewünschten Taste, konfiguriert werden. Die zu konfigurioerende Oktave kann durch Okt. - und Okt. + vberändert werden.</value>
+  </data>
+  <data name="SendKeys_GroupBox.ToolTip" xml:space="preserve">
+    <value>Durch diese Funktion ermöglicht es MIDI Sygnale per Tastaturbefehle einem Externen Programm wie z.B. Cubase (in Cubase mit Ctrl + K Virtuelle Tastatur aktivieren)  auf ein Virtuelles MIDI Piano zu senden.
+Die Tastaturkonfiguration ist weiter links zu finden.
+Soll Diese Funktion aktiviert werden?</value>
+  </data>
+  <data name="MIDI_Save_Button.ToolTip" xml:space="preserve">
+    <value>Beendet die Aufnahme, öffnet einen FileSave Dialog und speichert die .mid Datei an dem gewünschten Ort.
+Diese Funktion kann auch über die Hintergrundssteueruing von einem andern Programm aus ausgeführt werden.
+</value>
+  </data>
+  <data name="GroupBox4.ToolTip" xml:space="preserve">
+    <value>MIDI Visualisierung und Tonbasierende Induvidualeinstellungen:
+Balken: Visualisiert die vom Mikrokontroller empfangene Sygnale
+Buttons: Spielt MIDI Töne per Mausklick und dient als Tonanzeige. Diese töne werden als Solche in das MIDI file geschrieben und gesendet, jedoch nicht von der Send to Virtual MIDI Pioano berücksichtigt.
+Startwert: Bestimmt ab welchem Wert von 0-255 einen Ton als solcher gilt
+Stopwert: Bestimmt ab welchem Wert von 0-255 einen Ton fertig ist (kleine Werte=weicher Ausklang).
+Transpose: Induviduelle Halbtonverschiebung. Wird durch ändern der Kläppckhen automatisch angepasst. Wert darf sich zwar zwischen -127 und 127 befinden jedoch machen eigendlich nur werte von -10 bis 10 wirklich Sinn.
+</value>
   </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 24</value>
@@ -219,10 +232,11 @@ Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 25</value>
   </metadata>
-  <data name="SendKeys_GroupBox.ToolTip" xml:space="preserve">
-    <value>Durch diese Funktion ermöglicht es MIDI Sygnale per Tastaturbefehle einem Externen Programm wie z.B. Cubase (in Cubase mit Ctrl + K Virtuelle Tastatur aktivieren)  auf ein Virtuelles MIDI Piano zu senden.
-Die Tastaturkonfiguration ist weiter links zu finden.
-Soll Diese Funktion aktiviert werden?</value>
+  <data name="GroupBox3.ToolTip" xml:space="preserve">
+    <value>Hier werden Anzahl Messungen und Verbindungsfehler ausgegeben.
+Sollten hir über 100 Fehler pro aufnahme vorhanden sein prüfen
+Sioe bitte alle stecker und melden Sie sich bei Nichtbehebung
+per Mail an nico@bosshome.ch</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>70</value>

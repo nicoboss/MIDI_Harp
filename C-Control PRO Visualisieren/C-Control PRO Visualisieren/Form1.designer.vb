@@ -23,10 +23,10 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Tackt = New System.Windows.Forms.Timer(Me.components)
@@ -114,43 +114,12 @@ Partial Class Form1
         Me.SendKey_h = New System.Windows.Forms.Button()
         Me.SendKey_f = New System.Windows.Forms.Button()
         Me.SendKey_c = New System.Windows.Forms.Button()
-        Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.C_Klappe = New System.Windows.Forms.TrackBar()
-        Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
-        Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.SendKeys_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.DirectPlay_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.hsbVolume = New System.Windows.Forms.HScrollBar()
-        Me.Label14 = New System.Windows.Forms.Label()
-        Me.hsbPan = New System.Windows.Forms.HScrollBar()
-        Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
-        Me.DirectPlay_YesNo_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Programmeinstellungen_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.About_Button = New System.Windows.Forms.Button()
-        Me.Help_Button = New System.Windows.Forms.Button()
-        Me.Klappen_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
-        Me.C1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.D1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.E1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.F1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.G1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.A1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.H1_Klappe = New System.Windows.Forms.TrackBar()
-        Me.C2_Klappe = New System.Windows.Forms.TrackBar()
-        Me.C1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.D1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.E1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.F1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.G1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.A1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.H1_Klappe_Text = New System.Windows.Forms.TextBox()
-        Me.C2_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.MIDI_Aufnahmemodus_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.MIDI_Pause_Button = New System.Windows.Forms.Button()
+        Me.MIDI_Start_Button = New System.Windows.Forms.Button()
+        Me.MIDI_Save_Button = New System.Windows.Forms.Button()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         Me.C6_Button = New System.Windows.Forms.Button()
@@ -339,17 +308,48 @@ Partial Class Form1
         Me.G4_Verschiebung = New System.Windows.Forms.TextBox()
         Me.A4_Verschiebung = New System.Windows.Forms.TextBox()
         Me.H4_Verschiebung = New System.Windows.Forms.TextBox()
+        Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.C_Klappe = New System.Windows.Forms.TrackBar()
+        Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
+        Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.DirectPlay_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.hsbVolume = New System.Windows.Forms.HScrollBar()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.hsbPan = New System.Windows.Forms.HScrollBar()
+        Me.hsbModWheel = New System.Windows.Forms.HScrollBar()
+        Me.DirectPlay_YesNo_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Programmeinstellungen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.About_Button = New System.Windows.Forms.Button()
+        Me.Help_Button = New System.Windows.Forms.Button()
+        Me.Klappen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.FlowLayoutPanel6 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.D1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.E1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.F1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.G1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.A1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.H1_Klappe = New System.Windows.Forms.TrackBar()
+        Me.C2_Klappe = New System.Windows.Forms.TrackBar()
+        Me.C1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.D1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.E1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.F1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.G1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.A1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.H1_Klappe_Text = New System.Windows.Forms.TextBox()
+        Me.C2_Klappe_Text = New System.Windows.Forms.TextBox()
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Instrumentenauswahl_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.AnzMessungen = New System.Windows.Forms.TextBox()
         Me.AnzMessfehler = New System.Windows.Forms.TextBox()
-        Me.MIDI_Aufnahmemodus_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.MIDI_Pause_Button = New System.Windows.Forms.Button()
         Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
-        Me.MIDI_Start_Button = New System.Windows.Forms.Button()
-        Me.MIDI_Save_Button = New System.Windows.Forms.Button()
         Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -404,9 +404,23 @@ Partial Class Form1
         CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SendKey_GroupBox.SuspendLayout()
+        Me.SendKeys_GroupBox.SuspendLayout()
+        Me.Instrumentenauswahl_GroupBox.SuspendLayout()
+        Me.MIDI_Aufnahmemodus_GroupBox.SuspendLayout()
+        Me.GroupBox4.SuspendLayout()
+        Me.FlowLayoutPanel5.SuspendLayout()
+        Me.FlowLayoutPanel1.SuspendLayout()
+        Me.FlowLayoutPanel2.SuspendLayout()
+        Me.FlowLayoutPanel4.SuspendLayout()
+        Me.FlowLayoutPanel3.SuspendLayout()
+        Me.GroupBox5.SuspendLayout()
+        Me.FlowLayoutPanel11.SuspendLayout()
+        Me.FlowLayoutPanel7.SuspendLayout()
+        Me.FlowLayoutPanel10.SuspendLayout()
+        Me.FlowLayoutPanel8.SuspendLayout()
+        Me.FlowLayoutPanel9.SuspendLayout()
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
-        Me.SendKeys_GroupBox.SuspendLayout()
         Me.DirectPlay_GroupBox.SuspendLayout()
         Me.GroupBox12.SuspendLayout()
         Me.DirectPlay_YesNo_GroupBox.SuspendLayout()
@@ -421,22 +435,8 @@ Partial Class Form1
         CType(Me.A1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
-        Me.FlowLayoutPanel5.SuspendLayout()
-        Me.FlowLayoutPanel1.SuspendLayout()
-        Me.FlowLayoutPanel2.SuspendLayout()
-        Me.FlowLayoutPanel4.SuspendLayout()
-        Me.FlowLayoutPanel3.SuspendLayout()
-        Me.GroupBox5.SuspendLayout()
-        Me.FlowLayoutPanel11.SuspendLayout()
-        Me.FlowLayoutPanel7.SuspendLayout()
-        Me.FlowLayoutPanel10.SuspendLayout()
-        Me.FlowLayoutPanel8.SuspendLayout()
-        Me.FlowLayoutPanel9.SuspendLayout()
         Me.Einstellungen_GroupBox.SuspendLayout()
-        Me.Instrumentenauswahl_GroupBox.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.MIDI_Aufnahmemodus_GroupBox.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -472,7 +472,7 @@ Partial Class Form1
         Me.Tastenkonbinationen_GroupBox.TabIndex = 197
         Me.Tastenkonbinationen_GroupBox.TabStop = False
         Me.Tastenkonbinationen_GroupBox.Text = "Tastenkonbinationen (Hintergrundssteuerung)"
-        Me.ToolTip1.SetToolTip(Me.Tastenkonbinationen_GroupBox, resources.GetString("Tastenkonbinationen_GroupBox.ToolTip"))
+        Me.ToolTip1.SetToolTip(Me.Tastenkonbinationen_GroupBox, "/")
         '
         'Tastenkonbinationen_DataGridView
         '
@@ -610,6 +610,7 @@ Partial Class Form1
         Me.ToolTip_OFF.TabIndex = 3
         Me.ToolTip_OFF.TabStop = True
         Me.ToolTip_OFF.Text = "Nein"
+        Me.ToolTip1.SetToolTip(Me.ToolTip_OFF, "Deaktiviert diese TolTip Hilfe")
         Me.ToolTip_OFF.UseVisualStyleBackColor = True
         '
         'ToolTip_ON
@@ -620,6 +621,7 @@ Partial Class Form1
         Me.ToolTip_ON.Size = New System.Drawing.Size(36, 17)
         Me.ToolTip_ON.TabIndex = 2
         Me.ToolTip_ON.Text = "Ja"
+        Me.ToolTip1.SetToolTip(Me.ToolTip_ON, "Aktiviert diese TolTip Hilfe")
         Me.ToolTip_ON.UseVisualStyleBackColor = True
         '
         'GroupBox7
@@ -767,9 +769,7 @@ Partial Class Form1
         Me.Metronom_GroupBox.TabIndex = 168
         Me.Metronom_GroupBox.TabStop = False
         Me.Metronom_GroupBox.Text = "Metronom"
-        Me.ToolTip1.SetToolTip(Me.Metronom_GroupBox, "Ein einfaches Metronom, dass über DirectPlay ausgegeben wird." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Das Metronom dient" & _
-                " nur zur Hilfe, hat aber jedoch keinen" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Einfluss auf die MIDI Aufnahmenen mit di" & _
-                "esem Programm.")
+        Me.ToolTip1.SetToolTip(Me.Metronom_GroupBox, resources.GetString("Metronom_GroupBox.ToolTip"))
         '
         'Metronom_OFF
         '
@@ -863,7 +863,7 @@ Partial Class Form1
         Me.GroupBox1.Size = New System.Drawing.Size(294, 57)
         Me.GroupBox1.TabIndex = 188
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Comport - Einstellungen"
+        Me.GroupBox1.Text = "Comport - Verbindungseinstellungen für Mikrokontroller"
         Me.ToolTip1.SetToolTip(Me.GroupBox1, resources.GetString("GroupBox1.ToolTip"))
         '
         'ComboBox_Comport
@@ -874,6 +874,7 @@ Partial Class Form1
         Me.ComboBox_Comport.Size = New System.Drawing.Size(74, 21)
         Me.ComboBox_Comport.Sorted = True
         Me.ComboBox_Comport.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.ComboBox_Comport, resources.GetString("ComboBox_Comport.ToolTip"))
         '
         'Button_Disconnect
         '
@@ -882,6 +883,8 @@ Partial Class Form1
         Me.Button_Disconnect.Size = New System.Drawing.Size(75, 23)
         Me.Button_Disconnect.TabIndex = 5
         Me.Button_Disconnect.Text = "Trennen"
+        Me.ToolTip1.SetToolTip(Me.Button_Disconnect, "Trennt die Verbindung zum Mikrokontroller." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Einfach ausstecken oder Programm schl" & _
+                "iessen" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "macht übrigens dem Mikrokontroller nichts. :D")
         Me.Button_Disconnect.UseVisualStyleBackColor = True
         '
         'Button_Connect
@@ -891,6 +894,7 @@ Partial Class Form1
         Me.Button_Connect.Size = New System.Drawing.Size(75, 23)
         Me.Button_Connect.TabIndex = 4
         Me.Button_Connect.Text = "Verbinden"
+        Me.ToolTip1.SetToolTip(Me.Button_Connect, "Stellt eine Verbindung mit dem Mikrokontroller her.")
         Me.Button_Connect.UseVisualStyleBackColor = True
         '
         'cboInstruments
@@ -900,7 +904,7 @@ Partial Class Form1
         Me.cboInstruments.Name = "cboInstruments"
         Me.cboInstruments.Size = New System.Drawing.Size(176, 21)
         Me.cboInstruments.TabIndex = 2
-        Me.ToolTip1.SetToolTip(Me.cboInstruments, "sdffffffffffffffffff")
+        Me.ToolTip1.SetToolTip(Me.cboInstruments, "Wähle ein beliebiges MIDI Instrument aus.")
         '
         'DirectPlay_OFF
         '
@@ -912,7 +916,8 @@ Partial Class Form1
         Me.DirectPlay_OFF.TabIndex = 1
         Me.DirectPlay_OFF.TabStop = True
         Me.DirectPlay_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten per winm,m.dll api" & _
+                ".")
         Me.DirectPlay_OFF.UseVisualStyleBackColor = True
         '
         'Messintervall_GroupBox
@@ -1052,7 +1057,7 @@ Partial Class Form1
         Me.SendKeys_OFF.TabIndex = 3
         Me.SendKeys_OFF.TabStop = True
         Me.SendKeys_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.SendKeys_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten als Livestream.")
+        Me.ToolTip1.SetToolTip(Me.SendKeys_OFF, "Deaktivieren der Funktion SendKey to Virtual MIDI Piano")
         Me.SendKeys_OFF.UseVisualStyleBackColor = True
         '
         'SendKeys_ON
@@ -1063,7 +1068,7 @@ Partial Class Form1
         Me.SendKeys_ON.Size = New System.Drawing.Size(36, 17)
         Me.SendKeys_ON.TabIndex = 2
         Me.SendKeys_ON.Text = "Ja"
-        Me.ToolTip1.SetToolTip(Me.SendKeys_ON, resources.GetString("SendKeys_ON.ToolTip"))
+        Me.ToolTip1.SetToolTip(Me.SendKeys_ON, "Aktivieren der Funktion SendKey to Virtual MIDI Piano")
         Me.SendKeys_ON.UseVisualStyleBackColor = True
         '
         'SendKey_GroupBox
@@ -1346,57 +1351,6 @@ Partial Class Form1
         Me.SendKey_c.Text = "Q"
         Me.SendKey_c.UseVisualStyleBackColor = True
         '
-        'Com_Search_Timer
-        '
-        Me.Com_Search_Timer.Enabled = True
-        Me.Com_Search_Timer.Interval = 2000
-        '
-        'C_Klappe
-        '
-        Me.C_Klappe.Location = New System.Drawing.Point(3, 3)
-        Me.C_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
-        Me.C_Klappe.Maximum = 1
-        Me.C_Klappe.Minimum = -1
-        Me.C_Klappe.Name = "C_Klappe"
-        Me.C_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.C_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.C_Klappe.TabIndex = 183
-        Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'Serial_BackgroundWorker
-        '
-        Me.Serial_BackgroundWorker.WorkerSupportsCancellation = True
-        '
-        'Mesgeschwindigkeitsberechnung_Timer
-        '
-        Me.Mesgeschwindigkeitsberechnung_Timer.Interval = 250
-        '
-        'GetAsyncKeyState_Timer
-        '
-        Me.GetAsyncKeyState_Timer.Enabled = True
-        Me.GetAsyncKeyState_Timer.Interval = 20
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.SendKeys_GroupBox)
-        Me.Panel1.Controls.Add(Me.Tastenkonbinationen_GroupBox)
-        Me.Panel1.Controls.Add(Me.SendKey_GroupBox)
-        Me.Panel1.Controls.Add(Me.DirectPlay_GroupBox)
-        Me.Panel1.Controls.Add(Me.Programmeinstellungen_GroupBox)
-        Me.Panel1.Controls.Add(Me.Klappen_GroupBox)
-        Me.Panel1.Controls.Add(Me.GroupBox7)
-        Me.Panel1.Controls.Add(Me.GroupBox4)
-        Me.Panel1.Controls.Add(Me.Einstellungen_GroupBox)
-        Me.Panel1.Controls.Add(Me.GroupBox2)
-        Me.Panel1.Controls.Add(Me.GroupBox1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 0)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1274, 771)
-        Me.Panel1.TabIndex = 0
-        '
         'SendKeys_GroupBox
         '
         Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_OFF)
@@ -1409,343 +1363,63 @@ Partial Class Form1
         Me.SendKeys_GroupBox.Text = "SendKeys to Virtual MIDI Piano aktivieren?"
         Me.ToolTip1.SetToolTip(Me.SendKeys_GroupBox, resources.GetString("SendKeys_GroupBox.ToolTip"))
         '
-        'DirectPlay_GroupBox
+        'Instrumentenauswahl_GroupBox
         '
-        Me.DirectPlay_GroupBox.BackColor = System.Drawing.SystemColors.Control
-        Me.DirectPlay_GroupBox.Controls.Add(Me.GroupBox12)
-        Me.DirectPlay_GroupBox.Controls.Add(Me.DirectPlay_YesNo_GroupBox)
-        Me.DirectPlay_GroupBox.Location = New System.Drawing.Point(766, 11)
-        Me.DirectPlay_GroupBox.Name = "DirectPlay_GroupBox"
-        Me.DirectPlay_GroupBox.Size = New System.Drawing.Size(221, 202)
-        Me.DirectPlay_GroupBox.TabIndex = 193
-        Me.DirectPlay_GroupBox.TabStop = False
-        Me.DirectPlay_GroupBox.Text = "Direct Play"
+        Me.Instrumentenauswahl_GroupBox.Controls.Add(Me.cboInstruments)
+        Me.Instrumentenauswahl_GroupBox.Location = New System.Drawing.Point(9, 73)
+        Me.Instrumentenauswahl_GroupBox.Name = "Instrumentenauswahl_GroupBox"
+        Me.Instrumentenauswahl_GroupBox.Size = New System.Drawing.Size(199, 54)
+        Me.Instrumentenauswahl_GroupBox.TabIndex = 183
+        Me.Instrumentenauswahl_GroupBox.TabStop = False
+        Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
+        Me.ToolTip1.SetToolTip(Me.Instrumentenauswahl_GroupBox, "Wähle ein beliebiges MIDI Instrument aus.")
         '
-        'GroupBox12
+        'MIDI_Aufnahmemodus_GroupBox
         '
-        Me.GroupBox12.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox12.Controls.Add(Me.Label11)
-        Me.GroupBox12.Controls.Add(Me.Label15)
-        Me.GroupBox12.Controls.Add(Me.hsbVolume)
-        Me.GroupBox12.Controls.Add(Me.Label14)
-        Me.GroupBox12.Controls.Add(Me.hsbPan)
-        Me.GroupBox12.Controls.Add(Me.hsbModWheel)
-        Me.GroupBox12.Location = New System.Drawing.Point(10, 83)
-        Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(200, 109)
-        Me.GroupBox12.TabIndex = 174
-        Me.GroupBox12.TabStop = False
-        Me.GroupBox12.Text = "Einstellungen"
+        Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_SpecialMode)
+        Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_NormalMode)
+        Me.MIDI_Aufnahmemodus_GroupBox.Location = New System.Drawing.Point(9, 19)
+        Me.MIDI_Aufnahmemodus_GroupBox.Name = "MIDI_Aufnahmemodus_GroupBox"
+        Me.MIDI_Aufnahmemodus_GroupBox.Size = New System.Drawing.Size(199, 48)
+        Me.MIDI_Aufnahmemodus_GroupBox.TabIndex = 173
+        Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
+        Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
+        Me.ToolTip1.SetToolTip(Me.MIDI_Aufnahmemodus_GroupBox, """Schönes"" MIDI File oder RawData für weiterverarbeitung?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Genauere Informationen " & _
+                "stehen auf den einzelnen Punkten.")
         '
-        'Label11
+        'MIDI_Pause_Button
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(12, 26)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(45, 13)
-        Me.Label11.TabIndex = 164
-        Me.Label11.Text = "Volume:"
+        Me.MIDI_Pause_Button.Enabled = False
+        Me.MIDI_Pause_Button.Location = New System.Drawing.Point(6, 210)
+        Me.MIDI_Pause_Button.Name = "MIDI_Pause_Button"
+        Me.MIDI_Pause_Button.Size = New System.Drawing.Size(282, 58)
+        Me.MIDI_Pause_Button.TabIndex = 23
+        Me.MIDI_Pause_Button.Text = "Aufnahme pausieren"
+        Me.ToolTip1.SetToolTip(Me.MIDI_Pause_Button, "Pausiert oder setzt eine Aufnahme sauber fort." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Diese Funktion kann auch über die" & _
+                " Hintergrundssteueruing von einem andern Programm aus ausgeführt werden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        Me.MIDI_Pause_Button.UseVisualStyleBackColor = True
         '
-        'Label15
+        'MIDI_Start_Button
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(11, 81)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(41, 13)
-        Me.Label15.TabIndex = 172
-        Me.Label15.Text = "Efeckt:"
+        Me.MIDI_Start_Button.Location = New System.Drawing.Point(6, 141)
+        Me.MIDI_Start_Button.Name = "MIDI_Start_Button"
+        Me.MIDI_Start_Button.Size = New System.Drawing.Size(282, 60)
+        Me.MIDI_Start_Button.TabIndex = 22
+        Me.MIDI_Start_Button.Text = "Aufnahme starten"
+        Me.ToolTip1.SetToolTip(Me.MIDI_Start_Button, "Startet eine neue MIDI Aufnahme" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Diese Funktion kann auch über die Hintergrundsst" & _
+                "eueruing von einem andern Programm aus ausgeführt werden.")
+        Me.MIDI_Start_Button.UseVisualStyleBackColor = True
         '
-        'hsbVolume
+        'MIDI_Save_Button
         '
-        Me.hsbVolume.Location = New System.Drawing.Point(72, 22)
-        Me.hsbVolume.Maximum = 127
-        Me.hsbVolume.Name = "hsbVolume"
-        Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
-        Me.hsbVolume.TabIndex = 6
-        Me.hsbVolume.Value = 127
-        '
-        'Label14
-        '
-        Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(11, 55)
-        Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(49, 13)
-        Me.Label14.TabIndex = 173
-        Me.Label14.Text = "Balance:"
-        '
-        'hsbPan
-        '
-        Me.hsbPan.Location = New System.Drawing.Point(72, 51)
-        Me.hsbPan.Name = "hsbPan"
-        Me.hsbPan.Size = New System.Drawing.Size(115, 17)
-        Me.hsbPan.TabIndex = 172
-        Me.hsbPan.Value = 50
-        '
-        'hsbModWheel
-        '
-        Me.hsbModWheel.Location = New System.Drawing.Point(74, 80)
-        Me.hsbModWheel.Maximum = 255
-        Me.hsbModWheel.Name = "hsbModWheel"
-        Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
-        Me.hsbModWheel.TabIndex = 172
-        '
-        'DirectPlay_YesNo_GroupBox
-        '
-        Me.DirectPlay_YesNo_GroupBox.Controls.Add(Me.DirectPlay_OFF)
-        Me.DirectPlay_YesNo_GroupBox.Controls.Add(Me.DirectPlay_ON)
-        Me.DirectPlay_YesNo_GroupBox.Location = New System.Drawing.Point(10, 16)
-        Me.DirectPlay_YesNo_GroupBox.Name = "DirectPlay_YesNo_GroupBox"
-        Me.DirectPlay_YesNo_GroupBox.Size = New System.Drawing.Size(199, 56)
-        Me.DirectPlay_YesNo_GroupBox.TabIndex = 163
-        Me.DirectPlay_YesNo_GroupBox.TabStop = False
-        Me.DirectPlay_YesNo_GroupBox.Text = "Empfangende Noten abspielen"
-        '
-        'Programmeinstellungen_GroupBox
-        '
-        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.About_Button)
-        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.Help_Button)
-        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.ToolTip_YesNo_GroupBox)
-        Me.Programmeinstellungen_GroupBox.Location = New System.Drawing.Point(1006, 11)
-        Me.Programmeinstellungen_GroupBox.Name = "Programmeinstellungen_GroupBox"
-        Me.Programmeinstellungen_GroupBox.Size = New System.Drawing.Size(255, 202)
-        Me.Programmeinstellungen_GroupBox.TabIndex = 196
-        Me.Programmeinstellungen_GroupBox.TabStop = False
-        Me.Programmeinstellungen_GroupBox.Text = "Programmeinstellungen"
-        '
-        'About_Button
-        '
-        Me.About_Button.Location = New System.Drawing.Point(25, 148)
-        Me.About_Button.Name = "About_Button"
-        Me.About_Button.Size = New System.Drawing.Size(201, 43)
-        Me.About_Button.TabIndex = 2
-        Me.About_Button.Text = "Über"
-        Me.About_Button.UseVisualStyleBackColor = True
-        '
-        'Help_Button
-        '
-        Me.Help_Button.Location = New System.Drawing.Point(25, 91)
-        Me.Help_Button.Name = "Help_Button"
-        Me.Help_Button.Size = New System.Drawing.Size(201, 43)
-        Me.Help_Button.TabIndex = 1
-        Me.Help_Button.Text = "Hilfe"
-        Me.Help_Button.UseVisualStyleBackColor = True
-        '
-        'Klappen_GroupBox
-        '
-        Me.Klappen_GroupBox.Controls.Add(Me.FlowLayoutPanel6)
-        Me.Klappen_GroupBox.Location = New System.Drawing.Point(764, 344)
-        Me.Klappen_GroupBox.Name = "Klappen_GroupBox"
-        Me.Klappen_GroupBox.Size = New System.Drawing.Size(497, 131)
-        Me.Klappen_GroupBox.TabIndex = 195
-        Me.Klappen_GroupBox.TabStop = False
-        Me.Klappen_GroupBox.Text = "Tonart (Klappen)"
-        '
-        'FlowLayoutPanel6
-        '
-        Me.FlowLayoutPanel6.Controls.Add(Me.C1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.D1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.E1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.F1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.G1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe)
-        Me.FlowLayoutPanel6.Controls.Add(Me.C1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.D1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.E1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.F1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.G1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe_Text)
-        Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe_Text)
-        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(12, 22)
-        Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
-        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(479, 101)
-        Me.FlowLayoutPanel6.TabIndex = 0
-        '
-        'C1_Klappe
-        '
-        Me.C1_Klappe.Location = New System.Drawing.Point(7, 1)
-        Me.C1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.C1_Klappe.Maximum = 1
-        Me.C1_Klappe.Minimum = -1
-        Me.C1_Klappe.Name = "C1_Klappe"
-        Me.C1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.C1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.C1_Klappe.TabIndex = 183
-        Me.C1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'D1_Klappe
-        '
-        Me.D1_Klappe.Location = New System.Drawing.Point(66, 1)
-        Me.D1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.D1_Klappe.Maximum = 1
-        Me.D1_Klappe.Minimum = -1
-        Me.D1_Klappe.Name = "D1_Klappe"
-        Me.D1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.D1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.D1_Klappe.TabIndex = 184
-        Me.D1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'E1_Klappe
-        '
-        Me.E1_Klappe.Location = New System.Drawing.Point(125, 1)
-        Me.E1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.E1_Klappe.Maximum = 1
-        Me.E1_Klappe.Minimum = -1
-        Me.E1_Klappe.Name = "E1_Klappe"
-        Me.E1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.E1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.E1_Klappe.TabIndex = 185
-        Me.E1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'F1_Klappe
-        '
-        Me.F1_Klappe.Location = New System.Drawing.Point(184, 1)
-        Me.F1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.F1_Klappe.Maximum = 1
-        Me.F1_Klappe.Minimum = -1
-        Me.F1_Klappe.Name = "F1_Klappe"
-        Me.F1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.F1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.F1_Klappe.TabIndex = 186
-        Me.F1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'G1_Klappe
-        '
-        Me.G1_Klappe.Location = New System.Drawing.Point(243, 1)
-        Me.G1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.G1_Klappe.Maximum = 1
-        Me.G1_Klappe.Minimum = -1
-        Me.G1_Klappe.Name = "G1_Klappe"
-        Me.G1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.G1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.G1_Klappe.TabIndex = 187
-        Me.G1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'A1_Klappe
-        '
-        Me.A1_Klappe.Location = New System.Drawing.Point(302, 1)
-        Me.A1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.A1_Klappe.Maximum = 1
-        Me.A1_Klappe.Minimum = -1
-        Me.A1_Klappe.Name = "A1_Klappe"
-        Me.A1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.A1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.A1_Klappe.TabIndex = 188
-        Me.A1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'H1_Klappe
-        '
-        Me.H1_Klappe.Location = New System.Drawing.Point(361, 1)
-        Me.H1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.H1_Klappe.Maximum = 1
-        Me.H1_Klappe.Minimum = -1
-        Me.H1_Klappe.Name = "H1_Klappe"
-        Me.H1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.H1_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.H1_Klappe.TabIndex = 189
-        Me.H1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'C2_Klappe
-        '
-        Me.C2_Klappe.Location = New System.Drawing.Point(420, 1)
-        Me.C2_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.C2_Klappe.Maximum = 1
-        Me.C2_Klappe.Minimum = -1
-        Me.C2_Klappe.Name = "C2_Klappe"
-        Me.C2_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
-        Me.C2_Klappe.Size = New System.Drawing.Size(45, 73)
-        Me.C2_Klappe.TabIndex = 197
-        Me.C2_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
-        'C1_Klappe_Text
-        '
-        Me.C1_Klappe_Text.Location = New System.Drawing.Point(7, 76)
-        Me.C1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.C1_Klappe_Text.Name = "C1_Klappe_Text"
-        Me.C1_Klappe_Text.ReadOnly = True
-        Me.C1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.C1_Klappe_Text.TabIndex = 190
-        Me.C1_Klappe_Text.Text = "c"
-        Me.C1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'D1_Klappe_Text
-        '
-        Me.D1_Klappe_Text.Location = New System.Drawing.Point(66, 76)
-        Me.D1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.D1_Klappe_Text.Name = "D1_Klappe_Text"
-        Me.D1_Klappe_Text.ReadOnly = True
-        Me.D1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.D1_Klappe_Text.TabIndex = 198
-        Me.D1_Klappe_Text.Text = "d"
-        Me.D1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'E1_Klappe_Text
-        '
-        Me.E1_Klappe_Text.Location = New System.Drawing.Point(125, 76)
-        Me.E1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.E1_Klappe_Text.Name = "E1_Klappe_Text"
-        Me.E1_Klappe_Text.ReadOnly = True
-        Me.E1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.E1_Klappe_Text.TabIndex = 199
-        Me.E1_Klappe_Text.Text = "e"
-        Me.E1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'F1_Klappe_Text
-        '
-        Me.F1_Klappe_Text.Location = New System.Drawing.Point(184, 76)
-        Me.F1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.F1_Klappe_Text.Name = "F1_Klappe_Text"
-        Me.F1_Klappe_Text.ReadOnly = True
-        Me.F1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.F1_Klappe_Text.TabIndex = 200
-        Me.F1_Klappe_Text.Text = "f"
-        Me.F1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'G1_Klappe_Text
-        '
-        Me.G1_Klappe_Text.Location = New System.Drawing.Point(243, 76)
-        Me.G1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.G1_Klappe_Text.Name = "G1_Klappe_Text"
-        Me.G1_Klappe_Text.ReadOnly = True
-        Me.G1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.G1_Klappe_Text.TabIndex = 201
-        Me.G1_Klappe_Text.Text = "g"
-        Me.G1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'A1_Klappe_Text
-        '
-        Me.A1_Klappe_Text.Location = New System.Drawing.Point(302, 76)
-        Me.A1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.A1_Klappe_Text.Name = "A1_Klappe_Text"
-        Me.A1_Klappe_Text.ReadOnly = True
-        Me.A1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.A1_Klappe_Text.TabIndex = 202
-        Me.A1_Klappe_Text.Text = "a"
-        Me.A1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'H1_Klappe_Text
-        '
-        Me.H1_Klappe_Text.Location = New System.Drawing.Point(361, 76)
-        Me.H1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.H1_Klappe_Text.Name = "H1_Klappe_Text"
-        Me.H1_Klappe_Text.ReadOnly = True
-        Me.H1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.H1_Klappe_Text.TabIndex = 203
-        Me.H1_Klappe_Text.Text = "h"
-        Me.H1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'C2_Klappe_Text
-        '
-        Me.C2_Klappe_Text.Location = New System.Drawing.Point(420, 76)
-        Me.C2_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
-        Me.C2_Klappe_Text.Name = "C2_Klappe_Text"
-        Me.C2_Klappe_Text.ReadOnly = True
-        Me.C2_Klappe_Text.Size = New System.Drawing.Size(45, 20)
-        Me.C2_Klappe_Text.TabIndex = 204
-        Me.C2_Klappe_Text.Text = "c"
-        Me.C2_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.MIDI_Save_Button.Enabled = False
+        Me.MIDI_Save_Button.Location = New System.Drawing.Point(6, 276)
+        Me.MIDI_Save_Button.Name = "MIDI_Save_Button"
+        Me.MIDI_Save_Button.Size = New System.Drawing.Size(282, 58)
+        Me.MIDI_Save_Button.TabIndex = 11
+        Me.MIDI_Save_Button.Text = "Aufnahme speichern"
+        Me.ToolTip1.SetToolTip(Me.MIDI_Save_Button, resources.GetString("MIDI_Save_Button.ToolTip"))
+        Me.MIDI_Save_Button.UseVisualStyleBackColor = True
         '
         'GroupBox4
         '
@@ -1761,7 +1435,8 @@ Partial Class Form1
         Me.GroupBox4.Size = New System.Drawing.Size(1252, 285)
         Me.GroupBox4.TabIndex = 192
         Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "MIDI Visualisierung"
+        Me.GroupBox4.Text = "MIDI Visualisierung und Tonbasierende Induvidualeinstellungen"
+        Me.ToolTip1.SetToolTip(Me.GroupBox4, resources.GetString("GroupBox4.ToolTip"))
         '
         'FlowLayoutPanel5
         '
@@ -3758,6 +3433,399 @@ Partial Class Form1
         Me.H4_Verschiebung.Text = "0"
         Me.H4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
+        'Com_Search_Timer
+        '
+        Me.Com_Search_Timer.Enabled = True
+        Me.Com_Search_Timer.Interval = 2000
+        '
+        'C_Klappe
+        '
+        Me.C_Klappe.Location = New System.Drawing.Point(3, 3)
+        Me.C_Klappe.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.C_Klappe.Maximum = 1
+        Me.C_Klappe.Minimum = -1
+        Me.C_Klappe.Name = "C_Klappe"
+        Me.C_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C_Klappe.TabIndex = 183
+        Me.C_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'Serial_BackgroundWorker
+        '
+        Me.Serial_BackgroundWorker.WorkerSupportsCancellation = True
+        '
+        'Mesgeschwindigkeitsberechnung_Timer
+        '
+        Me.Mesgeschwindigkeitsberechnung_Timer.Interval = 250
+        '
+        'GetAsyncKeyState_Timer
+        '
+        Me.GetAsyncKeyState_Timer.Enabled = True
+        Me.GetAsyncKeyState_Timer.Interval = 20
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Panel1.BackColor = System.Drawing.SystemColors.Control
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.SendKeys_GroupBox)
+        Me.Panel1.Controls.Add(Me.Tastenkonbinationen_GroupBox)
+        Me.Panel1.Controls.Add(Me.SendKey_GroupBox)
+        Me.Panel1.Controls.Add(Me.DirectPlay_GroupBox)
+        Me.Panel1.Controls.Add(Me.Programmeinstellungen_GroupBox)
+        Me.Panel1.Controls.Add(Me.Klappen_GroupBox)
+        Me.Panel1.Controls.Add(Me.GroupBox7)
+        Me.Panel1.Controls.Add(Me.GroupBox4)
+        Me.Panel1.Controls.Add(Me.Einstellungen_GroupBox)
+        Me.Panel1.Controls.Add(Me.GroupBox2)
+        Me.Panel1.Controls.Add(Me.GroupBox1)
+        Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(1274, 771)
+        Me.Panel1.TabIndex = 0
+        '
+        'DirectPlay_GroupBox
+        '
+        Me.DirectPlay_GroupBox.BackColor = System.Drawing.SystemColors.Control
+        Me.DirectPlay_GroupBox.Controls.Add(Me.GroupBox12)
+        Me.DirectPlay_GroupBox.Controls.Add(Me.DirectPlay_YesNo_GroupBox)
+        Me.DirectPlay_GroupBox.Location = New System.Drawing.Point(766, 11)
+        Me.DirectPlay_GroupBox.Name = "DirectPlay_GroupBox"
+        Me.DirectPlay_GroupBox.Size = New System.Drawing.Size(221, 202)
+        Me.DirectPlay_GroupBox.TabIndex = 193
+        Me.DirectPlay_GroupBox.TabStop = False
+        Me.DirectPlay_GroupBox.Text = "Direct Play"
+        '
+        'GroupBox12
+        '
+        Me.GroupBox12.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.GroupBox12.Controls.Add(Me.Label11)
+        Me.GroupBox12.Controls.Add(Me.Label15)
+        Me.GroupBox12.Controls.Add(Me.hsbVolume)
+        Me.GroupBox12.Controls.Add(Me.Label14)
+        Me.GroupBox12.Controls.Add(Me.hsbPan)
+        Me.GroupBox12.Controls.Add(Me.hsbModWheel)
+        Me.GroupBox12.Location = New System.Drawing.Point(10, 83)
+        Me.GroupBox12.Name = "GroupBox12"
+        Me.GroupBox12.Size = New System.Drawing.Size(200, 109)
+        Me.GroupBox12.TabIndex = 174
+        Me.GroupBox12.TabStop = False
+        Me.GroupBox12.Text = "Einstellungen"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(12, 26)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(45, 13)
+        Me.Label11.TabIndex = 164
+        Me.Label11.Text = "Volume:"
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(11, 81)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(41, 13)
+        Me.Label15.TabIndex = 172
+        Me.Label15.Text = "Efeckt:"
+        '
+        'hsbVolume
+        '
+        Me.hsbVolume.Location = New System.Drawing.Point(72, 22)
+        Me.hsbVolume.Maximum = 127
+        Me.hsbVolume.Name = "hsbVolume"
+        Me.hsbVolume.Size = New System.Drawing.Size(115, 17)
+        Me.hsbVolume.TabIndex = 6
+        Me.hsbVolume.Value = 127
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(11, 55)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(49, 13)
+        Me.Label14.TabIndex = 173
+        Me.Label14.Text = "Balance:"
+        '
+        'hsbPan
+        '
+        Me.hsbPan.Location = New System.Drawing.Point(72, 51)
+        Me.hsbPan.Name = "hsbPan"
+        Me.hsbPan.Size = New System.Drawing.Size(115, 17)
+        Me.hsbPan.TabIndex = 172
+        Me.hsbPan.Value = 50
+        '
+        'hsbModWheel
+        '
+        Me.hsbModWheel.Location = New System.Drawing.Point(74, 80)
+        Me.hsbModWheel.Maximum = 255
+        Me.hsbModWheel.Name = "hsbModWheel"
+        Me.hsbModWheel.Size = New System.Drawing.Size(115, 17)
+        Me.hsbModWheel.TabIndex = 172
+        '
+        'DirectPlay_YesNo_GroupBox
+        '
+        Me.DirectPlay_YesNo_GroupBox.Controls.Add(Me.DirectPlay_OFF)
+        Me.DirectPlay_YesNo_GroupBox.Controls.Add(Me.DirectPlay_ON)
+        Me.DirectPlay_YesNo_GroupBox.Location = New System.Drawing.Point(10, 16)
+        Me.DirectPlay_YesNo_GroupBox.Name = "DirectPlay_YesNo_GroupBox"
+        Me.DirectPlay_YesNo_GroupBox.Size = New System.Drawing.Size(199, 56)
+        Me.DirectPlay_YesNo_GroupBox.TabIndex = 163
+        Me.DirectPlay_YesNo_GroupBox.TabStop = False
+        Me.DirectPlay_YesNo_GroupBox.Text = "Empfangende Noten abspielen"
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_YesNo_GroupBox, "Sollen empfangene MIDI Sygnale per winmm.dll ins" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Betriebssystem gesendet werden?" & _
+                " Genauere Infor-" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "mationen unter den emntsprechenden Punkten.")
+        '
+        'Programmeinstellungen_GroupBox
+        '
+        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.About_Button)
+        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.Help_Button)
+        Me.Programmeinstellungen_GroupBox.Controls.Add(Me.ToolTip_YesNo_GroupBox)
+        Me.Programmeinstellungen_GroupBox.Location = New System.Drawing.Point(1006, 11)
+        Me.Programmeinstellungen_GroupBox.Name = "Programmeinstellungen_GroupBox"
+        Me.Programmeinstellungen_GroupBox.Size = New System.Drawing.Size(255, 202)
+        Me.Programmeinstellungen_GroupBox.TabIndex = 196
+        Me.Programmeinstellungen_GroupBox.TabStop = False
+        Me.Programmeinstellungen_GroupBox.Text = "Programmeinstellungen"
+        '
+        'About_Button
+        '
+        Me.About_Button.Location = New System.Drawing.Point(25, 148)
+        Me.About_Button.Name = "About_Button"
+        Me.About_Button.Size = New System.Drawing.Size(201, 43)
+        Me.About_Button.TabIndex = 2
+        Me.About_Button.Text = "Über"
+        Me.ToolTip1.SetToolTip(Me.About_Button, "Zeigt die wichtigsten Informationen wie Version, Lizenzstatus usw. ")
+        Me.About_Button.UseVisualStyleBackColor = True
+        '
+        'Help_Button
+        '
+        Me.Help_Button.Location = New System.Drawing.Point(25, 91)
+        Me.Help_Button.Name = "Help_Button"
+        Me.Help_Button.Size = New System.Drawing.Size(201, 43)
+        Me.Help_Button.TabIndex = 1
+        Me.Help_Button.Text = "Hilfe"
+        Me.ToolTip1.SetToolTip(Me.Help_Button, "Öffnet die Hilfsfunktion.")
+        Me.Help_Button.UseVisualStyleBackColor = True
+        '
+        'Klappen_GroupBox
+        '
+        Me.Klappen_GroupBox.Controls.Add(Me.FlowLayoutPanel6)
+        Me.Klappen_GroupBox.Location = New System.Drawing.Point(764, 344)
+        Me.Klappen_GroupBox.Name = "Klappen_GroupBox"
+        Me.Klappen_GroupBox.Size = New System.Drawing.Size(497, 131)
+        Me.Klappen_GroupBox.TabIndex = 195
+        Me.Klappen_GroupBox.TabStop = False
+        Me.Klappen_GroupBox.Text = "Tonart (Klappen)"
+        '
+        'FlowLayoutPanel6
+        '
+        Me.FlowLayoutPanel6.Controls.Add(Me.C1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.D1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.E1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.F1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.G1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe)
+        Me.FlowLayoutPanel6.Controls.Add(Me.C1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.D1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.E1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.F1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.G1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe_Text)
+        Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe_Text)
+        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(12, 22)
+        Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
+        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(479, 101)
+        Me.FlowLayoutPanel6.TabIndex = 0
+        '
+        'C1_Klappe
+        '
+        Me.C1_Klappe.Location = New System.Drawing.Point(7, 1)
+        Me.C1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.C1_Klappe.Maximum = 1
+        Me.C1_Klappe.Minimum = -1
+        Me.C1_Klappe.Name = "C1_Klappe"
+        Me.C1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C1_Klappe.TabIndex = 183
+        Me.C1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'D1_Klappe
+        '
+        Me.D1_Klappe.Location = New System.Drawing.Point(66, 1)
+        Me.D1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.D1_Klappe.Maximum = 1
+        Me.D1_Klappe.Minimum = -1
+        Me.D1_Klappe.Name = "D1_Klappe"
+        Me.D1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.D1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.D1_Klappe.TabIndex = 184
+        Me.D1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'E1_Klappe
+        '
+        Me.E1_Klappe.Location = New System.Drawing.Point(125, 1)
+        Me.E1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.E1_Klappe.Maximum = 1
+        Me.E1_Klappe.Minimum = -1
+        Me.E1_Klappe.Name = "E1_Klappe"
+        Me.E1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.E1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.E1_Klappe.TabIndex = 185
+        Me.E1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'F1_Klappe
+        '
+        Me.F1_Klappe.Location = New System.Drawing.Point(184, 1)
+        Me.F1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.F1_Klappe.Maximum = 1
+        Me.F1_Klappe.Minimum = -1
+        Me.F1_Klappe.Name = "F1_Klappe"
+        Me.F1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.F1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.F1_Klappe.TabIndex = 186
+        Me.F1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'G1_Klappe
+        '
+        Me.G1_Klappe.Location = New System.Drawing.Point(243, 1)
+        Me.G1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.G1_Klappe.Maximum = 1
+        Me.G1_Klappe.Minimum = -1
+        Me.G1_Klappe.Name = "G1_Klappe"
+        Me.G1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.G1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.G1_Klappe.TabIndex = 187
+        Me.G1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'A1_Klappe
+        '
+        Me.A1_Klappe.Location = New System.Drawing.Point(302, 1)
+        Me.A1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.A1_Klappe.Maximum = 1
+        Me.A1_Klappe.Minimum = -1
+        Me.A1_Klappe.Name = "A1_Klappe"
+        Me.A1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.A1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.A1_Klappe.TabIndex = 188
+        Me.A1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'H1_Klappe
+        '
+        Me.H1_Klappe.Location = New System.Drawing.Point(361, 1)
+        Me.H1_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.H1_Klappe.Maximum = 1
+        Me.H1_Klappe.Minimum = -1
+        Me.H1_Klappe.Name = "H1_Klappe"
+        Me.H1_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.H1_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.H1_Klappe.TabIndex = 189
+        Me.H1_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'C2_Klappe
+        '
+        Me.C2_Klappe.Location = New System.Drawing.Point(420, 1)
+        Me.C2_Klappe.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.C2_Klappe.Maximum = 1
+        Me.C2_Klappe.Minimum = -1
+        Me.C2_Klappe.Name = "C2_Klappe"
+        Me.C2_Klappe.Orientation = System.Windows.Forms.Orientation.Vertical
+        Me.C2_Klappe.Size = New System.Drawing.Size(45, 73)
+        Me.C2_Klappe.TabIndex = 197
+        Me.C2_Klappe.TickStyle = System.Windows.Forms.TickStyle.Both
+        '
+        'C1_Klappe_Text
+        '
+        Me.C1_Klappe_Text.Location = New System.Drawing.Point(7, 76)
+        Me.C1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.C1_Klappe_Text.Name = "C1_Klappe_Text"
+        Me.C1_Klappe_Text.ReadOnly = True
+        Me.C1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.C1_Klappe_Text.TabIndex = 190
+        Me.C1_Klappe_Text.Text = "c"
+        Me.C1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'D1_Klappe_Text
+        '
+        Me.D1_Klappe_Text.Location = New System.Drawing.Point(66, 76)
+        Me.D1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.D1_Klappe_Text.Name = "D1_Klappe_Text"
+        Me.D1_Klappe_Text.ReadOnly = True
+        Me.D1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.D1_Klappe_Text.TabIndex = 198
+        Me.D1_Klappe_Text.Text = "d"
+        Me.D1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'E1_Klappe_Text
+        '
+        Me.E1_Klappe_Text.Location = New System.Drawing.Point(125, 76)
+        Me.E1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.E1_Klappe_Text.Name = "E1_Klappe_Text"
+        Me.E1_Klappe_Text.ReadOnly = True
+        Me.E1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.E1_Klappe_Text.TabIndex = 199
+        Me.E1_Klappe_Text.Text = "e"
+        Me.E1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'F1_Klappe_Text
+        '
+        Me.F1_Klappe_Text.Location = New System.Drawing.Point(184, 76)
+        Me.F1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.F1_Klappe_Text.Name = "F1_Klappe_Text"
+        Me.F1_Klappe_Text.ReadOnly = True
+        Me.F1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.F1_Klappe_Text.TabIndex = 200
+        Me.F1_Klappe_Text.Text = "f"
+        Me.F1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'G1_Klappe_Text
+        '
+        Me.G1_Klappe_Text.Location = New System.Drawing.Point(243, 76)
+        Me.G1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.G1_Klappe_Text.Name = "G1_Klappe_Text"
+        Me.G1_Klappe_Text.ReadOnly = True
+        Me.G1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.G1_Klappe_Text.TabIndex = 201
+        Me.G1_Klappe_Text.Text = "g"
+        Me.G1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'A1_Klappe_Text
+        '
+        Me.A1_Klappe_Text.Location = New System.Drawing.Point(302, 76)
+        Me.A1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.A1_Klappe_Text.Name = "A1_Klappe_Text"
+        Me.A1_Klappe_Text.ReadOnly = True
+        Me.A1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.A1_Klappe_Text.TabIndex = 202
+        Me.A1_Klappe_Text.Text = "a"
+        Me.A1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'H1_Klappe_Text
+        '
+        Me.H1_Klappe_Text.Location = New System.Drawing.Point(361, 76)
+        Me.H1_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.H1_Klappe_Text.Name = "H1_Klappe_Text"
+        Me.H1_Klappe_Text.ReadOnly = True
+        Me.H1_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.H1_Klappe_Text.TabIndex = 203
+        Me.H1_Klappe_Text.Text = "h"
+        Me.H1_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'C2_Klappe_Text
+        '
+        Me.C2_Klappe_Text.Location = New System.Drawing.Point(420, 76)
+        Me.C2_Klappe_Text.Margin = New System.Windows.Forms.Padding(7, 1, 7, 1)
+        Me.C2_Klappe_Text.Name = "C2_Klappe_Text"
+        Me.C2_Klappe_Text.ReadOnly = True
+        Me.C2_Klappe_Text.Size = New System.Drawing.Size(45, 20)
+        Me.C2_Klappe_Text.TabIndex = 204
+        Me.C2_Klappe_Text.Text = "c"
+        Me.C2_Klappe_Text.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Einstellungen_GroupBox
         '
         Me.Einstellungen_GroupBox.Controls.Add(Me.Instrumentenauswahl_GroupBox)
@@ -3774,16 +3842,6 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.TabStop = False
         Me.Einstellungen_GroupBox.Text = "Einstellungen"
         '
-        'Instrumentenauswahl_GroupBox
-        '
-        Me.Instrumentenauswahl_GroupBox.Controls.Add(Me.cboInstruments)
-        Me.Instrumentenauswahl_GroupBox.Location = New System.Drawing.Point(9, 73)
-        Me.Instrumentenauswahl_GroupBox.Name = "Instrumentenauswahl_GroupBox"
-        Me.Instrumentenauswahl_GroupBox.Size = New System.Drawing.Size(199, 54)
-        Me.Instrumentenauswahl_GroupBox.TabIndex = 183
-        Me.Instrumentenauswahl_GroupBox.TabStop = False
-        Me.Instrumentenauswahl_GroupBox.Text = "Instrument"
-        '
         'GroupBox3
         '
         Me.GroupBox3.Controls.Add(Me.AnzMessungen)
@@ -3794,6 +3852,7 @@ Partial Class Form1
         Me.GroupBox3.TabIndex = 182
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Anzahl Messungen und Messfehler"
+        Me.ToolTip1.SetToolTip(Me.GroupBox3, resources.GetString("GroupBox3.ToolTip"))
         '
         'AnzMessungen
         '
@@ -3817,17 +3876,6 @@ Partial Class Form1
         Me.AnzMessfehler.Text = "0"
         Me.AnzMessfehler.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'MIDI_Aufnahmemodus_GroupBox
-        '
-        Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_SpecialMode)
-        Me.MIDI_Aufnahmemodus_GroupBox.Controls.Add(Me.MIDI_NormalMode)
-        Me.MIDI_Aufnahmemodus_GroupBox.Location = New System.Drawing.Point(9, 19)
-        Me.MIDI_Aufnahmemodus_GroupBox.Name = "MIDI_Aufnahmemodus_GroupBox"
-        Me.MIDI_Aufnahmemodus_GroupBox.Size = New System.Drawing.Size(199, 48)
-        Me.MIDI_Aufnahmemodus_GroupBox.TabIndex = 173
-        Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
-        Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
-        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.MIDI_Pause_Button)
@@ -3841,16 +3889,6 @@ Partial Class Form1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Ausgabe"
         '
-        'MIDI_Pause_Button
-        '
-        Me.MIDI_Pause_Button.Enabled = False
-        Me.MIDI_Pause_Button.Location = New System.Drawing.Point(6, 210)
-        Me.MIDI_Pause_Button.Name = "MIDI_Pause_Button"
-        Me.MIDI_Pause_Button.Size = New System.Drawing.Size(282, 58)
-        Me.MIDI_Pause_Button.TabIndex = 23
-        Me.MIDI_Pause_Button.Text = "Aufnahme pausieren"
-        Me.MIDI_Pause_Button.UseVisualStyleBackColor = True
-        '
         'Tackt_Ausgabefenster
         '
         Me.Tackt_Ausgabefenster.BackColor = System.Drawing.Color.LightSteelBlue
@@ -3863,25 +3901,8 @@ Partial Class Form1
         Me.Tackt_Ausgabefenster.TabIndex = 1
         Me.Tackt_Ausgabefenster.Text = "1  1"
         Me.Tackt_Ausgabefenster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'MIDI_Start_Button
-        '
-        Me.MIDI_Start_Button.Location = New System.Drawing.Point(6, 141)
-        Me.MIDI_Start_Button.Name = "MIDI_Start_Button"
-        Me.MIDI_Start_Button.Size = New System.Drawing.Size(282, 60)
-        Me.MIDI_Start_Button.TabIndex = 22
-        Me.MIDI_Start_Button.Text = "Aufnahme starten"
-        Me.MIDI_Start_Button.UseVisualStyleBackColor = True
-        '
-        'MIDI_Save_Button
-        '
-        Me.MIDI_Save_Button.Enabled = False
-        Me.MIDI_Save_Button.Location = New System.Drawing.Point(6, 276)
-        Me.MIDI_Save_Button.Name = "MIDI_Save_Button"
-        Me.MIDI_Save_Button.Size = New System.Drawing.Size(282, 58)
-        Me.MIDI_Save_Button.TabIndex = 11
-        Me.MIDI_Save_Button.Text = "Aufnahme speichern"
-        Me.MIDI_Save_Button.UseVisualStyleBackColor = True
+        Me.ToolTip1.SetToolTip(Me.Tackt_Ausgabefenster, "In diesem bereich wird der Momentane Tackt ausgegeben. Diese angaben machen eigen" & _
+                "dlich nur bei m Aufnahmemodus ""Standart MIDI"" wirklich einen Sinn.")
         '
         'C6_VerticalProgessBar
         '
@@ -4208,27 +4229,11 @@ Partial Class Form1
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SendKey_GroupBox.ResumeLayout(False)
         Me.SendKey_GroupBox.PerformLayout()
-        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel1.ResumeLayout(False)
         Me.SendKeys_GroupBox.ResumeLayout(False)
         Me.SendKeys_GroupBox.PerformLayout()
-        Me.DirectPlay_GroupBox.ResumeLayout(False)
-        Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox12.PerformLayout()
-        Me.DirectPlay_YesNo_GroupBox.ResumeLayout(False)
-        Me.DirectPlay_YesNo_GroupBox.PerformLayout()
-        Me.Programmeinstellungen_GroupBox.ResumeLayout(False)
-        Me.Klappen_GroupBox.ResumeLayout(False)
-        Me.FlowLayoutPanel6.ResumeLayout(False)
-        Me.FlowLayoutPanel6.PerformLayout()
-        CType(Me.C1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.D1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.E1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.F1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.G1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.A1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
+        Me.MIDI_Aufnahmemodus_GroupBox.ResumeLayout(False)
+        Me.MIDI_Aufnahmemodus_GroupBox.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
@@ -4252,12 +4257,28 @@ Partial Class Form1
         Me.FlowLayoutPanel8.PerformLayout()
         Me.FlowLayoutPanel9.ResumeLayout(False)
         Me.FlowLayoutPanel9.PerformLayout()
+        CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel1.ResumeLayout(False)
+        Me.DirectPlay_GroupBox.ResumeLayout(False)
+        Me.GroupBox12.ResumeLayout(False)
+        Me.GroupBox12.PerformLayout()
+        Me.DirectPlay_YesNo_GroupBox.ResumeLayout(False)
+        Me.DirectPlay_YesNo_GroupBox.PerformLayout()
+        Me.Programmeinstellungen_GroupBox.ResumeLayout(False)
+        Me.Klappen_GroupBox.ResumeLayout(False)
+        Me.FlowLayoutPanel6.ResumeLayout(False)
+        Me.FlowLayoutPanel6.PerformLayout()
+        CType(Me.C1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.D1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.E1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.F1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.G1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.A1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.H1_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
-        Me.Instrumentenauswahl_GroupBox.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        Me.MIDI_Aufnahmemodus_GroupBox.ResumeLayout(False)
-        Me.MIDI_Aufnahmemodus_GroupBox.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
 
