@@ -209,7 +209,7 @@ Public Class Form1
             .Add("ToolTip", "Ctrl + Shift + T")
             .Add("Exit", "Esc oder Alt + F4")
             .Add("Klappen", "F1-F8 or 1-8 or c-h")
-            .Add("", "und Pfeil. up/down")
+            .Add("", "und Pfeilt. up/down")
             .Add("", "oder Num8/Num2")
             .Add("", "z.B. C & Pfeil Up")
         End With
@@ -259,11 +259,11 @@ Public Class Form1
     Private Sub Button_Connect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Connect.Click
 
         If Lizenz_Activated = False Then
-            MessageBox.Show("Das Programm wurde nicht ordnungsgemäss aktiviert." _
+            MessageBox.Show("Das Programm wurde nicht ordnungsgemäss Aktiviert." _
                             & vbCrLf & "Dies kann beispielsweise bei einer Modifizierung der Fall sein." _
                             & vbCrLf & "Bitte srarten Sie das Programm neu. Sollte diese Meldung nicht" _
-                            & vbCrLf & "verschwinden kontaktieren Sie bitte den Support per Mail unter" _
-                            & vbCrLf & "nico@bosshome.ch. Diese Meldung existiert um Modder von meinem" _
+                            & vbCrLf & "verschwinden kontaktieren sie bitte den support per mail unter" _
+                            & vbCrLf & "nico@bosshome.ch. Dies Meldung existiert um Modder von meinem" _
                             & vbCrLf & "Programm fernzuhalten und sollte bei Ihnen nicht angezeigt werden.")
             Me.Close()
         End If
@@ -293,7 +293,7 @@ Public Class Form1
 
             'Fehlermeldung
             MessageBox.Show("Unter dem gewählten COM Port wurde kein Mikrokontroller erkannt. " _
-            & vbCrLf & "Stellen Sie sicher, dass Sie den richtigen Port gewählt haben und der" _
+            & vbCrLf & "Stellen Sie sicher, das Sie den Richtigen Port gewählt haben und der" _
             & vbCrLf & "Mikrokontroller korrekt mit dem Computer verbunden, und" _
             & vbCrLf & "nicht schon von einem anderen Programm besetzt ist." _
             & vbCrLf & vbCrLf & "Fehler: " & e.ToString _
@@ -319,7 +319,7 @@ Public Class Form1
 
         'trennen
         Mesgeschwindigkeitsberechnung_Timer.Enabled = False
-        'Takt.Enabled = False
+        'Tackt.Enabled = False
         AnzMessungen.Text = 0
         AnzMessfehler.Text = 0
         MessungenProS_TexBox.Text = "0 M/s"
@@ -360,7 +360,7 @@ Public Class Form1
                 Serial_Read = SerialPort1.ReadByte
                 If Not Serial_Read = 250 Then
                     'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                    '& "Die laufende Aufnahme wurde pausiert" _
+                    '& "Die laufende Aufnahme wurde Paussiert" _
                     '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
                     '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
                     'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -411,11 +411,11 @@ Public Class Form1
                 Next
 
 
-                'Diagramm_aktualisieren_i += 1
+                'Diagramm_Aktuallisieren_i += 1
 
-                'If Diagramm_aktualisieren_i = 2 Then
+                'If Diagramm_Aktuallisieren_i = 2 Then
                 Diagramm_Aktuallisieren()
-                'Diagramm_aktualisieren_i = 0
+                'Diagramm_Aktuallisieren_i = 0
                 'End If
 
 
@@ -650,7 +650,7 @@ Public Class Form1
 
         Next
 
-        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlage(0) += 0.125
+        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
 
         Tackt_32stel = Tackt_32stel + 1
 
@@ -1852,8 +1852,8 @@ Public Class Form1
                         MsgBox("Der Schlüssel ist gültig. Das Programm wurde erfolgreich aktiviert. " & _
                           "Sie dürfen diesen Schlüssel noch " & _
                           (CInt(X.Split(";")(1)) - 1) & _
-                          " einmal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
-                          "Die Aktivierung erfolgt auch bei jedem Softwareupdate. " & _
+                          " Mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
+                          "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
                           "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
                           "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.")
                     Else
@@ -1861,7 +1861,7 @@ Public Class Form1
                         MsgBox("Der Schlüssel ist gültig. Das Programm konnte allerdings " & _
                           "nicht aktiviert werden. " & _
                           "Bitte überprüfen Sie, ob der Installationsordner schreibgeschützt ist. " & _
-                          "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nico@bosshome.ch", _
+                          "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch", _
                           MsgBoxStyle.Exclamation)
                         Me.Close()
                     End If
@@ -1869,9 +1869,9 @@ Public Class Form1
                     MsgBox("Ihr Schlüssel ist gültig, aber die maximale Anzahl der " & _
                       "Aktivierungen für diesen Schlüssel wurde überschritten. " & _
                       "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " & _
-                      "plausibler Begründung (z.B. 6 Computer, mehrfache " & _
-                      "Neuinstallation wegen Softwareproblem, Neuaktivierung wegen" & _
-                      "grösseren Hardwareänderungen am Computer, Lizenzspeicherungsfehler " & _
+                      "plausiebelr Begründung (z.B. 6 Computer, Merfache " & _
+                      "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" & _
+                      "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler " & _
                       "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten " & _
                       "oder weitere zu erwerben.", MsgBoxStyle.Exclamation)
                     Me.Close()
@@ -1880,7 +1880,7 @@ Public Class Form1
                 Lizenz = ""
                 MsgBox("Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf " & _
                   "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
-                  "Den Lizenzschlüssel sollten Sie zur gekauften Hardware zusammen mit dem " &
+                  "Der Lizenzschlüssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
                   "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
             End If
         Catch ex As Exception
@@ -1907,7 +1907,7 @@ Public Class Form1
         Else
             Do
                 Do Until Lizenz.Length = 29
-                    If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspricht nicht der," _
+                    If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspringt nicht der," _
                                                                     & vbCrLf & "für den Schlüssel vorgesehenen Länge." _
                                                                     & vbCrLf & "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen" _
                                                                     & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.", _
@@ -1915,7 +1915,7 @@ Public Class Form1
 
                     Lizenz = InputBox("Bitte geben Sie Ihr Lizenzschlüssel ein." _
                                         & vbCrLf & vbCrLf & "Format: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX" _
-                                        & vbCrLf & "- Nur Grossbuchstaben ohne Zahlen, Zeichen" _
+                                        & vbCrLf & "- Nur Grossbuchstaben ohne Zahelen, Zeichen" _
                                         & vbCrLf & "- Trennungsstriche nicht vergessen!", "Aktivierung")
 
                     'PLMMD-YNOJG-EBJET-MEBXU-YLEJX
@@ -1923,7 +1923,7 @@ Public Class Form1
                 Loop
 
                 MsgBox("Die Aktivierung kann, abhängig von verschiedensten Faktoren von wenigen " & _
-                        "Sekunden bis hin zu einer Minute dauern! Haben Sie bitte ein bisschen Geduld." & _
+                        "Sekunden bis hin zu einer Minute dauern! Haben sie bitte ein bisschen Geduld." & _
                         vbCrLf & vbCrLf & "Die Aktivierung wird mit einem Klick auf OK gestartet.")
                 Registrierung()
 
@@ -2191,8 +2191,8 @@ Public Class Form1
 
     Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         Help_Button.Enabled = False 'Sieht schöner aus
-        MessageBox.Show("Es ist momentan noch keine Hilfe ausser der ToolTip Funktion für mein Programm MIDI Harfe verfügbar." _
-                        & vbCrLf & vbCrLf & "Sollten Sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome", _
+        MessageBox.Show("Es ist momentan noch keine Hilfe ausser die ToolTip Funktion für mein Programm MIDI Harfe verfügbar." _
+                        & vbCrLf & vbCrLf & "Sollten sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome", _
                         "Hilfe", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Help_Button.Enabled = True
     End Sub

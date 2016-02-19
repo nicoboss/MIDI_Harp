@@ -220,6 +220,12 @@ Stopwert: Bestimmt ab welchem Wert von 0-255 einen Ton fertig ist (kleine Werte=
 Transpose: Induviduelle Halbtonverschiebung. Wird durch ändern der Kläppckhen automatisch angepasst. Wert darf sich zwar zwischen -127 und 127 befinden jedoch machen eigendlich nur werte von -10 bis 10 wirklich Sinn.
 </value>
   </data>
+  <data name="GroupBox3.ToolTip" xml:space="preserve">
+    <value>Hier werden Anzahl Messungen und Verbindungsfehler ausgegeben.
+Sollten hir über 100 Fehler pro aufnahme vorhanden sein prüfen
+Sioe bitte alle stecker und melden Sie sich bei Nichtbehebung
+per Mail an nico@bosshome.ch</value>
+  </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>339, 24</value>
   </metadata>
@@ -232,12 +238,6 @@ Transpose: Induviduelle Halbtonverschiebung. Wird durch ändern der Kläppckhen 
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 25</value>
   </metadata>
-  <data name="GroupBox3.ToolTip" xml:space="preserve">
-    <value>Hier werden Anzahl Messungen und Verbindungsfehler ausgegeben.
-Sollten hir über 100 Fehler pro aufnahme vorhanden sein prüfen
-Sioe bitte alle stecker und melden Sie sich bei Nichtbehebung
-per Mail an nico@bosshome.ch</value>
-  </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>70</value>
   </metadata>
