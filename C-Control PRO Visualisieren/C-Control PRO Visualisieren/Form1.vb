@@ -67,7 +67,7 @@ Public Class Form1
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
     Dim Version As String = "V1.0"
-    Dim PublishDate As Date = "19.02.2016"
+    Dim PublishDate As Date = "20.02.2016"
 
     Dim Lizenz As String = ""
 
@@ -1842,7 +1842,7 @@ Public Class Form1
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
             My.Computer.Network.DownloadFile( _
-                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz, S)
+                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
             Dim X As String = My.Computer.FileSystem.ReadAllText(S)
             If CInt(X.Split(";")(0)) > 0 Then
                 If CInt(X.Split(";")(1)) > 0 Then
