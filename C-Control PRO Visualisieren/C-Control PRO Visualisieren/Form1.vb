@@ -554,11 +554,9 @@ Public Class Form1
             MessageBox.Show("Error")
         End If
 
+        'In Trackt 0 gehören keine META Daten!!!
+        'Ansonsten kommt Track 0 in einigen Musikprogrammen als Leehre Spur.
         Song.Tracks(0).TrackData.Clear()
-        If Not META_Dateinamen_Input.Text = "" Then Song.Tracks(0).Text(1, META_Dateinamen_Input.Text)
-        If Not META_Autor_Input.Text = "" Then Song.Tracks(0).Text(1, META_Autor_Input.Text)
-        If Not META_Copyright_Input.Text = "" Then Song.Tracks(0).Text(2, META_Copyright_Input.Text)
-        If Not META_Bemerkung_Input.Text = "" Then Song.Tracks(0).Text(1, META_Bemerkung_Input.Text)
         If MIDI_NormalMode.Checked = True Then Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
 
         Song.Tracks(1).TrackData.Clear()
@@ -631,26 +629,28 @@ Public Class Form1
         Dim Note_gespielt As Boolean = False
 
         For i = 16 To 77 Step 1
-
             If Note_Play(i) = True Or Button_Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))
+                    Song.Tracks(1).AddNoteOnOffEvent(1, MIDI.Track.NoteEvent.NoteOn, CByte(i), CByte(100))
                 End If
-
                 Notenlaege(i) += 0.125
                 Note_gespielt = True
 
             Else
 
                 If Notenlaege(i) > 0 Then
-                    Song.Tracks(1).AddNoteOnOffEvent(0, MIDI.Track.NoteEvent.NoteOff, CByte(i), 0)
+                    Song.Tracks(1).AddNoteOnOffEvent(Notenlaege(i), MIDI.Track.NoteEvent.NoteOff, CByte(i), 0)
                     Notenlaege(i) = 0
                 End If
             End If
 
         Next
 
-        If Note_gespielt = False Then Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
+        If Note_gespielt = False Then
+            Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
+            m.PlayMIDINote(70, 50, 0.1)
+        End If
+
 
         Tackt_32stel = Tackt_32stel + 1
 
@@ -1070,6 +1070,7 @@ Public Class Form1
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
         m.PlayMIDINote(NotenNr, 100, 0)
         Button_Note_Play(NotenNr) = True
+        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
     End Sub
 
 
@@ -1079,6 +1080,7 @@ Public Class Form1
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
         m.STOPMIDINote(NotenNr)
         Button_Note_Play(NotenNr) = False
+        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
     End Sub
 
 
@@ -1737,7 +1739,7 @@ Public Class Form1
 #Region "Onlineaktivierung"
 
 
-    Dim Lizenz_Activated As Boolean
+    Dim Lizenz_Activated As Boolean = True
 
     Public Shared Sub Main()
         'nAntiCopy.ShowDialog()
@@ -1897,7 +1899,7 @@ Public Class Form1
 
     'http://www.vbarchiv.net/workshop/workshop_119-einfacher-kopierschutz-mit-online-aktivierung.html
     Private Sub AntiCopy_Load(ByVal sender As System.Object, _
-  ByVal e As System.EventArgs) Handles MyBase.Load
+  ByVal e As System.EventArgs) ' Handles MyBase.Load
 
         Lizenz = My.Settings.Lizenz_Save
 

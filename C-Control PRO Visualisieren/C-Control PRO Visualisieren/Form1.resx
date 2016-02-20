@@ -151,8 +151,8 @@ können daher mit einmahliger eingaben mehrmals verwendet werden.</value>
   </data>
   <data name="MIDI_SpecialMode.ToolTip" xml:space="preserve">
     <value>Es werden Ausschliesslich Noten und META Tag im MIDI File gespeichert. Die fehlende instrument und Zeitangabe führt jedoch dazu, dass das MIDI File zwingend nochmahls mit einem Musikprogramm bearbeitet werden musss!
-Sind Sie sich im gewissen, das diese art von MIDI Files nicht von allen Player und Programmen fehlerfrei unterstützt wird.
-Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige MIDI files erstellt.
+Diese Art von MIDI File ist für normahle Player völlig nutzlos! Bitte verwenden SIe diese Funktion nur wenn sie weiisen was Sie Tuhn. Nur ca. 2% aller User werden diese je brauchen!
+Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige rohdatem MIDI Files für spezialprogramme erstellt.
 </value>
   </data>
   <data name="MIDI_NormalMode.ToolTip" xml:space="preserve">
