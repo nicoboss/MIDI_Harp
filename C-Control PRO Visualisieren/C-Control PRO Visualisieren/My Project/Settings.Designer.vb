@@ -590,6 +590,42 @@ Namespace My
                 Me("Verschiebung_Save") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127")>  _
+        Public Property Volume_Steps_Save() As Byte
+            Get
+                Return CType(Me("Volume_Steps_Save"),Byte)
+            End Get
+            Set
+                Me("Volume_Steps_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0")>  _
+        Public Property Volume_min_Save() As Byte
+            Get
+                Return CType(Me("Volume_min_Save"),Byte)
+            End Get
+            Set
+                Me("Volume_min_Save") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("127")>  _
+        Public Property Volume_max_Save() As Byte
+            Get
+                Return CType(Me("Volume_max_Save"),Byte)
+            End Get
+            Set
+                Me("Volume_max_Save") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

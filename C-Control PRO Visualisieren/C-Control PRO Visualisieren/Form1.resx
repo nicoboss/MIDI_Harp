@@ -206,6 +206,27 @@ Messintervall auf Zehntelsmillisekunden genau abgelesen werden.</value>
 Die Tastaturkonfiguration ist weiter links zu finden.
 Soll Diese Funktion aktiviert werden?</value>
   </data>
+  <data name="Volume_max_NumericUpDown.ToolTip" xml:space="preserve">
+    <value>Maximum des Messpektrums:
+Durch die folgende Werte kann eingeschränkt werden, in welchem Messbereich sich die Lautstärkenspektrum von 0-128 befinden.
+Die werte 15-250 bedeuten z.B. dass Alle Messwerte von &gt;= 15 befinden Lautlos sind und alle von &lt;=250 den Maximalwert von 128 haben.
+Der Messbereich reicht von 0 bis 255. Achtung: Durch Minimalspektrum &gt; Notenspezifischer Startwert können Lautlose Töne gesendet werden.</value>
+  </data>
+  <data name="Volume_min_NumericUpDown.ToolTip" xml:space="preserve">
+    <value>Minimum des Messpektrums:
+Durch die folgende Werte kann eingeschränkt werden, in welchem Messbereich sich die Lautstärkenspektrum von 0-128 befinden.
+Die werte 15-250 bedeuten z.B. dass Alle Messwerte von &gt;= 15 befinden Lautlos sind und alle von &lt;=250 den Maximalwert von 128 haben.
+Der Messbereich reicht von 0 bis 255. Achtung: Durch Minimalspektrum &gt; Notenspezifischer Startwert können Lautlose Töne gesendet werden.</value>
+  </data>
+  <data name="Volume_Steps_NumericUpDown.ToolTip" xml:space="preserve">
+    <value>Anzahl an verschiedenemn Lautstärken.
+Das maximum des MIDI Standarts beträgt 128.
+1=gemessene Lautsterken werden ingnoriert und anstelle immer das Maximum 127 verwendet.
+0=gemessene Lautsterken werden ingnoriert und anstelle immer 100 verwendet.
+Jedoch kann durch runden z.B. auch auf 9 Lautstärken (ppp - pp - p - mp - m.v. - mf - f - ff - fff) gerundet werden.
+In manchen fällen ist dies vorteilhaft, jedoch können die meisten Musikbearbeitungsprogramme dies auch noch nachträglich machen.
+Formel: Volume=runde(127/Volume_steps*(Messwert-Volume_min)/(Volume_max-Volume_min))*Volume_steps</value>
+  </data>
   <data name="MIDI_Save_Button.ToolTip" xml:space="preserve">
     <value>Beendet die Aufnahme, öffnet einen FileSave Dialog und speichert die .mid Datei an dem gewünschten Ort.
 Diese Funktion kann auch über die Hintergrundssteueruing von einem andern Programm aus ausgeführt werden.
@@ -213,7 +234,7 @@ Diese Funktion kann auch über die Hintergrundssteueruing von einem andern Progr
   </data>
   <data name="GroupBox4.ToolTip" xml:space="preserve">
     <value>MIDI Visualisierung und Tonbasierende Induvidualeinstellungen:
-Balken: Visualisiert die vom Mikrokontroller empfangene Sygnale
+Balken: Visualisiert die vom Mikrokontroller empfangene Sygnale. Infolge fon Leistungsoptimierung werden die Balken nur all 30ms aktuallisiert und haben infolgedessen eine höhere Latenzzeit als dei eigendlichen Töne.
 Buttons: Spielt MIDI Töne per Mausklick und dient als Tonanzeige. Diese töne werden als Solche in das MIDI file geschrieben und gesendet, jedoch nicht von der Send to Virtual MIDI Pioano berücksichtigt.
 Startwert: Bestimmt ab welchem Wert von 0-255 einen Ton als solcher gilt
 Stopwert: Bestimmt ab welchem Wert von 0-255 einen Ton fertig ist (kleine Werte=weicher Ausklang).
@@ -238,7 +259,10 @@ per Mail an nico@bosshome.ch</value>
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1034, 25</value>
   </metadata>
+  <metadata name="Display_Refresh_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1211, 25</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>70</value>
+    <value>71</value>
   </metadata>
 </root>
