@@ -1852,7 +1852,7 @@ Public Class Form1
                         MsgBox("Der Schlüssel ist gültig. Das Programm wurde erfolgreich aktiviert. " & _
                           "Sie dürfen diesen Schlüssel noch " & _
                           (CInt(X.Split(";")(1)) - 1) & _
-                          " Mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
+                          " mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
                           "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
                           "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
                           "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.")
