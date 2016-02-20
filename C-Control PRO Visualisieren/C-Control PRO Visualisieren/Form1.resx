@@ -142,7 +142,7 @@ durch überfahren mit dem Meuszeiger nochmahls denauer erläutern.
 Tool Tips werden normahlerweize nur duch den Titel nicht aber durch
 das Eingabefeld aufgeruffen um erfahrene Benutzer nicht zu verärgern.</value>
   </data>
-  <data name="GroupBox7.ToolTip" xml:space="preserve">
+  <data name="META_Tags_GroupBox.ToolTip" xml:space="preserve">
     <value>META Daten sind Optionale Informationen, die dem MIDI File beigefügt werden.
 Diese Informationen sind in einigen Programmen und für jeden, der das MIDI File
 besitzt anschau- und manipulierbar.
@@ -175,7 +175,7 @@ verbunden ist und dass alle Treiber installiert sind. Sollte alles stimmen
 aber trozdem nich funktionieren, wenden sich bitte an nicho@bosshome.ch.
 </value>
   </data>
-  <data name="GroupBox1.ToolTip" xml:space="preserve">
+  <data name="Connect_GroupBox.ToolTip" xml:space="preserve">
     <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
 Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
 Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
@@ -232,7 +232,7 @@ Formel: Volume=runde(127/Volume_steps*(Messwert-Volume_min)/(Volume_max-Volume_m
 Diese Funktion kann auch über die Hintergrundssteueruing von einem andern Programm aus ausgeführt werden.
 </value>
   </data>
-  <data name="GroupBox4.ToolTip" xml:space="preserve">
+  <data name="MIDI_Visualisierung_GroupBox.ToolTip" xml:space="preserve">
     <value>MIDI Visualisierung und Tonbasierende Induvidualeinstellungen:
 Balken: Visualisiert die vom Mikrokontroller empfangene Sygnale. Infolge fon Leistungsoptimierung werden die Balken nur all 30ms aktuallisiert und haben infolgedessen eine höhere Latenzzeit als dei eigendlichen Töne.
 Buttons: Spielt MIDI Töne per Mausklick und dient als Tonanzeige. Diese töne werden als Solche in das MIDI file geschrieben und gesendet, jedoch nicht von der Send to Virtual MIDI Pioano berücksichtigt.

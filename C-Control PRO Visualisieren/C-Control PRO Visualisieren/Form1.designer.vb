@@ -44,7 +44,7 @@ Partial Class Form1
         Me.ToolTip_YesNo_GroupBox = New System.Windows.Forms.GroupBox()
         Me.ToolTip_OFF = New System.Windows.Forms.RadioButton()
         Me.ToolTip_ON = New System.Windows.Forms.RadioButton()
-        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.META_Tags_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
         Me.META_Autor_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
@@ -66,7 +66,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Halbtonverschiebung = New System.Windows.Forms.NumericUpDown()
         Me.Oktavenverschiebung = New System.Windows.Forms.ComboBox()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Connect_GroupBox = New System.Windows.Forms.GroupBox()
         Me.ComboBox_Comport = New System.Windows.Forms.ComboBox()
         Me.Button_Disconnect = New System.Windows.Forms.Button()
         Me.Button_Connect = New System.Windows.Forms.Button()
@@ -123,7 +123,7 @@ Partial Class Form1
         Me.MIDI_Pause_Button = New System.Windows.Forms.Button()
         Me.MIDI_Start_Button = New System.Windows.Forms.Button()
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
-        Me.GroupBox4 = New System.Windows.Forms.GroupBox()
+        Me.MIDI_Visualisierung_GroupBox = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
         Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -360,7 +360,7 @@ Partial Class Form1
         Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.DirectPlay_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.GroupBox12 = New System.Windows.Forms.GroupBox()
+        Me.DirectPlay_Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.hsbVolume = New System.Windows.Forms.HScrollBar()
@@ -392,7 +392,7 @@ Partial Class Form1
         Me.Tastenkonbinationen_GroupBox.SuspendLayout()
         CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolTip_YesNo_GroupBox.SuspendLayout()
-        Me.GroupBox7.SuspendLayout()
+        Me.META_Tags_GroupBox.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
         Me.GroupBox11.SuspendLayout()
         Me.Bemerkung_GroupBox.SuspendLayout()
@@ -401,7 +401,7 @@ Partial Class Form1
         Me.Metronom_GroupBox.SuspendLayout()
         Me.Transpose_GroupBox.SuspendLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox1.SuspendLayout()
+        Me.Connect_GroupBox.SuspendLayout()
         Me.Messintervall_GroupBox.SuspendLayout()
         Me.Tempo_GroupBox.SuspendLayout()
         CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -414,7 +414,7 @@ Partial Class Form1
         CType(Me.Volume_max_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Volume_min_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Volume_Steps_NumericUpDown, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox4.SuspendLayout()
+        Me.MIDI_Visualisierung_GroupBox.SuspendLayout()
         Me.FlowLayoutPanel5.SuspendLayout()
         Me.FlowLayoutPanel1.SuspendLayout()
         Me.FlowLayoutPanel2.SuspendLayout()
@@ -431,7 +431,7 @@ Partial Class Form1
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.DirectPlay_GroupBox.SuspendLayout()
-        Me.GroupBox12.SuspendLayout()
+        Me.DirectPlay_Einstellungen_GroupBox.SuspendLayout()
         Me.Programmeinstellungen_GroupBox.SuspendLayout()
         Me.Klappen_GroupBox.SuspendLayout()
         Me.FlowLayoutPanel6.SuspendLayout()
@@ -631,20 +631,20 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.ToolTip_ON, "Aktiviert diese TolTip Hilfe")
         Me.ToolTip_ON.UseVisualStyleBackColor = True
         '
-        'GroupBox7
+        'META_Tags_GroupBox
         '
-        Me.GroupBox7.Controls.Add(Me.GroupBox16)
-        Me.GroupBox7.Controls.Add(Me.GroupBox11)
-        Me.GroupBox7.Controls.Add(Me.Bemerkung_GroupBox)
-        Me.GroupBox7.Controls.Add(Me.GroupBox10)
-        Me.GroupBox7.Controls.Add(Me.GroupBox8)
-        Me.GroupBox7.Location = New System.Drawing.Point(549, 11)
-        Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(195, 307)
-        Me.GroupBox7.TabIndex = 194
-        Me.GroupBox7.TabStop = False
-        Me.GroupBox7.Text = "Zusatzinformationen (Optional)"
-        Me.ToolTip1.SetToolTip(Me.GroupBox7, resources.GetString("GroupBox7.ToolTip"))
+        Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox16)
+        Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox11)
+        Me.META_Tags_GroupBox.Controls.Add(Me.Bemerkung_GroupBox)
+        Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox10)
+        Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox8)
+        Me.META_Tags_GroupBox.Location = New System.Drawing.Point(549, 11)
+        Me.META_Tags_GroupBox.Name = "META_Tags_GroupBox"
+        Me.META_Tags_GroupBox.Size = New System.Drawing.Size(195, 307)
+        Me.META_Tags_GroupBox.TabIndex = 194
+        Me.META_Tags_GroupBox.TabStop = False
+        Me.META_Tags_GroupBox.Text = "Zusatzinformationen (Optional)"
+        Me.ToolTip1.SetToolTip(Me.META_Tags_GroupBox, resources.GetString("META_Tags_GroupBox.ToolTip"))
         '
         'GroupBox16
         '
@@ -860,18 +860,18 @@ Partial Class Form1
         Me.Oktavenverschiebung.TabIndex = 165
         Me.Oktavenverschiebung.Text = "Normahl"
         '
-        'GroupBox1
+        'Connect_GroupBox
         '
-        Me.GroupBox1.Controls.Add(Me.ComboBox_Comport)
-        Me.GroupBox1.Controls.Add(Me.Button_Disconnect)
-        Me.GroupBox1.Controls.Add(Me.Button_Connect)
-        Me.GroupBox1.Location = New System.Drawing.Point(9, 11)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(294, 57)
-        Me.GroupBox1.TabIndex = 188
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Comport - Verbindungseinstellungen für Mikrokontroller"
-        Me.ToolTip1.SetToolTip(Me.GroupBox1, resources.GetString("GroupBox1.ToolTip"))
+        Me.Connect_GroupBox.Controls.Add(Me.ComboBox_Comport)
+        Me.Connect_GroupBox.Controls.Add(Me.Button_Disconnect)
+        Me.Connect_GroupBox.Controls.Add(Me.Button_Connect)
+        Me.Connect_GroupBox.Location = New System.Drawing.Point(9, 11)
+        Me.Connect_GroupBox.Name = "Connect_GroupBox"
+        Me.Connect_GroupBox.Size = New System.Drawing.Size(294, 57)
+        Me.Connect_GroupBox.TabIndex = 188
+        Me.Connect_GroupBox.TabStop = False
+        Me.Connect_GroupBox.Text = "Comport - Verbindungseinstellungen für Mikrokontroller"
+        Me.ToolTip1.SetToolTip(Me.Connect_GroupBox, resources.GetString("Connect_GroupBox.ToolTip"))
         '
         'ComboBox_Comport
         '
@@ -1461,22 +1461,22 @@ Partial Class Form1
         Me.ToolTip1.SetToolTip(Me.MIDI_Save_Button, resources.GetString("MIDI_Save_Button.ToolTip"))
         Me.MIDI_Save_Button.UseVisualStyleBackColor = True
         '
-        'GroupBox4
+        'MIDI_Visualisierung_GroupBox
         '
-        Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel5)
-        Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel1)
-        Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel2)
-        Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel4)
-        Me.GroupBox4.Controls.Add(Me.FlowLayoutPanel3)
-        Me.GroupBox4.Controls.Add(Me.GroupBox5)
-        Me.GroupBox4.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.GroupBox4.Location = New System.Drawing.Point(9, 481)
-        Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(1252, 285)
-        Me.GroupBox4.TabIndex = 192
-        Me.GroupBox4.TabStop = False
-        Me.GroupBox4.Text = "MIDI Visualisierung und Tonbasierende Induvidualeinstellungen"
-        Me.ToolTip1.SetToolTip(Me.GroupBox4, resources.GetString("GroupBox4.ToolTip"))
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel5)
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel1)
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel2)
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel4)
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel3)
+        Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.GroupBox5)
+        Me.MIDI_Visualisierung_GroupBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark
+        Me.MIDI_Visualisierung_GroupBox.Location = New System.Drawing.Point(9, 481)
+        Me.MIDI_Visualisierung_GroupBox.Name = "MIDI_Visualisierung_GroupBox"
+        Me.MIDI_Visualisierung_GroupBox.Size = New System.Drawing.Size(1252, 285)
+        Me.MIDI_Visualisierung_GroupBox.TabIndex = 192
+        Me.MIDI_Visualisierung_GroupBox.TabStop = False
+        Me.MIDI_Visualisierung_GroupBox.Text = "MIDI Visualisierung und Tonbasierende Induvidualeinstellungen"
+        Me.ToolTip1.SetToolTip(Me.MIDI_Visualisierung_GroupBox, resources.GetString("MIDI_Visualisierung_GroupBox.ToolTip"))
         '
         'FlowLayoutPanel5
         '
@@ -3878,11 +3878,11 @@ Partial Class Form1
         Me.Panel1.Controls.Add(Me.DirectPlay_GroupBox)
         Me.Panel1.Controls.Add(Me.Programmeinstellungen_GroupBox)
         Me.Panel1.Controls.Add(Me.Klappen_GroupBox)
-        Me.Panel1.Controls.Add(Me.GroupBox7)
-        Me.Panel1.Controls.Add(Me.GroupBox4)
+        Me.Panel1.Controls.Add(Me.META_Tags_GroupBox)
+        Me.Panel1.Controls.Add(Me.MIDI_Visualisierung_GroupBox)
         Me.Panel1.Controls.Add(Me.Einstellungen_GroupBox)
         Me.Panel1.Controls.Add(Me.GroupBox2)
-        Me.Panel1.Controls.Add(Me.GroupBox1)
+        Me.Panel1.Controls.Add(Me.Connect_GroupBox)
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1274, 771)
@@ -3891,7 +3891,7 @@ Partial Class Form1
         'DirectPlay_GroupBox
         '
         Me.DirectPlay_GroupBox.BackColor = System.Drawing.SystemColors.Control
-        Me.DirectPlay_GroupBox.Controls.Add(Me.GroupBox12)
+        Me.DirectPlay_GroupBox.Controls.Add(Me.DirectPlay_Einstellungen_GroupBox)
         Me.DirectPlay_GroupBox.Controls.Add(Me.DirectPlay_YesNo_GroupBox)
         Me.DirectPlay_GroupBox.Location = New System.Drawing.Point(766, 11)
         Me.DirectPlay_GroupBox.Name = "DirectPlay_GroupBox"
@@ -3900,21 +3900,21 @@ Partial Class Form1
         Me.DirectPlay_GroupBox.TabStop = False
         Me.DirectPlay_GroupBox.Text = "Direct Play"
         '
-        'GroupBox12
+        'DirectPlay_Einstellungen_GroupBox
         '
-        Me.GroupBox12.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.GroupBox12.Controls.Add(Me.Label11)
-        Me.GroupBox12.Controls.Add(Me.Label15)
-        Me.GroupBox12.Controls.Add(Me.hsbVolume)
-        Me.GroupBox12.Controls.Add(Me.Label14)
-        Me.GroupBox12.Controls.Add(Me.hsbPan)
-        Me.GroupBox12.Controls.Add(Me.hsbModWheel)
-        Me.GroupBox12.Location = New System.Drawing.Point(10, 83)
-        Me.GroupBox12.Name = "GroupBox12"
-        Me.GroupBox12.Size = New System.Drawing.Size(200, 109)
-        Me.GroupBox12.TabIndex = 174
-        Me.GroupBox12.TabStop = False
-        Me.GroupBox12.Text = "Einstellungen"
+        Me.DirectPlay_Einstellungen_GroupBox.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label11)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label15)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.hsbVolume)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label14)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.hsbPan)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.hsbModWheel)
+        Me.DirectPlay_Einstellungen_GroupBox.Location = New System.Drawing.Point(10, 83)
+        Me.DirectPlay_Einstellungen_GroupBox.Name = "DirectPlay_Einstellungen_GroupBox"
+        Me.DirectPlay_Einstellungen_GroupBox.Size = New System.Drawing.Size(200, 109)
+        Me.DirectPlay_Einstellungen_GroupBox.TabIndex = 174
+        Me.DirectPlay_Einstellungen_GroupBox.TabStop = False
+        Me.DirectPlay_Einstellungen_GroupBox.Text = "Einstellungen"
         '
         'Label11
         '
@@ -4247,7 +4247,7 @@ Partial Class Form1
         CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolTip_YesNo_GroupBox.ResumeLayout(False)
         Me.ToolTip_YesNo_GroupBox.PerformLayout()
-        Me.GroupBox7.ResumeLayout(False)
+        Me.META_Tags_GroupBox.ResumeLayout(False)
         Me.GroupBox16.ResumeLayout(False)
         Me.GroupBox16.PerformLayout()
         Me.GroupBox11.ResumeLayout(False)
@@ -4263,7 +4263,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.ResumeLayout(False)
         Me.Transpose_GroupBox.PerformLayout()
         CType(Me.Halbtonverschiebung, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox1.ResumeLayout(False)
+        Me.Connect_GroupBox.ResumeLayout(False)
         Me.Messintervall_GroupBox.ResumeLayout(False)
         Me.Messintervall_GroupBox.PerformLayout()
         Me.Tempo_GroupBox.ResumeLayout(False)
@@ -4281,7 +4281,7 @@ Partial Class Form1
         CType(Me.Volume_max_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Volume_min_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Volume_Steps_NumericUpDown, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox4.ResumeLayout(False)
+        Me.MIDI_Visualisierung_GroupBox.ResumeLayout(False)
         Me.FlowLayoutPanel5.ResumeLayout(False)
         Me.FlowLayoutPanel5.PerformLayout()
         Me.FlowLayoutPanel1.ResumeLayout(False)
@@ -4311,8 +4311,8 @@ Partial Class Form1
         CType(Me.C_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.DirectPlay_GroupBox.ResumeLayout(False)
-        Me.GroupBox12.ResumeLayout(False)
-        Me.GroupBox12.PerformLayout()
+        Me.DirectPlay_Einstellungen_GroupBox.ResumeLayout(False)
+        Me.DirectPlay_Einstellungen_GroupBox.PerformLayout()
         Me.Programmeinstellungen_GroupBox.ResumeLayout(False)
         Me.Klappen_GroupBox.ResumeLayout(False)
         Me.FlowLayoutPanel6.ResumeLayout(False)
@@ -4349,7 +4349,7 @@ Partial Class Form1
     Friend WithEvents Pause_Label As System.Windows.Forms.Label
     Friend WithEvents Start_Label As System.Windows.Forms.Label
     Friend WithEvents DirectPlay_GroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox12 As System.Windows.Forms.GroupBox
+    Friend WithEvents DirectPlay_Einstellungen_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label15 As System.Windows.Forms.Label
     Friend WithEvents hsbVolume As System.Windows.Forms.HScrollBar
@@ -4380,7 +4380,7 @@ Partial Class Form1
     Friend WithEvents A1_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents H1_Klappe_Text As System.Windows.Forms.TextBox
     Friend WithEvents C2_Klappe_Text As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents META_Tags_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox16 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Autor_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox11 As System.Windows.Forms.GroupBox
@@ -4391,7 +4391,7 @@ Partial Class Form1
     Friend WithEvents META_Dateinamen_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Copyright_Input As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents MIDI_Visualisierung_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents FlowLayoutPanel11 As System.Windows.Forms.FlowLayoutPanel
     Friend WithEvents C6_Verschiebung As System.Windows.Forms.TextBox
     Friend WithEvents D6_Verschiebung As System.Windows.Forms.TextBox
@@ -4609,7 +4609,7 @@ Partial Class Form1
     Friend WithEvents MIDI_Pause_Button As System.Windows.Forms.Button
     Friend WithEvents MIDI_Start_Button As System.Windows.Forms.Button
     Friend WithEvents MIDI_Save_Button As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents Connect_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents ComboBox_Comport As System.Windows.Forms.ComboBox
     Friend WithEvents Button_Disconnect As System.Windows.Forms.Button
     Friend WithEvents Button_Connect As System.Windows.Forms.Button

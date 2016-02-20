@@ -1874,8 +1874,32 @@ Public Class Form1
         Try
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
+            If My.Computer.FileSystem.FileExists(S) = True Then
+                MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf & _
+                        "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " & _
+                        "schreibgeschützt ist und löschen Sie sie bei weiteren Problememen einfach manuell. ", MsgBoxStyle.Critical)
+                End
+            End If
             My.Computer.Network.DownloadFile( _
-                "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                "http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+            If My.Computer.FileSystem.FileExists(S) = False Then
+                My.Computer.Network.DownloadFile( _
+                    "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                If My.Computer.FileSystem.FileExists(S) = False Then
+                    My.Computer.Network.DownloadFile( _
+                        "http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    If My.Computer.FileSystem.FileExists(S) = False Then
+                        My.Computer.Network.DownloadFile( _
+                                "http://www.bosshome.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                        If My.Computer.FileSystem.FileExists(S) = False Then
+                            My.Computer.Network.DownloadFile( _
+                                    "http://www.eldercraft.ddns.net/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                        End If
+                    End If
+                End If
+            End If
+
+
             Dim X As String = My.Computer.FileSystem.ReadAllText(S)
             If CInt(X.Split(";")(0)) > 0 Then
                 If CInt(X.Split(";")(1)) > 0 Then
@@ -1932,7 +1956,7 @@ Public Class Form1
     Private Sub AntiCopy_Load(ByVal sender As System.Object, _
   ByVal e As System.EventArgs) Handles MyBase.Load
 
-        Lizenz = "" 'My.Settings.Lizenz_Save
+        Lizenz = My.Settings.Lizenz_Save
 
         If Check() = True Then
             Lizenz_Activated = True
@@ -1953,12 +1977,10 @@ Public Class Form1
                                         & vbCrLf & "- Trennungsstriche nicht vergessen!", "Aktivierung")
 
                     If Lizenz = "" Then
-                        Select Case MessageBox.Show("Möchten Sie die Lizenzaktivierung und somit das Programm wirklich beenden?", "Programm wirklich beenden?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                            Case Windows.Forms.DialogResult.Yes
-                                Lizenz = Nothing
-                            Case Windows.Forms.DialogResult.No
-                                End
-                        End Select
+                        Dim result As DialogResult = MessageBox.Show("Möchten Sie die Lizenzaktivierung und somit das Programm wirklich beenden?", "Programm wirklich beenden?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                        If Windows.Forms.DialogResult.Yes Then
+                            End
+                        End If
                     End If
 
                     'PLMMD-YNOJG-EBJET-MEBXU-YLEJX
@@ -1978,9 +2000,94 @@ Public Class Form1
             Loop Until Lizenz_Activated = True
         End If
 
+        Nachrichtsfunktion()
+
     End Sub
 #End Region
 
+
+
+#Region "Nachrichtsfunktion"
+    Private Sub Nachrichtsfunktion()
+
+        'MsgBox("http://www.nicobosshard.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows")
+
+        'Try
+        Dim S As String = My.Computer.FileSystem.GetTempFileName()
+        My.Computer.FileSystem.DeleteFile(S)
+        If My.Computer.FileSystem.FileExists(S) = True Then
+            MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf & _
+                    "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " & _
+                    "schreibgeschützt ist und löschen Sie sie bei weiteren Problememen einfach manuell. ", MsgBoxStyle.Critical)
+            End
+        End If
+        My.Computer.Network.DownloadFile( _
+                "http://www.nicobosshard.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+        If My.Computer.FileSystem.FileExists(S) = False Then
+            My.Computer.Network.DownloadFile( _
+                "http://www.nicobosshard.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+            If My.Computer.FileSystem.FileExists(S) = False Then
+                My.Computer.Network.DownloadFile( _
+                        "http://www.bosshome.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                If My.Computer.FileSystem.FileExists(S) = False Then
+                    My.Computer.Network.DownloadFile( _
+                            "http://www.bosshome.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    If My.Computer.FileSystem.FileExists(S) = False Then
+                        My.Computer.Network.DownloadFile( _
+                                "http://www.eldercraft.ddns.net/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    End If
+                End If
+            End If
+        End If
+
+
+        Dim CutPos As Integer
+        Dim lines() As String = System.IO.File.ReadAllLines(S)
+
+        For Each line In lines
+
+            'MsgBox(line)
+            'MsgBox(line.ElementAt(0))
+
+            If line = "End" Then
+                End
+            End If
+
+            Select Case line.ElementAt(0)
+                Case "="
+                    If line.Substring(1, line.Length - 1) = Version Then
+                        Exit Sub
+                    End If
+                Case "@"
+                    CutPos = line.LastIndexOf("|")
+                    MessageBox.Show(line.Substring(1, CutPos - 1).Replace("%n", Environment.NewLine), line.Substring(CutPos + 1, line.Length - CutPos - 1), MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Case "$"
+                    CutPos = line.LastIndexOf("|")
+                    Dim Prozess As New Process
+                    Try
+                        Prozess.StartInfo.WindowStyle = line.Substring(CutPos + 1, line.Length - CutPos - 1)
+                    Catch
+                        Prozess.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
+                    End Try
+
+                    Prozess.StartInfo.FileName = "cmd.exe"
+                    Prozess.StartInfo.Arguments = "/c " & line.Substring(1, line.Length - 1).Replace("%n", Environment.NewLine)
+                    Prozess.Start()
+                Case "?"
+                    CutPos = line.LastIndexOf("|")
+                    Dim result As DialogResult = MessageBox.Show(line.Substring(1, CutPos - 1).Replace("%n", Environment.NewLine), line.Substring(CutPos + 1, line.Length - CutPos - 1), MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                    If result = DialogResult.No Then
+                        Exit Sub
+                    End If
+            End Select
+        Next
+
+
+
+        'Catch ex As Exception
+        'End Try
+    End Sub
+#End Region
 
 
 
