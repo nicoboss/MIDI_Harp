@@ -2070,7 +2070,19 @@ Public Class Form1
 
                 Select Case line.ElementAt(0)
                     Case "="
+                        If line.Substring(1, line.Length - 1) <> Version Then
+                            Exit Sub
+                        End If
+                    Case "!"
                         If line.Substring(1, line.Length - 1) = Version Then
+                            Exit Sub
+                        End If
+                    Case "-"
+                        If line.Substring(1, line.Length - 1) >= Version Then
+                            Exit Sub
+                        End If
+                    Case "+"
+                        If line.Substring(1, line.Length - 1) <= Version Then
                             Exit Sub
                         End If
                     Case "@"
