@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
-    <PublishUrlHistory>C:\Users\nico_000\Desktop\MIDI Harfe\|C:\Users\nico_000\MIDI Harfe\|C:\Users\nico_000\Desktop\MIDI Harfe V2\|C:\Users\nico_000\Desktop\MIDI Harfe V1 R8\|C:\Users\nico_000\Desktop\MIDI Harfe V1\</PublishUrlHistory>
+    <PublishUrlHistory>C:\Users\nico_000\Desktop\MIDI Harfe\|m\|C:\Users\nico_000\MIDI Harfe\|C:\Users\nico_000\Desktop\MIDI Harfe V2\|C:\Users\nico_000\Desktop\MIDI Harfe V1 R8\</PublishUrlHistory>
     <InstallUrlHistory>http://www.nicobosshard.ch/MIDI/MIDI_Harfe.exe|http://www.nicobosshard.ch/MIDI/MIDI_Harfe.exe/</InstallUrlHistory>
     <SupportUrlHistory />
     <UpdateUrlHistory>http://www.nicobosshard.ch/MIDI/Update/|http://localhost/C-Control PRO Visualisieren/</UpdateUrlHistory>

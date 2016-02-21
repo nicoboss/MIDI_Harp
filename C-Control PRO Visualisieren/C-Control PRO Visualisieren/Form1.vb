@@ -64,10 +64,11 @@ Public Class Form1
     Public port As String = ""
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
-    Dim Version As String = "V2.2"
-    Dim PublishDate As Date = "20.02.2016"
+    Dim Version As String = "V1.2.7"
+    Dim PublishDate As Date = "21.02.2016"
 
     Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO" 'HaHaHa müsste eigendlich Dim Lizenz As String = "" sein aber dies verwirrt Modder :D
+    Dim Sprache = "DE"
 
     'Datenspeicher für eingehende Daten
     Dim In_Buffer As Short
@@ -1881,22 +1882,22 @@ Public Class Form1
                 End
             End If
             My.Computer.Network.DownloadFile( _
-                "http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                "http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
             If My.Computer.FileSystem.FileExists(S) = False Then
                 My.Computer.Network.DownloadFile( _
-                    "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                 If My.Computer.FileSystem.FileExists(S) = False Then
                     My.Computer.Network.DownloadFile( _
-                        "http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                        "http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                     If My.Computer.FileSystem.FileExists(S) = False Then
                         My.Computer.Network.DownloadFile( _
-                                "http://www.bosshome.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                "http://www.bosshome.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                         If My.Computer.FileSystem.FileExists(S) = False Then
                             My.Computer.Network.DownloadFile( _
-                                    "http://www.eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                    "http://www.eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             If My.Computer.FileSystem.FileExists(S) = False Then
                                 My.Computer.Network.DownloadFile( _
-                                        "http://www.eldercraft.ddns.net/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                        "http://www.eldercraft.ddns.net/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             End If
                         End If
                     End If
@@ -2025,22 +2026,22 @@ Public Class Form1
                 End
             End If
             My.Computer.Network.DownloadFile( _
-                    "http://www.nicobosshard.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    "http://www.nicobosshard.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
             If My.Computer.FileSystem.FileExists(S) = False Then
                 My.Computer.Network.DownloadFile( _
-                    "http://www.nicobosshard.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                    "http://www.nicobosshard.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                 If My.Computer.FileSystem.FileExists(S) = False Then
                     My.Computer.Network.DownloadFile( _
-                            "http://www.bosshome.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                            "http://www.bosshome.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                     If My.Computer.FileSystem.FileExists(S) = False Then
                         My.Computer.Network.DownloadFile( _
-                                "http://www.bosshome.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                "http://www.bosshome.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                         If My.Computer.FileSystem.FileExists(S) = False Then
                             My.Computer.Network.DownloadFile( _
-                                    "http://www.eldercraft.ddns.net/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                    "http://www.eldercraft.ddns.net/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             If My.Computer.FileSystem.FileExists(S) = False Then
                                 My.Computer.Network.DownloadFile( _
-                                        "http://www.eldercraft.ddns.net/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+                                        "http://www.eldercraft.ddns.net/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             End If
                         End If
                     End If
@@ -2357,6 +2358,25 @@ Public Class Form1
 
 
 
+    Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
+        If MyBase.Size.Width < 1290 And MyBase.Size.Height < 810 Then
+            Panel1.Location = New Point(0, 0)
+            Panel1.Width = MyBase.Size.Width - 17
+            Panel1.Height = MyBase.Size.Height - 40
+        ElseIf MyBase.Size.Width < 1290 Then
+            Panel1.Location = New Point(0, (MyBase.Size.Height - 771 - 40) / 2)
+            Panel1.Width = MyBase.Size.Width - 17
+        ElseIf MyBase.Size.Height < 810 Then
+            Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, 0)
+            Panel1.Height = MyBase.Size.Height - 40
+        Else
+            Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, (MyBase.Size.Height - 771 - 40) / 2)
+            Panel1.Width = 1274
+            Panel1.Height = 771
+        End If
+    End Sub
+
+
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         If Tackt.Enabled Then
@@ -2373,8 +2393,7 @@ Public Class Form1
     End Sub
 
 
-
-    Private Sub MyBase_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
+    Private Sub Help_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         'Alle selection aufheben.
         Einstellungen_GroupBox.Focus()
     End Sub
