@@ -724,19 +724,22 @@ Public Class Form1
 
     Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
         Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
+        Halbtonversch = Halbtonverschiebung.Value
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.", _
+                                                    "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
 
-    Private Sub Halbtonverschiebung_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Halbtonverschiebung.ValueChanged
+    Private Sub Halbtonverschiebung_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Halbtonverschiebung.Click ', Halbtonverschiebung.Leave
         Halbtonversch = Halbtonverschiebung.Value
         Select Case Halbtonversch
             Case 36 : Oktavenverschiebung.SelectedIndex = 0
             Case 24 To 36 : Oktavenverschiebung.SelectedIndex = 1
             Case 12 To 24 : Oktavenverschiebung.SelectedIndex = 2
             Case 0 To 12 : Oktavenverschiebung.SelectedIndex = 3
-            Case -12 To 0 : Oktavenverschiebung.SelectedIndex = 3
-            Case -24 To -12 : Oktavenverschiebung.SelectedIndex = 4
-            Case -36 To -24 : Oktavenverschiebung.SelectedIndex = 5
+            Case -12 To 0 : Oktavenverschiebung.SelectedIndex = 4
+            Case -24 To -12 : Oktavenverschiebung.SelectedIndex = 5
+            Case -36 To -24 : Oktavenverschiebung.SelectedIndex = 6
             Case Else : Oktavenverschiebung.SelectedIndex = 4
         End Select
         If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.", _
