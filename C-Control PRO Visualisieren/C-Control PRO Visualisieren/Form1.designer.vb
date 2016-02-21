@@ -853,7 +853,7 @@ Partial Class Form1
         '
         'Oktavenverschiebung
         '
-        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 2 Oktaven", "+ 3 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
+        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 3 Oktaven", "+ 2 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
         Me.Oktavenverschiebung.Location = New System.Drawing.Point(90, 25)
         Me.Oktavenverschiebung.Name = "Oktavenverschiebung"
         Me.Oktavenverschiebung.Size = New System.Drawing.Size(92, 21)

@@ -117,13 +117,16 @@ Public Class Form1
     Dim Halbtonversch As Integer
 
     Dim MidiNoteNr = { _
-            16, 18, 19, 21, 23, 24, 26, _
             28, 30, 31, 33, 35, 36, 38, _
             40, 42, 43, 45, 47, 48, 50, _
             52, 54, 55, 57, 59, 60, 62, _
             64, 66, 67, 69, 71, 72, 74, _
             76, 78, 79, 81, 83, 84, 86, _
-            88, 89, 91, 93, 95, 96, 98}
+            88, 89, 91, 93, 95, 96, 98, _
+            100, 101, 103, 105, 107, 108, 110, _
+            112, 113, 115, 117, 119, 120, 122}
+
+    '16, 18, 19, 21, 23, 24, 26, _
 
     'Dim MidiNoteNr = { _
     '16, 18, 20, 21, 23, 25, 27, _
@@ -136,6 +139,10 @@ Public Class Form1
     Dim Notennamen = {{"ces", "des", "d", "fes", "ges", "g", "a", "ces"}, _
                   {"c", "d", "es", "f", "g", "as", "b", "c"}, _
                   {"cis", "dis", "e", "fis", "gis", "a", "h", "cis"}}
+
+    'Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, _
+    '1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, _
+    '30, 31, 32, 33, 34}
 
     Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, _
                                        1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, _
@@ -320,7 +327,6 @@ Public Class Form1
 
     End Sub
 
-
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         SerialPort1_Stop = True
@@ -345,7 +351,7 @@ Public Class Form1
 
     Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
 
-        Dim NotenNr As Byte
+        Dim NotenNr As Integer
         Messintervall_Zahl = 0
         Anz_Messungen = 0
         AnzMessungen_alt = 0
@@ -375,6 +381,8 @@ Public Class Form1
                 For Each item As Byte In Noten_Reihenfolge
                     ADC(item) = SerialPort1.ReadByte
                     NotenNr = MidiNoteNr(item) + Halbtonversch + Noten_Versch(item)
+                    If NotenNr < 0 Then NotenNr = 0
+                    If NotenNr > 127 Then NotenNr = 127
 
                     If ADC(item) >= Noten_StartW(item) And Note_Play(NotenNr) = False Then
                         'MessageBox.Show(NotenNr & " on")
@@ -721,6 +729,18 @@ Public Class Form1
 
     Private Sub Halbtonverschiebung_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Halbtonverschiebung.ValueChanged
         Halbtonversch = Halbtonverschiebung.Value
+        Select Case Halbtonversch
+            Case 36 : Oktavenverschiebung.SelectedIndex = 0
+            Case 24 To 36 : Oktavenverschiebung.SelectedIndex = 1
+            Case 12 To 24 : Oktavenverschiebung.SelectedIndex = 2
+            Case 0 To 12 : Oktavenverschiebung.SelectedIndex = 3
+            Case -12 To 0 : Oktavenverschiebung.SelectedIndex = 3
+            Case -24 To -12 : Oktavenverschiebung.SelectedIndex = 4
+            Case -36 To -24 : Oktavenverschiebung.SelectedIndex = 5
+            Case Else : Oktavenverschiebung.SelectedIndex = 4
+        End Select
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.", _
+                                                    "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
 
@@ -1095,11 +1115,12 @@ Public Class Form1
 
 #End Region
 
-
     Private Sub Button_Note(ByVal TastenNr As Byte)
-        Dim NotenNr As Byte
+        Dim NotenNr As Integer
 
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
+        If NotenNr < 0 Then NotenNr = 0
+        If NotenNr > 127 Then NotenNr = 127
         m.PlayMIDINote(NotenNr, 100, 0)
         Button_Note_Play(NotenNr) = True
         If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
@@ -1107,14 +1128,15 @@ Public Class Form1
 
 
     Private Sub Button_Stop_Note(ByVal TastenNr As Byte)
-        Dim NotenNr As Byte
+        Dim NotenNr As Integer
 
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
+        If NotenNr < 0 Then NotenNr = 0
+        If NotenNr > 127 Then NotenNr = 127
         m.STOPMIDINote(NotenNr)
         Button_Note_Play(NotenNr) = False
         If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
     End Sub
-
 
 #End Region
 
