@@ -46,7 +46,7 @@ void ConfigFile_Create(string configFile);
 bool chooseMidiPort( RtMidiOut *rtmidi );
 RtMidiOut *midiout = 0;
 
-vector< vector<int> > Config;
+vector< vector<int> > Config_Notes;
 
 vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
                             "c", "d", "e", "f", "g", "a", "h",
@@ -274,7 +274,10 @@ void ConfigFile_Read(string configFile) {
    size_t pos;
    string str,str1;
    string::iterator it;
-   ifstream myfile ("config.txt");
+   
+   vector<int> ConfigFile_Data;
+   
+   ifstream myfile (configFile);
    if (myfile.is_open())
    {
       
@@ -289,55 +292,36 @@ void ConfigFile_Read(string configFile) {
          
          if (line[0] == '[') {
             inSection=trim(line.substr(1,line.find(']')-1));
-            cout << inSection << endl;
+            //cout << inSection << endl;
             continue;
          }
          
          pos = line.find("=");
-         line.erase(line.begin()+pos, line.end());
+         line.erase(line.begin(), line.begin()+pos+1);
          
 
          //pos = line.find(":");
          //it = line.begin()+pos;
          //line.erase(line.begin()+pos, line.end());
+         
+         ConfigFile_Data.push_back(line);
          cout <<line << endl;
       }
       myfile.close();
-      //getchar();
    }
    
    else cout << "Unable to open file";
-   //getchar();
-
-   /*
-   //ifstream file("config.txt");
    
-   string line;
-   string name;
-   string value;
-   string inSection;
-   int posEqual;
-   while (getline(file,line)) {
-      
-      cout << line << endl;
-      
-      if (! line.length()) continue;
-      
-      if (line[0] == '#') continue;
-      if (line[0] == ';') continue;
-      
-      if (line[0] == '[') {
-         inSection=trim(line.substr(1,line.find(']')-1));
-         continue;
-      }
-      
-      posEqual=line.find('=');
-      name  = trim(line.substr(0,posEqual));
-      value = trim(line.substr(posEqual+1));
-      
-      //content_[inSection+'/'+name]=Chameleon(value);
+   cout << ConfigFile_Data.size();
+   
+   int i;
+   for(i=10;i>ConfigFile_Data.size();i++)
+   {
+            //std::vector<int> Temp(ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]);
+      Config_Notes.push_back({ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]});
+         
+         //new vector<int> {ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]}
    }
-*/
    
 }
 
@@ -365,7 +349,7 @@ string trim(string const& source, char const* delims = " \t\r\n") {
 void ConfigFile_Create(string configFile) {
 
 
-   ofstream outfile ("config.txt");
+   ofstream outfile (configFile);
 
    outfile << "##############################################" << endl;
    outfile << "#                                            #" << endl;
@@ -399,7 +383,7 @@ void ConfigFile_Create(string configFile) {
    {
       outfile << "[" << i << "]" << endl;
       outfile << "Start=20" << endl << "Stop=18" << endl;
-      outfile << "Transpose=0" << endl << "Value=0" << endl << "Mute=false" << endl << endl;
+      outfile << "Transpose=0" << endl << "Value=0" << endl << "Mute=0" << endl << endl;
    }
 
    outfile.close();
