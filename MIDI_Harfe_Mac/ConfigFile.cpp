@@ -1,5 +1,5 @@
 #include "ConfigFile.h"
-
+#include <iostream>
 #include <fstream>
 
 std::string trim(std::string const& source, char const* delims = " \t\r\n") {
@@ -40,6 +40,7 @@ ConfigFile::ConfigFile(std::string const& configFile) {
         name  = trim(line.substr(0,posEqual));
         value = trim(line.substr(posEqual+1));
         
+        //std::cout << value << std::endl;
         content_[inSection+'/'+name]=Chameleon(value);
     }
 }

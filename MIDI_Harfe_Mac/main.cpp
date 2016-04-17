@@ -1,8 +1,8 @@
 //*****************************************//
-//  midiout.cpp
-//  by Gary Scavone, 2003-2004.
+//  MIDI_Harfe
+//  von Nico Bosshard (c)2016
 //
-//  Simple program to test MIDI output.
+//  MIDI Harfen Empfänger für MacOSX.
 //
 //*****************************************//
 
@@ -10,8 +10,12 @@
 #include <cstdlib>
 #include "RtMidi.h"
 #include <fcntl.h>
+#include <fstream>
 #include <termios.h>
-#include "ConfigFile.h"
+#include <string>
+#include <vector>
+
+using namespace std;
 
 //#define USB_SERIAL_PORT "/dev/tty.usbserial-0000103D" // (OSX Power Book)
 //#define USB_SERIAL_PORT  "/dev/cu.usbserial-3B1" // (OSX Mac Book)
@@ -24,6 +28,8 @@ int port_fd;
 int init_serial_input(char * port);
 int read_serial_int(int fd);
 
+void ConfigFile_Read(string configFile);
+void ConfigFile_Create(string configFile);
 
 // Platform-dependent sleep routines.
 #if defined(__WINDOWS_MM__)
@@ -40,31 +46,31 @@ int read_serial_int(int fd);
 bool chooseMidiPort( RtMidiOut *rtmidi );
 RtMidiOut *midiout = 0;
 
+vector< vector<int> > Config;
+
+vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
+                            "c", "d", "e", "f", "g", "a", "h",
+                            "c'", "d'", "e'", "f'", "g'", "a'", "h'",
+                            "c''", "d''", "e''", "f''", "g''", "a''", "h''",
+                            "c'''", "d'''", "e'''", "f'''", "g'", "a'''", "h'''"};
+
+
+
 int main( void )
 {
-   ConfigFile cf("config.txt");
    
-   std::string foo;
-   std::string water;
-   double      four;
-   
-   //foo   = cf.Value("section_1","foo"  );
-   //water = cf.Value("section_2","water");
-   //four  = cf.Value("section_2","four" );
-   
-   std::cout << foo   << std::endl;
-   std::cout << water << std::endl;
-   std::cout << four  << std::endl;
+   ConfigFile_Create("config.txt");
+   ConfigFile_Read ("config.txt");
    
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
    int ir;
    for(ir=0;ir<100;ir++)
    {
-      std::cout << "," << read_serial_int(port_fd);
+      cout << "," << read_serial_int(port_fd);
    }
    
-    std::vector<unsigned char> message;
+    vector<unsigned char> message;
     
     // RtMidiOut constructor
     try {
@@ -167,38 +173,38 @@ cleanup:
 
 bool chooseMidiPort( RtMidiOut *rtmidi )
 {
-    std::cout << "\nWould you like to open a virtual output port? [y/N] ";
+    cout << "\nWould you like to open a virtual output port? [y/N] ";
     
-    std::string keyHit;
-    std::getline( std::cin, keyHit );
+    string keyHit;
+    getline( cin, keyHit );
     if ( keyHit == "y" ) {
         rtmidi->openVirtualPort();
         return true;
     }
     
-    std::string portName;
+    string portName;
     unsigned int i = 0, nPorts = rtmidi->getPortCount();
     if ( nPorts == 0 ) {
-        std::cout << "No output ports available!" << std::endl;
+        cout << "No output ports available!" << endl;
         return false;
     }
     
     if ( nPorts == 1 ) {
-        std::cout << "\nOpening " << rtmidi->getPortName() << std::endl;
+        cout << "\nOpening " << rtmidi->getPortName() << endl;
     }
     else {
         for ( i=0; i<nPorts; i++ ) {
             portName = rtmidi->getPortName(i);
-            std::cout << "  Output port #" << i << ": " << portName << '\n';
+            cout << "  Output port #" << i << ": " << portName << '\n';
         }
         
         do {
-            std::cout << "\nChoose a port number: ";
-            std::cin >> i;
+            cout << "\nChoose a port number: ";
+            cin >> i;
         } while ( i >= nPorts );
     }
     
-    std::cout << "\n";
+    cout << "\n";
     rtmidi->openPort( i );
     
     return true;
@@ -239,4 +245,162 @@ int init_serial_input (char * port) {
    // set the new port options
    tcsetattr(fd, TCSANOW, &options);
    return fd;
+}
+
+
+
+#include <fstream>
+
+string trim(string const& source, char const* delims = " \t\r\n") {
+   string result(source);
+   string::size_type index = result.find_last_not_of(delims);
+   if(index != string::npos)
+      result.erase(++index);
+   
+   index = result.find_first_not_of(delims);
+   if(index != string::npos)
+      result.erase(0, index);
+   else
+      result.erase();
+   return result;
+}
+
+
+void ConfigFile_Read(string configFile) {
+   string name;
+   string value;
+   string inSection;
+   string line;
+   size_t pos;
+   string str,str1;
+   string::iterator it;
+   ifstream myfile ("config.txt");
+   if (myfile.is_open())
+   {
+      
+      while (! myfile.eof() )
+      {
+         
+         getline (myfile,line);
+         if (! line.length()) continue;
+         
+         if (line[0] == '#') continue;
+         if (line[0] == ';') continue;
+         
+         if (line[0] == '[') {
+            inSection=trim(line.substr(1,line.find(']')-1));
+            cout << inSection << endl;
+            continue;
+         }
+         
+         pos = line.find("=");
+         line.erase(line.begin()+pos, line.end());
+         
+
+         //pos = line.find(":");
+         //it = line.begin()+pos;
+         //line.erase(line.begin()+pos, line.end());
+         cout <<line << endl;
+      }
+      myfile.close();
+      //getchar();
+   }
+   
+   else cout << "Unable to open file";
+   //getchar();
+
+   /*
+   //ifstream file("config.txt");
+   
+   string line;
+   string name;
+   string value;
+   string inSection;
+   int posEqual;
+   while (getline(file,line)) {
+      
+      cout << line << endl;
+      
+      if (! line.length()) continue;
+      
+      if (line[0] == '#') continue;
+      if (line[0] == ';') continue;
+      
+      if (line[0] == '[') {
+         inSection=trim(line.substr(1,line.find(']')-1));
+         continue;
+      }
+      
+      posEqual=line.find('=');
+      name  = trim(line.substr(0,posEqual));
+      value = trim(line.substr(posEqual+1));
+      
+      //content_[inSection+'/'+name]=Chameleon(value);
+   }
+*/
+   
+}
+
+
+/*
+
+string trim(string const& source, char const* delims = " \t\r\n") {
+   string result(source);
+   string::size_type index = result.find_last_not_of(delims);
+   if(index != string::npos)
+      result.erase(++index);
+   
+   index = result.find_first_not_of(delims);
+   if(index != string::npos)
+      result.erase(0, index);
+   else
+      result.erase();
+   return result;
+}
+ 
+ */
+
+
+
+void ConfigFile_Create(string configFile) {
+
+
+   ofstream outfile ("config.txt");
+
+   outfile << "##############################################" << endl;
+   outfile << "#                                            #" << endl;
+   outfile << "#  MIDI_Harfe Config File                    #" << endl;
+   outfile << "#  von Nico Bosshard (c)2016                 #" << endl; 
+   outfile << "#                                            #" << endl;
+   outfile << "#  MIDI Harfen Empfänger für MacOSX.         #" << endl;
+   outfile << "#                                            #" << endl;
+   outfile << "##############################################" << endl;
+   
+   outfile << endl << endl;
+   
+   outfile << "Instrument (Piano->1, Harfe->47)=47" << endl;
+   outfile << "Master Value (0-128)=128" << endl;
+   outfile << "Master Transpose=0" << endl << endl;
+   
+   
+   outfile << "#Tonbasierende Halbtonverschiebung (Transpose)" << endl;
+   outfile << "C=0" << endl;
+   outfile << "D=0" << endl;
+   outfile << "E=0" << endl;
+   outfile << "F=0" << endl;
+   outfile << "G=0" << endl;
+   outfile << "A=0" << endl;
+   outfile << "H=0" << endl;
+   
+   outfile << endl << endl;
+   
+
+   for ( string i : Noten_Name )
+   {
+      outfile << "[" << i << "]" << endl;
+      outfile << "Start=20" << endl << "Stop=18" << endl;
+      outfile << "Transpose=0" << endl << "Value=0" << endl << "Mute=false" << endl << endl;
+   }
+
+   outfile.close();
 }
