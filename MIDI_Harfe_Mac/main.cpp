@@ -7,13 +7,16 @@
 //*****************************************//
 
 #include <iostream>
-#include <cstdlib>
+#include <cstdlib> //ermöglicht system()
 #include "RtMidi.h"
 #include <fcntl.h>
 #include <fstream>
 #include <termios.h>
 #include <string>
+#include <sstream>
 #include <vector>
+
+#include "CoreFoundation/CoreFoundation.h"
 
 using namespace std;
 
@@ -28,8 +31,10 @@ int port_fd;
 int init_serial_input(char * port);
 int read_serial_int(int fd);
 
-void ConfigFile_Read(string configFile);
+bool ConfigFile_Read(string configFile);
 void ConfigFile_Create(string configFile);
+
+bool Update_Funktion(void);
 
 // Platform-dependent sleep routines.
 #if defined(__WINDOWS_MM__)
@@ -52,15 +57,66 @@ vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
                             "c", "d", "e", "f", "g", "a", "h",
                             "c'", "d'", "e'", "f'", "g'", "a'", "h'",
                             "c''", "d''", "e''", "f''", "g''", "a''", "h''",
-                            "c'''", "d'''", "e'''", "f'''", "g'", "a'''", "h'''"};
+                            "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''"};
+
+
+char path[PATH_MAX];
+
+string Config_Path;
+unsigned char Config_Instrument=0;
+unsigned char Config_Master_Volume=128;
+signed char Config_Master_Transpose=0;
+bool Config_use_Virtual_Port=true;
+string Config_Portnamen="MIDI_Harfe";
+unsigned char Config_PortNr=0;
+vector<signed char> Config_Transpose;
 
 
 
 int main( void )
 {
+   cout << endl <<"Function call: int main(void)" << endl << endl;
+   CFBundleRef mainBundle = CFBundleGetMainBundle();
+   CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
    
-   ConfigFile_Create("config.txt");
-   ConfigFile_Read ("config.txt");
+   if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
+   {
+      Config_Path="Config.txt";
+      cout << "Der Applicationpfad konnte nicht ermittelt werden er wird nun einfach ./ (Also normahlerweise auch den Application Pfad) also Config File Path genommen" << endl;
+   }
+   else
+   {
+      CFRelease(resourcesURL);
+      
+      chdir(path);
+      std::cout << "Current Path: " << path << std::endl;
+      
+      stringstream Config_Path_SStream;
+      Config_Path_SStream << path << "/config.txt";
+      Config_Path=Config_Path_SStream.str();
+   }
+   
+   Update_Funktion();
+   
+   //ConfigFile_Create("config.txt");
+   if(!ConfigFile_Read (Config_Path))
+   {
+      cout << "Soll das config.txt file auf den neu erstellt werden? (Ja / Nein=End): ";
+      string Config_Reset;
+      cin >> Config_Reset;
+      if(Config_Reset=="Nein" or Config_Reset=="nein" or Config_Reset=="No" or Config_Reset=="no" or Config_Reset=="0")
+      {
+         exit(0);
+      }
+      else {
+         ConfigFile_Create("config.txt");
+         if(!ConfigFile_Read ("config.txt"))
+         {
+            cout << endl << "Die Reperatur des Config Files ist fehlgeschlagen! Die hattä eigendlich nicht passieren dürfen. Bitte instalieren sie das Programm komplett neu. Sollte dieser Fehler weiterhin auftreten melden sie sich bitte an per Mail an nico@bosshomer.ch" << endl;
+         }
+      }
+   }
+   
    
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
@@ -249,8 +305,6 @@ int init_serial_input (char * port) {
 
 
 
-#include <fstream>
-
 string trim(string const& source, char const* delims = " \t\r\n") {
    string result(source);
    string::size_type index = result.find_last_not_of(delims);
@@ -266,7 +320,7 @@ string trim(string const& source, char const* delims = " \t\r\n") {
 }
 
 
-void ConfigFile_Read(string configFile) {
+bool ConfigFile_Read(string configFile) {
    string name;
    string value;
    string inSection;
@@ -274,8 +328,11 @@ void ConfigFile_Read(string configFile) {
    size_t pos;
    string str,str1;
    string::iterator it;
+   int i=0;
    
-   vector<int> ConfigFile_Data;
+   cout << "Function call: bool ConfigFile_Read(string " << configFile << ")" << endl;
+   cout << "vector<string> ConfigFile_Data;" << endl;
+   vector<string> ConfigFile_Data;
    
    ifstream myfile (configFile);
    if (myfile.is_open())
@@ -299,29 +356,94 @@ void ConfigFile_Read(string configFile) {
          pos = line.find("=");
          line.erase(line.begin(), line.begin()+pos+1);
          
+         
 
          //pos = line.find(":");
          //it = line.begin()+pos;
          //line.erase(line.begin()+pos, line.end());
-         
+
          ConfigFile_Data.push_back(line);
-         cout <<line << endl;
+         //cout <<line << endl;
       }
       myfile.close();
    }
    
-   else cout << "Unable to open file";
-   
-   cout << ConfigFile_Data.size();
-   
-   int i;
-   for(i=10;i>ConfigFile_Data.size();i++)
+   else
    {
-            //std::vector<int> Temp(ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]);
-      Config_Notes.push_back({ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]});
-         
-         //new vector<int> {ConfigFile_Data[i], ConfigFile_Data[i+1], ConfigFile_Data[i+2], ConfigFile_Data[i+3], ConfigFile_Data[i+4]}
+      cout << "Die Datei " << configFile << " existiert nicht!";
+      return false;
    }
+   
+   cout << endl << endl << "Algmeine Kunfiguration:" << endl;
+   
+
+   Config_Instrument=atoi(ConfigFile_Data[0].c_str());
+   cout << "Config_Instrument=" << (int)Config_Instrument << endl;
+   
+   Config_Master_Volume=atoi(ConfigFile_Data[1].c_str());
+   cout << "Config_Master_Volume=" << (int)Config_Master_Volume << endl;
+   
+   Config_Master_Transpose=atoi(ConfigFile_Data[2].c_str());
+   cout << "Config_Master_Transpose=" << (int)Config_Master_Transpose << endl;
+   
+   if(ConfigFile_Data[3]=="true")
+   {
+      Config_use_Virtual_Port=true;
+      cout << "Config_use_Virtual_Port=true" << endl;
+   }
+   else if ( ConfigFile_Data[3]=="false" )
+   {
+      cout << "Config_use_Virtual_Port=false" << endl;
+   }
+   else
+   {
+      cout << "Fehler in Config File: Wert Config_use_Virtual_Port=" << ConfigFile_Data[3] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_use_Virtual_Port=true benutzt.";
+      Config_use_Virtual_Port=true;
+   }
+   
+   Config_Portnamen=ConfigFile_Data[4];
+   cout << "Config_Portnamen=" << Config_Portnamen << endl;
+   
+   Config_PortNr=atoi(ConfigFile_Data[5].c_str());
+   cout << "Config_PortNr=" << (int)Config_PortNr << endl;
+   
+   
+   
+   cout << endl << endl << "Tonbasierende Halbtonverschiebung (Transpose):" << endl;
+   
+   for(i=5;i<=11;i++)
+   {
+      Config_Transpose.push_back(atoi(ConfigFile_Data[i].c_str()));
+      cout << Noten_Name[i+2] << ": " << (int)Config_Transpose[Config_Transpose.size()-1] << endl;
+   }
+   
+   
+   
+   cout << endl << endl << "Noteninduviduelle Konfiguration:" << endl;
+   
+   for(i=12;i<=ConfigFile_Data.size()-2;i=i+5)
+   {
+      Config_Notes.push_back({atoi(ConfigFile_Data[i+1].c_str()), atoi(ConfigFile_Data[i+2].c_str()), atoi(ConfigFile_Data[i+3].c_str()), atoi(ConfigFile_Data[i+4].c_str()), atoi(ConfigFile_Data[i+5].c_str())});
+      
+      if(Config_Notes[Config_Notes.size()-1][0]<15 or Config_Notes[Config_Notes.size()-1][0]>250)
+      {
+         cout << Noten_Name[(i-12)/5] << ": " << "Notenstartwerte<15 oder >250 = unerwünschrtes Dauersygnal => Standartwert=40" << endl;
+         Config_Notes[Config_Notes.size()-1][0]=40;
+      }
+      
+      if(Config_Notes[Config_Notes.size()-1][1]<15 or Config_Notes[Config_Notes.size()-1][0]>250)
+      {
+         cout << Noten_Name[(i-12)/5] << ": " << "Notenstartwert<15 oder >250 = unerwünschrtes Dauersygnal => Stopwert=40" << endl;
+         Config_Notes[Config_Notes.size()-1][1]=30;
+      }
+      
+      
+      cout << Noten_Name[(i-12)/5] << ": " << Config_Notes[Config_Notes.size()-1][0] << ", " << Config_Notes[Config_Notes.size()-1][1] << ", " << Config_Notes[Config_Notes.size()-1][2] << ", " << Config_Notes[Config_Notes.size()-1][3] << ", " << Config_Notes[Config_Notes.size()-1][4] << endl;
+   }
+   
+   
+   cout <<  endl << endl << "Configurationsfile errfolgreich eingelesen! :D" << endl << endl << endl;
+   return true;
    
 }
 
@@ -362,19 +484,21 @@ void ConfigFile_Create(string configFile) {
    
    outfile << endl << endl;
    
-   outfile << "Instrument (Piano->1, Harfe->47)=47" << endl;
-   outfile << "Master Value (0-128)=128" << endl;
-   outfile << "Master Transpose=0" << endl << endl;
-   
+   outfile << "Instrument (Piano->0, Harfe->47)=47" << endl;
+   outfile << "Master Volume (0-128)=128" << endl;
+   outfile << "Master Transpose=0" << endl;
+   outfile << "Virtueller Port=true" << endl;
+   outfile << "Portnamen=MIDI_Harfe" << endl;
+   outfile << "Port Nr.=0" << endl << endl;
    
    outfile << "#Tonbasierende Halbtonverschiebung (Transpose)" << endl;
-   outfile << "C=0" << endl;
-   outfile << "D=0" << endl;
-   outfile << "E=0" << endl;
-   outfile << "F=0" << endl;
-   outfile << "G=0" << endl;
-   outfile << "A=0" << endl;
-   outfile << "H=0" << endl;
+   outfile << "c=0" << endl;
+   outfile << "d=0" << endl;
+   outfile << "e=0" << endl;
+   outfile << "f=0" << endl;
+   outfile << "g=0" << endl;
+   outfile << "a=0" << endl;
+   outfile << "h=0" << endl;
    
    outfile << endl << endl;
    
@@ -382,9 +506,88 @@ void ConfigFile_Create(string configFile) {
    for ( string i : Noten_Name )
    {
       outfile << "[" << i << "]" << endl;
-      outfile << "Start=20" << endl << "Stop=18" << endl;
+      outfile << "Start=40" << endl << "Stop=30" << endl;
       outfile << "Transpose=0" << endl << "Value=0" << endl << "Mute=0" << endl << endl;
    }
 
    outfile.close();
 }
+
+
+
+bool Update_Funktion(void)
+{
+   stringstream Versio_Path_SStream;
+   Versio_Path_SStream << "curl -O www.nicobosshard.ch/Documents/MIDI_Harfe/Update_Mac.txt";
+   
+   system(Versio_Path_SStream.str().c_str());
+   string line;
+   string Antwort;
+   
+   
+   //stringstream Filepath;
+   
+   //cout << Versio_Path_SStream.str();
+   //Filepath << path << "/Update_Mac.txt";
+   
+   ifstream myfile ("Update_Mac.txt");
+   if (myfile.is_open())
+   {
+      
+      while (! myfile.eof() )
+      {
+         getline (myfile,line);
+         //cout << line[0];
+         
+         if (line[0] == '@')
+         {
+            line.erase(line.begin(), line.begin()+1);
+            cout << line << endl;
+         }
+         else if (line == "Version=1.0")
+         {
+            break;
+         }
+         else if (line == "?1")
+         {
+            cin >> Antwort;
+         }
+         else if (line == "?2")
+         {
+            cin >> Antwort;
+            if(Antwort=="Nein" or Antwort=="nein" or Antwort=="No" or Antwort=="no")
+            {
+               break;
+            }
+         }
+         else if (line == "?3")
+         {
+            cin >> Antwort;
+            if(Antwort=="Ja" or Antwort=="ja" or Antwort=="Yes" or Antwort=="yes")
+            {
+               break;
+            }
+         }
+         else if (line == "End")
+         {
+            exit(0);
+         }
+         else
+         {
+            system(line.c_str());
+         }
+         
+      }
+      myfile.close();
+   
+   if(remove("Update_Mac.txt") == -1) cout << "Löschen der Temporären Datei \"Update_Mac.txt\" fehlgeschlagen!" << endl;
+   
+   } else {
+      cout << "Updatesuche fehlgeschlagen!" << endl;
+      return false;
+   }
+   
+   
+   return true;
+}
+
