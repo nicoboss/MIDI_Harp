@@ -51,25 +51,39 @@ bool Update_Funktion(void);
 bool chooseMidiPort( RtMidiOut *rtmidi );
 RtMidiOut *midiout = 0;
 
-vector< vector<int> > Config_Notes;
+vector< vector<int> > Config_Note;
 
 vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
                             "c", "d", "e", "f", "g", "a", "h",
                             "c'", "d'", "e'", "f'", "g'", "a'", "h'",
                             "c''", "d''", "e''", "f''", "g''", "a''", "h''",
-                            "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''"};
+                            "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''",
+                            "c''''"};
 
 
 char path[PATH_MAX];
 
+
+#define _Start_ 0;
+#define _Stop_ 1;
+#define _Transpose_ 2;
+#define Volume 3;
+#define _Mute_ 4;
+
+
 string Config_Path;
 unsigned char Config_Instrument=0;
-unsigned char Config_Master_Volume=128;
+bool Config_Volume_ignore=false;
+signed char Config_Volume_steps=false;
+signed char Config_Volume_min=15;
+signed char Config_Volume_max=250;
 signed char Config_Master_Transpose=0;
 bool Config_use_Virtual_Port=true;
 string Config_Portnamen="MIDI_Harfe";
 unsigned char Config_PortNr=0;
 vector<signed char> Config_Transpose;
+
+vector<bool> Note_Play;
 
 
 
@@ -98,7 +112,7 @@ int main( void )
    
    Update_Funktion();
    
-   //ConfigFile_Create("config.txt");
+   ConfigFile_Create("config.txt");
    if(!ConfigFile_Read (Config_Path))
    {
       cout << "Soll das config.txt file auf den neu erstellt werden? (Ja / Nein=End): ";
@@ -146,28 +160,66 @@ int main( void )
         goto cleanup;
     }
     
-    // Send out a series of MIDI messages.
+   // Send out a series of MIDI messages.
     
-    // Program change: 192, 5
-    message.push_back( 192 );
-    message.push_back( 5 );
-    midiout->sendMessage( &message );
+   // Program change: 192, 5
+   message.push_back( 192 );
+   message.push_back( 5 );
+   midiout->sendMessage( &message );
     
-    SLEEP( 500 );
+   SLEEP( 500 );
     
-    message[0] = 0xF1;
-    message[1] = 60;
-    midiout->sendMessage( &message );
+   message[0] = 0xF1;
+   message[1] = 60;
+   midiout->sendMessage( &message );
     
-    // Control Change: 176, 7, 100 (volume)
-    message[0] = 176;
-    message[1] = 7;
-    message.push_back( 100 );
-    midiout->sendMessage( &message );
-    
-    int i;
-    for(i=30;i<=110;i++)
-    {
+   // Control Change: 176, 7, 100 (volume)
+   message[0] = 176;
+   message[1] = 7;
+   message.push_back( 100 );
+   midiout->sendMessage( &message );
+   //cout << "MIDI-Event: Volume=100        midiout->sendMessage( " << &message <<" );" ;
+   
+   
+   int Serial_Temp;
+   
+   int i;
+   for(i=0;i<=35;i++)
+   {
+      if(Note_Play[i]==false)
+      {
+         Serial_Temp=read_serial_int(port_fd);
+         if(Serial_Temp>=Config_Note[i][0])
+          {
+             if(Config_Volume_ignore==false)
+             {
+                // Control Change: 176, 7, 100 (volume)
+                message[0] = 176;
+                message[1] = 7;
+                message.push_back( Serial_Temp );
+                midiout->sendMessage( &message );
+                cout << "MIDI-Event: Volume=" << i << "        midiout->sendMessage( " << &message <<" );" ;
+             }
+             // Note On: 144, i, 90
+             message[0] = 144;
+             message[1] = i;
+             message[2] = 90;
+             midiout->sendMessage( &message );
+             cout << "MIDI-Event: " << Noten_Name[i] << "=ON";
+          }
+      } else {
+         Serial_Temp=read_serial_int(port_fd);
+         if(Serial_Temp<=Config_Note[i][1])
+         {
+            // Note Off: 128, i, 40
+            message[0] = 128;
+            message[1] = i;
+            message[2] = 40;
+            midiout->sendMessage( &message );
+            cout << "MIDI-Event: " << Noten_Name[i] << "=OFF";
+         }
+      }
+      
         // Note On: 144, 64, 90
         message[0] = 144;
         message[1] = i;
@@ -226,6 +278,9 @@ cleanup:
     
     return 0;
 }
+   
+   
+   
 
 bool chooseMidiPort( RtMidiOut *rtmidi )
 {
@@ -234,7 +289,7 @@ bool chooseMidiPort( RtMidiOut *rtmidi )
     string keyHit;
     getline( cin, keyHit );
     if ( keyHit == "y" ) {
-        rtmidi->openVirtualPort();
+        rtmidi->openVirtualPort("MIDI_Harfe");
         return true;
     }
     
@@ -262,7 +317,7 @@ bool chooseMidiPort( RtMidiOut *rtmidi )
     
     cout << "\n";
     rtmidi->openPort( i );
-    
+   
     return true;
 }
 
@@ -380,19 +435,44 @@ bool ConfigFile_Read(string configFile) {
    Config_Instrument=atoi(ConfigFile_Data[0].c_str());
    cout << "Config_Instrument=" << (int)Config_Instrument << endl;
    
-   Config_Master_Volume=atoi(ConfigFile_Data[1].c_str());
-   cout << "Config_Master_Volume=" << (int)Config_Master_Volume << endl;
    
-   Config_Master_Transpose=atoi(ConfigFile_Data[2].c_str());
+   if(ConfigFile_Data[1]=="true")
+   {
+      Config_Volume_ignore=true;
+      cout << "Config_Volume_ignore=true" << endl;
+   }
+   else if ( ConfigFile_Data[1]=="false" )
+   {
+      Config_Volume_ignore=false;
+      cout << "Config_Volume_ignore=false" << endl;
+   }
+   else
+   {
+      cout << "Fehler in Config File: Wert Config_Volume_ignore=" << ConfigFile_Data[1] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_Volume_ignore=false benutzt.";
+      Config_use_Virtual_Port=false;
+   }
+   
+   
+   Config_Volume_steps=atoi(ConfigFile_Data[2].c_str());
+   cout << "Config_Volume_steps=" << (int)Config_Volume_steps << endl;
+   
+   Config_Volume_min=atoi(ConfigFile_Data[3].c_str());
+   cout << "Config_Volume_min=" << (int)Config_Volume_min << endl;
+   
+   Config_Volume_max=atoi(ConfigFile_Data[4].c_str());
+   cout << "Config_Volume_max=" << (int)Config_Volume_max << endl;
+   
+   Config_Master_Transpose=atoi(ConfigFile_Data[5].c_str());
    cout << "Config_Master_Transpose=" << (int)Config_Master_Transpose << endl;
    
-   if(ConfigFile_Data[3]=="true")
+   if(ConfigFile_Data[6]=="true")
    {
       Config_use_Virtual_Port=true;
       cout << "Config_use_Virtual_Port=true" << endl;
    }
-   else if ( ConfigFile_Data[3]=="false" )
+   else if ( ConfigFile_Data[6]=="false" )
    {
+      Config_use_Virtual_Port=false;
       cout << "Config_use_Virtual_Port=false" << endl;
    }
    else
@@ -401,17 +481,17 @@ bool ConfigFile_Read(string configFile) {
       Config_use_Virtual_Port=true;
    }
    
-   Config_Portnamen=ConfigFile_Data[4];
+   Config_Portnamen=ConfigFile_Data[7];
    cout << "Config_Portnamen=" << Config_Portnamen << endl;
    
-   Config_PortNr=atoi(ConfigFile_Data[5].c_str());
+   Config_PortNr=atoi(ConfigFile_Data[8].c_str());
    cout << "Config_PortNr=" << (int)Config_PortNr << endl;
    
    
    
    cout << endl << endl << "Tonbasierende Halbtonverschiebung (Transpose):" << endl;
    
-   for(i=5;i<=11;i++)
+   for(i=9;i<=15;i++)
    {
       Config_Transpose.push_back(atoi(ConfigFile_Data[i].c_str()));
       cout << Noten_Name[i+2] << ": " << (int)Config_Transpose[Config_Transpose.size()-1] << endl;
@@ -421,24 +501,24 @@ bool ConfigFile_Read(string configFile) {
    
    cout << endl << endl << "Noteninduviduelle Konfiguration:" << endl;
    
-   for(i=12;i<=ConfigFile_Data.size()-2;i=i+5)
+   for(i=16;i<=ConfigFile_Data.size()-2;i=i+5)
    {
-      Config_Notes.push_back({atoi(ConfigFile_Data[i+1].c_str()), atoi(ConfigFile_Data[i+2].c_str()), atoi(ConfigFile_Data[i+3].c_str()), atoi(ConfigFile_Data[i+4].c_str()), atoi(ConfigFile_Data[i+5].c_str())});
+      Config_Note.push_back({atoi(ConfigFile_Data[i+1].c_str()), atoi(ConfigFile_Data[i+2].c_str()), atoi(ConfigFile_Data[i+3].c_str()), atoi(ConfigFile_Data[i+4].c_str()), atoi(ConfigFile_Data[i+5].c_str())});
       
-      if(Config_Notes[Config_Notes.size()-1][0]<15 or Config_Notes[Config_Notes.size()-1][0]>250)
+      if(Config_Note[Config_Note.size()-1][0]<15 or Config_Note[Config_Note.size()-1][0]>250)
       {
          cout << Noten_Name[(i-12)/5] << ": " << "Notenstartwerte<15 oder >250 = unerwünschrtes Dauersygnal => Standartwert=40" << endl;
-         Config_Notes[Config_Notes.size()-1][0]=40;
+         Config_Note[Config_Note.size()-1][0]=40;
       }
       
-      if(Config_Notes[Config_Notes.size()-1][1]<15 or Config_Notes[Config_Notes.size()-1][0]>250)
+      if(Config_Note[Config_Note.size()-1][1]<15 or Config_Note[Config_Note.size()-1][0]>250)
       {
          cout << Noten_Name[(i-12)/5] << ": " << "Notenstartwert<15 oder >250 = unerwünschrtes Dauersygnal => Stopwert=40" << endl;
-         Config_Notes[Config_Notes.size()-1][1]=30;
+         Config_Note[Config_Note.size()-1][1]=30;
       }
       
       
-      cout << Noten_Name[(i-12)/5] << ": " << Config_Notes[Config_Notes.size()-1][0] << ", " << Config_Notes[Config_Notes.size()-1][1] << ", " << Config_Notes[Config_Notes.size()-1][2] << ", " << Config_Notes[Config_Notes.size()-1][3] << ", " << Config_Notes[Config_Notes.size()-1][4] << endl;
+      cout << Noten_Name[(i-12)/5] << ": " << Config_Note[Config_Note.size()-1][0] << ", " << Config_Note[Config_Note.size()-1][1] << ", " << Config_Note[Config_Note.size()-1][2] << ", " << Config_Note[Config_Note.size()-1][3] << ", " << Config_Note[Config_Note.size()-1][4] << endl;
    }
    
    
@@ -484,9 +564,23 @@ void ConfigFile_Create(string configFile) {
    
    outfile << endl << endl;
    
-   outfile << "Instrument (Piano->0, Harfe->47)=47" << endl;
-   outfile << "Master Volume (0-128)=128" << endl;
-   outfile << "Master Transpose=0" << endl;
+   outfile << "# Welches Instrumment sollte als MIDI Ausgabeinstrument dienen? Nummern nach dem General MIDI Standart (Tabbele auf http://de.wikipedia.org/wiki/General_MIDI) z.B. Piano=0 und Harfe=47." << endl;
+   outfile << "Instrument=47" << endl << endl;
+   
+   outfile << "# Sollte die gemessenen Lautstärken ignoriert und statessen immer die Lautsterke von 100 verwendet werden?" << endl;
+   outfile << "Lautsterke ignorieren=false" << endl << endl;
+   
+   outfile << "# Anzahl an verschiedenemn Lautstärken. Das maximum des MIDI Standarts beträgt 128. Jedoch kann durch runden z.B. auch auf 9 Lautstärken (ppp - pp - p - mp - m.v. - mf - f - ff - fff) gerundet werden. In manchen fällen ist dies vorteilhaft, jedoch können die meisten Musikbearbeitungsprogramme dies auch noch nachträglich machen." << endl;
+   outfile << "Anz. Lautstärken=128" << endl << endl;
+   
+   outfile << "# Durch die folgende Werte kann eingeschränkt werden, in welchem Messbereich sich die Lautstärkenspektrum von 0-128 befinden. Die werte 15-250 bedeuten z.B. dass Alle Messwerte von >=15 befinden Lautlos sind und alle von <=250 den Maximalwert von 128 haben. Der Messbereich reicht von 0 bis 255." << endl;
+   outfile << "minimalspektrum=250" << endl;
+   outfile << "Maximalspektrum=15" << endl << endl;
+   
+   outfile << "# Durch die transpose (Halbtonverschiebung) können alle Töne gleichzeitig verschoben werden. \"Master Transpose=-12\" bewirkt z.B. dass alle töne um eine Oktave nach unten versetzt werden." << endl;
+   outfile << "Master Transpose=0" << endl << endl;
+   
+   outfile << "# Durch die volgenden 3 Konfiguratiuonen können Sie Den Ausgabeport konfigurieren. Ändern Sie diese Einstellungen bitte nur wenn Sie wissen was Sie machen. Beispielsweise können dammit Sygnale direckt an einem angeschlossenem Synthesizer (Virtueller Port=false und Port Nr.=[Portnummer des Synthesizer (oft 0 oder 1)] gesendet werden." << endl;
    outfile << "Virtueller Port=true" << endl;
    outfile << "Portnamen=MIDI_Harfe" << endl;
    outfile << "Port Nr.=0" << endl << endl;
@@ -502,12 +596,19 @@ void ConfigFile_Create(string configFile) {
    
    outfile << endl << endl;
    
-
+   outfile << "# Seitenspezifische Einstellungen:" << endl;
+   outfile << "# Start: Ab welchem Messwert (0-255) soll der Ton erkannt werden? Achtung: Zu kleine Werte >15 vehrursachen Daueton sowie Messfehler und werden deswegen akzeptiert. Ist der wert aber zu hoch könte es sein dass leiose töne nicht m,ehr erkannt werden. Stopwerte >15 werden infolge eines unerwünschten Dauertohns auch nicht akzeptiert." << endl;
+   outfile << "# Start: Ab welchem Messwert (0-255) ist der Ton fertig? Sollen töne eher lang oder kurz wirken? " << endl;
+   outfile << "Transpose: Induvideuelle Transpose (Halbtonverschiebung). Dies wird z.B. für einzelnes Kläppchen benötigt." << endl;
+   outfile << "# Induviduelle Lautstärkenanpassung in Werten im Bereich von -128 bis 128 (nicht prozentual)." << endl;
+   outfile << "# Mute: Durch diese einstellungen können einige Seiten gemutet werden. 0=ON & 1=Mute" << endl;
+   outfile << endl;
+   
    for ( string i : Noten_Name )
    {
       outfile << "[" << i << "]" << endl;
       outfile << "Start=40" << endl << "Stop=30" << endl;
-      outfile << "Transpose=0" << endl << "Value=0" << endl << "Mute=0" << endl << endl;
+      outfile << "Transpose=0" << endl << "Volume=0" << endl << "Mute=0" << endl << endl;
    }
 
    outfile.close();
@@ -567,27 +668,26 @@ bool Update_Funktion(void)
             {
                break;
             }
+            
+            else if (line == "End")
+            {
+               exit(0);
+            }
+            else
+            {
+               system(line.c_str());
+            }
+            
          }
-         else if (line == "End")
-         {
-            exit(0);
-         }
-         else
-         {
-            system(line.c_str());
-         }
+         myfile.close();
          
+         if(remove("Update_Mac.txt") == -1) cout << "Löschen der Temporären Datei \"Update_Mac.txt\" fehlgeschlagen!" << endl;
       }
-      myfile.close();
-   
-   if(remove("Update_Mac.txt") == -1) cout << "Löschen der Temporären Datei \"Update_Mac.txt\" fehlgeschlagen!" << endl;
-   
    } else {
       cout << "Updatesuche fehlgeschlagen!" << endl;
       return false;
    }
-   
-   
-   return true;
-}
-
+      
+      
+      return true;
+   }
