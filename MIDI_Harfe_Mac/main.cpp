@@ -54,11 +54,11 @@ RtMidiOut *midiout = 0;
 vector< vector<int> > Config_Note;
 
 vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
-                            "c", "d", "e", "f", "g", "a", "h",
-                            "c'", "d'", "e'", "f'", "g'", "a'", "h'",
-                            "c''", "d''", "e''", "f''", "g''", "a''", "h''",
-                            "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''",
-                            "c''''"};
+   "c", "d", "e", "f", "g", "a", "h",
+   "c'", "d'", "e'", "f'", "g'", "a'", "h'",
+   "c''", "d''", "e''", "f''", "g''", "a''", "h''",
+   "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''",
+   "c''''"};
 
 
 char path[PATH_MAX];
@@ -140,46 +140,45 @@ int main( void )
       cout << "," << read_serial_int(port_fd);
    }
    
-    vector<unsigned char> message;
-    
-    // RtMidiOut constructor
-    try {
-        midiout = new RtMidiOut();
-    }
-    catch ( RtMidiError &error ) {
-        error.printMessage();
-        exit( EXIT_FAILURE );
-    }
-    
-    // Call function to select port.
-    try {
-        if ( chooseMidiPort( midiout ) == false ) goto cleanup;
-    }
-    catch ( RtMidiError &error ) {
-        error.printMessage();
-        goto cleanup;
-    }
-    
+   vector<unsigned char> message;
+   
+   // RtMidiOut constructor
+   try {
+      midiout = new RtMidiOut();
+   }
+   catch ( RtMidiError &error ) {
+      error.printMessage();
+      exit( EXIT_FAILURE );
+   }
+   
+   // Call function to select port.
+   try {
+      if ( chooseMidiPort( midiout ) == false ) goto cleanup;
+   }
+   catch ( RtMidiError &error ) {
+      error.printMessage();
+      goto cleanup;
+   }
+   
    // Send out a series of MIDI messages.
-    
+   
    // Program change: 192, 5
    message.push_back( 192 );
    message.push_back( 5 );
    midiout->sendMessage( &message );
-    
+   
    SLEEP( 500 );
-    
+   
    message[0] = 0xF1;
    message[1] = 60;
    midiout->sendMessage( &message );
-    
+   
    // Control Change: 176, 7, 100 (volume)
    message[0] = 176;
    message[1] = 7;
    message.push_back( 100 );
    midiout->sendMessage( &message );
    //cout << "MIDI-Event: Volume=100        midiout->sendMessage( " << &message <<" );" ;
-   
    
    int Serial_Temp;
    
@@ -190,23 +189,23 @@ int main( void )
       {
          Serial_Temp=read_serial_int(port_fd);
          if(Serial_Temp>=Config_Note[i][0])
-          {
-             if(Config_Volume_ignore==false)
-             {
-                // Control Change: 176, 7, 100 (volume)
-                message[0] = 176;
-                message[1] = 7;
-                message.push_back( Serial_Temp );
-                midiout->sendMessage( &message );
-                cout << "MIDI-Event: Volume=" << i << "        midiout->sendMessage( " << &message <<" );" ;
-             }
-             // Note On: 144, i, 90
-             message[0] = 144;
-             message[1] = i;
-             message[2] = 90;
-             midiout->sendMessage( &message );
-             cout << "MIDI-Event: " << Noten_Name[i] << "=ON";
-          }
+         {
+            if(Config_Volume_ignore==false)
+            {
+               // Control Change: 176, 7, 100 (volume)
+               message[0] = 176;
+               message[1] = 7;
+               message.push_back( Serial_Temp );
+               midiout->sendMessage( &message );
+               cout << "MIDI-Event: Volume=" << i << "        midiout->sendMessage( " << &message <<" );" ;
+            }
+            // Note On: 144, i, 90
+            message[0] = 144;
+            message[1] = i;
+            message[2] = 90;
+            midiout->sendMessage( &message );
+            cout << "MIDI-Event: " << Noten_Name[i] << "=ON";
+         }
       } else {
          Serial_Temp=read_serial_int(port_fd);
          if(Serial_Temp<=Config_Note[i][1])
@@ -219,106 +218,93 @@ int main( void )
             cout << "MIDI-Event: " << Noten_Name[i] << "=OFF";
          }
       }
+   }
+
+   
+   for(i=109;i>=30;i--)
+   {
+      // Note On: 144, 64, 90
+      message[0] = 144;
+      message[1] = i;
+      message[2] = 90;
+      midiout->sendMessage( &message );
       
-        // Note On: 144, 64, 90
-        message[0] = 144;
-        message[1] = i;
-        message[2] = 90;
-        midiout->sendMessage( &message );
-        
-        SLEEP( 200 );
-        
-        // Note Off: 128, 64, 40
-        message[0] = 128;
-        message[1] = i;
-        message[2] = 40;
-        midiout->sendMessage( &message );
-    }
-    
-    for(i=109;i>=30;i--)
-    {
-        // Note On: 144, 64, 90
-        message[0] = 144;
-        message[1] = i;
-        message[2] = 90;
-        midiout->sendMessage( &message );
-        
-        SLEEP( 20 );
-        
-        // Note Off: 128, 64, 40
-        message[0] = 128;
-        message[1] = i;
-        message[2] = 40;
-        midiout->sendMessage( &message );
-    }
-    
-    
-    SLEEP( 500 );
-    
-    // Control Change: 176, 7, 40
-    message[0] = 176;
-    message[1] = 7;
-    message[2] = 40;
-    midiout->sendMessage( &message );
-    
-    SLEEP( 500 );
-    
-    // Sysex: 240, 67, 4, 3, 2, 247
-    message[0] = 240;
-    message[1] = 67;
-    message[2] = 4;
-    message.push_back( 3 );
-    message.push_back( 2 );
-    message.push_back( 247 );
-    midiout->sendMessage( &message );
-    
-    // Clean up
+      SLEEP( 20 );
+      
+      // Note Off: 128, 64, 40
+      message[0] = 128;
+      message[1] = i;
+      message[2] = 40;
+      midiout->sendMessage( &message );
+   }
+   
+   
+   SLEEP( 500 );
+   
+   // Control Change: 176, 7, 40
+   message[0] = 176;
+   message[1] = 7;
+   message[2] = 40;
+   midiout->sendMessage( &message );
+   
+   SLEEP( 500 );
+   
+   // Sysex: 240, 67, 4, 3, 2, 247
+   message[0] = 240;
+   message[1] = 67;
+   message[2] = 4;
+   message.push_back( 3 );
+   message.push_back( 2 );
+   message.push_back( 247 );
+   midiout->sendMessage( &message );
+   
+   // Clean up
 cleanup:
-    delete midiout;
-    
-    return 0;
+   delete midiout;
+   
+   return 0;
 }
-   
-   
-   
+
+
+
 
 bool chooseMidiPort( RtMidiOut *rtmidi )
 {
-    cout << "\nWould you like to open a virtual output port? [y/N] ";
-    
-    string keyHit;
-    getline( cin, keyHit );
-    if ( keyHit == "y" ) {
-        rtmidi->openVirtualPort("MIDI_Harfe");
-        return true;
-    }
-    
-    string portName;
-    unsigned int i = 0, nPorts = rtmidi->getPortCount();
-    if ( nPorts == 0 ) {
-        cout << "No output ports available!" << endl;
-        return false;
-    }
-    
-    if ( nPorts == 1 ) {
-        cout << "\nOpening " << rtmidi->getPortName() << endl;
-    }
-    else {
-        for ( i=0; i<nPorts; i++ ) {
-            portName = rtmidi->getPortName(i);
-            cout << "  Output port #" << i << ": " << portName << '\n';
-        }
-        
-        do {
-            cout << "\nChoose a port number: ";
-            cin >> i;
-        } while ( i >= nPorts );
-    }
-    
-    cout << "\n";
-    rtmidi->openPort( i );
+   cout << "\nWould you like to open a virtual output port? [y/N] ";
    
-    return true;
+   string keyHit;
+   getline( cin, keyHit );
+   if ( keyHit == "y" ) {
+      rtmidi->openVirtualPort();
+      return true;
+   }
+   
+   string portName;
+   unsigned int i = 0, nPorts = rtmidi->getPortCount();
+   if ( nPorts == 0 ) {
+      cout << "No output ports available!" << endl;
+      return false;
+   }
+   
+   if ( nPorts == 1 ) {
+      cout << "\nOpening " << rtmidi->getPortName() << endl;
+   }
+   else {
+      for ( i=0; i<nPorts; i++ ) {
+         portName = rtmidi->getPortName(i);
+         cout << "  Output port #" << i << ": " << portName << '\n';
+      }
+      
+      do {
+         cout << "\nChoose a port number: ";
+         cin >> i;
+      } while ( i >= nPorts );
+   }
+   
+   cout << "\n";
+   rtmidi->openPort( i );
+   
+   return true;
 }
 
 
@@ -412,11 +398,11 @@ bool ConfigFile_Read(string configFile) {
          line.erase(line.begin(), line.begin()+pos+1);
          
          
-
+         
          //pos = line.find(":");
          //it = line.begin()+pos;
          //line.erase(line.begin()+pos, line.end());
-
+         
          ConfigFile_Data.push_back(line);
          //cout <<line << endl;
       }
@@ -431,7 +417,7 @@ bool ConfigFile_Read(string configFile) {
    
    cout << endl << endl << "Algmeine Kunfiguration:" << endl;
    
-
+   
    Config_Instrument=atoi(ConfigFile_Data[0].c_str());
    cout << "Config_Instrument=" << (int)Config_Instrument << endl;
    
@@ -529,30 +515,30 @@ bool ConfigFile_Read(string configFile) {
 
 
 /*
-
-string trim(string const& source, char const* delims = " \t\r\n") {
-   string result(source);
-   string::size_type index = result.find_last_not_of(delims);
-   if(index != string::npos)
-      result.erase(++index);
-   
-   index = result.find_first_not_of(delims);
-   if(index != string::npos)
-      result.erase(0, index);
-   else
-      result.erase();
-   return result;
-}
+ 
+ string trim(string const& source, char const* delims = " \t\r\n") {
+ string result(source);
+ string::size_type index = result.find_last_not_of(delims);
+ if(index != string::npos)
+ result.erase(++index);
+ 
+ index = result.find_first_not_of(delims);
+ if(index != string::npos)
+ result.erase(0, index);
+ else
+ result.erase();
+ return result;
+ }
  
  */
 
 
 
 void ConfigFile_Create(string configFile) {
-
-
+   
+   
    ofstream outfile (configFile);
-
+   
    outfile << "##############################################" << endl;
    outfile << "#                                            #" << endl;
    outfile << "#  MIDI_Harfe Config File                    #" << endl;
@@ -610,7 +596,7 @@ void ConfigFile_Create(string configFile) {
       outfile << "Start=40" << endl << "Stop=30" << endl;
       outfile << "Transpose=0" << endl << "Volume=0" << endl << "Mute=0" << endl << endl;
    }
-
+   
    outfile.close();
 }
 
@@ -687,7 +673,7 @@ bool Update_Funktion(void)
       cout << "Updatesuche fehlgeschlagen!" << endl;
       return false;
    }
-      
-      
-      return true;
-   }
+   
+   
+   return true;
+}
