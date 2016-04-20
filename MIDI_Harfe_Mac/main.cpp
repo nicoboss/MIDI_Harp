@@ -55,12 +55,21 @@ RtMidiOut *midiout = 0;
 
 vector< vector<int> > Config_Note;
 
-vector<string> Noten_Name { "C", "D", "E", "F", "G", "A", "H",
+vector<string> Noten_Name {
+   "C", "D", "E", "F", "G", "A", "H",
    "c", "d", "e", "f", "g", "a", "h",
    "c'", "d'", "e'", "f'", "g'", "a'", "h'",
    "c''", "d''", "e''", "f''", "g''", "a''", "h''",
    "c'''", "d'''", "e'''", "f'''", "g'''", "a'''", "h'''",
    "c''''"};
+
+vector<unsigned char> Noten_Nr {
+   36, 38, 40, 41, 43, 45, 47,
+   48, 50, 52, 53, 55, 57, 59,
+   60, 62, 64, 65, 67, 69, 71,
+   72, 74, 76, 77, 79, 81, 83,
+   84, 86, 88, 89, 91, 93, 95,
+   96};
 
 
 char path[PATH_MAX];
@@ -69,7 +78,7 @@ char path[PATH_MAX];
 #define _Start_ 0;
 #define _Stop_ 1;
 #define _Transpose_ 2;
-#define Volume 3;
+#define _Volume_ 3;
 #define _Mute_ 4;
 
 
@@ -89,42 +98,12 @@ vector<bool> Note_Play { 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,
 
 
 
-#include <sys/select.h>
-#include <stdio.h>
-
-int kbhit(void) {
-   struct timeval tv;
-   fd_set fd;
-   
-   tv.tv_sec = 0;
-   tv.tv_usec = 0;
-   FD_ZERO(&fd);
-   FD_SET(0, &fd);
-   
-   if(-1 != select(1, &fd, NULL, NULL, &tv)) {
-      if(FD_ISSET(0, &fd)) {
-         return 1;
-      }
-      
-   }
-   
-   return 0;
-}
-
-
-
 char code_ascii;
 
 
 
 int main( void )
 {
-
-   while (!kbhit()) {
-      code_ascii = getchar();
-      cout << "Hallo";
-      putchar(code_ascii);
-   }
    
    cout << endl <<"Function call: int main(void)" << endl << endl;
    CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -231,93 +210,117 @@ int main( void )
    midiout->sendMessage( &message );
    //cout << "MIDI-Event: Volume=100        midiout->sendMessage( " << &message <<" );" ;
    
-   int Serial_Temp;
    
+   //while(read_serial_int(port_fd)!=250);
+   
+   
+   
+   int Serial_Temp;
+   int Volume_Temp;
    int i;
    
-   EventTypeSpec keyPressedEventType;
-   keyPressedEventType.eventClass=kEventRawKeyDown;
-
-   
-   for(i=0;i<=35;i++)
+   while(true)
    {
-      if(Note_Play[i]==false)
-      {
-         Serial_Temp=read_serial_int(port_fd);
-         if(Serial_Temp>=Config_Note[i][0])
-         {
-            if(Config_Volume_ignore==false)
-            {
-               // Control Change: 176, 7, 100 (volume)
-               message[0] = 176;
-               message[1] = 7;
-               if(Serial_Temp<=Config_Volume_min)
-               {
-                  message.push_back(0);
-                  cout << "Warnung: Durch die Konfiguration Minimalspektrum > Notenspezifischer Startwert wurde einen Lautloser Ton gesendet!\n";
-               }
-               else if(Serial_Temp>=Config_Volume_max)
-               {
-                  message.push_back(127);
-               }
-               else
-               {
-                  message.push_back(roundf(127/Config_Volume_steps*(Serial_Temp-Config_Volume_min)/(Config_Volume_max-Config_Volume_min))*Config_Volume_steps);
-               }
-               cout << "MIDI-Event: Volume=" << message[2] << "        midiout->sendMessage( " << &message <<" );\n";
-               midiout->sendMessage( &message );
-            }
-            // Note On: 144, i, 90
-            message[0] = 144;
-            message[1] = i+Config_Master_Transpose+Config_Note[i][2];
-            message[2] = 90;
-            //midiout->sendMessage( &message );
-            cout << "MIDI-Event: " << Noten_Name[i] << "=ON\n";
-         }
-      } else {
-         Serial_Temp=read_serial_int(port_fd);
-         if(Serial_Temp<=Config_Note[i][1])
-         {
-            // Note Off: 128, i, 40
-            message[0] = 128;
-            message[1] = i+Config_Master_Transpose+Config_Note[i][2];
-            message[2] = 40;
-            //midiout->sendMessage( &message );
-            cout << "MIDI-Event: " << Noten_Name[i] << "=OFF\n";
-         }
-      }
-   }
-   
-
-   /*
-   for(i=109;i>=30;i--)
-   {
-      // Note On: 144, 64, 90
+      /*
+      // Sysex: 240, 67, 4, 3, 2, 247
+      message[0] = 240;
+      message[1] = 67;
+      message[2] = 4;
+      message.push_back( 3 );
+      message.push_back( 2 );
+      message.push_back( 247 );
+      midiout->sendMessage( &message );
+       
+      cout << "Hallo" << endl;
+      // Note On: 144, i, 90
       message[0] = 144;
-      message[1] = i;
+      message[1] = 64;
       message[2] = 90;
       midiout->sendMessage( &message );
-      
-      SLEEP( 20 );
-      
-      // Note Off: 128, 64, 40
+      SLEEP(100);
+      // Note Off: 128, i, 40
       message[0] = 128;
-      message[1] = i;
+      message[1] = 64;
       message[2] = 40;
       midiout->sendMessage( &message );
+      SLEEP(100);
+        */
+      //SLEEP(5);
+      
+      for(i=0;i<=35;i++)
+      {
+         if(Note_Play[i]==false)
+         {
+            Serial_Temp=read_serial_int(port_fd);
+            cout << Serial_Temp << endl;
+            if(Serial_Temp>=Config_Note[i][0])
+            {
+               if(Config_Volume_ignore==false)
+               {
+                  // Control Change: 176, 7, 100 (volume)
+                  message[0] = 176;
+                  message[1] = 7;
+                  
+                  if(Serial_Temp<=Config_Volume_min)
+                  {
+                     Volume_Temp=0;
+                     cout << "Warnung: Durch die Konfiguration Minimalspektrum > Notenspezifischer Startwert wurde einen Lautloser Ton gesendet!\n";
+                  }
+                  else if(Serial_Temp>=Config_Volume_max)
+                  {
+                     Volume_Temp=127;
+                  }
+                  else
+                  {
+                     Volume_Temp=roundf(127/Config_Volume_steps*(Serial_Temp-Config_Volume_min)/(Config_Volume_max-Config_Volume_min))*Config_Volume_steps;
+                  }
+                  Volume_Temp=+Config_Note[i][3];
+                  
+                  if(Volume_Temp<0)
+                  {
+                     Volume_Temp=0;
+                  }
+                  
+                  if(Volume_Temp>127)
+                  {
+                     Volume_Temp=127;
+                  }
+                  
+                  message.push_back(Volume_Temp);
+                  
+                  cout << "MIDI-Event: Volume=" << (int)message[2] << "        midiout->sendMessage( " << &message <<" );\n";
+                  midiout->sendMessage( &message );
+               }
+               // Note On: 144, i, 90
+               message[0] = 144;
+               message[1] = Noten_Nr[i]+Config_Master_Transpose+Config_Note[i][2];
+               message[2] = 90;
+               midiout->sendMessage( &message );
+               cout << "MIDI-Event: " << Noten_Name[i] << "=ON" << endl;
+            }
+         } else {
+            Serial_Temp=read_serial_int(port_fd);
+            if(Serial_Temp<=Config_Note[i][1])
+            {
+               // Note Off: 128, i, 40
+               message[0] = 128;
+               message[1] = Noten_Nr[i]+Config_Master_Transpose+Config_Note[i][2];
+               message[2] = 40;
+               midiout->sendMessage( &message );
+               cout << "MIDI-Event: " << Noten_Name[i] << "=OFF" << endl;
+            }
+         }
+      }
+      
+      if(read_serial_int(port_fd)!=250)
+      {
+         cout << "Synchronisationnsfehler zwischen Mac und Mikrokontroller" << endl;
+         //while(read_serial_int(port_fd)!=250);
+      }
+      
    }
-    */
    
-   
-   SLEEP( 500 );
-   
-   // Control Change: 176, 7, 40
-   message[0] = 176;
-   message[1] = 7;
-   message[2] = 40;
-   midiout->sendMessage( &message );
-   
-   SLEEP( 500 );
+
    
    // Sysex: 240, 67, 4, 3, 2, 247
    message[0] = 240;
@@ -405,7 +408,7 @@ int init_serial_input (char * port) {
    options.c_cflag |= (CLOCAL | CREAD | CS8);
    // disable parity generation and 2 stop bits
    options.c_cflag &= ~(PARENB | CSTOPB);
-   cfsetspeed(&options, B115200);
+   cfsetspeed(&options, B230400);
    // set the new port options
    tcsetattr(fd, TCSANOW, &options);
    return fd;
