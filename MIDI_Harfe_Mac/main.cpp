@@ -7,6 +7,7 @@
 //*****************************************//
 
 #include <iostream>
+#include <math.h>
 #include <cstdlib> //ermöglicht system()
 #include "RtMidi.h"
 #include <fcntl.h>
@@ -15,6 +16,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <Carbon/Carbon.h>
 
 #include "CoreFoundation/CoreFoundation.h"
 
@@ -83,12 +85,47 @@ string Config_Portnamen="MIDI_Harfe";
 unsigned char Config_PortNr=0;
 vector<signed char> Config_Transpose;
 
-vector<bool> Note_Play;
+vector<bool> Note_Play { 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0 };
+
+
+
+#include <sys/select.h>
+#include <stdio.h>
+
+int kbhit(void) {
+   struct timeval tv;
+   fd_set fd;
+   
+   tv.tv_sec = 0;
+   tv.tv_usec = 0;
+   FD_ZERO(&fd);
+   FD_SET(0, &fd);
+   
+   if(-1 != select(1, &fd, NULL, NULL, &tv)) {
+      if(FD_ISSET(0, &fd)) {
+         return 1;
+      }
+      
+   }
+   
+   return 0;
+}
+
+
+
+char code_ascii;
 
 
 
 int main( void )
 {
+
+   while (!kbhit()) {
+      code_ascii = getchar();
+      cout << "Hallo";
+      putchar(code_ascii);
+   }
+   
    cout << endl <<"Function call: int main(void)" << endl << endl;
    CFBundleRef mainBundle = CFBundleGetMainBundle();
    CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
@@ -132,6 +169,7 @@ int main( void )
    }
    
    
+
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
    int ir;
@@ -153,11 +191,24 @@ int main( void )
    
    // Call function to select port.
    try {
-      if ( chooseMidiPort( midiout ) == false ) goto cleanup;
+      if ( chooseMidiPort( midiout ) == false )
+      {
+         cout << "Ein unbekanter Fehler beim erstellen des MIDI Output Ports ist aufgetreten." << endl;
+         cout << "Bitte überprüfgen Sie Ihre Hard- und Software. Wir können ja nicht wissen was Apple in zukunft an CoreMIDI ändern wird." << endl;
+         cout << "Bitte melden Sie diesen Fehler per Mail an nico@bosshome.ch nur so kann er behoben werden" << endl;
+         cout << "Benötigte Informationen: Betriebssystemversion sowie optional einige Hardwarweangeben" << endl;
+         // Clean up
+         delete midiout;
+      }
    }
    catch ( RtMidiError &error ) {
+       cout << "Folgender Fehler ist afgetreten:" << endl;
       error.printMessage();
-      goto cleanup;
+      cout << "Bitte überprüfgen Sie Ihre Hard- und Software. Wir können ja nicht wissen was Apple in zukunft an CoreMIDI ändern wird." << endl;
+      cout << "Bitte melden Sie diesen Fehler per Mail an nico@bosshome.ch nur so kann er behoben werden" << endl;
+      cout << "Benötigte Informationen: Betriebssystemversion, Fehlerinformationen sowie optional einige Hardwarweangeben" << endl;
+      // Clean up
+      delete midiout;
    }
    
    // Send out a series of MIDI messages.
@@ -183,6 +234,11 @@ int main( void )
    int Serial_Temp;
    
    int i;
+   
+   EventTypeSpec keyPressedEventType;
+   keyPressedEventType.eventClass=kEventRawKeyDown;
+
+   
    for(i=0;i<=35;i++)
    {
       if(Note_Play[i]==false)
@@ -195,16 +251,28 @@ int main( void )
                // Control Change: 176, 7, 100 (volume)
                message[0] = 176;
                message[1] = 7;
-               message.push_back( Serial_Temp );
+               if(Serial_Temp<=Config_Volume_min)
+               {
+                  message.push_back(0);
+                  cout << "Warnung: Durch die Konfiguration Minimalspektrum > Notenspezifischer Startwert wurde einen Lautloser Ton gesendet!\n";
+               }
+               else if(Serial_Temp>=Config_Volume_max)
+               {
+                  message.push_back(127);
+               }
+               else
+               {
+                  message.push_back(roundf(127/Config_Volume_steps*(Serial_Temp-Config_Volume_min)/(Config_Volume_max-Config_Volume_min))*Config_Volume_steps);
+               }
+               cout << "MIDI-Event: Volume=" << message[2] << "        midiout->sendMessage( " << &message <<" );\n";
                midiout->sendMessage( &message );
-               cout << "MIDI-Event: Volume=" << i << "        midiout->sendMessage( " << &message <<" );" ;
             }
             // Note On: 144, i, 90
             message[0] = 144;
-            message[1] = i;
+            message[1] = i+Config_Master_Transpose+Config_Note[i][2];
             message[2] = 90;
-            midiout->sendMessage( &message );
-            cout << "MIDI-Event: " << Noten_Name[i] << "=ON";
+            //midiout->sendMessage( &message );
+            cout << "MIDI-Event: " << Noten_Name[i] << "=ON\n";
          }
       } else {
          Serial_Temp=read_serial_int(port_fd);
@@ -212,15 +280,16 @@ int main( void )
          {
             // Note Off: 128, i, 40
             message[0] = 128;
-            message[1] = i;
+            message[1] = i+Config_Master_Transpose+Config_Note[i][2];
             message[2] = 40;
-            midiout->sendMessage( &message );
-            cout << "MIDI-Event: " << Noten_Name[i] << "=OFF";
+            //midiout->sendMessage( &message );
+            cout << "MIDI-Event: " << Noten_Name[i] << "=OFF\n";
          }
       }
    }
-
    
+
+   /*
    for(i=109;i>=30;i--)
    {
       // Note On: 144, 64, 90
@@ -237,6 +306,7 @@ int main( void )
       message[2] = 40;
       midiout->sendMessage( &message );
    }
+    */
    
    
    SLEEP( 500 );
@@ -259,7 +329,6 @@ int main( void )
    midiout->sendMessage( &message );
    
    // Clean up
-cleanup:
    delete midiout;
    
    return 0;
@@ -270,19 +339,17 @@ cleanup:
 
 bool chooseMidiPort( RtMidiOut *rtmidi )
 {
-   cout << "\nWould you like to open a virtual output port? [y/N] ";
-   
-   string keyHit;
-   getline( cin, keyHit );
-   if ( keyHit == "y" ) {
-      rtmidi->openVirtualPort();
+   //getline( cin, keyHit );
+   if ( Config_use_Virtual_Port == true ) {
+      rtmidi->openVirtualPort(Config_Portnamen);
       return true;
    }
    
    string portName;
    unsigned int i = 0, nPorts = rtmidi->getPortCount();
    if ( nPorts == 0 ) {
-      cout << "No output ports available!" << endl;
+      cout << "Kein MIDI output Ports verfügbar!" << endl;
+      cout << "Es wird nun einen Virtueller benutzt." << endl;
       return false;
    }
    
@@ -539,14 +606,14 @@ void ConfigFile_Create(string configFile) {
    
    ofstream outfile (configFile);
    
-   outfile << "##############################################" << endl;
-   outfile << "#                                            #" << endl;
-   outfile << "#  MIDI_Harfe Config File                    #" << endl;
-   outfile << "#  von Nico Bosshard (c)2016                 #" << endl; 
-   outfile << "#                                            #" << endl;
-   outfile << "#  MIDI Harfen Empfänger für MacOSX.         #" << endl;
-   outfile << "#                                            #" << endl;
-   outfile << "##############################################" << endl;
+   outfile << "##############################################\n";
+   outfile << "#                                            #\n";
+   outfile << "#  MIDI_Harfe Config File                    #\n";
+   outfile << "#  von Nico Bosshard (c)2016                 #\n";
+   outfile << "#                                            #\n";
+   outfile << "#  MIDI Harfen Empfänger für MacOSX.         #\n";
+   outfile << "#                                            #\n";
+   outfile << "##############################################\n";
    
    outfile << endl << endl;
    
@@ -559,8 +626,8 @@ void ConfigFile_Create(string configFile) {
    outfile << "# Anzahl an verschiedenemn Lautstärken. Das maximum des MIDI Standarts beträgt 128. Jedoch kann durch runden z.B. auch auf 9 Lautstärken (ppp - pp - p - mp - m.v. - mf - f - ff - fff) gerundet werden. In manchen fällen ist dies vorteilhaft, jedoch können die meisten Musikbearbeitungsprogramme dies auch noch nachträglich machen." << endl;
    outfile << "Anz. Lautstärken=128" << endl << endl;
    
-   outfile << "# Durch die folgende Werte kann eingeschränkt werden, in welchem Messbereich sich die Lautstärkenspektrum von 0-128 befinden. Die werte 15-250 bedeuten z.B. dass Alle Messwerte von >=15 befinden Lautlos sind und alle von <=250 den Maximalwert von 128 haben. Der Messbereich reicht von 0 bis 255." << endl;
-   outfile << "minimalspektrum=250" << endl;
+   outfile << "# Durch die folgende Werte kann eingeschränkt werden, in welchem Messbereich sich die Lautstärkenspektrum von 0-128 befinden. Die werte 15-250 bedeuten z.B. dass Alle Messwerte von >= 15 befinden Lautlos sind und alle von <=250 den Maximalwert von 128 haben. Der Messbereich reicht von 0 bis 255. Achtung: Durch Minimalspektrum > Notenspezifischer Startwert können Lautlose Töne gesendet werden." << endl;
+   outfile << "Minimalspektrum=250" << endl;
    outfile << "Maximalspektrum=15" << endl << endl;
    
    outfile << "# Durch die transpose (Halbtonverschiebung) können alle Töne gleichzeitig verschoben werden. \"Master Transpose=-12\" bewirkt z.B. dass alle töne um eine Oktave nach unten versetzt werden." << endl;
@@ -580,7 +647,7 @@ void ConfigFile_Create(string configFile) {
    outfile << "a=0" << endl;
    outfile << "h=0" << endl;
    
-   outfile << endl << endl;
+   outfile << endl << endl  << endl;
    
    outfile << "# Seitenspezifische Einstellungen:" << endl;
    outfile << "# Start: Ab welchem Messwert (0-255) soll der Ton erkannt werden? Achtung: Zu kleine Werte >15 vehrursachen Daueton sowie Messfehler und werden deswegen akzeptiert. Ist der wert aber zu hoch könte es sein dass leiose töne nicht m,ehr erkannt werden. Stopwerte >15 werden infolge eines unerwünschten Dauertohns auch nicht akzeptiert." << endl;
