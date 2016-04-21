@@ -148,7 +148,7 @@ int main( void )
    }
    
    
-
+   
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
    int ir;
@@ -181,7 +181,7 @@ int main( void )
       }
    }
    catch ( RtMidiError &error ) {
-       cout << "Folgender Fehler ist afgetreten:" << endl;
+      cout << "Folgender Fehler ist afgetreten:" << endl;
       error.printMessage();
       cout << "Bitte überprüfgen Sie Ihre Hard- und Software. Wir können ja nicht wissen was Apple in zukunft an CoreMIDI ändern wird." << endl;
       cout << "Bitte melden Sie diesen Fehler per Mail an nico@bosshome.ch nur so kann er behoben werden" << endl;
@@ -222,30 +222,31 @@ int main( void )
    while(true)
    {
       /*
-      // Sysex: 240, 67, 4, 3, 2, 247
-      message[0] = 240;
-      message[1] = 67;
-      message[2] = 4;
-      message.push_back( 3 );
-      message.push_back( 2 );
-      message.push_back( 247 );
-      midiout->sendMessage( &message );
+       // Sysex: 240, 67, 4, 3, 2, 247
+       message[0] = 240;
+       message[1] = 67;
+       message[2] = 4;
+       message.push_back( 3 );
+       message.push_back( 2 );
+       message.push_back( 247 );
+       midiout->sendMessage( &message );
        
-      cout << "Hallo" << endl;
-      // Note On: 144, i, 90
-      message[0] = 144;
-      message[1] = 64;
-      message[2] = 90;
-      midiout->sendMessage( &message );
-      SLEEP(100);
-      // Note Off: 128, i, 40
-      message[0] = 128;
-      message[1] = 64;
-      message[2] = 40;
-      midiout->sendMessage( &message );
-      SLEEP(100);
-        */
+       cout << "Hallo" << endl;
+       // Note On: 144, i, 90
+       message[0] = 144;
+       message[1] = 64;
+       message[2] = 90;
+       midiout->sendMessage( &message );
+       SLEEP(100);
+       // Note Off: 128, i, 40
+       message[0] = 128;
+       message[1] = 64;
+       message[2] = 40;
+       midiout->sendMessage( &message );
+       SLEEP(100);
+       */
       //SLEEP(5);
+      
       
       for(i=0;i<=35;i++)
       {
@@ -320,7 +321,7 @@ int main( void )
       
    }
    
-
+   
    
    // Sysex: 240, 67, 4, 3, 2, 247
    message[0] = 240;
@@ -712,7 +713,7 @@ bool Update_Funktion(void)
          else if (line == "?2")
          {
             cin >> Antwort;
-            if(Antwort=="Nein" or Antwort=="nein" or Antwort=="No" or Antwort=="no")
+            if(Antwort=="Nein" or Antwort=="nein" or Antwort=="No" or Antwort=="no" )
             {
                break;
             }
@@ -725,6 +726,11 @@ bool Update_Funktion(void)
                break;
             }
             
+            if (line[0] == '#')
+            {
+               line.erase(line.begin(), line.begin()+1);
+               SLEEP(atoi(line.c_str()));
+            }
             else if (line == "End")
             {
                exit(0);
