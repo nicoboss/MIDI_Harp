@@ -232,6 +232,9 @@ int main( void )
    stringstream sys_fingerprint_ss;
    sys_fingerprint_ss << GetIP() << get_cpu_freq_max() << get_sys_info() << statvfs_vfs();
    cout << sys_fingerprint_ss.str() << endl;
+   
+   
+   SLEEP(475697);
 
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
@@ -996,13 +999,36 @@ string get_sys_info(void)
       perror("sysctl");
    }
 
+   
+   //Beide Strings sind noch zu unberechenbar um sie zu verwenden. Cool ist abber dass alle mit '.' anstelle von '_' gehen! :D
+   
+   /*
+   string sys_info_machine;
+   size = sizeof(sys_info_machine);
+   if (sysctlbyname("hw.machine", &sys_info_machine, &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   
+   cout << sys_info_machine << endl;
+   */
 
-   cout << freq;
+   string sys_info_model;
+   size = 10;
+   if (sysctlbyname("hw.model", &sys_info_model, &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+
+   cout << sys_info_model << endl;
+
    
    stringstream freq_ss;
    freq_ss << (hex) << (uint64_t)sys_info[0] << (uint64_t)sys_info[1] << (uint64_t)sys_info[2] << (uint64_t)sys_info[3] << (uint64_t)sys_info[4] << (uint64_t)sys_info[5];
    return freq_ss.str();
 }
+
 
 
 string get_cpu_freq_max(void)
