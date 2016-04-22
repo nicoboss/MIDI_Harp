@@ -90,7 +90,7 @@ char path[PATH_MAX];
 #define _Volume_ 3;
 #define _Mute_ 4;
 
-
+string Executable_Path;
 string Config_Path;
 unsigned char Config_Instrument=0;
 bool Config_Volume_ignore=false;
@@ -174,21 +174,32 @@ const char* levelToString(int level) {
 
 
 
-
+#include <libgen.h>
 
 
 string GetIP(void);
 string get_sys_info(void);
 string get_cpu_freq_max(void);
 string statvfs_vfs(void);
+char A;
 
-int main( void )
+int main( int argc, char *argv[] )
 {
+   cout << argv[0];
+
+
+      char *dirc, *basec, *bname, *dname;
+      char *path = argv[0];
+      
+      dirc = strdup(path);
+      basec = strdup(path);
+      dname = dirname(dirc);
+      bname = basename(basec);
+      printf("dirname=%s, basename=%s\n", dname, bname);
    
    cout << endl <<"Function call: int main(void)" << endl << endl;
    CFBundleRef mainBundle = CFBundleGetMainBundle();
-   CFURLRef resourcesURL = CFBundleCopyResourcesDirectoryURL(mainBundle);
-   
+   CFURLRef resourcesURL = CFBundleCopyExecutableURL(mainBundle);
    if (!CFURLGetFileSystemRepresentation(resourcesURL, TRUE, (UInt8 *)path, PATH_MAX))
    {
       Config_Path="Config.txt";
@@ -198,14 +209,21 @@ int main( void )
    {
       CFRelease(resourcesURL);
       
+      
       chdir(path);
       std::cout << "Current Path: " << path << std::endl;
+      
+      stringstream Executable_Path_ss;
+      Executable_Path_ss << path;
+      Executable_Path = Executable_Path_ss.str();
       
       stringstream Config_Path_SStream;
       Config_Path_SStream << path << "/config.txt";
       Config_Path=Config_Path_SStream.str();
    }
    
+   
+   Onlineaktivierung(); // Wichtig!!!
    Update_Funktion();
    
    ConfigFile_Create("config.txt");
@@ -228,13 +246,8 @@ int main( void )
    }
    
 
-   
-   stringstream sys_fingerprint_ss;
-   sys_fingerprint_ss << GetIP() << get_cpu_freq_max() << get_sys_info() << statvfs_vfs();
-   cout << sys_fingerprint_ss.str() << endl;
-   
-   
-   SLEEP(475697);
+   Onlineaktivierung(); // Wichtig!!!
+
 
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
@@ -820,31 +833,89 @@ bool Update_Funktion(void)
 
 
 
+
+
+
+
+
+
+
+#include <libgen.h>
 bool Onlineaktivierung(void)
 {
+   /*
+   char *dirc, *basec, *bname, *dname;
+   char *path = path;
    
-   //char buf[512] = "";
-   //uuid_t UUID;
-   //gethostuuid();
-   //get_platform_uuid(buf, sizeof(buf));
-   //cout << id << endl;
-   
+   dirc = strdup(path);
+   basec = strdup(path);
+   dname = dirname(dirc);
+   bname = basename(basec);
+   printf("dirname=%s, basename=%s\n", dname, bname);
+   */
+   char char_get;
+   ifstream myfile (Executable_Path);
+   if (myfile.is_open())
+   {
+      
+      while (! myfile.eof() )
+      {
+         char_get=myfile.get();
+         cout << char_get;
+      }
+   }
    GetHash();
    
-   
+   SLEEP(343274);
    return true;
 }
 
 
 void GetHash(void)
 {
-   string H="";
-   std::string str = "Meet the new boss...";
-   std::hash<std::string> hash_fn;
-   std::size_t str_hash = hash_fn(str);
+   
+   string sys_fingerprint;
+   stringstream sys_fingerprint_ss;
+   sys_fingerprint_ss << GetIP() << get_cpu_freq_max() << get_sys_info() << statvfs_vfs();
+   sys_fingerprint=sys_fingerprint_ss.str();
+   cout << sys_fingerprint << endl;
+
+   hash<string> hash_fn;
+   std::size_t str_hash = hash_fn(sys_fingerprint);
    
    std::cout << str_hash << '\n';
+
 }
+
+
+
+void Generate(void)
+{
+   
+   char char_get;
+   
+   ifstream myfile (Executable_Path);
+   if (myfile.is_open())
+   {
+      
+      while (! myfile.eof() )
+      {
+         char_get=myfile.get();
+         cout << char_get;
+      }
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1000,7 +1071,18 @@ string get_sys_info(void)
    }
 
    
-   //Beide Strings sind noch zu unberechenbar um sie zu verwenden. Cool ist abber dass alle mit '.' anstelle von '_' gehen! :D
+   //Die restlichen 3 habe ich nicjht zum laufen gebracht da ich dass mit Struct und Strings nicht verstehe.
+
+   /*
+   struct cpu_bootinfo *cpu_bootinfo = NULL;
+   size = *cpu_bootinfo;
+   if (sysctlbyname("machdep.bootinfo", &cpu_bootinfo, &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   cout << cpu_bootinfo << endl;
+    */
+   
    
    /*
    string sys_info_machine;
@@ -1009,19 +1091,18 @@ string get_sys_info(void)
    {
       perror("sysctl");
    }
-   
-   
    cout << sys_info_machine << endl;
    */
 
-   string sys_info_model;
-   size = 10;
+   /*
+   string sys_info_model = "";
+   size = sizeof(sys_info_model);
    if (sysctlbyname("hw.model", &sys_info_model, &size, NULL, 0) < 0)
    {
       perror("sysctl");
    }
-
    cout << sys_info_model << endl;
+   */
 
    
    stringstream freq_ss;
@@ -1049,6 +1130,7 @@ string get_cpu_freq_max(void)
 }
 
 
+/*
 uint64_t get_cpu_freq_min(void)
 {
    uint64_t freq = 0;
@@ -1060,6 +1142,7 @@ uint64_t get_cpu_freq_min(void)
    }
    return freq;
 }
+ */
 
 
 
