@@ -20,6 +20,8 @@
 
 #include "CoreFoundation/CoreFoundation.h"
 
+
+
 using namespace std;
 
 //#define USB_SERIAL_PORT "/dev/tty.usbserial-0000103D" // (OSX Power Book)
@@ -37,6 +39,13 @@ bool ConfigFile_Read(string configFile);
 void ConfigFile_Create(string configFile);
 
 bool Update_Funktion(void);
+
+bool Onlineaktivierung(void);
+void GetHash(void);
+void get_platform_uuid(char * buf, int bufSize);
+
+
+
 
 // Platform-dependent sleep routines.
 #if defined(__WINDOWS_MM__)
@@ -101,6 +110,77 @@ vector<bool> Note_Play { 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,
 char code_ascii;
 
 
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <ifaddrs.h>
+#include <netinet/in.h>
+#include <net/if.h>
+#ifdef __linux__
+#    include <sys/ioctl.h>
+#    include <netinet/in.h>
+#    include <unistd.h>
+#    include <string.h>
+
+//    Match Linux to FreeBSD
+#    define AF_LINK AF_PACKET
+#else
+#    include <net/if_dl.h>
+#endif
+
+#include <stdio.h>
+#include <stdlib.h>
+
+const sockaddr_in* castToIP4(const sockaddr* addr) {
+   if (addr == NULL) {
+      return NULL;
+   } else if (addr->sa_family == AF_INET) {
+      // An IPv4 address
+      return reinterpret_cast<const sockaddr_in*>(addr);
+   } else {
+      // Not an IPv4 address
+      return NULL;
+   }
+}
+
+
+/** Assumes addr is in host byte order */
+void printIP(const char* name, int addr) {
+   printf("%s = %3d.%3d.%3d.%3d\n", name, (addr >> 24) & 0xFF, (addr >> 16) & 0xFF,
+          (addr >> 8) & 0xFF, addr & 0xFF);
+}
+
+
+void printIP(const char* name, const sockaddr_in* addr) {
+   if (addr != NULL) {
+      printIP(name, ntohl(addr->sin_addr.s_addr));
+   }
+}
+
+const char* levelToString(int level) {
+   switch(level) {
+      case AF_INET:
+         return "Internet (AF_INET)";
+         
+      case AF_LINK:
+         return "Link (AF_LINK/AF_PACKET)";
+      default:
+         return "Other";
+   }
+}
+
+
+
+
+
+
+
+
+
+
+string GetIP(void);
+string get_sys_info(void);
+string get_cpu_freq_max(void);
+string statvfs_vfs(void);
 
 int main( void )
 {
@@ -147,8 +227,12 @@ int main( void )
       }
    }
    
+
    
-   
+   stringstream sys_fingerprint_ss;
+   sys_fingerprint_ss << GetIP() << get_cpu_freq_max() << get_sys_info() << statvfs_vfs();
+   cout << sys_fingerprint_ss.str() << endl;
+
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
    int ir;
@@ -219,34 +303,11 @@ int main( void )
    int Volume_Temp;
    int i;
    
+   
    while(true)
    {
-      /*
-       // Sysex: 240, 67, 4, 3, 2, 247
-       message[0] = 240;
-       message[1] = 67;
-       message[2] = 4;
-       message.push_back( 3 );
-       message.push_back( 2 );
-       message.push_back( 247 );
-       midiout->sendMessage( &message );
-       
-       cout << "Hallo" << endl;
-       // Note On: 144, i, 90
-       message[0] = 144;
-       message[1] = 64;
-       message[2] = 90;
-       midiout->sendMessage( &message );
-       SLEEP(100);
-       // Note Off: 128, i, 40
-       message[0] = 128;
-       message[1] = 64;
-       message[2] = 40;
-       midiout->sendMessage( &message );
-       SLEEP(100);
-       */
-      //SLEEP(5);
-      
+   
+      SLEEP( 500 );
       
       for(i=0;i<=35;i++)
       {
@@ -753,3 +814,252 @@ bool Update_Funktion(void)
    
    return true;
 }
+
+
+
+bool Onlineaktivierung(void)
+{
+   
+   //char buf[512] = "";
+   //uuid_t UUID;
+   //gethostuuid();
+   //get_platform_uuid(buf, sizeof(buf));
+   //cout << id << endl;
+   
+   GetHash();
+   
+   
+   return true;
+}
+
+
+void GetHash(void)
+{
+   string H="";
+   std::string str = "Meet the new boss...";
+   std::hash<std::string> hash_fn;
+   std::size_t str_hash = hash_fn(str);
+   
+   std::cout << str_hash << '\n';
+}
+
+
+
+/**
+ http://cs.williams.edu/~morgan/code/C++/getip.cpp
+ 
+ @file getip.cpp
+ 
+ @author Morgan McGuire, morgan@cs.williams.edu
+ @date   November 2008
+ 
+ Enumerates the "interfaces" on a Unix (e.g. OS X, Linux, FreeBSD)
+ system.  This includes what we consider to be the Ethernet and
+ Wireless adapters.
+ 
+ This code will:
+ 
+ - get the IP address
+ - get the broadcast address
+ - get the subnet mask
+ 
+ and print them for all such devices.  This is similar functionality
+ to the Unix program ifconfig.  The purpose of this program is to
+ demonstrate how to access that functionality within a C program.
+ 
+ */
+
+string GetIP(void) {
+   
+   stringstream MAC_address_ss;
+   string MAC_address;
+   
+   // Head of the interface address linked list
+   ifaddrs* ifap = NULL;
+   
+   int r = getifaddrs(&ifap);
+   
+   if (r != 0) {
+      // Non-zero return code means an error
+      printf("return code = %d\n", r);
+      exit(r);
+   }
+   
+   ifaddrs* current = ifap;
+   
+   if (current == NULL) {
+      printf("No interfaces found\n");
+   }
+   
+   while (current != NULL) {
+      
+      const sockaddr_in* interfaceAddress = castToIP4(current->ifa_addr);
+      const sockaddr_in* broadcastAddress = castToIP4(current->ifa_dstaddr);
+      const sockaddr_in* subnetMask       = castToIP4(current->ifa_netmask);
+      
+      printf("Interface %s", current->ifa_name);
+      if (current->ifa_addr != NULL) {
+         printf(" %s", levelToString(current->ifa_addr->sa_family));
+      }
+      printf("\nStatus    = %s\n", (current->ifa_flags & IFF_UP) ? "Online" : "Down");
+      printIP("IP       ", interfaceAddress);
+      printIP("Broadcast", broadcastAddress);
+      printIP("Subnet   ", subnetMask);
+      
+      // The MAC address and the interfaceAddress come in as
+      // different interfaces with the same name.
+      
+      if ((current->ifa_addr != NULL) && (current->ifa_addr->sa_family == AF_LINK)) {
+#           ifdef __linux__
+         // Linux
+         struct ifreq ifr;
+         
+         int fd = socket(AF_INET, SOCK_DGRAM, 0);
+         
+         ifr.ifr_addr.sa_family = AF_INET;
+         strcpy(ifr.ifr_name, current->ifa_name);
+         ioctl(fd, SIOCGIFHWADDR, &ifr);
+         close(fd);
+         
+         uint8_t* MAC = reinterpret_cast<uint8_t*>(ifr.ifr_hwaddr.sa_data);
+         
+#else
+         // Posix/FreeBSD/Mac OS
+         sockaddr_dl* sdl = (struct sockaddr_dl *)current->ifa_addr;
+         uint8_t* MAC = reinterpret_cast<uint8_t*>(LLADDR(sdl));
+#endif
+         printf("MAC       = %02x:%02x:%02x:%02x:%02x:%02x\n", MAC[0], MAC[1], MAC[2], MAC[3], MAC[4], MAC[5]);
+         
+         if (MAC[0]>0 or MAC[1]>0 or MAC[2]>0 or MAC[3]>0 or MAC[4]>0 or MAC[5]>0)
+         {
+            MAC_address_ss << hex << (int)MAC[0] << (int)MAC[1] << (int)MAC[2] << (int)MAC[3] << (int)MAC[4] << (int)MAC[5];
+            MAC_address = MAC_address_ss.str();
+            cout << MAC_address;
+         }
+      }
+      
+      printf("\n");
+      
+      current = current->ifa_next;
+   }
+   
+   freeifaddrs(ifap);
+   ifap = NULL;
+   
+   
+   return MAC_address;
+   
+}
+
+
+
+
+
+#include <stdio.h>
+#include <stdint.h>
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
+string get_sys_info(void)
+{
+   uint64_t freq = 0;
+   uint64 sys_info[] = {0,0,0,0,0,0};
+   size_t size = sizeof(freq);
+   
+   if (sysctlbyname("hw.memsize", &sys_info[0], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   if (sysctlbyname("hw.ncpu", &sys_info[1], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   if (sysctlbyname("hw.physicalcpu_max", &sys_info[2], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   if (sysctlbyname("hw.logicalcpu_max", &sys_info[3], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   if (sysctlbyname("hw.tbfrequency", &sys_info[4], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   if (sysctlbyname("hw.busfrequency_max", &sys_info[5], &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+
+
+   cout << freq;
+   
+   stringstream freq_ss;
+   freq_ss << (hex) << (uint64_t)sys_info[0] << (uint64_t)sys_info[1] << (uint64_t)sys_info[2] << (uint64_t)sys_info[3] << (uint64_t)sys_info[4] << (uint64_t)sys_info[5];
+   return freq_ss.str();
+}
+
+
+string get_cpu_freq_max(void)
+{
+   uint64_t freq = 0;
+   size_t size = sizeof(freq);
+   
+   if (sysctlbyname("hw.cpufrequency_max", &freq, &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   
+   
+   stringstream cpu_freq_max_ss;
+   cpu_freq_max_ss << (hex) << (unsigned long)freq;
+   
+   return cpu_freq_max_ss.str();
+}
+
+
+uint64_t get_cpu_freq_min(void)
+{
+   uint64_t freq = 0;
+   size_t size = sizeof(freq);
+   
+   if (sysctlbyname("hw.cpufrequency_min", &freq, &size, NULL, 0) < 0)
+   {
+      perror("sysctl");
+   }
+   return freq;
+}
+
+
+
+#include <sys/statvfs.h>
+
+
+string statvfs_vfs( void )
+{
+   struct statvfs vfs;
+   
+   //printf("\tf_bsize: %ld\n",  (long) vfs.f_bsize);
+   //printf("\tf_frsize: %ld\n", (long) vfs.f_frsize);
+   //printf("\tf_blocks: %lu\n", (unsigned long) vfs.f_blocks);
+   //printf("\tf_bfree: %lu\n",  (unsigned long) vfs.f_bfree);
+   //printf("\tf_bavail: %lu\n", (unsigned long) vfs.f_bavail);
+   //printf("\tf_files: %lu\n",  (unsigned long) vfs.f_files);
+   //printf("\tf_ffree: %lu\n",  (unsigned long) vfs.f_ffree);
+   //printf("\tf_favail: %lu\n", (unsigned long) vfs.f_favail);
+   //printf("\tf_fsid: %#lx\n",  (unsigned long) vfs.f_fsid);
+   //printf("\tf_namemax: %#lx\n",  (unsigned long) vfs.f_namemax);
+   
+   stringstream statvfs_vfs_ss;
+   statvfs_vfs_ss <<  (hex) << (unsigned long) vfs.f_fsid << (unsigned long) vfs.f_namemax;
+   
+   
+   return statvfs_vfs_ss.str();
+}
+
+
