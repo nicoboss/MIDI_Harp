@@ -41,7 +41,7 @@ void ConfigFile_Create(string configFile);
 bool Update_Funktion(void);
 
 bool Onlineaktivierung(void);
-void GetHash(void);
+string GetHash(void);
 void get_platform_uuid(char * buf, int bufSize);
 
 
@@ -795,17 +795,7 @@ bool Onlineaktivierung(void)
    bname = basename(basec);
    printf("dirname=%s, basename=%s\n", dname, bname);
    */
-   char char_get;
-   ifstream myfile (Executable_Path);
-   if (myfile.is_open())
-   {
-      
-      while (! myfile.eof() )
-      {
-         char_get=myfile.get();
-         cout << char_get;
-      }
-   }
+
    GetHash();
    
    SLEEP(343274);
@@ -813,7 +803,7 @@ bool Onlineaktivierung(void)
 }
 
 
-void GetHash(void)
+string GetHash(void)
 {
    
    string sys_fingerprint;
@@ -823,18 +813,26 @@ void GetHash(void)
    cout << sys_fingerprint << endl;
 
    hash<string> hash_fn;
-   std::size_t str_hash = hash_fn(sys_fingerprint);
-   
-   std::cout << str_hash << '\n';
+   std::size_t sys_hash = hash_fn(sys_fingerprint);
+   std::size_t hash_of_hash = hash_fn(sys_fingerprint);
 
+   stringstream hash_ss;
+   hash_ss << sys_hash << hash_of_hash;
+   
+   string hash_finish;
+   hash_finish = hash_ss.str();
+   
+   std::cout << hash_finish << '\n';
+
+   return hash_finish;
 }
 
 
 
 void Generate(void)
 {
-   
    char char_get;
+   string hash=GetHash();
    
    ifstream myfile (Executable_Path);
    if (myfile.is_open())
@@ -846,6 +844,7 @@ void Generate(void)
          cout << char_get;
       }
    }
+   
 }
 
 
@@ -1003,9 +1002,9 @@ string statvfs_vfs( void )
 {
    struct statvfs vfs;
    
-   //printf("\tf_bsize: %ld\n",  (long) vfs.f_bsize);
+   printf("\tf_bsize: %ld\n",  (long) vfs.f_bsize);
    //printf("\tf_frsize: %ld\n", (long) vfs.f_frsize);
-   //printf("\tf_blocks: %lu\n", (unsigned long) vfs.f_blocks);
+   printf("\tf_blocks: %lu\n", (unsigned long) vfs.f_blocks);
    //printf("\tf_bfree: %lu\n",  (unsigned long) vfs.f_bfree);
    //printf("\tf_bavail: %lu\n", (unsigned long) vfs.f_bavail);
    //printf("\tf_files: %lu\n",  (unsigned long) vfs.f_files);
