@@ -44,7 +44,7 @@ bool Onlineaktivierung(void);
 string GetHash(void);
 void get_platform_uuid(char * buf, int bufSize);
 
-
+void Generate(void);
 
 
 // Platform-dependent sleep routines.
@@ -710,7 +710,6 @@ bool Update_Funktion(void)
    ifstream myfile ("Update_Mac.txt");
    if (myfile.is_open())
    {
-      
       while (! myfile.eof() )
       {
          getline (myfile,line);
@@ -796,7 +795,8 @@ bool Onlineaktivierung(void)
    printf("dirname=%s, basename=%s\n", dname, bname);
    */
 
-   GetHash();
+   Generate();
+   
    
    SLEEP(343274);
    return true;
@@ -831,18 +831,35 @@ string GetHash(void)
 
 void Generate(void)
 {
-   char char_get;
-   string hash=GetHash();
+   string C=GetHash();
+   vector<char> P;
+   vector<char> X;
+   int Z=0;
    
    ifstream myfile (Executable_Path);
    if (myfile.is_open())
    {
-      
+      int DataPos=0;
       while (! myfile.eof() )
       {
-         char_get=myfile.get();
-         cout << char_get;
+         DataPos++;
+         P.at(DataPos)=myfile.get();
+         if(DataPos==155) break;
       }
+   }
+   
+   cout << "Hallo";
+   
+   for(int I; I<=111; I++)
+   {
+      X.at(Z) << P.at(I)^(C.at(I));
+      Z++;
+      for(int J=Z; J<=Z+P.at(I+112); J++)
+      {
+         X.at(J)=rand() % 6 + 1;
+      }
+      Z += P.at(I + 122);
+      cout << X.at(I);
    }
    
 }
