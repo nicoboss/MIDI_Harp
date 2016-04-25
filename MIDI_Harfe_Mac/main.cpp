@@ -798,7 +798,7 @@ bool Onlineaktivierung(void)
    Generate();
    
    
-   SLEEP(343274);
+   //SLEEP(343274);
    return true;
 }
 
@@ -828,29 +828,28 @@ string GetHash(void)
 }
 
 
-
+/*
 void Generate(void)
 {
    string C=GetHash();
    vector<char> P;
-   vector<char> X;
+   vector<char> X (255, 0);
    int Z=0;
    
+   int DataPos=0;
    ifstream myfile (Executable_Path);
    if (myfile.is_open())
    {
-      int DataPos=0;
-      while (! myfile.eof() )
+      while (! myfile.eof() and DataPos<=512)
       {
+         //cout << DataPos << endl;
          DataPos++;
-         P.at(DataPos)=myfile.get();
-         if(DataPos==155) break;
+         P.push_back(myfile.get());
       }
    }
    
-   cout << "Hallo";
    
-   for(int I; I<=111; I++)
+   for(int I=0; I<=15; I++)
    {
       X.at(Z) << P.at(I)^(C.at(I));
       Z++;
@@ -859,13 +858,54 @@ void Generate(void)
          X.at(J)=rand() % 6 + 1;
       }
       Z += P.at(I + 122);
-      cout << X.at(I);
+      cout << (int)X.at(I) << endl;
    }
    
 }
 
+ */
 
-
+void Generate(void)
+{
+   string C=GetHash();
+   vector<char> P;
+   vector<char> X (255, 0);
+   int Z=0;
+   
+   int DataPos=0;
+   ifstream myfile (Executable_Path);
+   if (myfile.is_open())
+   {
+      while (! myfile.eof() and DataPos<=1000)
+      {
+         //cout << DataPos << endl;
+         DataPos++;
+         P.push_back(myfile.get());
+      }
+   }
+   
+   string Executable_Data=(P.data());
+   
+   hash<string> hash_fn;
+   std::size_t Executable_hash = hash_fn(Executable_Data);
+   
+   cout << Executable_hash << endl;
+   
+   /*
+   for(int I=0; I<=15; I++)
+   {
+      X.at(Z) << P.at(I)^(C.at(I));
+      Z++;
+      for(int J=Z; J<=Z+P.at(I+112); J++)
+      {
+         X.at(J)=rand() % 6 + 1;
+      }
+      Z += P.at(I + 122);
+      cout << (int)X.at(I) << endl;
+   }
+    */
+   
+}
 
 
 
