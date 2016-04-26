@@ -788,17 +788,75 @@ bool Update_Funktion(void)
 bool Onlineaktivierung(void)
 {
 
-   
    Generate();
-   Check();
+   if(Check()==false)
+   {
+      
+   }
    
    
    cout << A;
    //SLEEP(343274);
    return true;
 }
+Private Sub Registrierung()
 
-
+Application.DoEvents()
+Try
+Dim S As String = My.Computer.FileSystem.GetTempFileName()
+My.Computer.FileSystem.DeleteFile(S)
+My.Computer.Network.DownloadFile( _
+                                 "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
+Dim X As String = My.Computer.FileSystem.ReadAllText(S)
+If CInt(X.Split(";")(0)) > 0 Then
+If CInt(X.Split(";")(1)) > 0 Then
+Generate()
+Lizenz_Activated = True
+If Check() Then
+MsgBox("Der Schl¸ssel ist g¸ltig. Das Programm wurde erfolgreich aktiviert. " & _
+       "Sie d¸rfen diesen Schl¸ssel noch " & _
+       (CInt(X.Split(";")(1)) - 1) & _
+       " Mal f¸r eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
+       "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
+       "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
+       "Ihre Anzahl verbleibenden Aktivierungen um eins erhˆht werden.")
+Else
+Lizenz = ""
+MsgBox("Der Schl¸ssel ist g¸ltig. Das Programm konnte allerdings " & _
+       "nicht aktiviert werden. " & _
+       "Bitte ¸berpr¸fen Sie, ob der Installationsordner schreibgesch¸tzt ist. " & _
+       "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch", _
+       MsgBoxStyle.Exclamation)
+Me.Close()
+End If
+Else
+MsgBox("Ihr Schl¸ssel ist g¸ltig, aber die maximale Anzahl der " & _
+       "Aktivierungen f¸r diesen Schl¸ssel wurde ¸berschritten. " & _
+       "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " & _
+       "plausiebelr Begr¸ndung (z.B. 6 Computer, Merfache " & _
+       "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" & _
+       "grˆsseren Hardwair‰nderungen am Computer, Lizenzspeicherungsfehler " & _
+       "usw.) gratis erneute Lizenzen auf diesen Schl¸ssel zu erhalten " & _
+       "oder weitere zu erwerben.", MsgBoxStyle.Exclamation)
+Me.Close()
+End If
+Else
+Lizenz = ""
+MsgBox("Der Lizenzschl¸ssel ist ung¸ltig. Bitte ¸berpr¸fen Sie ihn auf " & _
+       "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
+       "Der Lizenzschl¸ssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
+       "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
+End If
+Catch ex As Exception
+Lizenz = ""
+MsgBox("Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung " &
+       "ist nur beim ersten Programmstart und nach jedem Update erforderlich. " & _
+       "Bitte ¸berpr¸fen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" & _
+       "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch", _
+       MsgBoxStyle.Critical)
+End Try
+'Me.Close()
+End Sub
 string GetHash(void)
 {
    hash<string> hash_fn;
@@ -910,11 +968,12 @@ bool Check(void)
    
    if(check_key_string == sys_hash)
    {
+      cout << "Activated!" << endl;
       Activated=true;
-      cout << "Activated!!!!!!!!!!!";
+      return true;
    }
    
-   return true;
+   return false;
 }
 
 
