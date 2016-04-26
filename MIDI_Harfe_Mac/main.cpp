@@ -17,6 +17,7 @@
 #include <sstream>
 #include <vector>
 #include <Carbon/Carbon.h>
+#include <sys/statvfs.h>
 
 #include "CoreFoundation/CoreFoundation.h"
 
@@ -42,9 +43,17 @@ bool Update_Funktion(void);
 
 bool Onlineaktivierung(void);
 string GetHash(void);
+string get_sys_info(void);
+string get_cpu_freq_max(void);
 void get_platform_uuid(char * buf, int bufSize);
 
 void Generate(void);
+bool Check(void);
+
+void get_platform_uuid(char * buf, int bufSize);
+
+void CopySerialNumber(CFStringRef *serialNumber);
+
 
 
 // Platform-dependent sleep routines.
@@ -104,12 +113,9 @@ unsigned char Config_PortNr=0;
 vector<signed char> Config_Transpose;
 
 vector<bool> Note_Play { 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0,0,0,0,0,0,0, 0 };
-
-
-
 char code_ascii;
 
-
+bool Activated=false;
 
 
 #include <stdio.h>
@@ -120,15 +126,12 @@ char code_ascii;
 #include <libgen.h>
 
 
-string get_sys_info(void);
-string get_cpu_freq_max(void);
-string statvfs_vfs(void);
+
 char A;
 
 int main( int argc, char *argv[] )
 {
    cout << argv[0];
-
 
       char *dirc, *basec, *bname, *dname;
       char *path = argv[0];
@@ -189,7 +192,6 @@ int main( int argc, char *argv[] )
    
 
    Onlineaktivierung(); // Wichtig!!!
-
 
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
@@ -781,23 +783,17 @@ bool Update_Funktion(void)
 
 
 
+
 #include <libgen.h>
 bool Onlineaktivierung(void)
 {
-   /*
-   char *dirc, *basec, *bname, *dname;
-   char *path = path;
-   
-   dirc = strdup(path);
-   basec = strdup(path);
-   dname = dirname(dirc);
-   bname = basename(basec);
-   printf("dirname=%s, basename=%s\n", dname, bname);
-   */
 
+   
    Generate();
+   Check();
    
    
+   cout << A;
    //SLEEP(343274);
    return true;
 }
@@ -805,108 +801,121 @@ bool Onlineaktivierung(void)
 
 string GetHash(void)
 {
+   hash<string> hash_fn;
    
    string sys_fingerprint;
    stringstream sys_fingerprint_ss;
-   sys_fingerprint_ss << get_cpu_freq_max() << get_sys_info() << statvfs_vfs();
+   sys_fingerprint_ss << get_cpu_freq_max() << get_sys_info();
    sys_fingerprint=sys_fingerprint_ss.str();
    cout << sys_fingerprint << endl;
-
-   hash<string> hash_fn;
-   std::size_t sys_hash = hash_fn(sys_fingerprint);
-   std::size_t hash_of_hash = hash_fn(sys_fingerprint);
-
-   stringstream hash_ss;
-   hash_ss << sys_hash << hash_of_hash;
    
-   string hash_finish;
-   hash_finish = hash_ss.str();
+   size_t sys_hash = hash_fn(sys_fingerprint);
+   cout << sys_hash << endl;
    
-   std::cout << hash_finish << '\n';
-
-   return hash_finish;
-}
-
-
-/*
-void Generate(void)
-{
-   string C=GetHash();
-   vector<char> P;
-   vector<char> X (255, 0);
-   int Z=0;
    
+   char buf[512] = "";
+   get_platform_uuid(buf, sizeof(buf));
+   cout << buf << endl;
+   
+   //CFStringRef serial_number;
+   //CopySerialNumber(&serial_number);
+   
+   string id_fingerprint;
+   stringstream id_fingerprint_ss;
+   id_fingerprint_ss  << buf;
+   id_fingerprint=id_fingerprint_ss.str();
+   cout << id_fingerprint << endl;
+
+   size_t id_hash = hash_fn(id_fingerprint);
+   cout << id_hash << endl;
+   
+   
+   vector<char> Executable_Data_D1;
+   vector<char> Executable_Data_D2;
+   vector<char> Executable_Data_D3;
+   
+
    int DataPos=0;
    ifstream myfile (Executable_Path);
    if (myfile.is_open())
    {
-      while (! myfile.eof() and DataPos<=512)
+      for (int i=0; i<100; i++)
       {
-         //cout << DataPos << endl;
-         DataPos++;
-         P.push_back(myfile.get());
+         Executable_Data_D1.push_back(myfile.get());
       }
-   }
-   
-   
-   for(int I=0; I<=15; I++)
-   {
-      X.at(Z) << P.at(I)^(C.at(I));
-      Z++;
-      for(int J=Z; J<=Z+P.at(I+112); J++)
+      
+      for (int i=100; i<1000; i++)
       {
-         X.at(J)=rand() % 6 + 1;
+         Executable_Data_D2.push_back(myfile.get());
       }
-      Z += P.at(I + 122);
-      cout << (int)X.at(I) << endl;
-   }
-   
-}
-
- */
-
-void Generate(void)
-{
-   string C=GetHash();
-   vector<char> P;
-   vector<char> X (255, 0);
-   int Z=0;
-   
-   int DataPos=0;
-   ifstream myfile (Executable_Path);
-   if (myfile.is_open())
-   {
+      
       while (! myfile.eof() and DataPos<=1000)
       {
-         //cout << DataPos << endl;
-         DataPos++;
-         P.push_back(myfile.get());
+         Executable_Data_D3.push_back(myfile.get());
       }
    }
    
-   string Executable_Data=(P.data());
    
-   hash<string> hash_fn;
-   std::size_t Executable_hash = hash_fn(Executable_Data);
+   size_t Executable_Data_H1 = hash_fn(string(Executable_Data_D1.begin(), Executable_Data_D1.end()));
+   size_t Executable_Data_H2 = hash_fn(string(Executable_Data_D2.begin(), Executable_Data_D2.end()));
+   size_t Executable_Data_H3 = hash_fn(string(Executable_Data_D3.begin(), Executable_Data_D3.end()));
    
-   cout << Executable_hash << endl;
    
-   /*
-   for(int I=0; I<=15; I++)
+   vector<char> hash_fertig;
+   unsigned long long Potenz;
+   vector<char> h_Pi{3,1,4,1,5,9,2,6,5,3,5,8,9,7,9,3,2,3,8};  /* pi */
+   unsigned char h_temp;
+   
+   for (int i=0; i<19; i++)
    {
-      X.at(Z) << P.at(I)^(C.at(I));
-      Z++;
-      for(int J=Z; J<=Z+P.at(I+112); J++)
-      {
-         X.at(J)=rand() % 6 + 1;
-      }
-      Z += P.at(I + 122);
-      cout << (int)X.at(I) << endl;
+      Potenz=pow(10,18-i);
+      h_temp=((Executable_Data_H1 / Potenz % 10) + (Executable_Data_H2 / Potenz % 10) + (Executable_Data_H3 / Potenz % 10)) * ((sys_hash / Potenz % 10)+(id_hash / Potenz % 10)+h_Pi.at(i));
+      //cout << (int)h_temp << endl;
+      hash_fertig.push_back(h_temp);
    }
-    */
    
+   string hash_fertig_string=string(hash_fertig.begin(), hash_fertig.end());
+   cout << endl << hash_fertig_string << endl;
+   return hash_fertig_string;
 }
 
+
+
+void Generate(void)
+{
+   string sys_hash=GetHash();
+   cout << sys_hash << " ofstream !!!";
+   ofstream outfile ("anticopy.y");
+   outfile << sys_hash;
+   outfile.close();
+}
+
+
+bool Check(void)
+{
+   vector<char> check_key;
+   ifstream infile ("anticopy.y");
+   while (infile.good())
+   {
+      char c = infile.get();
+      if (infile.good())
+         check_key.push_back(c);
+   }
+   
+   string check_key_string=string(check_key.begin(), check_key.end());
+   string sys_hash=GetHash();
+   
+   
+   cout << endl << check_key_string << " ?= " << sys_hash << endl;
+   
+   if(check_key_string == sys_hash)
+   {
+      Activated=true;
+      cout << "Activated!!!!!!!!!!!";
+   }
+   
+   return true;
+}
 
 
 
@@ -1050,31 +1059,42 @@ string get_cpu_freq_max(void)
 
 
 
+#include <IOKit/IOKitLib.h>
 
-
-#include <sys/statvfs.h>
-
-
-string statvfs_vfs( void )
+void get_platform_uuid(char * buf, int bufSize)
 {
-   struct statvfs vfs;
-   
-   printf("\tf_bsize: %ld\n",  (long) vfs.f_bsize);
-   //printf("\tf_frsize: %ld\n", (long) vfs.f_frsize);
-   printf("\tf_blocks: %lu\n", (unsigned long) vfs.f_blocks);
-   //printf("\tf_bfree: %lu\n",  (unsigned long) vfs.f_bfree);
-   //printf("\tf_bavail: %lu\n", (unsigned long) vfs.f_bavail);
-   //printf("\tf_files: %lu\n",  (unsigned long) vfs.f_files);
-   //printf("\tf_ffree: %lu\n",  (unsigned long) vfs.f_ffree);
-   //printf("\tf_favail: %lu\n", (unsigned long) vfs.f_favail);
-   //printf("\tf_fsid: %#lx\n",  (unsigned long) vfs.f_fsid);
-   //printf("\tf_namemax: %#lx\n",  (unsigned long) vfs.f_namemax);
-   
-   stringstream statvfs_vfs_ss;
-   statvfs_vfs_ss <<  (hex) << (unsigned long) vfs.f_fsid << (unsigned long) vfs.f_namemax;
-   
-   
-   return statvfs_vfs_ss.str();
+   io_registry_entry_t ioRegistryRoot = IORegistryEntryFromPath(kIOMasterPortDefault, "IOService:/");
+   CFStringRef uuidCf = (CFStringRef) IORegistryEntryCreateCFProperty(ioRegistryRoot, CFSTR(kIOPlatformUUIDKey), kCFAllocatorDefault, 0);
+   IOObjectRelease(ioRegistryRoot);
+   CFStringGetCString(uuidCf, buf, bufSize, kCFStringEncodingMacRoman);
+   CFRelease(uuidCf);
 }
+
+
+
+// Returns the serial number as a CFString.
+// It is the caller's responsibility to release the returned CFString when done with it.
+void CopySerialNumber(CFStringRef *serialNumber)
+{
+   if (serialNumber != NULL) {
+      *serialNumber = NULL;
+      
+      io_service_t    platformExpert = IOServiceGetMatchingService(kIOMasterPortDefault,
+                                                                   IOServiceMatching("IOPlatformExpertDevice"));
+      
+      if (platformExpert) {
+         CFTypeRef serialNumberAsCFString =
+         IORegistryEntryCreateCFProperty(platformExpert,
+                                         CFSTR(kIOPlatformSerialNumberKey),
+                                         kCFAllocatorDefault, 0);
+         if (serialNumberAsCFString) {
+            *serialNumber = (CFStringRef)serialNumberAsCFString;
+         }
+         
+         IOObjectRelease(platformExpert);
+      }
+   }
+}
+
 
 
