@@ -501,7 +501,7 @@ bool ConfigFile_Read(string configFile) {
          
          pos = line.find("=");
          line.erase(line.begin(), line.begin()+pos+1);
-         cout << line << endl;
+         //cout << line << endl;
          
          
          //pos = line.find(":");
@@ -509,7 +509,6 @@ bool ConfigFile_Read(string configFile) {
          //line.erase(line.begin()+pos, line.end());
          
          ConfigFile_Data.push_back(line);
-         //cout <<line << endl;
       }
       myfile.close();
    }
@@ -587,14 +586,14 @@ bool ConfigFile_Read(string configFile) {
    for(i=10;i<=16;i++)
    {
       Config_Transpose.push_back(stoi(ConfigFile_Data[i]));
-      cout << Noten_Name[i+2] << ": " << (int)Config_Transpose[Config_Transpose.size()-1] << endl;
+      cout << Noten_Name[i-3] << ": " << (int)Config_Transpose[Config_Transpose.size()-1] << endl;
    }
    
    
    
    cout << endl << endl << "Noteninduviduelle Konfiguration:" << endl;
    
-   for(i=17;i<=ConfigFile_Data.size()-2;i=i+5)
+   for(i=16;i<=ConfigFile_Data.size()-2;i=i+5)
    {
       Config_Note.push_back({stoi(ConfigFile_Data[i+1]), stoi(ConfigFile_Data[i+2]), stoi(ConfigFile_Data[i+3]), stoi(ConfigFile_Data[i+4]), stoi(ConfigFile_Data[i+5])});
       
@@ -714,11 +713,11 @@ bool Update_Funktion(void)
 {
    stringstream Versio_Path_SStream;
    Versio_Path_SStream << "curl -O http://www.nicobosshard.ch/Documents/MIDI_Harfe/Update_Mac.txt";
-   
    system(Versio_Path_SStream.str().c_str());
    string line;
    string Antwort;
    
+   cout << "\n\n" << endl;
    
    //stringstream Filepath;
    
@@ -869,7 +868,7 @@ bool Registrierung(string Lizenz)
    stringstream Lizenz_Onlinecheck;
    Lizenz_Onlinecheck << "curl -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    system(Lizenz_Onlinecheck.str().c_str());
-   cout << Lizenz_Onlinecheck.str() << endl;
+   cout << endl << Lizenz_Onlinecheck.str() << "\n\n" << endl;
    
    vector<char> key_activations;
    ifstream infile (Lizenz_Savepath_string);
@@ -903,7 +902,6 @@ bool Registrierung(string Lizenz)
       cout << "Error deleting file" << endl;
    }
    
-   cout << key_activations.size();
    
    if(semikolon_exist==';')
    {
@@ -1006,7 +1004,7 @@ bool Check(void)
    
    if(check_key_string == sys_hash)
    {
-      cout << "Activated!" << endl;
+      //cout << "Activated!" << endl;
       Activated=true;
       return true;
    }
