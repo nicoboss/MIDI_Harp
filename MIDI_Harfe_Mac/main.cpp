@@ -6,6 +6,10 @@
 //
 //*****************************************//
 
+
+//"PLMMD-YNOJG-EBJET-MEBXU-YLEJX"
+
+
 #include <iostream>
 #include <math.h>
 #include <cstdlib> //ermöglicht system()
@@ -41,19 +45,15 @@ void ConfigFile_Create(string configFile);
 
 bool Update_Funktion(void);
 
-bool Onlineaktivierung(void);
+bool Onlineaktivierung(void); //bool als Modderverwirrung :D
+bool Registrierung(string Lizenz);
+void Generate(void);
+bool Check(void);
 string GetHash(void);
 string get_sys_info(void);
 string get_cpu_freq_max(void);
 void get_platform_uuid(char * buf, int bufSize);
-
-void Generate(void);
-bool Check(void);
-
-void get_platform_uuid(char * buf, int bufSize);
-
 void CopySerialNumber(CFStringRef *serialNumber);
-
 
 
 // Platform-dependent sleep routines.
@@ -99,8 +99,12 @@ char path[PATH_MAX];
 #define _Volume_ 3;
 #define _Mute_ 4;
 
-string Executable_Path;
+
+string license_key;
+
 string Config_Path;
+string Executable_Name;
+string Executable_Path;
 unsigned char Config_Instrument=0;
 bool Config_Volume_ignore=false;
 signed char Config_Volume_steps=false;
@@ -122,26 +126,35 @@ bool Activated=false;
 #include <stdlib.h>
 
 
-
 #include <libgen.h>
-
 
 
 char A;
 
 int main( int argc, char *argv[] )
 {
+   
+   
    cout << argv[0];
 
-      char *dirc, *basec, *bname, *dname;
-      char *path = argv[0];
+   char *dirc, *basec, *bname, *dname;
+   char *path = argv[0];
       
-      dirc = strdup(path);
-      basec = strdup(path);
-      dname = dirname(dirc);
-      bname = basename(basec);
-      printf("dirname=%s, basename=%s\n", dname, bname);
+   dirc = strdup(path);
+   basec = strdup(path);
+   dname = dirname(dirc);
+   bname = basename(basec);
+   stringstream Config_Path_ss;
+   Config_Path_ss << dname << "/";
+   Config_Path=Config_Path_ss.str();
+   Executable_Name=bname;
+
+   Executable_Path=argv[0];
    
+   printf("dirname=%s, basename=%s\n", dname, bname);
+   
+   
+   /*
    cout << endl <<"Function call: int main(void)" << endl << endl;
    CFBundleRef mainBundle = CFBundleGetMainBundle();
    CFURLRef resourcesURL = CFBundleCopyExecutableURL(mainBundle);
@@ -156,7 +169,7 @@ int main( int argc, char *argv[] )
       
       
       chdir(path);
-      std::cout << "Current Path: " << path << std::endl;
+      //cout << "Current Path: " << path << std::endl;
       
       stringstream Executable_Path_ss;
       Executable_Path_ss << path;
@@ -166,13 +179,14 @@ int main( int argc, char *argv[] )
       Config_Path_SStream << path << "/config.txt";
       Config_Path=Config_Path_SStream.str();
    }
+    */
    
-   
+   ConfigFile_Read ("config.txt");
    Onlineaktivierung(); // Wichtig!!!
    Update_Funktion();
    
-   ConfigFile_Create("config.txt");
-   if(!ConfigFile_Read (Config_Path))
+   ifstream ConfigFileExist("config.txt");
+   if(!ConfigFileExist)
    {
       cout << "Soll das config.txt file auf den neu erstellt werden? (Ja / Nein=End): ";
       string Config_Reset;
@@ -189,9 +203,8 @@ int main( int argc, char *argv[] )
          }
       }
    }
-   
+   ConfigFileExist.close();
 
-   Onlineaktivierung(); // Wichtig!!!
 
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
@@ -463,8 +476,8 @@ bool ConfigFile_Read(string configFile) {
    string::iterator it;
    int i=0;
    
-   cout << "Function call: bool ConfigFile_Read(string " << configFile << ")" << endl;
-   cout << "vector<string> ConfigFile_Data;" << endl;
+   //cout << "Function call: bool ConfigFile_Read(string " << configFile << ")" << endl;
+   //cout << "vector<string> ConfigFile_Data;" << endl; //Völlig unnötig :D
    vector<string> ConfigFile_Data;
    
    ifstream myfile (configFile);
@@ -488,7 +501,7 @@ bool ConfigFile_Read(string configFile) {
          
          pos = line.find("=");
          line.erase(line.begin(), line.begin()+pos+1);
-         
+         cout << line << endl;
          
          
          //pos = line.find(":");
@@ -509,69 +522,71 @@ bool ConfigFile_Read(string configFile) {
    
    cout << endl << endl << "Algmeine Kunfiguration:" << endl;
    
+   license_key=ConfigFile_Data[0];
+   cout << "Lizenzschlüssel=" << license_key << endl;
    
-   Config_Instrument=atoi(ConfigFile_Data[0].c_str());
+   Config_Instrument=stoi(ConfigFile_Data[1]);
    cout << "Config_Instrument=" << (int)Config_Instrument << endl;
    
    
-   if(ConfigFile_Data[1]=="true")
+   if(ConfigFile_Data[2]=="true")
    {
       Config_Volume_ignore=true;
       cout << "Config_Volume_ignore=true" << endl;
    }
-   else if ( ConfigFile_Data[1]=="false" )
+   else if ( ConfigFile_Data[2]=="false" )
    {
       Config_Volume_ignore=false;
       cout << "Config_Volume_ignore=false" << endl;
    }
    else
    {
-      cout << "Fehler in Config File: Wert Config_Volume_ignore=" << ConfigFile_Data[1] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_Volume_ignore=false benutzt.";
+      cout << "Fehler in Config File: Wert Config_Volume_ignore=" << ConfigFile_Data[2] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_Volume_ignore=false benutzt.";
       Config_use_Virtual_Port=false;
    }
    
    
-   Config_Volume_steps=atoi(ConfigFile_Data[2].c_str());
+   Config_Volume_steps=stoi(ConfigFile_Data[3]);
    cout << "Config_Volume_steps=" << (int)Config_Volume_steps << endl;
    
-   Config_Volume_min=atoi(ConfigFile_Data[3].c_str());
+   Config_Volume_min=stoi(ConfigFile_Data[4]);
    cout << "Config_Volume_min=" << (int)Config_Volume_min << endl;
    
-   Config_Volume_max=atoi(ConfigFile_Data[4].c_str());
+   Config_Volume_max=stoi(ConfigFile_Data[5]);
    cout << "Config_Volume_max=" << (int)Config_Volume_max << endl;
    
-   Config_Master_Transpose=atoi(ConfigFile_Data[5].c_str());
+   Config_Master_Transpose=stoi(ConfigFile_Data[6]);
    cout << "Config_Master_Transpose=" << (int)Config_Master_Transpose << endl;
    
-   if(ConfigFile_Data[6]=="true")
+   if(ConfigFile_Data[7]=="true")
    {
       Config_use_Virtual_Port=true;
       cout << "Config_use_Virtual_Port=true" << endl;
    }
-   else if ( ConfigFile_Data[6]=="false" )
+   else if ( ConfigFile_Data[7]=="false" )
    {
       Config_use_Virtual_Port=false;
       cout << "Config_use_Virtual_Port=false" << endl;
    }
    else
    {
-      cout << "Fehler in Config File: Wert Config_use_Virtual_Port=" << ConfigFile_Data[3] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_use_Virtual_Port=true benutzt.";
+      cout << "Fehler in Config File: Wert Config_use_Virtual_Port=" << ConfigFile_Data[7] << " muss entweder auf true oder false gesetzt werden! Es wird nun der Standartwert Config_use_Virtual_Port=true benutzt.";
       Config_use_Virtual_Port=true;
    }
    
-   Config_Portnamen=ConfigFile_Data[7];
+   Config_Portnamen=ConfigFile_Data[8];
    cout << "Config_Portnamen=" << Config_Portnamen << endl;
    
-   Config_PortNr=atoi(ConfigFile_Data[8].c_str());
+   Config_PortNr=stoi(ConfigFile_Data[9]);
    cout << "Config_PortNr=" << (int)Config_PortNr << endl;
    
    
    
    cout << endl << endl << "Tonbasierende Halbtonverschiebung (Transpose):" << endl;
    
-   for(i=9;i<=15;i++)
+   for(i=10;i<=16;i++)
    {
-      Config_Transpose.push_back(atoi(ConfigFile_Data[i].c_str()));
+      Config_Transpose.push_back(stoi(ConfigFile_Data[i]));
       cout << Noten_Name[i+2] << ": " << (int)Config_Transpose[Config_Transpose.size()-1] << endl;
    }
    
@@ -579,9 +594,9 @@ bool ConfigFile_Read(string configFile) {
    
    cout << endl << endl << "Noteninduviduelle Konfiguration:" << endl;
    
-   for(i=16;i<=ConfigFile_Data.size()-2;i=i+5)
+   for(i=17;i<=ConfigFile_Data.size()-2;i=i+5)
    {
-      Config_Note.push_back({atoi(ConfigFile_Data[i+1].c_str()), atoi(ConfigFile_Data[i+2].c_str()), atoi(ConfigFile_Data[i+3].c_str()), atoi(ConfigFile_Data[i+4].c_str()), atoi(ConfigFile_Data[i+5].c_str())});
+      Config_Note.push_back({stoi(ConfigFile_Data[i+1]), stoi(ConfigFile_Data[i+2]), stoi(ConfigFile_Data[i+3]), stoi(ConfigFile_Data[i+4]), stoi(ConfigFile_Data[i+5])});
       
       if(Config_Note[Config_Note.size()-1][0]<15 or Config_Note[Config_Note.size()-1][0]>250)
       {
@@ -641,6 +656,7 @@ void ConfigFile_Create(string configFile) {
    outfile << "##############################################\n";
    
    outfile << endl << endl;
+   outfile << "Lizenzschlüssel=" << license_key << endl << endl;
    
    outfile << "# Welches Instrumment sollte als MIDI Ausgabeinstrument dienen? Nummern nach dem General MIDI Standart (Tabbele auf http://de.wikipedia.org/wiki/General_MIDI) z.B. Piano=0 und Harfe=47." << endl;
    outfile << "Instrument=47" << endl << endl;
@@ -663,7 +679,7 @@ void ConfigFile_Create(string configFile) {
    outfile << "Portnamen=MIDI_Harfe" << endl;
    outfile << "Port Nr.=0" << endl << endl;
    
-   outfile << "#Tonbasierende Halbtonverschiebung (Transpose)" << endl;
+   outfile << "# Tonbasierende Halbtonverschiebung (Transpose)" << endl;
    outfile << "c=0" << endl;
    outfile << "d=0" << endl;
    outfile << "e=0" << endl;
@@ -677,7 +693,7 @@ void ConfigFile_Create(string configFile) {
    outfile << "# Seitenspezifische Einstellungen:" << endl;
    outfile << "# Start: Ab welchem Messwert (0-255) soll der Ton erkannt werden? Achtung: Zu kleine Werte >15 vehrursachen Daueton sowie Messfehler und werden deswegen akzeptiert. Ist der wert aber zu hoch könte es sein dass leiose töne nicht m,ehr erkannt werden. Stopwerte >15 werden infolge eines unerwünschten Dauertohns auch nicht akzeptiert." << endl;
    outfile << "# Start: Ab welchem Messwert (0-255) ist der Ton fertig? Sollen töne eher lang oder kurz wirken? " << endl;
-   outfile << "Transpose: Induvideuelle Transpose (Halbtonverschiebung). Dies wird z.B. für einzelnes Kläppchen benötigt." << endl;
+   outfile << "# Transpose: Induvideuelle Transpose (Halbtonverschiebung). Dies wird z.B. für einzelnes Kläppchen benötigt." << endl;
    outfile << "# Induviduelle Lautstärkenanpassung in Werten im Bereich von -128 bis 128 (nicht prozentual)." << endl;
    outfile << "# Mute: Durch diese einstellungen können einige Seiten gemutet werden. 0=ON & 1=Mute" << endl;
    outfile << endl;
@@ -697,7 +713,7 @@ void ConfigFile_Create(string configFile) {
 bool Update_Funktion(void)
 {
    stringstream Versio_Path_SStream;
-   Versio_Path_SStream << "curl -O www.nicobosshard.ch/Documents/MIDI_Harfe/Update_Mac.txt";
+   Versio_Path_SStream << "curl -O http://www.nicobosshard.ch/Documents/MIDI_Harfe/Update_Mac.txt";
    
    system(Versio_Path_SStream.str().c_str());
    string line;
@@ -749,7 +765,7 @@ bool Update_Funktion(void)
             if (line[0] == '#')
             {
                line.erase(line.begin(), line.begin()+1);
-               SLEEP(atoi(line.c_str()));
+               SLEEP(stoi(line));
             }
             else if (line == "End")
             {
@@ -779,84 +795,227 @@ bool Update_Funktion(void)
 
 
 
-
-
-
-
-
 #include <libgen.h>
 bool Onlineaktivierung(void)
 {
-
-   Generate();
+   //"PLMMD-YNOJG-EBJET-MEBXU-YLEJX"
+   string Lizenzkey="";
+   
    if(Check()==false)
    {
+      do {
+         if(license_key=="")
+         {
+            Lizenzkey="";
+            do {
+               if(Lizenzkey.length()!=0)
+               {
+                  cout << "Die L‰nge ihrer Eingabe entspringt nicht der,\n"
+                  << "f¸r den Schl¸ssel vorgesehenen L‰nge.\n"
+                  << "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen\n"
+                  << "Buchstaben vegessen oder mehrfach verwendet haben.\n" << endl;
+               }
+               Lizenzkey="";
+               cout << endl << "Lizenzschlüssel (XXXXX-XXXXX-XXXXX-XXXXX-XXXXX): ";
+               getline(cin, Lizenzkey);
+               
+               locale loc("de_DE");
+               transform(Lizenzkey.begin(), Lizenzkey.end(), Lizenzkey.begin(), [&loc] (char c) { return toupper(c, loc); });
+               
+               cout << Lizenzkey << '\n';
+               
+            } while(Lizenzkey.length()!=29);
+         } else {
+            Lizenzkey=license_key;
+            license_key="";
+         }
+      } while(Registrierung(Lizenzkey)==false);
       
+      license_key=Lizenzkey;
    }
    
-   
-   cout << A;
-   //SLEEP(343274);
    return true;
 }
-Private Sub Registrierung()
 
-Application.DoEvents()
-Try
-Dim S As String = My.Computer.FileSystem.GetTempFileName()
-My.Computer.FileSystem.DeleteFile(S)
-My.Computer.Network.DownloadFile( _
-                                 "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows", S)
-Dim X As String = My.Computer.FileSystem.ReadAllText(S)
-If CInt(X.Split(";")(0)) > 0 Then
-If CInt(X.Split(";")(1)) > 0 Then
-Generate()
-Lizenz_Activated = True
-If Check() Then
-MsgBox("Der Schl¸ssel ist g¸ltig. Das Programm wurde erfolgreich aktiviert. " & _
-       "Sie d¸rfen diesen Schl¸ssel noch " & _
-       (CInt(X.Split(";")(1)) - 1) & _
-       " Mal f¸r eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
-       "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
-       "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
-       "Ihre Anzahl verbleibenden Aktivierungen um eins erhˆht werden.")
-Else
-Lizenz = ""
-MsgBox("Der Schl¸ssel ist g¸ltig. Das Programm konnte allerdings " & _
-       "nicht aktiviert werden. " & _
-       "Bitte ¸berpr¸fen Sie, ob der Installationsordner schreibgesch¸tzt ist. " & _
-       "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch", _
-       MsgBoxStyle.Exclamation)
-Me.Close()
-End If
-Else
-MsgBox("Ihr Schl¸ssel ist g¸ltig, aber die maximale Anzahl der " & _
-       "Aktivierungen f¸r diesen Schl¸ssel wurde ¸berschritten. " & _
-       "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " & _
-       "plausiebelr Begr¸ndung (z.B. 6 Computer, Merfache " & _
-       "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" & _
-       "grˆsseren Hardwair‰nderungen am Computer, Lizenzspeicherungsfehler " & _
-       "usw.) gratis erneute Lizenzen auf diesen Schl¸ssel zu erhalten " & _
-       "oder weitere zu erwerben.", MsgBoxStyle.Exclamation)
-Me.Close()
-End If
-Else
-Lizenz = ""
-MsgBox("Der Lizenzschl¸ssel ist ung¸ltig. Bitte ¸berpr¸fen Sie ihn auf " & _
-       "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
-       "Der Lizenzschl¸ssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
-       "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
-End If
-Catch ex As Exception
-Lizenz = ""
-MsgBox("Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung " &
-       "ist nur beim ersten Programmstart und nach jedem Update erforderlich. " & _
-       "Bitte ¸berpr¸fen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" & _
-       "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch", _
-       MsgBoxStyle.Critical)
-End Try
-'Me.Close()
-End Sub
+
+#include <stdio.h>
+#include <dirent.h>
+
+bool Registrierung(string Lizenz)
+{
+   stringstream Lizenz_Savepath;
+   Lizenz_Savepath << getenv("TMPDIR") << "nanticopykeys.php";
+   string Lizenz_Savepath_string=Lizenz_Savepath.str();
+   cout << Lizenz_Savepath_string << endl;
+   
+   char Lizenz_Savepath_char[1024];
+   strncpy(Lizenz_Savepath_char, Lizenz_Savepath_string.c_str(), sizeof(Lizenz_Savepath_char));
+   Lizenz_Savepath_char[sizeof(Lizenz_Savepath_char) - 1] = 0;
+   
+   
+   remove(Lizenz_Savepath_char);
+   ifstream FileExist(Lizenz_Savepath_char);
+   if(FileExist)
+   {
+      cout << "Error deleting file" << endl;
+      cout << "Please delete """ << Lizenz_Savepath_char << """!" << endl;
+      cout << "- Press ENTER to close the Programm -" << endl;
+      getchar();
+      exit(0);
+   }
+   FileExist.close();
+
+   
+   stringstream Lizenz_Onlinecheck;
+   Lizenz_Onlinecheck << "curl -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   system(Lizenz_Onlinecheck.str().c_str());
+   cout << Lizenz_Onlinecheck.str() << endl;
+   
+   vector<char> key_activations;
+   ifstream infile (Lizenz_Savepath_string);
+   
+   char key_exist=0;
+   char semikolon_exist=0;
+   
+   if (infile.good())
+   {
+      key_exist=infile.get();
+   }
+       
+       
+      
+   if (infile.good())
+   {
+      semikolon_exist=infile.get();
+   }
+   
+   while (infile.good())
+   {
+      if (infile.good())
+      {
+         key_activations.push_back(infile.get());
+      }
+   }
+   infile.close();
+   
+   if( remove(Lizenz_Savepath_char) != 0 )
+   {
+      cout << "Error deleting file" << endl;
+   }
+   
+   cout << key_activations.size();
+   
+   if(semikolon_exist==';')
+   {
+      string key_activations_string=string(key_activations.begin(), key_activations.end());
+      int key_activations_int=stoi(key_activations_string);
+      
+      if(key_exist=='1')
+      {
+         if(key_activations_int>0)
+         {
+            Generate();
+            
+            if(Check()==true) {
+               cout << "Der Schl¸ssel ist g¸ltig. Das Programm wurde erfolgreich aktiviert.\n"
+               << "Sie dürfen diesen Schlüssel noch " << key_activations_int << " mal für eine Neuinstallation verwenden.\n"
+               << "Die Aktivierung erfolgt auch bei jedem Softwaireupdate.\n"
+               << "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update\n"
+               << "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.\n" << endl
+               << "- Drücken Sie ENTER um fortzufahren -" << endl;
+               getchar();
+               return true;
+            } else {
+               cout << "Der Schl¸ssel ist g¸ltig. Das Programm konnte allerdings nicht aktiviert werden.\n"
+                    << "Bitte ¸berpr¸fen Sie, ob der Installationsordner schreibgesch¸tzt ist.\n"
+                    << "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch\n"
+                    << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
+               getchar();
+               exit(0);
+               return false;
+            }
+         } else {
+            cout << "Ihr Schl¸ssel ist g¸ltig, aber die maximale Anzahl der\n"
+                 << "Aktivierungen f¸r diesen Schl¸ssel wurde ¸berschritten.\n"
+                 << "Bitte melden sich per E-Mail an nico@bosshome.ch um mit\n"
+                 << "plausiebelr Begr¸ndung (z.B. 6 Computer, Merfache\n"
+                 << "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen\n"
+                 << "grˆsseren Hardwair‰nderungen am Computer, Lizenzspeicherungsfehler\n"
+                 << "usw.) gratis erneute Lizenzen auf diesen Schl¸ssel zu erhalten\n"
+                 << "oder weitere zu erwerben.\n"
+                 << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
+            getchar();
+            exit(0);
+            return false;
+         }
+         
+      } else {
+         cout << "Der Lizenzschl¸ssel ist ung¸ltig. Bitte ¸berpr¸fen Sie ihn auf\n"
+              << "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch!\n"
+              << "Der Lizenzschl¸ssel sollten Sie zur gekauften Hardwaire zusammen mit dem\n"
+              << "Downloadlink erhalten haben.\n" << endl;
+         return false;
+      }
+   } else {
+      cout << "Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung\n"
+           << "ist nur beim ersten Programmstart und nach jedem Update erforderlich.\n"
+           << "Bitte ¸berpr¸fen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin\n"
+           << "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch\n"
+           << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
+      getchar();
+      exit(0);
+      return false;
+   }
+   
+   return false;
+}
+
+
+
+void Generate(void)
+{
+   if( remove("anticopy.y") != 0 )
+   {
+      cout << "Error deleting anticopy.y" << endl;
+   }
+   string sys_hash=GetHash();
+   //cout << sys_hash << " ofstream !!!";
+   ofstream outfile ("anticopy.y");
+   outfile << sys_hash;
+   outfile.close();
+}
+
+
+bool Check(void)
+{
+   vector<char> check_key;
+   ifstream infile ("anticopy.y");
+   while (infile.good())
+   {
+      char c = infile.get();
+      if (infile.good())
+         check_key.push_back(c);
+   }
+   infile.close();
+   
+   string check_key_string=string(check_key.begin(), check_key.end());
+   string sys_hash=GetHash();
+   
+   
+   //cout << endl << check_key_string << " ?= " << sys_hash << endl;
+   
+   if(check_key_string == sys_hash)
+   {
+      cout << "Activated!" << endl;
+      Activated=true;
+      return true;
+   }
+   
+   return false;
+}
+
+
+
 string GetHash(void)
 {
    hash<string> hash_fn;
@@ -865,15 +1024,15 @@ string GetHash(void)
    stringstream sys_fingerprint_ss;
    sys_fingerprint_ss << get_cpu_freq_max() << get_sys_info();
    sys_fingerprint=sys_fingerprint_ss.str();
-   cout << sys_fingerprint << endl;
+   //cout << sys_fingerprint << endl;
    
    size_t sys_hash = hash_fn(sys_fingerprint);
-   cout << sys_hash << endl;
+   //cout << sys_hash << endl;
    
    
    char buf[512] = "";
    get_platform_uuid(buf, sizeof(buf));
-   cout << buf << endl;
+   //cout << buf << endl;
    
    //CFStringRef serial_number;
    //CopySerialNumber(&serial_number);
@@ -882,10 +1041,10 @@ string GetHash(void)
    stringstream id_fingerprint_ss;
    id_fingerprint_ss  << buf;
    id_fingerprint=id_fingerprint_ss.str();
-   cout << id_fingerprint << endl;
+   //cout << id_fingerprint << endl;
 
    size_t id_hash = hash_fn(id_fingerprint);
-   cout << id_hash << endl;
+   //cout << id_hash << endl;
    
    
    vector<char> Executable_Data_D1;
@@ -933,48 +1092,12 @@ string GetHash(void)
    }
    
    string hash_fertig_string=string(hash_fertig.begin(), hash_fertig.end());
-   cout << endl << hash_fertig_string << endl;
+   //cout << endl << hash_fertig_string << endl;
    return hash_fertig_string;
 }
 
 
 
-void Generate(void)
-{
-   string sys_hash=GetHash();
-   cout << sys_hash << " ofstream !!!";
-   ofstream outfile ("anticopy.y");
-   outfile << sys_hash;
-   outfile.close();
-}
-
-
-bool Check(void)
-{
-   vector<char> check_key;
-   ifstream infile ("anticopy.y");
-   while (infile.good())
-   {
-      char c = infile.get();
-      if (infile.good())
-         check_key.push_back(c);
-   }
-   
-   string check_key_string=string(check_key.begin(), check_key.end());
-   string sys_hash=GetHash();
-   
-   
-   cout << endl << check_key_string << " ?= " << sys_hash << endl;
-   
-   if(check_key_string == sys_hash)
-   {
-      cout << "Activated!" << endl;
-      Activated=true;
-      return true;
-   }
-   
-   return false;
-}
 
 
 
@@ -1154,6 +1277,4 @@ void CopySerialNumber(CFStringRef *serialNumber)
       }
    }
 }
-
-
 
