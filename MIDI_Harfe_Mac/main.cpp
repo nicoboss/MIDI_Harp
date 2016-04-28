@@ -10,6 +10,8 @@
 //"PLMMD-YNOJG-EBJET-MEBXU-YLEJX"
 
 
+
+
 #include <iostream>
 #include <math.h>
 #include <cstdlib> //ermöglicht system()
@@ -34,6 +36,9 @@ using namespace std;
 //#define USB_SERIAL_PORT "/dev/tty.usbserial-0000103D" // (Linux Ubuntu Mac Book)
 //#define USB_SERIAL_PORT "/dev/tty.usbserial-0000103D"
 #define USB_SERIAL_PORT "/dev/cu.usbserial-FTUPO2WD"
+
+#define Version "V1.0"
+#define VersionNr "1.0"
 
 int port_fd;
 
@@ -769,9 +774,13 @@ bool Update_Funktion(void)
             line.erase(line.begin(), line.begin()+1);
             cout << line << endl;
          }
-         else if (line == "Version=1.0")
+         else if (line[0] == '=')
          {
-            break;
+            line.erase(line.begin(), line.begin()+1);
+            if (line != Version)
+            {
+               break;
+            }
          }
          else if (line == "?1")
          {
@@ -897,10 +906,41 @@ bool Registrierung(string Lizenz)
    FileExist.close();
 
    
-   stringstream Lizenz_Onlinecheck;
-   Lizenz_Onlinecheck << "curl -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
-   system(Lizenz_Onlinecheck.str().c_str());
-   cout << endl << Lizenz_Onlinecheck.str() << "\n\n" << endl;
+   vector<string> Lizenzfile_URL_vector;
+   stringstream Lizenzfile_URL_T1;
+   Lizenzfile_URL_T1 << "curl -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   stringstream Lizenzfile_URL_T2;
+   Lizenzfile_URL_T2 << "curl -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   stringstream Lizenzfile_URL_T3;
+   Lizenzfile_URL_T3 << "curl -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   stringstream Lizenzfile_URL_T4;
+   Lizenzfile_URL_T3 << "curl -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   stringstream Lizenzfile_URL_T5;
+   Lizenzfile_URL_T4 << "curl -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   
+   Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T1.str());
+   Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T2.str());
+   Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T3.str());
+   Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T4.str());
+   Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T5.str());
+   
+   cout << endl;
+   
+   for (string Lizenzfile_URL : Lizenzfile_URL_vector )
+   {
+      cout << Lizenzfile_URL << "\n";
+      system(Lizenzfile_URL.c_str());
+      ifstream LizenzFileExist(Lizenzfile_URL);
+      if(LizenzFileExist)
+      {
+         break;
+      }
+      LizenzFileExist.close();
+   }
+   
+   cout << "\n" << endl;
+
+   
    
    vector<char> key_activations;
    ifstream infile (Lizenz_Savepath_string);
