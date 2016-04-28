@@ -254,7 +254,7 @@ int main( int argc, char *argv[] )
    message.push_back( 5 );
    midiout->sendMessage( &message );
    
-   SLEEP( 500 );
+   //SLEEP( 500 );
    
    message[0] = 0xF1;
    message[1] = 60;
@@ -274,21 +274,33 @@ int main( int argc, char *argv[] )
    
    int Serial_Temp;
    int Volume_Temp;
+   char Nicht_Verbunden_Temp=0;
    int i;
    
+   vector<char> Noten_Reihenfolge={0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
+                                   1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,
+                                   30,31,32,33,34,35};
+   
+   while(read_serial_int(port_fd)!=250);
    
    while(true)
    {
    
-      SLEEP( 500 );
+      //SLEEP( 500 );
+      Nicht_Verbunden_Temp=0;
       
-      for(i=0;i<=35;i++)
+      for(i=0;i<=Noten_Reihenfolge.size()-1;i++)
       {
-         if(Note_Play[i]==false)
+         if(Note_Play[Noten_Reihenfolge.at(i)]==false)
          {
             Serial_Temp=read_serial_int(port_fd);
-            cout << Serial_Temp << endl;
-            if(Serial_Temp>=Config_Note[i][0])
+            //cout << Serial_Temp;
+            if(Serial_Temp==0)
+            {
+               Nicht_Verbunden_Temp++;
+            }
+            
+            if(Serial_Temp>=Config_Note[Noten_Reihenfolge.at(i)][0])
             {
                if(Config_Volume_ignore==false)
                {
@@ -309,7 +321,7 @@ int main( int argc, char *argv[] )
                   {
                      Volume_Temp=roundf(127/Config_Volume_steps*(Serial_Temp-Config_Volume_min)/(Config_Volume_max-Config_Volume_min))*Config_Volume_steps;
                   }
-                  Volume_Temp=+Config_Note[i][3];
+                  Volume_Temp=+Config_Note[Noten_Reihenfolge.at(i)][3];
                   
                   if(Volume_Temp<0)
                   {
@@ -328,30 +340,50 @@ int main( int argc, char *argv[] )
                }
                // Note On: 144, i, 90
                message[0] = 144;
-               message[1] = Noten_Nr[i]+Config_Master_Transpose+Config_Note[i][2];
+               message[1] = Noten_Nr[Noten_Reihenfolge.at(i)]+Config_Master_Transpose+Config_Note[Noten_Reihenfolge.at(i)][2];
                message[2] = 90;
                midiout->sendMessage( &message );
                cout << "MIDI-Event: " << Noten_Name[i] << "=ON" << endl;
+               Note_Play[Noten_Reihenfolge.at(i)]=true;
             }
          } else {
             Serial_Temp=read_serial_int(port_fd);
+             //cout << Serial_Temp;
             if(Serial_Temp<=Config_Note[i][1])
             {
                // Note Off: 128, i, 40
                message[0] = 128;
-               message[1] = Noten_Nr[i]+Config_Master_Transpose+Config_Note[i][2];
+               message[1] = Noten_Nr[Noten_Reihenfolge.at(i)]+Config_Master_Transpose+Config_Note[Noten_Reihenfolge.at(i)][2];
                message[2] = 40;
                midiout->sendMessage( &message );
-               cout << "MIDI-Event: " << Noten_Name[i] << "=OFF" << endl;
+               cout << "MIDI-Event: " << Noten_Name[Noten_Reihenfolge.at(i)] << "=OFF" << endl;
+               Note_Play[Noten_Reihenfolge.at(i)]=false;
             }
          }
       }
       
+      /*
+      read_serial_int(port_fd);
+      read_serial_int(port_fd);
+      read_serial_int(port_fd);
+      read_serial_int(port_fd);
+      read_serial_int(port_fd);
+      read_serial_int(port_fd);
+      */
+       
       if(read_serial_int(port_fd)!=250)
       {
-         cout << "Synchronisationnsfehler zwischen Mac und Mikrokontroller" << endl;
-         //while(read_serial_int(port_fd)!=250);
+         
+         if(Nicht_Verbunden_Temp>25)
+         {
+            cout << "NULL Übertragung: Stellen Sie sicher dass der Miktrokontroller ordnungsgemäss verbunden ist!" << endl;
+         } else {
+            cout << "Synchronisationnsfehler zwischen Mac und Mikrokontroller" << endl;
+         }
+         while(read_serial_int(port_fd)!=250);
       }
+      
+      
       
    }
    
@@ -416,7 +448,7 @@ bool chooseMidiPort( RtMidiOut *rtmidi )
 
 int read_serial_int (int fd) {
    //char ascii_int[8] = {0};
-   char c = NULL;
+   int c = NULL;
    //int i = 0;
    
    read(fd, &c, 1);
