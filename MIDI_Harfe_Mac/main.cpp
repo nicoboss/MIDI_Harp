@@ -766,17 +766,17 @@ bool Update_Funktion(void)
    
    vector<string> Update_URL_vector;
    stringstream Update_URL_T1;
-   Update_URL_T1 << "curl -f -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T1 << "curl -f --connect-timeout 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T2;
-   Update_URL_T2 << "curl -f -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T2 << "curl -f --connect-timeout 1 -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T3;
-   Update_URL_T3 << "curl -f -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T4;
-   Update_URL_T3 << "curl -f -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T5;
-   Update_URL_T4 << "curl -f -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T6;
-   Update_URL_T4 << "curl -f -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    
    Update_URL_vector.push_back(Update_URL_T1.str());
    Update_URL_vector.push_back(Update_URL_T2.str());
@@ -809,78 +809,97 @@ bool Update_Funktion(void)
    
    //cout << Versio_Path_SStream.str();
    //Filepath << path << "/Update_Mac.txt";
+   vector<string> Update_Data;
    
-   ifstream myfile ("Update_Mac.txt");
+   ifstream myfile (Update_Savepath_string);
    if (myfile.is_open())
    {
+      
       while (! myfile.eof() )
       {
+         
          getline (myfile,line);
-         //cout << line[0];
+         if (! line.length()) continue;
          
-         if (line[0] == '@')
-         {
-            line.erase(line.begin(), line.begin()+1);
-            system(line.c_str());
-         }
-         else if (line[0] == '@')
-         {
-            line.erase(line.begin(), line.begin()+1);
-            cout << line << endl;
-         }
-         else if (line[0] == '=')
-         {
-            line.erase(line.begin(), line.begin()+1);
-            if (line != Version)
-            {
-               break;
-            }
-         }
-         else if (line == "?1")
-         {
-            cin >> Antwort;
-         }
-         else if (line == "?2")
-         {
-            cin >> Antwort;
-            if(Antwort=="Nein" or Antwort=="nein" or Antwort=="No" or Antwort=="no" )
-            {
-               break;
-            }
-         }
-         else if (line == "?3")
-         {
-            cin >> Antwort;
-            if(Antwort=="Ja" or Antwort=="ja" or Antwort=="Yes" or Antwort=="yes")
-            {
-               break;
-            }
-         }
-         else if (line[0] == '#')
-            {
-               line.erase(line.begin(), line.begin()+1);
-               SLEEP(stoi(line));
-         }
-         else if (line == "Reactivating")
-         {
-            license_key="";
-            Onlineaktivierung();
-            return true;
-         }
-         else if (line == "End")
-         {
-            exit(0);
-         }
-            
+         if (line.at(0) == '#') continue;
+         if (line.at(0) == ';') continue;
          
-         myfile.close();
-         
-         if(remove("Update_Mac.txt") == -1) cout << "Löschen der Temporären Datei \"Update_Mac.txt\" fehlgeschlagen!" << endl;
+         Update_Data.push_back(line);
       }
+      myfile.close();
    } else {
-      cout << "Updatesuche fehlgeschlagen!" << endl;
-      return false;
+   cout << "Updatesuche fehlgeschlagen!" << endl;
+   return false;
    }
+   
+   
+   for (string line : Update_Data )
+   {
+      line="";
+      cout << endl << "_" << line << "_#" << endl;
+      line=" ";
+      //if(!myfile.good())
+      //{
+      //break;
+      //}
+      
+      if (line.at(0) == '$')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         system(line.c_str());
+      }
+      else if (line.at(0) == '@')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         cout << line << endl;
+      }
+      else if (line.at(0) == '=')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         if (line != Version)
+         {
+            break;
+         }
+      }
+      else if (line == "?1")
+      {
+         cin >> Antwort;
+      }
+      else if (line == "?2")
+      {
+         cin >> Antwort;
+         if(Antwort=="Nein" or Antwort=="nein" or Antwort=="No" or Antwort=="no" )
+         {
+            break;
+         }
+      }
+      else if (line == "?3")
+      {
+         cin >> Antwort;
+         if(Antwort=="Ja" or Antwort=="ja" or Antwort=="Yes" or Antwort=="yes")
+         {
+            break;
+         }
+      }
+      else if (line.at(0) == '#')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         SLEEP(stoi(line));
+      }
+      else if (line == "Reactivating")
+      {
+         license_key="";
+         Onlineaktivierung();
+         return true;
+      }
+      else if (line == "End")
+      {
+         exit(0);
+      }
+
+   }
+   
+   if(remove(Update_Savepath_char) == -1) cout << "Löschen der Temporären Datei \"" << Update_Savepath_string << "\" fehlgeschlagen!" << endl;
    
    
    return true;
@@ -964,17 +983,17 @@ bool Registrierung(string Lizenz)
    
    vector<string> Lizenzfile_URL_vector;
    stringstream Lizenzfile_URL_T1;
-   Lizenzfile_URL_T1 << "curl -f -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T1 << "curl -f --connect-timeout 3 -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T2;
-   Lizenzfile_URL_T2 << "curl -f -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T2 << "curl -f --connect-timeout 1 -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T3;
-   Lizenzfile_URL_T3 << "curl -f -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T4;
-   Lizenzfile_URL_T3 << "curl -f -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T5;
-   Lizenzfile_URL_T4 << "curl -f -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T6;
-   Lizenzfile_URL_T4 << "curl -f -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T1.str());
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T2.str());
@@ -1063,8 +1082,8 @@ bool Registrierung(string Lizenz)
                getchar();
                return true;
             } else {
-               cout << "Der Schl¸ssel ist g¸ltig. Das Programm konnte allerdings nicht aktiviert werden.\n"
-                    << "Bitte überprüfen Sie, ob der Installationsordner schreibgesch¸tzt ist.\n"
+               cout << "Der Schlüssel ist gültig. Das Programm konnte allerdings nicht aktiviert werden.\n"
+                    << "Bitte überprüfen Sie, ob der Installationsordner schreibgeschützt ist.\n"
                     << "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch\n"
                     << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
                getchar();
@@ -1072,13 +1091,13 @@ bool Registrierung(string Lizenz)
                return false;
             }
          } else {
-            cout << "Ihr Schl¸ssel ist g¸ltig, aber die maximale Anzahl der\n"
-                 << "Aktivierungen f¸r diesen Schl¸ssel wurde ¸berschritten.\n"
+            cout << "Ihr Schlüssel ist gültig, aber die maximale Anzahl der\n"
+                 << "Aktivierungen für diesen Schlüssel wurde überschritten.\n"
                  << "Bitte melden sich per E-Mail an nico@bosshome.ch um mit\n"
                  << "plausiebelr Begr¸ndung (z.B. 6 Computer, Merfache\n"
                  << "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen\n"
-                 << "grˆsseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler\n"
-                 << "usw.) gratis erneute Lizenzen auf diesen Schl¸ssel zu erhalten\n"
+                 << "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler\n"
+                 << "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten\n"
                  << "oder weitere zu erwerben.\n"
                  << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
             getchar();
@@ -1087,17 +1106,17 @@ bool Registrierung(string Lizenz)
          }
          
       } else {
-         cout << "Der Lizenzschl¸ssel ist ung¸ltig. Bitte ¸berpr¸fen Sie ihn auf\n"
+         cout << "Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf\n"
               << "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch!\n"
-              << "Der Lizenzschl¸ssel sollten Sie zur gekauften Hardwaire zusammen mit dem\n"
+              << "Der Lizenzschlüssel sollten Sie zur gekauften Hardwaire zusammen mit dem\n"
               << "Downloadlink erhalten haben.\n" << endl;
          return false;
       }
    } else {
       cout << "Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung\n"
            << "ist nur beim ersten Programmstart und nach jedem Update erforderlich.\n"
-           << "Bitte ¸berpr¸fen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin\n"
-           << "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch\n"
+           << "Bitte überprüfen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin\n"
+           << "bestehen bleiben, melden Sie sich bitte umgehend per E-Mail an nico@bosshome.ch\n"
            << "- Drücken Sie ENTER um das Programm zu beenden -" << endl;
       getchar();
       exit(0);
