@@ -95,6 +95,7 @@ vector<unsigned char> Noten_Nr {
    96};
 
 
+string Application_Path;
 char path[PATH_MAX];
 
 
@@ -149,9 +150,10 @@ int main( int argc, char *argv[] )
    basec = strdup(path);
    dname = dirname(dirc);
    bname = basename(basec);
-   stringstream Config_Path_ss;
-   Config_Path_ss << dname << "/";
-   Config_Path=Config_Path_ss.str();
+   stringstream Application_Path_ss;
+   Application_Path_ss << dname << "/";
+   Application_Path=Application_Path_ss.str();
+   Config_Path = Application_Path;
    Executable_Name=bname;
 
    Executable_Path=argv[0];
@@ -210,7 +212,9 @@ int main( int argc, char *argv[] )
    }
    ConfigFileExist.close();
 
-
+   
+   cout << "\n\n================================================================================\n\n" << endl;
+   
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
    int ir;
@@ -285,6 +289,7 @@ int main( int argc, char *argv[] )
    vector<char> Noten_Reihenfolge={0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,
                                    1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,
                                    30,31,32,33,34,35};
+   
    
    while(read_serial_int(port_fd)!=250);
    
@@ -766,17 +771,17 @@ bool Update_Funktion(void)
    
    vector<string> Update_URL_vector;
    stringstream Update_URL_T1;
-   Update_URL_T1 << "curl -f --connect-timeout 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T2;
-   Update_URL_T2 << "curl -f --connect-timeout 1 -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T3;
-   Update_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T4;
-   Update_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T5;
-   Update_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    stringstream Update_URL_T6;
-   Update_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
    
    Update_URL_vector.push_back(Update_URL_T1.str());
    Update_URL_vector.push_back(Update_URL_T2.str());
@@ -802,6 +807,15 @@ bool Update_Funktion(void)
       UpdateFileExist.close();
    }
    
+   /*
+    //Unnötig und geht nicht da cmd immer erneut ausgeführt wird!
+    //Standartpfad ist immer standartmässig wie Application_Pathl.
+   stringstream cd_path;
+   cd_path << "cd " << Application_Path;
+   system(cd_path.str().c_str());
+   system("cd ..");
+   system("ls");
+    */
    
    cout << "\n\n" << endl;
    
@@ -819,7 +833,7 @@ bool Update_Funktion(void)
       {
          
          getline (myfile,line);
-         if (! line.length()) continue;
+         if (line.length()<=1) continue;
          
          if (line.at(0) == '#') continue;
          if (line.at(0) == ';') continue;
@@ -835,13 +849,8 @@ bool Update_Funktion(void)
    
    for (string line : Update_Data )
    {
-      line="";
-      cout << endl << "_" << line << "_#" << endl;
-      line=" ";
-      //if(!myfile.good())
-      //{
-      //break;
-      //}
+      cout << line << endl;
+      //line=" ";
       
       if (line.at(0) == '$')
       {
@@ -857,6 +866,30 @@ bool Update_Funktion(void)
       {
          line.erase(line.begin(), line.begin()+1);
          if (line != Version)
+         {
+            break;
+         }
+      }
+      else if (line.at(0) == '!')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         if (line == Version)
+         {
+            break;
+         }
+      }
+      else if (line.at(0) == '-')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         if (line >= Version)
+         {
+            break;
+         }
+      }
+      else if (line.at(0) == '+')
+      {
+         line.erase(line.begin(), line.begin()+1);
+         if (line <= Version)
          {
             break;
          }
@@ -983,17 +1016,17 @@ bool Registrierung(string Lizenz)
    
    vector<string> Lizenzfile_URL_vector;
    stringstream Lizenzfile_URL_T1;
-   Lizenzfile_URL_T1 << "curl -f --connect-timeout 3 -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T2;
-   Lizenzfile_URL_T2 << "curl -f --connect-timeout 1 -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T3;
-   Lizenzfile_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T4;
-   Lizenzfile_URL_T3 << "curl -f --connect-timeout 1 -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T5;
-   Lizenzfile_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T6;
-   Lizenzfile_URL_T4 << "curl -f --connect-timeout 1 -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
    
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T1.str());
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T2.str());
