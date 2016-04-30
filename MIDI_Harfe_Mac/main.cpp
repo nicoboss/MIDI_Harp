@@ -39,17 +39,19 @@ using namespace std;
 
 #define Version "V1.0"
 #define VersionNr "1.0"
+#define Sprache "DE"
 
 int port_fd;
 
 int init_serial_input(char * port);
 int read_serial_int(int fd);
 
+void Config_File_Exist(string configFile, bool ConfigFile_Read_OK);
 bool ConfigFile_Read(string configFile);
 void ConfigFile_Create(string configFile);
+bool Config_Refresh(string configFile);
 
 bool Update_Funktion(void);
-
 bool Onlineaktivierung(void); //bool als Modderverwirrung :D
 bool Registrierung(string Lizenz);
 void Generate(void);
@@ -188,40 +190,24 @@ int main( int argc, char *argv[] )
    }
     */
    
-   ConfigFile_Read ("config.txt");
+   
+   Config_File_Exist("config.txt", ConfigFile_Read("config.txt"));
    Onlineaktivierung(); // Wichtig!!!
    Update_Funktion();
-   
-   ifstream ConfigFileExist("config.txt");
-   if(!ConfigFileExist)
-   {
-      cout << "Sollte ein neues config.txt File erstellt werden? (Ja / Nein=Programm beenden): ";
-      string Config_Reset;
-      cin >> Config_Reset;
-      if(Config_Reset=="Nein" or Config_Reset=="nein" or Config_Reset=="No" or Config_Reset=="no" or Config_Reset=="0")
-      {
-         exit(0);
-      }
-      else {
-         ConfigFile_Create("config.txt");
-         if(!ConfigFile_Read ("config.txt"))
-         {
-            cout << endl << "Die Reperatur des Config Files ist fehlgeschlagen! Die hattä eigendlich nicht passieren dürfen. Bitte instalieren sie das Programm komplett neu. Sollte dieser Fehler weiterhin auftreten melden sie sich bitte an per Mail an nico@bosshomer.ch" << endl;
-         }
-      }
-   }
-   ConfigFileExist.close();
 
    
    cout << "\n\n================================================================================\n\n" << endl;
    
    
    port_fd = init_serial_input(USB_SERIAL_PORT);
-   int ir;
+   //int ir;
+   
+   /*
    for(ir=0;ir<100;ir++)
    {
       cout << "," << read_serial_int(port_fd);
    }
+    */
    
    vector<unsigned char> message;
    
@@ -290,13 +276,40 @@ int main( int argc, char *argv[] )
                                    1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,
                                    30,31,32,33,34,35};
    
+   bool Connection_OK=false;
+   unsigned long Connection_try=0;
    
-   while(read_serial_int(port_fd)!=250);
+   while(true)
+   {
+      Connection_try++;
+      
+      for(i=0;i<50;i++)
+      {
+         if(read_serial_int(port_fd)==250)
+         {
+            Connection_OK=true;
+            break;
+         }
+      }
+      
+      if(Connection_OK==true)
+      {
+         cout << "Erfolgreiche mit Mikrokontroller verbunden :D" << endl;
+         break;
+      } else {
+         cout << "Versuch: " << Connection_try << "   Warten auf Verbindung des Mikrokontrollers..." << endl;
+      }
+      
+      SLEEP( 500 );
+      port_fd = init_serial_input(USB_SERIAL_PORT);
+   }
+
+   
    
    while(true)
    {
    
-      //SLEEP( 500 );
+      //
       Nicht_Verbunden_Temp=0;
       
       for(i=0;i<=Noten_Reihenfolge.size()-1;i++)
@@ -508,6 +521,31 @@ string trim(string const& source, char const* delims = " \t\r\n") {
 }
 
 
+
+void Config_File_Exist(string configFile, bool ConfigFile_Read_OK)
+{
+   ifstream ConfigFileExist("config.txt");
+   if(!ConfigFileExist or ConfigFile_Read_OK==false)
+   {
+      cout << "Sollte ein neues config.txt File erstellt werden? (Ja / Nein=Programm beenden): ";
+      string Config_Reset;
+      cin >> Config_Reset;
+      if(Config_Reset=="Nein" or Config_Reset=="nein" or Config_Reset=="No" or Config_Reset=="no" or Config_Reset=="0")
+      {
+         exit(0);
+      }
+      else {
+         ConfigFile_Create("config.txt");
+         if(!ConfigFile_Read ("config.txt"))
+         {
+            cout << endl << "Die Reperatur des Config Files ist fehlgeschlagen! Die hattä eigendlich nicht passieren dürfen. Bitte instalieren sie das Programm komplett neu. Sollte dieser Fehler weiterhin auftreten melden sie sich bitte an per Mail an nico@bosshomer.ch" << endl;
+         }
+      }
+   }
+   ConfigFileExist.close();
+}
+
+
 bool ConfigFile_Read(string configFile) {
    string name;
    string value;
@@ -525,10 +563,8 @@ bool ConfigFile_Read(string configFile) {
    ifstream myfile (configFile);
    if (myfile.is_open())
    {
-      
       while (! myfile.eof() )
       {
-         
          getline (myfile,line);
          if (! line.length()) continue;
          
@@ -558,6 +594,12 @@ bool ConfigFile_Read(string configFile) {
    else
    {
       cout << "Die Datei " << configFile << " existiert nicht!";
+      return false;
+   }
+   
+   if(ConfigFile_Data.size()<20)
+   {
+      cout << "Die Datei " << configFile << " ist beschädigt!";
       return false;
    }
    
@@ -750,6 +792,74 @@ void ConfigFile_Create(string configFile) {
 }
 
 
+bool Config_Refresh(string configFile) {
+   int i;
+   size_t pos=0;
+   string line;
+   string line_temp;
+   vector<string> ConfigFile_Data;
+   
+   char configFile_char[1024];
+   strncpy(configFile_char, configFile.c_str(), sizeof(configFile_char));
+   configFile_char[sizeof(configFile_char) - 1] = 0;
+   
+   ifstream myfile (configFile);
+   if (myfile.is_open())
+   {
+      while (! myfile.eof() )
+      {
+         getline (myfile,line);
+         ConfigFile_Data.push_back(line);
+         //cout << line << endl;
+      }
+      myfile.close();
+   } else {
+      cout << "Eintragen des neuen Lizenzschlüssels in das Configfile ist fehlgeschlagen!\n" <<
+              "Bitte tragen Sie ihren neuen Schlussel manuell ein oder meden sich an nico@bosshome.ch\n" <<
+               "Ihr persönlicher Support aus der Schweiz." << endl;
+      return false;
+   }
+   
+   //if( remove(configFile_char) != 0 )
+   //{
+   //   cout << "Error deleting Configfile!" << endl;
+   //}
+   
+   ofstream outfile (configFile);
+   
+   for (string line : ConfigFile_Data )
+   {
+      line_temp=line;
+      pos = line_temp.find_first_of("=");
+      if(pos!=string::npos)
+      {
+         line_temp.erase(line_temp.begin()+pos, line_temp.end()-pos-1);
+         cout << line << endl;
+         if(line_temp=="Lizenzschlüssel")
+         {
+            stringstream line_ss;
+            line_ss << "Lizenzschlüssel=" << license_key << endl;
+            line = line_ss.str();
+         }
+      }
+      i++; //Alles nur um so ein doofen zusätzlichen Zeilenumbruch am Dateiende zu entfernen!
+      if(i!=ConfigFile_Data.size()-1)
+      {
+         
+         outfile << line << endl;
+      } else {
+         outfile << line << endl;
+      }
+      
+   }
+   
+   outfile.close();
+   return true;
+}
+
+
+
+
 
 bool Update_Funktion(void)
 {
@@ -771,17 +881,17 @@ bool Update_Funktion(void)
    
    vector<string> Update_URL_vector;
    stringstream Update_URL_T1;
-   Update_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    stringstream Update_URL_T2;
-   Update_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    stringstream Update_URL_T3;
-   Update_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    stringstream Update_URL_T4;
-   Update_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T4 << "curl -f -m 1 -G 'http://www.bosshome.ch/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    stringstream Update_URL_T5;
-   Update_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T5 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    stringstream Update_URL_T6;
-   Update_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' > " << Update_Savepath_string;
+   Update_URL_T6 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/Update.php' -d 'app=MIDIHarfe' -d 'key=" << license_key << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Update_Savepath_string;
    
    Update_URL_vector.push_back(Update_URL_T1.str());
    Update_URL_vector.push_back(Update_URL_T2.str());
@@ -849,7 +959,7 @@ bool Update_Funktion(void)
    
    for (string line : Update_Data )
    {
-      cout << line << endl;
+      //cout << line << endl;
       //line=" ";
       
       if (line.at(0) == '$')
@@ -1016,17 +1126,17 @@ bool Registrierung(string Lizenz)
    
    vector<string> Lizenzfile_URL_vector;
    stringstream Lizenzfile_URL_T1;
-   Lizenzfile_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T1 << "curl -f -m 2 -G 'http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T2;
-   Lizenzfile_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T2 << "curl -f -m 1 -G 'http://www.nicobosshard.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T3;
-   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T4;
-   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T3 << "curl -f -m 1 -G 'http://www.bosshome.ch/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T5;
-   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    stringstream Lizenzfile_URL_T6;
-   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' > " << Lizenz_Savepath_string;
+   Lizenzfile_URL_T4 << "curl -f -m 1 -G 'http://eldercraft.ddns.net/nanticopykeys.php' -d 'app=MIDIHarfe' -d 'key=" << Lizenz << "' -d 'os=Mac' -d 'version=" << Version << " -d 'language=" << Sprache << " > " << Lizenz_Savepath_string;
    
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T1.str());
    Lizenzfile_URL_vector.push_back(Lizenzfile_URL_T2.str());
@@ -1113,6 +1223,7 @@ bool Registrierung(string Lizenz)
                << "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.\n" << endl
                << "- Drücken Sie ENTER um fortzufahren -" << endl;
                getchar();
+               Config_Refresh("config.txt");
                return true;
             } else {
                cout << "Der Schlüssel ist gültig. Das Programm konnte allerdings nicht aktiviert werden.\n"
@@ -1127,7 +1238,7 @@ bool Registrierung(string Lizenz)
             cout << "Ihr Schlüssel ist gültig, aber die maximale Anzahl der\n"
                  << "Aktivierungen für diesen Schlüssel wurde überschritten.\n"
                  << "Bitte melden sich per E-Mail an nico@bosshome.ch um mit\n"
-                 << "plausiebelr Begr¸ndung (z.B. 6 Computer, Merfache\n"
+                 << "plausiebelr Begründung (z.B. 6 Computer, Merfache\n"
                  << "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen\n"
                  << "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler\n"
                  << "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten\n"
