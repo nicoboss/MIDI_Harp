@@ -4,6 +4,8 @@ FFT_Harfe von Nico Bosshard (c)2016
 
 from __future__ import print_function
 import os, sys, threading, math, time, threading, multiprocessing, pyaudio, struct
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 import numpy as np
 from random import *
 
@@ -35,6 +37,8 @@ def mic_stream():
 
 def mic_listen(bufferSize, Code = [], mic_data = []):
     mic = np.array(struct.unpack("%dB"%(bufferSize*4),mic_data))
+    fftData=abs(np.fft.rfft(mic))**2
+    print(fftData)
     a=0
     for i in range(0,bufferSize/4):
         for e in Code[i]:
@@ -55,9 +59,22 @@ def result_get():
         except:
             pass
 
+def animate(i):
+    mic_data=mic_chunks[-1]
+    mic = np.array(struct.unpack("%dB"%(bufferSize*4),mic_data))
+    ffty=np.fft.fft(mic)
+    #fftx=np.fft.rfftfreq(bufferSize*4, 1.0/sampleRate)
+    #fftx=fftx[0:len(fftx)/2]
+    ffty=abs(ffty[0:len(ffty)/2])/1000
+    ffty1=ffty[:len(ffty)/2]
+    ffty2=ffty[len(ffty)/2::]+2
+    ffty2=ffty2[::-1]
+    ffty=ffty1+ffty2
+    ffty=np.log(ffty)-2
+    line.set_ydata(ffty)  # update the data
+    return line,
 
 if __name__ == '__main__':
-
     p = pyaudio.PyAudio()
     info = p.get_host_api_info_by_index(0)
     numdevices = info.get('deviceCount')
@@ -75,11 +92,48 @@ if __name__ == '__main__':
 
     mic_thread = threading.Thread(target=mic_stream)
     mic_thread.start()
+
+    fig, ax = plt.subplots()
+    time.sleep(0.2)
+    mic_data=mic_chunks[-1]
+    mic = np.array(struct.unpack("%dB"%(bufferSize*4),mic_data))
+    ffty=np.fft.fft(mic)
+    fftx=np.fft.rfftfreq(bufferSize*4, 1.0/sampleRate)
+    fftx=fftx[0:len(fftx)/2]
+    ffty=abs(ffty[0:len(ffty)/2])/1000
+    ffty1=ffty[:len(ffty)/2]
+    ffty2=ffty[len(ffty)/2::]+2
+    ffty2=ffty2[::-1]
+    ffty=ffty1+ffty2
+    ffty=np.log(ffty)-2
+
+    print(fftx.__len__())
+    print(ffty.__len__())
+                
+    #fftData=abs(np.fft.rfft(mic))**2
+    #print(fftData.__len__())
+    #x = np.arange(0, 4097, 1)
+    line, = ax.plot(fftx, ffty)
+    #plt.plot(fftx, ffty, 'k')
+    ani = animation.FuncAnimation(fig, animate, fftx, interval=25, blit=True)
+    plt.show()
+
+    while True:
+        time.sleep(0.2)
+        mic_data=mic_chunks.pop(0)
+        mic = np.array(struct.unpack("%dB"%(200),mic_data[:200]))
+        fftData=abs(np.fft.rfft(mic))**2
+        plt.plot(fftData, 'k')
+        plt.update()
+        
+    close()
+    
     f = open("Code.txt","w")
     time.sleep(0.2)
     for i in range(15):
         mic_data=mic_chunks.pop(0)
         mic = np.array(struct.unpack("%dB"%(bufferSize*4),mic_data))
+        fftData=abs(np.fft.rfft(mic))**2
         stream.write(mic_data)
         #s="["
         #for q in mic:
