@@ -13,8 +13,8 @@ Public Class Form1
     Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
 
     Private Declare Sub mouse_event Lib "user32" _
-      (ByVal dwFlags As Integer, ByVal dx As Integer, _
-      ByVal dy As Integer, ByVal cButtons As Integer, _
+      (ByVal dwFlags As Integer, ByVal dx As Integer,
+      ByVal dy As Integer, ByVal cButtons As Integer,
       ByVal dwExtraInfo As Integer)
     Private Const MOUSEEVENTF_ABSOLUTE = &H8000
     Private Const MOUSEEVENTF_LEFTDOWN = &H2
@@ -29,10 +29,10 @@ Public Class Form1
 
 
 
-    <DllImport("user32.dll", CallingConvention:=CallingConvention.StdCall, _
-                CharSet:=CharSet.Unicode, EntryPoint:="keybd_event", _
-                ExactSpelling:=True, SetLastError:=True)> _
-    Public Shared Sub keybd_event(ByVal bVk As Byte, ByVal bScan As Byte, _
+    <DllImport("user32.dll", CallingConvention:=CallingConvention.StdCall,
+                CharSet:=CharSet.Unicode, EntryPoint:="keybd_event",
+                ExactSpelling:=True, SetLastError:=True)>
+    Public Shared Sub keybd_event(ByVal bVk As Byte, ByVal bScan As Byte,
                                        ByVal dwFlags As Integer, ByVal dwExtraInfo As Integer)
     End Sub
 
@@ -116,14 +116,14 @@ Public Class Form1
     Dim Noten_Versch(35) As Integer
     Dim Halbtonversch As Integer
 
-    Dim MidiNoteNr = { _
-            28, 30, 31, 33, 35, 36, 38, _
-            40, 42, 43, 45, 47, 48, 50, _
-            52, 54, 55, 57, 59, 60, 62, _
-            64, 66, 67, 69, 71, 72, 74, _
-            76, 78, 79, 81, 83, 84, 86, _
-            88, 89, 91, 93, 95, 96, 98, _
-            100, 101, 103, 105, 107, 108, 110, _
+    Dim MidiNoteNr = {
+            28, 30, 31, 33, 35, 36, 38,
+            40, 42, 43, 45, 47, 48, 50,
+            52, 54, 55, 57, 59, 60, 62,
+            64, 66, 67, 69, 71, 72, 74,
+            76, 78, 79, 81, 83, 84, 86,
+            88, 89, 91, 93, 95, 96, 98,
+            100, 101, 103, 105, 107, 108, 110,
             112, 113, 115, 117, 119, 120, 122}
 
     '16, 18, 19, 21, 23, 24, 26, _
@@ -136,16 +136,16 @@ Public Class Form1
     '64, 66, 68, 69, 71, 73, 75}
 
 
-    Dim Notennamen = {{"ces", "des", "d", "fes", "ges", "g", "a", "ces"}, _
-                  {"c", "d", "es", "f", "g", "as", "b", "c"}, _
+    Dim Notennamen = {{"ces", "des", "d", "fes", "ges", "g", "a", "ces"},
+                  {"c", "d", "es", "f", "g", "as", "b", "c"},
                   {"cis", "dis", "e", "fis", "gis", "a", "h", "cis"}}
 
     'Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, _
     '1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, _
     '30, 31, 32, 33, 34}
 
-    Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, _
-                                       1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, _
+    Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
+                                       1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29,
                                        30, 31, 32, 33, 34}
 
     Dim C1_Klappe_alt As SByte
@@ -178,40 +178,40 @@ Public Class Form1
 
         'MessageBox.Show(Asc(""))
 
-        Noten_VerticalProgessBar = { _
-            C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar, _
-            C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar, _
-            C4_VerticalProgessBar, D4_VerticalProgessBar, E4_VerticalProgessBar, F4_VerticalProgessBar, G4_VerticalProgessBar, A4_VerticalProgessBar, H4_VerticalProgessBar, _
-            C5_VerticalProgessBar, D5_VerticalProgessBar, E5_VerticalProgessBar, F5_VerticalProgessBar, G5_VerticalProgessBar, A5_VerticalProgessBar, H5_VerticalProgessBar, _
+        Noten_VerticalProgessBar = {
+            C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar,
+            C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar,
+            C4_VerticalProgessBar, D4_VerticalProgessBar, E4_VerticalProgessBar, F4_VerticalProgessBar, G4_VerticalProgessBar, A4_VerticalProgessBar, H4_VerticalProgessBar,
+            C5_VerticalProgessBar, D5_VerticalProgessBar, E5_VerticalProgessBar, F5_VerticalProgessBar, G5_VerticalProgessBar, A5_VerticalProgessBar, H5_VerticalProgessBar,
             C6_VerticalProgessBar, D6_VerticalProgessBar, E6_VerticalProgessBar, F6_VerticalProgessBar, G6_VerticalProgessBar, A6_VerticalProgessBar, H6_VerticalProgessBar}
 
 
-        Noten_Wert = { _
-            C2_Wert, D2_Wert, E2_Wert, F2_Wert, G2_Wert, A2_Wert, H2_Wert, _
-            C3_Wert, D3_Wert, E3_Wert, F3_Wert, G3_Wert, A3_Wert, H3_Wert, _
-            C4_Wert, D4_Wert, E4_Wert, F4_Wert, G4_Wert, A4_Wert, H4_Wert, _
-            C5_Wert, D5_Wert, E5_Wert, F5_Wert, G5_Wert, A5_Wert, H5_Wert, _
+        Noten_Wert = {
+            C2_Wert, D2_Wert, E2_Wert, F2_Wert, G2_Wert, A2_Wert, H2_Wert,
+            C3_Wert, D3_Wert, E3_Wert, F3_Wert, G3_Wert, A3_Wert, H3_Wert,
+            C4_Wert, D4_Wert, E4_Wert, F4_Wert, G4_Wert, A4_Wert, H4_Wert,
+            C5_Wert, D5_Wert, E5_Wert, F5_Wert, G5_Wert, A5_Wert, H5_Wert,
             C6_Wert, D6_Wert, E6_Wert, F6_Wert, G6_Wert, A6_Wert, H6_Wert}
 
-        Noten_Verschiebung = { _
-            C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung, _
-            C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung, _
-            C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung, _
-            C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung, _
+        Noten_Verschiebung = {
+            C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung,
+            C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung,
+            C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung,
+            C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung,
             C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
 
-        Noten_Startwert = { _
-            C2_Startwert, D2_Startwert, E2_Startwert, F2_Startwert, G2_Startwert, A2_Startwert, H2_Startwert, _
-            C3_Startwert, D3_Startwert, E3_Startwert, F3_Startwert, G3_Startwert, A3_Startwert, H3_Startwert, _
-            C4_Startwert, D4_Startwert, E4_Startwert, F4_Startwert, G4_Startwert, A4_Startwert, H4_Startwert, _
-            C5_Startwert, D5_Startwert, E5_Startwert, F5_Startwert, G5_Startwert, A5_Startwert, H5_Startwert, _
+        Noten_Startwert = {
+            C2_Startwert, D2_Startwert, E2_Startwert, F2_Startwert, G2_Startwert, A2_Startwert, H2_Startwert,
+            C3_Startwert, D3_Startwert, E3_Startwert, F3_Startwert, G3_Startwert, A3_Startwert, H3_Startwert,
+            C4_Startwert, D4_Startwert, E4_Startwert, F4_Startwert, G4_Startwert, A4_Startwert, H4_Startwert,
+            C5_Startwert, D5_Startwert, E5_Startwert, F5_Startwert, G5_Startwert, A5_Startwert, H5_Startwert,
             C6_Startwert, D6_Startwert, E6_Startwert, F6_Startwert, G6_Startwert, A6_Startwert, H6_Startwert}
 
-        Noten_Stopwert = { _
-    C2_Stopwert, D2_Stopwert, E2_Stopwert, F2_Stopwert, G2_Stopwert, A2_Stopwert, H2_Stopwert, _
-    C3_Stopwert, D3_Stopwert, E3_Stopwert, F3_Stopwert, G3_Stopwert, A3_Stopwert, H3_Stopwert, _
-    C4_Stopwert, D4_Stopwert, E4_Stopwert, F4_Stopwert, G4_Stopwert, A4_Stopwert, H4_Stopwert, _
-    C5_Stopwert, D5_Stopwert, E5_Stopwert, F5_Stopwert, G5_Stopwert, A5_Stopwert, H5_Stopwert, _
+        Noten_Stopwert = {
+    C2_Stopwert, D2_Stopwert, E2_Stopwert, F2_Stopwert, G2_Stopwert, A2_Stopwert, H2_Stopwert,
+    C3_Stopwert, D3_Stopwert, E3_Stopwert, F3_Stopwert, G3_Stopwert, A3_Stopwert, H3_Stopwert,
+    C4_Stopwert, D4_Stopwert, E4_Stopwert, F4_Stopwert, G4_Stopwert, A4_Stopwert, H4_Stopwert,
+    C5_Stopwert, D5_Stopwert, E5_Stopwert, F5_Stopwert, G5_Stopwert, A5_Stopwert, H5_Stopwert,
     C6_Stopwert, D6_Stopwert, E6_Stopwert, F6_Stopwert, G6_Stopwert, A6_Stopwert, H6_Stopwert}
 
 
@@ -256,7 +256,10 @@ Public Class Form1
 
     End Sub
 
-
+    '**
+    '* Populates the COM List. Is executed once per second. 
+    '* Handler of the Com_Search_Timer.Tick event.
+    '*
     Sub Com_Search() Handles Com_Search_Timer.Tick
 
         ports = GetPortNames()
@@ -314,7 +317,7 @@ Public Class Form1
             & vbCrLf & "nicht schon von einem anderen Programm besetzt ist." _
             & vbCrLf & vbCrLf & "Fehler: " & e.ToString _
             & vbCrLf & "Support E-Mail Adresse: nico@bosshome.ch" _
-            & vbCrLf & "Fehlercode: 1 (Verbindungsfehler), ", _
+            & vbCrLf & "Fehlercode: 1 (Verbindungsfehler), ",
             "Verbindungsfehler", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Button_Connect.Enabled = True
             Button_Disconnect.Enabled = False
@@ -326,7 +329,11 @@ Public Class Form1
         End If
 
     End Sub
-
+    '**
+    '* Handler for the disconnect button and programm close event
+    '*
+    '* Stop the serial connection thread. Clean up GUI. 
+    '*
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         SerialPort1_Stop = True
@@ -725,7 +732,7 @@ Public Class Form1
     Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
         Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
         Halbtonversch = Halbtonverschiebung.Value
-        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.", _
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
                                                     "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
@@ -742,7 +749,7 @@ Public Class Form1
             Case -36 To -24 : Oktavenverschiebung.SelectedIndex = 6
             Case Else : Oktavenverschiebung.SelectedIndex = 4
         End Select
-        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.", _
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
                                                     "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
@@ -1147,15 +1154,15 @@ Public Class Form1
 #Region " Grenzwerte "
 
     Private Sub Grenzwerte_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
-        C2_Startwert.KeyPress, D2_Startwert.KeyPress, E2_Startwert.KeyPress, F2_Startwert.KeyPress, G2_Startwert.KeyPress, A2_Startwert.KeyPress, H2_Startwert.KeyPress, _
-        C3_Startwert.KeyPress, D3_Startwert.KeyPress, E3_Startwert.KeyPress, F3_Startwert.KeyPress, G3_Startwert.KeyPress, A3_Startwert.KeyPress, H3_Startwert.KeyPress, _
-        C4_Startwert.KeyPress, D4_Startwert.KeyPress, E4_Startwert.KeyPress, F4_Startwert.KeyPress, G4_Startwert.KeyPress, A4_Startwert.KeyPress, H4_Startwert.KeyPress, _
-        C5_Startwert.KeyPress, D5_Startwert.KeyPress, E5_Startwert.KeyPress, F5_Startwert.KeyPress, G5_Startwert.KeyPress, A5_Startwert.KeyPress, H5_Startwert.KeyPress, _
-        C6_Startwert.KeyPress, D6_Startwert.KeyPress, E6_Startwert.KeyPress, F6_Startwert.KeyPress, G6_Startwert.KeyPress, A6_Startwert.KeyPress, H6_Startwert.KeyPress, _
-        C2_Stopwert.KeyPress, D2_Stopwert.KeyPress, E2_Stopwert.KeyPress, F2_Stopwert.KeyPress, G2_Stopwert.KeyPress, A2_Stopwert.KeyPress, H2_Stopwert.KeyPress, _
-        C3_Stopwert.KeyPress, D3_Stopwert.KeyPress, E3_Stopwert.KeyPress, F3_Stopwert.KeyPress, G3_Stopwert.KeyPress, A3_Stopwert.KeyPress, H3_Stopwert.KeyPress, _
-        C4_Stopwert.KeyPress, D4_Stopwert.KeyPress, E4_Stopwert.KeyPress, F4_Stopwert.KeyPress, G4_Stopwert.KeyPress, A4_Stopwert.KeyPress, H4_Stopwert.KeyPress, _
-        C5_Stopwert.KeyPress, D5_Stopwert.KeyPress, E5_Stopwert.KeyPress, F5_Stopwert.KeyPress, G5_Stopwert.KeyPress, A5_Stopwert.KeyPress, H5_Stopwert.KeyPress, _
+        C2_Startwert.KeyPress, D2_Startwert.KeyPress, E2_Startwert.KeyPress, F2_Startwert.KeyPress, G2_Startwert.KeyPress, A2_Startwert.KeyPress, H2_Startwert.KeyPress,
+        C3_Startwert.KeyPress, D3_Startwert.KeyPress, E3_Startwert.KeyPress, F3_Startwert.KeyPress, G3_Startwert.KeyPress, A3_Startwert.KeyPress, H3_Startwert.KeyPress,
+        C4_Startwert.KeyPress, D4_Startwert.KeyPress, E4_Startwert.KeyPress, F4_Startwert.KeyPress, G4_Startwert.KeyPress, A4_Startwert.KeyPress, H4_Startwert.KeyPress,
+        C5_Startwert.KeyPress, D5_Startwert.KeyPress, E5_Startwert.KeyPress, F5_Startwert.KeyPress, G5_Startwert.KeyPress, A5_Startwert.KeyPress, H5_Startwert.KeyPress,
+        C6_Startwert.KeyPress, D6_Startwert.KeyPress, E6_Startwert.KeyPress, F6_Startwert.KeyPress, G6_Startwert.KeyPress, A6_Startwert.KeyPress, H6_Startwert.KeyPress,
+        C2_Stopwert.KeyPress, D2_Stopwert.KeyPress, E2_Stopwert.KeyPress, F2_Stopwert.KeyPress, G2_Stopwert.KeyPress, A2_Stopwert.KeyPress, H2_Stopwert.KeyPress,
+        C3_Stopwert.KeyPress, D3_Stopwert.KeyPress, E3_Stopwert.KeyPress, F3_Stopwert.KeyPress, G3_Stopwert.KeyPress, A3_Stopwert.KeyPress, H3_Stopwert.KeyPress,
+        C4_Stopwert.KeyPress, D4_Stopwert.KeyPress, E4_Stopwert.KeyPress, F4_Stopwert.KeyPress, G4_Stopwert.KeyPress, A4_Stopwert.KeyPress, H4_Stopwert.KeyPress,
+        C5_Stopwert.KeyPress, D5_Stopwert.KeyPress, E5_Stopwert.KeyPress, F5_Stopwert.KeyPress, G5_Stopwert.KeyPress, A5_Stopwert.KeyPress, H5_Stopwert.KeyPress,
         C6_Stopwert.KeyPress, D6_Stopwert.KeyPress, E6_Stopwert.KeyPress, F6_Stopwert.KeyPress, G6_Stopwert.KeyPress, A6_Stopwert.KeyPress, H6_Stopwert.KeyPress
 
         Select Case Asc(e.KeyChar)
@@ -1170,10 +1177,10 @@ Public Class Form1
 
 
     Private Sub Verschiebung_KeyPress(ByVal sender As TextBox, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles _
-    C2_Verschiebung.KeyPress, D2_Verschiebung.KeyPress, E2_Verschiebung.KeyPress, F2_Verschiebung.KeyPress, G2_Verschiebung.KeyPress, A2_Verschiebung.KeyPress, H2_Verschiebung.KeyPress, _
-    C3_Verschiebung.KeyPress, D3_Verschiebung.KeyPress, E3_Verschiebung.KeyPress, F3_Verschiebung.KeyPress, G3_Verschiebung.KeyPress, A3_Verschiebung.KeyPress, H3_Verschiebung.KeyPress, _
-    C4_Verschiebung.KeyPress, D4_Verschiebung.KeyPress, E4_Verschiebung.KeyPress, F4_Verschiebung.KeyPress, G4_Verschiebung.KeyPress, A4_Verschiebung.KeyPress, H4_Verschiebung.KeyPress, _
-    C5_Verschiebung.KeyPress, D5_Verschiebung.KeyPress, E5_Verschiebung.KeyPress, F5_Verschiebung.KeyPress, G5_Verschiebung.KeyPress, A5_Verschiebung.KeyPress, H5_Verschiebung.KeyPress, _
+    C2_Verschiebung.KeyPress, D2_Verschiebung.KeyPress, E2_Verschiebung.KeyPress, F2_Verschiebung.KeyPress, G2_Verschiebung.KeyPress, A2_Verschiebung.KeyPress, H2_Verschiebung.KeyPress,
+    C3_Verschiebung.KeyPress, D3_Verschiebung.KeyPress, E3_Verschiebung.KeyPress, F3_Verschiebung.KeyPress, G3_Verschiebung.KeyPress, A3_Verschiebung.KeyPress, H3_Verschiebung.KeyPress,
+    C4_Verschiebung.KeyPress, D4_Verschiebung.KeyPress, E4_Verschiebung.KeyPress, F4_Verschiebung.KeyPress, G4_Verschiebung.KeyPress, A4_Verschiebung.KeyPress, H4_Verschiebung.KeyPress,
+    C5_Verschiebung.KeyPress, D5_Verschiebung.KeyPress, E5_Verschiebung.KeyPress, F5_Verschiebung.KeyPress, G5_Verschiebung.KeyPress, A5_Verschiebung.KeyPress, H5_Verschiebung.KeyPress,
     C6_Verschiebung.KeyPress, D6_Verschiebung.KeyPress, E6_Verschiebung.KeyPress, F6_Verschiebung.KeyPress, G6_Verschiebung.KeyPress, A6_Verschiebung.KeyPress, H6_Verschiebung.KeyPress
 
         Select Case Asc(e.KeyChar)
@@ -1188,15 +1195,15 @@ Public Class Form1
 
 
     Private Sub Grenzwerte_LostFocus(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
-        C2_Startwert.LostFocus, D2_Startwert.LostFocus, E2_Startwert.LostFocus, F2_Startwert.LostFocus, G2_Startwert.LostFocus, A2_Startwert.LostFocus, H2_Startwert.LostFocus, _
-        C3_Startwert.LostFocus, D3_Startwert.LostFocus, E3_Startwert.LostFocus, F3_Startwert.LostFocus, G3_Startwert.LostFocus, A3_Startwert.LostFocus, H3_Startwert.LostFocus, _
-        C4_Startwert.LostFocus, D4_Startwert.LostFocus, E4_Startwert.LostFocus, F4_Startwert.LostFocus, G4_Startwert.LostFocus, A4_Startwert.LostFocus, H4_Startwert.LostFocus, _
-        C5_Startwert.LostFocus, D5_Startwert.LostFocus, E5_Startwert.LostFocus, F5_Startwert.LostFocus, G5_Startwert.LostFocus, A5_Startwert.LostFocus, H5_Startwert.LostFocus, _
-        C6_Startwert.LostFocus, D6_Startwert.LostFocus, E6_Startwert.LostFocus, F6_Startwert.LostFocus, G6_Startwert.LostFocus, A6_Startwert.LostFocus, H6_Startwert.LostFocus, _
-        C2_Stopwert.LostFocus, D2_Stopwert.LostFocus, E2_Stopwert.LostFocus, F2_Stopwert.LostFocus, G2_Stopwert.LostFocus, A2_Stopwert.LostFocus, H2_Stopwert.LostFocus, _
-        C3_Stopwert.LostFocus, D3_Stopwert.LostFocus, E3_Stopwert.LostFocus, F3_Stopwert.LostFocus, G3_Stopwert.LostFocus, A3_Stopwert.LostFocus, H3_Stopwert.LostFocus, _
-        C4_Stopwert.LostFocus, D4_Stopwert.LostFocus, E4_Stopwert.LostFocus, F4_Stopwert.LostFocus, G4_Stopwert.LostFocus, A4_Stopwert.LostFocus, H4_Stopwert.LostFocus, _
-        C5_Stopwert.LostFocus, D5_Stopwert.LostFocus, E5_Stopwert.LostFocus, F5_Stopwert.LostFocus, G5_Stopwert.LostFocus, A5_Stopwert.LostFocus, H5_Stopwert.LostFocus, _
+        C2_Startwert.LostFocus, D2_Startwert.LostFocus, E2_Startwert.LostFocus, F2_Startwert.LostFocus, G2_Startwert.LostFocus, A2_Startwert.LostFocus, H2_Startwert.LostFocus,
+        C3_Startwert.LostFocus, D3_Startwert.LostFocus, E3_Startwert.LostFocus, F3_Startwert.LostFocus, G3_Startwert.LostFocus, A3_Startwert.LostFocus, H3_Startwert.LostFocus,
+        C4_Startwert.LostFocus, D4_Startwert.LostFocus, E4_Startwert.LostFocus, F4_Startwert.LostFocus, G4_Startwert.LostFocus, A4_Startwert.LostFocus, H4_Startwert.LostFocus,
+        C5_Startwert.LostFocus, D5_Startwert.LostFocus, E5_Startwert.LostFocus, F5_Startwert.LostFocus, G5_Startwert.LostFocus, A5_Startwert.LostFocus, H5_Startwert.LostFocus,
+        C6_Startwert.LostFocus, D6_Startwert.LostFocus, E6_Startwert.LostFocus, F6_Startwert.LostFocus, G6_Startwert.LostFocus, A6_Startwert.LostFocus, H6_Startwert.LostFocus,
+        C2_Stopwert.LostFocus, D2_Stopwert.LostFocus, E2_Stopwert.LostFocus, F2_Stopwert.LostFocus, G2_Stopwert.LostFocus, A2_Stopwert.LostFocus, H2_Stopwert.LostFocus,
+        C3_Stopwert.LostFocus, D3_Stopwert.LostFocus, E3_Stopwert.LostFocus, F3_Stopwert.LostFocus, G3_Stopwert.LostFocus, A3_Stopwert.LostFocus, H3_Stopwert.LostFocus,
+        C4_Stopwert.LostFocus, D4_Stopwert.LostFocus, E4_Stopwert.LostFocus, F4_Stopwert.LostFocus, G4_Stopwert.LostFocus, A4_Stopwert.LostFocus, H4_Stopwert.LostFocus,
+        C5_Stopwert.LostFocus, D5_Stopwert.LostFocus, E5_Stopwert.LostFocus, F5_Stopwert.LostFocus, G5_Stopwert.LostFocus, A5_Stopwert.LostFocus, H5_Stopwert.LostFocus,
         C6_Stopwert.LostFocus, D6_Stopwert.LostFocus, E6_Stopwert.LostFocus, F6_Stopwert.LostFocus, G6_Stopwert.LostFocus, A6_Stopwert.LostFocus, H6_Stopwert.LostFocus
 
         If sender.Text > 255 Then sender.Text = 255
@@ -1210,10 +1217,10 @@ Public Class Form1
 
 
     Private Sub Verschiebung_LostFocus(ByVal sender As TextBox, ByVal e As System.EventArgs) Handles _
-    C2_Verschiebung.LostFocus, D2_Verschiebung.LostFocus, E2_Verschiebung.LostFocus, F2_Verschiebung.LostFocus, G2_Verschiebung.LostFocus, A2_Verschiebung.LostFocus, H2_Verschiebung.LostFocus, _
-    C3_Verschiebung.LostFocus, D3_Verschiebung.LostFocus, E3_Verschiebung.LostFocus, F3_Verschiebung.LostFocus, G3_Verschiebung.LostFocus, A3_Verschiebung.LostFocus, H3_Verschiebung.LostFocus, _
-    C4_Verschiebung.LostFocus, D4_Verschiebung.LostFocus, E4_Verschiebung.LostFocus, F4_Verschiebung.LostFocus, G4_Verschiebung.LostFocus, A4_Verschiebung.LostFocus, H4_Verschiebung.LostFocus, _
-    C5_Verschiebung.LostFocus, D5_Verschiebung.LostFocus, E5_Verschiebung.LostFocus, F5_Verschiebung.LostFocus, G5_Verschiebung.LostFocus, A5_Verschiebung.LostFocus, H5_Verschiebung.LostFocus, _
+    C2_Verschiebung.LostFocus, D2_Verschiebung.LostFocus, E2_Verschiebung.LostFocus, F2_Verschiebung.LostFocus, G2_Verschiebung.LostFocus, A2_Verschiebung.LostFocus, H2_Verschiebung.LostFocus,
+    C3_Verschiebung.LostFocus, D3_Verschiebung.LostFocus, E3_Verschiebung.LostFocus, F3_Verschiebung.LostFocus, G3_Verschiebung.LostFocus, A3_Verschiebung.LostFocus, H3_Verschiebung.LostFocus,
+    C4_Verschiebung.LostFocus, D4_Verschiebung.LostFocus, E4_Verschiebung.LostFocus, F4_Verschiebung.LostFocus, G4_Verschiebung.LostFocus, A4_Verschiebung.LostFocus, H4_Verschiebung.LostFocus,
+    C5_Verschiebung.LostFocus, D5_Verschiebung.LostFocus, E5_Verschiebung.LostFocus, F5_Verschiebung.LostFocus, G5_Verschiebung.LostFocus, A5_Verschiebung.LostFocus, H5_Verschiebung.LostFocus,
     C6_Verschiebung.LostFocus, D6_Verschiebung.LostFocus, E6_Verschiebung.LostFocus, F6_Verschiebung.LostFocus, G6_Verschiebung.LostFocus, A6_Verschiebung.LostFocus, H6_Verschiebung.LostFocus
 
         If sender.Text > 127 Then sender.Text = 127
@@ -1537,16 +1544,16 @@ Public Class Form1
 
 
 
-    Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, Start_Tastenkombination.KeyUp, _
-                                                                                                                Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, Pause_Tastenkombination.KeyUp, _
+    Private Sub Tastenkombination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Start_Tastenkombination.GotFocus, Start_Tastenkombination.Click, Start_Tastenkombination.KeyUp,
+                                                                                                                Pause_Tastenkombination.GotFocus, Pause_Tastenkombination.Click, Pause_Tastenkombination.KeyUp,
                                                                                                                 Save_Tastenkombination.GotFocus, Save_Tastenkombination.Click, Save_Tastenkombination.KeyUp
         GetAsyncKeyState_Timer.Enabled = False
         Tastenkombination_FirstKey = True
     End Sub
 
 
-    Private Sub Tastenkombination_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyDown, _
-                                                                                                                                Pause_Tastenkombination.KeyDown, _
+    Private Sub Tastenkombination_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles Start_Tastenkombination.KeyDown,
+                                                                                                                                Pause_Tastenkombination.KeyDown,
                                                                                                                                 Save_Tastenkombination.KeyDown
 
         If e.KeyCode <> Tastenkombination_KeyAlt And Tastenkombination_Key.Count < 3 Or Tastenkombination_FirstKey = True Then
@@ -1665,9 +1672,9 @@ Public Class Form1
 
 
 #Region "SendKey"
-    Private Sub SendKey_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles SendKey_c.PreviewKeyDown, SendKey_d.PreviewKeyDown, SendKey_e.PreviewKeyDown, _
-                                                                                                                SendKey_f.PreviewKeyDown, SendKey_g.PreviewKeyDown, SendKey_a.PreviewKeyDown, _
-                                                                                                                SendKey_h.PreviewKeyDown, SendKey_cis.PreviewKeyDown, SendKey_dis.PreviewKeyDown, _
+    Private Sub SendKey_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles SendKey_c.PreviewKeyDown, SendKey_d.PreviewKeyDown, SendKey_e.PreviewKeyDown,
+                                                                                                                SendKey_f.PreviewKeyDown, SendKey_g.PreviewKeyDown, SendKey_a.PreviewKeyDown,
+                                                                                                                SendKey_h.PreviewKeyDown, SendKey_cis.PreviewKeyDown, SendKey_dis.PreviewKeyDown,
                                                                                                                 SendKey_fis.PreviewKeyDown, SendKey_gis.PreviewKeyDown, SendKey_ais.PreviewKeyDown
 
         sender.text = KeyCode_toName(e.KeyCode)
@@ -1831,9 +1838,9 @@ Public Class Form1
         H &= Hex(Environ("PROCESSOR_ARCHITECTURE").GetHashCode)
         H &= Hex(Environ("SYSTEMROOT").GetHashCode)
         H &= Hex(Environ("NUMBER_OF_PROCESSORS").GetHashCode)
-        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
+        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey(
             "HARDWARE\DESCRIPTION\System\CentralProcessor\0\").GetValue("~MHZ").GetHashCode)
-        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey( _
+        H &= Hex(My.Computer.Registry.LocalMachine.OpenSubKey(
             "HARDWARE\DESCRIPTION\System\BIOS\").GetValue("SystemManufacturer").GetHashCode)
         H &= Hex(H.GetHashCode)
         Return (LCase(H))
@@ -1901,27 +1908,27 @@ Public Class Form1
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
             If My.Computer.FileSystem.FileExists(S) = True Then
-                MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf & _
-                        "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " & _
+                MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf &
+                        "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " &
                         "schreibgeschützt ist und löschen Sie sie bei weiteren Problememen einfach manuell. ", MsgBoxStyle.Critical)
                 End
             End If
-            My.Computer.Network.DownloadFile( _
+            My.Computer.Network.DownloadFile(
                 "http://www.nicobosshard.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
             If My.Computer.FileSystem.FileExists(S) = False Then
-                My.Computer.Network.DownloadFile( _
+                My.Computer.Network.DownloadFile(
                     "http://www.nicobosshard.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                 If My.Computer.FileSystem.FileExists(S) = False Then
-                    My.Computer.Network.DownloadFile( _
+                    My.Computer.Network.DownloadFile(
                         "http://www.bosshome.ch/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                     If My.Computer.FileSystem.FileExists(S) = False Then
-                        My.Computer.Network.DownloadFile( _
+                        My.Computer.Network.DownloadFile(
                                 "http://www.bosshome.ch/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                         If My.Computer.FileSystem.FileExists(S) = False Then
-                            My.Computer.Network.DownloadFile( _
+                            My.Computer.Network.DownloadFile(
                                     "http://www.eldercraft.ddns.net/MIDI_Harfe/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             If My.Computer.FileSystem.FileExists(S) = False Then
-                                My.Computer.Network.DownloadFile( _
+                                My.Computer.Network.DownloadFile(
                                         "http://www.eldercraft.ddns.net/nanticopykeys.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             End If
                         End If
@@ -1936,46 +1943,46 @@ Public Class Form1
                     Generate()
                     Lizenz_Activated = True
                     If Check() Then
-                        MsgBox("Der Schlüssel ist gültig. Das Programm wurde erfolgreich aktiviert. " & _
-                          "Sie dürfen diesen Schlüssel noch " & _
-                          (CInt(X.Split(";")(1)) - 1) & _
-                          " mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf & _
-                          "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " & _
-                          "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " & _
+                        MsgBox("Der Schlüssel ist gültig. Das Programm wurde erfolgreich aktiviert. " &
+                          "Sie dürfen diesen Schlüssel noch " &
+                          (CInt(X.Split(";")(1)) - 1) &
+                          " mal für eine Neuinstallation verwenden." & vbCrLf & vbCrLf &
+                          "Die Aktivierung erfolgt auch bei jedem Softwaireupdate. " &
+                          "Machen Sie sich deswegen keine Sorgen, da auch bei jedem Update " &
                           "Ihre Anzahl verbleibenden Aktivierungen um eins erhöht werden.")
                     Else
                         Lizenz = ""
-                        MsgBox("Der Schlüssel ist gültig. Das Programm konnte allerdings " & _
-                          "nicht aktiviert werden. " & _
-                          "Bitte überprüfen Sie, ob der Installationsordner schreibgeschützt ist. " & _
-                          "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch", _
+                        MsgBox("Der Schlüssel ist gültig. Das Programm konnte allerdings " &
+                          "nicht aktiviert werden. " &
+                          "Bitte überprüfen Sie, ob der Installationsordner schreibgeschützt ist. " &
+                          "Sollte dieses Problem weiterhin bestehen, melden Sie sich per E-Mail an nicho@bosshome.ch",
                           MsgBoxStyle.Exclamation)
                         Me.Close()
                     End If
                 Else
-                    MsgBox("Ihr Schlüssel ist gültig, aber die maximale Anzahl der " & _
-                      "Aktivierungen für diesen Schlüssel wurde überschritten. " & _
-                      "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " & _
-                      "plausiebelr Begründung (z.B. 6 Computer, Merfache " & _
-                      "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" & _
-                      "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler " & _
-                      "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten " & _
+                    MsgBox("Ihr Schlüssel ist gültig, aber die maximale Anzahl der " &
+                      "Aktivierungen für diesen Schlüssel wurde überschritten. " &
+                      "Bitte melden sich per E-Mail an nico@bosshome.ch um mit " &
+                      "plausiebelr Begründung (z.B. 6 Computer, Merfache " &
+                      "neuinstallation wegen Softwaireproblem, Neuaktivierung wegen" &
+                      "grösseren Hardwairänderungen am Computer, Lizenzspeicherungsfehler " &
+                      "usw.) gratis erneute Lizenzen auf diesen Schlüssel zu erhalten " &
                       "oder weitere zu erwerben.", MsgBoxStyle.Exclamation)
                     Me.Close()
                 End If
             Else
                 Lizenz = ""
-                MsgBox("Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf " & _
-                  "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " & _
+                MsgBox("Der Lizenzschlüssel ist ungültig. Bitte überprüfen Sie ihn auf " &
+                  "Tippfehler. Bei Problemen wenden Sie sich bitte per E-Mail an nico@bosshome.ch! " &
                   "Der Lizenzschlüssel sollten Sie zur gekauften Hardwaire zusammen mit dem " &
                   "Downloadlink erhalten haben.", MsgBoxStyle.Critical)
             End If
         Catch ex As Exception
             Lizenz = ""
             MsgBox("Das Programm konnte aufgrund eines Fehlers nicht aktiviert werden. Eine Aktivierung " &
-                   "ist nur beim ersten Programmstart und nach jedem Update erforderlich. " & _
-                    "Bitte überprüfen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" & _
-                    "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch", _
+                   "ist nur beim ersten Programmstart und nach jedem Update erforderlich. " &
+                    "Bitte überprüfen Sie ihre Internetverbindung. Sollte dieser Fehler weiterhin" &
+                    "bestehen bleiben, melden sie Sich bitte umgehend per E-Mail an nico@bosshome.ch",
                     MsgBoxStyle.Critical)
         End Try
         'Me.Close()
@@ -1996,7 +2003,7 @@ Public Class Form1
                     If Not Lizenz.Length = 0 Then MessageBox.Show("Die Länge ihrer Eingabe entspringt nicht der," _
                                                                     & vbCrLf & "für den Schlüssel vorgesehenen Länge." _
                                                                     & vbCrLf & "Vergewissern Sie sich, dass sie alle '-' eingegeben, sowie keinen" _
-                                                                    & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.", _
+                                                                    & vbCrLf & "Buchstaben vegessen oder mehrfach verwendet haben.",
                                                                     "Falscher Lizenzschlüssel", MessageBoxButtons.OK, MessageBoxIcon.Warning)
 
                     Lizenz = Nothing
@@ -2016,8 +2023,8 @@ Public Class Form1
 
                 Loop
 
-                MsgBox("Die Aktivierung kann, abhängig von verschiedensten Faktoren von wenigen " & _
-                        "Sekunden bis hin zu einer Minute dauern! Haben sie bitte ein bisschen Geduld." & _
+                MsgBox("Die Aktivierung kann, abhängig von verschiedensten Faktoren von wenigen " &
+                        "Sekunden bis hin zu einer Minute dauern! Haben sie bitte ein bisschen Geduld." &
                         vbCrLf & vbCrLf & "Die Aktivierung wird mit einem Klick auf OK gestartet.")
                 Registrierung()
 
@@ -2045,27 +2052,27 @@ Public Class Form1
             Dim S As String = My.Computer.FileSystem.GetTempFileName()
             My.Computer.FileSystem.DeleteFile(S)
             If My.Computer.FileSystem.FileExists(S) = True Then
-                MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf & _
-                        "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " & _
+                MsgBox("Die Datei """ & S & """ konnte nicht überschrieben werden!" & vbCrLf & vbCrLf &
+                        "Starten sie das Programm bitte neu. Sollte diese Meldung erneut erscheinen, vergewissern Sie sich ob sie " &
                         "schreibgeschützt ist und löschen Sie sie bei weiteren Problememen einfach manuell. ", MsgBoxStyle.Critical)
                 End
             End If
-            My.Computer.Network.DownloadFile( _
+            My.Computer.Network.DownloadFile(
                     "http://www.nicobosshard.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
             If My.Computer.FileSystem.FileExists(S) = False Then
-                My.Computer.Network.DownloadFile( _
+                My.Computer.Network.DownloadFile(
                     "http://www.nicobosshard.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                 If My.Computer.FileSystem.FileExists(S) = False Then
-                    My.Computer.Network.DownloadFile( _
+                    My.Computer.Network.DownloadFile(
                             "http://www.bosshome.ch/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                     If My.Computer.FileSystem.FileExists(S) = False Then
-                        My.Computer.Network.DownloadFile( _
+                        My.Computer.Network.DownloadFile(
                                 "http://www.bosshome.ch/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                         If My.Computer.FileSystem.FileExists(S) = False Then
-                            My.Computer.Network.DownloadFile( _
+                            My.Computer.Network.DownloadFile(
                                     "http://www.eldercraft.ddns.net/MIDI_Harfe/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             If My.Computer.FileSystem.FileExists(S) = False Then
-                                My.Computer.Network.DownloadFile( _
+                                My.Computer.Network.DownloadFile(
                                         "http://www.eldercraft.ddns.net/Update.php?app=MIDIHarfe&key=" & Lizenz & "&os=Windows" & "&version=" & Version & "&language=" & Sprache, S)
                             End If
                         End If
@@ -2402,11 +2409,11 @@ Public Class Form1
     End Sub
 
 
-    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As  _
+    Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
         If Tackt.Enabled Then
             Dim result As DialogResult = MessageBox.Show("Wollen Sie das Programm wirklich beenden?" _
-            & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?", _
+            & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?",
             MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
             If result = DialogResult.Yes Then
@@ -2426,7 +2433,7 @@ Public Class Form1
     Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         Help_Button.Enabled = False 'Sieht schöner aus
         MessageBox.Show("Es ist momentan noch keine Hilfe ausser die eigendlich völlig ausreichende ToolTip Funktion für mein Programm verfügbar." _
-                        & vbCrLf & vbCrLf & "Sollten sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome.ch", _
+                        & vbCrLf & vbCrLf & "Sollten sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome.ch",
                         "Hilfe", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Help_Button.Enabled = True
     End Sub
