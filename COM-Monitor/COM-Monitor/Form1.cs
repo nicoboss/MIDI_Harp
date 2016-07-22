@@ -128,7 +128,7 @@ namespace COM_Monitor
                     //{
                     //    textBox1.AppendText(((char)serial).ToString());
                     //});
-                    if (SerialPort1.ReadByte() == 13)
+                    if (SerialPort1.ReadByte() == 250)
                     {
                         break;
                     }
@@ -136,7 +136,7 @@ namespace COM_Monitor
                 }
                 ShowResultsCount++;
                 Anz_Messungen++;
-                if (ShowResultsCount == 500)
+                if (ShowResultsCount == 5000)
                 {
                     stopWatch.Stop();
                     //MessageBox.Show("");
