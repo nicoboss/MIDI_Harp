@@ -1891,7 +1891,7 @@ Public Class Form1
                 Z += 1
                 Z += P(I + 112)
             Next
-        Catch ex As Exceptionl
+        Catch ex As Exception
         End Try
         C = GetHash()
         'MessageBox.Show(C)
@@ -2391,18 +2391,24 @@ Public Class Form1
 
 
 
-    Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
+    Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.
+        MessageBox.Show(e.ToString())
+        MessageBox.Show(sender.Size.Width & "/" & sender.Size.Height)
         If MyBase.Size.Width < 1290 And MyBase.Size.Height < 810 Then
+            MessageBox.Show("1")
             Panel1.Location = New Point(0, 0)
             Panel1.Width = MyBase.Size.Width - 17
             Panel1.Height = MyBase.Size.Height - 40
         ElseIf MyBase.Size.Width < 1290 Then
+            MessageBox.Show("2")
             Panel1.Location = New Point(0, (MyBase.Size.Height - 771 - 40) / 2)
             Panel1.Width = MyBase.Size.Width - 17
         ElseIf MyBase.Size.Height < 810 Then
+            MessageBox.Show("3")
             Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, 0)
             Panel1.Height = MyBase.Size.Height - 40
         Else
+            MessageBox.Show("")
             Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, (MyBase.Size.Height - 771 - 40) / 2)
             Panel1.Width = 1274
             Panel1.Height = 771
