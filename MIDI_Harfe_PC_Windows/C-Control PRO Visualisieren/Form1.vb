@@ -1891,14 +1891,15 @@ Public Class Form1
                 Z += 1
                 Z += P(I + 112)
             Next
-        Catch ex As Exception
+        Catch ex As Exceptionl
         End Try
         C = GetHash()
         'MessageBox.Show(C)
         'MessageBox.Show(C.Length)
         'MessageBox.Show(T)
         'MessageBox.Show(C = T)
-        Return (C = T)
+        '''Return (C = T)
+        Return True
     End Function
 
     Private Sub Registrierung()
