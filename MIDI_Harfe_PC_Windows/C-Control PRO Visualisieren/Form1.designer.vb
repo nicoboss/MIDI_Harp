@@ -355,6 +355,8 @@ Partial Class Form1
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Display_Refresh_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.ScreenRefreshTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
@@ -446,6 +448,7 @@ Partial Class Form1
         CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Einstellungen_GroupBox.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SerialPort1
@@ -3774,7 +3777,7 @@ Partial Class Form1
         Me.DirectPlay_YesNo_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DirectPlay_YesNo_GroupBox.Name = "DirectPlay_YesNo_GroupBox"
         Me.DirectPlay_YesNo_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.DirectPlay_YesNo_GroupBox.Size = New System.Drawing.Size(298, 86)
+        Me.DirectPlay_YesNo_GroupBox.Size = New System.Drawing.Size(298, 78)
         Me.DirectPlay_YesNo_GroupBox.TabIndex = 163
         Me.DirectPlay_YesNo_GroupBox.TabStop = False
         Me.DirectPlay_YesNo_GroupBox.Text = "Empfangende Noten abspielen"
@@ -3926,6 +3929,8 @@ Partial Class Form1
         'DirectPlay_Einstellungen_GroupBox
         '
         Me.DirectPlay_Einstellungen_GroupBox.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.NumericUpDown1)
+        Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label9)
         Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label11)
         Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.Label15)
         Me.DirectPlay_Einstellungen_GroupBox.Controls.Add(Me.hsbVolume)
@@ -3944,7 +3949,7 @@ Partial Class Form1
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(18, 40)
+        Me.Label11.Location = New System.Drawing.Point(16, 31)
         Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(67, 20)
@@ -3954,7 +3959,7 @@ Partial Class Form1
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(16, 125)
+        Me.Label15.Location = New System.Drawing.Point(16, 102)
         Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(59, 20)
@@ -3973,7 +3978,7 @@ Partial Class Form1
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(16, 85)
+        Me.Label14.Location = New System.Drawing.Point(16, 64)
         Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(71, 20)
@@ -3982,7 +3987,7 @@ Partial Class Form1
         '
         'hsbPan
         '
-        Me.hsbPan.Location = New System.Drawing.Point(108, 78)
+        Me.hsbPan.Location = New System.Drawing.Point(108, 64)
         Me.hsbPan.Name = "hsbPan"
         Me.hsbPan.Size = New System.Drawing.Size(172, 17)
         Me.hsbPan.TabIndex = 172
@@ -3990,7 +3995,7 @@ Partial Class Form1
         '
         'hsbModWheel
         '
-        Me.hsbModWheel.Location = New System.Drawing.Point(111, 123)
+        Me.hsbModWheel.Location = New System.Drawing.Point(110, 102)
         Me.hsbModWheel.Maximum = 255
         Me.hsbModWheel.Name = "hsbModWheel"
         Me.hsbModWheel.Size = New System.Drawing.Size(172, 17)
@@ -4271,6 +4276,27 @@ Partial Class Form1
         '
         Me.ScreenRefreshTimer.Enabled = True
         Me.ScreenRefreshTimer.Interval = 1000
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(17, 139)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(62, 20)
+        Me.Label9.TabIndex = 174
+        Me.Label9.Text = "Latenz:"
+        '
+        'NumericUpDown1
+        '
+        Me.NumericUpDown1.Location = New System.Drawing.Point(108, 133)
+        Me.NumericUpDown1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.NumericUpDown1.Name = "NumericUpDown1"
+        Me.NumericUpDown1.Size = New System.Drawing.Size(172, 26)
+        Me.NumericUpDown1.TabIndex = 175
+        Me.NumericUpDown1.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
         'C6_VerticalProgessBar
         '
@@ -4686,6 +4712,7 @@ Partial Class Form1
         CType(Me.C2_Klappe, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Einstellungen_GroupBox.ResumeLayout(False)
         Me.GroupBox2.ResumeLayout(False)
+        CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -5052,4 +5079,6 @@ Partial Class Form1
     Friend WithEvents Volume_max_NumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents Volume_min_NumericUpDown As System.Windows.Forms.NumericUpDown
     Friend WithEvents ScreenRefreshTimer As Timer
+    Friend WithEvents NumericUpDown1 As NumericUpDown
+    Friend WithEvents Label9 As Label
 End Class

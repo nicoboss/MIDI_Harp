@@ -2395,13 +2395,11 @@ Public Class Form1
         End Try
     End Sub
 
-
     Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
-        Dim wait As Task = fade_out(5)
+        Dim wait As Task = AdjustFormToScreen(5)
     End Sub
 
-
-    Private Async Function fade_out(ByVal ms As Integer) As Task
+    Private Async Function AdjustFormToScreen(ByVal ms As Integer) As Task
         Await Task.Delay(ms)
         'Dim rc As RECT
         'GetWindowRect(Process.GetCurrentProcess().MainWindowHandle, rc)
@@ -2447,7 +2445,6 @@ Public Class Form1
             End If
         End If
     End Sub
-
 
     Private Sub Help_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         'Alle selection aufheben.
