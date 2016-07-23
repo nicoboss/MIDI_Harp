@@ -2402,6 +2402,9 @@ Public Class Form1
         'MessageBox.Show(rc.Right.ToString())
         Dim Width = rc.Right - rc.Left
         Dim Height = rc.Bottom - rc.Top
+        If Width <> Me.Size.Width Then
+            MessageBox.Show(Width & " != " & MyBase.Size.Width)
+        End If
         'MessageBox.Show(Width & "/" & Height)
         If Width < 1290 And Height < 810 Then
             'MessageBox.Show("1")
