@@ -91,35 +91,37 @@ void main(void)
                 Port_WriteBit(23,D);
                 for(C=0;C<2;C++)
                 {
-                    Port_WriteBit(22,C);
+                    Port_Write(1,C);
                     for(B=0;B<2;B++)
                     {
-                        Port_WriteBit(21,B);
+                        Port_Write(2,B);
                         for(A=0;A<2;A++)
                         {
-                            Port_WriteBit(20,A);
+                            Port_Write(3,A);
 
                             ADC_Set(ADC_VREF_VCC, 0);
-                            Serial_Write(0,ADC_Read()/4);
+                            Serial_Write(0,ADC_ReadInt()>>2);
 
                             ADC_Set(ADC_VREF_VCC, 1);
-                            Serial_Write(0,ADC_Read()/4);
+                            Serial_Write(0,ADC_ReadInt()>>2);
                         }
                     }
                 }
             }
 
+
             ADC_Set(ADC_VREF_VCC, 2);
-            Serial_Write(0,ADC_Read()/4);
+            Serial_Write(0,ADC_ReadInt()>>2);
 
             ADC_Set(ADC_VREF_VCC, 3);
-            Serial_Write(0,ADC_Read()/4);
+            Serial_Write(0,ADC_ReadInt()>>2);
 
             ADC_Set(ADC_VREF_VCC, 4);
-            Serial_Write(0,ADC_Read()/4);
+            Serial_Write(0,ADC_ReadInt()>>2);
 
             ADC_Set(ADC_VREF_VCC, 5);
-            Serial_Write(0,ADC_Read()/4);
+            Serial_Write(0,ADC_ReadInt()>>2);
+
 
     goto Messen;
 
