@@ -10,6 +10,15 @@ Imports System.Runtime.InteropServices
 
 Public Class Form1
 
+    Private Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As IntPtr, ByRef lpRect As RECT) As Integer
+
+    Structure RECT
+        Public Left As Integer
+        Public Top As Integer
+        Public Right As Integer
+        Public Bottom As Integer
+    End Structure
+
     Private Declare Function GetAsyncKeyState Lib "user32" (ByVal vKey As System.Windows.Forms.Keys) As Short
 
     Private Declare Sub mouse_event Lib "user32" _
@@ -24,9 +33,6 @@ Public Class Form1
     Private Const MOUSEEVENTF_MOVE = &H1
     Private Const MOUSEEVENTF_RIGHTDOWN = &H8
     Private Const MOUSEEVENTF_RIGHTUP = &H10
-
-
-
 
 
     <DllImport("user32.dll", CallingConvention:=CallingConvention.StdCall,
@@ -2389,27 +2395,31 @@ Public Class Form1
     End Sub
 
 
-
-
-    Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ScreenRefreshTimer.Tick
-        'MessageBox.Show(sender.Size.Width & "/" & sender.Size.Height)
-        If MyBase.Size.Width < 1290 And MyBase.Size.Height < 810 Then
+    Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
+        'MessageBox.Show(HWnd)
+        Dim rc As RECT
+        GetWindowRect(Process.GetCurrentProcess().MainWindowHandle, rc)
+        'MessageBox.Show(rc.Right.ToString())
+        Dim Width = rc.Right - rc.Left
+        Dim Height = rc.Bottom - rc.Top
+        'MessageBox.Show(Width & "/" & Height)
+        If Width < 1290 And Height < 810 Then
             'MessageBox.Show("1")
             Panel1.Location = New Point(0, 0)
-            Panel1.Width = MyBase.Size.Width - 17
-            Panel1.Height = MyBase.Size.Height - 40
-        ElseIf MyBase.Size.Width < 1290 Then
+            Panel1.Width = Width - 17
+            Panel1.Height = Height - 40
+        ElseIf Width < 1290 Then
             'MessageBox.Show("2")
-            Panel1.Location = New Point(0, (MyBase.Size.Height - 771 - 40) / 2)
-            Panel1.Width = MyBase.Size.Width - 17
-        ElseIf MyBase.Size.Height < 810 Then
+            Panel1.Location = New Point(0, (Height - 771 - 40) / 2)
+            Panel1.Width = Width - 17
+        ElseIf Height < 810 Then
             'MessageBox.Show("3")
-            Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, 0)
-            Panel1.Width = MyBase.Size.Width - 17
-            'Panel1.Height = MyBase.Size.Height - 40
+            Panel1.Location = New Point((Width - 1274 - 17) / 2, 0)
+            'Panel1.Width = Width - 17
+            Panel1.Height = Height - 40
         Else
             'MessageBox.Show("4")
-            Panel1.Location = New Point((MyBase.Size.Width - 1274 - 17) / 2, (MyBase.Size.Height - 771 - 40) / 2)
+            Panel1.Location = New Point((Width - 1274 - 17) / 2, (Height - 771 - 40) / 2)
             Panel1.Width = 1274
             Panel1.Height = 771
         End If
