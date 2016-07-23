@@ -5,6 +5,7 @@ Imports System.Text.Encoding
 Imports System.IO
 Imports System.Text
 Imports System.Runtime.InteropServices
+Imports System.Threading.Tasks
 
 'Imports System.Net.NetworkInformation
 
@@ -2396,15 +2397,18 @@ Public Class Form1
 
 
     Private Sub MyBase_SizeChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.SizeChanged
-        'MessageBox.Show(HWnd)
-        Dim rc As RECT
-        GetWindowRect(Process.GetCurrentProcess().MainWindowHandle, rc)
+        Dim wait As Task = fade_out(5)
+    End Sub
+
+
+    Private Async Function fade_out(ByVal ms As Integer) As Task
+        Await Task.Delay(ms)
+        'Dim rc As RECT
+        'GetWindowRect(Process.GetCurrentProcess().MainWindowHandle, rc)
         'MessageBox.Show(rc.Right.ToString())
-        Dim Width = rc.Right - rc.Left
-        Dim Height = rc.Bottom - rc.Top
-        If Width <> Me.Size.Width Then
-            MessageBox.Show(Width & " != " & MyBase.Size.Width)
-        End If
+        Dim Width = MyBase.Size.Width 'rc.Right - rc.Left
+        Dim Height = MyBase.Size.Height 'rc.Bottom - rc.Top
+        'MessageBox.Show(Width & " != " & MyBase.Size.Width)
         'MessageBox.Show(Width & "/" & Height)
         If Width < 1290 And Height < 810 Then
             'MessageBox.Show("1")
@@ -2414,11 +2418,12 @@ Public Class Form1
         ElseIf Width < 1290 Then
             'MessageBox.Show("2")
             Panel1.Location = New Point(0, (Height - 771 - 40) / 2)
-            Panel1.Width = Width - 17
+            Panel1.Width = 1274
+            Panel1.Height = 771
         ElseIf Height < 810 Then
             'MessageBox.Show("3")
             Panel1.Location = New Point((Width - 1274 - 17) / 2, 0)
-            'Panel1.Width = Width - 17
+            Panel1.Width = Width - 17
             Panel1.Height = Height - 40
         Else
             'MessageBox.Show("4")
@@ -2426,8 +2431,7 @@ Public Class Form1
             Panel1.Width = 1274
             Panel1.Height = 771
         End If
-    End Sub
-
+    End Function
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
