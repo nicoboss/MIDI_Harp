@@ -168,19 +168,19 @@ bwenutzen mitaufgenommen ujnd sollte in diesem Falle
 ausgeschaltet werden. Auch bei dem Aufnahmemodur "nur
 Töne" macht das Metronom nicht wirklich einen Sinn.</value>
   </data>
-  <data name="Connect_GroupBox.ToolTip" xml:space="preserve">
-    <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
-Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
-Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
-Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller korrekt mit dem Computer
-verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
-  </data>
   <data name="ComboBox_Comport.ToolTip" xml:space="preserve">
     <value>Wähle den Comport aus aufdwem sich der Mikrokontroller befindet.
 Sollte er hir nicht erscheinen: Prüfen Sie opb der Mikrokontroller wirklich
 verbunden ist und dass alle Treiber installiert sind. Sollte alles stimmen
 aber trozdem nich funktionieren, wenden sich bitte an nicho@bosshome.ch.
 </value>
+  </data>
+  <data name="Connect_GroupBox.ToolTip" xml:space="preserve">
+    <value>Unter den Com-Port Einstellungen können Sie das Programm mit Ihrem Mikrokontroller Verbinden.
+Wählen Sie dazu in der Dropdown Liste den korrekten Port aus und clicken sie danach auf "Verbinden".
+Sollte eine Fehlermeldung erscheinen, wählen sie einfach einen anderen Port und versuchen Sie es erneut.
+Sollte keiner Der Ports gehen, vergewissern Sie sich, dass der Mikrokontroller korrekt mit dem Computer
+verbunden ist und  bei einer Virtuellen Maschiene Com Ports unter den Einstellungen freigegeben sind.</value>
   </data>
   <data name="DirectPlay_ON.ToolTip" xml:space="preserve">
     <value>Durch diese Option werden die empfangenen MIDI Noten per
@@ -261,6 +261,9 @@ per Mail an nico@bosshome.ch</value>
   </metadata>
   <metadata name="Display_Refresh_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1264, 16</value>
+  </metadata>
+  <metadata name="ScreenRefreshTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>173, 57</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>108</value>
