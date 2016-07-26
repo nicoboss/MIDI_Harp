@@ -1,11 +1,11 @@
 Option Explicit On
 
 Imports System.IO.Ports.SerialPort
-Imports System.Text.Encoding
-Imports System.IO
 Imports System.Text
 Imports System.Runtime.InteropServices
 Imports System.Threading.Tasks
+Imports Sanford.Multimedia.Midi
+Imports Sanford.Multimedia.Midi.UI
 
 'Imports System.Net.NetworkInformation
 
@@ -772,13 +772,41 @@ Public Class Form1
     End Sub
 
 
+#Region " Sanford.Multimedia.Midi "
+    Private outDevice As OutputDevice
+    Private outDeviceID As Integer = 0
+    Private outDialog As New OutputDeviceDialog()
+
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If OutputDevice.DeviceCount = 0 Then
+            MessageBox.Show("No MIDI output devices available.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            Exit Sub
+        Else
+            Try
+                outDevice = New OutputDevice(outDeviceID)
+            Catch ex As Exception
+                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+                Exit Sub
+            End Try
+        End If
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, 100, 127))
+    End Sub
+
+    Private Sub Form1_Closed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Closed
+        If outDevice IsNot Nothing Then
+            outDevice.Dispose()
+        End If
+        outDialog.Dispose()
+    End Sub
+
+#End Region
 
 
 #Region " cls MIDI "
 
     Dim m As New clsMIDI
 
-    Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    Private Sub Form1_Load_cls(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         FillInstrumentCombo()
     End Sub
     Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
@@ -2461,7 +2489,7 @@ Public Class Form1
 
     Private Sub About_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles About_Button.Click
         About_Button.Enabled = False 'Sieht schöner aus
-        MessageBox.Show("MIDI Harfe" & Version & vbCrLf & "©2014 Nico Bosshard" _
+        MessageBox.Show("MIDI Harfe" & Version & vbCrLf & "©2016 Nico Bosshard" _
             & vbCrLf & vbCrLf & "Ich verbiete hirmit ausdrücklich jegliche modifikation am Lizenzierungs- und Aktivierungssystem!" _
             & vbCrLf & "Ideenverschläge und sonstige  Mods sind jederzeit erwünscht. :D" _
             & vbCrLf & "Bei Fragen bin ich per E-Mail unter nico@bosshome.ch erreichbar." _
