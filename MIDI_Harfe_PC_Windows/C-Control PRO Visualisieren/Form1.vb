@@ -789,7 +789,10 @@ Public Class Form1
                 Exit Sub
             End Try
         End If
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, 100, 127))
+        '?  Tonhöhe Lautstärke
+        outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 100, 0, 0))
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, 100, 27))
+
     End Sub
 
     Private Sub Form1_Closed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Closed
