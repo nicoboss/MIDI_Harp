@@ -707,11 +707,11 @@ Public Class Form1
         If Tackt_32stel = 32 Then
             If Metronom_ON.Checked Then
                 m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 50, 0.1)
+                PlayMIDINote(70, 50, 0.1)
                 m.CurrentInstrument = cboInstruments.Text
             ElseIf Metronom_Betont.Checked Then
                 m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(72, 70, 0.1)
+                PlayMIDINote(72, 70, 0.1)
                 m.CurrentInstrument = cboInstruments.Text
             End If
             TacktNr = TacktNr + 1
@@ -721,7 +721,7 @@ Public Class Form1
         If Not Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
                 m.CurrentInstrument = "Woodblock"
-                m.PlayMIDINote(70, 50, 0.1)
+                PlayMIDINote(70, 50, 0.1)
                 m.CurrentInstrument = cboInstruments.Text
             End If
         End If
@@ -789,11 +789,7 @@ Public Class Form1
                 Exit Sub
             End Try
         End If
-        'Kannal  Tonhöhe Lautstärke
-
-        PlayMIDINote(50, 127)
-        STOPAllMIDINotes()
-
+        hsbVolume_ValueChanged()
 
     End Sub
 
@@ -805,21 +801,68 @@ Public Class Form1
     End Sub
 
     Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer)
+        If outDevice Is Nothing Then Exit Sub
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
     End Sub
 
+    Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer, ByVal Duration As Integer)
+        If outDevice Is Nothing Then Exit Sub
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
+        Dim wait As Task = STOPMIDINote(Note, Duration)
+    End Sub
+
+    Private Async Function STOPMIDINote(ByVal Note As Integer, ByVal ms As Integer) As Task
+        Await Task.Delay(ms)
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+    End Function
+
     Private Sub STOPMIDINote(ByVal Note As Integer)
+        If outDevice Is Nothing Then Exit Sub
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
     End Sub
 
     Private Sub STOPAllMIDINotes()
+        If outDevice Is Nothing Then Exit Sub
         outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 123))
     End Sub
 
-    Private Sub SetInstrument()
-        outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 0, 110))
+    Private Sub SetInstrument(ByVal InstrumentNr As Integer)
+        If outDevice Is Nothing Then Exit Sub
+        outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 0, InstrumentNr))
     End Sub
 
+    Private Sub SetVolume(Volume As Integer)
+        If outDevice Is Nothing Then Exit Sub
+        outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 7, Volume))
+    End Sub
+
+    Private Sub SetPan(ByVal Balance As Integer)
+        If outDevice Is Nothing Then Exit Sub
+        outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 8, Balance))
+    End Sub
+
+    Private Sub SetModWheel(ByVal ModWheelValue As Integer)
+        If outDevice Is Nothing Then Exit Sub
+        outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 1, ModWheelValue))
+    End Sub
+
+#Region " Volume Control "
+    Private Sub hsbVolume_ValueChanged() Handles hsbVolume.ValueChanged
+        SetVolume(hsbVolume.Value)
+    End Sub
+#End Region
+
+#Region " Pan Control "
+    Private Sub hsbPan_ValueChanged() Handles hsbPan.ValueChanged
+        SetPan(hsbPan.Value)
+    End Sub
+#End Region
+
+#Region " ModWheel Control "
+    Private Sub hsbModWheel_ValueChanged() Handles hsbModWheel.ValueChanged
+        SetModWheel(hsbModWheel.Value)
+    End Sub
+#End Region
 
 #End Region
 
@@ -833,9 +876,9 @@ Public Class Form1
     End Sub
     Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
         If e.Button = Windows.Forms.MouseButtons.Left Then
-            m.PlayMIDINote(e.Y, 127) 'Play MIDI Sounds
+            PlayMIDINote(e.Y, 127) 'Play MIDI Sounds
         Else
-            m.STOPAllMIDINotes() 'Stops All MIDI notes
+            STOPAllMIDINotes() 'Stops All MIDI notes
         End If
     End Sub
 
@@ -851,23 +894,7 @@ Public Class Form1
     End Sub
 #End Region
 
-#Region " Volume Control "
-    Private Sub hsbVolume_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbVolume.ValueChanged
-        m.Volume = hsbVolume.Value
-    End Sub
-#End Region
 
-#Region " Pan Control "
-    Private Sub hsbPan_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbPan.ValueChanged
-        m.Pan = hsbPan.Value
-    End Sub
-#End Region
-
-#Region " ModWheel Control "
-    Private Sub hsbModWheel_ValueChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles hsbModWheel.ValueChanged
-        m.ModWheel = hsbModWheel.Value
-    End Sub
-#End Region
 
 #End Region
 
@@ -2516,8 +2543,8 @@ Public Class Form1
             & vbCrLf & "Ideenverschläge und sonstige  Mods sind jederzeit erwünscht. :D" _
             & vbCrLf & "Bei Fragen bin ich per E-Mail unter nico@bosshome.ch erreichbar." _
             & vbCrLf & vbCrLf & "Version " & Version & vbCrLf & "Lizenzstatus: Aktiviert" & vbCrLf & "Veröffentlichung: " & PublishDate.Date & vbCrLf & "OS: Windows, VirtualBox" _
-            & vbCrLf & "Programmiert mit Visual Basic 2010 .NET Framework 4.0" _
-            & vbCrLf & "OS: Windews XP SP2 bis Windows 8.1" _
+            & vbCrLf & "Programmiert mit Visual Basic 2015 .NET Framework 4.0" _
+            & vbCrLf & "OS: Windews XP SP2 bis Windows 10" _
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
     End Sub
