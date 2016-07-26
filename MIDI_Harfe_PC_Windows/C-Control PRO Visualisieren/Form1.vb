@@ -407,7 +407,7 @@ Public Class Form1
                             Note_Volume(NotenNr) = Math.Round(127 / Volume_Steps_NumericUpDown.Value * (ADC(item) - Volume_min_NumericUpDown.Value) / (Volume_max_NumericUpDown.Value - Volume_min_NumericUpDown.Value)) _
                         * Volume_Steps_NumericUpDown.Value
                         End If
-                        m.PlayMIDINote(NotenNr, Note_Volume(NotenNr), 0)
+                        PlayMIDINote(NotenNr, Note_Volume(NotenNr))
                         If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
                     End If
 
@@ -1188,7 +1188,7 @@ Public Class Form1
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
         If NotenNr < 0 Then NotenNr = 0
         If NotenNr > 127 Then NotenNr = 127
-        m.PlayMIDINote(NotenNr, 100, 0)
+        PlayMIDINote(NotenNr, 100)
         Button_Note_Play(NotenNr) = True
         If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
     End Sub
@@ -1200,7 +1200,7 @@ Public Class Form1
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
         If NotenNr < 0 Then NotenNr = 0
         If NotenNr > 127 Then NotenNr = 127
-        m.STOPMIDINote(NotenNr)
+        STOPMIDINote(NotenNr)
         Button_Note_Play(NotenNr) = False
         If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
     End Sub
