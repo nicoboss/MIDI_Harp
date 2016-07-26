@@ -789,9 +789,11 @@ Public Class Form1
                 Exit Sub
             End Try
         End If
-        '?  Tonhöhe Lautstärke
-        outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 100, 0, 0))
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, 100, 27))
+        'Kannal  Tonhöhe Lautstärke
+
+        PlayMIDINote(50, 127)
+        STOPAllMIDINotes()
+
 
     End Sub
 
@@ -801,6 +803,23 @@ Public Class Form1
         End If
         outDialog.Dispose()
     End Sub
+
+    Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer)
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
+    End Sub
+
+    Private Sub STOPMIDINote(ByVal Note As Integer)
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+    End Sub
+
+    Private Sub STOPAllMIDINotes()
+        outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 123))
+    End Sub
+
+    Private Sub SetInstrument()
+        outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 0, 110))
+    End Sub
+
 
 #End Region
 
