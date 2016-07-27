@@ -887,308 +887,33 @@ Public Class Form1
 
 #Region "   Buttons Events "
 
-#Region "   MouseDown Events"
-    Private Sub C2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.MouseDown, C2_Button.KeyDown
-        Button_Note(0)
+    Private Sub Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles _
+        C2_Button.MouseDown, D2_Button.MouseDown, E2_Button.MouseDown, F2_Button.MouseDown, G2_Button.MouseDown, A2_Button.MouseDown, H2_Button.MouseDown,
+        C3_Button.MouseDown, D3_Button.MouseDown, E3_Button.MouseDown, F3_Button.MouseDown, G3_Button.MouseDown, A3_Button.MouseDown, H3_Button.MouseDown,
+        C4_Button.MouseDown, D4_Button.MouseDown, E4_Button.MouseDown, F4_Button.MouseDown, G4_Button.MouseDown, A4_Button.MouseDown, H4_Button.MouseDown,
+        C5_Button.MouseDown, D5_Button.MouseDown, E5_Button.MouseDown, F5_Button.MouseDown, G5_Button.MouseDown, A5_Button.MouseDown, H5_Button.MouseDown,
+        C6_Button.MouseDown, D6_Button.MouseDown, E6_Button.MouseDown, F6_Button.MouseDown, G6_Button.MouseDown, A6_Button.MouseDown, H6_Button.MouseDown,
+        C2_Button.KeyDown, D2_Button.KeyDown, E2_Button.KeyDown, F2_Button.KeyDown, G2_Button.KeyDown, A2_Button.KeyDown, H2_Button.KeyDown,
+        C3_Button.KeyDown, D3_Button.KeyDown, E3_Button.KeyDown, F3_Button.KeyDown, G3_Button.KeyDown, A3_Button.KeyDown, H3_Button.KeyDown,
+        C4_Button.KeyDown, D4_Button.KeyDown, E4_Button.KeyDown, F4_Button.KeyDown, G4_Button.KeyDown, A4_Button.KeyDown, H4_Button.KeyDown,
+        C5_Button.KeyDown, D5_Button.KeyDown, E5_Button.KeyDown, F5_Button.KeyDown, G5_Button.KeyDown, A5_Button.KeyDown, H5_Button.KeyDown,
+        C6_Button.KeyDown, D6_Button.KeyDown, E6_Button.KeyDown, F6_Button.KeyDown, G6_Button.KeyDown, A6_Button.KeyDown, H6_Button.KeyDown
+        Button_Note(sender.Tag)
+    End Sub
+
+    Private Sub Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles _
+        C2_Button.MouseUp, D2_Button.MouseUp, E2_Button.MouseUp, F2_Button.MouseUp, G2_Button.MouseUp, A2_Button.MouseUp, H2_Button.MouseUp,
+        C3_Button.MouseUp, D3_Button.MouseUp, E3_Button.MouseUp, F3_Button.MouseUp, G3_Button.MouseUp, A3_Button.MouseUp, H3_Button.MouseUp,
+        C4_Button.MouseUp, D4_Button.MouseUp, E4_Button.MouseUp, F4_Button.MouseUp, G4_Button.MouseUp, A4_Button.MouseUp, H4_Button.MouseUp,
+        C5_Button.MouseUp, D5_Button.MouseUp, E5_Button.MouseUp, F5_Button.MouseUp, G5_Button.MouseUp, A5_Button.MouseUp, H5_Button.MouseUp,
+        C6_Button.MouseUp, D6_Button.MouseUp, E6_Button.MouseUp, F6_Button.MouseUp, G6_Button.MouseUp, A6_Button.MouseUp, H6_Button.MouseUp,
+        C2_Button.KeyUp, D2_Button.KeyUp, E2_Button.KeyUp, F2_Button.KeyUp, G2_Button.KeyUp, A2_Button.KeyUp, H2_Button.KeyUp,
+        C3_Button.KeyUp, D3_Button.KeyUp, E3_Button.KeyUp, F3_Button.KeyUp, G3_Button.KeyUp, A3_Button.KeyUp, H3_Button.KeyUp,
+        C4_Button.KeyUp, D4_Button.KeyUp, E4_Button.KeyUp, F4_Button.KeyUp, G4_Button.KeyUp, A4_Button.KeyUp, H4_Button.KeyUp,
+        C5_Button.KeyUp, D5_Button.KeyUp, E5_Button.KeyUp, F5_Button.KeyUp, G5_Button.KeyUp, A5_Button.KeyUp, H5_Button.KeyUp,
+        C6_Button.KeyUp, D6_Button.KeyUp, E6_Button.KeyUp, F6_Button.KeyUp, G6_Button.KeyUp, A6_Button.KeyUp, H6_Button.KeyUp
+        Button_Stop_Note(sender.Tag)
     End Sub
-
-    Private Sub D2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D2_Button.MouseDown, D2_Button.KeyDown
-        Button_Note(1)
-    End Sub
-
-    Private Sub E2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E2_Button.MouseDown, E2_Button.KeyDown
-        Button_Note(2)
-    End Sub
-
-    Private Sub F2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F2_Button.MouseDown, F2_Button.KeyDown
-        Button_Note(3)
-    End Sub
-
-    Private Sub G2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G2_Button.MouseDown, G2_Button.KeyDown
-        Button_Note(4)
-    End Sub
-
-    Private Sub A2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A2_Button.MouseDown, A2_Button.KeyDown
-        Button_Note(5)
-    End Sub
-
-    Private Sub H2_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H2_Button.MouseDown, H2_Button.KeyDown
-        Button_Note(6)
-    End Sub
-
-
-
-    Private Sub C3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.MouseDown, C3_Button.KeyDown
-        Button_Note(7)
-    End Sub
-
-    Private Sub D3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D3_Button.MouseDown, D3_Button.KeyDown
-        Button_Note(8)
-    End Sub
-
-    Private Sub E3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E3_Button.MouseDown, E3_Button.KeyDown
-        Button_Note(9)
-    End Sub
-
-    Private Sub F3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F3_Button.MouseDown, F3_Button.KeyDown
-        Button_Note(10)
-    End Sub
-
-    Private Sub G3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G3_Button.MouseDown, G3_Button.KeyDown
-        Button_Note(11)
-    End Sub
-
-    Private Sub A3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A3_Button.MouseDown, A3_Button.KeyDown
-        Button_Note(12)
-    End Sub
-
-    Private Sub H3_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.MouseDown, H3_Button.KeyDown
-        Button_Note(13)
-    End Sub
-
-
-
-    Private Sub C4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.MouseDown, C4_Button.KeyDown
-        Button_Note(14)
-    End Sub
-
-    Private Sub D4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D4_Button.MouseDown, D4_Button.KeyDown
-        Button_Note(15)
-    End Sub
-
-    Private Sub E4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E4_Button.MouseDown, E4_Button.KeyDown
-        Button_Note(16)
-    End Sub
-
-    Private Sub F4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F4_Button.MouseDown, F4_Button.KeyDown
-        Button_Note(17)
-    End Sub
-
-    Private Sub G4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G4_Button.MouseDown, G4_Button.KeyDown
-        Button_Note(18)
-    End Sub
-
-    Private Sub A4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A4_Button.MouseDown, A4_Button.KeyDown
-        Button_Note(19)
-    End Sub
-
-    Private Sub H4_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H4_Button.MouseDown, H4_Button.KeyDown
-        Button_Note(20)
-    End Sub
-
-
-
-    Private Sub C5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C5_Button.MouseDown, C5_Button.KeyDown
-        Button_Note(21)
-    End Sub
-
-    Private Sub D5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D5_Button.MouseDown, D5_Button.KeyDown
-        Button_Note(22)
-    End Sub
-
-    Private Sub E5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E5_Button.MouseDown, E5_Button.KeyDown
-        Button_Note(23)
-    End Sub
-
-    Private Sub F5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F5_Button.MouseDown, F5_Button.KeyDown
-        Button_Note(24)
-    End Sub
-
-    Private Sub G5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G5_Button.MouseDown, G5_Button.KeyDown
-        Button_Note(25)
-    End Sub
-
-    Private Sub A5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A5_Button.MouseDown, A5_Button.KeyDown
-        Button_Note(26)
-    End Sub
-
-    Private Sub H5_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H5_Button.MouseDown, H5_Button.KeyDown
-        Button_Note(27)
-    End Sub
-
-
-
-    Private Sub C6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C6_Button.MouseDown, C6_Button.KeyDown
-        Button_Note(28)
-    End Sub
-
-    Private Sub D6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D6_Button.MouseDown, D6_Button.KeyDown
-        Button_Note(29)
-    End Sub
-
-    Private Sub E6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E6_Button.MouseDown, E6_Button.KeyDown
-        Button_Note(30)
-    End Sub
-
-    Private Sub F6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F6_Button.MouseDown, F6_Button.KeyDown
-        Button_Note(31)
-    End Sub
-
-    Private Sub G6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G6_Button.MouseDown, G6_Button.KeyDown
-        Button_Note(32)
-    End Sub
-
-    Private Sub A6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A6_Button.MouseDown, A6_Button.KeyDown
-        Button_Note(33)
-    End Sub
-
-    Private Sub H6_Button_MouseDown(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Button.MouseDown, H6_Button.KeyDown
-        Button_Note(34)
-    End Sub
-#End Region
-
-
-#Region "   MouseUp Events"
-
-    Private Sub C2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Button.MouseUp, C2_Button.KeyUp
-        Button_Stop_Note(0)
-    End Sub
-
-    Private Sub D2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D2_Button.MouseUp, D2_Button.KeyUp
-        Button_Stop_Note(1)
-    End Sub
-
-    Private Sub E2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E2_Button.MouseUp, E2_Button.KeyUp
-        Button_Stop_Note(2)
-    End Sub
-
-    Private Sub F2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F2_Button.MouseUp, F2_Button.KeyUp
-        Button_Stop_Note(3)
-    End Sub
-
-    Private Sub G2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G2_Button.MouseUp, G2_Button.KeyUp
-        Button_Stop_Note(4)
-    End Sub
-
-    Private Sub A2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A2_Button.MouseUp, A2_Button.KeyUp
-        Button_Stop_Note(5)
-    End Sub
-
-    Private Sub H2_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H2_Button.MouseUp, H2_Button.KeyUp
-        Button_Stop_Note(6)
-    End Sub
-
-
-
-    Private Sub C3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C3_Button.MouseUp, C3_Button.KeyUp
-        Button_Stop_Note(7)
-    End Sub
-
-    Private Sub D3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D3_Button.MouseUp, D3_Button.KeyUp
-        Button_Stop_Note(8)
-    End Sub
-
-    Private Sub E3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E3_Button.MouseUp, E3_Button.KeyUp
-        Button_Stop_Note(9)
-    End Sub
-
-    Private Sub F3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F3_Button.MouseUp, F3_Button.KeyUp
-        Button_Stop_Note(10)
-    End Sub
-
-    Private Sub G3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G3_Button.MouseUp, G3_Button.KeyUp
-        Button_Stop_Note(11)
-    End Sub
-
-    Private Sub A3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A3_Button.MouseUp, A3_Button.KeyUp
-        Button_Stop_Note(12)
-    End Sub
-
-    Private Sub H3_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H3_Button.MouseUp, H3_Button.KeyUp
-        Button_Stop_Note(13)
-    End Sub
-
-
-
-    Private Sub C4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C4_Button.MouseUp, C4_Button.KeyUp
-        Button_Stop_Note(14)
-    End Sub
-
-    Private Sub D4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D4_Button.MouseUp, D4_Button.KeyUp
-        Button_Stop_Note(15)
-    End Sub
-
-    Private Sub E4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E4_Button.MouseUp, E4_Button.KeyUp
-        Button_Stop_Note(16)
-    End Sub
-
-    Private Sub F4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F4_Button.MouseUp, F4_Button.KeyUp
-        Button_Stop_Note(17)
-    End Sub
-
-    Private Sub G4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G4_Button.MouseUp, G4_Button.KeyUp
-        Button_Stop_Note(18)
-    End Sub
-
-    Private Sub A4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A4_Button.MouseUp, A4_Button.KeyUp
-        Button_Stop_Note(19)
-    End Sub
-
-    Private Sub H4_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H4_Button.MouseUp, H4_Button.KeyUp
-        Button_Stop_Note(20)
-    End Sub
-
-
-
-    Private Sub C5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C5_Button.MouseUp, C5_Button.KeyUp
-        Button_Stop_Note(21)
-    End Sub
-
-    Private Sub D5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D5_Button.MouseUp, D5_Button.KeyUp
-        Button_Stop_Note(22)
-    End Sub
-
-    Private Sub E5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E5_Button.MouseUp, E5_Button.KeyUp
-        Button_Stop_Note(23)
-    End Sub
-
-    Private Sub F5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F5_Button.MouseUp, F5_Button.KeyUp
-        Button_Stop_Note(24)
-    End Sub
-
-    Private Sub G5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G5_Button.MouseUp, G5_Button.KeyUp
-        Button_Stop_Note(25)
-    End Sub
-
-    Private Sub A5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A5_Button.MouseUp, A5_Button.KeyUp
-        Button_Stop_Note(26)
-    End Sub
-
-    Private Sub H5_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H5_Button.MouseUp, H5_Button.KeyUp
-        Button_Stop_Note(27)
-    End Sub
-
-
-
-    Private Sub C6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C6_Button.MouseUp, C6_Button.KeyUp
-        Button_Stop_Note(28)
-    End Sub
-
-    Private Sub D6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D6_Button.MouseUp, D6_Button.KeyUp
-        Button_Stop_Note(29)
-    End Sub
-
-    Private Sub E6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles E6_Button.MouseUp, E6_Button.KeyUp
-        Button_Stop_Note(30)
-    End Sub
-
-    Private Sub F6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F6_Button.MouseUp, F6_Button.KeyUp
-        Button_Stop_Note(31)
-    End Sub
-
-    Private Sub G6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G6_Button.MouseUp, G6_Button.KeyUp
-        Button_Stop_Note(32)
-    End Sub
-
-    Private Sub A6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A6_Button.MouseUp, A6_Button.KeyUp
-        Button_Stop_Note(33)
-    End Sub
-
-    Private Sub H6_Button_MouseUp(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H6_Button.MouseUp, H6_Button.KeyUp
-        Button_Stop_Note(34)
-    End Sub
-
-#End Region
 
 #End Region
 

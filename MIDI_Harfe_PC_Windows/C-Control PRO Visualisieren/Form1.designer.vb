@@ -125,6 +125,13 @@ Partial Class Form1
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
         Me.MIDI_Visualisierung_GroupBox = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C6_Button = New System.Windows.Forms.Button()
         Me.D6_Button = New System.Windows.Forms.Button()
         Me.E6_Button = New System.Windows.Forms.Button()
@@ -154,6 +161,13 @@ Partial Class Form1
         Me.A6_Stopwert = New System.Windows.Forms.TextBox()
         Me.H6_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C2_Button = New System.Windows.Forms.Button()
         Me.D2_Button = New System.Windows.Forms.Button()
         Me.E2_Button = New System.Windows.Forms.Button()
@@ -183,6 +197,13 @@ Partial Class Form1
         Me.A2_Stopwert = New System.Windows.Forms.TextBox()
         Me.H2_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C3_Button = New System.Windows.Forms.Button()
         Me.D3_Button = New System.Windows.Forms.Button()
         Me.E3_Button = New System.Windows.Forms.Button()
@@ -212,6 +233,13 @@ Partial Class Form1
         Me.A3_Stopwert = New System.Windows.Forms.TextBox()
         Me.H3_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C5_Button = New System.Windows.Forms.Button()
         Me.D5_Button = New System.Windows.Forms.Button()
         Me.E5_Button = New System.Windows.Forms.Button()
@@ -241,6 +269,13 @@ Partial Class Form1
         Me.A5_Stopwert = New System.Windows.Forms.TextBox()
         Me.H5_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C4_Button = New System.Windows.Forms.Button()
         Me.D4_Button = New System.Windows.Forms.Button()
         Me.E4_Button = New System.Windows.Forms.Button()
@@ -358,41 +393,6 @@ Partial Class Form1
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Display_Refresh_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.ScreenRefreshTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.Tastenkonbinationen_GroupBox.SuspendLayout()
         CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolTip_YesNo_GroupBox.SuspendLayout()
@@ -1582,7 +1582,7 @@ Partial Class Form1
         Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel3)
         Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.GroupBox5)
         Me.MIDI_Visualisierung_GroupBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.MIDI_Visualisierung_GroupBox.Location = New System.Drawing.Point(14, 740)
+        Me.MIDI_Visualisierung_GroupBox.Location = New System.Drawing.Point(14, 746)
         Me.MIDI_Visualisierung_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MIDI_Visualisierung_GroupBox.Name = "MIDI_Visualisierung_GroupBox"
         Me.MIDI_Visualisierung_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -1635,6 +1635,76 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Size = New System.Drawing.Size(356, 323)
         Me.FlowLayoutPanel5.TabIndex = 10
         '
+        'C6_VerticalProgessBar
+        '
+        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
+        Me.C6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.C6_VerticalProgessBar.Maximum = 255
+        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
+        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.C6_VerticalProgessBar.TabIndex = 3
+        Me.C6_VerticalProgessBar.Tag = "28"
+        '
+        'D6_VerticalProgessBar
+        '
+        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
+        Me.D6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.D6_VerticalProgessBar.Maximum = 255
+        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
+        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.D6_VerticalProgessBar.TabIndex = 4
+        Me.D6_VerticalProgessBar.Tag = "29"
+        '
+        'E6_VerticalProgessBar
+        '
+        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
+        Me.E6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.E6_VerticalProgessBar.Maximum = 255
+        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
+        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.E6_VerticalProgessBar.TabIndex = 5
+        Me.E6_VerticalProgessBar.Tag = "30"
+        '
+        'F6_VerticalProgessBar
+        '
+        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
+        Me.F6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.F6_VerticalProgessBar.Maximum = 255
+        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
+        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.F6_VerticalProgessBar.TabIndex = 6
+        Me.F6_VerticalProgessBar.Tag = "31"
+        '
+        'G6_VerticalProgessBar
+        '
+        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
+        Me.G6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.G6_VerticalProgessBar.Maximum = 255
+        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
+        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.G6_VerticalProgessBar.TabIndex = 7
+        Me.G6_VerticalProgessBar.Tag = "32"
+        '
+        'A6_VerticalProgessBar
+        '
+        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
+        Me.A6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.A6_VerticalProgessBar.Maximum = 255
+        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
+        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.A6_VerticalProgessBar.TabIndex = 8
+        Me.A6_VerticalProgessBar.Tag = "33"
+        '
+        'H6_VerticalProgessBar
+        '
+        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
+        Me.H6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.H6_VerticalProgessBar.Maximum = 255
+        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
+        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.H6_VerticalProgessBar.TabIndex = 9
+        Me.H6_VerticalProgessBar.Tag = "34"
+        '
         'C6_Button
         '
         Me.C6_Button.Font = New System.Drawing.Font("Microsoft Sans Serif", 6.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1643,6 +1713,7 @@ Partial Class Form1
         Me.C6_Button.Name = "C6_Button"
         Me.C6_Button.Size = New System.Drawing.Size(39, 35)
         Me.C6_Button.TabIndex = 179
+        Me.C6_Button.Tag = "28"
         Me.C6_Button.Text = "c'''"
         Me.C6_Button.UseVisualStyleBackColor = True
         '
@@ -1654,6 +1725,7 @@ Partial Class Form1
         Me.D6_Button.Name = "D6_Button"
         Me.D6_Button.Size = New System.Drawing.Size(39, 35)
         Me.D6_Button.TabIndex = 180
+        Me.D6_Button.Tag = "29"
         Me.D6_Button.Text = "d'''"
         Me.D6_Button.UseVisualStyleBackColor = True
         '
@@ -1665,6 +1737,7 @@ Partial Class Form1
         Me.E6_Button.Name = "E6_Button"
         Me.E6_Button.Size = New System.Drawing.Size(39, 35)
         Me.E6_Button.TabIndex = 181
+        Me.E6_Button.Tag = "30"
         Me.E6_Button.Text = "e'''"
         Me.E6_Button.UseVisualStyleBackColor = True
         '
@@ -1676,6 +1749,7 @@ Partial Class Form1
         Me.F6_Button.Name = "F6_Button"
         Me.F6_Button.Size = New System.Drawing.Size(39, 35)
         Me.F6_Button.TabIndex = 182
+        Me.F6_Button.Tag = "31"
         Me.F6_Button.Text = "f'''"
         Me.F6_Button.UseVisualStyleBackColor = True
         '
@@ -1687,6 +1761,7 @@ Partial Class Form1
         Me.G6_Button.Name = "G6_Button"
         Me.G6_Button.Size = New System.Drawing.Size(39, 35)
         Me.G6_Button.TabIndex = 183
+        Me.G6_Button.Tag = "32"
         Me.G6_Button.Text = "g'''"
         Me.G6_Button.UseVisualStyleBackColor = True
         '
@@ -1698,6 +1773,7 @@ Partial Class Form1
         Me.A6_Button.Name = "A6_Button"
         Me.A6_Button.Size = New System.Drawing.Size(39, 35)
         Me.A6_Button.TabIndex = 184
+        Me.A6_Button.Tag = "33"
         Me.A6_Button.Text = "a'''"
         Me.A6_Button.UseVisualStyleBackColor = True
         '
@@ -1709,6 +1785,7 @@ Partial Class Form1
         Me.H6_Button.Name = "H6_Button"
         Me.H6_Button.Size = New System.Drawing.Size(39, 35)
         Me.H6_Button.TabIndex = 185
+        Me.H6_Button.Tag = "34"
         Me.H6_Button.Text = "h'''"
         Me.H6_Button.UseVisualStyleBackColor = True
         '
@@ -1720,6 +1797,7 @@ Partial Class Form1
         Me.C6_Wert.ReadOnly = True
         Me.C6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.C6_Wert.TabIndex = 12
+        Me.C6_Wert.Tag = "28"
         Me.C6_Wert.Text = "0"
         Me.C6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1731,6 +1809,7 @@ Partial Class Form1
         Me.D6_Wert.ReadOnly = True
         Me.D6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.D6_Wert.TabIndex = 13
+        Me.D6_Wert.Tag = "29"
         Me.D6_Wert.Text = "0"
         Me.D6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1742,6 +1821,7 @@ Partial Class Form1
         Me.E6_Wert.ReadOnly = True
         Me.E6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.E6_Wert.TabIndex = 14
+        Me.E6_Wert.Tag = "30"
         Me.E6_Wert.Text = "0"
         Me.E6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1753,6 +1833,7 @@ Partial Class Form1
         Me.F6_Wert.ReadOnly = True
         Me.F6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.F6_Wert.TabIndex = 15
+        Me.F6_Wert.Tag = "31"
         Me.F6_Wert.Text = "0"
         Me.F6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1764,6 +1845,7 @@ Partial Class Form1
         Me.G6_Wert.ReadOnly = True
         Me.G6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.G6_Wert.TabIndex = 16
+        Me.G6_Wert.Tag = "32"
         Me.G6_Wert.Text = "0"
         Me.G6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1775,6 +1857,7 @@ Partial Class Form1
         Me.A6_Wert.ReadOnly = True
         Me.A6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.A6_Wert.TabIndex = 17
+        Me.A6_Wert.Tag = "33"
         Me.A6_Wert.Text = "0"
         Me.A6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1786,6 +1869,7 @@ Partial Class Form1
         Me.H6_Wert.ReadOnly = True
         Me.H6_Wert.Size = New System.Drawing.Size(37, 26)
         Me.H6_Wert.TabIndex = 18
+        Me.H6_Wert.Tag = "34"
         Me.H6_Wert.Text = "0"
         Me.H6_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1797,6 +1881,7 @@ Partial Class Form1
         Me.C6_Startwert.Name = "C6_Startwert"
         Me.C6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.C6_Startwert.TabIndex = 25
+        Me.C6_Startwert.Tag = "28"
         Me.C6_Startwert.Text = "50"
         Me.C6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1808,6 +1893,7 @@ Partial Class Form1
         Me.D6_Startwert.Name = "D6_Startwert"
         Me.D6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.D6_Startwert.TabIndex = 26
+        Me.D6_Startwert.Tag = "29"
         Me.D6_Startwert.Text = "50"
         Me.D6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1819,6 +1905,7 @@ Partial Class Form1
         Me.E6_Startwert.Name = "E6_Startwert"
         Me.E6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.E6_Startwert.TabIndex = 27
+        Me.E6_Startwert.Tag = "30"
         Me.E6_Startwert.Text = "50"
         Me.E6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1830,6 +1917,7 @@ Partial Class Form1
         Me.F6_Startwert.Name = "F6_Startwert"
         Me.F6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.F6_Startwert.TabIndex = 28
+        Me.F6_Startwert.Tag = "31"
         Me.F6_Startwert.Text = "50"
         Me.F6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1841,6 +1929,7 @@ Partial Class Form1
         Me.G6_Startwert.Name = "G6_Startwert"
         Me.G6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.G6_Startwert.TabIndex = 29
+        Me.G6_Startwert.Tag = "32"
         Me.G6_Startwert.Text = "50"
         Me.G6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1852,6 +1941,7 @@ Partial Class Form1
         Me.A6_Startwert.Name = "A6_Startwert"
         Me.A6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.A6_Startwert.TabIndex = 30
+        Me.A6_Startwert.Tag = "33"
         Me.A6_Startwert.Text = "50"
         Me.A6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1863,6 +1953,7 @@ Partial Class Form1
         Me.H6_Startwert.Name = "H6_Startwert"
         Me.H6_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.H6_Startwert.TabIndex = 31
+        Me.H6_Startwert.Tag = "34"
         Me.H6_Startwert.Text = "50"
         Me.H6_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1874,6 +1965,7 @@ Partial Class Form1
         Me.C6_Stopwert.Name = "C6_Stopwert"
         Me.C6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.C6_Stopwert.TabIndex = 186
+        Me.C6_Stopwert.Tag = "28"
         Me.C6_Stopwert.Text = "200"
         Me.C6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1885,6 +1977,7 @@ Partial Class Form1
         Me.D6_Stopwert.Name = "D6_Stopwert"
         Me.D6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.D6_Stopwert.TabIndex = 187
+        Me.D6_Stopwert.Tag = "29"
         Me.D6_Stopwert.Text = "200"
         Me.D6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1896,6 +1989,7 @@ Partial Class Form1
         Me.E6_Stopwert.Name = "E6_Stopwert"
         Me.E6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.E6_Stopwert.TabIndex = 188
+        Me.E6_Stopwert.Tag = "30"
         Me.E6_Stopwert.Text = "200"
         Me.E6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1907,6 +2001,7 @@ Partial Class Form1
         Me.F6_Stopwert.Name = "F6_Stopwert"
         Me.F6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.F6_Stopwert.TabIndex = 189
+        Me.F6_Stopwert.Tag = "31"
         Me.F6_Stopwert.Text = "200"
         Me.F6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1918,6 +2013,7 @@ Partial Class Form1
         Me.G6_Stopwert.Name = "G6_Stopwert"
         Me.G6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.G6_Stopwert.TabIndex = 190
+        Me.G6_Stopwert.Tag = "32"
         Me.G6_Stopwert.Text = "200"
         Me.G6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1929,6 +2025,7 @@ Partial Class Form1
         Me.A6_Stopwert.Name = "A6_Stopwert"
         Me.A6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.A6_Stopwert.TabIndex = 191
+        Me.A6_Stopwert.Tag = "33"
         Me.A6_Stopwert.Text = "200"
         Me.A6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1940,6 +2037,7 @@ Partial Class Form1
         Me.H6_Stopwert.Name = "H6_Stopwert"
         Me.H6_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.H6_Stopwert.TabIndex = 192
+        Me.H6_Stopwert.Tag = "34"
         Me.H6_Stopwert.Text = "200"
         Me.H6_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1986,6 +2084,77 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(342, 323)
         Me.FlowLayoutPanel1.TabIndex = 6
         '
+        'C2_VerticalProgessBar
+        '
+        Me.C2_VerticalProgessBar.AccessibleName = ""
+        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
+        Me.C2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.C2_VerticalProgessBar.Maximum = 255
+        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
+        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.C2_VerticalProgessBar.TabIndex = 3
+        Me.C2_VerticalProgessBar.Tag = "0"
+        '
+        'D2_VerticalProgessBar
+        '
+        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
+        Me.D2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.D2_VerticalProgessBar.Maximum = 255
+        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
+        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.D2_VerticalProgessBar.TabIndex = 4
+        Me.D2_VerticalProgessBar.Tag = "1"
+        '
+        'E2_VerticalProgessBar
+        '
+        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
+        Me.E2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.E2_VerticalProgessBar.Maximum = 255
+        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
+        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.E2_VerticalProgessBar.TabIndex = 5
+        Me.E2_VerticalProgessBar.Tag = "2"
+        '
+        'F2_VerticalProgessBar
+        '
+        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
+        Me.F2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.F2_VerticalProgessBar.Maximum = 255
+        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
+        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.F2_VerticalProgessBar.TabIndex = 6
+        Me.F2_VerticalProgessBar.Tag = "3"
+        '
+        'G2_VerticalProgessBar
+        '
+        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
+        Me.G2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.G2_VerticalProgessBar.Maximum = 255
+        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
+        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.G2_VerticalProgessBar.TabIndex = 7
+        Me.G2_VerticalProgessBar.Tag = "4"
+        '
+        'A2_VerticalProgessBar
+        '
+        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
+        Me.A2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.A2_VerticalProgessBar.Maximum = 255
+        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
+        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.A2_VerticalProgessBar.TabIndex = 8
+        Me.A2_VerticalProgessBar.Tag = "5"
+        '
+        'H2_VerticalProgessBar
+        '
+        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
+        Me.H2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.H2_VerticalProgessBar.Maximum = 255
+        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
+        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.H2_VerticalProgessBar.TabIndex = 9
+        Me.H2_VerticalProgessBar.Tag = "6"
+        '
         'C2_Button
         '
         Me.C2_Button.Location = New System.Drawing.Point(4, 164)
@@ -1993,6 +2162,7 @@ Partial Class Form1
         Me.C2_Button.Name = "C2_Button"
         Me.C2_Button.Size = New System.Drawing.Size(39, 35)
         Me.C2_Button.TabIndex = 172
+        Me.C2_Button.Tag = "0"
         Me.C2_Button.Text = "C"
         Me.C2_Button.UseVisualStyleBackColor = True
         '
@@ -2003,6 +2173,7 @@ Partial Class Form1
         Me.D2_Button.Name = "D2_Button"
         Me.D2_Button.Size = New System.Drawing.Size(39, 35)
         Me.D2_Button.TabIndex = 173
+        Me.D2_Button.Tag = "1"
         Me.D2_Button.Text = "D"
         Me.D2_Button.UseVisualStyleBackColor = True
         '
@@ -2013,6 +2184,7 @@ Partial Class Form1
         Me.E2_Button.Name = "E2_Button"
         Me.E2_Button.Size = New System.Drawing.Size(39, 35)
         Me.E2_Button.TabIndex = 174
+        Me.E2_Button.Tag = "2"
         Me.E2_Button.Text = "E"
         Me.E2_Button.UseVisualStyleBackColor = True
         '
@@ -2023,6 +2195,7 @@ Partial Class Form1
         Me.F2_Button.Name = "F2_Button"
         Me.F2_Button.Size = New System.Drawing.Size(39, 35)
         Me.F2_Button.TabIndex = 175
+        Me.F2_Button.Tag = "3"
         Me.F2_Button.Text = "F"
         Me.F2_Button.UseVisualStyleBackColor = True
         '
@@ -2033,6 +2206,7 @@ Partial Class Form1
         Me.G2_Button.Name = "G2_Button"
         Me.G2_Button.Size = New System.Drawing.Size(39, 35)
         Me.G2_Button.TabIndex = 176
+        Me.G2_Button.Tag = "4"
         Me.G2_Button.Text = "G"
         Me.G2_Button.UseVisualStyleBackColor = True
         '
@@ -2043,6 +2217,7 @@ Partial Class Form1
         Me.A2_Button.Name = "A2_Button"
         Me.A2_Button.Size = New System.Drawing.Size(39, 35)
         Me.A2_Button.TabIndex = 177
+        Me.A2_Button.Tag = "5"
         Me.A2_Button.Text = "A"
         Me.A2_Button.UseVisualStyleBackColor = True
         '
@@ -2053,6 +2228,7 @@ Partial Class Form1
         Me.H2_Button.Name = "H2_Button"
         Me.H2_Button.Size = New System.Drawing.Size(39, 35)
         Me.H2_Button.TabIndex = 178
+        Me.H2_Button.Tag = "6"
         Me.H2_Button.Text = "H"
         Me.H2_Button.UseVisualStyleBackColor = True
         '
@@ -2064,6 +2240,7 @@ Partial Class Form1
         Me.C2_Wert.ReadOnly = True
         Me.C2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.C2_Wert.TabIndex = 11
+        Me.C2_Wert.Tag = "0"
         Me.C2_Wert.Text = "0"
         Me.C2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2075,6 +2252,7 @@ Partial Class Form1
         Me.D2_Wert.ReadOnly = True
         Me.D2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.D2_Wert.TabIndex = 12
+        Me.D2_Wert.Tag = "1"
         Me.D2_Wert.Text = "0"
         Me.D2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2086,6 +2264,7 @@ Partial Class Form1
         Me.E2_Wert.ReadOnly = True
         Me.E2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.E2_Wert.TabIndex = 13
+        Me.E2_Wert.Tag = "2"
         Me.E2_Wert.Text = "0"
         Me.E2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2097,6 +2276,7 @@ Partial Class Form1
         Me.F2_Wert.ReadOnly = True
         Me.F2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.F2_Wert.TabIndex = 14
+        Me.F2_Wert.Tag = "3"
         Me.F2_Wert.Text = "0"
         Me.F2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2108,6 +2288,7 @@ Partial Class Form1
         Me.G2_Wert.ReadOnly = True
         Me.G2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.G2_Wert.TabIndex = 15
+        Me.G2_Wert.Tag = "4"
         Me.G2_Wert.Text = "0"
         Me.G2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2119,6 +2300,7 @@ Partial Class Form1
         Me.A2_Wert.ReadOnly = True
         Me.A2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.A2_Wert.TabIndex = 16
+        Me.A2_Wert.Tag = "5"
         Me.A2_Wert.Text = "0"
         Me.A2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2130,6 +2312,7 @@ Partial Class Form1
         Me.H2_Wert.ReadOnly = True
         Me.H2_Wert.Size = New System.Drawing.Size(37, 26)
         Me.H2_Wert.TabIndex = 17
+        Me.H2_Wert.Tag = "6"
         Me.H2_Wert.Text = "0"
         Me.H2_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2141,6 +2324,7 @@ Partial Class Form1
         Me.C2_Startwert.Name = "C2_Startwert"
         Me.C2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.C2_Startwert.TabIndex = 18
+        Me.C2_Startwert.Tag = "0"
         Me.C2_Startwert.Text = "200"
         Me.C2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2152,6 +2336,7 @@ Partial Class Form1
         Me.D2_Startwert.Name = "D2_Startwert"
         Me.D2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.D2_Startwert.TabIndex = 19
+        Me.D2_Startwert.Tag = "1"
         Me.D2_Startwert.Text = "200"
         Me.D2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2163,6 +2348,7 @@ Partial Class Form1
         Me.E2_Startwert.Name = "E2_Startwert"
         Me.E2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.E2_Startwert.TabIndex = 20
+        Me.E2_Startwert.Tag = "2"
         Me.E2_Startwert.Text = "200"
         Me.E2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2174,6 +2360,7 @@ Partial Class Form1
         Me.F2_Startwert.Name = "F2_Startwert"
         Me.F2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.F2_Startwert.TabIndex = 21
+        Me.F2_Startwert.Tag = "3"
         Me.F2_Startwert.Text = "200"
         Me.F2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2185,6 +2372,7 @@ Partial Class Form1
         Me.G2_Startwert.Name = "G2_Startwert"
         Me.G2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.G2_Startwert.TabIndex = 22
+        Me.G2_Startwert.Tag = "4"
         Me.G2_Startwert.Text = "200"
         Me.G2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2196,6 +2384,7 @@ Partial Class Form1
         Me.A2_Startwert.Name = "A2_Startwert"
         Me.A2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.A2_Startwert.TabIndex = 23
+        Me.A2_Startwert.Tag = "5"
         Me.A2_Startwert.Text = "200"
         Me.A2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2207,6 +2396,7 @@ Partial Class Form1
         Me.H2_Startwert.Name = "H2_Startwert"
         Me.H2_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.H2_Startwert.TabIndex = 24
+        Me.H2_Startwert.Tag = "6"
         Me.H2_Startwert.Text = "200"
         Me.H2_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2218,6 +2408,7 @@ Partial Class Form1
         Me.C2_Stopwert.Name = "C2_Stopwert"
         Me.C2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.C2_Stopwert.TabIndex = 179
+        Me.C2_Stopwert.Tag = "0"
         Me.C2_Stopwert.Text = "200"
         Me.C2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2229,6 +2420,7 @@ Partial Class Form1
         Me.D2_Stopwert.Name = "D2_Stopwert"
         Me.D2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.D2_Stopwert.TabIndex = 180
+        Me.D2_Stopwert.Tag = "1"
         Me.D2_Stopwert.Text = "200"
         Me.D2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2240,6 +2432,7 @@ Partial Class Form1
         Me.E2_Stopwert.Name = "E2_Stopwert"
         Me.E2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.E2_Stopwert.TabIndex = 181
+        Me.E2_Stopwert.Tag = "2"
         Me.E2_Stopwert.Text = "200"
         Me.E2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2251,6 +2444,7 @@ Partial Class Form1
         Me.F2_Stopwert.Name = "F2_Stopwert"
         Me.F2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.F2_Stopwert.TabIndex = 182
+        Me.F2_Stopwert.Tag = "3"
         Me.F2_Stopwert.Text = "200"
         Me.F2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2262,6 +2456,7 @@ Partial Class Form1
         Me.G2_Stopwert.Name = "G2_Stopwert"
         Me.G2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.G2_Stopwert.TabIndex = 183
+        Me.G2_Stopwert.Tag = "4"
         Me.G2_Stopwert.Text = "200"
         Me.G2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2273,6 +2468,7 @@ Partial Class Form1
         Me.A2_Stopwert.Name = "A2_Stopwert"
         Me.A2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.A2_Stopwert.TabIndex = 184
+        Me.A2_Stopwert.Tag = "5"
         Me.A2_Stopwert.Text = "200"
         Me.A2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2284,6 +2480,7 @@ Partial Class Form1
         Me.H2_Stopwert.Name = "H2_Stopwert"
         Me.H2_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.H2_Stopwert.TabIndex = 185
+        Me.H2_Stopwert.Tag = "6"
         Me.H2_Stopwert.Text = "200"
         Me.H2_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2330,6 +2527,77 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Size = New System.Drawing.Size(345, 323)
         Me.FlowLayoutPanel2.TabIndex = 7
         '
+        'C3_VerticalProgessBar
+        '
+        Me.C3_VerticalProgessBar.AccessibleName = ""
+        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
+        Me.C3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.C3_VerticalProgessBar.Maximum = 255
+        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
+        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.C3_VerticalProgessBar.TabIndex = 186
+        Me.C3_VerticalProgessBar.Tag = "7"
+        '
+        'D3_VerticalProgessBar
+        '
+        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
+        Me.D3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.D3_VerticalProgessBar.Maximum = 255
+        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
+        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.D3_VerticalProgessBar.TabIndex = 187
+        Me.D3_VerticalProgessBar.Tag = "8"
+        '
+        'E3_VerticalProgessBar
+        '
+        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
+        Me.E3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.E3_VerticalProgessBar.Maximum = 255
+        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
+        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.E3_VerticalProgessBar.TabIndex = 188
+        Me.E3_VerticalProgessBar.Tag = "9"
+        '
+        'F3_VerticalProgessBar
+        '
+        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
+        Me.F3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.F3_VerticalProgessBar.Maximum = 255
+        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
+        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.F3_VerticalProgessBar.TabIndex = 189
+        Me.F3_VerticalProgessBar.Tag = "10"
+        '
+        'G3_VerticalProgessBar
+        '
+        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
+        Me.G3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.G3_VerticalProgessBar.Maximum = 255
+        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
+        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.G3_VerticalProgessBar.TabIndex = 190
+        Me.G3_VerticalProgessBar.Tag = "11"
+        '
+        'A3_VerticalProgessBar
+        '
+        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
+        Me.A3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.A3_VerticalProgessBar.Maximum = 255
+        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
+        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.A3_VerticalProgessBar.TabIndex = 191
+        Me.A3_VerticalProgessBar.Tag = "12"
+        '
+        'H3_VerticalProgessBar
+        '
+        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
+        Me.H3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.H3_VerticalProgessBar.Maximum = 255
+        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
+        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.H3_VerticalProgessBar.TabIndex = 192
+        Me.H3_VerticalProgessBar.Tag = "13"
+        '
         'C3_Button
         '
         Me.C3_Button.Location = New System.Drawing.Point(4, 164)
@@ -2337,6 +2605,7 @@ Partial Class Form1
         Me.C3_Button.Name = "C3_Button"
         Me.C3_Button.Size = New System.Drawing.Size(39, 35)
         Me.C3_Button.TabIndex = 179
+        Me.C3_Button.Tag = "7"
         Me.C3_Button.Text = "c"
         Me.C3_Button.UseVisualStyleBackColor = True
         '
@@ -2347,6 +2616,7 @@ Partial Class Form1
         Me.D3_Button.Name = "D3_Button"
         Me.D3_Button.Size = New System.Drawing.Size(39, 35)
         Me.D3_Button.TabIndex = 180
+        Me.D3_Button.Tag = "8"
         Me.D3_Button.Text = "d"
         Me.D3_Button.UseVisualStyleBackColor = True
         '
@@ -2357,6 +2627,7 @@ Partial Class Form1
         Me.E3_Button.Name = "E3_Button"
         Me.E3_Button.Size = New System.Drawing.Size(39, 35)
         Me.E3_Button.TabIndex = 181
+        Me.E3_Button.Tag = "9"
         Me.E3_Button.Text = "e"
         Me.E3_Button.UseVisualStyleBackColor = True
         '
@@ -2367,6 +2638,7 @@ Partial Class Form1
         Me.F3_Button.Name = "F3_Button"
         Me.F3_Button.Size = New System.Drawing.Size(39, 35)
         Me.F3_Button.TabIndex = 182
+        Me.F3_Button.Tag = "10"
         Me.F3_Button.Text = "f"
         Me.F3_Button.UseVisualStyleBackColor = True
         '
@@ -2377,6 +2649,7 @@ Partial Class Form1
         Me.G3_Button.Name = "G3_Button"
         Me.G3_Button.Size = New System.Drawing.Size(39, 35)
         Me.G3_Button.TabIndex = 183
+        Me.G3_Button.Tag = "11"
         Me.G3_Button.Text = "g"
         Me.G3_Button.UseVisualStyleBackColor = True
         '
@@ -2387,6 +2660,7 @@ Partial Class Form1
         Me.A3_Button.Name = "A3_Button"
         Me.A3_Button.Size = New System.Drawing.Size(39, 35)
         Me.A3_Button.TabIndex = 184
+        Me.A3_Button.Tag = "12"
         Me.A3_Button.Text = "a"
         Me.A3_Button.UseVisualStyleBackColor = True
         '
@@ -2397,6 +2671,7 @@ Partial Class Form1
         Me.H3_Button.Name = "H3_Button"
         Me.H3_Button.Size = New System.Drawing.Size(39, 35)
         Me.H3_Button.TabIndex = 185
+        Me.H3_Button.Tag = "13"
         Me.H3_Button.Text = "h"
         Me.H3_Button.UseVisualStyleBackColor = True
         '
@@ -2408,6 +2683,7 @@ Partial Class Form1
         Me.C3_Wert.ReadOnly = True
         Me.C3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.C3_Wert.TabIndex = 12
+        Me.C3_Wert.Tag = "7"
         Me.C3_Wert.Text = "0"
         Me.C3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2419,6 +2695,7 @@ Partial Class Form1
         Me.D3_Wert.ReadOnly = True
         Me.D3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.D3_Wert.TabIndex = 13
+        Me.D3_Wert.Tag = "8"
         Me.D3_Wert.Text = "0"
         Me.D3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2430,6 +2707,7 @@ Partial Class Form1
         Me.E3_Wert.ReadOnly = True
         Me.E3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.E3_Wert.TabIndex = 14
+        Me.E3_Wert.Tag = "9"
         Me.E3_Wert.Text = "0"
         Me.E3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2441,6 +2719,7 @@ Partial Class Form1
         Me.F3_Wert.ReadOnly = True
         Me.F3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.F3_Wert.TabIndex = 15
+        Me.F3_Wert.Tag = "10"
         Me.F3_Wert.Text = "0"
         Me.F3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2452,6 +2731,7 @@ Partial Class Form1
         Me.G3_Wert.ReadOnly = True
         Me.G3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.G3_Wert.TabIndex = 16
+        Me.G3_Wert.Tag = "11"
         Me.G3_Wert.Text = "0"
         Me.G3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2463,6 +2743,7 @@ Partial Class Form1
         Me.A3_Wert.ReadOnly = True
         Me.A3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.A3_Wert.TabIndex = 17
+        Me.A3_Wert.Tag = "12"
         Me.A3_Wert.Text = "0"
         Me.A3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2474,6 +2755,7 @@ Partial Class Form1
         Me.H3_Wert.ReadOnly = True
         Me.H3_Wert.Size = New System.Drawing.Size(37, 26)
         Me.H3_Wert.TabIndex = 18
+        Me.H3_Wert.Tag = "13"
         Me.H3_Wert.Text = "0"
         Me.H3_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2485,6 +2767,7 @@ Partial Class Form1
         Me.C3_Startwert.Name = "C3_Startwert"
         Me.C3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.C3_Startwert.TabIndex = 25
+        Me.C3_Startwert.Tag = "7"
         Me.C3_Startwert.Text = "150"
         Me.C3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2496,6 +2779,7 @@ Partial Class Form1
         Me.D3_Startwert.Name = "D3_Startwert"
         Me.D3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.D3_Startwert.TabIndex = 26
+        Me.D3_Startwert.Tag = "8"
         Me.D3_Startwert.Text = "150"
         Me.D3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2507,6 +2791,7 @@ Partial Class Form1
         Me.E3_Startwert.Name = "E3_Startwert"
         Me.E3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.E3_Startwert.TabIndex = 27
+        Me.E3_Startwert.Tag = "9"
         Me.E3_Startwert.Text = "150"
         Me.E3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2518,6 +2803,7 @@ Partial Class Form1
         Me.F3_Startwert.Name = "F3_Startwert"
         Me.F3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.F3_Startwert.TabIndex = 28
+        Me.F3_Startwert.Tag = "10"
         Me.F3_Startwert.Text = "150"
         Me.F3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2529,6 +2815,7 @@ Partial Class Form1
         Me.G3_Startwert.Name = "G3_Startwert"
         Me.G3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.G3_Startwert.TabIndex = 29
+        Me.G3_Startwert.Tag = "11"
         Me.G3_Startwert.Text = "150"
         Me.G3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2540,6 +2827,7 @@ Partial Class Form1
         Me.A3_Startwert.Name = "A3_Startwert"
         Me.A3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.A3_Startwert.TabIndex = 30
+        Me.A3_Startwert.Tag = "12"
         Me.A3_Startwert.Text = "150"
         Me.A3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2551,6 +2839,7 @@ Partial Class Form1
         Me.H3_Startwert.Name = "H3_Startwert"
         Me.H3_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.H3_Startwert.TabIndex = 31
+        Me.H3_Startwert.Tag = "13"
         Me.H3_Startwert.Text = "150"
         Me.H3_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2562,6 +2851,7 @@ Partial Class Form1
         Me.C3_Stopwert.Name = "C3_Stopwert"
         Me.C3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.C3_Stopwert.TabIndex = 193
+        Me.C3_Stopwert.Tag = "7"
         Me.C3_Stopwert.Text = "200"
         Me.C3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2573,6 +2863,7 @@ Partial Class Form1
         Me.D3_Stopwert.Name = "D3_Stopwert"
         Me.D3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.D3_Stopwert.TabIndex = 194
+        Me.D3_Stopwert.Tag = "8"
         Me.D3_Stopwert.Text = "200"
         Me.D3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2584,6 +2875,7 @@ Partial Class Form1
         Me.E3_Stopwert.Name = "E3_Stopwert"
         Me.E3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.E3_Stopwert.TabIndex = 195
+        Me.E3_Stopwert.Tag = "9"
         Me.E3_Stopwert.Text = "200"
         Me.E3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2595,6 +2887,7 @@ Partial Class Form1
         Me.F3_Stopwert.Name = "F3_Stopwert"
         Me.F3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.F3_Stopwert.TabIndex = 196
+        Me.F3_Stopwert.Tag = "10"
         Me.F3_Stopwert.Text = "200"
         Me.F3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2606,6 +2899,7 @@ Partial Class Form1
         Me.G3_Stopwert.Name = "G3_Stopwert"
         Me.G3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.G3_Stopwert.TabIndex = 197
+        Me.G3_Stopwert.Tag = "11"
         Me.G3_Stopwert.Text = "200"
         Me.G3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2617,6 +2911,7 @@ Partial Class Form1
         Me.A3_Stopwert.Name = "A3_Stopwert"
         Me.A3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.A3_Stopwert.TabIndex = 198
+        Me.A3_Stopwert.Tag = "12"
         Me.A3_Stopwert.Text = "200"
         Me.A3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2628,6 +2923,7 @@ Partial Class Form1
         Me.H3_Stopwert.Name = "H3_Stopwert"
         Me.H3_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.H3_Stopwert.TabIndex = 199
+        Me.H3_Stopwert.Tag = "13"
         Me.H3_Stopwert.Text = "200"
         Me.H3_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2674,6 +2970,76 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(346, 323)
         Me.FlowLayoutPanel4.TabIndex = 9
         '
+        'C5_VerticalProgessBar
+        '
+        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
+        Me.C5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.C5_VerticalProgessBar.Maximum = 255
+        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
+        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.C5_VerticalProgessBar.TabIndex = 3
+        Me.C5_VerticalProgessBar.Tag = "21"
+        '
+        'D5_VerticalProgessBar
+        '
+        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
+        Me.D5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.D5_VerticalProgessBar.Maximum = 255
+        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
+        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.D5_VerticalProgessBar.TabIndex = 4
+        Me.D5_VerticalProgessBar.Tag = "22"
+        '
+        'E5_VerticalProgessBar
+        '
+        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
+        Me.E5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.E5_VerticalProgessBar.Maximum = 255
+        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
+        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.E5_VerticalProgessBar.TabIndex = 5
+        Me.E5_VerticalProgessBar.Tag = "23"
+        '
+        'F5_VerticalProgessBar
+        '
+        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
+        Me.F5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.F5_VerticalProgessBar.Maximum = 255
+        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
+        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.F5_VerticalProgessBar.TabIndex = 6
+        Me.F5_VerticalProgessBar.Tag = "24"
+        '
+        'G5_VerticalProgessBar
+        '
+        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
+        Me.G5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.G5_VerticalProgessBar.Maximum = 255
+        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
+        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.G5_VerticalProgessBar.TabIndex = 7
+        Me.G5_VerticalProgessBar.Tag = "25"
+        '
+        'A5_VerticalProgessBar
+        '
+        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
+        Me.A5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.A5_VerticalProgessBar.Maximum = 255
+        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
+        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.A5_VerticalProgessBar.TabIndex = 8
+        Me.A5_VerticalProgessBar.Tag = "26"
+        '
+        'H5_VerticalProgessBar
+        '
+        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
+        Me.H5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.H5_VerticalProgessBar.Maximum = 255
+        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
+        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.H5_VerticalProgessBar.TabIndex = 9
+        Me.H5_VerticalProgessBar.Tag = "27"
+        '
         'C5_Button
         '
         Me.C5_Button.Location = New System.Drawing.Point(4, 164)
@@ -2681,6 +3047,7 @@ Partial Class Form1
         Me.C5_Button.Name = "C5_Button"
         Me.C5_Button.Size = New System.Drawing.Size(39, 35)
         Me.C5_Button.TabIndex = 179
+        Me.C5_Button.Tag = "21"
         Me.C5_Button.Text = "c''"
         Me.C5_Button.UseVisualStyleBackColor = True
         '
@@ -2691,6 +3058,7 @@ Partial Class Form1
         Me.D5_Button.Name = "D5_Button"
         Me.D5_Button.Size = New System.Drawing.Size(39, 35)
         Me.D5_Button.TabIndex = 180
+        Me.D5_Button.Tag = "22"
         Me.D5_Button.Text = "d''"
         Me.D5_Button.UseVisualStyleBackColor = True
         '
@@ -2701,6 +3069,7 @@ Partial Class Form1
         Me.E5_Button.Name = "E5_Button"
         Me.E5_Button.Size = New System.Drawing.Size(39, 35)
         Me.E5_Button.TabIndex = 181
+        Me.E5_Button.Tag = "23"
         Me.E5_Button.Text = "e''"
         Me.E5_Button.UseVisualStyleBackColor = True
         '
@@ -2711,6 +3080,7 @@ Partial Class Form1
         Me.F5_Button.Name = "F5_Button"
         Me.F5_Button.Size = New System.Drawing.Size(39, 35)
         Me.F5_Button.TabIndex = 182
+        Me.F5_Button.Tag = "24"
         Me.F5_Button.Text = "f''"
         Me.F5_Button.UseVisualStyleBackColor = True
         '
@@ -2721,6 +3091,7 @@ Partial Class Form1
         Me.G5_Button.Name = "G5_Button"
         Me.G5_Button.Size = New System.Drawing.Size(39, 35)
         Me.G5_Button.TabIndex = 183
+        Me.G5_Button.Tag = "25"
         Me.G5_Button.Text = "g''"
         Me.G5_Button.UseVisualStyleBackColor = True
         '
@@ -2731,6 +3102,7 @@ Partial Class Form1
         Me.A5_Button.Name = "A5_Button"
         Me.A5_Button.Size = New System.Drawing.Size(39, 35)
         Me.A5_Button.TabIndex = 184
+        Me.A5_Button.Tag = "26"
         Me.A5_Button.Text = "a''"
         Me.A5_Button.UseVisualStyleBackColor = True
         '
@@ -2741,6 +3113,7 @@ Partial Class Form1
         Me.H5_Button.Name = "H5_Button"
         Me.H5_Button.Size = New System.Drawing.Size(39, 35)
         Me.H5_Button.TabIndex = 185
+        Me.H5_Button.Tag = "27"
         Me.H5_Button.Text = "h''"
         Me.H5_Button.UseVisualStyleBackColor = True
         '
@@ -2752,6 +3125,7 @@ Partial Class Form1
         Me.C5_Wert.ReadOnly = True
         Me.C5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.C5_Wert.TabIndex = 12
+        Me.C5_Wert.Tag = "21"
         Me.C5_Wert.Text = "0"
         Me.C5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2763,6 +3137,7 @@ Partial Class Form1
         Me.D5_Wert.ReadOnly = True
         Me.D5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.D5_Wert.TabIndex = 13
+        Me.D5_Wert.Tag = "22"
         Me.D5_Wert.Text = "0"
         Me.D5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2774,6 +3149,7 @@ Partial Class Form1
         Me.E5_Wert.ReadOnly = True
         Me.E5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.E5_Wert.TabIndex = 14
+        Me.E5_Wert.Tag = "23"
         Me.E5_Wert.Text = "0"
         Me.E5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2785,6 +3161,7 @@ Partial Class Form1
         Me.F5_Wert.ReadOnly = True
         Me.F5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.F5_Wert.TabIndex = 15
+        Me.F5_Wert.Tag = "24"
         Me.F5_Wert.Text = "0"
         Me.F5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2796,6 +3173,7 @@ Partial Class Form1
         Me.G5_Wert.ReadOnly = True
         Me.G5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.G5_Wert.TabIndex = 16
+        Me.G5_Wert.Tag = "25"
         Me.G5_Wert.Text = "0"
         Me.G5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2807,6 +3185,7 @@ Partial Class Form1
         Me.A5_Wert.ReadOnly = True
         Me.A5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.A5_Wert.TabIndex = 17
+        Me.A5_Wert.Tag = "26"
         Me.A5_Wert.Text = "0"
         Me.A5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2818,6 +3197,7 @@ Partial Class Form1
         Me.H5_Wert.ReadOnly = True
         Me.H5_Wert.Size = New System.Drawing.Size(37, 26)
         Me.H5_Wert.TabIndex = 18
+        Me.H5_Wert.Tag = "27"
         Me.H5_Wert.Text = "0"
         Me.H5_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2829,6 +3209,7 @@ Partial Class Form1
         Me.C5_Startwert.Name = "C5_Startwert"
         Me.C5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.C5_Startwert.TabIndex = 25
+        Me.C5_Startwert.Tag = "21"
         Me.C5_Startwert.Text = "75"
         Me.C5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2840,6 +3221,7 @@ Partial Class Form1
         Me.D5_Startwert.Name = "D5_Startwert"
         Me.D5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.D5_Startwert.TabIndex = 26
+        Me.D5_Startwert.Tag = "22"
         Me.D5_Startwert.Text = "75"
         Me.D5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2851,6 +3233,7 @@ Partial Class Form1
         Me.E5_Startwert.Name = "E5_Startwert"
         Me.E5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.E5_Startwert.TabIndex = 27
+        Me.E5_Startwert.Tag = "23"
         Me.E5_Startwert.Text = "75"
         Me.E5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2862,6 +3245,7 @@ Partial Class Form1
         Me.F5_Startwert.Name = "F5_Startwert"
         Me.F5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.F5_Startwert.TabIndex = 28
+        Me.F5_Startwert.Tag = "24"
         Me.F5_Startwert.Text = "75"
         Me.F5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2873,6 +3257,7 @@ Partial Class Form1
         Me.G5_Startwert.Name = "G5_Startwert"
         Me.G5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.G5_Startwert.TabIndex = 29
+        Me.G5_Startwert.Tag = "25"
         Me.G5_Startwert.Text = "75"
         Me.G5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2884,6 +3269,7 @@ Partial Class Form1
         Me.A5_Startwert.Name = "A5_Startwert"
         Me.A5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.A5_Startwert.TabIndex = 30
+        Me.A5_Startwert.Tag = "26"
         Me.A5_Startwert.Text = "75"
         Me.A5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2895,6 +3281,7 @@ Partial Class Form1
         Me.H5_Startwert.Name = "H5_Startwert"
         Me.H5_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.H5_Startwert.TabIndex = 31
+        Me.H5_Startwert.Tag = "27"
         Me.H5_Startwert.Text = "75"
         Me.H5_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2906,6 +3293,7 @@ Partial Class Form1
         Me.C5_Stopwert.Name = "C5_Stopwert"
         Me.C5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.C5_Stopwert.TabIndex = 186
+        Me.C5_Stopwert.Tag = "21"
         Me.C5_Stopwert.Text = "200"
         Me.C5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2917,6 +3305,7 @@ Partial Class Form1
         Me.D5_Stopwert.Name = "D5_Stopwert"
         Me.D5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.D5_Stopwert.TabIndex = 187
+        Me.D5_Stopwert.Tag = "22"
         Me.D5_Stopwert.Text = "200"
         Me.D5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2928,6 +3317,7 @@ Partial Class Form1
         Me.E5_Stopwert.Name = "E5_Stopwert"
         Me.E5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.E5_Stopwert.TabIndex = 188
+        Me.E5_Stopwert.Tag = "23"
         Me.E5_Stopwert.Text = "200"
         Me.E5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2939,6 +3329,7 @@ Partial Class Form1
         Me.F5_Stopwert.Name = "F5_Stopwert"
         Me.F5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.F5_Stopwert.TabIndex = 189
+        Me.F5_Stopwert.Tag = "24"
         Me.F5_Stopwert.Text = "200"
         Me.F5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2950,6 +3341,7 @@ Partial Class Form1
         Me.G5_Stopwert.Name = "G5_Stopwert"
         Me.G5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.G5_Stopwert.TabIndex = 190
+        Me.G5_Stopwert.Tag = "25"
         Me.G5_Stopwert.Text = "200"
         Me.G5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2961,6 +3353,7 @@ Partial Class Form1
         Me.A5_Stopwert.Name = "A5_Stopwert"
         Me.A5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.A5_Stopwert.TabIndex = 191
+        Me.A5_Stopwert.Tag = "26"
         Me.A5_Stopwert.Text = "200"
         Me.A5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -2972,6 +3365,7 @@ Partial Class Form1
         Me.H5_Stopwert.Name = "H5_Stopwert"
         Me.H5_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.H5_Stopwert.TabIndex = 192
+        Me.H5_Stopwert.Tag = "27"
         Me.H5_Stopwert.Text = "200"
         Me.H5_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3018,6 +3412,76 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(348, 323)
         Me.FlowLayoutPanel3.TabIndex = 8
         '
+        'C4_VerticalProgessBar
+        '
+        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
+        Me.C4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.C4_VerticalProgessBar.Maximum = 255
+        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
+        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.C4_VerticalProgessBar.TabIndex = 3
+        Me.C4_VerticalProgessBar.Tag = "14"
+        '
+        'D4_VerticalProgessBar
+        '
+        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
+        Me.D4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.D4_VerticalProgessBar.Maximum = 255
+        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
+        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.D4_VerticalProgessBar.TabIndex = 4
+        Me.D4_VerticalProgessBar.Tag = "15"
+        '
+        'E4_VerticalProgessBar
+        '
+        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
+        Me.E4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.E4_VerticalProgessBar.Maximum = 255
+        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
+        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.E4_VerticalProgessBar.TabIndex = 5
+        Me.E4_VerticalProgessBar.Tag = "16"
+        '
+        'F4_VerticalProgessBar
+        '
+        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
+        Me.F4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.F4_VerticalProgessBar.Maximum = 255
+        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
+        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.F4_VerticalProgessBar.TabIndex = 6
+        Me.F4_VerticalProgessBar.Tag = "17"
+        '
+        'G4_VerticalProgessBar
+        '
+        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
+        Me.G4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.G4_VerticalProgessBar.Maximum = 255
+        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
+        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.G4_VerticalProgessBar.TabIndex = 7
+        Me.G4_VerticalProgessBar.Tag = "18"
+        '
+        'A4_VerticalProgessBar
+        '
+        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
+        Me.A4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.A4_VerticalProgessBar.Maximum = 255
+        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
+        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.A4_VerticalProgessBar.TabIndex = 8
+        Me.A4_VerticalProgessBar.Tag = "19"
+        '
+        'H4_VerticalProgessBar
+        '
+        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
+        Me.H4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.H4_VerticalProgessBar.Maximum = 255
+        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
+        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
+        Me.H4_VerticalProgessBar.TabIndex = 9
+        Me.H4_VerticalProgessBar.Tag = "20"
+        '
         'C4_Button
         '
         Me.C4_Button.Location = New System.Drawing.Point(4, 164)
@@ -3025,6 +3489,7 @@ Partial Class Form1
         Me.C4_Button.Name = "C4_Button"
         Me.C4_Button.Size = New System.Drawing.Size(39, 35)
         Me.C4_Button.TabIndex = 179
+        Me.C4_Button.Tag = "14"
         Me.C4_Button.Text = "c'"
         Me.C4_Button.UseVisualStyleBackColor = True
         '
@@ -3035,6 +3500,7 @@ Partial Class Form1
         Me.D4_Button.Name = "D4_Button"
         Me.D4_Button.Size = New System.Drawing.Size(39, 35)
         Me.D4_Button.TabIndex = 180
+        Me.D4_Button.Tag = "15"
         Me.D4_Button.Text = "d'"
         Me.D4_Button.UseVisualStyleBackColor = True
         '
@@ -3045,6 +3511,7 @@ Partial Class Form1
         Me.E4_Button.Name = "E4_Button"
         Me.E4_Button.Size = New System.Drawing.Size(39, 35)
         Me.E4_Button.TabIndex = 181
+        Me.E4_Button.Tag = "16"
         Me.E4_Button.Text = "e'"
         Me.E4_Button.UseVisualStyleBackColor = True
         '
@@ -3055,6 +3522,7 @@ Partial Class Form1
         Me.F4_Button.Name = "F4_Button"
         Me.F4_Button.Size = New System.Drawing.Size(39, 35)
         Me.F4_Button.TabIndex = 182
+        Me.F4_Button.Tag = "17"
         Me.F4_Button.Text = "f'"
         Me.F4_Button.UseVisualStyleBackColor = True
         '
@@ -3065,6 +3533,7 @@ Partial Class Form1
         Me.G4_Button.Name = "G4_Button"
         Me.G4_Button.Size = New System.Drawing.Size(39, 35)
         Me.G4_Button.TabIndex = 183
+        Me.G4_Button.Tag = "18"
         Me.G4_Button.Text = "g'"
         Me.G4_Button.UseVisualStyleBackColor = True
         '
@@ -3075,6 +3544,7 @@ Partial Class Form1
         Me.A4_Button.Name = "A4_Button"
         Me.A4_Button.Size = New System.Drawing.Size(39, 35)
         Me.A4_Button.TabIndex = 184
+        Me.A4_Button.Tag = "19"
         Me.A4_Button.Text = "a'"
         Me.A4_Button.UseVisualStyleBackColor = True
         '
@@ -3085,6 +3555,7 @@ Partial Class Form1
         Me.H4_Button.Name = "H4_Button"
         Me.H4_Button.Size = New System.Drawing.Size(39, 35)
         Me.H4_Button.TabIndex = 185
+        Me.H4_Button.Tag = "20"
         Me.H4_Button.Text = "h'"
         Me.H4_Button.UseVisualStyleBackColor = True
         '
@@ -3096,6 +3567,7 @@ Partial Class Form1
         Me.C4_Wert.ReadOnly = True
         Me.C4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.C4_Wert.TabIndex = 12
+        Me.C4_Wert.Tag = "14"
         Me.C4_Wert.Text = "0"
         Me.C4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3107,6 +3579,7 @@ Partial Class Form1
         Me.D4_Wert.ReadOnly = True
         Me.D4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.D4_Wert.TabIndex = 13
+        Me.D4_Wert.Tag = "15"
         Me.D4_Wert.Text = "0"
         Me.D4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3118,6 +3591,7 @@ Partial Class Form1
         Me.E4_Wert.ReadOnly = True
         Me.E4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.E4_Wert.TabIndex = 14
+        Me.E4_Wert.Tag = "16"
         Me.E4_Wert.Text = "0"
         Me.E4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3129,6 +3603,7 @@ Partial Class Form1
         Me.F4_Wert.ReadOnly = True
         Me.F4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.F4_Wert.TabIndex = 15
+        Me.F4_Wert.Tag = "17"
         Me.F4_Wert.Text = "0"
         Me.F4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3140,6 +3615,7 @@ Partial Class Form1
         Me.G4_Wert.ReadOnly = True
         Me.G4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.G4_Wert.TabIndex = 16
+        Me.G4_Wert.Tag = "18"
         Me.G4_Wert.Text = "0"
         Me.G4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3151,6 +3627,7 @@ Partial Class Form1
         Me.A4_Wert.ReadOnly = True
         Me.A4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.A4_Wert.TabIndex = 17
+        Me.A4_Wert.Tag = "19"
         Me.A4_Wert.Text = "0"
         Me.A4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3162,6 +3639,7 @@ Partial Class Form1
         Me.H4_Wert.ReadOnly = True
         Me.H4_Wert.Size = New System.Drawing.Size(37, 26)
         Me.H4_Wert.TabIndex = 18
+        Me.H4_Wert.Tag = "20"
         Me.H4_Wert.Text = "0"
         Me.H4_Wert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3173,6 +3651,7 @@ Partial Class Form1
         Me.C4_Startwert.Name = "C4_Startwert"
         Me.C4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.C4_Startwert.TabIndex = 25
+        Me.C4_Startwert.Tag = "14"
         Me.C4_Startwert.Text = "100"
         Me.C4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3184,6 +3663,7 @@ Partial Class Form1
         Me.D4_Startwert.Name = "D4_Startwert"
         Me.D4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.D4_Startwert.TabIndex = 26
+        Me.D4_Startwert.Tag = "15"
         Me.D4_Startwert.Text = "100"
         Me.D4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3195,6 +3675,7 @@ Partial Class Form1
         Me.E4_Startwert.Name = "E4_Startwert"
         Me.E4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.E4_Startwert.TabIndex = 27
+        Me.E4_Startwert.Tag = "16"
         Me.E4_Startwert.Text = "100"
         Me.E4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3206,6 +3687,7 @@ Partial Class Form1
         Me.F4_Startwert.Name = "F4_Startwert"
         Me.F4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.F4_Startwert.TabIndex = 28
+        Me.F4_Startwert.Tag = "17"
         Me.F4_Startwert.Text = "100"
         Me.F4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3217,6 +3699,7 @@ Partial Class Form1
         Me.G4_Startwert.Name = "G4_Startwert"
         Me.G4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.G4_Startwert.TabIndex = 29
+        Me.G4_Startwert.Tag = "18"
         Me.G4_Startwert.Text = "100"
         Me.G4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3228,6 +3711,7 @@ Partial Class Form1
         Me.A4_Startwert.Name = "A4_Startwert"
         Me.A4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.A4_Startwert.TabIndex = 30
+        Me.A4_Startwert.Tag = "19"
         Me.A4_Startwert.Text = "100"
         Me.A4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3239,6 +3723,7 @@ Partial Class Form1
         Me.H4_Startwert.Name = "H4_Startwert"
         Me.H4_Startwert.Size = New System.Drawing.Size(37, 26)
         Me.H4_Startwert.TabIndex = 31
+        Me.H4_Startwert.Tag = "20"
         Me.H4_Startwert.Text = "100"
         Me.H4_Startwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3250,6 +3735,7 @@ Partial Class Form1
         Me.C4_Stopwert.Name = "C4_Stopwert"
         Me.C4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.C4_Stopwert.TabIndex = 186
+        Me.C4_Stopwert.Tag = "14"
         Me.C4_Stopwert.Text = "200"
         Me.C4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3261,6 +3747,7 @@ Partial Class Form1
         Me.D4_Stopwert.Name = "D4_Stopwert"
         Me.D4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.D4_Stopwert.TabIndex = 187
+        Me.D4_Stopwert.Tag = "15"
         Me.D4_Stopwert.Text = "200"
         Me.D4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3272,6 +3759,7 @@ Partial Class Form1
         Me.E4_Stopwert.Name = "E4_Stopwert"
         Me.E4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.E4_Stopwert.TabIndex = 188
+        Me.E4_Stopwert.Tag = "16"
         Me.E4_Stopwert.Text = "200"
         Me.E4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3283,6 +3771,7 @@ Partial Class Form1
         Me.F4_Stopwert.Name = "F4_Stopwert"
         Me.F4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.F4_Stopwert.TabIndex = 189
+        Me.F4_Stopwert.Tag = "17"
         Me.F4_Stopwert.Text = "200"
         Me.F4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3294,6 +3783,7 @@ Partial Class Form1
         Me.G4_Stopwert.Name = "G4_Stopwert"
         Me.G4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.G4_Stopwert.TabIndex = 190
+        Me.G4_Stopwert.Tag = "18"
         Me.G4_Stopwert.Text = "200"
         Me.G4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3305,6 +3795,7 @@ Partial Class Form1
         Me.A4_Stopwert.Name = "A4_Stopwert"
         Me.A4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.A4_Stopwert.TabIndex = 191
+        Me.A4_Stopwert.Tag = "19"
         Me.A4_Stopwert.Text = "200"
         Me.A4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3316,6 +3807,7 @@ Partial Class Form1
         Me.H4_Stopwert.Name = "H4_Stopwert"
         Me.H4_Stopwert.Size = New System.Drawing.Size(37, 26)
         Me.H4_Stopwert.TabIndex = 192
+        Me.H4_Stopwert.Tag = "20"
         Me.H4_Stopwert.Text = "200"
         Me.H4_Stopwert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3367,6 +3859,7 @@ Partial Class Form1
         Me.C6_Verschiebung.Name = "C6_Verschiebung"
         Me.C6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.C6_Verschiebung.TabIndex = 19
+        Me.C6_Verschiebung.Tag = "28"
         Me.C6_Verschiebung.Text = "0"
         Me.C6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3377,6 +3870,7 @@ Partial Class Form1
         Me.D6_Verschiebung.Name = "D6_Verschiebung"
         Me.D6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.D6_Verschiebung.TabIndex = 20
+        Me.D6_Verschiebung.Tag = "29"
         Me.D6_Verschiebung.Text = "0"
         Me.D6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3387,6 +3881,7 @@ Partial Class Form1
         Me.E6_Verschiebung.Name = "E6_Verschiebung"
         Me.E6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.E6_Verschiebung.TabIndex = 21
+        Me.E6_Verschiebung.Tag = "30"
         Me.E6_Verschiebung.Text = "0"
         Me.E6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3397,6 +3892,7 @@ Partial Class Form1
         Me.F6_Verschiebung.Name = "F6_Verschiebung"
         Me.F6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.F6_Verschiebung.TabIndex = 22
+        Me.F6_Verschiebung.Tag = "31"
         Me.F6_Verschiebung.Text = "0"
         Me.F6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3407,6 +3903,7 @@ Partial Class Form1
         Me.G6_Verschiebung.Name = "G6_Verschiebung"
         Me.G6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.G6_Verschiebung.TabIndex = 23
+        Me.G6_Verschiebung.Tag = "32"
         Me.G6_Verschiebung.Text = "0"
         Me.G6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3417,6 +3914,7 @@ Partial Class Form1
         Me.A6_Verschiebung.Name = "A6_Verschiebung"
         Me.A6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.A6_Verschiebung.TabIndex = 24
+        Me.A6_Verschiebung.Tag = "33"
         Me.A6_Verschiebung.Text = "0"
         Me.A6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3427,6 +3925,7 @@ Partial Class Form1
         Me.H6_Verschiebung.Name = "H6_Verschiebung"
         Me.H6_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.H6_Verschiebung.TabIndex = 25
+        Me.H6_Verschiebung.Tag = "34"
         Me.H6_Verschiebung.Text = "0"
         Me.H6_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3452,6 +3951,7 @@ Partial Class Form1
         Me.C2_Verschiebung.Name = "C2_Verschiebung"
         Me.C2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.C2_Verschiebung.TabIndex = 19
+        Me.C2_Verschiebung.Tag = "0"
         Me.C2_Verschiebung.Text = "0"
         Me.C2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3462,6 +3962,7 @@ Partial Class Form1
         Me.D2_Verschiebung.Name = "D2_Verschiebung"
         Me.D2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.D2_Verschiebung.TabIndex = 20
+        Me.D2_Verschiebung.Tag = "1"
         Me.D2_Verschiebung.Text = "0"
         Me.D2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3472,6 +3973,7 @@ Partial Class Form1
         Me.E2_Verschiebung.Name = "E2_Verschiebung"
         Me.E2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.E2_Verschiebung.TabIndex = 21
+        Me.E2_Verschiebung.Tag = "2"
         Me.E2_Verschiebung.Text = "0"
         Me.E2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3482,6 +3984,7 @@ Partial Class Form1
         Me.F2_Verschiebung.Name = "F2_Verschiebung"
         Me.F2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.F2_Verschiebung.TabIndex = 22
+        Me.F2_Verschiebung.Tag = "3"
         Me.F2_Verschiebung.Text = "0"
         Me.F2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3492,6 +3995,7 @@ Partial Class Form1
         Me.G2_Verschiebung.Name = "G2_Verschiebung"
         Me.G2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.G2_Verschiebung.TabIndex = 23
+        Me.G2_Verschiebung.Tag = "4"
         Me.G2_Verschiebung.Text = "0"
         Me.G2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3502,6 +4006,7 @@ Partial Class Form1
         Me.A2_Verschiebung.Name = "A2_Verschiebung"
         Me.A2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.A2_Verschiebung.TabIndex = 24
+        Me.A2_Verschiebung.Tag = "5"
         Me.A2_Verschiebung.Text = "0"
         Me.A2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3512,6 +4017,7 @@ Partial Class Form1
         Me.H2_Verschiebung.Name = "H2_Verschiebung"
         Me.H2_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.H2_Verschiebung.TabIndex = 25
+        Me.H2_Verschiebung.Tag = "6"
         Me.H2_Verschiebung.Text = "0"
         Me.H2_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3537,6 +4043,7 @@ Partial Class Form1
         Me.C5_Verschiebung.Name = "C5_Verschiebung"
         Me.C5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.C5_Verschiebung.TabIndex = 19
+        Me.C5_Verschiebung.Tag = "21"
         Me.C5_Verschiebung.Text = "0"
         Me.C5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3547,6 +4054,7 @@ Partial Class Form1
         Me.D5_Verschiebung.Name = "D5_Verschiebung"
         Me.D5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.D5_Verschiebung.TabIndex = 20
+        Me.D5_Verschiebung.Tag = "22"
         Me.D5_Verschiebung.Text = "0"
         Me.D5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3557,6 +4065,7 @@ Partial Class Form1
         Me.E5_Verschiebung.Name = "E5_Verschiebung"
         Me.E5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.E5_Verschiebung.TabIndex = 21
+        Me.E5_Verschiebung.Tag = "23"
         Me.E5_Verschiebung.Text = "0"
         Me.E5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3567,6 +4076,7 @@ Partial Class Form1
         Me.F5_Verschiebung.Name = "F5_Verschiebung"
         Me.F5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.F5_Verschiebung.TabIndex = 22
+        Me.F5_Verschiebung.Tag = "24"
         Me.F5_Verschiebung.Text = "0"
         Me.F5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3577,6 +4087,7 @@ Partial Class Form1
         Me.G5_Verschiebung.Name = "G5_Verschiebung"
         Me.G5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.G5_Verschiebung.TabIndex = 23
+        Me.G5_Verschiebung.Tag = "25"
         Me.G5_Verschiebung.Text = "0"
         Me.G5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3587,6 +4098,7 @@ Partial Class Form1
         Me.A5_Verschiebung.Name = "A5_Verschiebung"
         Me.A5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.A5_Verschiebung.TabIndex = 24
+        Me.A5_Verschiebung.Tag = "26"
         Me.A5_Verschiebung.Text = "0"
         Me.A5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3597,6 +4109,7 @@ Partial Class Form1
         Me.H5_Verschiebung.Name = "H5_Verschiebung"
         Me.H5_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.H5_Verschiebung.TabIndex = 25
+        Me.H5_Verschiebung.Tag = "27"
         Me.H5_Verschiebung.Text = "0"
         Me.H5_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3622,6 +4135,7 @@ Partial Class Form1
         Me.C3_Verschiebung.Name = "C3_Verschiebung"
         Me.C3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.C3_Verschiebung.TabIndex = 19
+        Me.C3_Verschiebung.Tag = "7"
         Me.C3_Verschiebung.Text = "0"
         Me.C3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3632,6 +4146,7 @@ Partial Class Form1
         Me.D3_Verschiebung.Name = "D3_Verschiebung"
         Me.D3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.D3_Verschiebung.TabIndex = 20
+        Me.D3_Verschiebung.Tag = "8"
         Me.D3_Verschiebung.Text = "0"
         Me.D3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3642,6 +4157,7 @@ Partial Class Form1
         Me.E3_Verschiebung.Name = "E3_Verschiebung"
         Me.E3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.E3_Verschiebung.TabIndex = 21
+        Me.E3_Verschiebung.Tag = "9"
         Me.E3_Verschiebung.Text = "0"
         Me.E3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3652,6 +4168,7 @@ Partial Class Form1
         Me.F3_Verschiebung.Name = "F3_Verschiebung"
         Me.F3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.F3_Verschiebung.TabIndex = 22
+        Me.F3_Verschiebung.Tag = "10"
         Me.F3_Verschiebung.Text = "0"
         Me.F3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3662,6 +4179,7 @@ Partial Class Form1
         Me.G3_Verschiebung.Name = "G3_Verschiebung"
         Me.G3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.G3_Verschiebung.TabIndex = 23
+        Me.G3_Verschiebung.Tag = "11"
         Me.G3_Verschiebung.Text = "0"
         Me.G3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3672,6 +4190,7 @@ Partial Class Form1
         Me.A3_Verschiebung.Name = "A3_Verschiebung"
         Me.A3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.A3_Verschiebung.TabIndex = 24
+        Me.A3_Verschiebung.Tag = "12"
         Me.A3_Verschiebung.Text = "0"
         Me.A3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3682,6 +4201,7 @@ Partial Class Form1
         Me.H3_Verschiebung.Name = "H3_Verschiebung"
         Me.H3_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.H3_Verschiebung.TabIndex = 25
+        Me.H3_Verschiebung.Tag = "13"
         Me.H3_Verschiebung.Text = "0"
         Me.H3_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3707,6 +4227,7 @@ Partial Class Form1
         Me.C4_Verschiebung.Name = "C4_Verschiebung"
         Me.C4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.C4_Verschiebung.TabIndex = 19
+        Me.C4_Verschiebung.Tag = "14"
         Me.C4_Verschiebung.Text = "0"
         Me.C4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3717,6 +4238,7 @@ Partial Class Form1
         Me.D4_Verschiebung.Name = "D4_Verschiebung"
         Me.D4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.D4_Verschiebung.TabIndex = 20
+        Me.D4_Verschiebung.Tag = "15"
         Me.D4_Verschiebung.Text = "0"
         Me.D4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3727,6 +4249,7 @@ Partial Class Form1
         Me.E4_Verschiebung.Name = "E4_Verschiebung"
         Me.E4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.E4_Verschiebung.TabIndex = 21
+        Me.E4_Verschiebung.Tag = "16"
         Me.E4_Verschiebung.Text = "0"
         Me.E4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3737,6 +4260,7 @@ Partial Class Form1
         Me.F4_Verschiebung.Name = "F4_Verschiebung"
         Me.F4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.F4_Verschiebung.TabIndex = 22
+        Me.F4_Verschiebung.Tag = "17"
         Me.F4_Verschiebung.Text = "0"
         Me.F4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3747,6 +4271,7 @@ Partial Class Form1
         Me.G4_Verschiebung.Name = "G4_Verschiebung"
         Me.G4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.G4_Verschiebung.TabIndex = 23
+        Me.G4_Verschiebung.Tag = "18"
         Me.G4_Verschiebung.Text = "0"
         Me.G4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3757,6 +4282,7 @@ Partial Class Form1
         Me.A4_Verschiebung.Name = "A4_Verschiebung"
         Me.A4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.A4_Verschiebung.TabIndex = 24
+        Me.A4_Verschiebung.Tag = "19"
         Me.A4_Verschiebung.Text = "0"
         Me.A4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -3767,6 +4293,7 @@ Partial Class Form1
         Me.H4_Verschiebung.Name = "H4_Verschiebung"
         Me.H4_Verschiebung.Size = New System.Drawing.Size(37, 26)
         Me.H4_Verschiebung.TabIndex = 25
+        Me.H4_Verschiebung.Tag = "20"
         Me.H4_Verschiebung.Text = "0"
         Me.H4_Verschiebung.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -4309,329 +4836,12 @@ Partial Class Form1
         Me.ScreenRefreshTimer.Enabled = True
         Me.ScreenRefreshTimer.Interval = 1000
         '
-        'C6_VerticalProgessBar
-        '
-        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
-        Me.C6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.C6_VerticalProgessBar.Maximum = 255
-        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
-        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.C6_VerticalProgessBar.TabIndex = 3
-        '
-        'D6_VerticalProgessBar
-        '
-        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
-        Me.D6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.D6_VerticalProgessBar.Maximum = 255
-        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
-        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.D6_VerticalProgessBar.TabIndex = 4
-        '
-        'E6_VerticalProgessBar
-        '
-        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
-        Me.E6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.E6_VerticalProgessBar.Maximum = 255
-        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
-        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.E6_VerticalProgessBar.TabIndex = 5
-        '
-        'F6_VerticalProgessBar
-        '
-        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
-        Me.F6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.F6_VerticalProgessBar.Maximum = 255
-        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
-        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.F6_VerticalProgessBar.TabIndex = 6
-        '
-        'G6_VerticalProgessBar
-        '
-        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
-        Me.G6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.G6_VerticalProgessBar.Maximum = 255
-        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
-        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.G6_VerticalProgessBar.TabIndex = 7
-        '
-        'A6_VerticalProgessBar
-        '
-        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
-        Me.A6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.A6_VerticalProgessBar.Maximum = 255
-        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
-        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.A6_VerticalProgessBar.TabIndex = 8
-        '
-        'H6_VerticalProgessBar
-        '
-        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
-        Me.H6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.H6_VerticalProgessBar.Maximum = 255
-        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
-        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.H6_VerticalProgessBar.TabIndex = 9
-        '
-        'C2_VerticalProgessBar
-        '
-        Me.C2_VerticalProgessBar.AccessibleName = ""
-        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
-        Me.C2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.C2_VerticalProgessBar.Maximum = 255
-        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
-        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.C2_VerticalProgessBar.TabIndex = 3
-        '
-        'D2_VerticalProgessBar
-        '
-        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
-        Me.D2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.D2_VerticalProgessBar.Maximum = 255
-        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
-        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.D2_VerticalProgessBar.TabIndex = 4
-        '
-        'E2_VerticalProgessBar
-        '
-        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
-        Me.E2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.E2_VerticalProgessBar.Maximum = 255
-        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
-        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.E2_VerticalProgessBar.TabIndex = 5
-        '
-        'F2_VerticalProgessBar
-        '
-        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
-        Me.F2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.F2_VerticalProgessBar.Maximum = 255
-        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
-        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.F2_VerticalProgessBar.TabIndex = 6
-        '
-        'G2_VerticalProgessBar
-        '
-        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
-        Me.G2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.G2_VerticalProgessBar.Maximum = 255
-        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
-        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.G2_VerticalProgessBar.TabIndex = 7
-        '
-        'A2_VerticalProgessBar
-        '
-        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
-        Me.A2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.A2_VerticalProgessBar.Maximum = 255
-        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
-        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.A2_VerticalProgessBar.TabIndex = 8
-        '
-        'H2_VerticalProgessBar
-        '
-        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
-        Me.H2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.H2_VerticalProgessBar.Maximum = 255
-        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
-        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.H2_VerticalProgessBar.TabIndex = 9
-        '
-        'C3_VerticalProgessBar
-        '
-        Me.C3_VerticalProgessBar.AccessibleName = ""
-        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
-        Me.C3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.C3_VerticalProgessBar.Maximum = 255
-        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
-        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.C3_VerticalProgessBar.TabIndex = 186
-        '
-        'D3_VerticalProgessBar
-        '
-        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
-        Me.D3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.D3_VerticalProgessBar.Maximum = 255
-        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
-        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.D3_VerticalProgessBar.TabIndex = 187
-        '
-        'E3_VerticalProgessBar
-        '
-        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
-        Me.E3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.E3_VerticalProgessBar.Maximum = 255
-        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
-        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.E3_VerticalProgessBar.TabIndex = 188
-        '
-        'F3_VerticalProgessBar
-        '
-        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
-        Me.F3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.F3_VerticalProgessBar.Maximum = 255
-        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
-        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.F3_VerticalProgessBar.TabIndex = 189
-        '
-        'G3_VerticalProgessBar
-        '
-        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
-        Me.G3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.G3_VerticalProgessBar.Maximum = 255
-        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
-        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.G3_VerticalProgessBar.TabIndex = 190
-        '
-        'A3_VerticalProgessBar
-        '
-        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
-        Me.A3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.A3_VerticalProgessBar.Maximum = 255
-        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
-        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.A3_VerticalProgessBar.TabIndex = 191
-        '
-        'H3_VerticalProgessBar
-        '
-        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
-        Me.H3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.H3_VerticalProgessBar.Maximum = 255
-        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
-        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.H3_VerticalProgessBar.TabIndex = 192
-        '
-        'C5_VerticalProgessBar
-        '
-        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
-        Me.C5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.C5_VerticalProgessBar.Maximum = 255
-        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
-        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.C5_VerticalProgessBar.TabIndex = 3
-        '
-        'D5_VerticalProgessBar
-        '
-        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
-        Me.D5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.D5_VerticalProgessBar.Maximum = 255
-        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
-        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.D5_VerticalProgessBar.TabIndex = 4
-        '
-        'E5_VerticalProgessBar
-        '
-        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
-        Me.E5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.E5_VerticalProgessBar.Maximum = 255
-        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
-        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.E5_VerticalProgessBar.TabIndex = 5
-        '
-        'F5_VerticalProgessBar
-        '
-        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
-        Me.F5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.F5_VerticalProgessBar.Maximum = 255
-        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
-        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.F5_VerticalProgessBar.TabIndex = 6
-        '
-        'G5_VerticalProgessBar
-        '
-        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
-        Me.G5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.G5_VerticalProgessBar.Maximum = 255
-        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
-        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.G5_VerticalProgessBar.TabIndex = 7
-        '
-        'A5_VerticalProgessBar
-        '
-        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
-        Me.A5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.A5_VerticalProgessBar.Maximum = 255
-        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
-        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.A5_VerticalProgessBar.TabIndex = 8
-        '
-        'H5_VerticalProgessBar
-        '
-        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
-        Me.H5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.H5_VerticalProgessBar.Maximum = 255
-        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
-        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.H5_VerticalProgessBar.TabIndex = 9
-        '
-        'C4_VerticalProgessBar
-        '
-        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(4, 5)
-        Me.C4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.C4_VerticalProgessBar.Maximum = 255
-        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
-        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.C4_VerticalProgessBar.TabIndex = 3
-        '
-        'D4_VerticalProgessBar
-        '
-        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(51, 5)
-        Me.D4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.D4_VerticalProgessBar.Maximum = 255
-        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
-        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.D4_VerticalProgessBar.TabIndex = 4
-        '
-        'E4_VerticalProgessBar
-        '
-        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(98, 5)
-        Me.E4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.E4_VerticalProgessBar.Maximum = 255
-        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
-        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.E4_VerticalProgessBar.TabIndex = 5
-        '
-        'F4_VerticalProgessBar
-        '
-        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(145, 5)
-        Me.F4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.F4_VerticalProgessBar.Maximum = 255
-        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
-        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.F4_VerticalProgessBar.TabIndex = 6
-        '
-        'G4_VerticalProgessBar
-        '
-        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(192, 5)
-        Me.G4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.G4_VerticalProgessBar.Maximum = 255
-        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
-        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.G4_VerticalProgessBar.TabIndex = 7
-        '
-        'A4_VerticalProgessBar
-        '
-        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(239, 5)
-        Me.A4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.A4_VerticalProgessBar.Maximum = 255
-        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
-        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.A4_VerticalProgessBar.TabIndex = 8
-        '
-        'H4_VerticalProgessBar
-        '
-        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(286, 5)
-        Me.H4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.H4_VerticalProgessBar.Maximum = 255
-        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
-        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(39, 149)
-        Me.H4_VerticalProgessBar.TabIndex = 9
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(1881, 1038)
+        Me.ClientSize = New System.Drawing.Size(1881, 1028)
         Me.Controls.Add(Me.Panel1)
         Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
