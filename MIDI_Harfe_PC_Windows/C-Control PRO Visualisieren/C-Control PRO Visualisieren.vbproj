@@ -112,7 +112,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="clsMIDI.vb" />
     <Compile Include="MIDI.vb" />
     <Compile Include="Form1.designer.vb">
       <DependentUpon>Form1.vb</DependentUpon>

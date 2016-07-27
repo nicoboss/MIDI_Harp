@@ -123,6 +123,7 @@ Public Class Form1
     Dim Noten_Versch(35) As Integer
     Dim Halbtonversch As Integer
 
+
     Dim MidiNoteNr = {
             28, 30, 31, 33, 35, 36, 38,
             40, 42, 43, 45, 47, 48, 50,
@@ -414,7 +415,7 @@ Public Class Form1
                     If ADC(item) < Noten_StopW(item) And Note_Play(NotenNr) = True Then
                         'MessageBox.Show(NotenNr & " off")
                         Note_Play(NotenNr) = False
-                        m.STOPMIDINote(NotenNr)
+                        STOPMIDINote(NotenNr)
                         If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
                     End If
 
@@ -698,7 +699,7 @@ Public Class Form1
 
         If Note_gespielt = False Then
             Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
-            m.PlayMIDINote(70, 50, 0.1)
+            PlayMIDINote(70, 50, 0.1)
         End If
 
 
@@ -706,13 +707,13 @@ Public Class Form1
 
         If Tackt_32stel = 32 Then
             If Metronom_ON.Checked Then
-                m.CurrentInstrument = "Woodblock"
+                SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
                 PlayMIDINote(70, 50, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
+                SetCurrentInstrument(cboInstruments.SelectedIndex)
             ElseIf Metronom_Betont.Checked Then
-                m.CurrentInstrument = "Woodblock"
+                SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
                 PlayMIDINote(72, 70, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
+                SetCurrentInstrument(cboInstruments.SelectedIndex)
             End If
             TacktNr = TacktNr + 1
             Tackt_32stel = 0
@@ -720,9 +721,9 @@ Public Class Form1
 
         If Not Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
-                m.CurrentInstrument = "Woodblock"
+                SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
                 PlayMIDINote(70, 50, 0.1)
-                m.CurrentInstrument = cboInstruments.Text
+                SetCurrentInstrument(cboInstruments.SelectedIndex)
             End If
         End If
 
@@ -778,6 +779,7 @@ Public Class Form1
     Private outDialog As New OutputDeviceDialog()
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        FillInstrumentCombo()
         If OutputDevice.DeviceCount = 0 Then
             MessageBox.Show("No MIDI output devices available.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Exit Sub
@@ -790,7 +792,19 @@ Public Class Form1
             End Try
         End If
         hsbVolume_ValueChanged()
+        hsbPan_ValueChanged()
+        hsbModWheel_ValueChanged()
+    End Sub
 
+    Private Sub FillInstrumentCombo()
+        Dim items() As String = [Enum].GetNames(GetType(GeneralMidiInstrument))
+        For Each item In items
+            cboInstruments.Items.Add(item)
+        Next
+        cboInstruments.SelectedIndex = 0
+    End Sub
+    Private Sub cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboInstruments.SelectedIndexChanged
+        SetCurrentInstrument(cboInstruments.SelectedIndex)
     End Sub
 
     Private Sub Form1_Closed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Closed
@@ -826,7 +840,7 @@ Public Class Form1
         outDevice.Send(New ChannelMessage(ChannelCommand.Controller, 0, 123))
     End Sub
 
-    Private Sub SetInstrument(ByVal InstrumentNr As Integer)
+    Private Sub SetCurrentInstrument(ByVal InstrumentNr As Integer)
         If outDevice Is Nothing Then Exit Sub
         outDevice.Send(New ChannelMessage(ChannelCommand.ProgramChange, 0, InstrumentNr))
     End Sub
@@ -863,38 +877,6 @@ Public Class Form1
         SetModWheel(hsbModWheel.Value)
     End Sub
 #End Region
-
-#End Region
-
-
-#Region " cls MIDI "
-
-    Dim m As New clsMIDI
-
-    Private Sub Form1_Load_cls(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        FillInstrumentCombo()
-    End Sub
-    Private Sub lblClickMe_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs)
-        If e.Button = Windows.Forms.MouseButtons.Left Then
-            PlayMIDINote(e.Y, 127) 'Play MIDI Sounds
-        Else
-            STOPAllMIDINotes() 'Stops All MIDI notes
-        End If
-    End Sub
-
-#Region " Instrument Control "
-    Private Sub FillInstrumentCombo()
-        For i = 0 To 128
-            cboInstruments.Items.Add(Instrument.GMInstrumentNames(i))
-        Next
-        cboInstruments.SelectedIndex = 0
-    End Sub
-    Private Sub cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboInstruments.SelectedIndexChanged
-        m.CurrentInstrument = cboInstruments.Text
-    End Sub
-#End Region
-
-
 
 #End Region
 
@@ -1290,6 +1272,7 @@ Public Class Form1
         C5_Stopwert.LostFocus, D5_Stopwert.LostFocus, E5_Stopwert.LostFocus, F5_Stopwert.LostFocus, G5_Stopwert.LostFocus, A5_Stopwert.LostFocus, H5_Stopwert.LostFocus,
         C6_Stopwert.LostFocus, D6_Stopwert.LostFocus, E6_Stopwert.LostFocus, F6_Stopwert.LostFocus, G6_Stopwert.LostFocus, A6_Stopwert.LostFocus, H6_Stopwert.LostFocus
 
+        If sender.Text = "" Then sender.Text = 0
         If sender.Text > 255 Then sender.Text = 255
 
         For i = 0 To 34
@@ -1307,6 +1290,7 @@ Public Class Form1
     C5_Verschiebung.LostFocus, D5_Verschiebung.LostFocus, E5_Verschiebung.LostFocus, F5_Verschiebung.LostFocus, G5_Verschiebung.LostFocus, A5_Verschiebung.LostFocus, H5_Verschiebung.LostFocus,
     C6_Verschiebung.LostFocus, D6_Verschiebung.LostFocus, E6_Verschiebung.LostFocus, F6_Verschiebung.LostFocus, G6_Verschiebung.LostFocus, A6_Verschiebung.LostFocus, H6_Verschiebung.LostFocus
 
+        If sender.Text = "" Then sender.Text = 0
         If sender.Text > 127 Then sender.Text = 127
         If sender.Text < -127 Then sender.Text = -127
 
@@ -1982,7 +1966,7 @@ Public Class Form1
         'MessageBox.Show(C.Length)
         'MessageBox.Show(T)
         'MessageBox.Show(C = T)
-        '''Return (C = T)
+        'Return (C = T)
         Return True
     End Function
 
@@ -2548,7 +2532,6 @@ Public Class Form1
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
     End Sub
-
 End Class
 
 

@@ -23,9 +23,9 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
@@ -482,7 +482,7 @@ Partial Class Form1
         Me.Tastenkonbinationen_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Tastenkonbinationen_GroupBox.Name = "Tastenkonbinationen_GroupBox"
         Me.Tastenkonbinationen_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Tastenkonbinationen_GroupBox.Size = New System.Drawing.Size(742, 175)
+        Me.Tastenkonbinationen_GroupBox.Size = New System.Drawing.Size(709, 175)
         Me.Tastenkonbinationen_GroupBox.TabIndex = 197
         Me.Tastenkonbinationen_GroupBox.TabStop = False
         Me.Tastenkonbinationen_GroupBox.Text = "Tastenkonbinationen (Hintergrundssteuerung)"
@@ -496,39 +496,39 @@ Partial Class Form1
         Me.Tastenkonbinationen_DataGridView.AllowUserToResizeRows = False
         Me.Tastenkonbinationen_DataGridView.BackgroundColor = System.Drawing.SystemColors.Control
         Me.Tastenkonbinationen_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.Tastenkonbinationen_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Tastenkonbinationen_DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Aktion, Me.Konbination})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle5
         Me.Tastenkonbinationen_DataGridView.EnableHeadersVisualStyles = False
         Me.Tastenkonbinationen_DataGridView.GridColor = System.Drawing.SystemColors.ControlLight
-        Me.Tastenkonbinationen_DataGridView.Location = New System.Drawing.Point(360, 31)
+        Me.Tastenkonbinationen_DataGridView.Location = New System.Drawing.Point(349, 30)
         Me.Tastenkonbinationen_DataGridView.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Tastenkonbinationen_DataGridView.MultiSelect = False
         Me.Tastenkonbinationen_DataGridView.Name = "Tastenkonbinationen_DataGridView"
         Me.Tastenkonbinationen_DataGridView.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.Tastenkonbinationen_DataGridView.RowHeadersVisible = False
         Me.Tastenkonbinationen_DataGridView.Size = New System.Drawing.Size(360, 128)
         Me.Tastenkonbinationen_DataGridView.TabIndex = 191
@@ -613,7 +613,7 @@ Partial Class Form1
         '
         Me.ToolTip_YesNo_GroupBox.Controls.Add(Me.ToolTip_OFF)
         Me.ToolTip_YesNo_GroupBox.Controls.Add(Me.ToolTip_ON)
-        Me.ToolTip_YesNo_GroupBox.Location = New System.Drawing.Point(38, 34)
+        Me.ToolTip_YesNo_GroupBox.Location = New System.Drawing.Point(21, 32)
         Me.ToolTip_YesNo_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ToolTip_YesNo_GroupBox.Name = "ToolTip_YesNo_GroupBox"
         Me.ToolTip_YesNo_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
@@ -1586,7 +1586,7 @@ Partial Class Form1
         Me.MIDI_Visualisierung_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.MIDI_Visualisierung_GroupBox.Name = "MIDI_Visualisierung_GroupBox"
         Me.MIDI_Visualisierung_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.MIDI_Visualisierung_GroupBox.Size = New System.Drawing.Size(1878, 438)
+        Me.MIDI_Visualisierung_GroupBox.Size = New System.Drawing.Size(1852, 438)
         Me.MIDI_Visualisierung_GroupBox.TabIndex = 192
         Me.MIDI_Visualisierung_GroupBox.TabStop = False
         Me.MIDI_Visualisierung_GroupBox.Text = "MIDI Visualisierung und Tonbasierende Induvidualeinstellungen"
@@ -3787,7 +3787,7 @@ Partial Class Form1
         '
         'About_Button
         '
-        Me.About_Button.Location = New System.Drawing.Point(38, 228)
+        Me.About_Button.Location = New System.Drawing.Point(21, 230)
         Me.About_Button.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.About_Button.Name = "About_Button"
         Me.About_Button.Size = New System.Drawing.Size(302, 66)
@@ -3798,7 +3798,7 @@ Partial Class Form1
         '
         'Help_Button
         '
-        Me.Help_Button.Location = New System.Drawing.Point(38, 140)
+        Me.Help_Button.Location = New System.Drawing.Point(21, 136)
         Me.Help_Button.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Help_Button.Name = "Help_Button"
         Me.Help_Button.Size = New System.Drawing.Size(302, 66)
@@ -3910,7 +3910,7 @@ Partial Class Form1
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1910, 1185)
+        Me.Panel1.Size = New System.Drawing.Size(1876, 1185)
         Me.Panel1.TabIndex = 0
         '
         'MIDIOut_GroupBox
@@ -4042,7 +4042,7 @@ Partial Class Form1
         Me.Programmeinstellungen_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Programmeinstellungen_GroupBox.Name = "Programmeinstellungen_GroupBox"
         Me.Programmeinstellungen_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Programmeinstellungen_GroupBox.Size = New System.Drawing.Size(382, 311)
+        Me.Programmeinstellungen_GroupBox.Size = New System.Drawing.Size(349, 311)
         Me.Programmeinstellungen_GroupBox.TabIndex = 196
         Me.Programmeinstellungen_GroupBox.TabStop = False
         Me.Programmeinstellungen_GroupBox.Text = "Programmeinstellungen"
@@ -4054,7 +4054,7 @@ Partial Class Form1
         Me.Klappen_GroupBox.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Klappen_GroupBox.Name = "Klappen_GroupBox"
         Me.Klappen_GroupBox.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.Klappen_GroupBox.Size = New System.Drawing.Size(746, 202)
+        Me.Klappen_GroupBox.Size = New System.Drawing.Size(720, 202)
         Me.Klappen_GroupBox.TabIndex = 195
         Me.Klappen_GroupBox.TabStop = False
         Me.Klappen_GroupBox.Text = "Tonart (Klappen)"
@@ -4077,10 +4077,10 @@ Partial Class Form1
         Me.FlowLayoutPanel6.Controls.Add(Me.A1_Klappe_Text)
         Me.FlowLayoutPanel6.Controls.Add(Me.H1_Klappe_Text)
         Me.FlowLayoutPanel6.Controls.Add(Me.C2_Klappe_Text)
-        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(18, 34)
+        Me.FlowLayoutPanel6.Location = New System.Drawing.Point(2, 34)
         Me.FlowLayoutPanel6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.FlowLayoutPanel6.Name = "FlowLayoutPanel6"
-        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(718, 155)
+        Me.FlowLayoutPanel6.Size = New System.Drawing.Size(714, 155)
         Me.FlowLayoutPanel6.TabIndex = 0
         '
         'C1_Klappe
@@ -4631,7 +4631,7 @@ Partial Class Form1
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLight
-        Me.ClientSize = New System.Drawing.Size(1911, 1038)
+        Me.ClientSize = New System.Drawing.Size(1881, 1038)
         Me.Controls.Add(Me.Panel1)
         Me.KeyPreview = True
         Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
