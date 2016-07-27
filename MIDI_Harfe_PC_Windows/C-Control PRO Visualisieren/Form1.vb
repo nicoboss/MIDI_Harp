@@ -699,7 +699,7 @@ Public Class Form1
 
         If Note_gespielt = False Then
             Song.Tracks(1).AddNoteOnOffEvent(0.125, MIDI.Track.NoteEvent.NoteOff, 0, 0) ' Notenlaege(0) += 0.125
-            PlayMIDINote(70, 50, 0.1)
+            'PlayMIDINote(70, 50, 0.1)
         End If
 
 
@@ -819,14 +819,15 @@ Public Class Form1
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
     End Sub
 
-    Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer, ByVal Duration As Integer)
+    Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer, ByVal Duration As Double)
+        'MessageBox.Show(Note)
         If outDevice Is Nothing Then Exit Sub
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
         Dim wait As Task = STOPMIDINote(Note, Duration)
     End Sub
 
-    Private Async Function STOPMIDINote(ByVal Note As Integer, ByVal ms As Integer) As Task
-        Await Task.Delay(ms)
+    Private Async Function STOPMIDINote(ByVal Note As Integer, ByVal seconds As Double) As Task
+        Await Task.Delay(seconds * 1000)
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
     End Function
 
