@@ -1,4 +1,5 @@
 Option Explicit On
+#Disable Warning BC42358 ' Because this call is not awaited, execution of the current method continues before the call is completed
 
 Imports System.IO.Ports.SerialPort
 Imports System.Text
@@ -816,25 +817,42 @@ Public Class Form1
 
     Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer)
         If outDevice Is Nothing Then Exit Sub
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
+        If Latenz_NumericUpDown.Value = 0 Then
+            outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
+        Else
+            PlayMIDINote_Async(Note, Velocity, Latenz_NumericUpDown.Value)
+        End If
     End Sub
 
     Private Sub PlayMIDINote(ByVal Note As Integer, ByVal Velocity As Integer, ByVal Duration As Double)
-        'MessageBox.Show(Note)
         If outDevice Is Nothing Then Exit Sub
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
-        Dim wait As Task = STOPMIDINote(Note, Duration)
+        If Latenz_NumericUpDown.Value = 0 Then
+            outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
+            STOPMIDINote_Async(Note, Duration * 1000)
+        Else
+            PlayMIDINote_Async(Note, Velocity, Latenz_NumericUpDown.Value)
+            STOPMIDINote_Async(Note, (Duration * 1000) + Latenz_NumericUpDown.Value)
+        End If
     End Sub
 
-    Private Async Function STOPMIDINote(ByVal Note As Integer, ByVal seconds As Double) As Task
-        Await Task.Delay(seconds * 1000)
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+    Private Async Function PlayMIDINote_Async(ByVal Note As Integer, ByVal Velocity As Integer, ByVal ms As Integer) As Task
+        Await Task.Delay(ms)
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOn, 0, Note, Velocity))
     End Function
 
     Private Sub STOPMIDINote(ByVal Note As Integer)
         If outDevice Is Nothing Then Exit Sub
-        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+        If Latenz_NumericUpDown.Value = 0 Then
+            outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+        Else
+            STOPMIDINote_Async(Note, Latenz_NumericUpDown.Value)
+        End If
     End Sub
+
+    Private Async Function STOPMIDINote_Async(ByVal Note As Integer, ByVal ms As Integer) As Task
+        Await Task.Delay(ms)
+        outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
+    End Function
 
     Private Sub STOPAllMIDINotes()
         If outDevice Is Nothing Then Exit Sub
