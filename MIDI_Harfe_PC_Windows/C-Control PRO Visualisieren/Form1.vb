@@ -2213,26 +2213,26 @@ Public Class Form1
         Dim Height = MyBase.Size.Height 'rc.Bottom - rc.Top
         'MessageBox.Show(Width & " != " & MyBase.Size.Width)
         'MessageBox.Show(Width & "/" & Height)
-        If Width < 1290 And Height < 810 Then
+        If Width < 1280 And Height < 810 Then
             'MessageBox.Show("1")
             Panel1.Location = New Point(0, 0)
-            Panel1.Width = Width - 17
-            Panel1.Height = Height - 40
+            Panel1.Width = Width - 17 + 15
+            Panel1.Height = Height - 40 + 15
         ElseIf Width < 1290 Then
             'MessageBox.Show("2")
-            Panel1.Location = New Point(0, (Height - 771 - 40) / 2)
-            Panel1.Width = 1274
-            Panel1.Height = 771
+            Panel1.Location = New Point(0, (Height - 772 - 40) / 2)
+            Panel1.Width = Width - 17 + 15
+            Panel1.Height = 772 + 15
         ElseIf Height < 810 Then
             'MessageBox.Show("3")
-            Panel1.Location = New Point((Width - 1274 - 17) / 2, 0)
-            Panel1.Width = Width - 17
-            Panel1.Height = Height - 40
+            Panel1.Location = New Point((Width - 1264 - 17) / 2, 0)
+            Panel1.Width = 1264 + 150
+            Panel1.Height = Height - 40 + 15
         Else
             'MessageBox.Show("4")
-            Panel1.Location = New Point((Width - 1274 - 17) / 2, (Height - 771 - 40) / 2)
-            Panel1.Width = 1274
-            Panel1.Height = 771
+            Panel1.Location = New Point((Width - 1264 - 17) / 2, (Height - 772 - 40) / 2)
+            Panel1.Width = 1264 + 15
+            Panel1.Height = 772 + 20 + 15
         End If
     End Function
 
