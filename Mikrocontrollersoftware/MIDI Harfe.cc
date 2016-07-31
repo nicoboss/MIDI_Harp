@@ -59,6 +59,16 @@ void main(void)
                 Port_Write(PortC,i+1);
                 Serial_Write(0,ADC_Read()>>2);
             }
-            AbsDelay(2);
+
+            ADC_Set(ADC_VREF_VCC, 1);
+            Serial_Write(0,ADC_Read()>>2);
+
+            ADC_Set(ADC_VREF_VCC, 2);
+            Serial_Write(0,ADC_Read()>>2);
+
+            ADC_Set(ADC_VREF_VCC, 3);
+            Serial_Write(0,ADC_Read()>>2);
+
+            AbsDelay(1);
     goto Messen;
 }
