@@ -47,32 +47,18 @@ void main(void)
 
     Port_DataDir(PortC,255);       // PortC auf Ausgang setzen
 
-
     Messen:
             Serial_Write(0,250);
 
-            for(i=0;i<16;i++)
+            ADC_Set(ADC_VREF_VCC, 0);
+            for(i=1;i<64;i=i+4)
             {
                 Port_Write(PortC,i);
-
-                ADC_Set(ADC_VREF_VCC, 0);
                 Serial_Write(0,ADC_Read()>>2);
 
-                ADC_Set(ADC_VREF_VCC, 1);
+                Port_Write(PortC,i+1);
                 Serial_Write(0,ADC_Read()>>2);
             }
-
-            ADC_Set(ADC_VREF_VCC, 2);
-            Serial_Write(0,ADC_Read()>>2);
-
-            ADC_Set(ADC_VREF_VCC, 3);
-            Serial_Write(0,ADC_Read()>>2);
-
-            ADC_Set(ADC_VREF_VCC, 4);
-            Serial_Write(0,ADC_Read()>>2);
-
-            ADC_Set(ADC_VREF_VCC, 5);
-            Serial_Write(0,ADC_Read()>>2);
             AbsDelay(2);
     goto Messen;
 }
