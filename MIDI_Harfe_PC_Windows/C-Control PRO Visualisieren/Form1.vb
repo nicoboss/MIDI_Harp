@@ -153,9 +153,13 @@ Public Class Form1
     '1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, _
     '30, 31, 32, 33, 34}
 
-    Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
-                                       1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29,
-                                       30, 31, 32, 33, 34}
+    'Dim Noten_Reihenfolge() As Byte = {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
+    '                                   1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29,
+    '                                   30, 31, 32, 33, 34}
+
+    Dim Noten_Reihenfolge() As Byte = {0, 16, 1, 17, 2, 18, 3, 19, 4, 20, 5, 21, 6, 22, 7, 23,
+                                       8, 24, 9, 25, 10, 26, 11, 27, 12, 28, 13, 29, 14, 30, 15, 31,
+                                       32, 33, 34}
 
     Dim C1_Klappe_alt As SByte
     Dim D1_Klappe_alt As SByte
@@ -426,7 +430,6 @@ Public Class Form1
                 Next
 
 
-                SerialPort1.ReadByte()
                 If Not 250 = SerialPort1.ReadByte() Then
                     'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
                     '& "Die laufende Aufnahme wurde Paussiert" _
