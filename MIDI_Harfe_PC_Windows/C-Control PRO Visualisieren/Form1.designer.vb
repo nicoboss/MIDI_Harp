@@ -29,12 +29,12 @@ Partial Class Form1
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
-        Me.Tackt = New System.Windows.Forms.Timer(Me.components)
+        Me.Takt = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.Tastenkonbinationen_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Tastenkonbinationen_DataGridView = New System.Windows.Forms.DataGridView()
+        Me.Tastenkombinationen_GroupBox = New System.Windows.Forms.GroupBox()
+        Me.Tastenkombinationen_DataGridView = New System.Windows.Forms.DataGridView()
         Me.Aktion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Konbination = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Kombination = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Save_Tastenkombination = New System.Windows.Forms.Button()
         Me.Pause_Tastenkombination = New System.Windows.Forms.Button()
         Me.Start_Tastenkombination = New System.Windows.Forms.Button()
@@ -48,11 +48,11 @@ Partial Class Form1
         Me.GroupBox16 = New System.Windows.Forms.GroupBox()
         Me.META_Autor_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
-        Me.META_Spurnamen_Input = New System.Windows.Forms.TextBox()
+        Me.META_Spurname_Input = New System.Windows.Forms.TextBox()
         Me.Bemerkung_GroupBox = New System.Windows.Forms.GroupBox()
         Me.META_Bemerkung_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
-        Me.META_Dateinamen_Input = New System.Windows.Forms.TextBox()
+        Me.META_Dateiname_Input = New System.Windows.Forms.TextBox()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.META_Copyright_Input = New System.Windows.Forms.TextBox()
         Me.MIDI_SpecialMode = New System.Windows.Forms.RadioButton()
@@ -77,10 +77,10 @@ Partial Class Form1
         Me.MessungenProS_TexBox = New System.Windows.Forms.TextBox()
         Me.Messintervall_Label = New System.Windows.Forms.Label()
         Me.Tempo_GroupBox = New System.Windows.Forms.GroupBox()
-        Me.Label18 = New System.Windows.Forms.Label()
-        Me.Tackt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
-        Me.Tackt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
-        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Takt_Strich = New System.Windows.Forms.Label()
+        Me.Takt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
+        Me.Takt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
+        Me.Takt_Label = New System.Windows.Forms.Label()
         Me.BPM_Label = New System.Windows.Forms.Label()
         Me.BPM = New System.Windows.Forms.NumericUpDown()
         Me.DirectPlay_ON = New System.Windows.Forms.RadioButton()
@@ -125,6 +125,13 @@ Partial Class Form1
         Me.MIDI_Save_Button = New System.Windows.Forms.Button()
         Me.MIDI_Visualisierung_GroupBox = New System.Windows.Forms.GroupBox()
         Me.FlowLayoutPanel5 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C6_Button = New System.Windows.Forms.Button()
         Me.D6_Button = New System.Windows.Forms.Button()
         Me.E6_Button = New System.Windows.Forms.Button()
@@ -154,6 +161,13 @@ Partial Class Form1
         Me.A6_Stopwert = New System.Windows.Forms.TextBox()
         Me.H6_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel1 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C2_Button = New System.Windows.Forms.Button()
         Me.D2_Button = New System.Windows.Forms.Button()
         Me.E2_Button = New System.Windows.Forms.Button()
@@ -183,6 +197,13 @@ Partial Class Form1
         Me.A2_Stopwert = New System.Windows.Forms.TextBox()
         Me.H2_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel2 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C3_Button = New System.Windows.Forms.Button()
         Me.D3_Button = New System.Windows.Forms.Button()
         Me.E3_Button = New System.Windows.Forms.Button()
@@ -212,6 +233,13 @@ Partial Class Form1
         Me.A3_Stopwert = New System.Windows.Forms.TextBox()
         Me.H3_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel4 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C5_Button = New System.Windows.Forms.Button()
         Me.D5_Button = New System.Windows.Forms.Button()
         Me.E5_Button = New System.Windows.Forms.Button()
@@ -241,6 +269,13 @@ Partial Class Form1
         Me.A5_Stopwert = New System.Windows.Forms.TextBox()
         Me.H5_Stopwert = New System.Windows.Forms.TextBox()
         Me.FlowLayoutPanel3 = New System.Windows.Forms.FlowLayoutPanel()
+        Me.C4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.D4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.E4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.F4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.G4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.A4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.H4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.C4_Button = New System.Windows.Forms.Button()
         Me.D4_Button = New System.Windows.Forms.Button()
         Me.E4_Button = New System.Windows.Forms.Button()
@@ -317,11 +352,11 @@ Partial Class Form1
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Anz_Messungen_TextBox = New System.Windows.Forms.TextBox()
         Me.Anz_Verbindungsfehler_TextBox = New System.Windows.Forms.TextBox()
-        Me.Tackt_Ausgabefenster = New System.Windows.Forms.Label()
+        Me.Takt_Ausgabefenster = New System.Windows.Forms.Label()
         Me.Com_Search_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.C_Klappe = New System.Windows.Forms.TrackBar()
         Me.Serial_BackgroundWorker = New System.ComponentModel.BackgroundWorker()
-        Me.Mesgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
+        Me.Messgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.MIDIOut_GroupBox = New System.Windows.Forms.GroupBox()
@@ -357,43 +392,8 @@ Partial Class Form1
         Me.Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Display_Refresh_Timer = New System.Windows.Forms.Timer(Me.components)
-        Me.C6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H6_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H2_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H3_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H5_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.C4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.D4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.E4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.F4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.G4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.A4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.H4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
-        Me.Tastenkonbinationen_GroupBox.SuspendLayout()
-        CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tastenkombinationen_GroupBox.SuspendLayout()
+        CType(Me.Tastenkombinationen_DataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolTip_YesNo_GroupBox.SuspendLayout()
         Me.META_Tags_GroupBox.SuspendLayout()
         Me.GroupBox16.SuspendLayout()
@@ -407,8 +407,8 @@ Partial Class Form1
         Me.Connect_GroupBox.SuspendLayout()
         Me.Messintervall_GroupBox.SuspendLayout()
         Me.Tempo_GroupBox.SuspendLayout()
-        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Takt_Naenner_Input, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Takt_Zaehler_Input, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SendKey_GroupBox.SuspendLayout()
         Me.SendKeys_GroupBox.SuspendLayout()
@@ -456,9 +456,9 @@ Partial Class Form1
         Me.SerialPort1.BaudRate = 230400
         Me.SerialPort1.DtrEnable = True
         '
-        'Tackt
+        'Takt
         '
-        Me.Tackt.Interval = 125
+        Me.Takt.Interval = 125
         '
         'ToolTip1
         '
@@ -468,33 +468,33 @@ Partial Class Form1
         Me.ToolTip1.ReshowDelay = 100
         Me.ToolTip1.ShowAlways = True
         '
-        'Tastenkonbinationen_GroupBox
+        'Tastenkombinationen_GroupBox
         '
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Tastenkonbinationen_DataGridView)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Save_Tastenkombination)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Pause_Tastenkombination)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Start_Tastenkombination)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Save_Label)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Pause_Label)
-        Me.Tastenkonbinationen_GroupBox.Controls.Add(Me.Start_Label)
-        Me.Tastenkonbinationen_GroupBox.Location = New System.Drawing.Point(1532, 431)
-        Me.Tastenkonbinationen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.Tastenkonbinationen_GroupBox.Name = "Tastenkonbinationen_GroupBox"
-        Me.Tastenkonbinationen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.Tastenkonbinationen_GroupBox.Size = New System.Drawing.Size(945, 219)
-        Me.Tastenkonbinationen_GroupBox.TabIndex = 197
-        Me.Tastenkonbinationen_GroupBox.TabStop = False
-        Me.Tastenkonbinationen_GroupBox.Text = "Tastenkonbinationen (Hintergrundssteuerung)"
-        Me.ToolTip1.SetToolTip(Me.Tastenkonbinationen_GroupBox, "/")
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Tastenkombinationen_DataGridView)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Save_Tastenkombination)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Pause_Tastenkombination)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Start_Tastenkombination)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Save_Label)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Pause_Label)
+        Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Start_Label)
+        Me.Tastenkombinationen_GroupBox.Location = New System.Drawing.Point(1532, 431)
+        Me.Tastenkombinationen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Tastenkombinationen_GroupBox.Name = "Tastenkombinationen_GroupBox"
+        Me.Tastenkombinationen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Tastenkombinationen_GroupBox.Size = New System.Drawing.Size(945, 219)
+        Me.Tastenkombinationen_GroupBox.TabIndex = 197
+        Me.Tastenkombinationen_GroupBox.TabStop = False
+        Me.Tastenkombinationen_GroupBox.Text = "Tastenkombinationen (Hintergrundssteuerung)"
+        Me.ToolTip1.SetToolTip(Me.Tastenkombinationen_GroupBox, "/")
         '
-        'Tastenkonbinationen_DataGridView
+        'Tastenkombinationen_DataGridView
         '
-        Me.Tastenkonbinationen_DataGridView.AllowUserToAddRows = False
-        Me.Tastenkonbinationen_DataGridView.AllowUserToDeleteRows = False
-        Me.Tastenkonbinationen_DataGridView.AllowUserToResizeColumns = False
-        Me.Tastenkonbinationen_DataGridView.AllowUserToResizeRows = False
-        Me.Tastenkonbinationen_DataGridView.BackgroundColor = System.Drawing.SystemColors.Control
-        Me.Tastenkonbinationen_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Tastenkombinationen_DataGridView.AllowUserToAddRows = False
+        Me.Tastenkombinationen_DataGridView.AllowUserToDeleteRows = False
+        Me.Tastenkombinationen_DataGridView.AllowUserToResizeColumns = False
+        Me.Tastenkombinationen_DataGridView.AllowUserToResizeRows = False
+        Me.Tastenkombinationen_DataGridView.BackgroundColor = System.Drawing.SystemColors.Control
+        Me.Tastenkombinationen_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -502,9 +502,9 @@ Partial Class Form1
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.Tastenkonbinationen_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Tastenkonbinationen_DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Aktion, Me.Konbination})
+        Me.Tastenkombinationen_DataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.Tastenkombinationen_DataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Tastenkombinationen_DataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Aktion, Me.Kombination})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -512,14 +512,14 @@ Partial Class Form1
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.Tastenkonbinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Tastenkonbinationen_DataGridView.EnableHeadersVisualStyles = False
-        Me.Tastenkonbinationen_DataGridView.GridColor = System.Drawing.SystemColors.ControlLight
-        Me.Tastenkonbinationen_DataGridView.Location = New System.Drawing.Point(465, 38)
-        Me.Tastenkonbinationen_DataGridView.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.Tastenkonbinationen_DataGridView.MultiSelect = False
-        Me.Tastenkonbinationen_DataGridView.Name = "Tastenkonbinationen_DataGridView"
-        Me.Tastenkonbinationen_DataGridView.ReadOnly = True
+        Me.Tastenkombinationen_DataGridView.DefaultCellStyle = DataGridViewCellStyle2
+        Me.Tastenkombinationen_DataGridView.EnableHeadersVisualStyles = False
+        Me.Tastenkombinationen_DataGridView.GridColor = System.Drawing.SystemColors.ControlLight
+        Me.Tastenkombinationen_DataGridView.Location = New System.Drawing.Point(465, 38)
+        Me.Tastenkombinationen_DataGridView.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Tastenkombinationen_DataGridView.MultiSelect = False
+        Me.Tastenkombinationen_DataGridView.Name = "Tastenkombinationen_DataGridView"
+        Me.Tastenkombinationen_DataGridView.ReadOnly = True
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomCenter
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -527,10 +527,10 @@ Partial Class Form1
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.Tastenkonbinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.Tastenkonbinationen_DataGridView.RowHeadersVisible = False
-        Me.Tastenkonbinationen_DataGridView.Size = New System.Drawing.Size(480, 160)
-        Me.Tastenkonbinationen_DataGridView.TabIndex = 191
+        Me.Tastenkombinationen_DataGridView.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.Tastenkombinationen_DataGridView.RowHeadersVisible = False
+        Me.Tastenkombinationen_DataGridView.Size = New System.Drawing.Size(480, 160)
+        Me.Tastenkombinationen_DataGridView.TabIndex = 191
         '
         'Aktion
         '
@@ -540,13 +540,13 @@ Partial Class Form1
         Me.Aktion.ReadOnly = True
         Me.Aktion.Width = 110
         '
-        'Konbination
+        'Kombination
         '
-        Me.Konbination.FillWeight = 110.0!
-        Me.Konbination.HeaderText = "Konbination"
-        Me.Konbination.Name = "Konbination"
-        Me.Konbination.ReadOnly = True
-        Me.Konbination.Width = 110
+        Me.Kombination.FillWeight = 110.0!
+        Me.Kombination.HeaderText = "Kombination"
+        Me.Kombination.Name = "Kombination"
+        Me.Kombination.ReadOnly = True
+        Me.Kombination.Width = 110
         '
         'Save_Tastenkombination
         '
@@ -633,7 +633,7 @@ Partial Class Form1
         Me.ToolTip_OFF.TabIndex = 3
         Me.ToolTip_OFF.TabStop = True
         Me.ToolTip_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.ToolTip_OFF, "Deaktiviert diese TolTip Hilfe")
+        Me.ToolTip1.SetToolTip(Me.ToolTip_OFF, "Deaktiviert diese ToolTip Hilfe")
         Me.ToolTip_OFF.UseVisualStyleBackColor = True
         '
         'ToolTip_ON
@@ -645,7 +645,7 @@ Partial Class Form1
         Me.ToolTip_ON.Size = New System.Drawing.Size(66, 29)
         Me.ToolTip_ON.TabIndex = 2
         Me.ToolTip_ON.Text = "Ja"
-        Me.ToolTip1.SetToolTip(Me.ToolTip_ON, "Aktiviert diese TolTip Hilfe")
+        Me.ToolTip1.SetToolTip(Me.ToolTip_ON, "Aktiviert diese ToolTip Hilfe")
         Me.ToolTip_ON.UseVisualStyleBackColor = True
         '
         'META_Tags_GroupBox
@@ -688,7 +688,7 @@ Partial Class Form1
         '
         'GroupBox11
         '
-        Me.GroupBox11.Controls.Add(Me.META_Spurnamen_Input)
+        Me.GroupBox11.Controls.Add(Me.META_Spurname_Input)
         Me.GroupBox11.Location = New System.Drawing.Point(28, 240)
         Me.GroupBox11.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.GroupBox11.Name = "GroupBox11"
@@ -696,16 +696,16 @@ Partial Class Form1
         Me.GroupBox11.Size = New System.Drawing.Size(331, 89)
         Me.GroupBox11.TabIndex = 4
         Me.GroupBox11.TabStop = False
-        Me.GroupBox11.Text = " Spurnamen"
+        Me.GroupBox11.Text = " Spurname"
         '
-        'META_Spurnamen_Input
+        'META_Spurname_Input
         '
-        Me.META_Spurnamen_Input.Location = New System.Drawing.Point(28, 36)
-        Me.META_Spurnamen_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.META_Spurnamen_Input.MaxLength = 127
-        Me.META_Spurnamen_Input.Name = "META_Spurnamen_Input"
-        Me.META_Spurnamen_Input.Size = New System.Drawing.Size(280, 31)
-        Me.META_Spurnamen_Input.TabIndex = 0
+        Me.META_Spurname_Input.Location = New System.Drawing.Point(28, 36)
+        Me.META_Spurname_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.META_Spurname_Input.MaxLength = 127
+        Me.META_Spurname_Input.Name = "META_Spurname_Input"
+        Me.META_Spurname_Input.Size = New System.Drawing.Size(280, 31)
+        Me.META_Spurname_Input.TabIndex = 0
         '
         'Bemerkung_GroupBox
         '
@@ -731,7 +731,7 @@ Partial Class Form1
         '
         'GroupBox10
         '
-        Me.GroupBox10.Controls.Add(Me.META_Dateinamen_Input)
+        Me.GroupBox10.Controls.Add(Me.META_Dateiname_Input)
         Me.GroupBox10.Location = New System.Drawing.Point(28, 40)
         Me.GroupBox10.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.GroupBox10.Name = "GroupBox10"
@@ -739,16 +739,16 @@ Partial Class Form1
         Me.GroupBox10.Size = New System.Drawing.Size(331, 89)
         Me.GroupBox10.TabIndex = 3
         Me.GroupBox10.TabStop = False
-        Me.GroupBox10.Text = "Dateinamen (im META)"
+        Me.GroupBox10.Text = "Dateiname (im META)"
         '
-        'META_Dateinamen_Input
+        'META_Dateiname_Input
         '
-        Me.META_Dateinamen_Input.Location = New System.Drawing.Point(24, 32)
-        Me.META_Dateinamen_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.META_Dateinamen_Input.MaxLength = 127
-        Me.META_Dateinamen_Input.Name = "META_Dateinamen_Input"
-        Me.META_Dateinamen_Input.Size = New System.Drawing.Size(280, 31)
-        Me.META_Dateinamen_Input.TabIndex = 0
+        Me.META_Dateiname_Input.Location = New System.Drawing.Point(24, 32)
+        Me.META_Dateiname_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.META_Dateiname_Input.MaxLength = 127
+        Me.META_Dateiname_Input.Name = "META_Dateiname_Input"
+        Me.META_Dateiname_Input.Size = New System.Drawing.Size(280, 31)
+        Me.META_Dateiname_Input.TabIndex = 0
         '
         'GroupBox8
         '
@@ -865,7 +865,7 @@ Partial Class Form1
         Me.Transpose_GroupBox.TabIndex = 166
         Me.Transpose_GroupBox.TabStop = False
         Me.Transpose_GroupBox.Text = "Tonhöhenveschiebung (Transpose)"
-        Me.ToolTip1.SetToolTip(Me.Transpose_GroupBox, "Einstallung der Tonhöhe des zu Aufnehmenden MIDI Files.")
+        Me.ToolTip1.SetToolTip(Me.Transpose_GroupBox, "Einstellung der Tonhöhe des zu aufnehmenden MIDI Files.")
         '
         'Label2
         '
@@ -899,13 +899,13 @@ Partial Class Form1
         '
         'Oktavenverschiebung
         '
-        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 3 Oktaven", "+ 2 Oktaven", "+ 1 Oktave", "Normahl", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
+        Me.Oktavenverschiebung.Items.AddRange(New Object() {"+ 3 Oktaven", "+ 2 Oktaven", "+ 1 Oktave", "Normal", "- 1 Oktave", "- 2 Oktaven", "- 3 Oktaven"})
         Me.Oktavenverschiebung.Location = New System.Drawing.Point(180, 48)
         Me.Oktavenverschiebung.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Oktavenverschiebung.Name = "Oktavenverschiebung"
         Me.Oktavenverschiebung.Size = New System.Drawing.Size(180, 33)
         Me.Oktavenverschiebung.TabIndex = 165
-        Me.Oktavenverschiebung.Text = "Normahl"
+        Me.Oktavenverschiebung.Text = "Normal"
         '
         'Connect_GroupBox
         '
@@ -977,7 +977,7 @@ Partial Class Form1
         Me.DirectPlay_OFF.TabIndex = 1
         Me.DirectPlay_OFF.TabStop = True
         Me.DirectPlay_OFF.Text = "Nein"
-        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der empfangenen MIDI Noten per winm,m.dll api" &
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_OFF, "Diese Option deaktiviert das Senden der Empfangenen MIDI Noten per winm,m.dll api" &
         ".")
         Me.DirectPlay_OFF.UseVisualStyleBackColor = True
         '
@@ -1032,10 +1032,10 @@ Partial Class Form1
         '
         'Tempo_GroupBox
         '
-        Me.Tempo_GroupBox.Controls.Add(Me.Label18)
-        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Naenner_Input)
-        Me.Tempo_GroupBox.Controls.Add(Me.Tackt_Zaehler_Input)
-        Me.Tempo_GroupBox.Controls.Add(Me.Label17)
+        Me.Tempo_GroupBox.Controls.Add(Me.Takt_Strich)
+        Me.Tempo_GroupBox.Controls.Add(Me.Takt_Naenner_Input)
+        Me.Tempo_GroupBox.Controls.Add(Me.Takt_Zaehler_Input)
+        Me.Tempo_GroupBox.Controls.Add(Me.Takt_Label)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
         Me.Tempo_GroupBox.Controls.Add(Me.BPM)
         Me.Tempo_GroupBox.Location = New System.Drawing.Point(19, 285)
@@ -1046,49 +1046,49 @@ Partial Class Form1
         Me.Tempo_GroupBox.TabIndex = 172
         Me.Tempo_GroupBox.TabStop = False
         Me.Tempo_GroupBox.Text = "Tempo"
-        Me.ToolTip1.SetToolTip(Me.Tempo_GroupBox, "Einstellung des Tacktes und der Geschwindigkeit des zu Aufnehmenden MIDI FIles")
+        Me.ToolTip1.SetToolTip(Me.Tempo_GroupBox, "Einstellung des Taktes und der Geschwindigkeit des zu aufnehmenden MIDI FIles")
         '
-        'Label18
+        'Takt_Strich
         '
-        Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(244, 31)
-        Me.Label18.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(18, 25)
-        Me.Label18.TabIndex = 172
-        Me.Label18.Text = "/"
+        Me.Takt_Strich.AutoSize = True
+        Me.Takt_Strich.Location = New System.Drawing.Point(244, 31)
+        Me.Takt_Strich.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Takt_Strich.Name = "Takt_Strich"
+        Me.Takt_Strich.Size = New System.Drawing.Size(18, 25)
+        Me.Takt_Strich.TabIndex = 172
+        Me.Takt_Strich.Text = "/"
         '
-        'Tackt_Naenner_Input
+        'Takt_Naenner_Input
         '
-        Me.Tackt_Naenner_Input.Location = New System.Drawing.Point(275, 22)
-        Me.Tackt_Naenner_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.Tackt_Naenner_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.Tackt_Naenner_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.Tackt_Naenner_Input.Name = "Tackt_Naenner_Input"
-        Me.Tackt_Naenner_Input.Size = New System.Drawing.Size(96, 31)
-        Me.Tackt_Naenner_Input.TabIndex = 174
-        Me.Tackt_Naenner_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        Me.Takt_Naenner_Input.Location = New System.Drawing.Point(275, 22)
+        Me.Takt_Naenner_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Takt_Naenner_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Takt_Naenner_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Takt_Naenner_Input.Name = "Takt_Naenner_Input"
+        Me.Takt_Naenner_Input.Size = New System.Drawing.Size(96, 31)
+        Me.Takt_Naenner_Input.TabIndex = 174
+        Me.Takt_Naenner_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
-        'Tackt_Zaehler_Input
+        'Takt_Zaehler_Input
         '
-        Me.Tackt_Zaehler_Input.Location = New System.Drawing.Point(123, 22)
-        Me.Tackt_Zaehler_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.Tackt_Zaehler_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
-        Me.Tackt_Zaehler_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.Tackt_Zaehler_Input.Name = "Tackt_Zaehler_Input"
-        Me.Tackt_Zaehler_Input.Size = New System.Drawing.Size(109, 31)
-        Me.Tackt_Zaehler_Input.TabIndex = 172
-        Me.Tackt_Zaehler_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
+        Me.Takt_Zaehler_Input.Location = New System.Drawing.Point(123, 22)
+        Me.Takt_Zaehler_Input.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Takt_Zaehler_Input.Maximum = New Decimal(New Integer() {15, 0, 0, 0})
+        Me.Takt_Zaehler_Input.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.Takt_Zaehler_Input.Name = "Takt_Zaehler_Input"
+        Me.Takt_Zaehler_Input.Size = New System.Drawing.Size(109, 31)
+        Me.Takt_Zaehler_Input.TabIndex = 172
+        Me.Takt_Zaehler_Input.Value = New Decimal(New Integer() {4, 0, 0, 0})
         '
-        'Label17
+        'Takt_Label
         '
-        Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(27, 36)
-        Me.Label17.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(71, 25)
-        Me.Label17.TabIndex = 173
-        Me.Label17.Text = "Tackt:"
+        Me.Takt_Label.AutoSize = True
+        Me.Takt_Label.Location = New System.Drawing.Point(27, 36)
+        Me.Takt_Label.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Takt_Label.Name = "Takt_Label"
+        Me.Takt_Label.Size = New System.Drawing.Size(60, 25)
+        Me.Takt_Label.TabIndex = 173
+        Me.Takt_Label.Text = "Takt:"
         '
         'BPM_Label
         '
@@ -1295,7 +1295,7 @@ Partial Class Form1
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(141, 25)
         Me.Label6.TabIndex = 220
-        Me.Label6.Text = "Config. Seite:"
+        Me.Label6.Text = "Config. Saite:"
         '
         'Label7
         '
@@ -1499,8 +1499,7 @@ Partial Class Form1
         Me.MIDI_Aufnahmemodus_GroupBox.TabIndex = 173
         Me.MIDI_Aufnahmemodus_GroupBox.TabStop = False
         Me.MIDI_Aufnahmemodus_GroupBox.Text = "MIDI Aufnahmemodus"
-        Me.ToolTip1.SetToolTip(Me.MIDI_Aufnahmemodus_GroupBox, """Schönes"" MIDI File oder RawData für weiterverarbeitung?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Genauere Informationen " &
-        "stehen auf den einzelnen Punkten.")
+        Me.ToolTip1.SetToolTip(Me.MIDI_Aufnahmemodus_GroupBox, """Schönes"" MIDI File oder RawData für Weiterverarbeitung?" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Genauere Informationen " & "stehen auf den einzelnen Punkten.")
         '
         'Volume_max_NumericUpDown
         '
@@ -1545,7 +1544,7 @@ Partial Class Form1
         Me.MIDI_Pause_Button.TabIndex = 23
         Me.MIDI_Pause_Button.Text = "Aufnahme pausieren"
         Me.ToolTip1.SetToolTip(Me.MIDI_Pause_Button, "Pausiert oder setzt eine Aufnahme sauber fort." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Diese Funktion kann auch über die" &
-        " Hintergrundssteueruing von einem andern Programm aus ausgeführt werden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
+        " Hintergrundssteuerung von einem anderen Programm aus ausgeführt werden." & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10))
         Me.MIDI_Pause_Button.UseVisualStyleBackColor = True
         '
         'MIDI_Start_Button
@@ -1633,6 +1632,76 @@ Partial Class Form1
         Me.FlowLayoutPanel5.Name = "FlowLayoutPanel5"
         Me.FlowLayoutPanel5.Size = New System.Drawing.Size(475, 404)
         Me.FlowLayoutPanel5.TabIndex = 10
+        '
+        'C6_VerticalProgessBar
+        '
+        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
+        Me.C6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.C6_VerticalProgessBar.Maximum = 255
+        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
+        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.C6_VerticalProgessBar.TabIndex = 3
+        Me.C6_VerticalProgessBar.Tag = "28"
+        '
+        'D6_VerticalProgessBar
+        '
+        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
+        Me.D6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.D6_VerticalProgessBar.Maximum = 255
+        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
+        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.D6_VerticalProgessBar.TabIndex = 4
+        Me.D6_VerticalProgessBar.Tag = "29"
+        '
+        'E6_VerticalProgessBar
+        '
+        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
+        Me.E6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.E6_VerticalProgessBar.Maximum = 255
+        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
+        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.E6_VerticalProgessBar.TabIndex = 5
+        Me.E6_VerticalProgessBar.Tag = "30"
+        '
+        'F6_VerticalProgessBar
+        '
+        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
+        Me.F6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.F6_VerticalProgessBar.Maximum = 255
+        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
+        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.F6_VerticalProgessBar.TabIndex = 6
+        Me.F6_VerticalProgessBar.Tag = "31"
+        '
+        'G6_VerticalProgessBar
+        '
+        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
+        Me.G6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.G6_VerticalProgessBar.Maximum = 255
+        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
+        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.G6_VerticalProgessBar.TabIndex = 7
+        Me.G6_VerticalProgessBar.Tag = "32"
+        '
+        'A6_VerticalProgessBar
+        '
+        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
+        Me.A6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.A6_VerticalProgessBar.Maximum = 255
+        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
+        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.A6_VerticalProgessBar.TabIndex = 8
+        Me.A6_VerticalProgessBar.Tag = "33"
+        '
+        'H6_VerticalProgessBar
+        '
+        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
+        Me.H6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.H6_VerticalProgessBar.Maximum = 255
+        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
+        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.H6_VerticalProgessBar.TabIndex = 9
+        Me.H6_VerticalProgessBar.Tag = "34"
         '
         'C6_Button
         '
@@ -2013,6 +2082,77 @@ Partial Class Form1
         Me.FlowLayoutPanel1.Size = New System.Drawing.Size(456, 404)
         Me.FlowLayoutPanel1.TabIndex = 6
         '
+        'C2_VerticalProgessBar
+        '
+        Me.C2_VerticalProgessBar.AccessibleName = ""
+        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
+        Me.C2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.C2_VerticalProgessBar.Maximum = 255
+        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
+        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.C2_VerticalProgessBar.TabIndex = 3
+        Me.C2_VerticalProgessBar.Tag = "0"
+        '
+        'D2_VerticalProgessBar
+        '
+        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
+        Me.D2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.D2_VerticalProgessBar.Maximum = 255
+        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
+        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.D2_VerticalProgessBar.TabIndex = 4
+        Me.D2_VerticalProgessBar.Tag = "1"
+        '
+        'E2_VerticalProgessBar
+        '
+        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
+        Me.E2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.E2_VerticalProgessBar.Maximum = 255
+        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
+        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.E2_VerticalProgessBar.TabIndex = 5
+        Me.E2_VerticalProgessBar.Tag = "2"
+        '
+        'F2_VerticalProgessBar
+        '
+        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
+        Me.F2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.F2_VerticalProgessBar.Maximum = 255
+        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
+        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.F2_VerticalProgessBar.TabIndex = 6
+        Me.F2_VerticalProgessBar.Tag = "3"
+        '
+        'G2_VerticalProgessBar
+        '
+        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
+        Me.G2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.G2_VerticalProgessBar.Maximum = 255
+        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
+        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.G2_VerticalProgessBar.TabIndex = 7
+        Me.G2_VerticalProgessBar.Tag = "4"
+        '
+        'A2_VerticalProgessBar
+        '
+        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
+        Me.A2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.A2_VerticalProgessBar.Maximum = 255
+        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
+        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.A2_VerticalProgessBar.TabIndex = 8
+        Me.A2_VerticalProgessBar.Tag = "5"
+        '
+        'H2_VerticalProgessBar
+        '
+        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
+        Me.H2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.H2_VerticalProgessBar.Maximum = 255
+        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
+        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.H2_VerticalProgessBar.TabIndex = 9
+        Me.H2_VerticalProgessBar.Tag = "6"
+        '
         'C2_Button
         '
         Me.C2_Button.Location = New System.Drawing.Point(5, 204)
@@ -2384,6 +2524,77 @@ Partial Class Form1
         Me.FlowLayoutPanel2.Name = "FlowLayoutPanel2"
         Me.FlowLayoutPanel2.Size = New System.Drawing.Size(460, 404)
         Me.FlowLayoutPanel2.TabIndex = 7
+        '
+        'C3_VerticalProgessBar
+        '
+        Me.C3_VerticalProgessBar.AccessibleName = ""
+        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
+        Me.C3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.C3_VerticalProgessBar.Maximum = 255
+        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
+        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.C3_VerticalProgessBar.TabIndex = 186
+        Me.C3_VerticalProgessBar.Tag = "7"
+        '
+        'D3_VerticalProgessBar
+        '
+        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
+        Me.D3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.D3_VerticalProgessBar.Maximum = 255
+        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
+        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.D3_VerticalProgessBar.TabIndex = 187
+        Me.D3_VerticalProgessBar.Tag = "8"
+        '
+        'E3_VerticalProgessBar
+        '
+        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
+        Me.E3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.E3_VerticalProgessBar.Maximum = 255
+        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
+        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.E3_VerticalProgessBar.TabIndex = 188
+        Me.E3_VerticalProgessBar.Tag = "9"
+        '
+        'F3_VerticalProgessBar
+        '
+        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
+        Me.F3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.F3_VerticalProgessBar.Maximum = 255
+        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
+        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.F3_VerticalProgessBar.TabIndex = 189
+        Me.F3_VerticalProgessBar.Tag = "10"
+        '
+        'G3_VerticalProgessBar
+        '
+        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
+        Me.G3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.G3_VerticalProgessBar.Maximum = 255
+        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
+        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.G3_VerticalProgessBar.TabIndex = 190
+        Me.G3_VerticalProgessBar.Tag = "11"
+        '
+        'A3_VerticalProgessBar
+        '
+        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
+        Me.A3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.A3_VerticalProgessBar.Maximum = 255
+        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
+        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.A3_VerticalProgessBar.TabIndex = 191
+        Me.A3_VerticalProgessBar.Tag = "12"
+        '
+        'H3_VerticalProgessBar
+        '
+        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
+        Me.H3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.H3_VerticalProgessBar.Maximum = 255
+        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
+        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.H3_VerticalProgessBar.TabIndex = 192
+        Me.H3_VerticalProgessBar.Tag = "13"
         '
         'C3_Button
         '
@@ -2757,6 +2968,76 @@ Partial Class Form1
         Me.FlowLayoutPanel4.Size = New System.Drawing.Size(461, 404)
         Me.FlowLayoutPanel4.TabIndex = 9
         '
+        'C5_VerticalProgessBar
+        '
+        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
+        Me.C5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.C5_VerticalProgessBar.Maximum = 255
+        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
+        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.C5_VerticalProgessBar.TabIndex = 3
+        Me.C5_VerticalProgessBar.Tag = "21"
+        '
+        'D5_VerticalProgessBar
+        '
+        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
+        Me.D5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.D5_VerticalProgessBar.Maximum = 255
+        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
+        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.D5_VerticalProgessBar.TabIndex = 4
+        Me.D5_VerticalProgessBar.Tag = "22"
+        '
+        'E5_VerticalProgessBar
+        '
+        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
+        Me.E5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.E5_VerticalProgessBar.Maximum = 255
+        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
+        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.E5_VerticalProgessBar.TabIndex = 5
+        Me.E5_VerticalProgessBar.Tag = "23"
+        '
+        'F5_VerticalProgessBar
+        '
+        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
+        Me.F5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.F5_VerticalProgessBar.Maximum = 255
+        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
+        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.F5_VerticalProgessBar.TabIndex = 6
+        Me.F5_VerticalProgessBar.Tag = "24"
+        '
+        'G5_VerticalProgessBar
+        '
+        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
+        Me.G5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.G5_VerticalProgessBar.Maximum = 255
+        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
+        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.G5_VerticalProgessBar.TabIndex = 7
+        Me.G5_VerticalProgessBar.Tag = "25"
+        '
+        'A5_VerticalProgessBar
+        '
+        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
+        Me.A5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.A5_VerticalProgessBar.Maximum = 255
+        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
+        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.A5_VerticalProgessBar.TabIndex = 8
+        Me.A5_VerticalProgessBar.Tag = "26"
+        '
+        'H5_VerticalProgessBar
+        '
+        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
+        Me.H5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.H5_VerticalProgessBar.Maximum = 255
+        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
+        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.H5_VerticalProgessBar.TabIndex = 9
+        Me.H5_VerticalProgessBar.Tag = "27"
+        '
         'C5_Button
         '
         Me.C5_Button.Location = New System.Drawing.Point(5, 204)
@@ -3128,6 +3409,76 @@ Partial Class Form1
         Me.FlowLayoutPanel3.Name = "FlowLayoutPanel3"
         Me.FlowLayoutPanel3.Size = New System.Drawing.Size(464, 404)
         Me.FlowLayoutPanel3.TabIndex = 8
+        '
+        'C4_VerticalProgessBar
+        '
+        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
+        Me.C4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.C4_VerticalProgessBar.Maximum = 255
+        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
+        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.C4_VerticalProgessBar.TabIndex = 3
+        Me.C4_VerticalProgessBar.Tag = "14"
+        '
+        'D4_VerticalProgessBar
+        '
+        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
+        Me.D4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.D4_VerticalProgessBar.Maximum = 255
+        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
+        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.D4_VerticalProgessBar.TabIndex = 4
+        Me.D4_VerticalProgessBar.Tag = "15"
+        '
+        'E4_VerticalProgessBar
+        '
+        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
+        Me.E4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.E4_VerticalProgessBar.Maximum = 255
+        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
+        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.E4_VerticalProgessBar.TabIndex = 5
+        Me.E4_VerticalProgessBar.Tag = "16"
+        '
+        'F4_VerticalProgessBar
+        '
+        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
+        Me.F4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.F4_VerticalProgessBar.Maximum = 255
+        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
+        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.F4_VerticalProgessBar.TabIndex = 6
+        Me.F4_VerticalProgessBar.Tag = "17"
+        '
+        'G4_VerticalProgessBar
+        '
+        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
+        Me.G4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.G4_VerticalProgessBar.Maximum = 255
+        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
+        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.G4_VerticalProgessBar.TabIndex = 7
+        Me.G4_VerticalProgessBar.Tag = "18"
+        '
+        'A4_VerticalProgessBar
+        '
+        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
+        Me.A4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.A4_VerticalProgessBar.Maximum = 255
+        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
+        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.A4_VerticalProgessBar.TabIndex = 8
+        Me.A4_VerticalProgessBar.Tag = "19"
+        '
+        'H4_VerticalProgessBar
+        '
+        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
+        Me.H4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.H4_VerticalProgessBar.Maximum = 255
+        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
+        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
+        Me.H4_VerticalProgessBar.TabIndex = 9
+        Me.H4_VerticalProgessBar.Tag = "20"
         '
         'C4_Button
         '
@@ -3956,8 +4307,8 @@ Partial Class Form1
         Me.DirectPlay_YesNo_GroupBox.TabIndex = 163
         Me.DirectPlay_YesNo_GroupBox.TabStop = False
         Me.DirectPlay_YesNo_GroupBox.Text = "Empfangende Noten abspielen"
-        Me.ToolTip1.SetToolTip(Me.DirectPlay_YesNo_GroupBox, "Sollen empfangene MIDI Sygnale per winmm.dll ins" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Betriebssystem gesendet werden?" &
-        " Genauere Infor-" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "mationen unter den emntsprechenden Punkten.")
+        Me.ToolTip1.SetToolTip(Me.DirectPlay_YesNo_GroupBox, "Sollen empfangene MIDI Signale per winmm.dll ins" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Betriebssystem gesendet werden?" &
+        " Genauere Infor-" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "mationen unter den entsprechenden Punkten.")
         '
         'About_Button
         '
@@ -4019,21 +4370,21 @@ Partial Class Form1
         Me.Anz_Verbindungsfehler_TextBox.Text = "0"
         Me.Anz_Verbindungsfehler_TextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
-        'Tackt_Ausgabefenster
+        'Takt_Ausgabefenster
         '
-        Me.Tackt_Ausgabefenster.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.Tackt_Ausgabefenster.Font = New System.Drawing.Font("Arial Narrow", 60.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Tackt_Ausgabefenster.ForeColor = System.Drawing.Color.Black
-        Me.Tackt_Ausgabefenster.Location = New System.Drawing.Point(12, 48)
-        Me.Tackt_Ausgabefenster.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.Tackt_Ausgabefenster.Name = "Tackt_Ausgabefenster"
-        Me.Tackt_Ausgabefenster.Padding = New System.Windows.Forms.Padding(51, 10, 40, 19)
-        Me.Tackt_Ausgabefenster.Size = New System.Drawing.Size(564, 194)
-        Me.Tackt_Ausgabefenster.TabIndex = 1
-        Me.Tackt_Ausgabefenster.Text = "1  1"
-        Me.Tackt_Ausgabefenster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.ToolTip1.SetToolTip(Me.Tackt_Ausgabefenster, "In diesem bereich wird der Momentane Tackt ausgegeben. Diese angaben machen eigen" &
-        "dlich nur bei m Aufnahmemodus ""Standart MIDI"" wirklich einen Sinn.")
+        Me.Takt_Ausgabefenster.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.Takt_Ausgabefenster.Font = New System.Drawing.Font("Arial Narrow", 60.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Takt_Ausgabefenster.ForeColor = System.Drawing.Color.Black
+        Me.Takt_Ausgabefenster.Location = New System.Drawing.Point(12, 48)
+        Me.Takt_Ausgabefenster.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Takt_Ausgabefenster.Name = "Takt_Ausgabefenster"
+        Me.Takt_Ausgabefenster.Padding = New System.Windows.Forms.Padding(51, 10, 40, 19)
+        Me.Takt_Ausgabefenster.Size = New System.Drawing.Size(564, 194)
+        Me.Takt_Ausgabefenster.TabIndex = 1
+        Me.Takt_Ausgabefenster.Text = "1  1"
+        Me.Takt_Ausgabefenster.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.ToolTip1.SetToolTip(Me.Takt_Ausgabefenster, "In diesem Bereich wird der momentane Takt ausgegeben. Diese Angaben machen eigent" &
+        "lich nur bei m Aufnahmemodus ""Standard MIDI"" wirklich einen Sinn.")
         '
         'Com_Search_Timer
         '
@@ -4056,9 +4407,9 @@ Partial Class Form1
         '
         Me.Serial_BackgroundWorker.WorkerSupportsCancellation = True
         '
-        'Mesgeschwindigkeitsberechnung_Timer
+        'Messgeschwindigkeitsberechnung_Timer
         '
-        Me.Mesgeschwindigkeitsberechnung_Timer.Interval = 250
+        Me.Messgeschwindigkeitsberechnung_Timer.Interval = 250
         '
         'GetAsyncKeyState_Timer
         '
@@ -4071,7 +4422,7 @@ Partial Class Form1
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.SendKeys_GroupBox)
-        Me.Panel1.Controls.Add(Me.Tastenkonbinationen_GroupBox)
+        Me.Panel1.Controls.Add(Me.Tastenkombinationen_GroupBox)
         Me.Panel1.Controls.Add(Me.SendKey_GroupBox)
         Me.Panel1.Controls.Add(Me.MIDIOut_GroupBox)
         Me.Panel1.Controls.Add(Me.Programmeinstellungen_GroupBox)
@@ -4105,7 +4456,7 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(33, 30)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(368, 50)
         Me.Button1.TabIndex = 175
@@ -4461,7 +4812,7 @@ Partial Class Form1
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.MIDI_Pause_Button)
-        Me.GroupBox2.Controls.Add(Me.Tackt_Ausgabefenster)
+        Me.GroupBox2.Controls.Add(Me.Takt_Ausgabefenster)
         Me.GroupBox2.Controls.Add(Me.MIDI_Start_Button)
         Me.GroupBox2.Controls.Add(Me.MIDI_Save_Button)
         Me.GroupBox2.Location = New System.Drawing.Point(19, 142)
@@ -4477,358 +4828,6 @@ Partial Class Form1
         '
         Me.Display_Refresh_Timer.Interval = 30
         '
-        'C6_VerticalProgessBar
-        '
-        Me.C6_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
-        Me.C6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.C6_VerticalProgessBar.Maximum = 255
-        Me.C6_VerticalProgessBar.Name = "C6_VerticalProgessBar"
-        Me.C6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.C6_VerticalProgessBar.TabIndex = 3
-        Me.C6_VerticalProgessBar.Tag = "28"
-        '
-        'D6_VerticalProgessBar
-        '
-        Me.D6_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
-        Me.D6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.D6_VerticalProgessBar.Maximum = 255
-        Me.D6_VerticalProgessBar.Name = "D6_VerticalProgessBar"
-        Me.D6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.D6_VerticalProgessBar.TabIndex = 4
-        Me.D6_VerticalProgessBar.Tag = "29"
-        '
-        'E6_VerticalProgessBar
-        '
-        Me.E6_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
-        Me.E6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.E6_VerticalProgessBar.Maximum = 255
-        Me.E6_VerticalProgessBar.Name = "E6_VerticalProgessBar"
-        Me.E6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.E6_VerticalProgessBar.TabIndex = 5
-        Me.E6_VerticalProgessBar.Tag = "30"
-        '
-        'F6_VerticalProgessBar
-        '
-        Me.F6_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
-        Me.F6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.F6_VerticalProgessBar.Maximum = 255
-        Me.F6_VerticalProgessBar.Name = "F6_VerticalProgessBar"
-        Me.F6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.F6_VerticalProgessBar.TabIndex = 6
-        Me.F6_VerticalProgessBar.Tag = "31"
-        '
-        'G6_VerticalProgessBar
-        '
-        Me.G6_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
-        Me.G6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.G6_VerticalProgessBar.Maximum = 255
-        Me.G6_VerticalProgessBar.Name = "G6_VerticalProgessBar"
-        Me.G6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.G6_VerticalProgessBar.TabIndex = 7
-        Me.G6_VerticalProgessBar.Tag = "32"
-        '
-        'A6_VerticalProgessBar
-        '
-        Me.A6_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
-        Me.A6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.A6_VerticalProgessBar.Maximum = 255
-        Me.A6_VerticalProgessBar.Name = "A6_VerticalProgessBar"
-        Me.A6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.A6_VerticalProgessBar.TabIndex = 8
-        Me.A6_VerticalProgessBar.Tag = "33"
-        '
-        'H6_VerticalProgessBar
-        '
-        Me.H6_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
-        Me.H6_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.H6_VerticalProgessBar.Maximum = 255
-        Me.H6_VerticalProgessBar.Name = "H6_VerticalProgessBar"
-        Me.H6_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.H6_VerticalProgessBar.TabIndex = 9
-        Me.H6_VerticalProgessBar.Tag = "34"
-        '
-        'C2_VerticalProgessBar
-        '
-        Me.C2_VerticalProgessBar.AccessibleName = ""
-        Me.C2_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
-        Me.C2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.C2_VerticalProgessBar.Maximum = 255
-        Me.C2_VerticalProgessBar.Name = "C2_VerticalProgessBar"
-        Me.C2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.C2_VerticalProgessBar.TabIndex = 3
-        Me.C2_VerticalProgessBar.Tag = "0"
-        '
-        'D2_VerticalProgessBar
-        '
-        Me.D2_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
-        Me.D2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.D2_VerticalProgessBar.Maximum = 255
-        Me.D2_VerticalProgessBar.Name = "D2_VerticalProgessBar"
-        Me.D2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.D2_VerticalProgessBar.TabIndex = 4
-        Me.D2_VerticalProgessBar.Tag = "1"
-        '
-        'E2_VerticalProgessBar
-        '
-        Me.E2_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
-        Me.E2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.E2_VerticalProgessBar.Maximum = 255
-        Me.E2_VerticalProgessBar.Name = "E2_VerticalProgessBar"
-        Me.E2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.E2_VerticalProgessBar.TabIndex = 5
-        Me.E2_VerticalProgessBar.Tag = "2"
-        '
-        'F2_VerticalProgessBar
-        '
-        Me.F2_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
-        Me.F2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.F2_VerticalProgessBar.Maximum = 255
-        Me.F2_VerticalProgessBar.Name = "F2_VerticalProgessBar"
-        Me.F2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.F2_VerticalProgessBar.TabIndex = 6
-        Me.F2_VerticalProgessBar.Tag = "3"
-        '
-        'G2_VerticalProgessBar
-        '
-        Me.G2_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
-        Me.G2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.G2_VerticalProgessBar.Maximum = 255
-        Me.G2_VerticalProgessBar.Name = "G2_VerticalProgessBar"
-        Me.G2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.G2_VerticalProgessBar.TabIndex = 7
-        Me.G2_VerticalProgessBar.Tag = "4"
-        '
-        'A2_VerticalProgessBar
-        '
-        Me.A2_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
-        Me.A2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.A2_VerticalProgessBar.Maximum = 255
-        Me.A2_VerticalProgessBar.Name = "A2_VerticalProgessBar"
-        Me.A2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.A2_VerticalProgessBar.TabIndex = 8
-        Me.A2_VerticalProgessBar.Tag = "5"
-        '
-        'H2_VerticalProgessBar
-        '
-        Me.H2_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
-        Me.H2_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.H2_VerticalProgessBar.Maximum = 255
-        Me.H2_VerticalProgessBar.Name = "H2_VerticalProgessBar"
-        Me.H2_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.H2_VerticalProgessBar.TabIndex = 9
-        Me.H2_VerticalProgessBar.Tag = "6"
-        '
-        'C3_VerticalProgessBar
-        '
-        Me.C3_VerticalProgessBar.AccessibleName = ""
-        Me.C3_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
-        Me.C3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.C3_VerticalProgessBar.Maximum = 255
-        Me.C3_VerticalProgessBar.Name = "C3_VerticalProgessBar"
-        Me.C3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.C3_VerticalProgessBar.TabIndex = 186
-        Me.C3_VerticalProgessBar.Tag = "7"
-        '
-        'D3_VerticalProgessBar
-        '
-        Me.D3_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
-        Me.D3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.D3_VerticalProgessBar.Maximum = 255
-        Me.D3_VerticalProgessBar.Name = "D3_VerticalProgessBar"
-        Me.D3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.D3_VerticalProgessBar.TabIndex = 187
-        Me.D3_VerticalProgessBar.Tag = "8"
-        '
-        'E3_VerticalProgessBar
-        '
-        Me.E3_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
-        Me.E3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.E3_VerticalProgessBar.Maximum = 255
-        Me.E3_VerticalProgessBar.Name = "E3_VerticalProgessBar"
-        Me.E3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.E3_VerticalProgessBar.TabIndex = 188
-        Me.E3_VerticalProgessBar.Tag = "9"
-        '
-        'F3_VerticalProgessBar
-        '
-        Me.F3_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
-        Me.F3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.F3_VerticalProgessBar.Maximum = 255
-        Me.F3_VerticalProgessBar.Name = "F3_VerticalProgessBar"
-        Me.F3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.F3_VerticalProgessBar.TabIndex = 189
-        Me.F3_VerticalProgessBar.Tag = "10"
-        '
-        'G3_VerticalProgessBar
-        '
-        Me.G3_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
-        Me.G3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.G3_VerticalProgessBar.Maximum = 255
-        Me.G3_VerticalProgessBar.Name = "G3_VerticalProgessBar"
-        Me.G3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.G3_VerticalProgessBar.TabIndex = 190
-        Me.G3_VerticalProgessBar.Tag = "11"
-        '
-        'A3_VerticalProgessBar
-        '
-        Me.A3_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
-        Me.A3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.A3_VerticalProgessBar.Maximum = 255
-        Me.A3_VerticalProgessBar.Name = "A3_VerticalProgessBar"
-        Me.A3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.A3_VerticalProgessBar.TabIndex = 191
-        Me.A3_VerticalProgessBar.Tag = "12"
-        '
-        'H3_VerticalProgessBar
-        '
-        Me.H3_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
-        Me.H3_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.H3_VerticalProgessBar.Maximum = 255
-        Me.H3_VerticalProgessBar.Name = "H3_VerticalProgessBar"
-        Me.H3_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.H3_VerticalProgessBar.TabIndex = 192
-        Me.H3_VerticalProgessBar.Tag = "13"
-        '
-        'C5_VerticalProgessBar
-        '
-        Me.C5_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
-        Me.C5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.C5_VerticalProgessBar.Maximum = 255
-        Me.C5_VerticalProgessBar.Name = "C5_VerticalProgessBar"
-        Me.C5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.C5_VerticalProgessBar.TabIndex = 3
-        Me.C5_VerticalProgessBar.Tag = "21"
-        '
-        'D5_VerticalProgessBar
-        '
-        Me.D5_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
-        Me.D5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.D5_VerticalProgessBar.Maximum = 255
-        Me.D5_VerticalProgessBar.Name = "D5_VerticalProgessBar"
-        Me.D5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.D5_VerticalProgessBar.TabIndex = 4
-        Me.D5_VerticalProgessBar.Tag = "22"
-        '
-        'E5_VerticalProgessBar
-        '
-        Me.E5_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
-        Me.E5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.E5_VerticalProgessBar.Maximum = 255
-        Me.E5_VerticalProgessBar.Name = "E5_VerticalProgessBar"
-        Me.E5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.E5_VerticalProgessBar.TabIndex = 5
-        Me.E5_VerticalProgessBar.Tag = "23"
-        '
-        'F5_VerticalProgessBar
-        '
-        Me.F5_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
-        Me.F5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.F5_VerticalProgessBar.Maximum = 255
-        Me.F5_VerticalProgessBar.Name = "F5_VerticalProgessBar"
-        Me.F5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.F5_VerticalProgessBar.TabIndex = 6
-        Me.F5_VerticalProgessBar.Tag = "24"
-        '
-        'G5_VerticalProgessBar
-        '
-        Me.G5_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
-        Me.G5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.G5_VerticalProgessBar.Maximum = 255
-        Me.G5_VerticalProgessBar.Name = "G5_VerticalProgessBar"
-        Me.G5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.G5_VerticalProgessBar.TabIndex = 7
-        Me.G5_VerticalProgessBar.Tag = "25"
-        '
-        'A5_VerticalProgessBar
-        '
-        Me.A5_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
-        Me.A5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.A5_VerticalProgessBar.Maximum = 255
-        Me.A5_VerticalProgessBar.Name = "A5_VerticalProgessBar"
-        Me.A5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.A5_VerticalProgessBar.TabIndex = 8
-        Me.A5_VerticalProgessBar.Tag = "26"
-        '
-        'H5_VerticalProgessBar
-        '
-        Me.H5_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
-        Me.H5_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.H5_VerticalProgessBar.Maximum = 255
-        Me.H5_VerticalProgessBar.Name = "H5_VerticalProgessBar"
-        Me.H5_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.H5_VerticalProgessBar.TabIndex = 9
-        Me.H5_VerticalProgessBar.Tag = "27"
-        '
-        'C4_VerticalProgessBar
-        '
-        Me.C4_VerticalProgessBar.Location = New System.Drawing.Point(5, 6)
-        Me.C4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.C4_VerticalProgessBar.Maximum = 255
-        Me.C4_VerticalProgessBar.Name = "C4_VerticalProgessBar"
-        Me.C4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.C4_VerticalProgessBar.TabIndex = 3
-        Me.C4_VerticalProgessBar.Tag = "14"
-        '
-        'D4_VerticalProgessBar
-        '
-        Me.D4_VerticalProgessBar.Location = New System.Drawing.Point(67, 6)
-        Me.D4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.D4_VerticalProgessBar.Maximum = 255
-        Me.D4_VerticalProgessBar.Name = "D4_VerticalProgessBar"
-        Me.D4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.D4_VerticalProgessBar.TabIndex = 4
-        Me.D4_VerticalProgessBar.Tag = "15"
-        '
-        'E4_VerticalProgessBar
-        '
-        Me.E4_VerticalProgessBar.Location = New System.Drawing.Point(129, 6)
-        Me.E4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.E4_VerticalProgessBar.Maximum = 255
-        Me.E4_VerticalProgessBar.Name = "E4_VerticalProgessBar"
-        Me.E4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.E4_VerticalProgessBar.TabIndex = 5
-        Me.E4_VerticalProgessBar.Tag = "16"
-        '
-        'F4_VerticalProgessBar
-        '
-        Me.F4_VerticalProgessBar.Location = New System.Drawing.Point(191, 6)
-        Me.F4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.F4_VerticalProgessBar.Maximum = 255
-        Me.F4_VerticalProgessBar.Name = "F4_VerticalProgessBar"
-        Me.F4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.F4_VerticalProgessBar.TabIndex = 6
-        Me.F4_VerticalProgessBar.Tag = "17"
-        '
-        'G4_VerticalProgessBar
-        '
-        Me.G4_VerticalProgessBar.Location = New System.Drawing.Point(253, 6)
-        Me.G4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.G4_VerticalProgessBar.Maximum = 255
-        Me.G4_VerticalProgessBar.Name = "G4_VerticalProgessBar"
-        Me.G4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.G4_VerticalProgessBar.TabIndex = 7
-        Me.G4_VerticalProgessBar.Tag = "18"
-        '
-        'A4_VerticalProgessBar
-        '
-        Me.A4_VerticalProgessBar.Location = New System.Drawing.Point(315, 6)
-        Me.A4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.A4_VerticalProgessBar.Maximum = 255
-        Me.A4_VerticalProgessBar.Name = "A4_VerticalProgessBar"
-        Me.A4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.A4_VerticalProgessBar.TabIndex = 8
-        Me.A4_VerticalProgessBar.Tag = "19"
-        '
-        'H4_VerticalProgessBar
-        '
-        Me.H4_VerticalProgessBar.Location = New System.Drawing.Point(377, 6)
-        Me.H4_VerticalProgessBar.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.H4_VerticalProgessBar.Maximum = 255
-        Me.H4_VerticalProgessBar.Name = "H4_VerticalProgessBar"
-        Me.H4_VerticalProgessBar.Size = New System.Drawing.Size(52, 186)
-        Me.H4_VerticalProgessBar.TabIndex = 9
-        Me.H4_VerticalProgessBar.Tag = "20"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12.0!, 25.0!)
@@ -4841,9 +4840,9 @@ Partial Class Form1
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "MIDI Harfe V1.2.7 Beta - Nico Bosshard"
-        Me.Tastenkonbinationen_GroupBox.ResumeLayout(False)
-        Me.Tastenkonbinationen_GroupBox.PerformLayout()
-        CType(Me.Tastenkonbinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Tastenkombinationen_GroupBox.ResumeLayout(False)
+        Me.Tastenkombinationen_GroupBox.PerformLayout()
+        CType(Me.Tastenkombinationen_DataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolTip_YesNo_GroupBox.ResumeLayout(False)
         Me.ToolTip_YesNo_GroupBox.PerformLayout()
         Me.META_Tags_GroupBox.ResumeLayout(False)
@@ -4867,8 +4866,8 @@ Partial Class Form1
         Me.Messintervall_GroupBox.PerformLayout()
         Me.Tempo_GroupBox.ResumeLayout(False)
         Me.Tempo_GroupBox.PerformLayout()
-        CType(Me.Tackt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Tackt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Takt_Naenner_Input, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Takt_Zaehler_Input, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BPM, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SendKey_GroupBox.ResumeLayout(False)
         Me.SendKey_GroupBox.PerformLayout()
@@ -4932,15 +4931,15 @@ Partial Class Form1
     End Sub
     Friend WithEvents SerialPort1 As System.IO.Ports.SerialPort
     Public WithEvents SaveMIDIDialog As System.Windows.Forms.SaveFileDialog
-    Friend WithEvents Tackt As System.Windows.Forms.Timer
+    Friend WithEvents Takt As System.Windows.Forms.Timer
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents Com_Search_Timer As System.Windows.Forms.Timer
     Friend WithEvents C_Klappe As System.Windows.Forms.TrackBar
     Friend WithEvents Serial_BackgroundWorker As System.ComponentModel.BackgroundWorker
-    Friend WithEvents Mesgeschwindigkeitsberechnung_Timer As System.Windows.Forms.Timer
+    Friend WithEvents Messgeschwindigkeitsberechnung_Timer As System.Windows.Forms.Timer
     Friend WithEvents GetAsyncKeyState_Timer As System.Windows.Forms.Timer
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents Tastenkonbinationen_GroupBox As System.Windows.Forms.GroupBox
+    Friend WithEvents Tastenkombinationen_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Save_Tastenkombination As System.Windows.Forms.Button
     Friend WithEvents Pause_Tastenkombination As System.Windows.Forms.Button
     Friend WithEvents Start_Tastenkombination As System.Windows.Forms.Button
@@ -4984,11 +4983,11 @@ Partial Class Form1
     Friend WithEvents GroupBox16 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Autor_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox11 As System.Windows.Forms.GroupBox
-    Friend WithEvents META_Spurnamen_Input As System.Windows.Forms.TextBox
+    Friend WithEvents META_Spurname_Input As System.Windows.Forms.TextBox
     Friend WithEvents Bemerkung_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents META_Bemerkung_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox10 As System.Windows.Forms.GroupBox
-    Friend WithEvents META_Dateinamen_Input As System.Windows.Forms.TextBox
+    Friend WithEvents META_Dateiname_Input As System.Windows.Forms.TextBox
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
     Friend WithEvents META_Copyright_Input As System.Windows.Forms.TextBox
     Friend WithEvents MIDI_Visualisierung_GroupBox As System.Windows.Forms.GroupBox
@@ -5194,10 +5193,10 @@ Partial Class Form1
     Friend WithEvents Metronom_ON As System.Windows.Forms.RadioButton
     Friend WithEvents Metronom_Betont As System.Windows.Forms.RadioButton
     Friend WithEvents Tempo_GroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents Label18 As System.Windows.Forms.Label
-    Friend WithEvents Tackt_Naenner_Input As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Tackt_Zaehler_Input As System.Windows.Forms.NumericUpDown
-    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents Takt_Strich As System.Windows.Forms.Label
+    Friend WithEvents Takt_Naenner_Input As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Takt_Zaehler_Input As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Takt_Label As System.Windows.Forms.Label
     Friend WithEvents BPM_Label As System.Windows.Forms.Label
     Friend WithEvents BPM As System.Windows.Forms.NumericUpDown
     Friend WithEvents Transpose_GroupBox As System.Windows.Forms.GroupBox
@@ -5216,11 +5215,11 @@ Partial Class Form1
     Friend WithEvents DirectPlay_YesNo_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents DirectPlay_OFF As System.Windows.Forms.RadioButton
     Friend WithEvents Instrumentenauswahl_GroupBox As System.Windows.Forms.GroupBox
-    Friend WithEvents Tastenkonbinationen_DataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents Tastenkombinationen_DataGridView As System.Windows.Forms.DataGridView
     Friend WithEvents Aktion As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Konbination As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Kombination As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DirectPlay_ON As System.Windows.Forms.RadioButton
-    Friend WithEvents Tackt_Ausgabefenster As System.Windows.Forms.Label
+    Friend WithEvents Takt_Ausgabefenster As System.Windows.Forms.Label
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Label12 As System.Windows.Forms.Label
     Friend WithEvents SendKey_OP As System.Windows.Forms.Button

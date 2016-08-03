@@ -108,30 +108,30 @@ Public Class MIDI
             End If
         End Sub
 
-        Public Sub AddTackt(ByVal Tackt_Zaehler As Byte, ByVal Tackt_Nenner As Byte)
+        Public Sub AddTakt(ByVal Takt_Zaehler As Byte, ByVal Takt_Nenner As Byte)
 
-            Dim Tackt_Data() As Byte = {&H0, &HFF, &H58, &H8, &HC, &H2, &H18, &H8}
-            Tackt_Data(4) = Hex(Tackt_Zaehler)
-            Tackt_Data(3) = Hex(Tackt_Nenner)
+            Dim Takt_Data() As Byte = {&H0, &HFF, &H58, &H8, &HC, &H2, &H18, &H8}
+            Takt_Data(4) = Hex(Takt_Zaehler)
+            Takt_Data(3) = Hex(Takt_Nenner)
 
             'If Not ValidTrack() Then Return
 
-            For i = 0 To Tackt_Data.Count - 1
-                TrackData.Add(CByte(Tackt_Data(i)))
+            For i = 0 To Takt_Data.Count - 1
+                TrackData.Add(CByte(Takt_Data(i)))
             Next
 
         End Sub
 
         Public Sub Zuordnung(ByVal Kanal As Byte)
 
-            Dim Tackt_Data() As Byte = {&H0, &HFF, &H21, &H1, &H0}
-            Tackt_Data(4) = Hex(Kanal)
-            'Tackt_Data(3) = Hex(Tackt_Nenner)
+            Dim Takt_Data() As Byte = {&H0, &HFF, &H21, &H1, &H0}
+            Takt_Data(4) = Hex(Kanal)
+            'Takt_Data(3) = Hex(Takt_Nenner)
 
             'If Not ValidTrack() Then Return
 
-            For i = 0 To Tackt_Data.Count - 1
-                TrackData.Add(CByte(Tackt_Data(i)))
+            For i = 0 To Takt_Data.Count - 1
+                TrackData.Add(CByte(Takt_Data(i)))
             Next
 
         End Sub
@@ -139,37 +139,37 @@ Public Class MIDI
 
         Public Sub Text(ByVal Textart As String, ByVal Text As String)
 
-            Dim Tackt_Data_List As New List(Of Byte)
+            Dim Takt_Data_List As New List(Of Byte)
 
-            Tackt_Data_List.Add(&H0)
-            Tackt_Data_List.Add(&HFF)
-            Tackt_Data_List.Add(Textart)
-            Tackt_Data_List.Add(Text.Length)
+            Takt_Data_List.Add(&H0)
+            Takt_Data_List.Add(&HFF)
+            Takt_Data_List.Add(Textart)
+            Takt_Data_List.Add(Text.Length)
 
             For i = 0 To Text.Count - 1
-                Tackt_Data_List.Add(Asc(Text(i)))
+                Takt_Data_List.Add(Asc(Text(i)))
             Next
 
-            'Tackt_Data_List(3) = CByte((Text.Length >> 8) And &HFF)
-            'Tackt_Data_List(4) = CByte((Text.Length And &HFF))
+            'Takt_Data_List(3) = CByte((Text.Length >> 8) And &HFF)
+            'Takt_Data_List(4) = CByte((Text.Length And &HFF))
 
-            For i = 0 To Tackt_Data_List.Count - 1
-                TrackData.Add(CByte(Tackt_Data_List(i)))
+            For i = 0 To Takt_Data_List.Count - 1
+                TrackData.Add(CByte(Takt_Data_List(i)))
             Next
 
         End Sub
 
         Public Sub Add_Instrument(ByVal Instrument As Byte)
 
-            Dim Tackt_Data() As Byte = {&H0, &HC1, &H10}
-            Tackt_Data(2) = Instrument
-            'Tackt_Data(4) = Hex(Tackt_Zaehler)
-            'Tackt_Data(3) = Hex(Tackt_Nenner)
+            Dim Takt_Data() As Byte = {&H0, &HC1, &H10}
+            Takt_Data(2) = Instrument
+            'Takt_Data(4) = Hex(Takt_Zaehler)
+            'Takt_Data(3) = Hex(Takt_Nenner)
 
             'If Not ValidTrack() Then Return
 
-            For i = 0 To Tackt_Data.Count - 1
-                TrackData.Add(CByte(Tackt_Data(i)))
+            For i = 0 To Takt_Data.Count - 1
+                TrackData.Add(CByte(Takt_Data(i)))
             Next
 
         End Sub

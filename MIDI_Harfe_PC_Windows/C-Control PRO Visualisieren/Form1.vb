@@ -75,16 +75,16 @@ Public Class Form1
     Dim Version As String = "V1.2.7"
     Dim PublishDate As Date = "21.02.2016"
 
-    Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO" 'HaHaHa müsste eigendlich Dim Lizenz As String = "" sein aber dies verwirrt Modder :D
+    Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO" 'HaHaHa müsste eigentlich Dim Lizenz As String = "" sein aber dies verwirrt Modder :D
     Dim Sprache = "DE"
 
     'Datenspeicher für eingehende Daten
     Dim In_Buffer As Short
 
-    Dim TacktNr As Short
-    Dim Tackt_32stel As Byte
+    Dim TaktNr As Short
+    Dim Takt_32stel As Byte
 
-    'Annahme: Maximal 43 ADC Sygnale! Auf dem Form können jedoch nur 35 angezeigt werden!
+    'Annahme: Maximal 43 ADC Signale! Auf dem Form können jedoch nur 35 angezeigt werden!
     Dim ADC_Anzahl As Byte = 28
     Dim ADC_Counter
     Dim ADC_Read(40) As Byte
@@ -178,7 +178,7 @@ Public Class Form1
 
     Dim Tastenkombination_FirstKey As Boolean
     Dim Tastenkombination_KeyAlt As Byte
-    Dim Costom_Tastenkonbinationen_Counter As UShort
+    Dim Costom_Tastenkombinationen_Counter As UShort
     Dim Start_Tastenkombination_Key As New List(Of Byte)
     Dim Pause_Tastenkombination_Key As New List(Of Byte)
     Dim Save_Tastenkombination_Key As New List(Of Byte)
@@ -228,7 +228,7 @@ Public Class Form1
     C6_Stopwert, D6_Stopwert, E6_Stopwert, F6_Stopwert, G6_Stopwert, A6_Stopwert, H6_Stopwert}
 
 
-        With Tastenkonbinationen_DataGridView.Rows
+        With Tastenkombinationen_DataGridView.Rows
             .Add("Metronom", "Ctrl + Shift + M")
             .Add("Direct Play", "Ctrl + Shift + P")
             .Add("Aufnahmemodus", "Ctrl + Shift + A")
@@ -241,7 +241,7 @@ Public Class Form1
             .Add("", "z.B. C & Pfeil Up")
         End With
 
-        For Each col As DataGridViewColumn In Tastenkonbinationen_DataGridView.Columns
+        For Each col As DataGridViewColumn In Tastenkombinationen_DataGridView.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
             col.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control
             col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
@@ -254,7 +254,7 @@ Public Class Form1
         'ToolTip1.SetToolTip(Button2, "Das ist ein Button")
         'ToolTip1.SetToolTip(Button3, "Das ist ein Button")
 
-        Tackt.Interval = (60 / BPM.Value / 4) * 1000
+        Takt.Interval = (60 / BPM.Value / 4) * 1000
 
         Com_Search()
 
@@ -289,11 +289,11 @@ Public Class Form1
     Private Sub Button_Connect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Connect.Click
 
         If Lizenz_Activated = False Then
-            MessageBox.Show("Das Programm wurde nicht ordnungsgemäss Aktiviert." _
+            MessageBox.Show("Das Programm wurde nicht ordnungsgemäss aktiviert." _
                             & vbCrLf & "Dies kann beispielsweise bei einer Modifizierung der Fall sein." _
                             & vbCrLf & "Bitte srarten Sie das Programm neu. Sollte diese Meldung nicht" _
-                            & vbCrLf & "verschwinden kontaktieren sie bitte den support per mail unter" _
-                            & vbCrLf & "nico@bosshome.ch. Dies Meldung existiert um Modder von meinem" _
+                            & vbCrLf & "verschwinden kontaktieren Sie bitte den Support per mail unter" _
+                            & vbCrLf & "nico@bosshome.ch. Diese Meldung existiert um Modder von meinem" _
                             & vbCrLf & "Programm fernzuhalten und sollte bei Ihnen nicht angezeigt werden.")
             Me.Close()
         End If
@@ -317,7 +317,7 @@ Public Class Form1
 
 
             Com_Search_Timer.Enabled = False
-            Mesgeschwindigkeitsberechnung_Timer.Enabled = True
+            Messgeschwindigkeitsberechnung_Timer.Enabled = True
             Display_Refresh_Timer.Enabled = True
             Serial_BackgroundWorker.RunWorkerAsync()
 
@@ -325,7 +325,7 @@ Public Class Form1
 
             'Fehlermeldung
             MessageBox.Show("Unter dem gewählten COM Port wurde kein Mikrokontroller erkannt. " _
-            & vbCrLf & "Stellen Sie sicher, das Sie den Richtigen Port gewählt haben und der" _
+            & vbCrLf & "Stellen Sie sicher, dass Sie den richtigen Port gewählt haben und der" _
             & vbCrLf & "Mikrokontroller korrekt mit dem Computer verbunden, und" _
             & vbCrLf & "nicht schon von einem anderen Programm besetzt ist." _
             & vbCrLf & vbCrLf & "Fehler: " & e.ToString _
@@ -354,8 +354,8 @@ Public Class Form1
 
         'trennen
         Display_Refresh_Timer.Enabled = False
-        Mesgeschwindigkeitsberechnung_Timer.Enabled = False
-        'Tackt.Enabled = False
+        Messgeschwindigkeitsberechnung_Timer.Enabled = False
+        'Takt.Enabled = False
         Anz_Messungen_TextBox.Text = 0
         Anz_Verbindungsfehler_TextBox.Text = 0
         MessungenProS_TexBox.Text = "0 M/s"
@@ -432,7 +432,7 @@ Public Class Form1
 
                 If Not 250 = SerialPort1.ReadByte() Then
                     'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                    '& "Die laufende Aufnahme wurde Paussiert" _
+                    '& "Die laufende Aufnahme wurde pausiert" _
                     '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
                     '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
                     'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -448,15 +448,15 @@ Public Class Form1
                 Anz_Messungen_TextBox.Text = Anz_Messungen
 
 
-                'Diagramm_Aktuallisieren_i += 1
+                'Diagramm_aktualisieren_i += 1
 
-                'If Diagramm_Aktuallisieren_i = 2 Then
-                'Diagramm_Aktuallisieren()
-                'Diagramm_Aktuallisieren_i = 0
+                'If Diagramm_aktualisieren_i = 2 Then
+                'Diagramm_aktualisieren()
+                'Diagramm_aktualisieren_i = 0
                 'End If
 
 
-                If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Tackt_Tick()
+                If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Takt_Tick()
 
             Catch
                 Anz_Verbindungsfehler += 1
@@ -465,7 +465,7 @@ Public Class Form1
                 Try
                     If Not SerialPort1.ReadByte = 250 Then
                         'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                        '& "Die laufende Aufnahme wurde Paussiert" _
+                        '& "Die laufende Aufnahme wurde pausiert" _
                         '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
                         '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
                         'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -612,29 +612,29 @@ Public Class Form1
         'In Trackt 0 gehören keine META Daten!!!
         'Ansonsten kommt Track 0 in einigen Musikprogrammen als Leehre Spur.
         Song.Tracks(0).TrackData.Clear()
-        If MIDI_NormalMode.Checked = True Then Song.Tracks(0).AddTackt(Tackt_Zaehler_Input.Value, Tackt_Naenner_Input.Value)
+        If MIDI_NormalMode.Checked = True Then Song.Tracks(0).AddTakt(Takt_Zaehler_Input.Value, Takt_Naenner_Input.Value)
 
         Song.Tracks(1).TrackData.Clear()
         Song.Tracks(1).Zuordnung(1)
         If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Text(1, cboInstruments.SelectedText)
-        If Not META_Spurnamen_Input.Text = "" Then Song.Tracks(1).Text(3, META_Spurnamen_Input.Text)
+        If Not META_Spurname_Input.Text = "" Then Song.Tracks(1).Text(3, META_Spurname_Input.Text)
         If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Text(4, cboInstruments.SelectedText)
         If MIDI_NormalMode.Checked = True Then Song.Tracks(1).Add_Instrument(cboInstruments.SelectedIndex)
 
-        If MIDI_NormalMode.Checked = True Then Tackt.Enabled = True
+        If MIDI_NormalMode.Checked = True Then Takt.Enabled = True
         Aufnahme_gestartet = True
     End Sub
 
 
     Private Sub MIDI_Pause() Handles MIDI_Pause_Button.Click
         If Einstellungen_GroupBox.Enabled = False Then
-            Tackt.Enabled = False
+            Takt.Enabled = False
             Aufnahme_gestartet = False
             Messung_Pause = True
             Einstellungen_GroupBox.Enabled = True
             MIDI_Pause_Button.Text = "Aufnahme fortsetzen"
         Else
-            Tackt.Enabled = True
+            Takt.Enabled = True
             Messung_Pause = False
             Aufnahme_gestartet = True
             Einstellungen_GroupBox.Enabled = False
@@ -646,23 +646,23 @@ Public Class Form1
 
         MIDI_Pause_Button.Enabled = False
         MIDI_Save_Button.Enabled = False
-        Tackt.Enabled = False
+        Takt.Enabled = False
         Aufnahme_gestartet = False
 
-        TacktNr = 0
-        Tackt_32stel = 0
+        TaktNr = 0
+        Takt_32stel = 0
 
-        Tackt_Ausgabefenster.Text = ("1  1")
+        Takt_Ausgabefenster.Text = ("1  1")
 
-        Dim MIDI_Dateinamen As String
-        If META_Dateinamen_Input.Text = "" Then
-            MIDI_Dateinamen = "Untitled.mid"
+        Dim MIDI_Dateiname As String
+        If META_Dateiname_Input.Text = "" Then
+            MIDI_Dateiname = "Untitled.mid"
         Else
-            MIDI_Dateinamen = META_Dateinamen_Input.Text & ".mid"
+            MIDI_Dateiname = META_Dateiname_Input.Text & ".mid"
         End If
 
         Me.SaveMIDIDialog.DefaultExt = "MID"
-        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, MIDI_Dateinamen)
+        Me.SaveMIDIDialog.FileName = My.Computer.FileSystem.CombinePath(My.Computer.FileSystem.SpecialDirectories.MyDocuments, MIDI_Dateiname)
         Me.SaveMIDIDialog.InitialDirectory = My.Computer.FileSystem.SpecialDirectories.MyDocuments
         Me.SaveMIDIDialog.Filter = "VB MIDI files (*.MID)|*.MID"
 
@@ -679,7 +679,7 @@ Public Class Form1
 #End Region
 
 
-    Private Sub Tackt_Tick() Handles Tackt.Tick
+    Private Sub Takt_Tick() Handles Takt.Tick
 
         Dim Note_gespielt As Boolean = False
 
@@ -707,9 +707,9 @@ Public Class Form1
         End If
 
 
-        Tackt_32stel = Tackt_32stel + 1
+        Takt_32stel = Takt_32stel + 1
 
-        If Tackt_32stel = 32 Then
+        If Takt_32stel = 32 Then
             If Metronom_ON.Checked Then
                 SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
                 PlayMIDINote(70, 50, 0.1)
@@ -719,11 +719,11 @@ Public Class Form1
                 PlayMIDINote(72, 70, 0.1)
                 SetCurrentInstrument(cboInstruments.SelectedIndex)
             End If
-            TacktNr = TacktNr + 1
-            Tackt_32stel = 0
+            TaktNr = TaktNr + 1
+            Takt_32stel = 0
         End If
 
-        If Not Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) Then
+        If Not Metronom_alt = Fix(Takt_32stel * Takt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
                 SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
                 PlayMIDINote(70, 50, 0.1)
@@ -731,21 +731,21 @@ Public Class Form1
             End If
         End If
 
-        Metronom_alt = Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32)
-        Tackt_Ausgabefenster.Text = (TacktNr + 1 & "  " & Fix(Tackt_32stel * Tackt_Naenner_Input.Value / 32) + 1) 'Math.Round
+        Metronom_alt = Fix(Takt_32stel * Takt_Naenner_Input.Value / 32)
+        Takt_Ausgabefenster.Text = (TaktNr + 1 & "  " & Fix(Takt_32stel * Takt_Naenner_Input.Value / 32) + 1) 'Math.Round
 
     End Sub
 
 
     Private Sub BPM_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BPM.ValueChanged
-        Tackt.Interval = (60 / BPM.Value / 4) * 1000
+        Takt.Interval = (60 / BPM.Value / 4) * 1000
     End Sub
 
     Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
         Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
         Halbtonversch = Halbtonverschiebung.Value
-        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
-                                                    "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtonverschiebung von <-32 sind die tiefsten Töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
+                                                    "Warnung: Zu tiefe Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
 
@@ -761,8 +761,8 @@ Public Class Form1
             Case -36 To -24 : Oktavenverschiebung.SelectedIndex = 6
             Case Else : Oktavenverschiebung.SelectedIndex = 4
         End Select
-        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtoniverschiebung von <-32 sind die Tiefsten töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
-                                                    "Warnung: Zu tife Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtonverschiebung von <-32 sind die tiefsten Töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
+                                                    "Warnung: Zu tiefe Töne möglich", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
 
@@ -946,7 +946,7 @@ Public Class Form1
         If NotenNr > 127 Then NotenNr = 127
         PlayMIDINote(NotenNr, 100)
         Button_Note_Play(NotenNr) = True
-        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
+        If MIDI_SpecialMode.Checked = True Then Takt_Tick()
     End Sub
 
 
@@ -958,7 +958,7 @@ Public Class Form1
         If NotenNr > 127 Then NotenNr = 127
         STOPMIDINote(NotenNr)
         Button_Note_Play(NotenNr) = False
-        If MIDI_SpecialMode.Checked = True Then Tackt_Tick()
+        If MIDI_SpecialMode.Checked = True Then Takt_Tick()
     End Sub
 
 #End Region
@@ -1054,16 +1054,16 @@ Public Class Form1
 #Region " Special MIDI-Mode"
 
     Dim Messintervall_Temp As UShort
-    Dim Tackt_Zaehler_Temp As Byte
-    Dim Tackt_Naenner_Temp As Byte
+    Dim Takt_Zaehler_Temp As Byte
+    Dim Takt_Naenner_Temp As Byte
 
     Private Sub MIDI_SpecialMode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_SpecialMode.CheckedChanged
 
         If MIDI_SpecialMode.Checked = True Then
-            'Tackt_Zaehler_Temp = Tackt_Zaehler_Input.Value
-            'Tackt_Naenner_Temp = Tackt_Naenner_Input.Value
-            Tackt_Zaehler_Input.Value = 4
-            Tackt_Naenner_Input.Value = 4
+            'Takt_Zaehler_Temp = Takt_Zaehler_Input.Value
+            'Takt_Naenner_Temp = Takt_Naenner_Input.Value
+            Takt_Zaehler_Input.Value = 4
+            Takt_Naenner_Input.Value = 4
             BPM.Visible = False
             BPM_Label.Text = "Aufnahme BPM:     Möglichst scnell!"
             cboInstruments.Enabled = False
@@ -1071,8 +1071,8 @@ Public Class Form1
         Else
             cboInstruments.Enabled = True
             Tempo_GroupBox.Enabled = True
-            'Tackt_Zaehler_Input.Value = Tackt_Zaehler_Temp
-            'Tackt_Naenner_Input.Value = Tackt_Naenner_Temp
+            'Takt_Zaehler_Input.Value = Takt_Zaehler_Temp
+            'Takt_Naenner_Input.Value = Takt_Naenner_Temp
             BPM.Visible = True
             BPM_Label.Text = "Aufnahme BPM:"
         End If
@@ -1220,9 +1220,9 @@ Public Class Form1
 
 
 
-#Region "Tastenkonbinationen"
+#Region "Tastenkombinationen"
 
-    ' Im folgenden Sub werden die Tastenkonbinationen ermittelt und deren Funktion ausgeführt.
+    ' Im folgenden Sub werden die Tastenkombinationen ermittelt und deren Funktion ausgeführt.
     'Private Sub Form2_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles 
     'If e.KeyCode = Keys.Escape Or e.KeyCode = Keys.End Then Me.Close()
     'If e.KeyCode = Keys.F9 Then MessageBox.Show("")
@@ -1239,10 +1239,10 @@ Public Class Form1
     Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAsyncKeyState_Timer.Tick
 
 
-        If Costom_Tastenkonbinationen_Counter = 0 Then
+        If Costom_Tastenkombinationen_Counter = 0 Then
 
             If Tastenkonbination_Press(Start_Tastenkombination_Key) = True Then
-                Costom_Tastenkonbinationen_Counter = 20
+                Costom_Tastenkombinationen_Counter = 20
                 If Aufnahme_gestartet = True Or Messung_Pause = True Then
                     MIDI_Save()
                     Exit Sub
@@ -1253,12 +1253,12 @@ Public Class Form1
             End If
 
             If Tastenkonbination_Press(Pause_Tastenkombination_Key) = True Then
-                Costom_Tastenkonbinationen_Counter = 20
+                Costom_Tastenkombinationen_Counter = 20
                 MIDI_Pause()
             End If
 
             If Tastenkonbination_Press(Save_Tastenkombination_Key) = True Then
-                Costom_Tastenkonbinationen_Counter = 20
+                Costom_Tastenkombinationen_Counter = 20
                 If Aufnahme_gestartet = True Or Messung_Pause = True Then
                     MIDI_Save()
                     Exit Sub
@@ -1268,7 +1268,7 @@ Public Class Form1
                 End If
             End If
         Else
-            Costom_Tastenkonbinationen_Counter -= 1
+            Costom_Tastenkombinationen_Counter -= 1
         End If
 
 
@@ -1344,7 +1344,7 @@ Public Class Form1
         If Tastenkombination.Count = 0 Then Return False
 
         'Kein Plan, wieso die For schleife umgekehrt werden muss!
-        'Ansonsten sind alle Tastenkonbinationen spiegelverkehrt!
+        'Ansonsten sind alle Tastenkombinationen spiegelverkehrt!
         For i = Tastenkombination.Count - 1 To 0 Step -1
             If Not GetAsyncKeyState(Tastenkombination(i)) <= -32767 Then Return False
         Next
@@ -1452,7 +1452,7 @@ Public Class Form1
             Pause_Tastenkombination_Key.Clear()
         Else
             If Pause_Tastenkombination.Text = Start_Tastenkombination.Text Or Pause_Tastenkombination.Text = Save_Tastenkombination.Text Then
-                MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Konbination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                MessageBox.Show("Die Pausenkonbination darf nicht der Strat und/oder der Save Kombination entsprechen.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Pause_Tastenkombination.Text = Tastenkombination_Alt
             Else
                 Pause_Tastenkombination_Key.Clear()
@@ -1986,17 +1986,17 @@ Public Class Form1
             Volume_max_NumericUpDown.Value = .Volume_max_Save
 
             ' Tempo
-            Tackt_Zaehler_Input.Value = .Tackt_Zaehler_Input
-            Tackt_Naenner_Input.Value = .Tackt_Naenner_Input
+            Takt_Zaehler_Input.Value = .Takt_Zaehler_Input
+            Takt_Naenner_Input.Value = .Takt_Naenner_Input
             BPM.Value = .BPM
 
             ' Tonhöhenverschiebung
             Halbtonverschiebung.Value = .Halbtonverschiebung
 
             ' META
-            META_Dateinamen_Input.Text = .META_Dateinamen_Input
+            META_Dateiname_Input.Text = .META_Dateiname_Input
             META_Autor_Input.Text = .META_Autor_Input
-            META_Spurnamen_Input.Text = .META_Spurnamen_Input
+            META_Spurname_Input.Text = .META_Spurname_Input
             META_Copyright_Input.Text = .META_Copyright_Input
             META_Bemerkung_Input.Text = .META_Bemerkung_Input
 
@@ -2034,7 +2034,7 @@ Public Class Form1
 
 
 
-            ' Tastenkonbinationen
+            ' Tastenkombinationen
             'Try
             Start_Tastenkombination.Text = .Start_Tastenkombination_Save
             For Each item As String In .Start_Tastenkombination_Key_Save
@@ -2094,17 +2094,17 @@ Public Class Form1
             .Volume_max_Save = Volume_max_NumericUpDown.Value
 
             ' Tempo
-            .Tackt_Zaehler_Input = Tackt_Zaehler_Input.Value
-            .Tackt_Naenner_Input = Tackt_Naenner_Input.Value
+            .Takt_Zaehler_Input = Takt_Zaehler_Input.Value
+            .Takt_Naenner_Input = Takt_Naenner_Input.Value
             .BPM = BPM.Value
 
             ' Tonhöhenverschiebung
             .Halbtonverschiebung = Halbtonverschiebung.Value
 
             ' META
-            .META_Dateinamen_Input = META_Dateinamen_Input.Text
+            .META_Dateiname_Input = META_Dateiname_Input.Text
             .META_Autor_Input = META_Autor_Input.Text
-            .META_Spurnamen_Input = META_Spurnamen_Input.Text
+            .META_Spurname_Input = META_Spurname_Input.Text
             .META_Copyright_Input = META_Copyright_Input.Text
             .META_Bemerkung_Input = META_Bemerkung_Input.Text
 
@@ -2144,7 +2144,7 @@ Public Class Form1
             Next
 
 
-            ' Tastenkonbinationen
+            ' Tastenkombinationen
             .Start_Tastenkombination_Save = Start_Tastenkombination.Text
             .Start_Tastenkombination_Key_Save.Clear()
             For Each item As Byte In Start_Tastenkombination_Key
@@ -2187,13 +2187,13 @@ Public Class Form1
 
 
 
-    Private Sub Mesgeschwindigkeitsberechnung_Timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Mesgeschwindigkeitsberechnung_Timer.Tick
+    Private Sub Messgeschwindigkeitsberechnung_Timer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Messgeschwindigkeitsberechnung_Timer.Tick
         Try
             Messintervall_Zahl = (Anz_Messungen - AnzMessungen_alt) * 4 'Achtung: Komischerweise Divison durch 0 wenn AnzMessungen_alt > Anz_Messungen! Wieso habe ich keine Ahnung.
             MessungenProS_TexBox.Text = Format(Messintervall_Zahl, "000") & " M/s"
             Messintervall_TextBox.Text = Format(1000 / Messintervall_Zahl, "00.0") & " ms"
             AnzMessungen_alt = Anz_Messungen
-        Catch ' Für Devision durch 0 Error der aber eigendlich durch AnzMessungen_alt=0 bei DoBackgroundWorker behoben wurde.
+        Catch ' Für Devision durch 0 Error der aber eigentlich durch AnzMessungen_alt=0 bei DoBackgroundWorker behoben wurde.
             Messintervall_Zahl = 0
             Anz_Messungen = 0
             AnzMessungen_alt = 0
@@ -2241,7 +2241,7 @@ Public Class Form1
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As _
           System.Windows.Forms.FormClosingEventArgs) Handles MyBase.FormClosing
-        If Tackt.Enabled Then
+        If Takt.Enabled Then
             Dim result As DialogResult = MessageBox.Show("Wollen Sie das Programm wirklich beenden?" _
             & vbCrLf & "Die laufende Aufnahme wird dadurch gelöscht!", "Wirklich beenden?",
             MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
@@ -2255,14 +2255,14 @@ Public Class Form1
     End Sub
 
     Private Sub Help_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
-        'Alle selection aufheben.
+        'Alle Selection aufheben.
         Einstellungen_GroupBox.Focus()
     End Sub
 
     Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         Help_Button.Enabled = False 'Sieht schöner aus
-        MessageBox.Show("Es ist momentan noch keine Hilfe ausser die eigendlich völlig ausreichende ToolTip Funktion für mein Programm verfügbar." _
-                        & vbCrLf & vbCrLf & "Sollten sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome.ch",
+        MessageBox.Show("Es ist momentan noch keine Hilfe ausser die eigentlich völlig ausreichende ToolTip Funktion für mein Programm verfügbar." _
+                        & vbCrLf & vbCrLf & "Sollten Sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome.ch",
                         "Hilfe", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Help_Button.Enabled = True
     End Sub
@@ -2270,8 +2270,8 @@ Public Class Form1
     Private Sub About_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles About_Button.Click
         About_Button.Enabled = False 'Sieht schöner aus
         MessageBox.Show("MIDI Harfe" & Version & vbCrLf & "©2016 Nico Bosshard" _
-            & vbCrLf & vbCrLf & "Ich verbiete hirmit ausdrücklich jegliche modifikation am Lizenzierungs- und Aktivierungssystem!" _
-            & vbCrLf & "Ideenverschläge und sonstige  Mods sind jederzeit erwünscht. :D" _
+            & vbCrLf & vbCrLf & "Ich verbiete hiermit ausdrücklich jegliche Modifikation am Lizenzierungs- und Aktivierungssystem!" _
+            & vbCrLf & "Ideenvorschläge und sonstige  Mods sind jederzeit erwünscht. :D" _
             & vbCrLf & "Bei Fragen bin ich per E-Mail unter nico@bosshome.ch erreichbar." _
             & vbCrLf & vbCrLf & "Version " & Version & vbCrLf & "Lizenzstatus: Aktiviert" & vbCrLf & "Veröffentlichung: " & PublishDate.Date & vbCrLf & "OS: Windows, VirtualBox" _
             & vbCrLf & "Programmiert mit Visual Basic 2015 .NET Framework 4.0" _

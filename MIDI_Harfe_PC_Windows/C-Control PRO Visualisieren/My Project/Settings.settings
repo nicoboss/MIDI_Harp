@@ -5,10 +5,10 @@
     <Setting Name="cboInstruments" Type="System.Byte" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Tackt_Zaehler_Input" Type="System.Byte" Scope="User">
+    <Setting Name="Takt_Zaehler_Input" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="Tackt_Naenner_Input" Type="System.Byte" Scope="User">
+    <Setting Name="Takt_Naenner_Input" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
     <Setting Name="BPM" Type="System.UInt16" Scope="User">
@@ -23,13 +23,13 @@
     <Setting Name="Halbtonverschiebung" Type="System.SByte" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="META_Dateinamen_Input" Type="System.String" Scope="User">
+    <Setting Name="META_Dateiname_Input" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="META_Autor_Input" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="META_Spurnamen_Input" Type="System.String" Scope="User">
+    <Setting Name="META_Spurname_Input" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="META_Copyright_Input" Type="System.String" Scope="User">

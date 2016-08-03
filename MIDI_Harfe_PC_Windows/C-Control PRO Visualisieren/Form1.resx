@@ -118,21 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="SerialPort1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>41, 22</value>
   </metadata>
   <metadata name="SaveMIDIDialog.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>133, 20</value>
+    <value>253, 28</value>
   </metadata>
-  <metadata name="Tackt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="Takt.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>270, 21</value>
   </metadata>
   <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>751, 28</value>
+    <value>827, 26</value>
   </metadata>
   <metadata name="Aktion.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Konbination.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Kombination.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="ToolTip_YesNo_GroupBox.ToolTip" xml:space="preserve">
@@ -157,7 +157,7 @@ Durch einem Messintervall von 10ms werden mit dieser Option sehr hochwertige roh
   </data>
   <data name="MIDI_NormalMode.ToolTip" xml:space="preserve">
     <value>Diese Option erstellt ein ganz gewöhnliches MIDI File mit Zeitstempel, das danach von jedem beliebigen Player abgespielt werden kann.
-Tackt, Instrument und BPM Angaben sind bei dieser Aufnahmeart sehr zu empfehlen.</value>
+Takt, Instrument und BPM Angaben sind bei dieser Aufnahmeart sehr zu empfehlen.</value>
   </data>
   <data name="Metronom_GroupBox.ToolTip" xml:space="preserve">
     <value>Ein einfaches Metronom, dass über DirectPlay ausgegeben wird.
@@ -248,19 +248,19 @@ Sioe bitte alle stecker und melden Sie sich bei Nichtbehebung
 per Mail an nico@bosshome.ch</value>
   </data>
   <metadata name="Com_Search_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>312, 20</value>
+    <value>530, 23</value>
   </metadata>
   <metadata name="Serial_BackgroundWorker.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>847, 28</value>
+    <value>1541, 29</value>
   </metadata>
-  <metadata name="Mesgeschwindigkeitsberechnung_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>485, 26</value>
+  <metadata name="Messgeschwindigkeitsberechnung_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>1019, 28</value>
   </metadata>
   <metadata name="GetAsyncKeyState_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1034, 25</value>
+    <value>1911, 29</value>
   </metadata>
   <metadata name="Display_Refresh_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1264, 16</value>
+    <value>2262, 28</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>83</value>
