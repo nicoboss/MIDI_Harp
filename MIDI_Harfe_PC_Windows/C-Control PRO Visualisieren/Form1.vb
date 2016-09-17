@@ -78,9 +78,6 @@ Public Class Form1
     Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO" 'HaHaHa müsste eigentlich Dim Lizenz As String = "" sein aber dies verwirrt Modder :D
     Dim Sprache = "DE"
 
-    'Datenspeicher für eingehende Daten
-    Dim In_Buffer As Short
-
     Dim TaktNr As Short
     Dim Takt_32stel As Byte
 
@@ -88,7 +85,7 @@ Public Class Form1
     Dim ADC_Anzahl As Byte = 28
     Dim ADC_Counter
     Dim ADC_Read(40) As Byte
-    Dim ADC(40) As Byte
+    Dim ADC(40) As UShort
 
     Dim Notenlaege(127) As Single
     Dim Note_Play(127) As Boolean
@@ -106,7 +103,7 @@ Public Class Form1
     Dim Messung_Pause As Boolean = False
 
     Dim AnzMessungen_alt As ULong
-    Dim Messintervall_Zahl As Short
+    Dim Messintervall_Zahl As ULong
     Dim Anz_Messungen As ULong
     Dim Anz_Verbindungsfehler As ULong
 
@@ -189,7 +186,7 @@ Public Class Form1
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
-        'MessageBox.Show(Asc(""))
+        'MessageBox.Show((256 >> 1).ToString())
 
         Noten_VerticalProgessBar = {
             C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar,
@@ -284,6 +281,10 @@ Public Class Form1
         Next port
 
         ComboBox_Comport.Sorted = True
+
+        If (ComboBox_Comport.Items.Count > 0) Then
+            ComboBox_Comport.SelectedIndex = ComboBox_Comport.Items.Count - 1
+        End If
     End Sub
 
     Private Sub Button_Connect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Connect.Click
@@ -319,10 +320,15 @@ Public Class Form1
             Com_Search_Timer.Enabled = False
             Messgeschwindigkeitsberechnung_Timer.Enabled = True
             Display_Refresh_Timer.Enabled = True
-            Serial_BackgroundWorker.RunWorkerAsync()
+            'MessageBox.Show("")
+            Dim task = New Task(AddressOf SerialPort1_DataReceived)
+            task.Start()
+            'MessageBox.Show("")
+            'Serial_BackgroundWorker.RunWorkerAsync()
+            'SerialPort1_DataReceived(Nothing, Nothing)
 
         Catch ex As Exception
-
+            MessageBox.Show(ex.ToString())
             'Fehlermeldung
             MessageBox.Show("Unter dem gewählten COM Port wurde kein Mikrokontroller erkannt. " _
             & vbCrLf & "Stellen Sie sicher, dass Sie den richtigen Port gewählt haben und der" _
@@ -369,8 +375,8 @@ Public Class Form1
     End Sub
 
 
-    Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
-
+    'Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
+    Async Sub SerialPort1_DataReceived()
         Dim NotenNr As Integer
         Messintervall_Zahl = 0
         Anz_Messungen = 0
@@ -386,100 +392,91 @@ Public Class Form1
             Noten_Versch(i) = Noten_Verschiebung(i).Text
         Next
 
+        Control.CheckForIllegalCrossThreadCalls = False
 
-        Do While (Not SerialPort1.ReadByte = 250)
-            'MessageBox.Show(SerialPort1.ReadByte)
-        Loop
+        For i = 1 To 910 'Die ersten 14 Messungen(14x65) überspringen, da unsaubere PC-Kommunikation am Anfang
+            SerialPort1.ReadByte()
+        Next
 
+
+        Dim high_value = SerialPort1_WaitForSync()
+        Dim low_value
 
         Do
             Try
-                'Hier werden die Daten empfangen
-                In_Buffer = 0
-                Control.CheckForIllegalCrossThreadCalls = False
-
                 For Each item As Byte In Noten_Reihenfolge
-                    ADC(item) = SerialPort1.ReadByte
-                    NotenNr = MidiNoteNr(item) + Halbtonversch + Noten_Versch(item)
-                    If NotenNr < 0 Then NotenNr = 0
-                    If NotenNr > 127 Then NotenNr = 127
-
-                    If ADC(item) >= Noten_StartW(item) And Note_Play(NotenNr) = False Then
-                        'MessageBox.Show(NotenNr & " on")
-                        Note_Play(NotenNr) = True
-                        If Volume_Steps_NumericUpDown.Value = 1 Then
-                            Note_Volume(NotenNr) = 100
-                        Else
-                            Note_Volume(NotenNr) = Math.Round(127 / Volume_Steps_NumericUpDown.Value * (ADC(item) - Volume_min_NumericUpDown.Value) / (Volume_max_NumericUpDown.Value - Volume_min_NumericUpDown.Value)) _
-                        * Volume_Steps_NumericUpDown.Value
-                        End If
-                        PlayMIDINote(NotenNr, Note_Volume(NotenNr))
-                        If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
+                    low_value = SerialPort1.ReadByte
+                    If (high_value = 128 And low_value > 127) Then
+                        high_value = low_value - 128
+                        GoTo theEnd
                     End If
 
-                    If ADC(item) < Noten_StopW(item) And Note_Play(NotenNr) = True Then
-                        'MessageBox.Show(NotenNr & " off")
-                        Note_Play(NotenNr) = False
-                        STOPMIDINote(NotenNr)
-                        If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
+                    ADC(item) = (256 * (high_value) + low_value)
+                    'Console.WriteLine("256 * " + high_value.ToString() + " + " + low_value.ToString() + " = " + ADC(item).ToString())
+
+                    high_value = SerialPort1.ReadByte
+                    'Grösser als 128, da bei 127 das gemessene lowbyte beim Messwert 128 und einem nachfolgendem synchbyte einen Uebertragungsfehler und somit eine Falschrotatoin auslösen würde  
+                    If (low_value = 128 And high_value > 128) Then
+                        Anz_Verbindungsfehler += 1
+                        Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
+                        high_value = high_value - 128
+                        GoTo theEnd
                     End If
+
+                    'NotenNr = MidiNoteNr(item) + Halbtonversch + Noten_Versch(item)
+                    'If NotenNr < 0 Then NotenNr = 0
+                    'If NotenNr > 127 Then NotenNr = 127
+
+                    'If ADC(item) >= Noten_StartW(item) And Note_Play(NotenNr) = False Then
+                    '    'MessageBox.Show(NotenNr & " on")
+                    '    Note_Play(NotenNr) = True
+                    '    If Volume_Steps_NumericUpDown.Value = 1 Then
+                    '        Note_Volume(NotenNr) = 100
+                    '    Else
+                    '        Note_Volume(NotenNr) = Math.Round(127 / Volume_Steps_NumericUpDown.Value * (ADC(item) - Volume_min_NumericUpDown.Value) / (Volume_max_NumericUpDown.Value - Volume_min_NumericUpDown.Value)) _
+                    '* Volume_Steps_NumericUpDown.Value
+                    '    End If
+                    '    PlayMIDINote(NotenNr, Note_Volume(NotenNr))
+                    '    If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
+                    'End If
+
+                    'If ADC(item) < Noten_StopW(item) And Note_Play(NotenNr) = True Then
+                    '    'MessageBox.Show(NotenNr & " off")
+                    '    Note_Play(NotenNr) = False
+                    '    STOPMIDINote(NotenNr)
+                    '    If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
+                    'End If
 
                     'Noten_VerticalProgessBar(item).Value = ADC(item)
                     'Noten_Wert(item).Text = ADC(item)
 
                 Next
 
+                Anz_Verbindungsfehler += 1
+                Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
+                SerialPort1_WaitForSync()
 
-                If Not 250 = SerialPort1.ReadByte() Then
+            Catch
+                Anz_Verbindungsfehler += 1
+                Anz_Verbindungsfehler_TextBox.Text = "Error"
+                Try
+                    SerialPort1_WaitForSync()
+                Catch
+                    Anz_Verbindungsfehler_TextBox.Text = "Verbindungsfehler"
                     'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
                     '& "Die laufende Aufnahme wurde pausiert" _
                     '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
                     '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
                     'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                    Anz_Verbindungsfehler += 1
-                    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " V"
-
-                    Do While (Not SerialPort1.ReadByte = 250)
-                    Loop
-
-                End If
-
-                Anz_Messungen += 1
-                Anz_Messungen_TextBox.Text = Anz_Messungen
-
-
-                'Diagramm_aktualisieren_i += 1
-
-                'If Diagramm_aktualisieren_i = 2 Then
-                'Diagramm_aktualisieren()
-                'Diagramm_aktualisieren_i = 0
-                'End If
-
-
-                If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Takt_Tick()
-
-            Catch
-                Anz_Verbindungsfehler += 1
-                Anz_Verbindungsfehler_TextBox.Text = "Error"
-
-                Try
-                    If Not SerialPort1.ReadByte = 250 Then
-                        'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                        '& "Die laufende Aufnahme wurde pausiert" _
-                        '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
-                        '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
-                        'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                        Anz_Verbindungsfehler += 1
-                        Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
-
-                        Do While (Not SerialPort1.ReadByte = 250)
-                        Loop
-                    End If
-                Catch
-                    Anz_Verbindungsfehler_TextBox.Text = "Verbindungsfehler"
                 End Try
-
             End Try
+
+theEnd:
+
+            Anz_Messungen += 1
+            'Anz_Messungen_TextBox.Text = Anz_Messungen
+
+            If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Takt_Tick()
 
             If SerialPort1_Stop = True Then
                 SerialPort1_Stop = False
@@ -489,6 +486,25 @@ Public Class Form1
         Loop
 
     End Sub
+
+
+    Function SerialPort1_WaitForSync()
+        Dim high_value
+        Dim low_value = SerialPort1.ReadByte
+        Do
+            high_value = SerialPort1.ReadByte
+            If (low_value = 128 And high_value > 127) Then
+                high_value = high_value - 128
+                Exit Do
+            End If
+            low_value = SerialPort1.ReadByte
+            If (high_value = 128 And low_value > 127) Then
+                high_value = low_value - 128
+                Exit Do
+            End If
+        Loop
+        Return high_value
+    End Function
 
 
     'Function SendKey_Oktave_set(ByVal Oktave As Integer) As Boolean
@@ -770,7 +786,7 @@ Public Class Form1
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
 
         For i = 0 To 34 Step 1
-            Noten_VerticalProgessBar(i).Value = ADC(i)
+            Noten_VerticalProgessBar(i).Value = (ADC(i) >> 7)
             Noten_Wert(i).Text = ADC(i)
         Next
 

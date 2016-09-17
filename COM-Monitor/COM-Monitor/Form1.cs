@@ -120,23 +120,24 @@ namespace COM_Monitor
             stopWatch.Start();
             while (true)
             {
-                while (true)
-                {
-                    //serial = SerialPort1.ReadByte();
-                    //MessageBox.Show(SerialPort1.ReadByte().ToString());
-                    //Invoke((MethodInvoker)delegate ()
-                    //{
-                    //    textBox1.AppendText(((char)serial).ToString());
-                    //});
-                    if (SerialPort1.ReadByte() == 250)
-                    {
-                        break;
-                    }
-                    //Console.WriteLine(SerialPort1.ReadByte().ToString());
-                }
+                //while (true)
+                //{
+                //    //serial = SerialPort1.ReadByte();
+                //    //MessageBox.Show(SerialPort1.ReadByte().ToString());
+                //    //Invoke((MethodInvoker)delegate ()
+                //    //{
+                //    //    textBox1.AppendText(((char)serial).ToString());
+                //    //});
+                //    if (SerialPort1.ReadByte() == 250)
+                //    {
+                //        break;
+                //    }
+                //    //Console.WriteLine(SerialPort1.ReadByte().ToString());
+                //}
+                SerialPort1.ReadByte();
                 ShowResultsCount++;
                 Anz_Messungen++;
-                if (ShowResultsCount == 5000)
+                if (ShowResultsCount == 100000)
                 {
                     stopWatch.Stop();
                     //MessageBox.Show("");
@@ -145,8 +146,9 @@ namespace COM_Monitor
                     {
                         try
                         {
+                            textBox1.AppendText(SerialPort1.ReadByte().ToString());
                             //250ms
-                            Anz_Messungen_TextBox.Text = Anz_Messungen.ToString();
+                            //Anz_Messungen_TextBox.Text = Anz_Messungen.ToString();
                             //Anz_Messungen_TextBox.Text = (Anz_Messungen - AnzMessungen_alt).ToString();
                             //Anz_Messungen_TextBox.Text = stopWatch.ElapsedMilliseconds.ToString();
                             Messintervall_Zahl = (Anz_Messungen - AnzMessungen_alt) / (stopWatch.ElapsedMilliseconds / 1000.0); //Achtung: Komischerweise Divison durch 0 wenn AnzMessungen_alt > Anz_Messungen! Wieso habe ich keine Ahnung.
