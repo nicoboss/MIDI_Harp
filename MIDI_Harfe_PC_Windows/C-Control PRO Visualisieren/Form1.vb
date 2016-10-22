@@ -1,9 +1,11 @@
 Option Explicit On
+'Option Strict On
 #Disable Warning BC42358 ' Because this call is not awaited, execution of the current method continues before the call is completed
 
 Imports System.IO.Ports.SerialPort
 Imports System.Text
 Imports System.Runtime.InteropServices
+Imports System.Threading
 Imports System.Threading.Tasks
 Imports Sanford.Multimedia.Midi
 Imports Sanford.Multimedia.Midi.UI
@@ -183,6 +185,8 @@ Public Class Form1
     Dim Tastenkombination_Key As New List(Of Byte)
     Dim Tastenkonbination_Klappenverschiebung As SByte
 
+    Dim Messwerte As New List(Of List(Of UShort))
+
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -310,7 +314,7 @@ Public Class Form1
             'Comport öffnen
             With SerialPort1
                 .PortName = ComboBox_Comport.Text
-                .BaudRate = 230400 'Baudrate
+                .BaudRate = 115200 '230400 '460800 'Baudrate
                 .DataBits = 8
                 .Encoding = System.Text.Encoding.Default
                 .Open()
@@ -372,18 +376,29 @@ Public Class Form1
         ComboBox_Comport.Enabled = True
         SerialPort1.Close()
 
+
+
     End Sub
 
 
     'Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
     Async Sub SerialPort1_DataReceived()
-        Dim NotenNr As Integer
+        Dim i as Integer
         Messintervall_Zahl = 0
         Anz_Messungen = 0
         AnzMessungen_alt = 0
         Anz_Verbindungsfehler = 0
         Anz_Messungen_TextBox.Text = "0"
         Anz_Verbindungsfehler_TextBox.Text = "0"
+
+        Messwerte.Clear()
+        For i = 0 To 31
+            Messwerte.Add(New List(Of UShort))
+        Next
+        
+
+
+
 
         Halbtonversch = Halbtonverschiebung.Value
         For i = 0 To 34
@@ -398,30 +413,113 @@ Public Class Form1
             SerialPort1.ReadByte()
         Next
 
+        SerialPort1_WaitForSync()
+        SerialPort1.ReadByte()
 
-        Dim high_value = SerialPort1_WaitForSync()
-        Dim low_value
+        'Dim high_value = SerialPort1_WaitForSync()
+        'Dim low_value
+        Dim messungen(70) as byte
+        'Dim messungen = new ArrayList()
+        Dim messung as byte
 
-        Do
+        Dim ADC_now as UShort
+        Dim NotenNr as Integer
+        
+        'SerialPort1.ReadByte()
+        'SerialPort1.ReadByte()
+        'Console.Clear()
+next_messung:
             Try
-                For Each item As Byte In Noten_Reihenfolge
-                    low_value = SerialPort1.ReadByte
-                    If (high_value = 128 And low_value > 127) Then
-                        high_value = low_value - 128
-                        GoTo theEnd
-                    End If
+                messung=1
+                NotenNr=1
+                SerialPort1.Read(messungen, 0, 65)
+                i=0
+                If (messungen(62) = 128 And messungen(63) > 127) Then
+                    messungen(62) = messungen(63) -128
+                    messungen(63) = messungen(64)
+                Else
+                    'Console.WriteLine(messungen(62))
+                    'Console.WriteLine(messungen(63))
+                    Anz_Verbindungsfehler += 1
+                    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
+                    SerialPort1_WaitForSync()
+                    SerialPort1.ReadByte()
+                    messung = 1
+                    GoTo next_messung
+                End If
+next_value:
+                if (i > 62) Then
+                    GoTo next_value_exit
+                End If
 
-                    ADC(item) = (256 * (high_value) + low_value)
-                    'Console.WriteLine("256 * " + high_value.ToString() + " + " + low_value.ToString() + " = " + ADC(item).ToString())
+            'If (messungen(i) = 128 And messungen(i+1) > 127) Then
+            '    i = 63
+            '    messungen(63) -= 128
+            '    messung=0
+            'ElseIf (messungen(i+1) = 128 And messungen(i+2) > 128)
+            '    'Grösser als 128, da bei 127 das gemessene lowbyte beim Messwert 128 und einem nachfolgendem synchbyte einen Uebertragungsfehler und somit eine Falschrotatoin auslösen würde  
+            '    'MessageBox.Show("")
+            '    Anz_Verbindungsfehler += 1
+            '    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " A"
+            '    SerialPort1_WaitForSync()
+            '    SerialPort1.ReadByte()
+            '    messung = 1
+            '    GoTo next_value_exit
+            'End If
 
-                    high_value = SerialPort1.ReadByte
-                    'Grösser als 128, da bei 127 das gemessene lowbyte beim Messwert 128 und einem nachfolgendem synchbyte einen Uebertragungsfehler und somit eine Falschrotatoin auslösen würde  
-                    If (low_value = 128 And high_value > 128) Then
-                        Anz_Verbindungsfehler += 1
-                        Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
-                        high_value = high_value - 128
-                        GoTo theEnd
-                    End If
+            'if (Anz_Messungen=10000) Then
+            'Console.WriteLine("256 * " + messungen(i).ToString() + " + " + messungen(i+1).ToString() + " = " + ADC(messung).ToString())
+            'End If
+
+            'Console.WriteLine("256 * " + messungen(i).ToString() + " + " + messungen(i+1).ToString() + " = " + ADC(messung).ToString())
+
+            'Console.WriteLine(i)
+
+            ADC_now = 256 * messungen(i) + messungen(i + 1)
+            If messung And 1& Then
+                ADC(NotenNr + 15) = ADC_now
+                Messwerte(NotenNr + 15).Add(ADC_now)
+                'Console.WriteLine(NotenNr)
+            Else
+                ADC(NotenNr) = ADC_now
+                Messwerte(NotenNr).Add(ADC_now)
+                'Console.WriteLine(NotenNr)
+                NotenNr += 1
+            End If
+            messung += 1
+            
+                
+                
+                if messung = 32 Then
+                    messung = 0
+                    NotenNr = 0
+                End If
+                i += 2
+                GoTo next_value
+next_value_exit:
+                'Environment.Exit(0)
+
+                'If (Not messung = 1) Then
+                '    Anz_Verbindungsfehler += 1
+                '    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " B"
+                '    SerialPort1_WaitForSync()
+                '    SerialPort1.ReadByte()
+                '    For Each messungswert in messungen
+                '        Console.WriteLine(messungswert.ToString())
+                '    Next
+                '    'Console.WriteLine("")
+                '    Console.WriteLine(messung)
+                '    messung = 1
+                '    Environment.Exit(0)
+                'End If
+
+                'if (Anz_Messungen=10000) Then
+                    'Environment.Exit(0)
+                'End If
+
+                'For Each item As Byte In Noten_Reihenfolge
+
+
 
                     'NotenNr = MidiNoteNr(item) + Halbtonversch + Noten_Versch(item)
                     'If NotenNr < 0 Then NotenNr = 0
@@ -450,11 +548,13 @@ Public Class Form1
                     'Noten_VerticalProgessBar(item).Value = ADC(item)
                     'Noten_Wert(item).Text = ADC(item)
 
-                Next
+                'Next
+                'Anz_Messungen += 1
+                'Continue Do
 
-                Anz_Verbindungsfehler += 1
-                Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
-                SerialPort1_WaitForSync()
+                'Anz_Verbindungsfehler += 1
+                'Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
+                'SerialPort1_WaitForSync()
 
             Catch
                 Anz_Verbindungsfehler += 1
@@ -471,7 +571,7 @@ Public Class Form1
                 End Try
             End Try
 
-theEnd:
+            'Environment.Exit(0)
 
             Anz_Messungen += 1
             'Anz_Messungen_TextBox.Text = Anz_Messungen
@@ -483,18 +583,22 @@ theEnd:
                 Exit Sub
             End If
 
-        Loop
+        Goto next_messung
 
     End Sub
 
 
+    'Liest so lange aus dem SerialPort1 Buffer bis er ein Synchbyte = 128 mit einem nachfolgendem modifiziertem Highbyte > 127 empfängt.
+    'Wird dieses als Lowbyte empfangen werden High- und Lowbyte getauscht
+    'Zurückgegeben wird das korrigierte Highbyte (Highbyte - 128)
+    'Alle anderen gelesenen Bytes werden verworfen
     Function SerialPort1_WaitForSync()
         Dim high_value
         Dim low_value = SerialPort1.ReadByte
         Do
             high_value = SerialPort1.ReadByte
             If (low_value = 128 And high_value > 127) Then
-                high_value = high_value - 128
+                high_value -= 128
                 Exit Do
             End If
             low_value = SerialPort1.ReadByte
@@ -784,11 +888,25 @@ theEnd:
 
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
+        Dim LetzteMesswerte as List(Of UShort)
+        'LetzteMesswerte.Clear()
+        Anz_Messungen_TextBox.Text = Anz_Messungen
+        Try
+            For i = 0 To 31 Step 1
+                'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
+                LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
+                Messwerte(i).Clear()
+                'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
+                'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
+                Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
+                'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
+                Noten_Wert(i).Text = ADC(i)
+                LetzteMesswerte.Clear()
+            Next
+        Catch ex As Exception
 
-        For i = 0 To 34 Step 1
-            Noten_VerticalProgessBar(i).Value = (ADC(i) >> 7)
-            Noten_Wert(i).Text = ADC(i)
-        Next
+        End Try
+
 
     End Sub
 
@@ -2294,6 +2412,10 @@ theEnd:
             & vbCrLf & "OS: Windews XP SP2 bis Windows 10" _
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
+    End Sub
+
+    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
     End Sub
 End Class
 
