@@ -45,3 +45,12 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Exclude binary- and temporary files
+*.pdb
+*pingme.txt
+MIDI_Harfe_PC_Windows/.vs
+MIDI_Harfe_PC_Windows/C-Control PRO Visualisieren/bin
+MIDI_Harfe_PC_Windows/C-Control PRO Visualisieren/obj
+MIDI_Harfe_PC_Windows/Sanford.Multimedia.Midi/bin
+MIDI_Harfe_PC_Windows/Sanford.Multimedia.Midi/obj

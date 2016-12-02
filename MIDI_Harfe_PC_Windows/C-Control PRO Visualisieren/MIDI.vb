@@ -100,7 +100,7 @@ Public Class MIDI
             Dim tickOffset As UInt32 = CType(beatOffset * ticksPerBeat, UInt32)
             If ev = NoteEvent.NoteOn OrElse ev = NoteEvent.NoteOff Then
                 TrackData.AddRange(TranslateTickTime(tickOffset))
-                TrackData.Add((ev << 4) Or (CByte(Channel) And &HF))
+                '''TrackData.Add((ev << 4) Or (CByte(Channel) And &HF))
                 TrackData.Add(note)
                 TrackData.Add(volume)
             Else

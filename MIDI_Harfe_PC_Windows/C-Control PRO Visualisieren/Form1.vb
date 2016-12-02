@@ -391,6 +391,10 @@ Public Class Form1
         Anz_Messungen_TextBox.Text = "0"
         Anz_Verbindungsfehler_TextBox.Text = "0"
 
+        Dim file As System.IO.StreamWriter
+        file = My.Computer.FileSystem.OpenTextFileWriter("C:\Users\nico\Desktop\logs\MIDI_Harp.txt", True)
+        Dim messarrey(32) As Integer
+
         Messwerte.Clear()
         For i = 0 To 31
             Messwerte.Add(New List(Of UShort))
@@ -479,10 +483,12 @@ next_value:
             If messung And 1& Then
                 ADC(NotenNr + 15) = ADC_now
                 Messwerte(NotenNr + 15).Add(ADC_now)
+                messarrey(NotenNr + 15) = ADC_now
                 'Console.WriteLine(NotenNr)
             Else
                 ADC(NotenNr) = ADC_now
                 Messwerte(NotenNr).Add(ADC_now)
+                messarrey(NotenNr) = ADC_now
                 'Console.WriteLine(NotenNr)
                 NotenNr += 1
             End If
@@ -572,7 +578,8 @@ next_value_exit:
             End Try
 
             'Environment.Exit(0)
-
+            
+            file.WriteLine(String.Join(";", messarrey.Skip(6).Take(7)))
             Anz_Messungen += 1
             'Anz_Messungen_TextBox.Text = Anz_Messungen
 
@@ -584,6 +591,7 @@ next_value_exit:
             End If
 
         Goto next_messung
+         file.Close()
 
     End Sub
 
@@ -894,6 +902,7 @@ next_value_exit:
         Try
             For i = 0 To 31 Step 1
                 'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
+
                 LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
                 Messwerte(i).Clear()
                 'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
