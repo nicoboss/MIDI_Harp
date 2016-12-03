@@ -392,7 +392,7 @@ Public Class Form1
         Anz_Verbindungsfehler_TextBox.Text = "0"
 
         Dim file As System.IO.StreamWriter
-        file = My.Computer.FileSystem.OpenTextFileWriter("C:\Users\nico\Desktop\logs\MIDI_Harp.txt", True)
+        file = My.Computer.FileSystem.OpenTextFileWriter("C:\Users\nico\Desktop\logs\MIDI_Harp " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt", True)
         Dim messarrey(32) As Integer
 
         Messwerte.Clear()
@@ -896,28 +896,96 @@ next_value_exit:
 
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
+        'Exit Sub
         Dim LetzteMesswerte as List(Of UShort)
         'LetzteMesswerte.Clear()
         Anz_Messungen_TextBox.Text = Anz_Messungen
-        Try
+        If (Messwerte.Count = 0)
+            Exit Sub
+        End If
+
+        Dim TriggerNr as New List(Of UShort)
+        Dim genauzeit As UShort = 0
+        Dim integralwert As ULong
+        
+        'Try
             For i = 0 To 31 Step 1
+                'Chart1.Series(i).Points.Clear()
+                integralwert = 0
                 'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
 
                 LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
                 Messwerte(i).Clear()
+                ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
+                ''    If (LetzteMesswerte(w) > 23000) '23000
+                ''        genauzeit = i
+                ''        If genauzeit > 15 Then
+                ''            genauzeit -= 16
+                ''        End If
+                ''        Chart1.Series(0).Points.AddXY(w*16+genauzeit,i)
+                ''        Display_Refresh_Timer.Stop
+                ''        'Chart1.Series(i).Points.DataBindY(LetzteMesswerte)
+                ''        Exit For
+                ''    End If
+                ''Next
+                
+                If (i = 9)
+                    Dim Durchschnittswert As ULong
+                    Dim tmp As Integer
+                
+                    For Each wert As ULong In LetzteMesswerte
+                        Durchschnittswert += wert
+                    Next
+                    Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
+                
+                    For Each wert As ULong In LetzteMesswerte
+                        tmp = wert
+                        tmp = tmp - Durchschnittswert
+                        integralwert += Math.Abs(tmp)
+                        Chart1.Series(i).Points.Add(tmp)
+                    Next
+                End If
+
+                
+                'If i=7 And integralwert<1500000 Then
+                '    Chart1.Series(0).Points.Clear()
+                '    Exit Sub
+                'End If
+                
+
                 'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
                 'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
-                Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
+                'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
                 'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
-                Noten_Wert(i).Text = ADC(i)
+                'Noten_Wert(i).Text = ADC(i)
                 LetzteMesswerte.Clear()
             Next
-        Catch ex As Exception
 
-        End Try
+        'Chart1.Series(0).Points.DataBindY(TriggerNr)
+        
+        'Catch ex As Exception
+
+        'End Try
+
+        
 
 
     End Sub
+
+    Public Function MaxValOfIntArray(ByRef TheArray As Array) As Integer
+        'This function gives max value of int array without sorting an array
+        Dim i As Integer
+        Dim MaxIntegersIndex As Integer
+        MaxIntegersIndex = 0
+
+        For i = 1 To UBound(TheArray)
+            If TheArray(i) > TheArray(MaxIntegersIndex) Then
+                MaxIntegersIndex = i
+            End If
+        Next
+        'index of max value is MaxValOfIntArray
+        MaxValOfIntArray = TheArray(MaxIntegersIndex)
+    End Function
 
 
 #Region " Sanford.Multimedia.Midi "
@@ -2424,6 +2492,10 @@ next_value_exit:
     End Sub
 
     Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+
+    End Sub
+
+    Private Sub Display_Refresh(sender As Object, e As EventArgs) Handles Display_Refresh_Timer.Tick
 
     End Sub
 End Class
