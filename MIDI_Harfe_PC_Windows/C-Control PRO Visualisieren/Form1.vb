@@ -907,15 +907,20 @@ next_value_exit:
         Dim TriggerNr as New List(Of UShort)
         Dim genauzeit As UShort = 0
         Dim integralwert As ULong
+        chart1.ChartAreas(0).AxisY.Minimum = 0
+        chart1.ChartAreas(0).AxisY.Maximum = 6000000
         
         'Try
             For i = 0 To 31 Step 1
-                'Chart1.Series(i).Points.Clear()
+                'Chart2.Series(i).Points.Clear()
                 integralwert = 0
                 'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
 
                 LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
-                Messwerte(i).Clear()
+                If Messwerte(i).Count > 200
+                    Messwerte(i).RemoveRange(0, Messwerte(i).Count()-199)
+                End If             
+
                 ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
                 ''    If (LetzteMesswerte(w) > 23000) '23000
                 ''        genauzeit = i
@@ -929,22 +934,33 @@ next_value_exit:
                 ''    End If
                 ''Next
                 
-                If (i = 9)
-                    Dim Durchschnittswert As ULong
-                    Dim tmp As Integer
+                'If (i = 8 Or i = 9 Or i = 10)
+                    'Dim Durchschnittswert As ULong
+                    'Dim tmp As Integer
+                
+                    'For Each wert As ULong In LetzteMesswerte
+                    '    Durchschnittswert += wert
+                    'Next
+                    'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
                 
                     For Each wert As ULong In LetzteMesswerte
-                        Durchschnittswert += wert
+                    'For w=0 To LetzteMesswerte.Count-1 Step 1
+                        'tmp = wert
+                        'tmp = tmp - Durchschnittswert
+                        integralwert += Math.Abs(wert-16384)
+                        If (i = 8 Or i=9 Or i=10)
+                            Chart2.Series(i).Points.Add(wert-16384)
+                            If Chart2.Series(i).Points.Count > 3000 Then
+                                Chart2.Series(i).Points.RemoveAt(0)
+                            End If
+                        End If
                     Next
-                    Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
-                
-                    For Each wert As ULong In LetzteMesswerte
-                        tmp = wert
-                        tmp = tmp - Durchschnittswert
-                        integralwert += Math.Abs(tmp)
-                        Chart1.Series(i).Points.Add(tmp)
-                    Next
-                End If
+                    If Chart1.Series(i).Points.Count > 30 Then
+                        Chart1.Series(i).Points.RemoveAt(0)
+                    End If
+                    
+                    Chart1.Series(i).Points.Add(integralwert)
+                'End If
 
                 
                 'If i=7 And integralwert<1500000 Then
@@ -2489,14 +2505,6 @@ next_value_exit:
             & vbCrLf & "OS: Windews XP SP2 bis Windows 10" _
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
-    End Sub
-
-    Private Sub Form1_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
-
-    End Sub
-
-    Private Sub Display_Refresh(sender As Object, e As EventArgs) Handles Display_Refresh_Timer.Tick
-
     End Sub
 End Class
 

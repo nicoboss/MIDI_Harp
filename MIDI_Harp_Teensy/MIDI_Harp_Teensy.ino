@@ -3,20 +3,22 @@
 #define USBSERIAL Serial       // for Leonardo, Teensy, Fubarino
 #define Syncbyte B10000000
 
+void MIDI_send(unsigned short value) {
+  delayMicroseconds(1);
+}
+
 void setup() {
-
-
-
 
 }
 
 
 void loop() {
   
-    // put your setup code here, to run once:
+  // put your setup code here, to run once:
   DDRD = B11111111;  // sets Arduino Port D to output
   pinMode(13, OUTPUT);
   digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
+  PORTD = 0;
 
   ADC *adc = new ADC(); // adc object
 
@@ -42,65 +44,50 @@ void loop() {
   unsigned short adc1_value;
   ADC::Sync_result  adc_messwert;
   char messungen[65];
-  byte messung = 0; 
-  /*
-  char messungen[] = { 128,
-    255, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255, 127, 255, 127, 255, 127, 255,
-    127, 255, 127, 255};
-
-  String myString = String(myword);
-  String largetext = myString + myString + myString + myString + myString +
-                     myString + myString + myString + myString + myString;
-  while(true)
-  {
-    Serial.write(myword, 65);
-    //USBSERIAL.print(myString);
-    
-  }
-*/
-  //PORTD = 0; //=B11110000
+  byte messung = 0;
+  int calibration[65] = {}; //nur 1,3,5,7,9,11,...,65 benutzt.
+  bool MIDI_out = false;
+  //bool MIDI_play[65];
+  //byte Notenreihenfolge[65];
+  
   messen:
   {
     messungen[0] = Syncbyte; //Sync
-    messung=1;
-    PORTD = 0;
-    delayMicroseconds(1);
+    messung=5; //=1
+    delayMicroseconds(2);
     adc_messwert = adc->analogSyncRead(A5, A2);
-    //PORTD = 0;
-    adc0_value = (unsigned short)adc_messwert.result_adc0 >> 1; //adc->analogRead(A5, ADC_0) >> 1;
-    adc1_value = (unsigned short)adc_messwert.result_adc1 >> 1; //adc->analogRead(A2, ADC_1) >> 1;
-    //Serial.println((unsigned short)adc_messwert.result_adc0);
-    //Serial.println((unsigned short)adc_messwert.result_adc1);
-    //adc0_value = adc->analogRead(A5, ADC_0) >> 1;
-    //adc1_value = adc->analogRead(A2, ADC_1) >> 1;
-    messungen[messung] = (char)(128 + (adc0_value >> 8)); messung++; //high
-    messungen[messung] = (char)adc0_value; messung++; //low
-    messungen[messung] = (char)(adc1_value >> 8); messung++; //high
-    messungen[messung] = (char)adc1_value; messung++; //low
-
-    //for (int i=242; i < 257; i++){ //15 Messungen B11110001 bis B11111111
-    for (int i=17; i <= 255; i+=17){ //i=B11110001; i <= B11111111
-      PORTD = i;
-      delayMicroseconds(1);
+    adc0_value = static_cast<unsigned short>(adc_messwert.result_adc0 >> 1); //adc->analogRead(A5, ADC_0) >> 1;
+    adc1_value = static_cast<unsigned short>(adc_messwert.result_adc1 >> 1); //adc->analogRead(A2, ADC_1) >> 1;
+    PORTD = 17;
+    if (adc0_value+calibration[1] > 16384) --calibration[1]; else ++calibration[1];
+    adc0_value += calibration[1];
+    if (MIDI_out == true) MIDI_send(adc0_value);
+    messungen[1] = static_cast<char>(128 + (adc0_value >> 8)); //high
+    messungen[2] = static_cast<char>(adc0_value); //low
+    if (adc1_value+calibration[3] > 16384) --calibration[3]; else ++calibration[3];
+    adc1_value += calibration[3];
+    if (MIDI_out == true) MIDI_send(adc1_value);
+    messungen[3] = static_cast<char>(adc1_value >> 8); //high
+    messungen[4] = static_cast<char>(adc1_value); //low
+    
+    for (byte i=17; i > 16; i+=17){ //i=B10001000; i = B11111111   
+      delayMicroseconds(2);
       adc_messwert = adc->analogSyncRead(A5, A2);
-      //PORTD = i;
-      adc0_value = (unsigned short)adc_messwert.result_adc0 >> 1; //adc->analogRead(A5, ADC_0) >> 1;
-      adc1_value = (unsigned short)adc_messwert.result_adc1 >> 1; //adc->analogRead(A2, ADC_1) >> 1;
-      //Serial.println(adc0_value);
-      //Serial.println(adc1_value);
-      //adc0_value = adc->analogRead(A5, ADC_0) >> 1;
-      //adc1_value = adc->analogRead(A2, ADC_1) >> 1;
-      messungen[messung] = (char)(adc0_value >> 8); messung++; //high
-      messungen[messung] = (char)adc0_value; messung++; //low
-      messungen[messung] = (char)(adc1_value >> 8); messung++; //high
-      messungen[messung] = (char)adc1_value; messung++; //low
+      adc0_value = static_cast<unsigned short>(adc_messwert.result_adc0 >> 1); //adc->analogRead(A5, ADC_0) >> 1;
+      adc1_value = static_cast<unsigned short>(adc_messwert.result_adc1 >> 1); //adc->analogRead(A2, ADC_1) >> 1;
+      PORTD = i;
+      if (adc0_value+calibration[messung] > 16384) --calibration[messung]; else ++calibration[messung];
+      adc0_value += calibration[messung];
+      if (MIDI_out == true) MIDI_send(adc0_value);
+      messungen[messung] = static_cast<char>(adc0_value >> 8); ++messung; //high
+      messungen[messung] = static_cast<char>(adc0_value); ++messung; //low
+      if (adc1_value+calibration[messung] > 16384) --calibration[messung]; else ++calibration[messung];
+      adc1_value += calibration[messung];
+      if (MIDI_out == true) MIDI_send(adc1_value);
+      messungen[messung] = static_cast<char>(adc1_value >> 8); ++messung; //high
+      messungen[messung] = static_cast<char>(adc1_value); ++messung; //low
     }
-    //PORTD = 240; //=B11110000
+    PORTD = 0;
     Serial.write(messungen, 65);
   }
   goto messen;

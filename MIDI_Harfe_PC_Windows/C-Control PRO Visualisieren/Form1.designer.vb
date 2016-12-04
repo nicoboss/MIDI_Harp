@@ -27,6 +27,40 @@ Partial Class Form1
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series33 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series34 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series35 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series36 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series37 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series38 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series39 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series40 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series41 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series42 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series43 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series44 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series45 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series46 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series47 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series48 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series49 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series50 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series51 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series52 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series53 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series54 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series55 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series56 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series57 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series58 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series59 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series60 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series61 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series62 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series63 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series64 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
         Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
         Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
@@ -427,6 +461,7 @@ Partial Class Form1
         Me.G4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.A4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
         Me.H4_VerticalProgessBar = New MIDI_Harfe.MTech010VerticalProgessBar()
+        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.Tastenkombinationen_GroupBox.SuspendLayout
         CType(Me.Tastenkombinationen_DataGridView,System.ComponentModel.ISupportInitialize).BeginInit
         Me.ToolTip_YesNo_GroupBox.SuspendLayout
@@ -485,6 +520,7 @@ Partial Class Form1
         CType(Me.C2_Klappe,System.ComponentModel.ISupportInitialize).BeginInit
         Me.Einstellungen_GroupBox.SuspendLayout
         Me.GroupBox2.SuspendLayout
+        CType(Me.Chart2,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'SerialPort1
@@ -4106,6 +4142,7 @@ Partial Class Form1
         Me.Panel1.AutoScroll = true
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.Chart2)
         Me.Panel1.Controls.Add(Me.Chart1)
         Me.Panel1.Controls.Add(Me.SendKeys_GroupBox)
         Me.Panel1.Controls.Add(Me.Tastenkombinationen_GroupBox)
@@ -4126,173 +4163,174 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
         Me.Chart1.Location = New System.Drawing.Point(19, 1512)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Series1.YValuesPerPoint = 2
-        Series2.ChartArea = "ChartArea1"
-        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series2"
-        Series3.ChartArea = "ChartArea1"
-        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series3.Legend = "Legend1"
-        Series3.Name = "Series3"
-        Series4.ChartArea = "ChartArea1"
-        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series4.Legend = "Legend1"
-        Series4.Name = "Series4"
-        Series5.ChartArea = "ChartArea1"
-        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series5.Legend = "Legend1"
-        Series5.Name = "Series5"
-        Series6.ChartArea = "ChartArea1"
-        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series6.Legend = "Legend1"
-        Series6.Name = "Series6"
-        Series7.ChartArea = "ChartArea1"
-        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series7.Legend = "Legend1"
-        Series7.Name = "Series7"
-        Series8.ChartArea = "ChartArea1"
-        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series8.Legend = "Legend1"
-        Series8.Name = "Series8"
-        Series9.ChartArea = "ChartArea1"
-        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series9.Legend = "Legend1"
-        Series9.Name = "Series9"
-        Series10.ChartArea = "ChartArea1"
-        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series10.Legend = "Legend1"
-        Series10.Name = "Series10"
-        Series11.ChartArea = "ChartArea1"
-        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series11.Legend = "Legend1"
-        Series11.Name = "Series11"
-        Series12.ChartArea = "ChartArea1"
-        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series12.Legend = "Legend1"
-        Series12.Name = "Series12"
-        Series13.ChartArea = "ChartArea1"
-        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series13.Legend = "Legend1"
-        Series13.Name = "Series13"
-        Series14.ChartArea = "ChartArea1"
-        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series14.Legend = "Legend1"
-        Series14.Name = "Series14"
-        Series15.ChartArea = "ChartArea1"
-        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series15.Legend = "Legend1"
-        Series15.Name = "Series15"
-        Series16.ChartArea = "ChartArea1"
-        Series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series16.Legend = "Legend1"
-        Series16.Name = "Series16"
-        Series17.ChartArea = "ChartArea1"
-        Series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series17.Legend = "Legend1"
-        Series17.Name = "Series17"
-        Series18.ChartArea = "ChartArea1"
-        Series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series18.Legend = "Legend1"
-        Series18.Name = "Series18"
-        Series19.ChartArea = "ChartArea1"
-        Series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series19.Legend = "Legend1"
-        Series19.Name = "Series19"
-        Series20.ChartArea = "ChartArea1"
-        Series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series20.Legend = "Legend1"
-        Series20.Name = "Series20"
-        Series21.ChartArea = "ChartArea1"
-        Series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series21.Legend = "Legend1"
-        Series21.Name = "Series21"
-        Series22.ChartArea = "ChartArea1"
-        Series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series22.Legend = "Legend1"
-        Series22.Name = "Series22"
-        Series23.ChartArea = "ChartArea1"
-        Series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series23.Legend = "Legend1"
-        Series23.Name = "Series23"
-        Series24.ChartArea = "ChartArea1"
-        Series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series24.Legend = "Legend1"
-        Series24.Name = "Series24"
-        Series25.ChartArea = "ChartArea1"
-        Series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series25.Legend = "Legend1"
-        Series25.Name = "Series25"
-        Series26.ChartArea = "ChartArea1"
-        Series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series26.Legend = "Legend1"
-        Series26.Name = "Series26"
-        Series27.ChartArea = "ChartArea1"
-        Series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series27.Legend = "Legend1"
-        Series27.Name = "Series27"
-        Series28.ChartArea = "ChartArea1"
-        Series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series28.Legend = "Legend1"
-        Series28.Name = "Series28"
-        Series29.ChartArea = "ChartArea1"
-        Series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series29.Legend = "Legend1"
-        Series29.Name = "Series29"
-        Series30.ChartArea = "ChartArea1"
-        Series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series30.Legend = "Legend1"
-        Series30.Name = "Series30"
-        Series31.ChartArea = "ChartArea1"
-        Series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series31.Legend = "Legend1"
-        Series31.Name = "Series31"
-        Series32.ChartArea = "ChartArea1"
-        Series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
-        Series32.Legend = "Legend1"
-        Series32.Name = "Series32"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Series.Add(Series3)
-        Me.Chart1.Series.Add(Series4)
-        Me.Chart1.Series.Add(Series5)
-        Me.Chart1.Series.Add(Series6)
-        Me.Chart1.Series.Add(Series7)
-        Me.Chart1.Series.Add(Series8)
-        Me.Chart1.Series.Add(Series9)
-        Me.Chart1.Series.Add(Series10)
-        Me.Chart1.Series.Add(Series11)
-        Me.Chart1.Series.Add(Series12)
-        Me.Chart1.Series.Add(Series13)
-        Me.Chart1.Series.Add(Series14)
-        Me.Chart1.Series.Add(Series15)
-        Me.Chart1.Series.Add(Series16)
-        Me.Chart1.Series.Add(Series17)
-        Me.Chart1.Series.Add(Series18)
-        Me.Chart1.Series.Add(Series19)
-        Me.Chart1.Series.Add(Series20)
-        Me.Chart1.Series.Add(Series21)
-        Me.Chart1.Series.Add(Series22)
-        Me.Chart1.Series.Add(Series23)
-        Me.Chart1.Series.Add(Series24)
-        Me.Chart1.Series.Add(Series25)
-        Me.Chart1.Series.Add(Series26)
-        Me.Chart1.Series.Add(Series27)
-        Me.Chart1.Series.Add(Series28)
-        Me.Chart1.Series.Add(Series29)
-        Me.Chart1.Series.Add(Series30)
-        Me.Chart1.Series.Add(Series31)
-        Me.Chart1.Series.Add(Series32)
+        Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
+        Series33.ChartArea = "ChartArea1"
+        Series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series33.Legend = "Legend1"
+        Series33.Name = "A,"
+        Series33.YValuesPerPoint = 2
+        Series34.ChartArea = "ChartArea1"
+        Series34.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series34.Legend = "Legend1"
+        Series34.Name = "H,"
+        Series35.ChartArea = "ChartArea1"
+        Series35.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series35.Legend = "Legend1"
+        Series35.Name = "C"
+        Series36.ChartArea = "ChartArea1"
+        Series36.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series36.Legend = "Legend1"
+        Series36.Name = "D"
+        Series37.ChartArea = "ChartArea1"
+        Series37.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series37.Legend = "Legend1"
+        Series37.Name = "E"
+        Series38.ChartArea = "ChartArea1"
+        Series38.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series38.Legend = "Legend1"
+        Series38.Name = "F"
+        Series39.ChartArea = "ChartArea1"
+        Series39.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series39.Legend = "Legend1"
+        Series39.Name = "G"
+        Series40.ChartArea = "ChartArea1"
+        Series40.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series40.Legend = "Legend1"
+        Series40.Name = "A"
+        Series41.ChartArea = "ChartArea1"
+        Series41.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series41.Legend = "Legend1"
+        Series41.Name = "H"
+        Series42.ChartArea = "ChartArea1"
+        Series42.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series42.Legend = "Legend1"
+        Series42.Name = "c"
+        Series43.ChartArea = "ChartArea1"
+        Series43.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series43.Legend = "Legend1"
+        Series43.Name = "d"
+        Series44.ChartArea = "ChartArea1"
+        Series44.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series44.Legend = "Legend1"
+        Series44.Name = "e"
+        Series45.ChartArea = "ChartArea1"
+        Series45.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series45.Legend = "Legend1"
+        Series45.Name = "f"
+        Series46.ChartArea = "ChartArea1"
+        Series46.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series46.Legend = "Legend1"
+        Series46.Name = "g"
+        Series47.ChartArea = "ChartArea1"
+        Series47.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series47.Legend = "Legend1"
+        Series47.Name = "a"
+        Series48.ChartArea = "ChartArea1"
+        Series48.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series48.Legend = "Legend1"
+        Series48.Name = "h"
+        Series49.ChartArea = "ChartArea1"
+        Series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series49.Legend = "Legend1"
+        Series49.Name = "c'"
+        Series50.ChartArea = "ChartArea1"
+        Series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series50.Legend = "Legend1"
+        Series50.Name = "d'"
+        Series51.ChartArea = "ChartArea1"
+        Series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series51.Legend = "Legend1"
+        Series51.Name = "e'"
+        Series52.ChartArea = "ChartArea1"
+        Series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series52.Legend = "Legend1"
+        Series52.Name = "f'"
+        Series53.ChartArea = "ChartArea1"
+        Series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series53.Legend = "Legend1"
+        Series53.Name = "g'"
+        Series54.ChartArea = "ChartArea1"
+        Series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series54.Legend = "Legend1"
+        Series54.Name = "a'"
+        Series55.ChartArea = "ChartArea1"
+        Series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series55.Legend = "Legend1"
+        Series55.Name = "h'"
+        Series56.ChartArea = "ChartArea1"
+        Series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series56.Legend = "Legend1"
+        Series56.Name = "c''"
+        Series57.ChartArea = "ChartArea1"
+        Series57.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series57.Legend = "Legend1"
+        Series57.Name = "d''"
+        Series58.ChartArea = "ChartArea1"
+        Series58.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series58.Legend = "Legend1"
+        Series58.Name = "e''"
+        Series59.ChartArea = "ChartArea1"
+        Series59.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series59.Legend = "Legend1"
+        Series59.Name = "f''"
+        Series60.ChartArea = "ChartArea1"
+        Series60.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series60.Legend = "Legend1"
+        Series60.Name = "g''"
+        Series61.ChartArea = "ChartArea1"
+        Series61.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series61.Legend = "Legend1"
+        Series61.Name = "a''"
+        Series62.ChartArea = "ChartArea1"
+        Series62.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series62.Legend = "Legend1"
+        Series62.Name = "h''"
+        Series63.ChartArea = "ChartArea1"
+        Series63.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series63.Legend = "Legend1"
+        Series63.Name = "c'''"
+        Series64.ChartArea = "ChartArea1"
+        Series64.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series64.Legend = "Legend1"
+        Series64.Name = "d'''"
+        Me.Chart1.Series.Add(Series33)
+        Me.Chart1.Series.Add(Series34)
+        Me.Chart1.Series.Add(Series35)
+        Me.Chart1.Series.Add(Series36)
+        Me.Chart1.Series.Add(Series37)
+        Me.Chart1.Series.Add(Series38)
+        Me.Chart1.Series.Add(Series39)
+        Me.Chart1.Series.Add(Series40)
+        Me.Chart1.Series.Add(Series41)
+        Me.Chart1.Series.Add(Series42)
+        Me.Chart1.Series.Add(Series43)
+        Me.Chart1.Series.Add(Series44)
+        Me.Chart1.Series.Add(Series45)
+        Me.Chart1.Series.Add(Series46)
+        Me.Chart1.Series.Add(Series47)
+        Me.Chart1.Series.Add(Series48)
+        Me.Chart1.Series.Add(Series49)
+        Me.Chart1.Series.Add(Series50)
+        Me.Chart1.Series.Add(Series51)
+        Me.Chart1.Series.Add(Series52)
+        Me.Chart1.Series.Add(Series53)
+        Me.Chart1.Series.Add(Series54)
+        Me.Chart1.Series.Add(Series55)
+        Me.Chart1.Series.Add(Series56)
+        Me.Chart1.Series.Add(Series57)
+        Me.Chart1.Series.Add(Series58)
+        Me.Chart1.Series.Add(Series59)
+        Me.Chart1.Series.Add(Series60)
+        Me.Chart1.Series.Add(Series61)
+        Me.Chart1.Series.Add(Series62)
+        Me.Chart1.Series.Add(Series63)
+        Me.Chart1.Series.Add(Series64)
         Me.Chart1.Size = New System.Drawing.Size(2469, 555)
         Me.Chart1.TabIndex = 199
         Me.Chart1.Text = "Chart1"
@@ -4685,7 +4723,7 @@ Partial Class Form1
         '
         'Display_Refresh_Timer
         '
-        Me.Display_Refresh_Timer.Interval = 200
+        Me.Display_Refresh_Timer.Interval = 10
         '
         'C6_VerticalProgessBar
         '
@@ -5039,6 +5077,180 @@ Partial Class Form1
         Me.H4_VerticalProgessBar.TabIndex = 9
         Me.H4_VerticalProgessBar.Tag = "20"
         '
+        'Chart2
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart2.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart2.Legends.Add(Legend1)
+        Me.Chart2.Location = New System.Drawing.Point(19, 2099)
+        Me.Chart2.Name = "Chart2"
+        Me.Chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
+        Series1.ChartArea = "ChartArea1"
+        Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series1.Legend = "Legend1"
+        Series1.Name = "A,"
+        Series1.YValuesPerPoint = 2
+        Series2.ChartArea = "ChartArea1"
+        Series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series2.Legend = "Legend1"
+        Series2.Name = "H,"
+        Series3.ChartArea = "ChartArea1"
+        Series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series3.Legend = "Legend1"
+        Series3.Name = "C"
+        Series4.ChartArea = "ChartArea1"
+        Series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series4.Legend = "Legend1"
+        Series4.Name = "D"
+        Series5.ChartArea = "ChartArea1"
+        Series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series5.Legend = "Legend1"
+        Series5.Name = "E"
+        Series6.ChartArea = "ChartArea1"
+        Series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series6.Legend = "Legend1"
+        Series6.Name = "F"
+        Series7.ChartArea = "ChartArea1"
+        Series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series7.Legend = "Legend1"
+        Series7.Name = "G"
+        Series8.ChartArea = "ChartArea1"
+        Series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series8.Legend = "Legend1"
+        Series8.Name = "A"
+        Series9.ChartArea = "ChartArea1"
+        Series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series9.Legend = "Legend1"
+        Series9.Name = "H"
+        Series10.ChartArea = "ChartArea1"
+        Series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series10.Legend = "Legend1"
+        Series10.Name = "c"
+        Series11.ChartArea = "ChartArea1"
+        Series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series11.Legend = "Legend1"
+        Series11.Name = "d"
+        Series12.ChartArea = "ChartArea1"
+        Series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series12.Legend = "Legend1"
+        Series12.Name = "e"
+        Series13.ChartArea = "ChartArea1"
+        Series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series13.Legend = "Legend1"
+        Series13.Name = "f"
+        Series14.ChartArea = "ChartArea1"
+        Series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series14.Legend = "Legend1"
+        Series14.Name = "g"
+        Series15.ChartArea = "ChartArea1"
+        Series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series15.Legend = "Legend1"
+        Series15.Name = "a"
+        Series16.ChartArea = "ChartArea1"
+        Series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series16.Legend = "Legend1"
+        Series16.Name = "h"
+        Series17.ChartArea = "ChartArea1"
+        Series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series17.Legend = "Legend1"
+        Series17.Name = "c'"
+        Series18.ChartArea = "ChartArea1"
+        Series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series18.Legend = "Legend1"
+        Series18.Name = "d'"
+        Series19.ChartArea = "ChartArea1"
+        Series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series19.Legend = "Legend1"
+        Series19.Name = "e'"
+        Series20.ChartArea = "ChartArea1"
+        Series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series20.Legend = "Legend1"
+        Series20.Name = "f'"
+        Series21.ChartArea = "ChartArea1"
+        Series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series21.Legend = "Legend1"
+        Series21.Name = "g'"
+        Series22.ChartArea = "ChartArea1"
+        Series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series22.Legend = "Legend1"
+        Series22.Name = "a'"
+        Series23.ChartArea = "ChartArea1"
+        Series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series23.Legend = "Legend1"
+        Series23.Name = "h'"
+        Series24.ChartArea = "ChartArea1"
+        Series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series24.Legend = "Legend1"
+        Series24.Name = "c''"
+        Series25.ChartArea = "ChartArea1"
+        Series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series25.Legend = "Legend1"
+        Series25.Name = "d''"
+        Series26.ChartArea = "ChartArea1"
+        Series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series26.Legend = "Legend1"
+        Series26.Name = "e''"
+        Series27.ChartArea = "ChartArea1"
+        Series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series27.Legend = "Legend1"
+        Series27.Name = "f''"
+        Series28.ChartArea = "ChartArea1"
+        Series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series28.Legend = "Legend1"
+        Series28.Name = "g''"
+        Series29.ChartArea = "ChartArea1"
+        Series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series29.Legend = "Legend1"
+        Series29.Name = "a''"
+        Series30.ChartArea = "ChartArea1"
+        Series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series30.Legend = "Legend1"
+        Series30.Name = "h''"
+        Series31.ChartArea = "ChartArea1"
+        Series31.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series31.Legend = "Legend1"
+        Series31.Name = "c'''"
+        Series32.ChartArea = "ChartArea1"
+        Series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series32.Legend = "Legend1"
+        Series32.Name = "d'''"
+        Me.Chart2.Series.Add(Series1)
+        Me.Chart2.Series.Add(Series2)
+        Me.Chart2.Series.Add(Series3)
+        Me.Chart2.Series.Add(Series4)
+        Me.Chart2.Series.Add(Series5)
+        Me.Chart2.Series.Add(Series6)
+        Me.Chart2.Series.Add(Series7)
+        Me.Chart2.Series.Add(Series8)
+        Me.Chart2.Series.Add(Series9)
+        Me.Chart2.Series.Add(Series10)
+        Me.Chart2.Series.Add(Series11)
+        Me.Chart2.Series.Add(Series12)
+        Me.Chart2.Series.Add(Series13)
+        Me.Chart2.Series.Add(Series14)
+        Me.Chart2.Series.Add(Series15)
+        Me.Chart2.Series.Add(Series16)
+        Me.Chart2.Series.Add(Series17)
+        Me.Chart2.Series.Add(Series18)
+        Me.Chart2.Series.Add(Series19)
+        Me.Chart2.Series.Add(Series20)
+        Me.Chart2.Series.Add(Series21)
+        Me.Chart2.Series.Add(Series22)
+        Me.Chart2.Series.Add(Series23)
+        Me.Chart2.Series.Add(Series24)
+        Me.Chart2.Series.Add(Series25)
+        Me.Chart2.Series.Add(Series26)
+        Me.Chart2.Series.Add(Series27)
+        Me.Chart2.Series.Add(Series28)
+        Me.Chart2.Series.Add(Series29)
+        Me.Chart2.Series.Add(Series30)
+        Me.Chart2.Series.Add(Series31)
+        Me.Chart2.Series.Add(Series32)
+        Me.Chart2.Size = New System.Drawing.Size(2469, 555)
+        Me.Chart2.TabIndex = 200
+        Me.Chart2.Text = "Chart2"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(12!, 25!)
@@ -5138,6 +5350,7 @@ Partial Class Form1
         CType(Me.C2_Klappe,System.ComponentModel.ISupportInitialize).EndInit
         Me.Einstellungen_GroupBox.ResumeLayout(false)
         Me.GroupBox2.ResumeLayout(false)
+        CType(Me.Chart2,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
 
 End Sub
@@ -5507,4 +5720,5 @@ End Sub
     Friend WithEvents Latenz_Label As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents Chart2 As DataVisualization.Charting.Chart
 End Class
