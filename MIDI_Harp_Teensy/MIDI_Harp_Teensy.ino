@@ -3,11 +3,10 @@
 #define USBSERIAL Serial       // for Leonardo, Teensy, Fubarino
 #define Syncbyte B10000000
 
-void MIDI_send(unsigned short value) {
-  delayMicroseconds(1);
-}
-
 void setup() {
+
+
+
 
 }
 
@@ -16,9 +15,9 @@ void loop() {
   
   // put your setup code here, to run once:
   DDRD = B11111111;  // sets Arduino Port D to output
+  PORTD = 0;
   pinMode(13, OUTPUT);
   digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-  PORTD = 0;
 
   ADC *adc = new ADC(); // adc object
 
@@ -44,51 +43,51 @@ void loop() {
   unsigned short adc1_value;
   ADC::Sync_result  adc_messwert;
   char messungen[65];
-  byte messung = 0;
-  int calibration[65] = {}; //nur 1,3,5,7,9,11,...,65 benutzt.
-  bool MIDI_out = false;
-  //bool MIDI_play[65];
-  //byte Notenreihenfolge[65];
+  signed short calibration[32] = {};
+  bool MIDI_aktiviert = false;
+  bool MIDI_play[32] = {};
+  unsigned short integral2D[255][32] = {};
+  unsigned long integralwert[32] = {};
   
+  unsigned char messung = 0;
+  unsigned char hhigh;
+  unsigned char saite;
+  
+  //delayMicroseconds(1);
+
   messen:
   {
     messungen[0] = Syncbyte; //Sync
-    messung=5; //=1
-    delayMicroseconds(2);
-    adc_messwert = adc->analogSyncRead(A5, A2);
-    adc0_value = static_cast<unsigned short>(adc_messwert.result_adc0 >> 1); //adc->analogRead(A5, ADC_0) >> 1;
-    adc1_value = static_cast<unsigned short>(adc_messwert.result_adc1 >> 1); //adc->analogRead(A2, ADC_1) >> 1;
-    PORTD = 17;
-    if (adc0_value+calibration[1] > 16384) --calibration[1]; else ++calibration[1];
-    adc0_value += calibration[1];
-    if (MIDI_out == true) MIDI_send(adc0_value);
-    messungen[1] = static_cast<char>(128 + (adc0_value >> 8)); //high
-    messungen[2] = static_cast<char>(adc0_value); //low
-    if (adc1_value+calibration[3] > 16384) --calibration[3]; else ++calibration[3];
-    adc1_value += calibration[3];
-    if (MIDI_out == true) MIDI_send(adc1_value);
-    messungen[3] = static_cast<char>(adc1_value >> 8); //high
-    messungen[4] = static_cast<char>(adc1_value); //low
+    hhigh = 128;
+    messung=1;
+    saite=0;
+
+    unsigned char siebzehner[16];
+    for (unsigned char i=0; i < 15; ++i) siebzehner[i]=17*(i+1);
+    siebzehner[15]=0;
     
-    for (byte i=17; i > 16; i+=17){ //i=B10001000; i = B11111111   
-      delayMicroseconds(2);
+    for (unsigned char i=0; i < 16; ++i){
       adc_messwert = adc->analogSyncRead(A5, A2);
-      adc0_value = static_cast<unsigned short>(adc_messwert.result_adc0 >> 1); //adc->analogRead(A5, ADC_0) >> 1;
-      adc1_value = static_cast<unsigned short>(adc_messwert.result_adc1 >> 1); //adc->analogRead(A2, ADC_1) >> 1;
-      PORTD = i;
-      if (adc0_value+calibration[messung] > 16384) --calibration[messung]; else ++calibration[messung];
-      adc0_value += calibration[messung];
-      if (MIDI_out == true) MIDI_send(adc0_value);
-      messungen[messung] = static_cast<char>(adc0_value >> 8); ++messung; //high
-      messungen[messung] = static_cast<char>(adc0_value); ++messung; //low
-      if (adc1_value+calibration[messung] > 16384) --calibration[messung]; else ++calibration[messung];
-      adc1_value += calibration[messung];
-      if (MIDI_out == true) MIDI_send(adc1_value);
-      messungen[messung] = static_cast<char>(adc1_value >> 8); ++messung; //high
-      messungen[messung] = static_cast<char>(adc1_value); ++messung; //low
+      PORTD = siebzehner[i];
+      adc0_value = (unsigned short)adc_messwert.result_adc0 >> 1; //adc->analogRead(A5, ADC_0) >> 1;
+      adc1_value = (unsigned short)adc_messwert.result_adc1 >> 1; //adc->analogRead(A2, ADC_1) >> 1;
+
+      if (MIDI_aktiviert == false) {
+        messungen[messung++] = (char)(hhigh + (adc0_value >> 8)); hhigh=0; //high
+        messungen[messung++] = (char)adc0_value; //low
+        messungen[messung++] = (char)(adc1_value >> 8); //high
+        messungen[messung++] = (char)adc1_value; //low
+      } else {
+        if (adc0_value+calibration[saite] > 16383) --calibration[saite]; else ++calibration[saite];
+        if (adc1_value+calibration[saite] > 16383) --calibration[saite]; else ++calibration[saite];
+
+        
+      }
+
     }
-    PORTD = 0;
-    Serial.write(messungen, 65);
+    if (MIDI_aktiviert == false) {
+      Serial.write(messungen, 65);
+    }
   }
   goto messen;
 }

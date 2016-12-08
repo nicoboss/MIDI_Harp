@@ -87,7 +87,7 @@ Public Class Form1
     Dim ADC_Anzahl As Byte = 28
     Dim ADC_Counter
     Dim ADC_Read(40) As Byte
-    Dim ADC(40) As UShort
+    Dim ADC(40) As Integer
 
     Dim Notenlaege(127) As Single
     Dim Note_Play(127) As Boolean
@@ -185,7 +185,7 @@ Public Class Form1
     Dim Tastenkombination_Key As New List(Of Byte)
     Dim Tastenkonbination_Klappenverschiebung As SByte
 
-    Dim Messwerte As New List(Of List(Of UShort))
+    Dim Messwerte As New List(Of List(Of Integer))
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -397,7 +397,7 @@ Public Class Form1
 
         Messwerte.Clear()
         For i = 0 To 31
-            Messwerte.Add(New List(Of UShort))
+            Messwerte.Add(New List(Of Integer))
         Next
         
 
@@ -426,8 +426,9 @@ Public Class Form1
         'Dim messungen = new ArrayList()
         Dim messung as byte
 
-        Dim ADC_now as UShort
+        Dim ADC_now as Integer
         Dim NotenNr as Integer
+        Dim calibration(70) As Integer
         
         'SerialPort1.ReadByte()
         'SerialPort1.ReadByte()
@@ -456,30 +457,15 @@ next_value:
                     GoTo next_value_exit
                 End If
 
-            'If (messungen(i) = 128 And messungen(i+1) > 127) Then
-            '    i = 63
-            '    messungen(63) -= 128
-            '    messung=0
-            'ElseIf (messungen(i+1) = 128 And messungen(i+2) > 128)
-            '    'Grösser als 128, da bei 127 das gemessene lowbyte beim Messwert 128 und einem nachfolgendem synchbyte einen Uebertragungsfehler und somit eine Falschrotatoin auslösen würde  
-            '    'MessageBox.Show("")
-            '    Anz_Verbindungsfehler += 1
-            '    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " A"
-            '    SerialPort1_WaitForSync()
-            '    SerialPort1.ReadByte()
-            '    messung = 1
-            '    GoTo next_value_exit
-            'End If
-
-            'if (Anz_Messungen=10000) Then
-            'Console.WriteLine("256 * " + messungen(i).ToString() + " + " + messungen(i+1).ToString() + " = " + ADC(messung).ToString())
-            'End If
-
-            'Console.WriteLine("256 * " + messungen(i).ToString() + " + " + messungen(i+1).ToString() + " = " + ADC(messung).ToString())
-
-            'Console.WriteLine(i)
-
             ADC_now = 256 * messungen(i) + messungen(i + 1)
+
+            if (ADC_now + calibration(i) > 16383) Then
+                calibration(i) -= 1
+            Else
+                calibration(i) += 1
+            End If
+            ADC_now += calibration(i)
+
             If messung And 1& Then
                 ADC(NotenNr + 15) = ADC_now
                 Messwerte(NotenNr + 15).Add(ADC_now)
@@ -494,8 +480,6 @@ next_value:
             End If
             messung += 1
             
-                
-                
                 if messung = 32 Then
                     messung = 0
                     NotenNr = 0
@@ -503,64 +487,6 @@ next_value:
                 i += 2
                 GoTo next_value
 next_value_exit:
-                'Environment.Exit(0)
-
-                'If (Not messung = 1) Then
-                '    Anz_Verbindungsfehler += 1
-                '    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " B"
-                '    SerialPort1_WaitForSync()
-                '    SerialPort1.ReadByte()
-                '    For Each messungswert in messungen
-                '        Console.WriteLine(messungswert.ToString())
-                '    Next
-                '    'Console.WriteLine("")
-                '    Console.WriteLine(messung)
-                '    messung = 1
-                '    Environment.Exit(0)
-                'End If
-
-                'if (Anz_Messungen=10000) Then
-                    'Environment.Exit(0)
-                'End If
-
-                'For Each item As Byte In Noten_Reihenfolge
-
-
-
-                    'NotenNr = MidiNoteNr(item) + Halbtonversch + Noten_Versch(item)
-                    'If NotenNr < 0 Then NotenNr = 0
-                    'If NotenNr > 127 Then NotenNr = 127
-
-                    'If ADC(item) >= Noten_StartW(item) And Note_Play(NotenNr) = False Then
-                    '    'MessageBox.Show(NotenNr & " on")
-                    '    Note_Play(NotenNr) = True
-                    '    If Volume_Steps_NumericUpDown.Value = 1 Then
-                    '        Note_Volume(NotenNr) = 100
-                    '    Else
-                    '        Note_Volume(NotenNr) = Math.Round(127 / Volume_Steps_NumericUpDown.Value * (ADC(item) - Volume_min_NumericUpDown.Value) / (Volume_max_NumericUpDown.Value - Volume_min_NumericUpDown.Value)) _
-                    '* Volume_Steps_NumericUpDown.Value
-                    '    End If
-                    '    PlayMIDINote(NotenNr, Note_Volume(NotenNr))
-                    '    If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
-                    'End If
-
-                    'If ADC(item) < Noten_StopW(item) And Note_Play(NotenNr) = True Then
-                    '    'MessageBox.Show(NotenNr & " off")
-                    '    Note_Play(NotenNr) = False
-                    '    STOPMIDINote(NotenNr)
-                    '    If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
-                    'End If
-
-                    'Noten_VerticalProgessBar(item).Value = ADC(item)
-                    'Noten_Wert(item).Text = ADC(item)
-
-                'Next
-                'Anz_Messungen += 1
-                'Continue Do
-
-                'Anz_Verbindungsfehler += 1
-                'Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
-                'SerialPort1_WaitForSync()
 
             Catch
                 Anz_Verbindungsfehler += 1
@@ -897,18 +823,22 @@ next_value_exit:
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
         'Exit Sub
-        Dim LetzteMesswerte as List(Of UShort)
+        Dim LetzteMesswerte as List(Of Integer)
         'LetzteMesswerte.Clear()
         Anz_Messungen_TextBox.Text = Anz_Messungen
         If (Messwerte.Count = 0)
             Exit Sub
         End If
 
-        Dim TriggerNr as New List(Of UShort)
+        Dim TriggerNr As New List(Of UShort)
         Dim genauzeit As UShort = 0
         Dim integralwert As ULong
+
         chart1.ChartAreas(0).AxisY.Minimum = 0
         chart1.ChartAreas(0).AxisY.Maximum = 6000000
+
+        chart2.ChartAreas(0).AxisY.Minimum = -40000
+        chart2.ChartAreas(0).AxisY.Maximum = 40000
         
         'Try
             For i = 0 To 31 Step 1
@@ -918,8 +848,8 @@ next_value_exit:
 
                 LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
                 If Messwerte(i).Count > 200
-                    Messwerte(i).RemoveRange(0, Messwerte(i).Count()-199)
-                End If             
+                    Messwerte(i).Clear
+                End If
 
                 ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
                 ''    If (LetzteMesswerte(w) > 23000) '23000
@@ -943,23 +873,23 @@ next_value_exit:
                     'Next
                     'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
                 
-                    For Each wert As ULong In LetzteMesswerte
+                    For Each wert As Long In LetzteMesswerte
                     'For w=0 To LetzteMesswerte.Count-1 Step 1
                         'tmp = wert
                         'tmp = tmp - Durchschnittswert
                         integralwert += Math.Abs(wert-16384)
-                        If (i = 8 Or i=9 Or i=10)
+                        'If (i = 11 Or i = 17)
                             Chart2.Series(i).Points.Add(wert-16384)
-                            If Chart2.Series(i).Points.Count > 3000 Then
+                            If Chart2.Series(i).Points.Count > 200 Then
                                 Chart2.Series(i).Points.RemoveAt(0)
                             End If
-                        End If
+                        'End If
                     Next
-                    If Chart1.Series(i).Points.Count > 30 Then
-                        Chart1.Series(i).Points.RemoveAt(0)
-                    End If
+                    'If Chart1.Series(i).Points.Count > 30 Then
+                    '    Chart1.Series(i).Points.RemoveAt(0)
+                    'End If
                     
-                    Chart1.Series(i).Points.Add(integralwert)
+                    'Chart1.Series(i).Points.Add(integralwert)
                 'End If
 
                 
