@@ -186,6 +186,7 @@ Public Class Form1
     Dim Tastenkonbination_Klappenverschiebung As SByte
 
     Dim Messwerte As New List(Of List(Of Integer))
+    Dim Integralwerte As New List(Of List(Of Integer))
 
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -395,9 +396,14 @@ Public Class Form1
         file = My.Computer.FileSystem.OpenTextFileWriter("C:\Users\nico\Desktop\logs\MIDI_Harp " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt", True)
         Dim messarrey(32) As Integer
 
+        Dim zero_array(10000) as Integer
         Messwerte.Clear()
+        Integralwerte.Clear()
         For i = 0 To 31
             Messwerte.Add(New List(Of Integer))
+            Messwerte(i).AddRange(zero_array)
+            Integralwerte.Add(New List(Of Integer))
+            Integralwerte(i).AddRange(zero_array)
         Next
         
 
@@ -429,6 +435,8 @@ Public Class Form1
         Dim ADC_now as Integer
         Dim NotenNr as Integer
         Dim calibration(70) As Integer
+        Dim Integralwert(70) As Integer
+        Dim NotenNr_real As Integer
         
         'SerialPort1.ReadByte()
         'SerialPort1.ReadByte()
@@ -464,20 +472,43 @@ next_value:
             Else
                 calibration(i) += 1
             End If
-            ADC_now += calibration(i)
+            ADC_now += calibration(i) - 16383
+
 
             If messung And 1& Then
-                ADC(NotenNr + 15) = ADC_now
-                Messwerte(NotenNr + 15).Add(ADC_now)
-                messarrey(NotenNr + 15) = ADC_now
-                'Console.WriteLine(NotenNr)
+                NotenNr_real = NotenNr + 15
             Else
-                ADC(NotenNr) = ADC_now
-                Messwerte(NotenNr).Add(ADC_now)
-                messarrey(NotenNr) = ADC_now
-                'Console.WriteLine(NotenNr)
+                NotenNr_real = NotenNr
                 NotenNr += 1
             End If
+
+            Messwerte(NotenNr_real).Add(ADC_now)
+            Integralwert(NotenNr_real) += Math.Abs(ADC_now)
+            If (Messwerte(NotenNr_real).Count > 40) Then
+                Integralwert(NotenNr_real) -= Math.Abs(Messwerte(NotenNr_real).ElementAt(Messwerte(NotenNr_real).Count - 100))
+                Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
+
+                If Integralwert(NotenNr_real) >= 1000000 And Note_Play(NotenNr_real) = False Then
+                    'MessageBox.Show(NotenNr & " on")
+                    Note_Play(NotenNr_real) = True
+                    Note_Volume(NotenNr_real) = 100
+                    PlayMIDINote(NotenNr_real + 45, Note_Volume(NotenNr_real))
+                    'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
+                End If
+
+                If Integralwert(NotenNr_real) < 100000 And Note_Play(NotenNr_real) = True Then
+                    'MessageBox.Show(NotenNr & " off")
+                    Note_Play(NotenNr_real) = False
+                    STOPMIDINote(NotenNr_real)
+                    'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
+                End If
+                
+                'Messwerte(NotenNr_15).RemoveAt(Messwerte(NotenNr_15).Count - 1)
+            End If
+            ADC(NotenNr_real) = ADC_now
+            messarrey(NotenNr_real) = ADC_now
+            'Console.WriteLine(NotenNr)
+
             messung += 1
             
                 if messung = 32 Then
@@ -824,6 +855,7 @@ next_value_exit:
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
         'Exit Sub
         Dim LetzteMesswerte as List(Of Integer)
+        Dim LetzteIntegralwerte as List(Of Integer)
         'LetzteMesswerte.Clear()
         Anz_Messungen_TextBox.Text = Anz_Messungen
         If (Messwerte.Count = 0)
@@ -835,7 +867,7 @@ next_value_exit:
         Dim integralwert As ULong
 
         chart1.ChartAreas(0).AxisY.Minimum = 0
-        chart1.ChartAreas(0).AxisY.Maximum = 6000000
+        chart1.ChartAreas(0).AxisY.Maximum = 2000000
 
         chart2.ChartAreas(0).AxisY.Minimum = -40000
         chart2.ChartAreas(0).AxisY.Maximum = 40000
@@ -846,65 +878,64 @@ next_value_exit:
                 integralwert = 0
                 'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
 
-                LetzteMesswerte = Messwerte(i).GetRange(0,Messwerte(i).Count)
-                If Messwerte(i).Count > 200
-                    Messwerte(i).Clear
+                LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-201,200)
+                LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count-201,200)
+
+            ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
+            ''    If (LetzteMesswerte(w) > 23000) '23000
+            ''        genauzeit = i
+            ''        If genauzeit > 15 Then
+            ''            genauzeit -= 16
+            ''        End If
+            ''        Chart1.Series(0).Points.AddXY(w*16+genauzeit,i)
+            ''        Display_Refresh_Timer.Stop
+            ''        'Chart1.Series(i).Points.DataBindY(LetzteMesswerte)
+            ''        Exit For
+            ''    End If
+            ''Next
+
+            'If (i = 8 Or i = 9 Or i = 10)
+            'Dim Durchschnittswert As ULong
+            'Dim tmp As Integer
+
+            'For Each wert As ULong In LetzteMesswerte
+            '    Durchschnittswert += wert
+            'Next
+            'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
+
+            For Each wert As Long In LetzteIntegralwerte
+                Chart1.Series(i).Points.Add(wert)
+                If Chart1.Series(i).Points.Count > 200 Then
+                    Chart1.Series(i).Points.RemoveAt(0)
                 End If
+            Next
 
-                ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
-                ''    If (LetzteMesswerte(w) > 23000) '23000
-                ''        genauzeit = i
-                ''        If genauzeit > 15 Then
-                ''            genauzeit -= 16
-                ''        End If
-                ''        Chart1.Series(0).Points.AddXY(w*16+genauzeit,i)
-                ''        Display_Refresh_Timer.Stop
-                ''        'Chart1.Series(i).Points.DataBindY(LetzteMesswerte)
-                ''        Exit For
-                ''    End If
-                ''Next
-                
-                'If (i = 8 Or i = 9 Or i = 10)
-                    'Dim Durchschnittswert As ULong
-                    'Dim tmp As Integer
-                
-                    'For Each wert As ULong In LetzteMesswerte
-                    '    Durchschnittswert += wert
-                    'Next
-                    'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
-                
-                    For Each wert As Long In LetzteMesswerte
-                    'For w=0 To LetzteMesswerte.Count-1 Step 1
-                        'tmp = wert
-                        'tmp = tmp - Durchschnittswert
-                        integralwert += Math.Abs(wert-16384)
-                        'If (i = 11 Or i = 17)
-                            Chart2.Series(i).Points.Add(wert-16384)
-                            If Chart2.Series(i).Points.Count > 200 Then
-                                Chart2.Series(i).Points.RemoveAt(0)
-                            End If
-                        'End If
-                    Next
-                    'If Chart1.Series(i).Points.Count > 30 Then
-                    '    Chart1.Series(i).Points.RemoveAt(0)
-                    'End If
-                    
-                    'Chart1.Series(i).Points.Add(integralwert)
-                'End If
+            For Each wert As Long In LetzteMesswerte
+                Chart2.Series(i).Points.Add(wert)
+                If Chart2.Series(i).Points.Count > 200 Then
+                    Chart2.Series(i).Points.RemoveAt(0)
+                End If
+            Next
+            'If Chart1.Series(i).Points.Count > 30 Then
+            '    Chart1.Series(i).Points.RemoveAt(0)
+            'End If
 
-                
-                'If i=7 And integralwert<1500000 Then
-                '    Chart1.Series(0).Points.Clear()
-                '    Exit Sub
-                'End If
-                
+            'Chart1.Series(i).Points.Add(integralwert)
+            'End If
 
-                'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
-                'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
-                'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
-                'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
-                'Noten_Wert(i).Text = ADC(i)
-                LetzteMesswerte.Clear()
+
+            'If i=7 And integralwert<1500000 Then
+            '    Chart1.Series(0).Points.Clear()
+            '    Exit Sub
+            'End If
+
+
+            'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
+            'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
+            'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
+            'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
+            'Noten_Wert(i).Text = ADC(i)
+            LetzteMesswerte.Clear()
             Next
 
         'Chart1.Series(0).Points.DataBindY(TriggerNr)
@@ -2435,6 +2466,10 @@ next_value_exit:
             & vbCrLf & "OS: Windews XP SP2 bis Windows 10" _
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
+    End Sub
+
+    Private Sub Display_Refresh(sender As Object, e As EventArgs) Handles Display_Refresh_Timer.Tick
+
     End Sub
 End Class
 
