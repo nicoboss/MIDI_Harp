@@ -484,11 +484,11 @@ next_value:
 
             Messwerte(NotenNr_real).Add(ADC_now)
             Integralwert(NotenNr_real) += Math.Abs(ADC_now)
-            If (Messwerte(NotenNr_real).Count > 40) Then
+            If (Messwerte(NotenNr_real).Count > 100) Then
                 Integralwert(NotenNr_real) -= Math.Abs(Messwerte(NotenNr_real).ElementAt(Messwerte(NotenNr_real).Count - 100))
                 Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
 
-                If Integralwert(NotenNr_real) >= 1000000 And Note_Play(NotenNr_real) = False Then
+                If Integralwert(NotenNr_real) >= 1100000 And Note_Play(NotenNr_real) = False Then
                     'MessageBox.Show(NotenNr & " on")
                     Note_Play(NotenNr_real) = True
                     Note_Volume(NotenNr_real) = 100

@@ -3,15 +3,20 @@
 #define USBSERIAL Serial       // for Leonardo, Teensy, Fubarino
 #define Syncbyte B10000000
 
-void setup() {
-
-
-
-
+void setup() { 
 }
 
 
 void loop() {
+
+/*
+  while(true) {
+    usbMIDI.sendNoteOn(66, 100, 1);
+    delay(250);
+    usbMIDI.sendNoteOff(66, 100, 1);
+    delay(100);
+  }
+*/
   
   // put your setup code here, to run once:
   DDRD = B11111111;  // sets Arduino Port D to output
@@ -43,16 +48,17 @@ void loop() {
   unsigned short adc1_value;
   ADC::Sync_result  adc_messwert;
   char messungen[65];
-  signed short calibration[32] = {};
-  bool MIDI_aktiviert = false;
+  signed int adc_value[32];
+  signed int calibration[32] = {};
+  bool MIDI_aktiviert = true;
   bool MIDI_play[32] = {};
-  unsigned short integral2D[255][32] = {};
-  unsigned long integralwert[32] = {};
+  signed long integral2D[255][32] = {};
+  signed long integralwert[32] = {};
+  unsigned char integralcounter[32] = {};
   
   unsigned char messung = 0;
   unsigned char hhigh;
   unsigned char saite;
-  
   //delayMicroseconds(1);
 
   messen:
@@ -78,9 +84,31 @@ void loop() {
         messungen[messung++] = (char)(adc1_value >> 8); //high
         messungen[messung++] = (char)adc1_value; //low
       } else {
-        if (adc0_value+calibration[saite] > 16383) --calibration[saite]; else ++calibration[saite];
-        if (adc1_value+calibration[saite] > 16383) --calibration[saite]; else ++calibration[saite];
-
+        adc_value[saite]=adc0_value;
+        adc_value[saite+16]=adc1_value;
+        for (int i=saite; i <= saite+16; i += 16) {
+          if (adc_value[i]+calibration[i] > 16383) --calibration[i]; else ++calibration[i];
+          adc_value[i] += calibration[i] - 16383;
+          //Serial.println(adc_value[i]);
+          integralwert[i] += adc_value[i] - integral2D[integralcounter[i]][i]; //Fehler!!!
+          Serial.println(integralwert[i]);
+          continue;
+          integral2D[integralcounter[i]][i]=adc_value[i];
+          integralcounter[i]++;
+          continue;
+          if(MIDI_play[i]) {
+            if(integralwert[i] < 100000) {
+              usbMIDI.sendNoteOff(i + 45, 100, 1);
+              MIDI_play[i] = false;
+            }
+          } else {
+            if(integralwert[saite] > 1100000) {
+              usbMIDI.sendNoteOn(i + 45, 100, 1);
+              MIDI_play[i] = true;
+            }
+          }
+        }
+        ++saite;
         
       }
 
