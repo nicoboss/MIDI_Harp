@@ -5249,7 +5249,7 @@ Partial Class Form1
         '
         'Display_Refresh_Timer
         '
-        Me.Display_Refresh_Timer.Interval = 1000000
+        Me.Display_Refresh_Timer.Interval = 200
         '
         'Form1
         '

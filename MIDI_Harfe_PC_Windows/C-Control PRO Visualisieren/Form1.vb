@@ -484,11 +484,11 @@ next_value:
 
             Messwerte(NotenNr_real).Add(ADC_now)
             Integralwert(NotenNr_real) += Math.Abs(ADC_now)
-            If (Messwerte(NotenNr_real).Count > 100) Then
+            If (Messwerte(NotenNr_real).Count > 40) Then
                 Integralwert(NotenNr_real) -= Math.Abs(Messwerte(NotenNr_real).ElementAt(Messwerte(NotenNr_real).Count - 100))
                 Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
 
-                If Integralwert(NotenNr_real) >= 1100000 And Note_Play(NotenNr_real) = False Then
+                If Integralwert(NotenNr_real) >= 1000000 And Note_Play(NotenNr_real) = False Then
                     'MessageBox.Show(NotenNr & " on")
                     Note_Play(NotenNr_real) = True
                     Note_Volume(NotenNr_real) = 100
@@ -865,6 +865,7 @@ next_value_exit:
         Dim TriggerNr As New List(Of UShort)
         Dim genauzeit As UShort = 0
         Dim integralwert As ULong
+        Dim integralwert_avg As ULong
 
         chart1.ChartAreas(0).AxisY.Minimum = 0
         chart1.ChartAreas(0).AxisY.Maximum = 2000000
@@ -904,11 +905,13 @@ next_value_exit:
             'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
 
             For Each wert As Long In LetzteIntegralwerte
+                integralwert_avg += wert
                 Chart1.Series(i).Points.Add(wert)
                 If Chart1.Series(i).Points.Count > 200 Then
                     Chart1.Series(i).Points.RemoveAt(0)
                 End If
             Next
+            integralwert_avg /= LetzteIntegralwerte.Count * 5000
 
             For Each wert As Long In LetzteMesswerte
                 Chart2.Series(i).Points.Add(wert)
@@ -929,8 +932,11 @@ next_value_exit:
             '    Exit Sub
             'End If
 
+            If (integralwert_avg > 255) Then
+                integralwert_avg = 255
+            End If
 
-            'Noten_VerticalProgessBar(i).Value = LetzteMesswerte.Max()/128
+            Noten_VerticalProgessBar(i).Value = integralwert_avg
             'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
             'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
             'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
@@ -943,11 +949,9 @@ next_value_exit:
         'Catch ex As Exception
 
         'End Try
-
-        
-
-
     End Sub
+
+
 
     Public Function MaxValOfIntArray(ByRef TheArray As Array) As Integer
         'This function gives max value of int array without sorting an array
