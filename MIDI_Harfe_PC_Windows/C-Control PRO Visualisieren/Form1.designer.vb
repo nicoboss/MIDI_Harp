@@ -95,6 +95,40 @@ Partial Class Form1
         Dim Series62 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series63 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim Series64 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea3 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend3 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series65 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series66 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series67 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series68 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series69 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series70 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series71 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series72 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series73 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series74 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series75 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series76 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series77 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series78 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series79 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series80 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series81 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series82 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series83 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series84 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series85 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series86 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series87 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series88 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series89 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series90 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series91 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series92 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series93 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series94 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series95 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim Series96 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.SerialPort1 = New System.IO.Ports.SerialPort(Me.components)
         Me.SaveMIDIDialog = New System.Windows.Forms.SaveFileDialog()
         Me.Takt = New System.Windows.Forms.Timer(Me.components)
@@ -427,8 +461,9 @@ Partial Class Form1
         Me.Messgeschwindigkeitsberechnung_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.GetAsyncKeyState_Timer = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Chart2 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Ableitung2_Chart = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Messwerte_Chart = New System.Windows.Forms.DataVisualization.Charting.Chart()
+        Me.Integral_Chart = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.MIDIOut_GroupBox = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.MIDIOut_Einstellungen_GroupBox = New System.Windows.Forms.GroupBox()
@@ -503,8 +538,9 @@ Partial Class Form1
         Me.GroupBox3.SuspendLayout
         CType(Me.C_Klappe,System.ComponentModel.ISupportInitialize).BeginInit
         Me.Panel1.SuspendLayout
-        CType(Me.Chart2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.Chart1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Ableitung2_Chart,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Messwerte_Chart,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Integral_Chart,System.ComponentModel.ISupportInitialize).BeginInit
         Me.MIDIOut_GroupBox.SuspendLayout
         Me.MIDIOut_Einstellungen_GroupBox.SuspendLayout
         CType(Me.Latenz_NumericUpDown,System.ComponentModel.ISupportInitialize).BeginInit
@@ -549,7 +585,7 @@ Partial Class Form1
         Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Save_Label)
         Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Pause_Label)
         Me.Tastenkombinationen_GroupBox.Controls.Add(Me.Start_Label)
-        Me.Tastenkombinationen_GroupBox.Location = New System.Drawing.Point(1532, 431)
+        Me.Tastenkombinationen_GroupBox.Location = New System.Drawing.Point(1539, 438)
         Me.Tastenkombinationen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Tastenkombinationen_GroupBox.Name = "Tastenkombinationen_GroupBox"
         Me.Tastenkombinationen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -727,7 +763,7 @@ Partial Class Form1
         Me.META_Tags_GroupBox.Controls.Add(Me.Bemerkung_GroupBox)
         Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox10)
         Me.META_Tags_GroupBox.Controls.Add(Me.GroupBox8)
-        Me.META_Tags_GroupBox.Location = New System.Drawing.Point(1099, 21)
+        Me.META_Tags_GroupBox.Location = New System.Drawing.Point(1106, 28)
         Me.META_Tags_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.META_Tags_GroupBox.Name = "META_Tags_GroupBox"
         Me.META_Tags_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -984,7 +1020,7 @@ Partial Class Form1
         Me.Connect_GroupBox.Controls.Add(Me.ComboBox_Comport)
         Me.Connect_GroupBox.Controls.Add(Me.Button_Disconnect)
         Me.Connect_GroupBox.Controls.Add(Me.Button_Connect)
-        Me.Connect_GroupBox.Location = New System.Drawing.Point(19, 21)
+        Me.Connect_GroupBox.Location = New System.Drawing.Point(26, 28)
         Me.Connect_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Connect_GroupBox.Name = "Connect_GroupBox"
         Me.Connect_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -1249,7 +1285,7 @@ Partial Class Form1
         Me.SendKey_GroupBox.Controls.Add(Me.SendKey_h)
         Me.SendKey_GroupBox.Controls.Add(Me.SendKey_f)
         Me.SendKey_GroupBox.Controls.Add(Me.SendKey_c)
-        Me.SendKey_GroupBox.Location = New System.Drawing.Point(1099, 622)
+        Me.SendKey_GroupBox.Location = New System.Drawing.Point(1106, 629)
         Me.SendKey_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.SendKey_GroupBox.Name = "SendKey_GroupBox"
         Me.SendKey_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -1533,7 +1569,7 @@ Partial Class Form1
         '
         Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_OFF)
         Me.SendKeys_GroupBox.Controls.Add(Me.SendKeys_ON)
-        Me.SendKeys_GroupBox.Location = New System.Drawing.Point(19, 819)
+        Me.SendKeys_GroupBox.Location = New System.Drawing.Point(26, 826)
         Me.SendKeys_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.SendKeys_GroupBox.Name = "SendKeys_GroupBox"
         Me.SendKeys_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -1653,7 +1689,7 @@ Partial Class Form1
         Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.FlowLayoutPanel3)
         Me.MIDI_Visualisierung_GroupBox.Controls.Add(Me.GroupBox5)
         Me.MIDI_Visualisierung_GroupBox.ForeColor = System.Drawing.SystemColors.ControlDarkDark
-        Me.MIDI_Visualisierung_GroupBox.Location = New System.Drawing.Point(19, 932)
+        Me.MIDI_Visualisierung_GroupBox.Location = New System.Drawing.Point(26, 939)
         Me.MIDI_Visualisierung_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.MIDI_Visualisierung_GroupBox.Name = "MIDI_Visualisierung_GroupBox"
         Me.MIDI_Visualisierung_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -4494,8 +4530,9 @@ Partial Class Form1
         Me.Panel1.AutoScroll = true
         Me.Panel1.BackColor = System.Drawing.SystemColors.Control
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel1.Controls.Add(Me.Chart2)
-        Me.Panel1.Controls.Add(Me.Chart1)
+        Me.Panel1.Controls.Add(Me.Ableitung2_Chart)
+        Me.Panel1.Controls.Add(Me.Messwerte_Chart)
+        Me.Panel1.Controls.Add(Me.Integral_Chart)
         Me.Panel1.Controls.Add(Me.SendKeys_GroupBox)
         Me.Panel1.Controls.Add(Me.Tastenkombinationen_GroupBox)
         Me.Panel1.Controls.Add(Me.SendKey_GroupBox)
@@ -4513,15 +4550,15 @@ Partial Class Form1
         Me.Panel1.Size = New System.Drawing.Size(2501, 2088)
         Me.Panel1.TabIndex = 0
         '
-        'Chart2
+        'Ableitung2_Chart
         '
         ChartArea1.Name = "ChartArea1"
-        Me.Chart2.ChartAreas.Add(ChartArea1)
+        Me.Ableitung2_Chart.ChartAreas.Add(ChartArea1)
         Legend1.Name = "Legend1"
-        Me.Chart2.Legends.Add(Legend1)
-        Me.Chart2.Location = New System.Drawing.Point(19, 2099)
-        Me.Chart2.Name = "Chart2"
-        Me.Chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
+        Me.Ableitung2_Chart.Legends.Add(Legend1)
+        Me.Ableitung2_Chart.Location = New System.Drawing.Point(26, 1505)
+        Me.Ableitung2_Chart.Name = "Ableitung2_Chart"
+        Me.Ableitung2_Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
         Series1.ChartArea = "ChartArea1"
         Series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series1.Legend = "Legend1"
@@ -4651,51 +4688,51 @@ Partial Class Form1
         Series32.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series32.Legend = "Legend1"
         Series32.Name = "d'''"
-        Me.Chart2.Series.Add(Series1)
-        Me.Chart2.Series.Add(Series2)
-        Me.Chart2.Series.Add(Series3)
-        Me.Chart2.Series.Add(Series4)
-        Me.Chart2.Series.Add(Series5)
-        Me.Chart2.Series.Add(Series6)
-        Me.Chart2.Series.Add(Series7)
-        Me.Chart2.Series.Add(Series8)
-        Me.Chart2.Series.Add(Series9)
-        Me.Chart2.Series.Add(Series10)
-        Me.Chart2.Series.Add(Series11)
-        Me.Chart2.Series.Add(Series12)
-        Me.Chart2.Series.Add(Series13)
-        Me.Chart2.Series.Add(Series14)
-        Me.Chart2.Series.Add(Series15)
-        Me.Chart2.Series.Add(Series16)
-        Me.Chart2.Series.Add(Series17)
-        Me.Chart2.Series.Add(Series18)
-        Me.Chart2.Series.Add(Series19)
-        Me.Chart2.Series.Add(Series20)
-        Me.Chart2.Series.Add(Series21)
-        Me.Chart2.Series.Add(Series22)
-        Me.Chart2.Series.Add(Series23)
-        Me.Chart2.Series.Add(Series24)
-        Me.Chart2.Series.Add(Series25)
-        Me.Chart2.Series.Add(Series26)
-        Me.Chart2.Series.Add(Series27)
-        Me.Chart2.Series.Add(Series28)
-        Me.Chart2.Series.Add(Series29)
-        Me.Chart2.Series.Add(Series30)
-        Me.Chart2.Series.Add(Series31)
-        Me.Chart2.Series.Add(Series32)
-        Me.Chart2.Size = New System.Drawing.Size(2469, 555)
-        Me.Chart2.TabIndex = 200
-        Me.Chart2.Text = "Chart2"
+        Me.Ableitung2_Chart.Series.Add(Series1)
+        Me.Ableitung2_Chart.Series.Add(Series2)
+        Me.Ableitung2_Chart.Series.Add(Series3)
+        Me.Ableitung2_Chart.Series.Add(Series4)
+        Me.Ableitung2_Chart.Series.Add(Series5)
+        Me.Ableitung2_Chart.Series.Add(Series6)
+        Me.Ableitung2_Chart.Series.Add(Series7)
+        Me.Ableitung2_Chart.Series.Add(Series8)
+        Me.Ableitung2_Chart.Series.Add(Series9)
+        Me.Ableitung2_Chart.Series.Add(Series10)
+        Me.Ableitung2_Chart.Series.Add(Series11)
+        Me.Ableitung2_Chart.Series.Add(Series12)
+        Me.Ableitung2_Chart.Series.Add(Series13)
+        Me.Ableitung2_Chart.Series.Add(Series14)
+        Me.Ableitung2_Chart.Series.Add(Series15)
+        Me.Ableitung2_Chart.Series.Add(Series16)
+        Me.Ableitung2_Chart.Series.Add(Series17)
+        Me.Ableitung2_Chart.Series.Add(Series18)
+        Me.Ableitung2_Chart.Series.Add(Series19)
+        Me.Ableitung2_Chart.Series.Add(Series20)
+        Me.Ableitung2_Chart.Series.Add(Series21)
+        Me.Ableitung2_Chart.Series.Add(Series22)
+        Me.Ableitung2_Chart.Series.Add(Series23)
+        Me.Ableitung2_Chart.Series.Add(Series24)
+        Me.Ableitung2_Chart.Series.Add(Series25)
+        Me.Ableitung2_Chart.Series.Add(Series26)
+        Me.Ableitung2_Chart.Series.Add(Series27)
+        Me.Ableitung2_Chart.Series.Add(Series28)
+        Me.Ableitung2_Chart.Series.Add(Series29)
+        Me.Ableitung2_Chart.Series.Add(Series30)
+        Me.Ableitung2_Chart.Series.Add(Series31)
+        Me.Ableitung2_Chart.Series.Add(Series32)
+        Me.Ableitung2_Chart.Size = New System.Drawing.Size(2469, 555)
+        Me.Ableitung2_Chart.TabIndex = 201
+        Me.Ableitung2_Chart.Text = "2. Ableitung"
         '
-        'Chart1
+        'Messwerte_Chart
         '
         ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Me.Messwerte_Chart.ChartAreas.Add(ChartArea2)
         Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
-        Me.Chart1.Location = New System.Drawing.Point(19, 1512)
-        Me.Chart1.Name = "Chart1"
-        Me.Chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
+        Me.Messwerte_Chart.Legends.Add(Legend2)
+        Me.Messwerte_Chart.Location = New System.Drawing.Point(26, 2648)
+        Me.Messwerte_Chart.Name = "Messwerte_Chart"
+        Me.Messwerte_Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
         Series33.ChartArea = "ChartArea1"
         Series33.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series33.Legend = "Legend1"
@@ -4825,41 +4862,215 @@ Partial Class Form1
         Series64.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
         Series64.Legend = "Legend1"
         Series64.Name = "d'''"
-        Me.Chart1.Series.Add(Series33)
-        Me.Chart1.Series.Add(Series34)
-        Me.Chart1.Series.Add(Series35)
-        Me.Chart1.Series.Add(Series36)
-        Me.Chart1.Series.Add(Series37)
-        Me.Chart1.Series.Add(Series38)
-        Me.Chart1.Series.Add(Series39)
-        Me.Chart1.Series.Add(Series40)
-        Me.Chart1.Series.Add(Series41)
-        Me.Chart1.Series.Add(Series42)
-        Me.Chart1.Series.Add(Series43)
-        Me.Chart1.Series.Add(Series44)
-        Me.Chart1.Series.Add(Series45)
-        Me.Chart1.Series.Add(Series46)
-        Me.Chart1.Series.Add(Series47)
-        Me.Chart1.Series.Add(Series48)
-        Me.Chart1.Series.Add(Series49)
-        Me.Chart1.Series.Add(Series50)
-        Me.Chart1.Series.Add(Series51)
-        Me.Chart1.Series.Add(Series52)
-        Me.Chart1.Series.Add(Series53)
-        Me.Chart1.Series.Add(Series54)
-        Me.Chart1.Series.Add(Series55)
-        Me.Chart1.Series.Add(Series56)
-        Me.Chart1.Series.Add(Series57)
-        Me.Chart1.Series.Add(Series58)
-        Me.Chart1.Series.Add(Series59)
-        Me.Chart1.Series.Add(Series60)
-        Me.Chart1.Series.Add(Series61)
-        Me.Chart1.Series.Add(Series62)
-        Me.Chart1.Series.Add(Series63)
-        Me.Chart1.Series.Add(Series64)
-        Me.Chart1.Size = New System.Drawing.Size(2469, 555)
-        Me.Chart1.TabIndex = 199
-        Me.Chart1.Text = "Chart1"
+        Me.Messwerte_Chart.Series.Add(Series33)
+        Me.Messwerte_Chart.Series.Add(Series34)
+        Me.Messwerte_Chart.Series.Add(Series35)
+        Me.Messwerte_Chart.Series.Add(Series36)
+        Me.Messwerte_Chart.Series.Add(Series37)
+        Me.Messwerte_Chart.Series.Add(Series38)
+        Me.Messwerte_Chart.Series.Add(Series39)
+        Me.Messwerte_Chart.Series.Add(Series40)
+        Me.Messwerte_Chart.Series.Add(Series41)
+        Me.Messwerte_Chart.Series.Add(Series42)
+        Me.Messwerte_Chart.Series.Add(Series43)
+        Me.Messwerte_Chart.Series.Add(Series44)
+        Me.Messwerte_Chart.Series.Add(Series45)
+        Me.Messwerte_Chart.Series.Add(Series46)
+        Me.Messwerte_Chart.Series.Add(Series47)
+        Me.Messwerte_Chart.Series.Add(Series48)
+        Me.Messwerte_Chart.Series.Add(Series49)
+        Me.Messwerte_Chart.Series.Add(Series50)
+        Me.Messwerte_Chart.Series.Add(Series51)
+        Me.Messwerte_Chart.Series.Add(Series52)
+        Me.Messwerte_Chart.Series.Add(Series53)
+        Me.Messwerte_Chart.Series.Add(Series54)
+        Me.Messwerte_Chart.Series.Add(Series55)
+        Me.Messwerte_Chart.Series.Add(Series56)
+        Me.Messwerte_Chart.Series.Add(Series57)
+        Me.Messwerte_Chart.Series.Add(Series58)
+        Me.Messwerte_Chart.Series.Add(Series59)
+        Me.Messwerte_Chart.Series.Add(Series60)
+        Me.Messwerte_Chart.Series.Add(Series61)
+        Me.Messwerte_Chart.Series.Add(Series62)
+        Me.Messwerte_Chart.Series.Add(Series63)
+        Me.Messwerte_Chart.Series.Add(Series64)
+        Me.Messwerte_Chart.Size = New System.Drawing.Size(2469, 555)
+        Me.Messwerte_Chart.TabIndex = 200
+        Me.Messwerte_Chart.Text = "Messwerte"
+        '
+        'Integral_Chart
+        '
+        ChartArea3.Name = "ChartArea1"
+        Me.Integral_Chart.ChartAreas.Add(ChartArea3)
+        Legend3.Name = "Legend1"
+        Me.Integral_Chart.Legends.Add(Legend3)
+        Me.Integral_Chart.Location = New System.Drawing.Point(26, 2076)
+        Me.Integral_Chart.Name = "Integral_Chart"
+        Me.Integral_Chart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel
+        Series65.ChartArea = "ChartArea1"
+        Series65.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series65.Legend = "Legend1"
+        Series65.Name = "A,"
+        Series65.YValuesPerPoint = 2
+        Series66.ChartArea = "ChartArea1"
+        Series66.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series66.Legend = "Legend1"
+        Series66.Name = "H,"
+        Series67.ChartArea = "ChartArea1"
+        Series67.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series67.Legend = "Legend1"
+        Series67.Name = "C"
+        Series68.ChartArea = "ChartArea1"
+        Series68.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series68.Legend = "Legend1"
+        Series68.Name = "D"
+        Series69.ChartArea = "ChartArea1"
+        Series69.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series69.Legend = "Legend1"
+        Series69.Name = "E"
+        Series70.ChartArea = "ChartArea1"
+        Series70.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series70.Legend = "Legend1"
+        Series70.Name = "F"
+        Series71.ChartArea = "ChartArea1"
+        Series71.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series71.Legend = "Legend1"
+        Series71.Name = "G"
+        Series72.ChartArea = "ChartArea1"
+        Series72.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series72.Legend = "Legend1"
+        Series72.Name = "A"
+        Series73.ChartArea = "ChartArea1"
+        Series73.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series73.Legend = "Legend1"
+        Series73.Name = "H"
+        Series74.ChartArea = "ChartArea1"
+        Series74.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series74.Legend = "Legend1"
+        Series74.Name = "c"
+        Series75.ChartArea = "ChartArea1"
+        Series75.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series75.Legend = "Legend1"
+        Series75.Name = "d"
+        Series76.ChartArea = "ChartArea1"
+        Series76.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series76.Legend = "Legend1"
+        Series76.Name = "e"
+        Series77.ChartArea = "ChartArea1"
+        Series77.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series77.Legend = "Legend1"
+        Series77.Name = "f"
+        Series78.ChartArea = "ChartArea1"
+        Series78.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series78.Legend = "Legend1"
+        Series78.Name = "g"
+        Series79.ChartArea = "ChartArea1"
+        Series79.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series79.Legend = "Legend1"
+        Series79.Name = "a"
+        Series80.ChartArea = "ChartArea1"
+        Series80.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series80.Legend = "Legend1"
+        Series80.Name = "h"
+        Series81.ChartArea = "ChartArea1"
+        Series81.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series81.Legend = "Legend1"
+        Series81.Name = "c'"
+        Series82.ChartArea = "ChartArea1"
+        Series82.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series82.Legend = "Legend1"
+        Series82.Name = "d'"
+        Series83.ChartArea = "ChartArea1"
+        Series83.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series83.Legend = "Legend1"
+        Series83.Name = "e'"
+        Series84.ChartArea = "ChartArea1"
+        Series84.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series84.Legend = "Legend1"
+        Series84.Name = "f'"
+        Series85.ChartArea = "ChartArea1"
+        Series85.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series85.Legend = "Legend1"
+        Series85.Name = "g'"
+        Series86.ChartArea = "ChartArea1"
+        Series86.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series86.Legend = "Legend1"
+        Series86.Name = "a'"
+        Series87.ChartArea = "ChartArea1"
+        Series87.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series87.Legend = "Legend1"
+        Series87.Name = "h'"
+        Series88.ChartArea = "ChartArea1"
+        Series88.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series88.Legend = "Legend1"
+        Series88.Name = "c''"
+        Series89.ChartArea = "ChartArea1"
+        Series89.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series89.Legend = "Legend1"
+        Series89.Name = "d''"
+        Series90.ChartArea = "ChartArea1"
+        Series90.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series90.Legend = "Legend1"
+        Series90.Name = "e''"
+        Series91.ChartArea = "ChartArea1"
+        Series91.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series91.Legend = "Legend1"
+        Series91.Name = "f''"
+        Series92.ChartArea = "ChartArea1"
+        Series92.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series92.Legend = "Legend1"
+        Series92.Name = "g''"
+        Series93.ChartArea = "ChartArea1"
+        Series93.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series93.Legend = "Legend1"
+        Series93.Name = "a''"
+        Series94.ChartArea = "ChartArea1"
+        Series94.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series94.Legend = "Legend1"
+        Series94.Name = "h''"
+        Series95.ChartArea = "ChartArea1"
+        Series95.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series95.Legend = "Legend1"
+        Series95.Name = "c'''"
+        Series96.ChartArea = "ChartArea1"
+        Series96.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line
+        Series96.Legend = "Legend1"
+        Series96.Name = "d'''"
+        Me.Integral_Chart.Series.Add(Series65)
+        Me.Integral_Chart.Series.Add(Series66)
+        Me.Integral_Chart.Series.Add(Series67)
+        Me.Integral_Chart.Series.Add(Series68)
+        Me.Integral_Chart.Series.Add(Series69)
+        Me.Integral_Chart.Series.Add(Series70)
+        Me.Integral_Chart.Series.Add(Series71)
+        Me.Integral_Chart.Series.Add(Series72)
+        Me.Integral_Chart.Series.Add(Series73)
+        Me.Integral_Chart.Series.Add(Series74)
+        Me.Integral_Chart.Series.Add(Series75)
+        Me.Integral_Chart.Series.Add(Series76)
+        Me.Integral_Chart.Series.Add(Series77)
+        Me.Integral_Chart.Series.Add(Series78)
+        Me.Integral_Chart.Series.Add(Series79)
+        Me.Integral_Chart.Series.Add(Series80)
+        Me.Integral_Chart.Series.Add(Series81)
+        Me.Integral_Chart.Series.Add(Series82)
+        Me.Integral_Chart.Series.Add(Series83)
+        Me.Integral_Chart.Series.Add(Series84)
+        Me.Integral_Chart.Series.Add(Series85)
+        Me.Integral_Chart.Series.Add(Series86)
+        Me.Integral_Chart.Series.Add(Series87)
+        Me.Integral_Chart.Series.Add(Series88)
+        Me.Integral_Chart.Series.Add(Series89)
+        Me.Integral_Chart.Series.Add(Series90)
+        Me.Integral_Chart.Series.Add(Series91)
+        Me.Integral_Chart.Series.Add(Series92)
+        Me.Integral_Chart.Series.Add(Series93)
+        Me.Integral_Chart.Series.Add(Series94)
+        Me.Integral_Chart.Series.Add(Series95)
+        Me.Integral_Chart.Series.Add(Series96)
+        Me.Integral_Chart.Size = New System.Drawing.Size(2469, 555)
+        Me.Integral_Chart.TabIndex = 199
+        Me.Integral_Chart.Text = "Integral"
         '
         'MIDIOut_GroupBox
         '
@@ -4867,7 +5078,7 @@ Partial Class Form1
         Me.MIDIOut_GroupBox.Controls.Add(Me.Button1)
         Me.MIDIOut_GroupBox.Controls.Add(Me.MIDIOut_Einstellungen_GroupBox)
         Me.MIDIOut_GroupBox.Controls.Add(Me.DirectPlay_YesNo_GroupBox)
-        Me.MIDIOut_GroupBox.Location = New System.Drawing.Point(1532, 21)
+        Me.MIDIOut_GroupBox.Location = New System.Drawing.Point(1539, 28)
         Me.MIDIOut_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.MIDIOut_GroupBox.Name = "MIDIOut_GroupBox"
         Me.MIDIOut_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -4985,7 +5196,7 @@ Partial Class Form1
         Me.Programmeinstellungen_GroupBox.Controls.Add(Me.About_Button)
         Me.Programmeinstellungen_GroupBox.Controls.Add(Me.Help_Button)
         Me.Programmeinstellungen_GroupBox.Controls.Add(Me.ToolTip_YesNo_GroupBox)
-        Me.Programmeinstellungen_GroupBox.Location = New System.Drawing.Point(2012, 21)
+        Me.Programmeinstellungen_GroupBox.Location = New System.Drawing.Point(2019, 28)
         Me.Programmeinstellungen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Programmeinstellungen_GroupBox.Name = "Programmeinstellungen_GroupBox"
         Me.Programmeinstellungen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -4997,7 +5208,7 @@ Partial Class Form1
         'Klappen_GroupBox
         '
         Me.Klappen_GroupBox.Controls.Add(Me.FlowLayoutPanel6)
-        Me.Klappen_GroupBox.Location = New System.Drawing.Point(1528, 661)
+        Me.Klappen_GroupBox.Location = New System.Drawing.Point(1535, 668)
         Me.Klappen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Klappen_GroupBox.Name = "Klappen_GroupBox"
         Me.Klappen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -5223,7 +5434,7 @@ Partial Class Form1
         Me.Einstellungen_GroupBox.Controls.Add(Me.Metronom_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Tempo_GroupBox)
         Me.Einstellungen_GroupBox.Controls.Add(Me.Transpose_GroupBox)
-        Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(632, 21)
+        Me.Einstellungen_GroupBox.Location = New System.Drawing.Point(639, 28)
         Me.Einstellungen_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Einstellungen_GroupBox.Name = "Einstellungen_GroupBox"
         Me.Einstellungen_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -5238,7 +5449,7 @@ Partial Class Form1
         Me.GroupBox2.Controls.Add(Me.Takt_Ausgabefenster)
         Me.GroupBox2.Controls.Add(Me.MIDI_Start_Button)
         Me.GroupBox2.Controls.Add(Me.MIDI_Save_Button)
-        Me.GroupBox2.Location = New System.Drawing.Point(19, 142)
+        Me.GroupBox2.Location = New System.Drawing.Point(26, 149)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -5331,8 +5542,9 @@ Partial Class Form1
         Me.GroupBox3.PerformLayout
         CType(Me.C_Klappe,System.ComponentModel.ISupportInitialize).EndInit
         Me.Panel1.ResumeLayout(false)
-        CType(Me.Chart2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.Chart1,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Ableitung2_Chart,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Messwerte_Chart,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Integral_Chart,System.ComponentModel.ISupportInitialize).EndInit
         Me.MIDIOut_GroupBox.ResumeLayout(false)
         Me.MIDIOut_Einstellungen_GroupBox.ResumeLayout(false)
         Me.MIDIOut_Einstellungen_GroupBox.PerformLayout
@@ -5719,6 +5931,7 @@ End Sub
     Friend WithEvents Latenz_NumericUpDown As NumericUpDown
     Friend WithEvents Latenz_Label As Label
     Friend WithEvents Button1 As Button
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
-    Friend WithEvents Chart2 As DataVisualization.Charting.Chart
+    Friend WithEvents Integral_Chart As DataVisualization.Charting.Chart
+    Friend WithEvents Messwerte_Chart As DataVisualization.Charting.Chart
+    Friend WithEvents Ableitung2_Chart As DataVisualization.Charting.Chart
 End Class

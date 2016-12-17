@@ -1,14 +1,14 @@
 Option Explicit On
 'Option Strict On
-#Disable Warning BC42358 ' Because this call is not awaited, execution of the current method continues before the call is completed
+#Disable Warning BC42358 'Because this call is not awaited, execution of the current method continues before the call is completed
 
 Imports System.IO.Ports.SerialPort
 Imports System.Text
 Imports System.Runtime.InteropServices
-Imports System.Threading
 Imports System.Threading.Tasks
 Imports Sanford.Multimedia.Midi
 Imports Sanford.Multimedia.Midi.UI
+Imports NAudio.Wave
 
 'Imports System.Net.NetworkInformation
 
@@ -67,8 +67,6 @@ Public Class Form1
     Const VK_F10 = &H79 ' F10 Taste
     Const VK_F11 = &H7A ' F11 Taste
     Const VK_F12 = &H7B ' F12 Taste
-
-
 
     Public ports As String() = GetPortNames()
     Public port As String = ""
@@ -187,7 +185,12 @@ Public Class Form1
 
     Dim Messwerte As New List(Of List(Of Integer))
     Dim Integralwerte As New List(Of List(Of Integer))
+    Dim Ableitung1werte As New List(Of List(Of Integer))
+    Dim Ableitung2werte As New List(Of List(Of Integer))
+    Dim Ableitung3werte As New List(Of List(Of Integer))
 
+    Dim bufferedWaveProvider(35) As BufferedWaveProvider
+	Dim player(35) As WaveOut
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -384,7 +387,7 @@ Public Class Form1
 
     'Private Sub SerialPort1_DataReceived(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles Serial_BackgroundWorker.DoWork
     Async Sub SerialPort1_DataReceived()
-        Dim i as Integer
+        Dim i As Integer
         Messintervall_Zahl = 0
         Anz_Messungen = 0
         AnzMessungen_alt = 0
@@ -396,18 +399,22 @@ Public Class Form1
         file = My.Computer.FileSystem.OpenTextFileWriter("C:\Users\nico\Desktop\logs\MIDI_Harp " + DateTime.Now.ToString("yyyy-MM-dd HH-mm-ss") + ".txt", True)
         Dim messarrey(32) As Integer
 
-        Dim zero_array(10000) as Integer
+        Dim zero_array(10000) As Integer
         Messwerte.Clear()
         Integralwerte.Clear()
+        Ableitung1werte.Clear()
         For i = 0 To 31
             Messwerte.Add(New List(Of Integer))
             Messwerte(i).AddRange(zero_array)
             Integralwerte.Add(New List(Of Integer))
             Integralwerte(i).AddRange(zero_array)
+            Ableitung1werte.Add(New List(Of Integer))
+            Ableitung1werte(i).AddRange(zero_array)
+            Ableitung2werte.Add(New List(Of Integer))
+            Ableitung2werte(i).AddRange(zero_array)
+            Ableitung3werte.Add(New List(Of Integer))
+            Ableitung3werte(i).AddRange(zero_array)
         Next
-        
-
-
 
 
         Halbtonversch = Halbtonverschiebung.Value
@@ -428,46 +435,62 @@ Public Class Form1
 
         'Dim high_value = SerialPort1_WaitForSync()
         'Dim low_value
-        Dim messungen(70) as byte
+        Dim messungen(70) As Byte
         'Dim messungen = new ArrayList()
-        Dim messung as byte
+        Dim messung As Byte
 
-        Dim ADC_now as Integer
-        Dim NotenNr as Integer
+        Dim ADC_now As Integer = 0
+        Dim ADC_old As Integer = 0
+        Dim NotenNr As Integer
         Dim calibration(70) As Integer
         Dim Integralwert(70) As Integer
+        Dim Ableitung1(70) As Integer
+        Dim Ableitung2(70) As Integer
+        Dim Ableitung3(70) As Integer
         Dim NotenNr_real As Integer
-        
+        Dim second_trigger_count As Integer
+
+        'Dim waveForamt As New WaveFormat(6000, 16, 1)
+        'For i=0 To 35
+        '    bufferedWaveProvider(i) = New BufferedWaveProvider(waveForamt)
+        '    player(i) = New WaveOut()
+        '    player(i).Init(bufferedWaveProvider(i))
+        '    player(i).Play()
+        'Next
+
+        'My.Computer.Audio.Play(Audio_stream, AudioPlayMode.Background)
+
         'SerialPort1.ReadByte()
         'SerialPort1.ReadByte()
         'Console.Clear()
 next_messung:
-            Try
-                messung=1
-                NotenNr=1
-                SerialPort1.Read(messungen, 0, 65)
-                i=0
-                If (messungen(62) = 128 And messungen(63) > 127) Then
-                    messungen(62) = messungen(63) -128
-                    messungen(63) = messungen(64)
-                Else
-                    'Console.WriteLine(messungen(62))
-                    'Console.WriteLine(messungen(63))
-                    Anz_Verbindungsfehler += 1
-                    Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
-                    SerialPort1_WaitForSync()
-                    SerialPort1.ReadByte()
-                    messung = 1
-                    GoTo next_messung
-                End If
+        Try
+            messung = 1
+            NotenNr = 1
+            SerialPort1.Read(messungen, 0, 65)
+            i = 0
+            If (messungen(62) = 128 And messungen(63) > 127) Then
+                messungen(62) = messungen(63) - 128
+                messungen(63) = messungen(64)
+            Else
+                'Console.WriteLine(messungen(62))
+                'Console.WriteLine(messungen(63))
+                Anz_Verbindungsfehler += 1
+                Anz_Verbindungsfehler_TextBox.Text = Anz_Verbindungsfehler & " E"
+                SerialPort1_WaitForSync()
+                SerialPort1.ReadByte()
+                messung = 1
+                GoTo next_messung
+            End If
 next_value:
-                if (i > 62) Then
-                    GoTo next_value_exit
-                End If
+            If (i > 62) Then
+                GoTo next_value_exit
+            End If
 
+            ADC_old = ADC_now
             ADC_now = 256 * messungen(i) + messungen(i + 1)
 
-            if (ADC_now + calibration(i) > 16383) Then
+            If (ADC_now + calibration(i) > 16383) Then
                 calibration(i) -= 1
             Else
                 calibration(i) += 1
@@ -482,73 +505,88 @@ next_value:
                 NotenNr += 1
             End If
 
-            Messwerte(NotenNr_real).Add(ADC_now)
-            Integralwert(NotenNr_real) += Math.Abs(ADC_now)
-            If (Messwerte(NotenNr_real).Count > 40) Then
-                Integralwert(NotenNr_real) -= Math.Abs(Messwerte(NotenNr_real).ElementAt(Messwerte(NotenNr_real).Count - 100))
-                Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
+            'Audio_stream.WriteByte(random.Next(0,255))
 
-                If Integralwert(NotenNr_real) >= 1000000 And Note_Play(NotenNr_real) = False Then
-                    'MessageBox.Show(NotenNr & " on")
+            Messwerte(NotenNr_real).Add(ADC_now)
+            Integralwert(NotenNr_real) += Math.Abs(ADC_now) - Math.Abs(Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 100))
+            Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
+            Ableitung1(NotenNr_real) = ADC_now - ADC_old
+            Ableitung1werte(NotenNr_real).Add(Ableitung1(NotenNr_real))
+            Ableitung2(NotenNr_real) = Ableitung1werte(NotenNr_real).Last - Ableitung1werte(NotenNr_real)(Ableitung1werte(NotenNr_real).Count - 2)
+            Ableitung2werte(NotenNr_real).Add(Ableitung2(NotenNr_real))
+            'Ableitung3(NotenNr_real) = Ableitung2werte(NotenNr_real).Last - Ableitung2werte(NotenNr_real)(Ableitung2werte(NotenNr_real).Count - 2)
+            'Ableitung3werte(NotenNr_real).Add(Ableitung3(NotenNr_real))
+
+            If Integralwert(NotenNr_real) >= 1150000 And Note_Play(NotenNr_real) = False Then
+                second_trigger_count = 0
+                For Each wert In Ableitung2werte(NotenNr_real).Skip(Ableitung2werte(NotenNr_real).Count - 40)
+                    If (wert < -7000 Or wert > 7000) Then
+                        second_trigger_count += 1
+                    End If
+                Next
+
+                If (second_trigger_count > 8) Then
+                    'MessageBox.Show(wert)
+                    'MessageBox.Show(NotenNr & " on " & Integralwert(NotenNr_real))
                     Note_Play(NotenNr_real) = True
                     Note_Volume(NotenNr_real) = 100
                     PlayMIDINote(NotenNr_real + 45, Note_Volume(NotenNr_real))
                     'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
-                End If
-
-                If Integralwert(NotenNr_real) < 100000 And Note_Play(NotenNr_real) = True Then
-                    'MessageBox.Show(NotenNr & " off")
-                    Note_Play(NotenNr_real) = False
-                    STOPMIDINote(NotenNr_real)
-                    'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
-                End If
-                
-                'Messwerte(NotenNr_15).RemoveAt(Messwerte(NotenNr_15).Count - 1)
+                End If         
             End If
+
+            If Integralwert(NotenNr_real) < 400000 And Note_Play(NotenNr_real) = True Then
+                'MessageBox.Show(NotenNr & " off")
+                Note_Play(NotenNr_real) = False
+                STOPMIDINote(NotenNr_real + 45)
+                'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
+            End If
+
             ADC(NotenNr_real) = ADC_now
             messarrey(NotenNr_real) = ADC_now
-            'Console.WriteLine(NotenNr)
+            'bufferedWaveProvider(NotenNr_real).AddSamples(BitConverter.GetBytes(ADC_now >> 7), 0, 1)
 
             messung += 1
-            
-                if messung = 32 Then
-                    messung = 0
-                    NotenNr = 0
-                End If
-                i += 2
-                GoTo next_value
+
+            If messung = 32 Then
+                messung = 0
+                NotenNr = 0
+            End If
+            i += 2
+            GoTo next_value
 next_value_exit:
 
+        Catch Exc As System.Exception 'DivideByZeroException 'System.PlatformNotSupportedException
+            Debug.WriteLine(Exc)
+            Anz_Verbindungsfehler += 1
+            Anz_Verbindungsfehler_TextBox.Text = "Error"
+            Try
+                SerialPort1_WaitForSync()
             Catch
-                Anz_Verbindungsfehler += 1
-                Anz_Verbindungsfehler_TextBox.Text = "Error"
-                Try
-                    SerialPort1_WaitForSync()
-                Catch
-                    Anz_Verbindungsfehler_TextBox.Text = "Verbindungsfehler"
-                    'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
-                    '& "Die laufende Aufnahme wurde pausiert" _
-                    '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
-                    '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
-                    'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                End Try
+                Anz_Verbindungsfehler_TextBox.Text = "Verbindungsfehler"
+                'MessageBox.Show("Die Synchronisation zwischen Computer und Mikrokontroller stimmte nicht mehr überein. " _
+                '& "Die laufende Aufnahme wurde pausiert" _
+                '& vbCrLf & "Sollte dieser Fehler mehrmahls auftreten wenden Sie sich bitte an Nico Bosshard" _
+                '& vbCrLf & "Support EMail Adresse: nico@bosshome.ch Fehlercode: 7 , " & Serial_Read, "Übertragungsfehler", _
+                'MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
             End Try
+        End Try
 
-            'Environment.Exit(0)
-            
-            file.WriteLine(String.Join(";", messarrey.Skip(6).Take(7)))
-            Anz_Messungen += 1
-            'Anz_Messungen_TextBox.Text = Anz_Messungen
+        'Environment.Exit(0)
 
-            If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Takt_Tick()
+        file.WriteLine(String.Join(";", messarrey.Skip(6).Take(7)))
+        Anz_Messungen += 1
+        'Anz_Messungen_TextBox.Text = Anz_Messungen
 
-            If SerialPort1_Stop = True Then
-                SerialPort1_Stop = False
-                Exit Sub
-            End If
+        If MIDI_SpecialMode.Checked = True And Aufnahme_gestartet = True Then Takt_Tick()
 
-        Goto next_messung
-         file.Close()
+        If SerialPort1_Stop = True Then
+            SerialPort1_Stop = False
+            Exit Sub
+        End If
+
+        GoTo next_messung
+        file.Close()
 
     End Sub
 
@@ -854,9 +892,12 @@ next_value_exit:
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
         'Exit Sub
-        Dim LetzteMesswerte as List(Of Integer)
-        Dim LetzteIntegralwerte as List(Of Integer)
-        'LetzteMesswerte.Clear()
+        Dim LetzteMesswerte As List(Of Integer)
+        Dim LetzteIntegralwerte As List(Of Integer)
+        Dim LetzteAbleitung1werte As List(Of Integer)
+        Dim LetzteAbleitung2werte As List(Of Integer)
+        'Dim LetzteAbleitung3werte As List(Of Integer)
+        
         Anz_Messungen_TextBox.Text = Anz_Messungen
         If (Messwerte.Count = 0)
             Exit Sub
@@ -867,20 +908,26 @@ next_value_exit:
         Dim integralwert As ULong
         Dim integralwert_avg As ULong
 
-        chart1.ChartAreas(0).AxisY.Minimum = 0
-        chart1.ChartAreas(0).AxisY.Maximum = 2000000
+        Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
+        Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
 
-        chart2.ChartAreas(0).AxisY.Minimum = -40000
-        chart2.ChartAreas(0).AxisY.Maximum = 40000
-        
+        Integral_Chart.ChartAreas(0).AxisY.Minimum = 0
+        Integral_Chart.ChartAreas(0).AxisY.Maximum = 2000000
+
+        Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
+        Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
+
         'Try
-            For i = 0 To 31 Step 1
-                'Chart2.Series(i).Points.Clear()
-                integralwert = 0
-                'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
+        For i = 0 To 31 Step 1
+            'Chart2.Series(i).Points.Clear()
+            integralwert = 0
+            'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
 
-                LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-201,200)
-                LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count-201,200)
+            LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count - 201, 200)
+            LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - 201, 200)
+            LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - 201, 200)
+            LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - 201, 200)
+            'LetzteAbleitung3werte = Ableitung3werte(i).GetRange(Ableitung3werte(i).Count - 201, 200)
 
             ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
             ''    If (LetzteMesswerte(w) > 23000) '23000
@@ -904,19 +951,26 @@ next_value_exit:
             'Next
             'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
 
+            For Each wert As Long In LetzteAbleitung2werte
+                Ableitung2_Chart.Series(i).Points.Add(wert)
+                If Ableitung2_Chart.Series(i).Points.Count > 200 Then
+                    Ableitung2_Chart.Series(i).Points.RemoveAt(0)
+                End If
+            Next
+
             For Each wert As Long In LetzteIntegralwerte
                 integralwert_avg += wert
-                Chart1.Series(i).Points.Add(wert)
-                If Chart1.Series(i).Points.Count > 200 Then
-                    Chart1.Series(i).Points.RemoveAt(0)
+                Integral_Chart.Series(i).Points.Add(wert)
+                If Integral_Chart.Series(i).Points.Count > 200 Then
+                    Integral_Chart.Series(i).Points.RemoveAt(0)
                 End If
             Next
             integralwert_avg /= LetzteIntegralwerte.Count * 5000
 
             For Each wert As Long In LetzteMesswerte
-                Chart2.Series(i).Points.Add(wert)
-                If Chart2.Series(i).Points.Count > 200 Then
-                    Chart2.Series(i).Points.RemoveAt(0)
+                Messwerte_Chart.Series(i).Points.Add(wert)
+                If Messwerte_Chart.Series(i).Points.Count > 200 Then
+                    Messwerte_Chart.Series(i).Points.RemoveAt(0)
                 End If
             Next
             'If Chart1.Series(i).Points.Count > 30 Then
@@ -942,10 +996,10 @@ next_value_exit:
             'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
             'Noten_Wert(i).Text = ADC(i)
             LetzteMesswerte.Clear()
-            Next
+        Next
 
         'Chart1.Series(0).Points.DataBindY(TriggerNr)
-        
+
         'Catch ex As Exception
 
         'End Try
@@ -2429,6 +2483,9 @@ next_value_exit:
             Panel1.Width = 1264 + 15
             Panel1.Height = 772 + 20 + 15
         End If
+
+        Panel1.Location = New Point(Panel1.Location.X, 0)
+        Panel1.Height = Height
     End Function
 
     Private Sub Form1_FormClosing(ByVal sender As System.Object, ByVal e As _
@@ -2472,9 +2529,6 @@ next_value_exit:
         About_Button.Enabled = True
     End Sub
 
-    Private Sub Display_Refresh(sender As Object, e As EventArgs) Handles Display_Refresh_Timer.Tick
-
-    End Sub
 End Class
 
 
