@@ -48,9 +48,12 @@ Temporary Items
 
 # Exclude binary- and temporary files
 *.pdb
+*.suo
 *pingme.txt
 MIDI_Harfe_PC_Windows/.vs
 MIDI_Harfe_PC_Windows/C-Control PRO Visualisieren/bin
 MIDI_Harfe_PC_Windows/C-Control PRO Visualisieren/obj
 MIDI_Harfe_PC_Windows/Sanford.Multimedia.Midi/bin
 MIDI_Harfe_PC_Windows/Sanford.Multimedia.Midi/obj
+MIDI_Harfe_Keygenerator/MIDI Harfe Keygenerator/bin
+MIDI_Harfe_Keygenerator/MIDI Harfe Keygenerator/obj

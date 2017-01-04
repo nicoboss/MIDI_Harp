@@ -9,6 +9,7 @@ Imports System.Threading.Tasks
 Imports Sanford.Multimedia.Midi
 Imports Sanford.Multimedia.Midi.UI
 Imports NAudio.Wave
+Imports System.Media
 
 'Imports System.Net.NetworkInformation
 
@@ -104,7 +105,8 @@ Public Class Form1
 
     Dim AnzMessungen_alt As ULong
     Dim Messintervall_Zahl As ULong
-    Dim Anz_Messungen As ULong
+    Dim Anz_Messungen As ULong = 0
+    Dim Anz_Messungen_alt As ULong = 0
     Dim Anz_Verbindungsfehler As ULong
 
     Dim SerialPort1_Stop As Boolean = False
@@ -121,16 +123,24 @@ Public Class Form1
     Dim Noten_Versch(35) As Integer
     Dim Halbtonversch As Integer
 
-
     Dim MidiNoteNr = {
-            28, 30, 31, 33, 35, 36, 38,
-            40, 42, 43, 45, 47, 48, 50,
-            52, 54, 55, 57, 59, 60, 62,
-            64, 66, 67, 69, 71, 72, 74,
-            76, 78, 79, 81, 83, 84, 86,
-            88, 89, 91, 93, 95, 96, 98,
-            100, 101, 103, 105, 107, 108, 110,
-            112, 113, 115, 117, 119, 120, 122}
+        32, 34, 
+        36, 38, 39, 41, 43, 44, 46,
+        48, 50, 51, 53, 55, 56, 58,
+        60, 62, 63, 65, 67, 68, 70,
+        72, 74, 75, 77, 79, 80, 82,
+        84, 86, 87, 89, 91, 92, 94}
+
+    'Dim MidiNoteNr = {
+    '        28, 30, 31, 33, 35, 36, 38,
+    '        40, 42, 43, 45, 47, 48, 50,
+    '        52, 54, 55, 57, 59, 60, 62,
+    '        64, 66, 67, 69, 71, 72, 74,
+    '        76, 78, 79, 81, 83, 84, 86,
+    '        88, 89, 91, 93, 95, 96, 98,
+    '        100, 101, 103, 105, 107, 108, 110,
+    '        112, 113, 115, 117, 119, 120, 122}
+
 
     '16, 18, 19, 21, 23, 24, 26, _
 
@@ -190,47 +200,52 @@ Public Class Form1
     Dim Ableitung3werte As New List(Of List(Of Integer))
 
     Dim bufferedWaveProvider(35) As BufferedWaveProvider
-	Dim player(35) As WaveOut
+    Dim player(35) As WaveOut
 
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'MessageBox.Show((256 >> 1).ToString())
 
         Noten_VerticalProgessBar = {
+            A1_VerticalProgessBar, H1_VerticalProgessBar,
             C2_VerticalProgessBar, D2_VerticalProgessBar, E2_VerticalProgessBar, F2_VerticalProgessBar, G2_VerticalProgessBar, A2_VerticalProgessBar, H2_VerticalProgessBar,
             C3_VerticalProgessBar, D3_VerticalProgessBar, E3_VerticalProgessBar, F3_VerticalProgessBar, G3_VerticalProgessBar, A3_VerticalProgessBar, H3_VerticalProgessBar,
             C4_VerticalProgessBar, D4_VerticalProgessBar, E4_VerticalProgessBar, F4_VerticalProgessBar, G4_VerticalProgessBar, A4_VerticalProgessBar, H4_VerticalProgessBar,
             C5_VerticalProgessBar, D5_VerticalProgessBar, E5_VerticalProgessBar, F5_VerticalProgessBar, G5_VerticalProgessBar, A5_VerticalProgessBar, H5_VerticalProgessBar,
-            C6_VerticalProgessBar, D6_VerticalProgessBar, E6_VerticalProgessBar, F6_VerticalProgessBar, G6_VerticalProgessBar, A6_VerticalProgessBar, H6_VerticalProgessBar}
+            C6_VerticalProgessBar, D6_VerticalProgessBar, E6_VerticalProgessBar, F6_VerticalProgessBar, G6_VerticalProgessBar}
 
 
         Noten_Wert = {
+            A1_Wert, H1_Wert,
             C2_Wert, D2_Wert, E2_Wert, F2_Wert, G2_Wert, A2_Wert, H2_Wert,
             C3_Wert, D3_Wert, E3_Wert, F3_Wert, G3_Wert, A3_Wert, H3_Wert,
             C4_Wert, D4_Wert, E4_Wert, F4_Wert, G4_Wert, A4_Wert, H4_Wert,
             C5_Wert, D5_Wert, E5_Wert, F5_Wert, G5_Wert, A5_Wert, H5_Wert,
-            C6_Wert, D6_Wert, E6_Wert, F6_Wert, G6_Wert, A6_Wert, H6_Wert}
+            C6_Wert, D6_Wert, E6_Wert, F6_Wert, G6_Wert}
 
         Noten_Verschiebung = {
+            A1_Verschiebung, H1_Verschiebung,
             C2_Verschiebung, D2_Verschiebung, E2_Verschiebung, F2_Verschiebung, G2_Verschiebung, A2_Verschiebung, H2_Verschiebung,
             C3_Verschiebung, D3_Verschiebung, E3_Verschiebung, F3_Verschiebung, G3_Verschiebung, A3_Verschiebung, H3_Verschiebung,
             C4_Verschiebung, D4_Verschiebung, E4_Verschiebung, F4_Verschiebung, G4_Verschiebung, A4_Verschiebung, H4_Verschiebung,
             C5_Verschiebung, D5_Verschiebung, E5_Verschiebung, F5_Verschiebung, G5_Verschiebung, A5_Verschiebung, H5_Verschiebung,
-            C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung, A6_Verschiebung, H6_Verschiebung}
+            C6_Verschiebung, D6_Verschiebung, E6_Verschiebung, F6_Verschiebung, G6_Verschiebung}
 
         Noten_Startwert = {
+            A1_Startwert, H1_Startwert,
             C2_Startwert, D2_Startwert, E2_Startwert, F2_Startwert, G2_Startwert, A2_Startwert, H2_Startwert,
             C3_Startwert, D3_Startwert, E3_Startwert, F3_Startwert, G3_Startwert, A3_Startwert, H3_Startwert,
             C4_Startwert, D4_Startwert, E4_Startwert, F4_Startwert, G4_Startwert, A4_Startwert, H4_Startwert,
             C5_Startwert, D5_Startwert, E5_Startwert, F5_Startwert, G5_Startwert, A5_Startwert, H5_Startwert,
-            C6_Startwert, D6_Startwert, E6_Startwert, F6_Startwert, G6_Startwert, A6_Startwert, H6_Startwert}
+            C6_Startwert, D6_Startwert, E6_Startwert, F6_Startwert, G6_Startwert}
 
         Noten_Stopwert = {
-    C2_Stopwert, D2_Stopwert, E2_Stopwert, F2_Stopwert, G2_Stopwert, A2_Stopwert, H2_Stopwert,
-    C3_Stopwert, D3_Stopwert, E3_Stopwert, F3_Stopwert, G3_Stopwert, A3_Stopwert, H3_Stopwert,
-    C4_Stopwert, D4_Stopwert, E4_Stopwert, F4_Stopwert, G4_Stopwert, A4_Stopwert, H4_Stopwert,
-    C5_Stopwert, D5_Stopwert, E5_Stopwert, F5_Stopwert, G5_Stopwert, A5_Stopwert, H5_Stopwert,
-    C6_Stopwert, D6_Stopwert, E6_Stopwert, F6_Stopwert, G6_Stopwert, A6_Stopwert, H6_Stopwert}
+            A1_Stopwert, H1_Stopwert,
+            C2_Stopwert, D2_Stopwert, E2_Stopwert, F2_Stopwert, G2_Stopwert, A2_Stopwert, H2_Stopwert,
+            C3_Stopwert, D3_Stopwert, E3_Stopwert, F3_Stopwert, G3_Stopwert, A3_Stopwert, H3_Stopwert,
+            C4_Stopwert, D4_Stopwert, E4_Stopwert, F4_Stopwert, G4_Stopwert, A4_Stopwert, H4_Stopwert,
+            C5_Stopwert, D5_Stopwert, E5_Stopwert, F5_Stopwert, G5_Stopwert, A5_Stopwert, H5_Stopwert,
+            C6_Stopwert, D6_Stopwert, E6_Stopwert, F6_Stopwert, G6_Stopwert}
 
 
         With Tastenkombinationen_DataGridView.Rows
@@ -487,7 +502,6 @@ next_value:
                 GoTo next_value_exit
             End If
 
-            ADC_old = ADC_now
             ADC_now = 256 * messungen(i) + messungen(i + 1)
 
             If (ADC_now + calibration(i) > 16383) Then
@@ -506,39 +520,43 @@ next_value:
             End If
 
             'Audio_stream.WriteByte(random.Next(0,255))
+            'Dim deb as String = Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 2).ToString() + "?=" + ADC_old.ToString()
+            'Debug.WriteLine(deb)
 
             Messwerte(NotenNr_real).Add(ADC_now)
-            Integralwert(NotenNr_real) += Math.Abs(ADC_now) - Math.Abs(Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 100))
+            Integralwert(NotenNr_real) += Math.Abs(ADC_now) - Math.Abs(Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 20))
             Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
-            Ableitung1(NotenNr_real) = ADC_now - ADC_old
+            Ableitung1(NotenNr_real) = ADC_now - Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 2)
             Ableitung1werte(NotenNr_real).Add(Ableitung1(NotenNr_real))
             Ableitung2(NotenNr_real) = Ableitung1werte(NotenNr_real).Last - Ableitung1werte(NotenNr_real)(Ableitung1werte(NotenNr_real).Count - 2)
             Ableitung2werte(NotenNr_real).Add(Ableitung2(NotenNr_real))
             'Ableitung3(NotenNr_real) = Ableitung2werte(NotenNr_real).Last - Ableitung2werte(NotenNr_real)(Ableitung2werte(NotenNr_real).Count - 2)
             'Ableitung3werte(NotenNr_real).Add(Ableitung3(NotenNr_real))
 
-            If Integralwert(NotenNr_real) >= 1150000 And Note_Play(NotenNr_real) = False Then
+            If Integralwert(NotenNr_real) >= 175000 And Note_Play(NotenNr_real) = False Then
                 second_trigger_count = 0
-                For Each wert In Ableitung2werte(NotenNr_real).Skip(Ableitung2werte(NotenNr_real).Count - 40)
+                For Each wert In Ableitung2werte(NotenNr_real).Skip(Ableitung2werte(NotenNr_real).Count - 20)
                     If (wert < -7000 Or wert > 7000) Then
                         second_trigger_count += 1
                     End If
                 Next
 
-                If (second_trigger_count > 8) Then
+                If (second_trigger_count > 4) Then
+                    'My.Computer.Keyboard.SendKeys("p", True)
                     'MessageBox.Show(wert)
                     'MessageBox.Show(NotenNr & " on " & Integralwert(NotenNr_real))
                     Note_Play(NotenNr_real) = True
                     Note_Volume(NotenNr_real) = 100
-                    PlayMIDINote(NotenNr_real + 45, Note_Volume(NotenNr_real))
+                    'MessageBox.Show(MidiNoteNr(NotenNr_real) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(NotenNr_real).Text))
+                    PlayMIDINote(MidiNoteNr(NotenNr_real) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(NotenNr_real).Text), Note_Volume(NotenNr_real))
                     'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, 0, 0)
-                End If         
+                End If
             End If
 
-            If Integralwert(NotenNr_real) < 400000 And Note_Play(NotenNr_real) = True Then
+            If Integralwert(NotenNr_real) < 50000 And Note_Play(NotenNr_real) = True Then
                 'MessageBox.Show(NotenNr & " off")
                 Note_Play(NotenNr_real) = False
-                STOPMIDINote(NotenNr_real + 45)
+                STOPMIDINote(MidiNoteNr(NotenNr_real) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(NotenNr_real).Text))
                 'If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(NotenNr), 0, KEYEVENTF_KEYUP, 0)
             End If
 
@@ -574,7 +592,8 @@ next_value_exit:
 
         'Environment.Exit(0)
 
-        file.WriteLine(String.Join(";", messarrey.Skip(6).Take(7)))
+        'file.WriteLine(String.Join(";", messarrey.Skip(6).Take(7)))
+        file.WriteLine(messarrey(10))
         Anz_Messungen += 1
         'Anz_Messungen_TextBox.Text = Anz_Messungen
 
@@ -891,15 +910,27 @@ next_value_exit:
 
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
+        'Display_Refresh_Timer.Enabled = False
         'Exit Sub
         Dim LetzteMesswerte As List(Of Integer)
         Dim LetzteIntegralwerte As List(Of Integer)
         Dim LetzteAbleitung1werte As List(Of Integer)
         Dim LetzteAbleitung2werte As List(Of Integer)
+
+        Dim Anz_neue_Messungen As Long
         'Dim LetzteAbleitung3werte As List(Of Integer)
-        
+
         Anz_Messungen_TextBox.Text = Anz_Messungen
         If (Messwerte.Count = 0)
+            Exit Sub
+        End If
+
+        Anz_neue_Messungen = Anz_Messungen - Anz_Messungen_alt - 1
+        Debug.WriteLine(Anz_neue_Messungen)
+
+        Anz_Messungen_alt = Anz_Messungen
+
+        If Anz_neue_Messungen < 5 Then
             Exit Sub
         End If
 
@@ -912,21 +943,39 @@ next_value_exit:
         Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
 
         Integral_Chart.ChartAreas(0).AxisY.Minimum = 0
-        Integral_Chart.ChartAreas(0).AxisY.Maximum = 2000000
+        Integral_Chart.ChartAreas(0).AxisY.Maximum = 400000
 
         Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
         Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
 
+        Dim Cart_Points_Display As UInteger = 100
+
         'Try
         For i = 0 To 31 Step 1
-            'Chart2.Series(i).Points.Clear()
+            if not (i=10) Then
+            Continue For
+            End If
+            'Messwerte_Chart.Series(i).Points.Clear()
+            'Integral_Chart.Series(i).Points.Clear()
+            'Ableitung2_Chart.Series(i).Points.Clear()
             integralwert = 0
             'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
 
-            LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count - 201, 200)
-            LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - 201, 200)
-            LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - 201, 200)
-            LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - 201, 200)
+            'LetzteMesswerte =  Messwerte(i).GetRange(10000, Messwerte(i).Count - 10001)
+            'LetzteIntegralwerte = Integralwerte(i).GetRange(10000, Integralwerte(i).Count - 10001)
+            'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(10000, Ableitung1werte(i).Count - 10001)
+            'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(10000, Ableitung2werte(i).Count - 10001)
+
+            'LetzteMesswerte =  Messwerte(i).GetRange(Messwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+            'LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+            'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+            'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+
+            LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+            LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+            LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+            LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+
             'LetzteAbleitung3werte = Ableitung3werte(i).GetRange(Ableitung3werte(i).Count - 201, 200)
 
             ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
@@ -953,7 +1002,7 @@ next_value_exit:
 
             For Each wert As Long In LetzteAbleitung2werte
                 Ableitung2_Chart.Series(i).Points.Add(wert)
-                If Ableitung2_Chart.Series(i).Points.Count > 200 Then
+                If Ableitung2_Chart.Series(i).Points.Count > Cart_Points_Display Then
                     Ableitung2_Chart.Series(i).Points.RemoveAt(0)
                 End If
             Next
@@ -961,7 +1010,7 @@ next_value_exit:
             For Each wert As Long In LetzteIntegralwerte
                 integralwert_avg += wert
                 Integral_Chart.Series(i).Points.Add(wert)
-                If Integral_Chart.Series(i).Points.Count > 200 Then
+                If Integral_Chart.Series(i).Points.Count > Cart_Points_Display Then
                     Integral_Chart.Series(i).Points.RemoveAt(0)
                 End If
             Next
@@ -969,7 +1018,7 @@ next_value_exit:
 
             For Each wert As Long In LetzteMesswerte
                 Messwerte_Chart.Series(i).Points.Add(wert)
-                If Messwerte_Chart.Series(i).Points.Count > 200 Then
+                If Messwerte_Chart.Series(i).Points.Count > Cart_Points_Display Then
                     Messwerte_Chart.Series(i).Points.RemoveAt(0)
                 End If
             Next
@@ -1159,12 +1208,12 @@ next_value_exit:
         C3_Button.MouseDown, D3_Button.MouseDown, E3_Button.MouseDown, F3_Button.MouseDown, G3_Button.MouseDown, A3_Button.MouseDown, H3_Button.MouseDown,
         C4_Button.MouseDown, D4_Button.MouseDown, E4_Button.MouseDown, F4_Button.MouseDown, G4_Button.MouseDown, A4_Button.MouseDown, H4_Button.MouseDown,
         C5_Button.MouseDown, D5_Button.MouseDown, E5_Button.MouseDown, F5_Button.MouseDown, G5_Button.MouseDown, A5_Button.MouseDown, H5_Button.MouseDown,
-        C6_Button.MouseDown, D6_Button.MouseDown, E6_Button.MouseDown, F6_Button.MouseDown, G6_Button.MouseDown, A6_Button.MouseDown, H6_Button.MouseDown,
+        C6_Button.MouseDown, D6_Button.MouseDown, E6_Button.MouseDown, F6_Button.MouseDown, G6_Button.MouseDown, A1_Button.MouseDown, H1_Button.MouseDown,
         C2_Button.KeyDown, D2_Button.KeyDown, E2_Button.KeyDown, F2_Button.KeyDown, G2_Button.KeyDown, A2_Button.KeyDown, H2_Button.KeyDown,
         C3_Button.KeyDown, D3_Button.KeyDown, E3_Button.KeyDown, F3_Button.KeyDown, G3_Button.KeyDown, A3_Button.KeyDown, H3_Button.KeyDown,
         C4_Button.KeyDown, D4_Button.KeyDown, E4_Button.KeyDown, F4_Button.KeyDown, G4_Button.KeyDown, A4_Button.KeyDown, H4_Button.KeyDown,
         C5_Button.KeyDown, D5_Button.KeyDown, E5_Button.KeyDown, F5_Button.KeyDown, G5_Button.KeyDown, A5_Button.KeyDown, H5_Button.KeyDown,
-        C6_Button.KeyDown, D6_Button.KeyDown, E6_Button.KeyDown, F6_Button.KeyDown, G6_Button.KeyDown, A6_Button.KeyDown, H6_Button.KeyDown
+        C6_Button.KeyDown, D6_Button.KeyDown, E6_Button.KeyDown, F6_Button.KeyDown, G6_Button.KeyDown, A1_Button.KeyDown, H1_Button.KeyDown
         Button_Note(sender.Tag)
     End Sub
 
@@ -1173,12 +1222,12 @@ next_value_exit:
         C3_Button.MouseUp, D3_Button.MouseUp, E3_Button.MouseUp, F3_Button.MouseUp, G3_Button.MouseUp, A3_Button.MouseUp, H3_Button.MouseUp,
         C4_Button.MouseUp, D4_Button.MouseUp, E4_Button.MouseUp, F4_Button.MouseUp, G4_Button.MouseUp, A4_Button.MouseUp, H4_Button.MouseUp,
         C5_Button.MouseUp, D5_Button.MouseUp, E5_Button.MouseUp, F5_Button.MouseUp, G5_Button.MouseUp, A5_Button.MouseUp, H5_Button.MouseUp,
-        C6_Button.MouseUp, D6_Button.MouseUp, E6_Button.MouseUp, F6_Button.MouseUp, G6_Button.MouseUp, A6_Button.MouseUp, H6_Button.MouseUp,
+        C6_Button.MouseUp, D6_Button.MouseUp, E6_Button.MouseUp, F6_Button.MouseUp, G6_Button.MouseUp, A1_Button.MouseUp, H1_Button.MouseUp,
         C2_Button.KeyUp, D2_Button.KeyUp, E2_Button.KeyUp, F2_Button.KeyUp, G2_Button.KeyUp, A2_Button.KeyUp, H2_Button.KeyUp,
         C3_Button.KeyUp, D3_Button.KeyUp, E3_Button.KeyUp, F3_Button.KeyUp, G3_Button.KeyUp, A3_Button.KeyUp, H3_Button.KeyUp,
         C4_Button.KeyUp, D4_Button.KeyUp, E4_Button.KeyUp, F4_Button.KeyUp, G4_Button.KeyUp, A4_Button.KeyUp, H4_Button.KeyUp,
         C5_Button.KeyUp, D5_Button.KeyUp, E5_Button.KeyUp, F5_Button.KeyUp, G5_Button.KeyUp, A5_Button.KeyUp, H5_Button.KeyUp,
-        C6_Button.KeyUp, D6_Button.KeyUp, E6_Button.KeyUp, F6_Button.KeyUp, G6_Button.KeyUp, A6_Button.KeyUp, H6_Button.KeyUp
+        C6_Button.KeyUp, D6_Button.KeyUp, E6_Button.KeyUp, F6_Button.KeyUp, G6_Button.KeyUp, A1_Button.KeyUp, H1_Button.KeyUp
         Button_Stop_Note(sender.Tag)
     End Sub
 
@@ -1217,12 +1266,12 @@ next_value_exit:
         C3_Startwert.KeyPress, D3_Startwert.KeyPress, E3_Startwert.KeyPress, F3_Startwert.KeyPress, G3_Startwert.KeyPress, A3_Startwert.KeyPress, H3_Startwert.KeyPress,
         C4_Startwert.KeyPress, D4_Startwert.KeyPress, E4_Startwert.KeyPress, F4_Startwert.KeyPress, G4_Startwert.KeyPress, A4_Startwert.KeyPress, H4_Startwert.KeyPress,
         C5_Startwert.KeyPress, D5_Startwert.KeyPress, E5_Startwert.KeyPress, F5_Startwert.KeyPress, G5_Startwert.KeyPress, A5_Startwert.KeyPress, H5_Startwert.KeyPress,
-        C6_Startwert.KeyPress, D6_Startwert.KeyPress, E6_Startwert.KeyPress, F6_Startwert.KeyPress, G6_Startwert.KeyPress, A6_Startwert.KeyPress, H6_Startwert.KeyPress,
+        C6_Startwert.KeyPress, D6_Startwert.KeyPress, E6_Startwert.KeyPress, F6_Startwert.KeyPress, G6_Startwert.KeyPress, A1_Startwert.KeyPress, H1_Startwert.KeyPress,
         C2_Stopwert.KeyPress, D2_Stopwert.KeyPress, E2_Stopwert.KeyPress, F2_Stopwert.KeyPress, G2_Stopwert.KeyPress, A2_Stopwert.KeyPress, H2_Stopwert.KeyPress,
         C3_Stopwert.KeyPress, D3_Stopwert.KeyPress, E3_Stopwert.KeyPress, F3_Stopwert.KeyPress, G3_Stopwert.KeyPress, A3_Stopwert.KeyPress, H3_Stopwert.KeyPress,
         C4_Stopwert.KeyPress, D4_Stopwert.KeyPress, E4_Stopwert.KeyPress, F4_Stopwert.KeyPress, G4_Stopwert.KeyPress, A4_Stopwert.KeyPress, H4_Stopwert.KeyPress,
         C5_Stopwert.KeyPress, D5_Stopwert.KeyPress, E5_Stopwert.KeyPress, F5_Stopwert.KeyPress, G5_Stopwert.KeyPress, A5_Stopwert.KeyPress, H5_Stopwert.KeyPress,
-        C6_Stopwert.KeyPress, D6_Stopwert.KeyPress, E6_Stopwert.KeyPress, F6_Stopwert.KeyPress, G6_Stopwert.KeyPress, A6_Stopwert.KeyPress, H6_Stopwert.KeyPress
+        C6_Stopwert.KeyPress, D6_Stopwert.KeyPress, E6_Stopwert.KeyPress, F6_Stopwert.KeyPress, G6_Stopwert.KeyPress, A1_Stopwert.KeyPress, H1_Stopwert.KeyPress
 
         Select Case Asc(e.KeyChar)
             Case 48 To 57, 8 ', 45=Minus ', 46=Punkt (Hier als Komma)
@@ -1240,7 +1289,7 @@ next_value_exit:
     C3_Verschiebung.KeyPress, D3_Verschiebung.KeyPress, E3_Verschiebung.KeyPress, F3_Verschiebung.KeyPress, G3_Verschiebung.KeyPress, A3_Verschiebung.KeyPress, H3_Verschiebung.KeyPress,
     C4_Verschiebung.KeyPress, D4_Verschiebung.KeyPress, E4_Verschiebung.KeyPress, F4_Verschiebung.KeyPress, G4_Verschiebung.KeyPress, A4_Verschiebung.KeyPress, H4_Verschiebung.KeyPress,
     C5_Verschiebung.KeyPress, D5_Verschiebung.KeyPress, E5_Verschiebung.KeyPress, F5_Verschiebung.KeyPress, G5_Verschiebung.KeyPress, A5_Verschiebung.KeyPress, H5_Verschiebung.KeyPress,
-    C6_Verschiebung.KeyPress, D6_Verschiebung.KeyPress, E6_Verschiebung.KeyPress, F6_Verschiebung.KeyPress, G6_Verschiebung.KeyPress, A6_Verschiebung.KeyPress, H6_Verschiebung.KeyPress
+    C6_Verschiebung.KeyPress, D6_Verschiebung.KeyPress, E6_Verschiebung.KeyPress, F6_Verschiebung.KeyPress, G6_Verschiebung.KeyPress, A1_Verschiebung.KeyPress, H1_Verschiebung.KeyPress
 
         Select Case Asc(e.KeyChar)
             Case 48 To 57, 8, 45 ', 46=Punkt (Hier als Komma)
@@ -1258,12 +1307,12 @@ next_value_exit:
         C3_Startwert.LostFocus, D3_Startwert.LostFocus, E3_Startwert.LostFocus, F3_Startwert.LostFocus, G3_Startwert.LostFocus, A3_Startwert.LostFocus, H3_Startwert.LostFocus,
         C4_Startwert.LostFocus, D4_Startwert.LostFocus, E4_Startwert.LostFocus, F4_Startwert.LostFocus, G4_Startwert.LostFocus, A4_Startwert.LostFocus, H4_Startwert.LostFocus,
         C5_Startwert.LostFocus, D5_Startwert.LostFocus, E5_Startwert.LostFocus, F5_Startwert.LostFocus, G5_Startwert.LostFocus, A5_Startwert.LostFocus, H5_Startwert.LostFocus,
-        C6_Startwert.LostFocus, D6_Startwert.LostFocus, E6_Startwert.LostFocus, F6_Startwert.LostFocus, G6_Startwert.LostFocus, A6_Startwert.LostFocus, H6_Startwert.LostFocus,
+        C6_Startwert.LostFocus, D6_Startwert.LostFocus, E6_Startwert.LostFocus, F6_Startwert.LostFocus, G6_Startwert.LostFocus, A1_Startwert.LostFocus, H1_Startwert.LostFocus,
         C2_Stopwert.LostFocus, D2_Stopwert.LostFocus, E2_Stopwert.LostFocus, F2_Stopwert.LostFocus, G2_Stopwert.LostFocus, A2_Stopwert.LostFocus, H2_Stopwert.LostFocus,
         C3_Stopwert.LostFocus, D3_Stopwert.LostFocus, E3_Stopwert.LostFocus, F3_Stopwert.LostFocus, G3_Stopwert.LostFocus, A3_Stopwert.LostFocus, H3_Stopwert.LostFocus,
         C4_Stopwert.LostFocus, D4_Stopwert.LostFocus, E4_Stopwert.LostFocus, F4_Stopwert.LostFocus, G4_Stopwert.LostFocus, A4_Stopwert.LostFocus, H4_Stopwert.LostFocus,
         C5_Stopwert.LostFocus, D5_Stopwert.LostFocus, E5_Stopwert.LostFocus, F5_Stopwert.LostFocus, G5_Stopwert.LostFocus, A5_Stopwert.LostFocus, H5_Stopwert.LostFocus,
-        C6_Stopwert.LostFocus, D6_Stopwert.LostFocus, E6_Stopwert.LostFocus, F6_Stopwert.LostFocus, G6_Stopwert.LostFocus, A6_Stopwert.LostFocus, H6_Stopwert.LostFocus
+        C6_Stopwert.LostFocus, D6_Stopwert.LostFocus, E6_Stopwert.LostFocus, F6_Stopwert.LostFocus, G6_Stopwert.LostFocus, A1_Stopwert.LostFocus, H1_Stopwert.LostFocus
 
         If sender.Text = "" Then sender.Text = 0
         If sender.Text > 255 Then sender.Text = 255
@@ -1281,7 +1330,7 @@ next_value_exit:
     C3_Verschiebung.LostFocus, D3_Verschiebung.LostFocus, E3_Verschiebung.LostFocus, F3_Verschiebung.LostFocus, G3_Verschiebung.LostFocus, A3_Verschiebung.LostFocus, H3_Verschiebung.LostFocus,
     C4_Verschiebung.LostFocus, D4_Verschiebung.LostFocus, E4_Verschiebung.LostFocus, F4_Verschiebung.LostFocus, G4_Verschiebung.LostFocus, A4_Verschiebung.LostFocus, H4_Verschiebung.LostFocus,
     C5_Verschiebung.LostFocus, D5_Verschiebung.LostFocus, E5_Verschiebung.LostFocus, F5_Verschiebung.LostFocus, G5_Verschiebung.LostFocus, A5_Verschiebung.LostFocus, H5_Verschiebung.LostFocus,
-    C6_Verschiebung.LostFocus, D6_Verschiebung.LostFocus, E6_Verschiebung.LostFocus, F6_Verschiebung.LostFocus, G6_Verschiebung.LostFocus, A6_Verschiebung.LostFocus, H6_Verschiebung.LostFocus
+    C6_Verschiebung.LostFocus, D6_Verschiebung.LostFocus, E6_Verschiebung.LostFocus, F6_Verschiebung.LostFocus, G6_Verschiebung.LostFocus, A1_Verschiebung.LostFocus, H1_Verschiebung.LostFocus
 
         If sender.Text = "" Then sender.Text = 0
         If sender.Text > 127 Then sender.Text = 127
@@ -1439,7 +1488,7 @@ next_value_exit:
         A3_Verschiebung.Text += A1_Klappe_Differenz
         A4_Verschiebung.Text += A1_Klappe_Differenz
         A5_Verschiebung.Text += A1_Klappe_Differenz
-        A6_Verschiebung.Text += A1_Klappe_Differenz
+        A1_Verschiebung.Text += A1_Klappe_Differenz
 
         A1_Klappe_alt = A1_Klappe.Value
 
@@ -1453,7 +1502,7 @@ next_value_exit:
         H3_Verschiebung.Text += H1_Klappe_Differenz
         H4_Verschiebung.Text += H1_Klappe_Differenz
         H5_Verschiebung.Text += H1_Klappe_Differenz
-        H6_Verschiebung.Text += H1_Klappe_Differenz
+        H1_Verschiebung.Text += H1_Klappe_Differenz
 
         H1_Klappe_alt = H1_Klappe.Value
 
@@ -2528,6 +2577,7 @@ next_value_exit:
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)
         About_Button.Enabled = True
     End Sub
+
 
 End Class
 
