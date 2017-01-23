@@ -49,6 +49,8 @@ Temporary Items
 # Exclude binary- and temporary files
 *.pdb
 *.suo
+*.pyc
+*.db
 *pingme.txt
 MIDI_Harfe_PC_Windows/.vs
 MIDI_Harfe_PC_Windows/C-Control PRO Visualisieren/bin

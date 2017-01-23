@@ -9,7 +9,6 @@ Imports System.Threading.Tasks
 Imports Sanford.Multimedia.Midi
 Imports Sanford.Multimedia.Midi.UI
 Imports NAudio.Wave
-Imports System.Media
 
 'Imports System.Net.NetworkInformation
 
@@ -124,7 +123,7 @@ Public Class Form1
     Dim Halbtonversch As Integer
 
     Dim MidiNoteNr = {
-        32, 34, 
+        32, 34,
         36, 38, 39, 41, 43, 44, 46,
         48, 50, 51, 53, 55, 56, 58,
         60, 62, 63, 65, 67, 68, 70,
@@ -182,7 +181,7 @@ Public Class Form1
     Dim Shortcut_Pause As Byte = 121
     Dim Shortcut_Save As Byte = 120
     Dim Taste_gedrueckt As Byte
-
+    
     Dim Tastenkombination_FirstKey As Boolean
     Dim Tastenkombination_KeyAlt As Byte
     Dim Costom_Tastenkombinationen_Counter As UShort
@@ -464,6 +463,7 @@ Public Class Form1
         Dim Ableitung3(70) As Integer
         Dim NotenNr_real As Integer
         Dim second_trigger_count As Integer
+        Dim third_trigger_count as Integer
 
         'Dim waveForamt As New WaveFormat(6000, 16, 1)
         'For i=0 To 35
@@ -533,7 +533,12 @@ next_value:
             'Ableitung3(NotenNr_real) = Ableitung2werte(NotenNr_real).Last - Ableitung2werte(NotenNr_real)(Ableitung2werte(NotenNr_real).Count - 2)
             'Ableitung3werte(NotenNr_real).Add(Ableitung3(NotenNr_real))
 
-            If Integralwert(NotenNr_real) >= 175000 And Note_Play(NotenNr_real) = False Then
+            'Messwerte(NotenNr_real).RemoveAt(0)
+            'Integralwerte(NotenNr_real).RemoveAt(0)
+            'Ableitung1werte(NotenNr_real).RemoveAt(0)
+            'Ableitung2werte(NotenNr_real).RemoveAt(0)
+
+            If Integralwert(NotenNr_real) > 175000 And Note_Play(NotenNr_real) = False Then
                 second_trigger_count = 0
                 For Each wert In Ableitung2werte(NotenNr_real).Skip(Ableitung2werte(NotenNr_real).Count - 20)
                     If (wert < -7000 Or wert > 7000) Then
@@ -541,7 +546,14 @@ next_value:
                     End If
                 Next
 
-                If (second_trigger_count > 4) Then
+                third_trigger_count = 0
+                For Each wert In Messwerte(NotenNr_real).Skip(Messwerte(NotenNr_real).Count - 20)
+                    If (wert < -8000 Or wert > 8000) Then
+                        third_trigger_count += 1
+                    End If
+                Next
+
+                If (second_trigger_count > 4 and third_trigger_count > 2) Then
                     'My.Computer.Keyboard.SendKeys("p", True)
                     'MessageBox.Show(wert)
                     'MessageBox.Show(NotenNr & " on " & Integralwert(NotenNr_real))
@@ -574,8 +586,8 @@ next_value:
             GoTo next_value
 next_value_exit:
 
-        Catch Exc As System.Exception 'DivideByZeroException 'System.PlatformNotSupportedException
-            Debug.WriteLine(Exc)
+        Catch ex As System.Exception 'DivideByZeroException 'System.PlatformNotSupportedException
+            Debug.WriteLine(ex)
             Anz_Verbindungsfehler += 1
             Anz_Verbindungsfehler_TextBox.Text = "Error"
             Try
@@ -910,148 +922,179 @@ next_value_exit:
 
 
     Private Sub Display_Refresh() Handles Display_Refresh_Timer.Tick
-        'Display_Refresh_Timer.Enabled = False
-        'Exit Sub
-        Dim LetzteMesswerte As List(Of Integer)
-        Dim LetzteIntegralwerte As List(Of Integer)
-        Dim LetzteAbleitung1werte As List(Of Integer)
-        Dim LetzteAbleitung2werte As List(Of Integer)
+        Try
+            'Display_Refresh_Timer.Enabled = False
+            'Exit Sub
+            Dim LetzteMesswerte As List(Of Integer) = New List(Of Integer)()
+            Dim LetzteIntegralwerte As List(Of Integer) = New List(Of Integer)()
+            Dim LetzteAbleitung1werte As List(Of Integer) = New List(Of Integer)()
+            Dim LetzteAbleitung2werte As List(Of Integer) = New List(Of Integer)()
 
-        Dim Anz_neue_Messungen As Long
-        'Dim LetzteAbleitung3werte As List(Of Integer)
+            Dim Anz_neue_Messungen As Long
+            'Dim LetzteAbleitung3werte As List(Of Integer)
 
-        Anz_Messungen_TextBox.Text = Anz_Messungen
-        If (Messwerte.Count = 0)
-            Exit Sub
-        End If
-
-        Anz_neue_Messungen = Anz_Messungen - Anz_Messungen_alt - 1
-        Debug.WriteLine(Anz_neue_Messungen)
-
-        Anz_Messungen_alt = Anz_Messungen
-
-        If Anz_neue_Messungen < 5 Then
-            Exit Sub
-        End If
-
-        Dim TriggerNr As New List(Of UShort)
-        Dim genauzeit As UShort = 0
-        Dim integralwert As ULong
-        Dim integralwert_avg As ULong
-
-        Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
-        Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
-
-        Integral_Chart.ChartAreas(0).AxisY.Minimum = 0
-        Integral_Chart.ChartAreas(0).AxisY.Maximum = 400000
-
-        Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
-        Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
-
-        Dim Cart_Points_Display As UInteger = 100
-
-        'Try
-        For i = 0 To 31 Step 1
-            if not (i=10) Then
-            Continue For
-            End If
-            'Messwerte_Chart.Series(i).Points.Clear()
-            'Integral_Chart.Series(i).Points.Clear()
-            'Ableitung2_Chart.Series(i).Points.Clear()
-            integralwert = 0
-            'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
-
-            'LetzteMesswerte =  Messwerte(i).GetRange(10000, Messwerte(i).Count - 10001)
-            'LetzteIntegralwerte = Integralwerte(i).GetRange(10000, Integralwerte(i).Count - 10001)
-            'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(10000, Ableitung1werte(i).Count - 10001)
-            'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(10000, Ableitung2werte(i).Count - 10001)
-
-            'LetzteMesswerte =  Messwerte(i).GetRange(Messwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
-            'LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
-            'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
-            'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
-
-            LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
-            LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
-            LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
-            LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
-
-            'LetzteAbleitung3werte = Ableitung3werte(i).GetRange(Ableitung3werte(i).Count - 201, 200)
-
-            ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
-            ''    If (LetzteMesswerte(w) > 23000) '23000
-            ''        genauzeit = i
-            ''        If genauzeit > 15 Then
-            ''            genauzeit -= 16
-            ''        End If
-            ''        Chart1.Series(0).Points.AddXY(w*16+genauzeit,i)
-            ''        Display_Refresh_Timer.Stop
-            ''        'Chart1.Series(i).Points.DataBindY(LetzteMesswerte)
-            ''        Exit For
-            ''    End If
-            ''Next
-
-            'If (i = 8 Or i = 9 Or i = 10)
-            'Dim Durchschnittswert As ULong
-            'Dim tmp As Integer
-
-            'For Each wert As ULong In LetzteMesswerte
-            '    Durchschnittswert += wert
-            'Next
-            'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
-
-            For Each wert As Long In LetzteAbleitung2werte
-                Ableitung2_Chart.Series(i).Points.Add(wert)
-                If Ableitung2_Chart.Series(i).Points.Count > Cart_Points_Display Then
-                    Ableitung2_Chart.Series(i).Points.RemoveAt(0)
-                End If
-            Next
-
-            For Each wert As Long In LetzteIntegralwerte
-                integralwert_avg += wert
-                Integral_Chart.Series(i).Points.Add(wert)
-                If Integral_Chart.Series(i).Points.Count > Cart_Points_Display Then
-                    Integral_Chart.Series(i).Points.RemoveAt(0)
-                End If
-            Next
-            integralwert_avg /= LetzteIntegralwerte.Count * 5000
-
-            For Each wert As Long In LetzteMesswerte
-                Messwerte_Chart.Series(i).Points.Add(wert)
-                If Messwerte_Chart.Series(i).Points.Count > Cart_Points_Display Then
-                    Messwerte_Chart.Series(i).Points.RemoveAt(0)
-                End If
-            Next
-            'If Chart1.Series(i).Points.Count > 30 Then
-            '    Chart1.Series(i).Points.RemoveAt(0)
-            'End If
-
-            'Chart1.Series(i).Points.Add(integralwert)
-            'End If
-
-
-            'If i=7 And integralwert<1500000 Then
-            '    Chart1.Series(0).Points.Clear()
-            '    Exit Sub
-            'End If
-
-            If (integralwert_avg > 255) Then
-                integralwert_avg = 255
+            Anz_Messungen_TextBox.Text = Anz_Messungen
+            If (Messwerte.Count = 0)
+                Exit Sub
             End If
 
-            Noten_VerticalProgessBar(i).Value = integralwert_avg
-            'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
-            'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
-            'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
-            'Noten_Wert(i).Text = ADC(i)
-            LetzteMesswerte.Clear()
-        Next
+            Anz_neue_Messungen = Anz_Messungen - Anz_Messungen_alt - 1
+            'Debug.WriteLine(Anz_neue_Messungen)
 
-        'Chart1.Series(0).Points.DataBindY(TriggerNr)
+            Anz_Messungen_alt = Anz_Messungen
 
-        'Catch ex As Exception
+            If Anz_neue_Messungen < 5 Then
+                Exit Sub
+            End If
 
-        'End Try
+            Dim TriggerNr As New List(Of UShort)
+            Dim genauzeit As UShort = 0
+            Dim integralwert As Long
+            Dim integralwert_avg As Long 'Long und nicht ULong da in ganz speziellen Fällen (ganz oft 0 danach hoher messwert) negative zahlen auftreten können.
+
+            Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
+            Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
+
+            Integral_Chart.ChartAreas(0).AxisY.Minimum = 0
+            Integral_Chart.ChartAreas(0).AxisY.Maximum = 400000
+
+            Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
+            Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
+
+            Dim Cart_Points_Display As UInteger = 100
+
+            'Try
+            For i = 0 To 31 Step 1
+                'if not (i=10) Then
+                'Continue For
+                'End If
+                'Messwerte_Chart.Series(i).Points.Clear()
+                'Integral_Chart.Series(i).Points.Clear()
+                'Ableitung2_Chart.Series(i).Points.Clear()
+                integralwert = 0
+                'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count-30,Messwerte(i).Count-1)
+
+                'LetzteMesswerte =  Messwerte(i).GetRange(10000, Messwerte(i).Count - 10001)
+                'LetzteIntegralwerte = Integralwerte(i).GetRange(10000, Integralwerte(i).Count - 10001)
+                'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(10000, Ableitung1werte(i).Count - 10001)
+                'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(10000, Ableitung2werte(i).Count - 10001)
+
+                'LetzteMesswerte =  Messwerte(i).GetRange(Messwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+                'LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+                'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+                'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - Anz_neue_Messungen, Anz_neue_Messungen)
+
+                'LetzteMesswerte = Messwerte(i).GetRange(Messwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+                'LetzteIntegralwerte = Integralwerte(i).GetRange(Integralwerte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+                'LetzteAbleitung1werte = Ableitung1werte(i).GetRange(Ableitung1werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+                'LetzteAbleitung2werte = Ableitung2werte(i).GetRange(Ableitung2werte(i).Count - (Cart_Points_Display + 1), Cart_Points_Display)
+
+                if(Messwerte(i).Count - Cart_Points_Display > 0) Then
+                    Messwerte(i).RemoveRange(0, Messwerte(i).Count - Cart_Points_Display)
+                End If
+
+                if(Integralwerte(i).Count - Cart_Points_Display > 0) Then
+                    Integralwerte(i).RemoveRange(0, Integralwerte(i).Count - Cart_Points_Display)
+                End If
+
+                if(Ableitung1werte(i).Count - Cart_Points_Display > 0) Then
+                    Ableitung1werte(i).RemoveRange(0, Ableitung1werte(i).Count - Cart_Points_Display)
+                End If
+
+                if(Ableitung2werte(i).Count - Cart_Points_Display > 0) Then
+                    Ableitung2werte(i).RemoveRange(0, Ableitung2werte(i).Count - Cart_Points_Display)
+                End If
+
+
+                LetzteMesswerte.Clear()
+                LetzteIntegralwerte.Clear()
+                LetzteAbleitung1werte.Clear()
+                LetzteAbleitung2werte.Clear()
+                LetzteMesswerte.AddRange(Messwerte(i).ToArray())
+                LetzteIntegralwerte.AddRange(Integralwerte(i).ToArray())
+                LetzteAbleitung1werte.AddRange(Ableitung1werte(i).ToArray())
+                LetzteAbleitung2werte.AddRange(Ableitung2werte(i).ToArray())
+
+
+                'LetzteAbleitung3werte = Ableitung3werte(i).GetRange(Ableitung3werte(i).Count - 201, 200)
+
+                ''For w = 0 To LetzteMesswerte.Count - 1 Step 1
+                ''    If (LetzteMesswerte(w) > 23000) '23000
+                ''        genauzeit = i
+                ''        If genauzeit > 15 Then
+                ''            genauzeit -= 16
+                ''        End If
+                ''        Chart1.Series(0).Points.AddXY(w*16+genauzeit,i)
+                ''        Display_Refresh_Timer.Stop
+                ''        'Chart1.Series(i).Points.DataBindY(LetzteMesswerte)
+                ''        Exit For
+                ''    End If
+                ''Next
+
+                'If (i = 8 Or i = 9 Or i = 10)
+                'Dim Durchschnittswert As ULong
+                'Dim tmp As Integer
+
+                'For Each wert As ULong In LetzteMesswerte
+                '    Durchschnittswert += wert
+                'Next
+                'Durchschnittswert = Durchschnittswert/LetzteMesswerte.Count
+
+                For Each wert As Long In LetzteAbleitung2werte
+                    Ableitung2_Chart.Series(i).Points.Add(wert)
+                    If Ableitung2_Chart.Series(i).Points.Count > Cart_Points_Display Then
+                        Ableitung2_Chart.Series(i).Points.RemoveAt(0)
+                    End If
+                Next
+
+                For Each wert As Long In LetzteIntegralwerte
+                    integralwert_avg += wert
+                    Integral_Chart.Series(i).Points.Add(wert)
+                    If Integral_Chart.Series(i).Points.Count > Cart_Points_Display Then
+                        Integral_Chart.Series(i).Points.RemoveAt(0)
+                    End If
+                Next
+                integralwert_avg /= LetzteIntegralwerte.Count * 500
+
+                For Each wert As Long In LetzteMesswerte
+                    Messwerte_Chart.Series(i).Points.Add(wert)
+                    If Messwerte_Chart.Series(i).Points.Count > Cart_Points_Display Then
+                        Messwerte_Chart.Series(i).Points.RemoveAt(0)
+                    End If
+                Next
+                'If Chart1.Series(i).Points.Count > 30 Then
+                '    Chart1.Series(i).Points.RemoveAt(0)
+                'End If
+
+                'Chart1.Series(i).Points.Add(integralwert)
+                'End If
+
+
+                'If i=7 And integralwert<1500000 Then
+                '    Chart1.Series(0).Points.Clear()
+                '    Exit Sub
+                'End If
+
+                If (integralwert_avg > 255) Then
+                    integralwert_avg = 255
+                End If
+
+                Noten_VerticalProgessBar(i).Value = integralwert_avg
+                'Noten_VerticalProgessBar(i).Value = 56 * Math.log10((LetzteMesswerte.Max()-LetzteMesswerte.Min())/2)
+                'Noten_VerticalProgessBar(i).Value = CInt((LetzteMesswerte.Max()-LetzteMesswerte.Min())/128)
+                'Noten_VerticalProgessBar(i).Value = ADC(i) >> 7
+                Noten_Wert(i).Text = integralwert_avg
+                LetzteMesswerte.Clear()
+            Next
+
+            'Chart1.Series(0).Points.DataBindY(TriggerNr)
+
+            'Catch ex As Exception
+
+            'End Try
+        Catch ex as Exception
+            Debug.WriteLine(ex)
+        End Try
     End Sub
 
 
@@ -1235,8 +1278,8 @@ next_value_exit:
 
     Private Sub Button_Note(ByVal TastenNr As Byte)
         Dim NotenNr As Integer
-
         NotenNr = MidiNoteNr(TastenNr) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(TastenNr).Text)
+        If Button_Note_Play(NotenNr) = True Then Exit Sub
         If NotenNr < 0 Then NotenNr = 0
         If NotenNr > 127 Then NotenNr = 127
         PlayMIDINote(NotenNr, 100)
@@ -1386,14 +1429,8 @@ next_value_exit:
     End Sub
 
 
-#Region " Klappen"
 
-#Region " Key Events"
-    'Private Sub C_Key(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.ValueChanged
-#End Region
-
-
-#Region " Klappen verändert"
+#Region "Klappen"
 
     Private Sub C1_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.ValueChanged
         C2_Klappe.Value = C1_Klappe.Value
@@ -1412,17 +1449,6 @@ next_value_exit:
 
     Private Sub C2_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C2_Klappe.ValueChanged
         C1_Klappe.Value = C2_Klappe.Value
-
-        Dim C2_Klappe_Differenz As SByte = C2_Klappe.Value - C2_Klappe_alt
-        C2_Klappe_Text.Text = Notennamen(C2_Klappe.Value + 1, 0)
-
-        C2_Verschiebung.Text += C2_Klappe_Differenz
-        C3_Verschiebung.Text += C2_Klappe_Differenz
-        C4_Verschiebung.Text += C2_Klappe_Differenz
-        C5_Verschiebung.Text += C2_Klappe_Differenz
-        C6_Verschiebung.Text += C2_Klappe_Differenz
-
-        C1_Klappe_alt = C1_Klappe.Value
     End Sub
 
     Private Sub D_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles D1_Klappe.ValueChanged
@@ -1449,7 +1475,6 @@ next_value_exit:
         E6_Verschiebung.Text += E1_Klappe_Differenz
 
         E1_Klappe_alt = E1_Klappe.Value
-
     End Sub
 
     Private Sub F_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles F1_Klappe.ValueChanged
@@ -1463,7 +1488,6 @@ next_value_exit:
         F6_Verschiebung.Text += F1_Klappe_Differenz
 
         F1_Klappe_alt = F1_Klappe.Value
-
     End Sub
 
     Private Sub G_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles G1_Klappe.ValueChanged
@@ -1477,38 +1501,33 @@ next_value_exit:
         G6_Verschiebung.Text += G1_Klappe_Differenz
 
         G1_Klappe_alt = G1_Klappe.Value
-
     End Sub
 
     Private Sub A_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles A1_Klappe.ValueChanged
         Dim A1_Klappe_Differenz As SByte = A1_Klappe.Value - A1_Klappe_alt
         A1_Klappe_Text.Text = Notennamen(A1_Klappe.Value + 1, 5)
 
+        A1_Verschiebung.Text += A1_Klappe_Differenz
         A2_Verschiebung.Text += A1_Klappe_Differenz
         A3_Verschiebung.Text += A1_Klappe_Differenz
         A4_Verschiebung.Text += A1_Klappe_Differenz
         A5_Verschiebung.Text += A1_Klappe_Differenz
-        A1_Verschiebung.Text += A1_Klappe_Differenz
 
         A1_Klappe_alt = A1_Klappe.Value
-
     End Sub
 
     Private Sub H_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles H1_Klappe.ValueChanged
         Dim H1_Klappe_Differenz As SByte = H1_Klappe.Value - H1_Klappe_alt
         H1_Klappe_Text.Text = Notennamen(H1_Klappe.Value + 1, 6)
 
+        H1_Verschiebung.Text += H1_Klappe_Differenz
         H2_Verschiebung.Text += H1_Klappe_Differenz
         H3_Verschiebung.Text += H1_Klappe_Differenz
         H4_Verschiebung.Text += H1_Klappe_Differenz
         H5_Verschiebung.Text += H1_Klappe_Differenz
-        H1_Verschiebung.Text += H1_Klappe_Differenz
 
         H1_Klappe_alt = H1_Klappe.Value
-
     End Sub
-
-#End Region
 
 #End Region
 
@@ -2315,7 +2334,7 @@ next_value_exit:
             F1_Klappe.Value = .F_Klappe
             G1_Klappe.Value = .G_Klappe
             A1_Klappe.Value = .A_Klappe
-            H1_Klappe.Value = .G_Klappe
+            H1_Klappe.Value = .H_Klappe
 
             ' Startwert, Stopwert und Halbtonverschiebung
             Try
@@ -2578,7 +2597,9 @@ next_value_exit:
         About_Button.Enabled = True
     End Sub
 
+    Private Sub TableLayoutPanel1_Paint(sender As Object, e As PaintEventArgs) Handles TableLayoutPanel1.Paint
 
+    End Sub
 End Class
 
 
