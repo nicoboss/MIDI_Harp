@@ -7,6 +7,7 @@
 #include "ADC.h" //Importieren der ADC Bibliothek zum Ansteuern der ADC_Ports
 #define USBSERIAL Serial //SerialUSB Definition für den Teensy Microkontroller
 #define Syncbyte B10000000 //Das Synchbyte beträgt immer 128 => binär 10000000
+//#define LED 13 //Das Power-LED befindet sich auf Port 13
 #define USB_MIDI_Schalter 23 //Das Power-LED befindet sich auf Port 13
 
 //Folgende Funktion wird bei jedem Bootvorgang automatisch einmal ausgeführt
@@ -164,4 +165,3 @@ void loop() {
   }
   goto messen; //Wiederholen des main-loops
 }
-

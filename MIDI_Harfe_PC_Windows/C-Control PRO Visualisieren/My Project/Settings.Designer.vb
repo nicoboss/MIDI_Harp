@@ -221,18 +221,6 @@ Namespace My
         End Property
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property DirectPlay_ON() As Boolean
-            Get
-                Return CType(Me("DirectPlay_ON"),Boolean)
-            End Get
-            Set
-                Me("DirectPlay_ON") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute()>  _
         Public Property hsbVolume() As Byte
             Get
@@ -604,12 +592,12 @@ Namespace My
          Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<ArrayOfString xmlns:xsi=""http://www.w3."& _ 
             "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <s"& _ 
             "tring>#</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</ArrayOfString>")>  _
-        Public Property Stopwert_Save() As Global.System.Collections.Specialized.StringCollection
+        Public Property Stoppwert_Save() As Global.System.Collections.Specialized.StringCollection
             Get
-                Return CType(Me("Stopwert_Save"),Global.System.Collections.Specialized.StringCollection)
+                Return CType(Me("Stoppwert_Save"),Global.System.Collections.Specialized.StringCollection)
             End Get
             Set
-                Me("Stopwert_Save") = value
+                Me("Stoppwert_Save") = value
             End Set
         End Property
         

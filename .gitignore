@@ -50,6 +50,7 @@ Temporary Items
 *.pdb
 *.suo
 *.pyc
+*.pyd
 *.db
 *pingme.txt
 MIDI_Harfe_PC_Windows/.vs
