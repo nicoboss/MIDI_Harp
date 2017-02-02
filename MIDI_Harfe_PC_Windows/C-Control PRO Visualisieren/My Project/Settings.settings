@@ -11,8 +11,8 @@
     <Setting Name="Takt_Naenner_Input" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
-    <Setting Name="BPM" Type="System.UInt16" Scope="User">
-      <Value Profile="(Default)">100</Value>
+    <Setting Name="Speed" Type="System.UInt16" Scope="User">
+      <Value Profile="(Default)">48</Value>
     </Setting>
     <Setting Name="MIDI_NormalMode" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>

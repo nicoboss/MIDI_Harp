@@ -1,3 +1,10 @@
+' -----------------------------------------------------------------------
+' <copyright file="Form1.designer.vb">
+' Nico Bosshard
+' </copyright>
+' -----------------------------------------------------------------------
+
+
 <Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
@@ -17,9 +24,6 @@ Partial Class Form1
     'Wird vom Windows Form-Designer benötigt.
     Private components As System.ComponentModel.IContainer
 
-    'Hinweis: Die folgende Prozedur ist für den Windows Form-Designer erforderlich.
-    'Das Bearbeiten ist mit dem Windows Form-Designer möglich.  
-    'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
@@ -184,8 +188,8 @@ Partial Class Form1
         Me.Takt_Naenner_Input = New System.Windows.Forms.NumericUpDown()
         Me.Takt_Zaehler_Input = New System.Windows.Forms.NumericUpDown()
         Me.Takt_Label = New System.Windows.Forms.Label()
-        Me.BPM_Label = New System.Windows.Forms.Label()
-        Me.BPM = New System.Windows.Forms.NumericUpDown()
+        Me.Speed_Label = New System.Windows.Forms.Label()
+        Me.Speed = New System.Windows.Forms.NumericUpDown()
         Me.SendKeys_OFF = New System.Windows.Forms.RadioButton()
         Me.SendKeys_ON = New System.Windows.Forms.RadioButton()
         Me.SendKey_GroupBox = New System.Windows.Forms.GroupBox()
@@ -506,7 +510,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.SuspendLayout
         CType(Me.Takt_Naenner_Input,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.Takt_Zaehler_Input,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.BPM,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.Speed,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SendKey_GroupBox.SuspendLayout
         Me.SendKeys_GroupBox.SuspendLayout
         Me.Instrumentenauswahl_GroupBox.SuspendLayout
@@ -1134,9 +1138,9 @@ Partial Class Form1
         Me.Tempo_GroupBox.Controls.Add(Me.Takt_Naenner_Input)
         Me.Tempo_GroupBox.Controls.Add(Me.Takt_Zaehler_Input)
         Me.Tempo_GroupBox.Controls.Add(Me.Takt_Label)
-        Me.Tempo_GroupBox.Controls.Add(Me.BPM_Label)
-        Me.Tempo_GroupBox.Controls.Add(Me.BPM)
-        Me.Tempo_GroupBox.Location = New System.Drawing.Point(19, 285)
+        Me.Tempo_GroupBox.Controls.Add(Me.Speed_Label)
+        Me.Tempo_GroupBox.Controls.Add(Me.Speed)
+        Me.Tempo_GroupBox.Location = New System.Drawing.Point(19, 281)
         Me.Tempo_GroupBox.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
         Me.Tempo_GroupBox.Name = "Tempo_GroupBox"
         Me.Tempo_GroupBox.Padding = New System.Windows.Forms.Padding(5, 6, 5, 6)
@@ -1188,25 +1192,25 @@ Partial Class Form1
         Me.Takt_Label.TabIndex = 173
         Me.Takt_Label.Text = "Takt:"
         '
-        'BPM_Label
+        'Speed_Label
         '
-        Me.BPM_Label.AutoSize = true
-        Me.BPM_Label.Location = New System.Drawing.Point(24, 81)
-        Me.BPM_Label.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
-        Me.BPM_Label.Name = "BPM_Label"
-        Me.BPM_Label.Size = New System.Drawing.Size(167, 25)
-        Me.BPM_Label.TabIndex = 172
-        Me.BPM_Label.Text = "Aufnahme BPM:"
+        Me.Speed_Label.AutoSize = true
+        Me.Speed_Label.Location = New System.Drawing.Point(24, 81)
+        Me.Speed_Label.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
+        Me.Speed_Label.Name = "Speed_Label"
+        Me.Speed_Label.Size = New System.Drawing.Size(183, 25)
+        Me.Speed_Label.TabIndex = 172
+        Me.Speed_Label.Text = "Aufnahme Speed:"
         '
-        'BPM
+        'Speed
         '
-        Me.BPM.Location = New System.Drawing.Point(275, 71)
-        Me.BPM.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
-        Me.BPM.Maximum = New Decimal(New Integer() {400, 0, 0, 0})
-        Me.BPM.Name = "BPM"
-        Me.BPM.Size = New System.Drawing.Size(96, 31)
-        Me.BPM.TabIndex = 168
-        Me.BPM.Value = New Decimal(New Integer() {100, 0, 0, 0})
+        Me.Speed.Location = New System.Drawing.Point(275, 71)
+        Me.Speed.Margin = New System.Windows.Forms.Padding(5, 6, 5, 6)
+        Me.Speed.Maximum = New Decimal(New Integer() {400, 0, 0, 0})
+        Me.Speed.Name = "Speed"
+        Me.Speed.Size = New System.Drawing.Size(96, 31)
+        Me.Speed.TabIndex = 168
+        Me.Speed.Value = New Decimal(New Integer() {48, 0, 0, 0})
         '
         'SendKeys_OFF
         '
@@ -5494,7 +5498,7 @@ Partial Class Form1
         Me.Tempo_GroupBox.PerformLayout
         CType(Me.Takt_Naenner_Input,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.Takt_Zaehler_Input,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.BPM,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.Speed,System.ComponentModel.ISupportInitialize).EndInit
         Me.SendKey_GroupBox.ResumeLayout(false)
         Me.SendKey_GroupBox.PerformLayout
         Me.SendKeys_GroupBox.ResumeLayout(false)
@@ -5775,8 +5779,8 @@ End Sub
     Friend WithEvents Takt_Naenner_Input As System.Windows.Forms.NumericUpDown
     Friend WithEvents Takt_Zaehler_Input As System.Windows.Forms.NumericUpDown
     Friend WithEvents Takt_Label As System.Windows.Forms.Label
-    Friend WithEvents BPM_Label As System.Windows.Forms.Label
-    Friend WithEvents BPM As System.Windows.Forms.NumericUpDown
+    Friend WithEvents Speed_Label As System.Windows.Forms.Label
+    Friend WithEvents Speed As System.Windows.Forms.NumericUpDown
     Friend WithEvents Transpose_GroupBox As System.Windows.Forms.GroupBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
