@@ -5,7 +5,8 @@
 ' -----------------------------------------------------------------------
 
 
-Option Explicit On 'Prüfen aller Variabeln während des Komplilierens
+Option Explicit On 'Prüfen aller Variabeln während des Kompilierens
+#Disable Warning BC42356 'This async method lacks 'Await' operators and so will run synchronously
 #Disable Warning BC42358 'Because this call is not awaited, execution of the current method continues before the call is completed
 
 
@@ -23,7 +24,7 @@ Imports libmidi.net.Base
 
 Public Class Form1
 
-    'Deklarieren Globaler Variabeln und Systemfunktionen.
+    'Deklarieren globaler Variabeln und Systemfunktionen.
     Private Declare Function GetWindowRect Lib "user32" Alias "GetWindowRect" (ByVal hwnd As IntPtr, ByRef lpRect As RECT) As Integer
 
     Structure RECT
@@ -77,7 +78,7 @@ Public Class Form1
     Const VK_F11 = &H7A ' F11 Taste
     Const VK_F12 = &H7B ' F12 Taste
 
-    'Erstellen und inizialisieren einer Variabel mit allen verbundenen seriellen Geräten
+    'Erstellen und Inizialisieren einer Variabel mit allen verbundenen seriellen Geräten
     Public ports As String() = GetPortNames()
     Public port As String = ""
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
@@ -90,7 +91,7 @@ Public Class Form1
     Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO"
     Dim Sprache = "DE"
 
-    'Vaiablen für MIDI-Out deklarieren.
+    'Vaiabeln für MIDI-Out deklarieren.
     'In eventCollection werden alle MIDI-Events für die spätere Speicherung zwischengespeichert
     '480=PPQ (Ticks pro Viertelnote)
     Dim MIDI_Out_Connected As Boolean = False
@@ -334,7 +335,7 @@ Public Class Form1
     End Sub
 
 
-    'Trennen der Verbindung mit dem Mikrocontoller
+    'Trennen der Verbindung mit dem Mikrocontroller
     Private Sub Button_Disconnect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button_Disconnect.Click, Me.FormClosing
 
         SerialPort1_Stop = True
@@ -464,7 +465,7 @@ next_value:
             'Vereinigung des High- und Low-Bytes
             ADC_now = 256 * messungen(i) + messungen(i + 1)
 
-            'Mittelwärtsannäherung
+            'Mittelwertsannäherung
             If (ADC_now + calibration(i) > 16383) Then
                 calibration(i) -= 1
             Else
@@ -531,7 +532,7 @@ next_value:
                     If SendKeys_ON.Checked = True Then keybd_event(SendKey_key(MidiNoteNrReal), 0, 0, 0)
                 End If
             Else
-                'Wird der Stoppintegrallwert einer Note unterschritten so wird ein Stopp Event ausgelöst. 
+                'Wird der Stoppintegralwert einer Note unterschritten so wird ein Stopp Event ausgelöst. 
                 If Integralwert(NotenNr_real) < Noten_StoppW(NotenNr_real) And Note_Play(NotenNr_real) = True Then
                     MidiNoteNrReal = MidiNoteNr(NotenNr_real) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(NotenNr_real).Text)
                     'MessageBox.Show(NotenNr & " off")
@@ -780,13 +781,13 @@ next_value_exit:
 
     End Sub
 
-    'Wenn der MIDI-Speed verändert wurde, so wird diese Änderung in einer Variable gespeichert um durch schnelle Variabelnzugriffe die Performance zu steigern
+    'Wenn der MIDI-Speed verändert wurde, so wird diese Änderung in einer Variabel gespeichert um durch schnelle Variabelnzugriffe die Performance zu steigern
     Private Sub Speed_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Speed.ValueChanged
         MIDI_Speed = Speed.Value
     End Sub
 
 
-    'Halbton-/Oktavenverschiebung zum Ändern der Gesammttonhöhe
+    'Halbton-/Oktavenverschiebung zum Ändern der Gesamttonhöhe
 #Region " Halbtonverschiebung "
         Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
         Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
@@ -845,7 +846,7 @@ next_value_exit:
             Dim TriggerNr As New List(Of UShort)
             Dim genauzeit As UShort = 0
             Dim integralwert As Long
-            'Long und nicht ULong da in ganz speziellen Fällen (ganz oft 0 danach hoher messwert) negative zahlen auftreten können
+            'Long und nicht ULong da in ganz speziellen Fällen (ganz oft 0 danach hoher Messwert) negative Zahlen auftreten können
             Dim integralwert_avg As Long
 
             Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
@@ -977,7 +978,7 @@ next_value_exit:
         End If
     End Sub
 
-    'Auffüllen der cboInstruments-Listen mit allen MIDI-Instrumente
+    'Auffüllen der cboInstruments-Listen mit allen MIDI-Instrumenten
     Private Sub FillInstrumentCombo()
         Dim items() As String = [Enum].GetNames(GetType(GeneralMidiInstrument))
         For Each item In items
@@ -1100,13 +1101,13 @@ next_value_exit:
         End If
     End Sub
 
-    'Task für Verzögertes Stppen einer Note
+    'Task für verzögertes Stoppen einer Note
     Private Async Function STOPMIDINote_Async(ByVal Note As Integer, ByVal ms As Integer) As Task
         Await Task.Delay(ms)
         outDevice.Send(New ChannelMessage(ChannelCommand.NoteOff, 0, Note))
     End Function
 
-    ' Funktion zum Stoppen aller Noten
+    'Funktion zum Stoppen aller Noten
     Private Sub STOPAllMIDINotes()
         If MIDI_Out_Connected = False Then Exit Sub
         If outDevice Is Nothing Then Exit Sub
@@ -1210,7 +1211,7 @@ next_value_exit:
         If MIDI_SpecialMode.Checked = True Then Takt_Tick()
     End Sub
 
-    'Stoppen der Tastenevents das virtuelle Piano
+    'Stoppen der Tastenevents des virtuellen Pianos
     Private Sub Button_Stop_Note(ByVal TastenNr As Byte)
         Dim NotenNr As Integer
 
@@ -1326,7 +1327,7 @@ next_value_exit:
 
 #End Region
 
-'Funktion zum Aktivieren/Deaktivieren des speziellen MIDI-Aufnahmemoduses
+'Funktion zum Aktivieren/Deaktivieren des speziellen MIDI-Aufnahmemodus
 #Region " Special MIDI-Mode"
 
     Private Sub MIDI_SpecialMode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_SpecialMode.CheckedChanged
@@ -1506,7 +1507,7 @@ next_value_exit:
         End If
 
         Select Case -32767
-            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+            Case GetAsyncKeyState(107)  'Plus (Nomblock)
                 If hsbVolume.Value + 10 <= 127 Then hsbVolume.Value += 10
             Case GetAsyncKeyState(109)  'Minus (Nomblock)
                 If hsbVolume.Value - 10 >= 0 Then hsbVolume.Value -= 10
@@ -1531,7 +1532,7 @@ next_value_exit:
                 Tastenkonbination_Klappenverschiebung = 1
             Case GetAsyncKeyState(40)  'Pfeiltaste runter
                 Tastenkonbination_Klappenverschiebung = -1
-            Case GetAsyncKeyState(107)  'Pluss (Nomblock)
+            Case GetAsyncKeyState(107)  'Plus (Nomblock)
                 Tastenkonbination_Klappenverschiebung = 1
             Case GetAsyncKeyState(109)  'Minus (Nomblock)
                 Tastenkonbination_Klappenverschiebung = -1
@@ -2052,7 +2053,7 @@ next_value_exit:
 #End Region
 
 
-'Funktion zur Benachrichtigung aller benutzer meines Programms
+'Funktion zur Benachrichtigung aller Benutzer meines Programms
 #Region "Nachrichtsfunktion"
     Private Sub Nachrichtsfunktion()
 
@@ -2145,7 +2146,7 @@ next_value_exit:
             ' Aufnahmemodus
             MIDI_NormalMode.Checked = .MIDI_NormalMode
             'Absichtlicher Overflow
-            'Alternative: SpecialMode stadt NormalMode speichern!
+            'Alternative: SpecialMode statt NormalMode speichern!
             'MIDI_SpecialMode.Checked = .MIDI_NormalMode + 1
             cboInstruments.SelectedIndex = .cboInstruments
 
@@ -2173,7 +2174,7 @@ next_value_exit:
             Metronom_Betont.Checked = .Metronom_Betont
             Metronom_ON.Checked = .Metronom_ON
 
-            ' Direct Play
+            ' MIDI-Out
             hsbVolume.Value = .hsbVolume
             hsbPan.Value = .hsbPan
             hsbModWheel.Value = .hsbModWheel

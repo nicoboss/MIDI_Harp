@@ -141,8 +141,8 @@
     </Compile>
     <Compile Include="My Project\Settings.Designer.vb">
       <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Settings.vb" />
     <Compile Include="VerticalProgessBar.vb">
@@ -165,7 +165,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="C-Control PRO Visualisieren_TemporaryKey.pfx" />
+    <None Include="MIDI-Harfe_PC_Software_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
