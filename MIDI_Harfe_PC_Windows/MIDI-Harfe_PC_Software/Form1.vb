@@ -84,8 +84,8 @@ Public Class Form1
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
     'Versionsinformationen
-    Dim Version As String = "V2.1.0"
-    Dim PublishDate As Date = "02.02.2017"
+    Dim Version As String = "V2.1.7"
+    Dim PublishDate As Date = "18.02.2017"
 
     'Nur dummy Wert. Wird später sowieso überschrieben.
     Dim Lizenz As String = "PWTMD-YBGSG-QMLRT-MEZUO-PYXQO"
@@ -106,10 +106,10 @@ Public Class Form1
     Dim Button_Note_Play(127) As Boolean
     'Dim Verschiebung(255) As Byte
 
-    Dim MIDI_Pos as Integer = 0
+    Dim MIDI_Pos As Integer = 0
     Dim MIDI_Tracklist As New List(Of Byte)
-    Dim MIDI_TrackNr as Integer = 1
-    Dim MIDI_Speed as Integer = 48
+    Dim MIDI_TrackNr As Integer = 1
+    Dim MIDI_Speed As Integer = 48
 
     Dim SendKey_key(127) As Byte
     Dim SendKey_Oktave As Byte = 4
@@ -158,7 +158,7 @@ Public Class Form1
     Dim G1_Klappe_alt As SByte
     Dim A1_Klappe_alt As SByte
     Dim H1_Klappe_alt As SByte
-    
+
     Dim Tastenkombination_FirstKey As Boolean
     Dim Tastenkombination_KeyAlt As Byte
     Dim Costom_Tastenkombinationen_Counter As UShort
@@ -424,9 +424,10 @@ Public Class Form1
         Dim Ableitung2(70) As Integer
         'Dim Ableitung3(70) As Integer
         Dim NotenNr_real As Integer
-        Dim MidiNoteNrReal as Integer
+        Dim MidiNoteNrReal As Integer
         Dim second_trigger_count As Integer
-        Dim third_trigger_count as Integer
+        Dim third_trigger_count As Integer
+        Dim trigger_value As Integer
 
         'Deaktivierte Funktion zur Audio-Ausgabe
         'Dim waveForamt As New WaveFormat(6000, 16, 1)
@@ -439,7 +440,7 @@ Public Class Form1
 
         'My.Computer.Audio.Play(Audio_stream, AudioPlayMode.Background)
 
-'Messloop - Ein GoTo-label ist wunderschön schnell!
+        'Messloop - Ein GoTo-label ist wunderschön schnell!
 next_messung:
         Try
             messung = 1 'Setzen der aktuellen Messung auf 1
@@ -491,15 +492,15 @@ next_value:
             'Berechnen des Integralwerts
             Integralwert(NotenNr_real) += Math.Abs(ADC_now) - Math.Abs(Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 20))
             Integralwerte(NotenNr_real).Add(Integralwert(NotenNr_real))
-            
+
             'Berechnen der 1. Ableitung
             Ableitung1(NotenNr_real) = ADC_now - Messwerte(NotenNr_real)(Messwerte(NotenNr_real).Count - 2)
             Ableitung1werte(NotenNr_real).Add(Ableitung1(NotenNr_real))
-            
+
             'Berechnen der 2. Ableitung
             Ableitung2(NotenNr_real) = Ableitung1werte(NotenNr_real).Last - Ableitung1werte(NotenNr_real)(Ableitung1werte(NotenNr_real).Count - 2)
             Ableitung2werte(NotenNr_real).Add(Ableitung2(NotenNr_real))
-            
+
             'Deaktivierte Berechnung der 3. Ableitung
             'Ableitung3(NotenNr_real) = Ableitung2werte(NotenNr_real).Last - Ableitung2werte(NotenNr_real)(Ableitung2werte(NotenNr_real).Count - 2)
             'Ableitung3werte(NotenNr_real).Add(Ableitung3(NotenNr_real))
@@ -520,7 +521,8 @@ next_value:
                     End If
                 Next
 
-                If (second_trigger_count > 4 and third_trigger_count > 2) Then
+                trigger_value = 1 + NotenNr_real >> 3
+                If (second_trigger_count > trigger_value And third_trigger_count > trigger_value) Then
                     MidiNoteNrReal = MidiNoteNr(NotenNr_real) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(NotenNr_real).Text)
                     'My.Computer.Keyboard.SendKeys("p", True)
                     'MessageBox.Show(wert)
@@ -619,7 +621,7 @@ next_value_exit:
     End Sub
 
 
-'Im folgenden Programmabschnitt befindet sich die MIDI-File-Save-Funktion
+    'Im folgenden Programmabschnitt befindet sich die MIDI-File-Save-Funktion
 #Region " MIDI "
     'MIDI-Aufnahmestart
     Private Sub MIDI_Start() Handles MIDI_Start_Button.Click
@@ -627,30 +629,35 @@ next_value_exit:
         MIDI_Pause_Button.Enabled = True
         MIDI_Save_Button.Enabled = True
 
+        TaktNr = 0
+        Takt_32stel = 0
+
+        Takt_Ausgabefenster.Text = ("1  1")
+
         eventCollection.Clear()
-        MIDI_TrackNr=1
-        MIDI_Pos=0
+        MIDI_TrackNr = 1
+        MIDI_Pos = 0
 
         'Wissensquelle: http://www.deluge.co/?q=midi-tempo-bpm, http://midi.mathewvp.com/aboutMidi.htm
-        Dim TimeSign as String = Chr(Takt_Zaehler_Input.Value) & Chr(Takt_Naenner_Input.Value) & Chr(24) & Chr(8)
+        Dim TimeSign As String = Chr(Takt_Zaehler_Input.Value) & Chr(Takt_Naenner_Input.Value) & Chr(24) & Chr(8)
         eventCollection.AddEvent(New TextEvent(TimeSign, MetaEventType.TimeSignature, 0), MIDI_TrackNr) 'Takt
 
         'Spurname
         If META_Spurname_Input.Text = "" Then
-            eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, 0), MIDI_TrackNr)
+            eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, 0), MIDI_TrackNr)
         Else
-            eventCollection.AddEvent(new TextEvent(META_Spurname_Input.Text, MetaEventType.SequenceTrackName, 0), MIDI_TrackNr)
+            eventCollection.AddEvent(New TextEvent(META_Spurname_Input.Text, MetaEventType.SequenceTrackName, 0), MIDI_TrackNr)
         End If
 
         'Unbenutzte Wissensquelle: http://www.recordingblogs.com/sa/Wiki?topic=MIDI+Key+Signature+meta+message
-        
+
         'Instrumentenname sowie Track Text
-        eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
-        eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
+        eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
+        eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
 
         'Tempo in Anzahl Mikrosekunden pro Viertelnote
-        Dim Tempo as String = Chr(&H0F) & Chr(&H42) & Chr(&H40)
-        eventCollection.AddEvent(new TextEvent(Tempo, MetaEventType.SetTempo, 0), MIDI_TrackNr)
+        Dim Tempo As String = Chr(&H0F) & Chr(&H42) & Chr(&H40)
+        eventCollection.AddEvent(New TextEvent(Tempo, MetaEventType.SetTempo, 0), MIDI_TrackNr)
 
         'Unbenutzt da automatisch gesetzt
         'eventCollection.AddEvent(new Events.MetaEvent(MetaEventType.EndTrack,0,0), MIDI_TrackNr)
@@ -660,11 +667,11 @@ next_value_exit:
         If MIDI_TrackNr >= 16 Then Exit Sub
         MIDI_TrackNr += 1
         eventCollection.AddTrack()
-        eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, MIDI_Pos), MIDI_TrackNr)
-        eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
-        eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
-        eventCollection.AddEvent(new PatchChangeEvent(MIDI_Pos, MIDI_TrackNr, cboInstruments.SelectedIndex), MIDI_TrackNr)
-        
+        eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, MIDI_Pos), MIDI_TrackNr)
+        eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
+        eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
+        eventCollection.AddEvent(New PatchChangeEvent(MIDI_Pos, MIDI_TrackNr, cboInstruments.SelectedIndex), MIDI_TrackNr)
+
         'Deaktivieren der Takt-Eingabefelder da diese während einer Aufnahme nicht verändert werden sollen
         Takt_Zaehler_Input.Enabled = False
         Takt_Naenner_Input.Enabled = False
@@ -740,13 +747,13 @@ next_value_exit:
         For i = 0 To 31 Step 1
             If Note_Play(i) = True Or Button_Note_Play(i) = True Then
                 If Notenlaege(i) = 0 Then
-                    eventCollection.AddEvent(new NoteEvent(MIDI_Pos, MIDI_TrackNr, MidiCommandCode.NoteOn, MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text), 100), MIDI_TrackNr)
+                    eventCollection.AddEvent(New NoteEvent(MIDI_Pos, MIDI_TrackNr, MidiCommandCode.NoteOn, MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text), 100), MIDI_TrackNr)
                 End If
                 Notenlaege(i) += 0.125
                 Note_gespielt = True
             Else
                 If Notenlaege(i) > 0 Then
-                    eventCollection.AddEvent(new NoteEvent(MIDI_Pos, MIDI_TrackNr, MidiCommandCode.NoteOff, MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text), 0), MIDI_TrackNr)
+                    eventCollection.AddEvent(New NoteEvent(MIDI_Pos, MIDI_TrackNr, MidiCommandCode.NoteOff, MidiNoteNr(i) + Halbtonverschiebung.Value + CInt(Noten_Verschiebung(i).Text), 0), MIDI_TrackNr)
                     Notenlaege(i) = 0
                 End If
             End If
@@ -757,11 +764,11 @@ next_value_exit:
         If Takt_32stel = 32 Then
             If Metronom_ON.Checked Then
                 SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
-                PlayMIDINote(70, 50, 0.1)
+                PlayMIDINote(70, 100, 0.1)
                 SetCurrentInstrument(cboInstruments.SelectedIndex)
             ElseIf Metronom_Betont.Checked Then
                 SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
-                PlayMIDINote(72, 70, 0.1)
+                PlayMIDINote(72, 120, 0.1)
                 SetCurrentInstrument(cboInstruments.SelectedIndex)
             End If
             TaktNr = TaktNr + 1
@@ -771,7 +778,7 @@ next_value_exit:
         If Not Metronom_alt = Fix(Takt_32stel * Takt_Naenner_Input.Value / 32) Then
             If Metronom_ON.Checked Or Metronom_Betont.Checked Then
                 SetCurrentInstrument(GeneralMidiInstrument.Woodblock)
-                PlayMIDINote(70, 50, 0.1)
+                PlayMIDINote(70, 100, 0.1)
                 SetCurrentInstrument(cboInstruments.SelectedIndex)
             End If
         End If
@@ -789,7 +796,7 @@ next_value_exit:
 
     'Halbton-/Oktavenverschiebung zum Ändern der Gesamttonhöhe
 #Region " Halbtonverschiebung "
-        Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
+    Private Sub Oktavenverschiebung_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Oktavenverschiebung.SelectedIndexChanged
         Halbtonverschiebung.Value = 12 * (3 - Oktavenverschiebung.SelectedIndex)
         Halbtonversch = Halbtonverschiebung.Value
         If Halbtonversch < -32 Then MessageBox.Show("Warnung: Durch eine Halbtonverschiebung von <-32 sind die tiefsten Töne einfach alle Note 0 da MIDI  tiefere Töne nicht unterstützt.",
@@ -849,14 +856,14 @@ next_value_exit:
             'Long und nicht ULong da in ganz speziellen Fällen (ganz oft 0 danach hoher Messwert) negative Zahlen auftreten können
             Dim integralwert_avg As Long
 
-            Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
-            Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
+            Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
+            Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
 
             Integral_Chart.ChartAreas(0).AxisY.Minimum = 0
             Integral_Chart.ChartAreas(0).AxisY.Maximum = 400000
 
-            Messwerte_Chart.ChartAreas(0).AxisY.Minimum = -40000
-            Messwerte_Chart.ChartAreas(0).AxisY.Maximum = 40000
+            Ableitung2_Chart.ChartAreas(0).AxisY.Minimum = -25000
+            Ableitung2_Chart.ChartAreas(0).AxisY.Maximum = 25000
 
             Dim Cart_Points_Display As UInteger = 100
 
@@ -864,19 +871,19 @@ next_value_exit:
                 integralwert = 0
 
                 'Entfernen nicht mehr benutzter Listenelemente zur Performanceverbesserung
-                if(Messwerte(i).Count - Cart_Points_Display > 0) Then
+                If (Messwerte(i).Count - Cart_Points_Display > 0) Then
                     Messwerte(i).RemoveRange(0, Messwerte(i).Count - Cart_Points_Display)
                 End If
 
-                if(Integralwerte(i).Count - Cart_Points_Display > 0) Then
+                If (Integralwerte(i).Count - Cart_Points_Display > 0) Then
                     Integralwerte(i).RemoveRange(0, Integralwerte(i).Count - Cart_Points_Display)
                 End If
 
-                if(Ableitung1werte(i).Count - Cart_Points_Display > 0) Then
+                If (Ableitung1werte(i).Count - Cart_Points_Display > 0) Then
                     Ableitung1werte(i).RemoveRange(0, Ableitung1werte(i).Count - Cart_Points_Display)
                 End If
 
-                if(Ableitung2werte(i).Count - Cart_Points_Display > 0) Then
+                If (Ableitung2werte(i).Count - Cart_Points_Display > 0) Then
                     Ableitung2werte(i).RemoveRange(0, Ableitung2werte(i).Count - Cart_Points_Display)
                 End If
 
@@ -889,10 +896,10 @@ next_value_exit:
                 LetzteAbleitung1werte.AddRange(Ableitung1werte(i).ToArray())
                 LetzteAbleitung2werte.AddRange(Ableitung2werte(i).ToArray())
 
-                For Each wert As Long In LetzteAbleitung2werte
-                    Ableitung2_Chart.Series(i).Points.Add(wert)
-                    If Ableitung2_Chart.Series(i).Points.Count > Cart_Points_Display Then
-                        Ableitung2_Chart.Series(i).Points.RemoveAt(0)
+                For Each wert As Long In LetzteMesswerte
+                    Messwerte_Chart.Series(i).Points.Add(wert)
+                    If Messwerte_Chart.Series(i).Points.Count > Cart_Points_Display Then
+                        Messwerte_Chart.Series(i).Points.RemoveAt(0)
                     End If
                 Next
 
@@ -905,10 +912,10 @@ next_value_exit:
                 Next
                 integralwert_avg /= LetzteIntegralwerte.Count * 500
 
-                For Each wert As Long In LetzteMesswerte
-                    Messwerte_Chart.Series(i).Points.Add(wert)
-                    If Messwerte_Chart.Series(i).Points.Count > Cart_Points_Display Then
-                        Messwerte_Chart.Series(i).Points.RemoveAt(0)
+                For Each wert As Long In LetzteAbleitung2werte
+                    Ableitung2_Chart.Series(i).Points.Add(wert)
+                    If Ableitung2_Chart.Series(i).Points.Count > Cart_Points_Display Then
+                        Ableitung2_Chart.Series(i).Points.RemoveAt(0)
                     End If
                 Next
 
@@ -916,13 +923,17 @@ next_value_exit:
                     integralwert_avg = 255
                 End If
 
+                'If (integralwert_avg < 0) Then
+                '    integralwert_avg = 0
+                'End If
+
                 Noten_VerticalProgessBar(i).Value = integralwert_avg
                 Noten_Wert(i).Text = integralwert_avg
                 LetzteMesswerte.Clear()
             Next
 
-        'Alle auftretende Fehler werden aus stabilitätstechnischen Gründen ignoriert 
-        Catch ex as Exception
+            'Alle auftretende Fehler werden aus stabilitätstechnischen Gründen ignoriert 
+        Catch ex As Exception
             Debug.WriteLine(ex)
         End Try
     End Sub
@@ -944,7 +955,7 @@ next_value_exit:
     End Function
 
 
-'Folgender Programmteil dient zur MIDI-Out-live-Wiedergabe
+    'Folgender Programmteil dient zur MIDI-Out-live-Wiedergabe
 #Region " Sanford.Multimedia.Midi "
     Private outDevice As OutputDevice
     Private outDeviceID As Integer = 0
@@ -958,10 +969,10 @@ next_value_exit:
             'MessageBox.Show("Error: Kein MIDI-Out Gerät verfügbar.", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Stop)
             Exit Sub
         Else
-	    For i As Integer = 0 To OutputDevice.DeviceCount - 1
-		    MIDI_Out_ComboBox.Items.Add(OutputDevice.GetDeviceCapabilities(i).name)
-	    Next
-	    MIDI_Out_ComboBox.SelectedIndex = outDeviceID
+            For i As Integer = 0 To OutputDevice.DeviceCount - 1
+                MIDI_Out_ComboBox.Items.Add(OutputDevice.GetDeviceCapabilities(i).name)
+            Next
+            MIDI_Out_ComboBox.SelectedIndex = outDeviceID
             Try
                 outDevice = New OutputDevice(outDeviceID)
             Catch ex As Exception
@@ -992,21 +1003,21 @@ next_value_exit:
     'Wechseln des MIDI-Instrumentes
     Private Sub cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles cboInstruments.SelectedIndexChanged
         SetCurrentInstrument(cboInstruments.SelectedIndex)
-        MIDI_cboInstruments.SelectedIndex=cboInstruments.SelectedIndex
-        if Aufnahme_gestartet = True Or Messung_Pause=True Then
+        MIDI_cboInstruments.SelectedIndex = cboInstruments.SelectedIndex
+        If Aufnahme_gestartet = True Or Messung_Pause = True Then
 
-            Dim pos as Integer = MIDI_Tracklist.IndexOf(cboInstruments.SelectedIndex)
-            if pos = -1 Then
+            Dim pos As Integer = MIDI_Tracklist.IndexOf(cboInstruments.SelectedIndex)
+            If pos = -1 Then
                 If MIDI_TrackNr >= 16 Then Exit Sub
                 MIDI_Tracklist.Add(cboInstruments.SelectedIndex)
                 MIDI_TrackNr = MIDI_Tracklist.Count '=> MIDI_TrackNr+=1
                 eventCollection.AddTrack()
-                eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, MIDI_Pos), MIDI_TrackNr)
-                eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
-                eventCollection.AddEvent(new TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
-                eventCollection.AddEvent(new PatchChangeEvent(MIDI_Pos, MIDI_TrackNr, cboInstruments.SelectedIndex), MIDI_TrackNr)
+                eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedItem, MetaEventType.SequenceTrackName, MIDI_Pos), MIDI_TrackNr)
+                eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TrackInstrumentName, 0), MIDI_TrackNr)
+                eventCollection.AddEvent(New TextEvent(cboInstruments.SelectedText, MetaEventType.TextEvent, 0), MIDI_TrackNr)
+                eventCollection.AddEvent(New PatchChangeEvent(MIDI_Pos, MIDI_TrackNr, cboInstruments.SelectedIndex), MIDI_TrackNr)
             Else
-                MIDI_TrackNr = pos+1
+                MIDI_TrackNr = pos + 1
             End If
 
         End If
@@ -1014,9 +1025,9 @@ next_value_exit:
 
     'Synchronisieren des MIDI-Outs mit dem Aufnahmeinstrument
     Private Sub MIDI_cboInstruments_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles MIDI_cboInstruments.SelectedIndexChanged
-        cboInstruments.SelectedIndex=MIDI_cboInstruments.SelectedIndex
+        cboInstruments.SelectedIndex = MIDI_cboInstruments.SelectedIndex
     End Sub
-    
+
     'Wechseln des Midi-Ausgangs
     Private Sub MIDI_Out_ComboBox_SelectedIndexChanged(sender As Object, e As EventArgs) Handles MIDI_Out_ComboBox.SelectedIndexChanged
         MIDI_Out_Connected = False
@@ -1051,7 +1062,7 @@ next_value_exit:
         hsbModWheel_ValueChanged()
         SetCurrentInstrument(cboInstruments.SelectedIndex)
     End Sub
-    
+
     'Beim Beenden des Programmes den MIDI-Port wieder freigeben
     Private Sub Form1_Closed(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Closed
         If outDevice IsNot Nothing Then
@@ -1260,7 +1271,7 @@ next_value_exit:
     C5_Verschiebung.KeyPress, D5_Verschiebung.KeyPress, E5_Verschiebung.KeyPress, F5_Verschiebung.KeyPress, G5_Verschiebung.KeyPress, A5_Verschiebung.KeyPress, H5_Verschiebung.KeyPress,
     C6_Verschiebung.KeyPress, D6_Verschiebung.KeyPress, E6_Verschiebung.KeyPress, F6_Verschiebung.KeyPress, G6_Verschiebung.KeyPress, A1_Verschiebung.KeyPress, H1_Verschiebung.KeyPress
 
-         'Filtern der für die Halbtonverschiebung erlaubten Eingabezeichen
+        'Filtern der für die Halbtonverschiebung erlaubten Eingabezeichen
         Select Case Asc(e.KeyChar)
             Case 48 To 57, 8, 45 ', 46=Punkt (Hier als Komma)
                 ' Zahlen, Backspace und Space zulassen
@@ -1327,7 +1338,7 @@ next_value_exit:
 
 #End Region
 
-'Funktion zum Aktivieren/Deaktivieren des speziellen MIDI-Aufnahmemodus
+    'Funktion zum Aktivieren/Deaktivieren des speziellen MIDI-Aufnahmemodus
 #Region " Special MIDI-Mode"
 
     Private Sub MIDI_SpecialMode_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MIDI_SpecialMode.CheckedChanged
@@ -1366,7 +1377,7 @@ next_value_exit:
     End Sub
 
 
-'Funktionen zur virtuellen Harfenklappeneinstellung
+    'Funktionen zur virtuellen Harfenklappeneinstellung
 #Region "Klappen"
 
     Private Sub C1_Klappe_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles C1_Klappe.ValueChanged
@@ -1470,7 +1481,7 @@ next_value_exit:
 
 
 
-'In der folgenden Funktion werden die Tastenkombinationen ermittelt und deren Funktion ausgeführt.
+    'In der folgenden Funktion werden die Tastenkombinationen ermittelt und deren Funktion ausgeführt.
 #Region "Tastenkombinationen"
 
     Private Sub KeyState_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GetAsyncKeyState_Timer.Tick
@@ -1633,8 +1644,12 @@ next_value_exit:
                     Case 104 : .Text += "Num8"
                     Case 105 : .Text += "Num9"
 
-                    Case 32
-                        If .Text = "" Then .Text = "- Nicht belegt -" Else .Text += "Leert."
+                    Case 32 :
+                        If Tastenkombination_Alt = "- Nicht belegt -" Then
+                            .Text += "Leert."
+                        Else
+                            .Text = "- Nicht belegt -"
+                        End If
 
                     Case Else : .Text += e.KeyCode.ToString
                 End Select
@@ -1659,8 +1674,9 @@ next_value_exit:
                 Start_Tastenkombination.Text = Tastenkombination_Alt
             Else
                 Start_Tastenkombination_Key.Clear()
-                For Each item As String In Tastenkombination_Key
+                For Each item As Byte In Tastenkombination_Key
                     Start_Tastenkombination_Key.Add(item)
+                    'MessageBox.Show(item)
                 Next
             End If
         End If
@@ -1676,7 +1692,7 @@ next_value_exit:
                 Pause_Tastenkombination.Text = Tastenkombination_Alt
             Else
                 Pause_Tastenkombination_Key.Clear()
-                For Each item As String In Tastenkombination_Key
+                For Each item As Byte In Tastenkombination_Key
                     Pause_Tastenkombination_Key.Add(item)
                 Next
             End If
@@ -1693,7 +1709,7 @@ next_value_exit:
                 Save_Tastenkombination.Text = Tastenkombination_Alt
             Else
                 Save_Tastenkombination_Key.Clear()
-                For Each item As String In Tastenkombination_Key
+                For Each item As Byte In Tastenkombination_Key
                     Save_Tastenkombination_Key.Add(item)
                 Next
             End If
@@ -1705,7 +1721,7 @@ next_value_exit:
 
 
 
-'Funktion zum Senden der MIDI-Noten als Tastatur-Event
+    'Funktion zum Senden der MIDI-Noten als Tastatur-Event
 #Region "SendKey"
     Private Sub SendKey_PreviewKeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.PreviewKeyDownEventArgs) Handles SendKey_c.PreviewKeyDown, SendKey_d.PreviewKeyDown, SendKey_e.PreviewKeyDown,
                                                                                                                 SendKey_f.PreviewKeyDown, SendKey_g.PreviewKeyDown, SendKey_a.PreviewKeyDown,
@@ -1713,7 +1729,6 @@ next_value_exit:
                                                                                                                 SendKey_fis.PreviewKeyDown, SendKey_gis.PreviewKeyDown, SendKey_ais.PreviewKeyDown
 
         sender.text = KeyCode_toName(e.KeyCode)
-
         Select Case sender.name
             Case "SendKey_c" : SendKey_key(SendKey_Oktave * 11) = e.KeyCode
             Case "SendKey_cis" : SendKey_key((SendKey_Oktave * 11) + 1) = e.KeyCode
@@ -1803,28 +1818,28 @@ next_value_exit:
             Case 104 : Return "N8"
             Case 105 : Return "N9"
 
-            'Case 112 : Return "F1"
-            'Case 113 : Return "F2"
-            'Case 114 : Return "F3"
-            'Case 115 : Return "F4"
-            'Case 116 : Return "F5"
-            'Case 117 : Return "F6"
-            'Case 118 : Return "F7"
-            'Case 119 : Return "F8"
-            'Case 120 : Return "F9"
-            'Case 121 : Return "F10"
-            'Case 122 : Return "F11"
-            'Case 123 : Return "F12"
+                'Case 112 : Return "F1"
+                'Case 113 : Return "F2"
+                'Case 114 : Return "F3"
+                'Case 115 : Return "F4"
+                'Case 116 : Return "F5"
+                'Case 117 : Return "F6"
+                'Case 118 : Return "F7"
+                'Case 119 : Return "F8"
+                'Case 120 : Return "F9"
+                'Case 121 : Return "F10"
+                'Case 122 : Return "F11"
+                'Case 123 : Return "F12"
 
 
-            'Case 37 : Return "Left"
-            'Case 38 : Return "Up"
-            'Case 39 : Return "Right"
-            'Case 40 : Return "Down"
-            'Case 40 : Return "Del"
+                'Case 37 : Return "Left"
+                'Case 38 : Return "Up"
+                'Case 39 : Return "Right"
+                'Case 40 : Return "Down"
+                'Case 40 : Return "Del"
 
-            'Case 48 To 90 : Return Chr(KeyCode).ToString 'Normalzeichen
-            'Case 48 To 90 : Return Chr(KeyCode).ToString 'Sonderzeichen
+                'Case 48 To 90 : Return Chr(KeyCode).ToString 'Normalzeichen
+                'Case 48 To 90 : Return Chr(KeyCode).ToString 'Sonderzeichen
 
             Case Else : Return kc.ConvertToString(KeyCode)
         End Select
@@ -1834,7 +1849,7 @@ next_value_exit:
 
 
 
-'Funktion zur Onlineaktivierung meines Programmes
+    'Funktion zur Onlineaktivierung meines Programmes
 #Region "Onlineaktivierung"
 
     Dim Lizenz_Activated As Boolean = False
@@ -2053,7 +2068,7 @@ next_value_exit:
 #End Region
 
 
-'Funktion zur Benachrichtigung aller Benutzer meines Programms
+    'Funktion zur Benachrichtigung aller Benutzer meines Programms
 #Region "Nachrichtsfunktion"
     Private Sub Nachrichtsfunktion()
 
@@ -2192,51 +2207,51 @@ next_value_exit:
             H1_Klappe.Value = .H_Klappe
 
             ' Startwert, Stoppwert und Halbtonverschiebung
-            Try
-                For i = 0 To 34
+            Dim Noten_Startwert_byte As Byte
+            Dim Noten_Stoppwert_byte As Byte
+            Dim Noten_Verschiebung_byte As SByte
+            For i = 0 To 34
+                If Byte.TryParse(Noten_Startwert(i).Text, Noten_Startwert_byte) Then
                     Noten_Startwert(i).Text = .Startwert_Save(i)
+                End If
+                If Byte.TryParse(Noten_Stoppwert(i).Text, Noten_Stoppwert_byte) Then
                     Noten_Stoppwert(i).Text = .Stoppwert_Save(i)
+                End If
+                If SByte.TryParse(Noten_Verschiebung(i).Text, Noten_Verschiebung_byte) Then
                     Noten_Verschiebung(i).Text = .Verschiebung_Save(i)
-                Next
-            Catch
-            End Try
+                End If
+            Next
 
             ' Tastenkombinationen
-            'Try
             Start_Tastenkombination.Text = .Start_Tastenkombination_Save
+            Start_Tastenkombination_Key.Clear()
             For Each item As String In .Start_Tastenkombination_Key_Save
                 Start_Tastenkombination_Key.Add(item)
                 'MessageBox.Show(item)
             Next
 
             Pause_Tastenkombination.Text = .Pause_Tastenkombination_Save
-            .Pause_Tastenkombination_Key_Save.Clear()
+            Pause_Tastenkombination_Key.Clear()
             For Each item As String In .Pause_Tastenkombination_Key_Save
                 Pause_Tastenkombination_Key.Add(item)
             Next
 
             Save_Tastenkombination.Text = .Save_Tastenkombination_Save
-            .Save_Tastenkombination_Key_Save.Clear()
+            Save_Tastenkombination_Key.Clear()
             For Each item As String In .Save_Tastenkombination_Key_Save
                 Save_Tastenkombination_Key.Add(item)
             Next
-            'Catch
-            'End Try
 
             'Ist SendKeys an?
             SendKeys_ON.Checked = .SendKeys_ON_Save
 
             'SendKey Einstellungen
-            Try
-                For i = 0 To 127
-                    SendKey_key(i) = .SendKey_Save(i)
-                Next
-            Catch
-            End Try
-
-            For i = 0 To 11
-                SendKey_h.Text = KeyCode_toName(SendKey_key((SendKey_Oktave * 11) + i))
+            For i = 0 To 127
+                SendKey_key(i) = .SendKey_Save(i)
             Next
+
+            SendKey_Oktave = 4
+            SendKey_Butons_refresh()
 
         End With
     End Sub
@@ -2433,7 +2448,7 @@ next_value_exit:
             & vbCrLf & vbCrLf & "Ich verbiete hiermit ausdrücklich jegliche Modifikation am Lizenzierungs- und Aktivierungssystem!" _
             & vbCrLf & "Ideenvorschläge und sonstige Mods sind jederzeit erwünscht. :D" _
             & vbCrLf & "Bei Fragen bin ich per E-Mail unter nico@bosshome.ch erreichbar." _
-            & vbCrLf & vbCrLf & "Version " & Version & vbCrLf & "Lizenzstatus: Aktiviert" & vbCrLf & "Veröffentlichung: " & PublishDate.Date & vbCrLf & "OS: Windows, VirtualBox" _
+            & vbCrLf & vbCrLf & "Version " & Version & vbCrLf & "Lizenzstatus: Aktiviert" & vbCrLf & "Veröffentlichung: " & PublishDate.Date & vbCrLf & "OS: Windows, Virtual machine" _
             & vbCrLf & "Programmiert mit Visual Basic 2015 .NET Framework 4.6" _
             & vbCrLf & "OS: Windews XP SP2 bis Windows 10" _
             & vbCrLf & "Programmiert von Nico Bosshard", "About", MessageBoxButtons.OK, MessageBoxIcon.Information)

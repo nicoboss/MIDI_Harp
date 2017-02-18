@@ -2,9 +2,6 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="cboInstruments" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Takt_Zaehler_Input" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">4</Value>
     </Setting>
@@ -14,14 +11,8 @@
     <Setting Name="Speed" Type="System.UInt16" Scope="User">
       <Value Profile="(Default)">48</Value>
     </Setting>
-    <Setting Name="MIDI_NormalMode" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="Messintervall_NumericUpDown" Type="System.UInt16" Scope="User">
       <Value Profile="(Default)">20</Value>
-    </Setting>
-    <Setting Name="Halbtonverschiebung" Type="System.SByte" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="META_Dateiname_Input" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
@@ -44,26 +35,8 @@
     <Setting Name="Metronom_ON" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="hsbVolume" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="hsbPan" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="hsbModWheel" Type="System.Byte" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="ToolTip_ON" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="C_Klappe" Type="System.SByte" Scope="User">
       <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="D_Klappe" Type="System.SByte" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="E_Klappe" Type="System.SByte" Scope="User">
-      <Value Profile="(Default)">1</Value>
     </Setting>
     <Setting Name="F_Klappe" Type="System.SByte" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -77,26 +50,17 @@
     <Setting Name="H_Klappe" Type="System.SByte" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="Start_Tastenkombination_Save" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Start_Tastenkombination_Key2_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Start_Tastenkombination_Key3_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="Pause_Tastenkombination_Save" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Pause_Tastenkombination_Key2_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="Pause_Tastenkombination_Key3_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="Save_Tastenkombination_Save" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Save_Tastenkombination_Key2_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -119,47 +83,306 @@
     <Setting Name="Volume_max_Save" Type="System.Byte" Scope="User">
       <Value Profile="(Default)">127</Value>
     </Setting>
+    <Setting Name="Start_Tastenkombination_Save" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F9</Value>
+    </Setting>
+    <Setting Name="Pause_Tastenkombination_Save" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Leert.</Value>
+    </Setting>
+    <Setting Name="Save_Tastenkombination_Save" Type="System.String" Scope="User">
+      <Value Profile="(Default)">F9</Value>
+    </Setting>
     <Setting Name="Start_Tastenkombination_Key_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;0&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
     </Setting>
     <Setting Name="Pause_Tastenkombination_Key_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;0&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
     </Setting>
     <Setting Name="Save_Tastenkombination_Key_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;0&lt;/string&gt;
-&lt;/ArrayOfString&gt;</Value>
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
     </Setting>
-    <Setting Name="SendKey_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="Verschiebung_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;#&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;1&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Startwert_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;#&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
+  &lt;string&gt;200&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
     <Setting Name="Stoppwert_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;#&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
-    <Setting Name="Verschiebung_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
+    <Setting Name="hsbVolume" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">127</Value>
+    </Setting>
+    <Setting Name="hsbPan" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="hsbModWheel" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="Halbtonverschiebung" Type="System.SByte" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="D_Klappe" Type="System.SByte" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="E_Klappe" Type="System.SByte" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="MIDI_NormalMode" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="ToolTip_ON" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SendKey_Save" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;string&gt;#&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;81&lt;/string&gt;
+  &lt;string&gt;50&lt;/string&gt;
+  &lt;string&gt;87&lt;/string&gt;
+  &lt;string&gt;51&lt;/string&gt;
+  &lt;string&gt;69&lt;/string&gt;
+  &lt;string&gt;82&lt;/string&gt;
+  &lt;string&gt;53&lt;/string&gt;
+  &lt;string&gt;84&lt;/string&gt;
+  &lt;string&gt;54&lt;/string&gt;
+  &lt;string&gt;90&lt;/string&gt;
+  &lt;string&gt;55&lt;/string&gt;
+  &lt;string&gt;85&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
+  &lt;string&gt;0&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="cboInstruments" Type="System.Byte" Scope="User">
+      <Value Profile="(Default)">46</Value>
     </Setting>
   </Settings>
 </SettingsFile>
