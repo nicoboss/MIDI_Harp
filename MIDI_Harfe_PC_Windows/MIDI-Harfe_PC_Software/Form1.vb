@@ -84,7 +84,7 @@ Public Class Form1
     Declare Sub Beep Lib "kernel32.dll" (ByVal tone As Integer, ByVal dauer As Integer)
 
     'Versionsinformationen
-    Dim Version As String = "V2.1.7"
+    Dim Version As String = "V2.1.8"
     Dim PublishDate As Date = "18.02.2017"
 
     'Nur dummy Wert. Wird später sowieso überschrieben.
@@ -179,9 +179,18 @@ Public Class Form1
     'Dim bufferedWaveProvider(35) As BufferedWaveProvider
     'Dim player(35) As WaveOut
 
+    Private Sub Form1_Invalidated(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Invalidated
+        If My.Computer.Keyboard.CtrlKeyDown Or My.Computer.Keyboard.AltKeyDown Or My.Computer.Keyboard.ShiftKeyDown
+            Dim result As Integer = MessageBox.Show("Alle benutzerspezifischen Einstellungen wirklich zurücksetzen?", "Einstellungen zurücksetzen?", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes
+                My.Settings.Reset
+                MessageBox.Show("Alle benutzerspezifischen Einstellungen wurden erfolgreich zurückgesetzt!", "Einstellungen zurückgesetzt", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End If
+    End Sub
+
     'Form1_Load_main wird beim Laden des Hauptprogramms ausgeführt.
     Private Sub Form1_Load_main(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         'Deklarieren von Arreys aus GUI Steuerelementen zur indexbasierenden Ansprechung gewisser Steuerelementgruppen
         Noten_VerticalProgessBar = {
             A1_VerticalProgessBar, H1_VerticalProgessBar,
@@ -2436,6 +2445,7 @@ next_value_exit:
     Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Help_Button.Click
         Help_Button.Enabled = False 'Sieht schöner aus
         MessageBox.Show("Es ist momentan noch keine Hilfe ausser die eigentlich völlig ausreichende ToolTip Funktion für mein Programm verfügbar." _
+                        & vbCrLf & vbCrLf & "Alle benuzerspezifischen Einstellungen zurücksetzen mit Drücken der Shift, Ctrl oder Alt Taste während des Programmstarts" _
                         & vbCrLf & vbCrLf & "Sollten Sie irgendwelche Fragen haben, melden Sie sich bitte per Mail an nico@bosshome.ch",
                         "Hilfe", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Help_Button.Enabled = True
